@@ -1,0 +1,246 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 8.5.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis8.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.5.4.html">next</a>
+
+<h5 id="8.5.3">8.5.3 Абсолютная сходимость несобственных интегралов.</h5>
+
+<p id="Definition8.5.3"><b>Определение 8.5.3:</b> Пусть функция $f(x):[a,\omega)\to\mathbb{R}$ такая, что для любого $b\in[a,\omega)$
+$f(x)\in\mathcal{R}[a,b]$, тогда говорят, что несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится абсолютно, если сходится 
+несобственный интеграл $\int\limits_a^\omega|f(x)|dx$.
+
+<br><br>
+
+<p id="Corollary8.5.4"><b>Следствие 8.5.4:</b> Если функция $f(x):[a,\omega)\to\mathbb{R}$ такая, что для любого $b\in[a,\omega)$ $f(x)\in\mathcal{R}[a,b]$,
+тогда если несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится абсолютно, то он сходится.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon&gt0$, тогда по абсолютной сходимости несобственного интеграла $\int\limits_a^\omega{f}(x)dx$ имеем
+$$\exists{B}&lt\omega:\forall{b}',b''\in(B,\omega)\left(\left|\int\limits_{b'}^{b''}f(x)dx\right|\leq
+\left|\int\limits_{b'}^{b''}|f(x)|dx\right|&lt\varepsilon\right)$$
+
+<br><br>
+
+<p><i>Исследование абсолютной сходимости сводится к исследованию сходимости интеграла от неотрицательной функции.</i>
+
+<p id="Theorem8.5.2"><b>Теорема 8.5.2:</b> Пусть функции $f(x),g(x):[a,\omega)\to\mathbb{R}$ такие, что для любого $b\in[a,\omega)$
+$f(b)\geq0$, $g(b)\geq0$, $f(x),g(x)\in\mathcal{R}[a,b]$, тогда
+<ol>
+<li>
+если для любого $x\in[a,\omega)$ $f(x)\leq{g}(x)$, то из сходимости несобственного интеграла $\int\limits_a^\omega{g}(x)dx$ следует сходимость
+несобственного интеграла $\int\limits_a^\omega{f}(x)dx$;
+</li>
+<li>
+если $f=O(g)$ при $x\to\omega-0$, то из сходимости несобственного интеграла $\int\limits_a^\omega{g}(x)dx$ следует сходимость несобственного интеграла
+$\int\limits_a^\omega{f}(x)dx$,<br>
+если $f=O^*(g)$ при $x\to\omega-0$, то несобсвенный интеграл $\int\limits_a^\omega{g}(x)dx$ сходится тогда и только тогда, когда сходится несобственный
+интеграл $\int\limits_a^\omega{f}(x)dx$;
+</li>
+<li>
+если $\omega\in\mathbb{R}$ и $\displaystyle{f}=O^*\left(\frac1{(\omega-x)^p}\right)$ при $x\to\omega-0$, тогда несобственный интеграл 
+$\int\limits_a^\omega{f}(x)dx$ сходится при $p&lt1$ и расходится в противном случае,<br>
+если $\omega=+\infty$ и $\displaystyle{f}=O^*\left(\frac1{x^p}\right)$ при $x\to\omega-0$, тогда несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ 
+сходится при $p&gt1$ и расходится в противном случае.
+</li>
+</ol>
+<p><b>Доказательство:</b> Фиксируем неубывающую последовательность $\{b_n\}$ из $[a,\omega)$ сходящуюся к $\omega$ и определим ряды $\sum_{n=1}^\infty{a}_n$,
+$\sum_{n=1}^\infty{c}_n$ следующим образом: 
+$$a_1:=\int\limits_a^{b_1}f(x)dx,\:c_1:=\int\limits_a^{b_1}g(x)dx,\forall{n}&gt1\left(a_n:=\int\limits_{b_{n-1}}^{b_n}f(x)dx\wedge
+{c}_n:=\int\limits_{b_{n-1}}^{b_n}g(x)dx\right)$$
+Так как последовательность $\{b_n\}$ возрастает и функции $f(x),g(x)$ положительны, то ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{c}_n$
+знакопостоянны.  
+<ol>
+<li>
+По <a href="./math_analisis8.5.html#Statement8.5.2">утверждению 8.5.2</a> если несобственный интеграл сходится, то сходится ряд $\sum_{n=1}^\infty{c}_n$
+и так как
+$$\forall{x}\in[a,\omega)(f(x)\leq{g}(x))\Rightarrow
+\forall{n}\in\mathbb{N}\left(a_n=\int\limits_{b_{n-1}}^{b_n}f(x)dx\leq\int\limits_{b_{n-1}}^{b_n}g(x)dx=c_n\right)$$
+<a href="./math_analisis7.2.1.html#Theorem7.2.2">то</a> ряд $\sum_{n=1}^\infty{a}_n$ тоже сходится значит по утверждению 8.5.2 сходится несобственный 
+интеграл $\int\limits_a^\omega{f}(x)dx$.
+</li>
+<li>
+Так как $f=O(g)$ при $x\to\omega-0$, <a href="./math_analisis5.4.2.html#Definition5.4.11">то</a> из положительности функций $f(x),g(x)$ следует
+$$\exists\beta(x):[a,\omega)\to\mathbb{R}:(f(x)=\beta(x)g(x)\wedge\exists{K}\in\mathbb{R},x_0\in[a,\omega):
+\forall{x}\in[x_0,\omega)(|\beta(x)|\leq{K})\Rightarrow\exists{K}\in\mathbb{R},x_0\in[a,\omega):\forall{x}\in[x_0,\omega)(f(x)\leq{K}g(x))$$ 
+Тогда так как несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится, то сходится и несобственный интеграл $\int\limits_a^\omega{K}g(x)dx$,
+следовательно, по пункту 1 сходится и несобственный интеграл $\int\limits_a^\omega{f}(x)dx$.<br>
+Если $f=O^*(g)$ при $x\to\omega-0$, то $f=O(g)$ и $g=O(f)$ при $x\to\omega-0$, следовательно, по доказанному несобственный интеграл сходится тогда и только
+тогда, когда сходистя несобственный интеграл $\int\limits_a^\omega{g}(x)dx$.
+</li>
+<li>
+Пусть $\omega\in\mathbb{R}$, тогда
+$$\int\limits_a^\omega\frac{dx}{(\omega-x)^p}=\lim_{x\to\omega-0}\int\limits_a^b\frac{dt}{(\omega-t)^p}=
+\lim_{x\to\omega-0}\begin{cases}\frac{(\omega-x)^{1-p}-(\omega-a)^{1-p}}{p-1}, & p\neq1\\\ln\frac{\omega-x}{a}, & p=1\end{cases}=
+\begin{cases}
+\frac{(\omega-a)^{1-p}}{1-p}, & p&lt1\\
++\infty, & p&gt0\\
+-\infty, & p=1
+\end{cases}
+$$
+То есть несобственный интеграл $\displaystyle\int\limits_a^\omega\frac{dx}{(\omega-x)^p}$ сходится при $p&lt1$ и расходится в противном случае,
+следовательно, по пункту 2 для любой функции $f(x)$ такой, что $\displaystyle{f}=O^*\left(\frac1{(\omega-x)^p}\right)$ несобственный интеграл 
+$\int\limits_a^\omega{f}(x)dx$ сходится если $p&lt1$ и расходится в противном случае.<br>
+Пусть $\omega=+\infty$, тогда
+$$\int\limits_a^{+\infty}\frac{dx}{x^p}=\lim_{x\to+\infty}\int\limits_a^x\frac{dt}{t^p}=
+\lim_{x\to+\infty}\begin{cases}\frac{a^{1-p}-x^{1-p}}{p-1}, & p\neq1\\\ln\frac{x}{a}, & p=1\end{cases}=
+\begin{cases}
+-\infty, & p&lt1\\
+\frac{a^{1-p}}{p-1}, & p&gt1\\
++\infty, & p=1
+\end{cases}
+$$
+Аналогично случаю $\omega\in\mathbb{R}$ из пункта 2 следует, что для любой функции $f(x)$ такой, что $\displaystyle{f}=O^*\left(\frac1{x^p}\right)$
+несобственный интеграл сходится при $p&gt1$ и расходится в противном случае.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example8.5.3"><b>Пример 8.5.3:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_1^{+\infty}\frac{\sqrt{x}dx}{x^4+1}$.<br>
+Так как 
+$$f(x)=\frac{\sqrt{x}}{x^4+1}=\frac{\sqrt{x}}{x^4(1+o(1))}=O^*\left(\frac1{x^{7/2}}\right),\:x\to+\infty$$
+и $\frac{7}{2}&gt1$, то интеграл сходится по пункту 3 <a href="#Theorem8.5.2">теоремы 8.5.2</a>.
+
+<br><br>
+
+<p id="Example8.5.4"><b>Пример 8.5.4:</b> Исследуем сходимость несобственного интеграла 
+$\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{\cos{x}}{x^2}dx$.<br>
+Так как $|\frac{\cos{x}}{x^2}|\leq\frac1{x^2}$ <a href="./math_analisis7.2.2.html#Corollary7.2.5">и</a> ряд $\sum_{n=1}^\infty\frac1{n^2}$ сходится 
+<a href="./math_analisis8.5.html#Corollary8.5.3">то</a> сходится несобственный интеграл $\int\limits_{\pi/2}^{+\infty}\frac{dx}{x^2}$, 
+<a href="#Theorem8.5.2">следовательно</a>, несобственный интеграл $\int\limits_{\pi/2}^{+\infty}\frac{\cos{x}}{x^2}dx$ сходится абсолютно.
+
+<br><br>
+
+<p id="Example8.5.5"><b>Пример 8.5.5:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_1^{+\infty}e^{-x^2}dx$.<br>
+Так как для любого $x\in[a,\omega)$ $\displaystyle{e}^{x^2}\leq{e}^{-x}$ и несобственный интеграл
+$$\int\limits_1^{+\infty}e^{-x}dx=-e^{-x}|_1^{+\infty}=-\lim_{x\to+\infty}e^{-x}+\frac1{e}=\frac1{e}$$
+сходится, следовательно, по пункту 1 <a href="#Theorem8.5.2">теоремы 8.5.2</a> сходится и несобственный интеграл 
+$\displaystyle\int\limits_1^{+\infty}e^{-x^2}$
+
+<br><br>
+
+<p id="Example8.5.6"><b>Пример 8.5.6:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_2^{+\infty}\frac{dx}{\ln{x}}$.<br>
+Так как для любого $x\in[a,\omega)$ $\frac1{\ln{x}}\geq\frac1{x}$ и несобственный интеграл $\int\limits_2^{+\infty}\frac{dx}{x}$ расходится по пункту
+3 <a href="#Theorem8.5.2">теоремы 8.5.2</a> то по пункту 1 той же теоремы расходится и несобственный интеграл $\int\limits_2^{+\infty}\frac{dx}{\ln{x}}$.
+
+<br><br>
+
+<p id="Example8.5.7"><b>Пример 8.5.7:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_0^{\pi/2}\ln(\sin{x})dx$.<br>
+Так как $f(x)=\ln(\sin{x})=\ln(x+o(1))=O^*(\ln{x})$ при $x\to+\infty$, то сходимость несобственного интеграла $\int\limits_0^{\pi/2}\ln(\sin{x})dx$
+сводится к сходимости несобственного интеграла $\int\limits_0^{\pi/2}\ln{x}dx$. Из <a href="./math_analisis5.4.1.html#Example5.4.9">примера 5.4.9</a> 
+следует
+$$\forall\alpha&gt0\left(\lim_{x\to0+}x^\alpha\ln{x}=0\right)\Rightarrow\forall\alpha&gt0(x^\alpha=o(1),x\to0+)\Rightarrow
+\forall\alpha&gt0(x^\alpha\ln{x}=O(1),x\to0+)\Rightarrow\forall\alpha&gt0\left(\ln{x}=O\left(\frac1{x^\alpha}\right),x\to0+\right)$$
+<a href="#Theorem8.5.2">Так как</a> для любого $\alpha\in(0,1)$ несобственный интеграл $\displaystyle\int\limits_0^{\pi/2}\frac{dx}{x^\alpha}$ по
+промежутку $(0,\frac{\pi}{2}]$ сходится, следовательно, то пункту 2 <a href="#Theorem8.5.2">теоремы 8.5.2</a> сходится и несобственный интеграл
+$\int\limits_0^{\pi/2}\ln{x}dx$ 
+
+<br><br>
+
+<p id="Definition8.5.4"><b>Определение 8.5.4:</b> Пусть функция $f(x):[a,\omega)\to\mathbb{R}$ такая, что для любого $b\in[a,\omega)$ 
+$f(x)\in\mathcal{R}[a,b]$, тогда говорят, что несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится неабсолютно, если он сходится и 
+расходится несобственный интеграл $\int\limits_a^\omega|f(x)|dx$.
+
+<br><br>
+
+<p id="Example8.5.8"><b>Пример 8.5.8:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{\sin{x}}{x}dx$.<br>
+Воспользуемся <a href="./math_analisis8.4.html#Corollary8.4.3">формулой интегрирования по частям</a>
+$$\forall{b}\in\left[\frac{\pi}{2},+\infty\right)\left(\int\limits_{\pi/2}^b\frac{\sin{x}}{x}dx=
+\left.\frac{-\cos{x}}{x}\right|_{\pi/2}^{b}-\int\limits_{\pi/2}^{+\infty}\frac{\cos{x}}{x^2}dx=
+-\frac{\cos{b}}{b}-\int\limits_{\pi/2}^{+\infty}\frac{\cos{x}}{x^2}dx\right)$$
+Так как $\displaystyle\lim_{b\to\infty}\frac{\cos{b}}{b}=0$ и не собственный интеграл $\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{\cos{x}}{x^2}dx$
+сходится по <a href="#Example8.5.4">примеру 8.5.4</a>, то сходится и несобственный интеграл $\int\limits_{\pi/2}^{+\infty}\frac{\sin{x}}{x}dx$.
+Докажем, что он сходится не абсолютно.
+$$\forall{x}\in\left[\frac{\pi}{2},+\infty\right)\left(\left|\frac{\sin{x}}{x}\right|\geq\frac{\sin^2x}{x}=\frac{1-\cos(2x)}{2x}=
+\frac1{2x}-\frac{\cos(2x)}{2x}\right)$$
+$$\forall{b}\in\left[\frac{\pi}{2},+\infty\right)\left(\int\limits_{\pi/2}^b\frac{\cos(2x)}{2x}dx=
+\left.\frac{2\sin(2x)}{2x}\right|_{\pi/2}^{b}+\int\limits_{\pi/2}^b\frac{2\sin(2x)}{2x^2}dx=
+\frac{\sin(2b)}{b}+\int\limits_{\pi/2}^{b}\frac{\sin(2x)}{x^2}dx\right)$$
+Так как $\displaystyle\lim_{b\to\infty}\frac{\sin(2b)}{b}=0$ и несобственный интеграл $\displaystyle\int\limits_{\pi/2}^b\frac{\sin(2x)}{x^2}dx$ сходится 
+(доказывается аналогично сходимости несобственного интеграла $\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{\cos(2x)}{x^2}dx$), то сходится и 
+несобственный интеграл $\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{\cos(2x)}{2x}dx$. В свою очередь несобственный интеграл 
+$\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{dx}{2x}$ расходится, а значит расходится и несобственный интеграл 
+$\displaystyle\int\limits_{\pi/2}^{+\infty}\frac{1-\cos(2x)}{2x}dx$, и тогда по пункту 1 <a href="#Theorem8.5.2">теоремы 8.5.2</a> расходится и 
+несобственный интеграл $\int\limits_{\pi/2}^{+\infty}\left|\frac{\sin{x}}{x}\right|dx$
+
+<br><br>
+
+<p id="Statement8.5.3"><b>Утверждение 8.5.3: Признак Абеля и Дирихле сходимости несобственных интегралов.</b><br>
+Пусть фукнции $f(x),g(x):[a,\omega)\to\mathbb{R}$ такие, что для любого $b\in[a,\omega)$ $f(x),g(x)\in\mathbb{R}[a,b]$, тогда несобственный интеграл
+$\int\limits_a^\omega{f}(x)g(x)dx$ сходится если выполнено одно из условий:
+<ol>
+<li>Признак Абеля: несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится и функция $g(x)$ ограничена и монотонна.</li>
+<li>Признак Дирихле: функция $F(x):=\int\limits_a^xf(t)dt$ ограничена, функция $g(x)$ монотонна и существует предел $\displaystyle\lim_{x\to\omega-0}g(x)=0$.
+</li>
+</ol>
+<p><b>Доказательство:</b> Используем <a href="./math_analisis8.5.html#Statement8.5.1">критерий Коши сходимости несобственного интеграла</a> и 
+<a href="./math_analisis8.3.html#Theorem8.3.3">формулу Бонне</a>. Так как в обоих случаях функция $f(x)$ монотонна, то вторую теорему о среднем можно 
+применять, то есть
+$$\forall{b}',b''\in[a,\omega)\left(\exists\xi\in[b',b'']:\int\limits_{b'}^{b''}f(x)g(x)dx=
+g(b')\int\limits_{b'}^\xi{f}(x)dx+g(b'')\int\limits_\xi^{b''}f(x)dx\right)\quad(1)$$
+<ol>
+<li>
+Фиксируем $\varepsilon&gt0$. Функция $g(x)$ ограничена, следовательно, существует $\displaystyle{M}:=\sup_{x\in[a,\omega)}|g(x)|$.
+Так как несобственный интеграл $\int\limits_a^\omega{f}(x)dx$ сходится, то по <a href="./math_analisis8.5.html#Statement8.5.1">критерию Коши</a>
+$$\exists{B}=B(\varepsilon)\in[a,\omega):
+\forall{b}',b''\in(B,\omega)\left(\left|\int\limits_{b'}^{b''}f(x)dx\right|&lt\frac{\varepsilon}{2M}\right)\Rightarrow^{(1)}$$
+$$\Rightarrow\forall{b}',b''\in(B,\omega)\left(\exists\xi\in[b',b'']:\left|\int\limits_{b'}^{b''}f(x)g(x)dx\right|\leq
+\left|\int\limits_{b'}^\xi{f}(x)g(x)dx\right|+\left|\int\limits_\xi^{b''}f(x)g(x)dx\right|\leq
+M\left|\int\limits_{b'}^\xi{f}(x)dx\right|+M\left|\int\limits_\xi^{b''}f(x)dx\right|&ltM\frac{\varepsilon}{2M}+M\frac{\varepsilon}{2M}=\varepsilon\right)$$  
+</li>
+<li>
+Функция $F(x)$ ограничена, следовательно, существует $\displaystyle{M}:=\sup_{x\in[a,\omega)}|F(x)|$. Фиксируем $\varepsilon&gt0$, тогда по определению 
+<a href="./math_analisis5.1.html#Definition5.1.5">левостороннего предела функции</a>
+$$\lim_{x\to\omega-0}g(x)=0\Rightarrow\exists{B}=B(\varepsilon)\in[a,\omega):\forall{b}\in[B,\omega)\left(g(b)&lt\frac{\varepsilon}{4M}\right),$$
+по ограниченности функции $F(x)$
+$$\forall{b}',b''\in(B,\omega),\forall\xi\in[b',b'']\left(\left|\int\limits_{b'}^\xi{f}(x)dx\right|=|F(\xi)-F(b')|\leq|F(\xi)|+|F(b')|\leq2M\right)$$
+и аналогично $\left|\int\limits_\xi^{b''}f(x)dx\right|\leq2M$, тогда из равенства (1) следует
+$$\forall{b}',b''\in(B,\omega)\left(\exists\xi\in[b',b'']:\left|\int\limits_{b'}^{b''}f(x)g(x)dx\right|\leq
+\left|g(b')\int\limits_{b'}^\xi{f}(x)dx\right|+\left|g(b'')\int\limits_\xi^{b''}f(x)dx\right|\leq
+\frac{\varepsilon}{4M}\left|\int\limits_{b'}^\xi{f}(x)dx\right|+\frac{\varepsilon}{4M}\left|\int\limits_\xi^{b''}f(x)dx\right|&lt
+\frac{\varepsilon}{4M}2M+\frac{\varepsilon}{4M}2M=\varepsilon\right)$$
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example8.5.9"><b>Пример 8.5.9:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_1^{+\infty}\frac{\sin{x}}{x^\alpha}dx$ 
+при любом $\alpha\in\mathbb{R}$.<br>
+<i>
+<ol>
+<li>
+При $\alpha&gt1$ сходится абсолютно, <a href="./math_analisis8.5.html#Corollary8.5.3">так как</a> по 
+<a href="./math_analisis7.3.1.html#Statement7.3.1">мажорантному признаку Вейерштрасса</a> сходится абсолютно ряд 
+$\displaystyle\sum_{n=1}^\infty\frac1{x^\alpha}$.
+</li>
+<li>
+При $0&lt\alpha\leq1$ сходится по признаку Дирихле при $f(x):=\sin{x}$, $\displaystyle{g}(x):=\frac1{x^\alpha}$. Так как в этом случае фукнция
+$F(x)=\int\limits_1^x\sin{t}dt=-\cos{t}|_1^{x}=-\cos{x}+\cos{1}$ ограничена, а фукнция $g(x)$ монотонно стремится к нулю.<br>
+Сходится не абсолютно, так как по <a href="#Example8.5.8">примеру 8.5.8</a> не сходится абсолютно ряд $\int\limits_{\pi/2}^{+\infty}\frac{\sin{x}}{x}dx$. 
+</li>
+<li>
+При $\alpha\leq0$ расходится <a href="./math_analisis8.5.html#Statement8.5.2">так как</a> для последовательности $b_n:=\frac{\pi}{4}+\frac{\pi{n}}{2}$
+ряд $\displaystyle\sum_{n=1}^\infty\int\limits_{b_{n-1}}^{b_n}\frac{\sin{x}}{x^\alpha}dx$ расходится, поскольку его общий член не стремится к нулю.
+Действительно, для любого нечетного $n$ минимум функции $|x^{-\alpha}\sin{x}|$ на отрезке $[b_n,b_{n+1}]$ при $\alpha\leq0$ равен 
+$b_n^{-\alpha}\frac{\sqrt2}{2}$, следовательно,
+значение общего члена ряда $\displaystyle\int\limits_{b_n}^{b_{n-1}}x^{-\alpha}\sin{x}dx$ не может быть меньше 
+$\frac{\pi}{2}\left(\frac{\pi{n}}{2}\right)^{-\alpha}\frac{\sqrt2}{2}$, поэтому значение общегочлена ряда не стремится к нулю при $n\to\infty$ и 
+при $\alpha\leq0$.
+</li>
+</ol>
+</i>
+
+<br><br>
+<a href="./math_analisis8.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.5.4.html">next</a>
+</body>
+</html>

@@ -1,0 +1,186 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 8.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis8.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.4.2.html">next</a>
+
+<h4 id="8.4">8.4 Основные методы вычисления определенного интеграла Римана.</h4>
+
+<h5 id="8.4.1">8.4.1 Интеграл и первообразная.</h5>
+
+<br><br>
+<p><i>Здесь и далее если $h&lt0$, то под выражением "$\forall{x}\in[t,t+h]$" следует понимать "$\forall{x}\in[t+h,t]$" </i>
+<br><br>
+
+<p id="Statement8.4.1"><b>Утверждение 8.4.1:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ интегрируема на отрезке $[a,b]$ непрерывна в точке $t\in(a,b)$,
+тогда существует производная $F'(t):=\left(\int\limits_a^xf(s)ds\right)'_{x=t}=f(t)$.<br>
+<p><b>Доказательство:</b> Фиксируем $\varepsilon&gt0$. Функция $f(x)$ непрерывна в точке $t$, <a href="./math_analisis5.5.1.html#Definition5.5.1">значит</a>
+$$\exists\delta_1&gt0:\forall{x}\in[a,b](|x-t|&lt\delta_1\Rightarrow|f(x)-f(t)|&lt\varepsilon)$$
+Обозначим $\delta_2=\min\{t-a,b-t\}$, $\delta:=\min\{\delta_1,\delta_2\}$, тогда для любого $h\in\mathbb{R}$ такого, что $0&lt|h|&lt\delta$ $t+h\in[a,b]$.
+Фиксируем $h\in\mathbb{R}$ такое, что $0&lt|h|&lt\delta$, тогда
+$$\left|\frac{F(t+h)-F(t)}{h}-f(t)\right|=\left|\frac1{h}\left(\int\limits_a^{t+h}f(x)dx-\int\limits_a^tf(x)dx-f(t)h\right)\right|=
+\left|\frac1{h}\left(\int\limits_t^{t+h}f(x)dx-\int\limits_t^{t+h}f(t)dx\right)\right|=\left|\frac1{h}\int\limits_t^{t+h}(f(x)-f(t))dx\right|\leq
+\left|\frac1{h}\int\limits_t^{t+h}|f(x)-f(t)|dx\right|$$
+и так как
+$$|h|&lt\delta\Rightarrow\forall{x}\in[t,t+h](|x-t|&lt\delta_1)\Rightarrow\forall{x}\in[t,t+h](|f(x)-f(t)|&lt\varepsilon)$$
+то
+$$\forall{h}\in\mathbb{R}\left(0&lt|h|&lt\delta\Rightarrow\left|\frac{F(t+h)-F(t)}{h}-f(t)\right|\leq
+\left|\frac1{h}\int\limits_t^{t+h}|f(x)-f(t)|dx\right|&lt\left|\frac1{h}\int\limits_t^{t+h}\varepsilon{d}x\right|=
+\left|\frac1{h}\varepsilon{h}\right|=\varepsilon\right)\Rightarrow{F}'(t)=\lim_{h\to0}\frac{F(t+h)-F(t)}{h}=f(t)$$
+
+<br><br>
+
+<p id="Corollary8.4.1"><b>Следствие 8.4.1:</b> Если $t=a$ ($t=b$), то можно сформулировать утверждение аналогичное утверждению 8.4.1 с заменой 
+$F'$ на $F'_+$ ($F'_-$). Например, если $f(x)\in\mathcal{R}[a,b]$ и $f(x)$ непрерывана в точке $a$, тогда существует производная
+$F'_+(a):=\left(\int\limits_a^xf(s)ds\right)'=f(a)$.
+<i>
+<p><b>Доказательство:</b>
+Фиксируем $\varepsilon&gt0$. Функция непрерывна в точке $a$, значит
+$$\exists\delta_1&gt0:\forall{x}\in[a,b](|x-a|&lt\delta_1\Rightarrow|f(x)-f(a)|&lt\varepsilon)$$
+Положим $\delta:=\min\{\delta_1,b-a\}$, тогда для любого $h\in\mathbb{R}$ такого, что $0&lth&lt\delta$ $a+h\in[a,b]$. Тогда аналогично 
+доказательству утверждения 8.4.1, при $t=a$ и, следовательно, $F(t)=F(a)=0$, для любого $0&lth&lt\delta$ получим оценку 
+$\left|\frac{F(a+h)}{h}-f(a)\right|&lt\varepsilon$, что означает существование производной $F'_+(a)=\lim_{h\to0+}\frac{F(a+h)}{h}=f(a)$. 
+</i>
+
+<br><br>
+
+<p id="Corollary8.4.2"><b>Следствие 8.4.2:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ интегрируема на отрезке $[a,b]$ и непрерывна в точке $t\in[a,b]$,
+тогда существует производная $\left(\int\limits_x^bf(s)ds\right)'_x=t=-f(t)$.
+<p><b>Доказательство:</b>
+$\left(\int\limits_x^bf(s)ds\right)'_{x=t}=\left(\int\limits_a^bf(s)ds-\int\limits_a^xf(s)ds\right)'_{x=t}=\left(-\int\limits_a^xf(s)ds\right)'_{x=t}=-f(t)$.
+
+<br><br>
+
+<p id="Task8.4.1"><b>Задача 8.4.1</b> Доказать, что если $\alpha,\beta\in\overline{\mathbb{R}}$ и функции $f(x):[a,b]\to\mathbb{R}$ 
+$p(x),q(x):(\alpha,\beta)\to[a,b]$ такие, что 
+<ol>
+<li>$f(x)\in{C}[a,b]$,</li>
+<br>
+<li>$\forall{x}\in(\alpha,\beta)(\exists{p}'(x)\wedge\exists{q}'(x))$,</li>
+<br>
+<li>$F(x):=\int\limits_{p(x)}^{q(x)}f(s)ds:(\alpha,\beta)\to\mathbb{R}$,</li>
+</ol>
+тогда $\forall{x}\in(\alpha,\beta)\exists{F}'(x)=f(q(x))q'(x)-f(p(x))p'(x)$
+<i>
+<p><b>Решение:</b>
+<a href="./math_analisis8.3.html#Task8.3.1">Так как</a> для любого $x\in(\alpha,\beta)$
+$$\int\limits_{p(x)}^{q(x)}f(s)ds=\int\limits_a^{q(x)}f(s)ds-\int\limits_a^{p(x)}f(s)ds$$
+то достаточно доказать, что что для любого $x\in(\alpha,\beta)$ существует производная $\left(\int\limits_a^{q(x)}f(s)ds\right)'$ равная $f(q(x))q'(x)$.<br>
+Обозначим $G(x):=\int\limits_a^{q(x)}f(s)ds$. Фиксируем $t\in(\alpha,\beta)$ такое, что $q(t)\notin\{a,b\}$, тогда по 
+<a href="#Statement8.4.1">утверждению 8.4.1</a> и <a href="./math_analisis6.2.html#Theorem6.2.2">теореме о производной композиции</a> 
+$G'(t)=\left(\int\limits_a^{q(s)}f(s)ds\right)'_{x=t}=\left(\int\limits_a^yf(s)ds\right)'_{y=q(t)}q'(t)=f(q(t))q'(t)$.<br>
+Если $q(t)=a$, фиксируем $\varepsilon&gt0$, тогда
+$$\exists{q}'(t)\Rightarrow\exists\delta_1&gt0:\forall{h}&gt0\left(h&lt\delta_1\Rightarrow\left|\frac{q(t+h)-a}{h}-q'(t)\right|&lt\varepsilon\Rightarrow
+\left|\frac{q(t+h)-a}{h}\right|&lt|q'(t)|+\varepsilon\right)\quad(*)$$
+По непрерывности функции $f(x)$
+$$\exists\delta_2&gt0:\left(|y-a|&lt\delta_2\Rightarrow|f(y)-f(a)|&lt\frac{\varepsilon}{|q'(t)|+\varepsilon}\right)$$
+По непрерывности функции $q(x)$ (из <a href="./math_analisis6.1.html#Statement6.1.3">дифференцируемости следует непрерывность</a>)
+$$\exists\delta_3&lt0:\left(|x-t|&lt\delta_3\Rightarrow|q(x)-a|&lt\delta_2\Rightarrow
+|f(q(x))-f(a)|&lt\frac{\varepsilon}{|q'(x)|+\varepsilon}\right)\quad(**)$$
+Обозначим $\delta=\min\{\delta_1,\delta_2,t-\alpha,\beta-t\}$, тогда для любого $h\in\mathbb{R}$ такого, что $0&lt|h|&lt\delta$ $t+h\in(\alpha,\beta)$
+и $q(t+h)\in[a,b]$, фиксируем $h\in\mathbb{R}$ такое, что $0&lt|h|&lt\delta$ тогда
+$$\left|\frac{G(t+h)-G(t)}{h}-f(t)\frac{q(t+h)-q(t)}{h}\right|=\left|\frac1{h}\int\limits_a^{q(t+h)}f(x)dx-f(a)(q(t+h)-a)\right|=
+\left|\frac1{h}\int\limits_a^{q(t+h)}f(x)dx-\int\limits_a^{q(t+h)}f(a)dx\right|=\left|\frac1{h}\int\limits_a^{q(t+h)}\int\limits(f(x)-f(a))dx\right|\leq$$
+$$\leq\left|\frac1{h}\int\limits_a^{q(t+h)}|f(x)-f(a)|dx\right|&lt^{(**)}\left|\frac1{h}\frac{\varepsilon}{|q'(t)|+\varepsilon}(q(t+h)-a)\right|\leq
+\left|\frac{q(t+h)-a}{h}\right|\frac{\varepsilon}{|q'(t)|+\varepsilon}&lt^{(*)}\varepsilon\Rightarrow$$
+$$\Rightarrow\lim_{h\to0}\left(\frac{G(t+h)-G(t)}{h}-f(a)\frac{q(t+h)-q(t)}{h}\right)=0\Rightarrow{G}'(t)=\lim_{h\to0}\frac{G(t+h)-G(t)}{h}=
+f(a)\lim_{h\to0}\frac{q(t+h)-q(t)}{h}=f(a)q'(t)$$
+Случай $q(t)=b$ доказывается аналогично.
+</i>
+
+<br><br>
+
+<p id="Theorem8.4.1"><b>Теорема 8.4.1: Теорема о существовании первообразной непрерывной функции.</b><br>
+Если функция $f(x)$ непрерывна на отрезке $[a,b]$, то она имеет первообразную на этом отрезке, и $\int{f}(x)dx=F(x):=\int\limits_a^xf(t)dt$.
+<p><b>Доказательство:</b> По <a href="./math_analisis8.3.html#Statement8.3.1">утверждению 8.3.1</a> функция $F(x)$ непрерывна на отрезке $[a,b]$
+и по <a href="#Statement8.4.1">утверждению 8.4.1</a> для любого $x\in(a,b)$ $F'(x)=f(x)$, следовательно, функция $F(x)$ 
+<a href="./math_analisis8.1.html#Definition8.1.1">первообразная</a> фукнции $f(x)$. 
+
+<br><br>
+
+<p id="Definition8.4.1"><b>Определение 8.4.1:</b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$, $\Delta:=\Delta(a,b)$, тогда функция
+$F(x):\Delta\to\mathbb{R}$ называется обобщенной первообразной функции $f(x):\Delta\to\mathbb{R}$, если
+<ol>
+<li>$F(x)\in{C}(\Delta)$,</li>
+<li>$\exists\Delta_0\subset\Delta:(card\Delta_0&ltcard\mathbb{N}\wedge\forall{x}\in\Delta\backslash\Delta_0(F'(x)=f(x)))$</li>
+</ol> 
+
+<br><br>
+
+<p id="Statement8.4.2"><b>Утверждение 8.4.2:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ ограничена и имеет конечное число точек разрыва, то 
+<ol>
+<li>функция $F(x):=\int\limits_a^xf(t)dt$ является обобщенной первообразной для функции $f(x)$ на отрезке $[a,b]$,</li>
+<li>если функция $G(x)$ другая обобщенная первообразная функции $f(x)$, то существует $C\in\mathbb{R}$ такое, что $G(x)=F(x)+C$.</li>
+</ol>
+<i>
+<p><b>Доказательство:</b> Так как функция $f(x)$ имеет конечное число точек разрыва, <a href="./math_analisis8.2.html#Statement8.2.6">то</a> 
+$f(x)\in\mathcal{R}[a,b]$, <a href="./math_analisis8.3.html#Statement8.3.1">следовательно</a>, $F(x)\in{C}[a,b]$ <a href="#Statement8.4.1">и</a>
+для любого $x\in(a,b)$ такого, что $f(x)$ непрерывна в $x$ выполняется $F'(x)=f(x)$. Таким образом для функции $F(x)$ реализовано определение
+обобщенной первообразной функции $f(x)$, где в качестве множества $\Delta_0$ можно взять множество точек разрыва функции $f(x)$.<br>   
+Если функция $G(x)$ другая обобщенная первообразная функции $f(x)$, то $G(x)\in{C}[a,b]$ и существует конечное множество $\Delta_1$ такое, 
+что для любого $x\in(a,b)\backslash\Delta_1$ $G'(x)=f(x)$. Точки множеств $\Delta_0$ и  $\Delta_1$ разбивают отрезок $[a,b]$ на конечное число отрезков,
+на каждом из которых $G'(x)\equiv{F}'(x)$, <a href="./math_analisis6.4.html#Corollary6.4.5">тогда</a> для каждого из таких отрезков существует 
+$C_i\in\mathbb{R}$ такое, что $F(x)-G(x)\equiv{C}_i$, причем по непрерывности функции $F(x)-G(x)$ все константы $C_i$ равны между собой.
+Таким образом существует $C\in\mathbb{R}$ такое, что для любого $x\in[a,b]\backslash(\Delta_0\cup\Delta_1)$ $F(x)-G(x)=C$. И для любого 
+$s\in\Delta_0\cup\Delta_1$
+$$\lim_{x\to{s}+}(F(x)-G(x))=\lim_{x\to{s}-}(F(x)-G(x))=C\Rightarrow\lim_{x\to{s}}(F(x)-G(x))=C$$
+$$(\lim_{x\to{s}}(F(x)-G(x))=C\wedge{F}(x)-G(x)\in{C}[a,b])\Rightarrow{F}(s)-G(s)=C\Rightarrow{F}(x)-G(x)\equiv{C}$$
+</i>
+
+<br><br>
+
+<p id="Statement8.4.3"><b>Утверждение 8.4.3: Формула Ньютона - Лейбница.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ ограничена и имеет конечное число точек разрыва, то для любой ее обобщенной первообразной $G(x)$ верно
+$$\int\limits_a^bf(x)dx=\left.G(x)\right|_a^b:=G(b)-G(a)$$
+<p><b>Доказательство:</b> По утверждению 8.4.2 существует $C\in\mathbb{R}$ такое, что $G(x)={F}(x)+C=\int\limits_a^xf(t)dt+C$, тогда
+$$G(b)-G(a)=\int\limits_a^bf(x)dx+C-\int\limits_a^af(x)dx-C=\int\limits_a^bf(x)dx$$
+
+<br><br>
+
+<p id="Corollary8.4.3"><b>Следствие 8.4.3: Интегрирование по частям.</b><br>
+Если функции $u(x),v(x):[a,b]\to\mathbb{R}$ такие, что $u(x),v(x)\in{C}'[a,b]$ $(\sim{u}'(x),v'(x)\in{C}[a,b])$, тогда
+$$\int\limits_a^bu(x)v'(x)dx=\left.(u(x)v(x))\right|_a^b-\int\limits_a^bu'(x)v(x)dx$$
+<p><b>Доказательство:</b>
+Так как
+$$u'(x),v'(x)\in{C}[a,b]\Rightarrow{u}(x)v(x),u'(x)v(x),u(x)v'(x)\in{C}[a,b]\Rightarrow{u}(x)v(x),u'(x)v(x),u(x)v'(x)\in\mathcal{R}[a,b]$$
+то
+$$(u(x)v(x))'=u'(x)v(x)+u(x)v'(x)\Rightarrow\int\limits_a^b(u(x)v(x))'dx=\int\limits_a^bu'(x)v(x)dx+\int\limits_a^bu(x)v'(x)dx.$$
+Функция $u(x)v(x)$ является первообразной для фукнции $(f(x)g(x))'$, следовательно, по утверждению 8.4.2 
+$$\int\limits_a^b(u(x)v(x))'dx=\left.(u(x)v(x))\right|_a^b\Rightarrow\int\limits_a^bu(x)v'(x)dx=\left.(u(x)v(x))\right|_a^b-\int\limits_a^bu'(x)v(x)dx.$$
+
+<br><br>
+
+<p id="Corollary8.4.4"><b>Следствие 8.4.4: <a href="./math_analisis6.5.html#Definition6.5.1">Формула Тэйлора</a> с остаточным членом в интегральной 
+форме.</b><br>
+$$f(t)\in{C}^{(n)}[a,x]\Rightarrow{f}(x)=\sum_{k=0}^{n-1}\left(\frac1{k!}f^{(k)}(a)(x-a)^k\right)+\frac1{(n-1)!}\int\limits_a^xf^{(n)}(t)(x-t)^{n-1}dt$$
+<p><b>Доказательство:</b> Докажем индукцией по $n$.<br>
+При $n=1$.
+$$\frac1{0!}f(a)+\frac1{0!}\int\limits_a^xf'(t)dt=f(a)+\left.f(t)\right|_a^x=f(a)+f(x)-f(a)=f(x)$$
+Пусть равенство верно при $n=m$.
+$$f(x)=\sum_{k=0}^{m-1}\left(\frac1{k!}f^{(k)}(a)(x-a)^k\right)+\frac1{(m-1)!}\int\limits_a^xf^{(m)}(t)(x-t)^{m-1}dt$$
+Докажем, что оно верно при $n=m+1$. Повысим на единицу степень при множителе $x-t$ в остаточном члене. Воспользуемся для этого формулой интегрирования 
+по частям.
+$$\frac1{(m-1)!}\int\limits_a^xf^{(m)}(t)(x-t)^{m-1}dt=-\frac1{m!}\int\limits_a^xf^{(m)}(t)((x-t)^m)'_tdt=
+-\frac1{m!}\left.\left(f^{(m)}(t)(x-t)^m\right)\right|_a^x+\frac1{m!}\int\limits_a^xf^{(m+1)}(t)(x-t)^mdt=$$
+$$=\frac1{m!}f^{(m)}(a)(x-a)^m+\frac1{m!}\int\limits_a^xf^{(m+1)}(t)(x-t)^mdt$$
+Таким образом
+$$f(x)=\sum_{k=0}^{m-1}\left(\frac1{m!}f^{(k)}(a)(x-a)^k\right)+\frac1{(m-1)!}\int\limits_a^xf^{(m)}(t)(x-t)^{m-1}dt=
+\sum_{k=0}^{m-1}\left(\frac1{k!}f^{(k)}(a)(x-a)^k\right)+\frac1{m!}f^{(m)}(a)(x-a)^m+\frac1{m!}\int\limits_a^xf^{(m+1)}(t)(x-t)^mdt=$$
+$$=\sum_{k=0}^m\left(\frac1{k!}f^{(k)}(a)(x-a)^k\right)+\frac1{m!}\int\limits_a^xf^{(m+1)}(t)(x-t)^mdt$$
+
+
+<br><br>
+<a href="./math_analisis8.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.4.2.html">next</a>
+</body>
+</html>

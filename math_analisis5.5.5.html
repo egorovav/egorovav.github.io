@@ -1,0 +1,358 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 5.5.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analisis5.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis6.1.html">next</a>
+
+<h5 id="5.5.5">5.5.5 Непрерывность обратной функции.</h5>
+
+<p id="Statement5.5.9"><b>Утверждение 5.5.9:</b> Если функция $f(x):E\to\mathbb{R}$ 
+<a href="./math_analisis5.3.html#Definition5.3.3">строго монотонна</a> на множестве $E$, то существует строго монотонная в том же смысле
+функция $f^{-1}(y):f(E)\to{E}$ обратная для $f(x)$.
+<p><b>Доказательство:</b> Обозначим $Y:=f(E)$. Без ограничения общности будем считать, что функция $f(x)$ возрастает.
+Функция $f(x)$ строго монотонна на множестве $E$, значит
+$$\forall{x}_1,x_2\in{E}(x_1\neq{x}_2\Rightarrow(x_1&ltx_2\vee{x}_1&gtx_2)\Rightarrow({f}(x_1)&ltf(x_2)\vee{f}(x_1)&gtf(x_2))\Rightarrow
+{f}(x_1)\neq{f}(x_2))$$
+то есть функция $f(x)$ инъективна. Тогда для $f(x)$ существует <a href="./math_analisis2.html#Definition2.2.2">обратная функция</a> $f^{-1}(y):Y\to{E}$.
+Докажем, что если функция $f(x)$ возрастает, что для любых $x_1,x_2\in{E}$ таких, что $f(x_1)&ltf(x_2)$ выполняется $x_1&ltx_2$.
+Действительно, предположим противное
+$$(f(x_1)&ltf(x_2)\wedge{x}_1\geq{x}_2)\Rightarrow({f}(x_1)&ltf(x_2)\wedge{x}_1\neq{x}_2\wedge{x}_1\geq{x}_2)\Rightarrow
+({f}(x_1)&ltf(x_2)\wedge{x}_1&gtx_2)\Rightarrow({x}_2&ltx_1\wedge{f}(x_1)\leq{f}(x_2))\equiv\neg(x_2&ltx_1\Rightarrow{f(x_2)&ltf(x_1)}),$$
+где первая импликация по <a href="./math_analisis2.html#Definition2.1.1">определению функции</a>, так как в предложенных условиях 
+$f(x_1)\neq{f}(x_2)$. Таким образом получено противоречие с возрастанием функции $f(x)$, следовательно, для любых $x_1,x_2\in{E}$ таких, 
+что $f(x_1)&ltf(x_2)$ выполнено $x_1&ltx_2$.
+Докажем, что функция $f^{-1}(y)$ возрастает, фиксируем $y_1,y_2\in{Y}$ такие, что $y_1&lty_2$, тогда
+$$(y_1,y_2\in{Y}\wedge{y}_1&lty_2)\Rightarrow\exists!{x}_1,x_2\in{E}:(x_1=f^{-1}(y_1)\wedge{x}_2=f^{-1}(y_2)\wedge{y}_1=f(x_1)&lty_2=f(x_2))\Rightarrow
+{f}^{-1}(y_1)&lt{f}^{-1}(y_2).$$
+
+<br><br>
+
+<p id="Statement5.5.10"><b>Утверждение 5.5.10:</b> Если функция $f(x):E\to\mathbb{R}$ монотонна и $a\in{E}$ 
+<a href="./math_analisis5.5.1.html#Definition5.5.5">точка разрыва</a> функции $f(x)$, тогда $a$ 
+<a href="./math_analisis5.5.1.html#Definition5.5.7">точка разрыва превого рода</a>.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что функция $f(x)$ не убывающая. Так как неубывание следует возрастания,
+а случаи убывния и не возрастания доказывваются аналогично.<br>
+Если $a$ точка разрыва, то точка $a$ не может быть изолированной точкой, так как в изолированной точке любая функция непрерывна,
+следовательно, $a\in\mathring{E}$. Если $a\in\mathring{E}$, тогда либо $a\in\mathring{E}{}^+_a$, либо $a\in\mathring{E}{}^-_a$.<br>
+Пусть $a\in\mathring{E}{}^-_a$. Так как функция $f(x)$ не убывающая, то для любого $x\in{E}^-_a$ $f(x)\leq{f}(a)$, то есть функция
+$f(x)$ ограничена сверху на множестве $E^-_a$. Так как $a=\sup{E}^-_a$, то по 
+<a hrer="./math_analisis5.3.html#Theorem5.3.3">теореме о пределе монотонной фукнции</a> существует конечный предел 
+$\displaystyle{f}(a-0):=\lim_{E^-_a\ni{x}\to{a}}f(x)$.<br>
+Аналогично доказывается, что если $a\in\mathring{E}{}^+_a$, то существует конечный предел $f(a+0)$.<br>
+Таким образом для точки $a$ реальзовано определение <a href="./math_analisis5.5.1.html#Definition5.5.7">точки разрыва первого рода</a>.
+
+<br><br>
+
+<p id="Statement5.5.11"><b>Утверждение 5.5.11:</b> Если функция $f(x):E\to\mathbb{R}$ монотонна и $a\in{E}$
+точка разрыва первого рода, тогда 
+$$(a\in\mathring{E}{}^-_a\wedge\exists{f}(a-0)\leq{f}(a))\vee(a\in\mathring{E}{}^+_a\wedge\exists{f}(a+0)\geq{f}(a))$$
+и если оба предела существуют, то по крайней мере одно из неравенств строгое.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что функция $f(x)$ не убывает. Аналогично предыдущему утверждению
+доказывается существование предела $f(a-0)$ при условии $a\in\mathring{E}{}^-_a$ и предела $f(a+0)$ при условии $a\in\mathring{E}{}^+_a$.
+Тогда так как $f(x)$ не убывает то по <a href="./math_analisis5.2.html#Corollary5.2.1">следствию 5.2.1</a>
+$$\forall{x}\in{E}^-_a(x&lta)\Rightarrow\forall{x}\in{E}^-_a(f(x)\leq{f}(a))\Rightarrow{f}(a-0)=\lim_{E^-_a\ni{x}\to{a}}f(x)\leq{f}(a)$$
+Аналогично $f(a+0)\geq{f}(a)$.<br>
+Если оба предела существуют и $f(a-0)=f(a+0)=f(a)$, то по <a href="./math_analisis5.1.html#Task5.1.1">задаче 5.1.1</a> 
+существует предел то $\displaystyle\lim_{E\ni{x}\to{a}}f(x)=f(a)$, а это противоречит наличию разрыва в точке $a$.
+Значит либо $f(a-0)&ltf(a)$, либо $f(a+0)&gtf(a)$.
+
+<br><br>
+
+<p id="Corollary5.5.4"><b>Следствие 5.5.4:</b> Если функция $f(x):E\to\mathbb{R}$ монотонна, $a\in{E}$ точка разрыва первого рода, тогда
+<ol>
+<li>если $f(a-0)&ltf(a)$, то $(f(a-0),f(a))\cap{f}(E)=\varnothing$.</li>
+<li>если $f(a)&ltf(a+0)$, то $(f(a),f(a+0))\cap{f}(E)=\varnothing$.</li>
+</ol>
+То есть в случае строгого неравенства соответствующий интервал свободен от значений функции.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что функция $f(x)$ не убывающая.<br>
+<ol>
+<li>Для любого $x\in{E}$ либо $x=a$, либо $x\in{E}^-_a$, либо $x\in{E}^+_a$
+<ul>
+<li>Если $x=a$, то ${f}(x)=f(a)\notin(f(a-0),f(a))$.</li>
+<li>Если $x\in{E}^-_a$, то $f(x)\leq{f}(a-0)$.<br>
+Действительно, если предположить, что существует $x_0\in{E}{}^-_a$ такое, что $f(x_0)&gtf(a-0)$, то по неубыванию функции $f(x)$
+для любого $x\in{E}^-_a$, такого, что $x&gtx_0$ $f(x)&gtf(x-0)$, a это противоречит тому, что $\displaystyle\lim_{E^-_a\ni{x}\to{a}}f(x)=f(a-0)$. 
+Значит для любого $x\in{E}^-_a$ $f(x)\leq{f}(a-0)$, следовательно, $f(x)\notin(f(a-0),f(a))$.
+</li>
+<li>
+Если $x\in{E^+_a}$, то $x&gta$, следовательно, по неубыванию функции $f(x)$ $f(x)\geq{f}(a)$ и $f(x)\notin(f(a-0),f(a))$.
+</li>
+</ul>
+</li>
+<li>Доказывается аналогично пункту 1.</li>
+</ol>
+
+<br><br>
+
+<i>
+<details>
+<summary>В конспекте для утверждения 5.5.11 и следствия 5.5.4 дополнительно требуется чтобы точка разрыва была не устранимой.</summary> 
+Вероятно данное требование является излишним, так как $a\in{E}$ и тогда из условия следует, что точка разрыва $a$ будет не устранимой.
+Действительно, если точка $a\in{E}$ является УТР, то по <a href="./math_analisis5.5.1.html#Statement5.5.5">критерию наличия УТР</a>
+$f(a-0)=f(a+0)$, и так как по неубуванию $f(a-0)\leq{f}(a)\leq{f}(a+0)$, то $f(a-0)=f(a+0)=f(a)$, то есть точка $a$ не является точкой разрыва.
+</details>
+</i>
+
+<br><br>
+
+<p id="Task5.5.6"><b>Задача 5.5.6:</b> Доказать, что если функция $f(x):E\to\mathbb{R}$ монотонна (б. о. о неубывающая),
+<ol>
+<li>то функция $f(x)$ имеет не более двух <a href="./math_analisis5.5.1.html#Definition5.5.8">точек разрыва второго рода</a>, 
+ими могут быть только $\sup{E}$, $\inf{E}$,</li>
+<li>то множество неустранимых точек разрыва первого рода функции $f(x)$ не более чем счетно,</li>
+<li>то если $f(x)\in{C}[a,b]$, то $f(x)$ строго монотонна на $[a,b]$ тогда и только тогда, когда $f(x)$ инъективна на $[a,b]$.</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>
+Докажем от противного. Пусть $a$ точка разрыва второго рода, $a\neq\sup{E}$ и $a\neq\inf{E}$, тогда по неубыванию $f(x)$
+$$(a\neq\sup{E}\wedge{a}\neq\inf{E})\Rightarrow\exists{x}_1,x_2\in{E}:(x_1&gta\wedge{x}_2&lta)\Rightarrow
+(\forall{x}\in{E}^-_a(x_1&gtx)\wedge\forall{x}\in{E}^+_a(x_2&ltx)\Rightarrow\forall{x}\in{E}^-_a({f}(x)&ltf(x_1))\wedge\forall{x}\in{E}^+_a(f(x)&gtf(x_2))$$
+Таким образом функция $f(x)$ ограничена на множестве $E^-_a$ сверху, и на множестве $E^+_a$ снизу. Так как $a$ точка разрыва,
+то $a\in\mathring{E}$, то есть $a\in\mathring{E}{}^-_a$ и\или $a\in\mathring{E}{}^+_a$, тогда по 
+<a href="./math_analisis5.3.html#Theorem5.3.3">теореме о пределе монотонной функции</a> если $a\in{E}{}^-_a$ то существует конечный предел $f(a-0)$,
+если $a\in\mathring{E}{}^+_a$, то существует конечный предел $f(a+0)$. Таким образом $a$ 
+<a href="./math_analisis5.5.1.html#Definition5.5.7">точка разрыва первого рода</a>.
+</li>
+<li>Определим функцию $g(x)$ следующим образом:
+$$g(x):=\begin{cases}
+f(x), & x\in{E}\\
+f(x+0), & x\in\mathring{E}\backslash{E}\wedge\exists{f}(x+0)\\
+f(x-0), & x\in\mathring{E}\backslash{E}\wedge\nexists{f}(x+0)\wedge\exists{f}(x-0)
+\end{cases}$$
+Таким образом все не устранимые точки разрыва первого рода функции $g(x)$ принадлежат ее области определения $E'$ и их количество не меньше
+чем количество неустранимых точек разрыва функции $f(x)$. При этом функция $g(x)$ будет неубывающей.<br>
+По <a href="#Corollary5.5.4">следствию 5.5.4</a> каждой не устранимой точке разрыва первого рода $a$ функции $g(x)$ соответствует интервал 
+($(f(a-0),f(a))$ или $(f(a),f(a+0))$) не содержащий значений функции. При этом для двух различных точек разрыва $a_1&lta_2$ эти интервалы не пересекаются 
+так как существует $x\in{E}'$ такое, что $a_1&ltx&ltx_2$ и по неубыванию $g(x)$ $g(a_1+0)\leq{f}(x)\leq{g}(a_2-0)$. Но любое множество не пересекающихся 
+интервалов из $\mathbb{R}$ не более чем счетно, так как каждый интервал по пункту 3 
+<a href="./math_analisis3.3.html#Corollary3.3.2">следствия из принципа Архимеда</a> содержит рациональное число, 
+и ни какое $r\in\mathbb{Q}$ не содержится в двух интервалах. Следовательно, утверждение следует из счетности множества $\mathbb{Q}$.
+</li>
+<li>Без ограничения общности будем считать, что функция $f(x)$ возрастает.
+<ul>
+<li>$\Rightarrow)$<br>
+$$\forall{x}_1,x_2\in{E}(x_1\neq{x}_2\Rightarrow(x_1&ltx_2\vee{x}_2&ltx_1)\Rightarrow(f(x_1)&ltf(x_2)\vee{f}(x_2)&ltf(x_1))\Rightarrow{f}(x_1)\neq{f}(x_2))$$
+</li>
+<li>$\Leftarrow)$<br>
+Предположим противное: $f(x)$ инъективна и не строго монотонна.<br>
+Функция $f(x)$ не строго монотонна, значит существуют $x_1,x_2,x_3,x_4\in{E}$ такие что 
+$$(x_1&ltx_2\wedge{y}_1:=f(x_1)\leq{y}_2:=f(x_2))\wedge(x_3&ltx_4\wedge{y}_3:=f(x_3)\geq{y}_4:=f(x_4))$$
+Из инъективности в свою очередь следует, что 
+$$(y_1\neq{y}_2\wedge{y}_3\neq{y}_4)\Rightarrow(x_1&ltx_2\wedge{y}_1&lt{y}_2\wedge{x}_3&ltx_4\wedge{y}_3&gty_4)$$
+Существует шесть вариантов взаимного расположения точек $x_1,x_2,x_3,x_4$ удовлетворяющих условию $x_1&ltx_2$ и $x_3&ltx_4$. 
+Действительно, при заданном положении точек $x_1,x_2$ положение точек $x_3,x_4$ определено однозначно, положение же точек $x_1,x_2$
+при четырех возможных позициях можно задать шестью сбособами. Для каждого из шести вариантов взаимного расположения точек $x_1,x_2,x_3,x_4$
+существует шесть вариантов взаимного расположения точек $y_1,y_2,y_3,y_4$ удовлетворяющих условию $y_1&lty_2$ и $y_3&gty_4$.
+Для каждого из тридцати шести вариантов взаимного расположения точек $x_1,x_2,x_3,x_4,y_1,y_2,y_3,y_4$ найдем такие $x'&ltx''&ltx'''$,
+что $f(x'')$ не лежит между $f(x')$ и $f(x''')$
+<ol>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_1&lty_2&lty_3&lty_4)\Rightarrow(x':=x_2\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_2\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_3)$</li>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_2\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_3)$</li>
+<li>$(x_1&ltx_2&ltx_3&ltx_4\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_3)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_1&lty_2&lty_4&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_2)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_2)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_2)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_2&ltx_4\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_1&lty_2&lty_4&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_3\wedge{x}''':=x_4)$</li>
+<li>$(x_1&ltx_3&ltx_4&ltx_2\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_4\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_1&lty_2&lty_4&lty_3)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_2&ltx_4\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_2\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_1&lty_2&lty_4&lty_3)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_1\wedge{x}''':=x_4)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_1\wedge{x}'':=x_4\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_4\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_1&ltx_4&ltx_2\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_1\wedge{x}'':=x_4\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_1&lty_2&lty_4&lty_3)\Rightarrow(x':=x_4\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_1&lty_4&lty_2&lty_3)\Rightarrow(x':=x_4\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_1&lty_4&lty_3&lty_2)\Rightarrow(x':=x_4\wedge{x}'':=x_1\wedge{x}''':=x_2)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_4&lty_1&lty_2&lty_3)\Rightarrow(x':=x_3\wedge{x}'':=x_4\wedge{x}''':=x_1)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_4&lty_1&lty_3&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_4\wedge{x}''':=x_1)$</li>
+<li>$(x_3&ltx_4&ltx_1&ltx_2\wedge{y}_4&lty_3&lty_1&lty_2)\Rightarrow(x':=x_3\wedge{x}'':=x_4\wedge{x}''':=x_1)$</li>
+</ol>
+Таким образом в $[a,b]$ существуют $x'&ltx''&ltx'''$ такие, что $f(x'')$ не лежит между $f(x')$ и $f(x''')$.
+Но одна точка должна лежать между двумя другими, значит либо $f(x')$ лежит между $f(x'')$ и $f(x''')$, либо $f(x''')$
+лежит между $f(x')$ и $f(x'')$. Если $f(x')$ лежит между $f(x'')$ и $f(x''')$, то по <a href="./math_analisis5.5.3.html#Corollary5.5.2">следствию 5.5.2</a> 
+из теоремы Больцано-Коши о промежуточном значении 
+$$f(x)\in{C}[a,b]\Rightarrow{f}(x)\in{C}[x'',x''']\Rightarrow\exists{x}_0\in[a,b]:(x'&ltx''&ltx_0&ltx'''\wedge{f}(x_0)=f(x'))\Rightarrow
+(x'\neq{x}_0\wedge{f}(x_0)=f(x'))$$
+но это противоречит инъективности функции $f(x)$.<br>
+Случай $f(x''')\in(f(x'),f(x'') )$ рассматривается аналогично.
+</li>
+</ul>
+</li>
+</ol>
+</i>
+
+<br><br>
+
+<p id="Statement5.5.12"><b>Утверждение 5.5.12: Критерий непрерывности монотонной функции.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ монотонна, без ограничения общности не убывающая, то 
+$$f(x)\in{C}[a,b]\Leftrightarrow{f}([a,b])=[f(a),f(b)]$$
+<p><b>Докзательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+По <a href="./math_analisis5.5.3.html#Theorem5.5.3">теореме Вейерштрасса об экстремальном значении</a> функция $f(x)\in{C}[a,b]$
+достигает на своей области определения минимума и максимума, то есть существуют числа $\displaystyle{m}:=\min_{x\in[a,b]}f(x)$ и 
+$\displaystyle{M}:=\max_{x\in[a,b]}f(x)$.<br>
+Так как фукнция $f(x)$ не убывающая, то
+$$\forall{x}\in[a,b](a\leq{x}\wedge{b}\geq{x})\Rightarrow\forall{x}\in[a,b](f(a)\leq{f}(x)\wedge{f}(b)\geq{f}(x))\Rightarrow(f(a)=m\wedge{f}(b)=M)$$ 
+По <a href="./math_analisis5.5.3.html#Corollary5.5.3">следствию 5.5.3</a> $f([a,b])=[m,M]=[f(a),f(b)]$.
+</li>
+<li>$\Leftarrow)$<br>
+Предположим, что $c\in\mathbb{R}$ точка разрыва функции $f(x)$, тогда она является предельной точкой для множества $E:=[a,b]$, но множество
+предельных точек отрезка совпадает с множеством точек отрезка, следовательно, $c\in{E}$. Тогда по <a href="#Statement5.5.10">утверждению 5.5.10</a>
+$c$ точка разрыва первого рода. По условию $f(E)=[f(a),f(b)]$, то есть функция $f(x)$ ограничена и $a=\inf[a,b]$, $b=\sup[a,b]$, следовательно, по 
+<a href="./math_analisis5.3.html#Theorem5.3.3">теореме о пределе монотонной функции</a>
+$$\exists\lim_{E\ni{x}\to{a}}f(x)=\inf_{x\in[a,b]}f(x)=\inf[f(a),f(b)]=f(a)$$
+$$\exists\lim_{E\ni{x}\to{b}}f(x)=\sup_{x\in[a,b]}f(x)=\sup[f(a),f(b)]=f(b)$$
+Таким образом, по <a href="./math_analisis5.5.1.html#Statement5.5.3">утверждению 5.5.3</a> функция $f(x)$ непрерывна в концах отрезка значит 
+точка разрыва $c$ не может быть одним из концов отрезка. То есть $c\in(a,b)$ и тогда $c\in\mathring{E}{}^-_a\cap\mathring{E}{}^+_a$.
+Следовательно, по <a href="./math_analisis5.3.html#Corollary5.3.4">следствию 5.3.4</a> существуют оба односторонних предела $f(c-0),f(c+0)$,
+тогда по <a href="#Statement5.5.11">утверждению 5.5.11</a> либо $f(a-0)&ltf(a)$, либо $f(a)&ltf(a+0)$ и по <a href="#Corollary5.5.4">следствию 5.5.4</a>
+соответственно либо $(f(a-0),f(a))\cap{E}=\varnothing$, либо $(f(a),f(a+0))\cap{E}=\varnothing$, что противоречит предпосылке $f(E)=[f(a),f(b)]$.
+</li>
+</ul>
+
+<br><br>
+
+<p id="Theorem5.5.5"><b>Теорема 5.5.5: Теорема о непрерывности обратной функции.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ строго монотонна и непрерывна на $[a,b]$, то существует обратная ей функция $f^{-1}(y):[f(a),f(b)]\to[a,b]$
+непрерывная на $[f(a),f(b)]$.
+<p><b>Доказательство:</b> По <a href="#Statement5.5.12">утверждению 5.5.12</a> $f([a,b])=[f(a),f(b)]$, следовательно, по 
+<a href="#Statement5.5.9">утверждению 5.5.9</a> существует обратная ей функция $f^{-1}(y):[f(a),f(b)]\to[a,b]$ строго монотонная в том же смысле.
+И так как $f^{-1}([f(a),f(b)])=[a,b]=[f^{-1}(f(a)),f^{-1}(f(b))]$, то по <a href="#Statement5.5.12">критерию непрерывности монотонной функции</a>
+функция $f^{-1}(y)$ непрерывна.
+
+<br><br>
+
+<p>Таким образом строго монотонная и непрерывная на отрезке фукнция имеет обратную, которая тоже задана на отрезке, строго монотонна и непрерывна на нем. 
+
+<br><br>
+
+<p id="Corollary5.5.5"><b>Следствие 5.5.5: Вариант теоремы о непрерывности обратной функции для случая интервала.</b><br>
+Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$. Если функция $f(x):(a,b)\to{\mathbb{R}}$ строго монотонна, без ограничения общности
+возрастает, и непрерывна на $(a,b)$, тогда
+<ol>
+<li>существует обратная ей функция $f^{-1}(y):(c,d)\to(a,b)$ строгомонотонная в том же смысле</li>
+<li>$f^{-1}(y)\in{C}((c,d))$</li>
+</ol>
+где $c,b\in\overline{\mathbb{R}}$ и $c=f(a+0)$, $d=f(b-0)$..
+<p><b>Доказательство:</b>
+По <a href="./math_analisis5.3#Theorem5.3.3">теореме о пределе монотонной функции</a> и 
+<a href="./math_analisis5.3#Corollary5.3.2">следствию 5.3.2</a> из нее на расширенной прямой $\overline{\mathbb{R}}$ существуют односторонний пределы
+$c=f(a+0)$, $d=f(b-0)$. И по возрастанию функции $f(x)$ $c&ltd$.
+<ol>
+<li>
+По <a href="#Statement5.5.9">утверждению 5.5.9</a> существует обратная функции $f(x)$ функция $f^{-1}(y):f((a,b))\to(a,b)$.
+Докажем, что $f((a,b))=(c,b)$. Фиксируем $t\in(c,d)=(f(a+0),f(b-0))$.<br>
+По <a href="./math_analisis5.3.html#Theorem5.3.3">теореме о пределе монотонной функции</a> и <a href="./math_analisis5.3.html#Corollary">следствию 5.3.2</a>
+из нее
+$$\forall{t}\in(c,d)(\inf{f}((a,b))&ltt&lt\sup{f}((a,b)))\Rightarrow\forall{t}\in(c,d)\:\exists{x}_1,x_2\in(a,b):(x_1&ltx_2\wedge{f}(x_1)\leq{t}\leq{f}(x_2))$$
+По <a href="./math_analisis5.5.3.html#Corollary5.5.2">следствию 5.5.2</a> из теоремы Больцано - Коши о промежуточном значении функция
+$f(x)$ принимает все промежуточные значения на отрезке $[f(x_1),f(x_2)]$, значит существует $x_0\in[x_1,x_2]\subset(a,b)$ такое, что $f(x_0)=t$.
+Таким образом 
+$$\forall{t}\in(c,d)(\exists{x}_0\in(a,b):f(x_0)=t)\Leftrightarrow{f}((a,b))=(c,d)$$
+ </li>
+<li>
+Фиксируем $t\in(c,d)$. Cуществует отрезок $[\alpha,\beta]$ такой, что $t\in[\alpha,\beta]\subset(c,b)$.
+Обозначим $p:=f^{-1}(\alpha)$, $q:=f^{-1}(\beta)$. Функция $f(x):[p,q]\to[\alpha,\beta]$ непрерывна и строго монотонна на $[p,q]$, значит 
+по <a href="#Theorema5.5.5">теореме о непрерывности обраной функции</a> функция $f^{-1}(y):[\alpha,\beta]\to[p,q]$ непрерывна и строго монотонна на 
+$[\alpha,\beta]$. Значит функция $f^{-1}(y)$ непрерывна в точке $t\in[\alpha,\beta]$, то есть непрерывна в любой наперед заданной точке интервала $(c,d)$. 
+</li>
+</ol>
+<br><br>
+
+$\newcommand{\tg}{\operatorname{tg}}$
+$\newcommand{\ctg}{\operatorname{ctg}}$
+$\newcommand{\arctg}{\operatorname{arctg}}$
+$\newcommand{\arcctg}{\operatorname{arcctg}}$
+
+<p id="Example5.5.6"><b>Пример 5.5.6:</b>
+<ol>
+<li>
+Функция $f(x):=\sin{x}$ непрерывна и возрастает на отрезке $[-\frac{\pi}{2},\frac{\pi}{2}]$, следовательно, по 
+<a href="#Theorem5.5.5">теореме о непрерывности обратной функции</a> функция $f^{-1}(x):=\arcsin{x}$ непрерывна на отрезке 
+$f([-\frac{\pi}{2},\frac{\pi}{2}])=[f(-\frac{\pi}{2}),f(\frac{\pi}{2})]=[-1,1]$.<br>
+Из этого в частности следует, что $\displaystyle\lim_{x\to0}\arcsin{x}=0$
+</li>
+<br>
+<li>
+Функция $f(x):=\cos{x}$ непрерывна и убывает на отрезке $[0,\pi]$, следовательно, <a href="#Theorem5.5.5">теореме о непрерывности обратной функции</a> 
+фукнция $f^{-1}(x):=\arccos{x}$ непрерывна на отрезке $f([0,\pi])=[f(\pi),f(0)]=[-1,1]$. Заметим, что в силу убывания функции $f(x)$
+в данном случае $f([0,\pi])=[f(\pi),f(0)]$, так как $f(0)&gtf(\pi)$.
+</li>
+<br>
+<li>
+Функция $f(x):=\tg{x}$ непрерывна и возрастает на интервале $(-\frac{\pi}{2},\frac{\pi}{2})$, причем $f(\frac{\pi}{2}+0)=-\infty$, 
+$f(\frac{\pi}{2}-0)=+\infty$, поэтому по <a href="#Corollary5.5.5">следствию 5.5.5</a> функция 
+$f^{-1}(x):=\arctg{x}:\mathbb{R}\to(-\frac{\pi}{2},\frac{\pi}{2})$ непрерывна на $(-\infty,+\infty)=\mathbb{R}$ и по 
+<a href="#Statement5.5.9">утверждению 5.5.9</a> возрастает на $\mathbb{R}$.
+</li>
+<br>
+<li>
+Функция $f(x):=\arcctg{x}:\mathbb{R}\to(0,\pi)$ непрерывна и убывает на $\mathbb{R}$, причем $f(-\infty+0)=0$, $f(+\infty+0)=\pi$,
+следовательно, функция $f^{-1}(x):=\ctg(x):(0,\pi)\to\mathbb{R}$ непрерывна на интервале $(0,\pi)$ по <a href="#Corollary5.5.5">следствию 5.5.5</a> 
+и убывает по <a href="#Statement5.5.9">утверждению 5.5.9</a>.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Definition5.5.10"><b>Определение 5.5.10:</b> Функции $\varphi(t),\psi(t):T\to\mathbb{R}$ такие, что $\varphi(t)$ инъективна на $T$,
+тогда будем говорить, что совокупности равенств $\begin{cases}x=\varphi(t), & x\in{T}\\y=\psi(t), & x\in{T}\end{cases}$ задает параметрически
+функцию $y=f(x):=\psi(\varphi^{-1}(x)):\varphi(T)\to\mathbb{R}$.
+
+<br><br>  
+
+<p>Не для любой пары функций $\varphi(t),\psi(t):T\to\mathbb{R}$ можно подобрать такую функцию $f(x)$, чтобы функции $\varphi(t),\psi(t)$
+задавали $f(x):\varphi(T)\to\mathbb{R}$ параметрически, так как функция $\varphi(t)$ может не иметь обратной фукнции.
+
+<br><br>
+<p id="#Statement5.5.13"><b>Утверждение 5.5.13:</b> Пусть $T:=[\alpha,\beta]$ функции $\varphi(t),\psi(t):T\to\mathbb{R}$ такие, что
+$\varphi(t),\psi(t)\in{C}(T)$, $\varphi(t)$ строго монотонна на $T$, тогда
+$$\exists{f}(x):=\psi(\varphi^{-1}(x)):[\varphi(\alpha),\varphi(\beta)]\to[\alpha,\beta]: f(x)\in{C}([\varphi(\alpha),\varphi(\beta)])$$
+<p><b>Доказательство:</b> Обозначим $a:=\varphi(\alpha)$, $b:=\varphi(\beta)$. Функция $\varphi(t)$ строго монотонна на $T$, следовательно,
+по <a href="#Statement5.5.9">утверждению 5.5.9</a> функция $\varphi(t):[\alpha,\beta]\to[a,b]$ биективна и существует функция 
+$\varphi^{-1}(t):[a,b]\to[\alpha,\beta]$ обратная для $\varphi(t)$ строго монотонная в том же смысле. Следовательно, существует
+функция $f(x):=\psi(\varphi^{-1}(x)):[a,b]\to[\alpha,\beta]$.<br>
+По <a href="#Theorem5.5.5">теореме о непрерывности обратной фукнции</a> $\varphi^{-1}(t)$ непрерывна, следовательно, по пункту 5 
+<a href="./math_analisis5.5.3.html#Theorem5.5.1">теоремы 5.5.1</a> функция $f(x)$ непрерывана как композиция непрерывных.
+
+<br><br>
+
+<p>Аналогично доказывается утверждение для случая интервала при $T:=(\alpha,\beta)$ и $a:=f(\alpha+0)$, $b:=f(\beta-0)$, только вместо 
+<a href="#Theorem5.5.5">теоремы о непрерывности обратной фукнции</a> используется <a href="#Corollary5.5.5">следствие 5.5.5</a> из нее. 
+
+<br><br>
+<a href="./math_analisis5.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis6.1.html">next</a>
+
+</body>
+</html>

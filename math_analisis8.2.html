@@ -1,0 +1,348 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 8.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extension: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis8.1.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.2.3.html">next</a>
+<h4 id="8.2">8.2 Интеграл Римана-Стилтьеса.</h4>
+
+<h5 id="8.2.1">8.2.1 Определение интеграла Стилтьеса.</h5>
+
+<p>Везде далее в этом разделе предполагается, что функция $f(x):[a,b]\to\mathbb{R}$ ограничена. То есть существуют $m,M\in\mathbb{R}$
+такие, что для любого $x\in[a,b]$ $m\leq{f}(x)\leq{M}$. Функция $\alpha(x):[a,b]\to\mathbb{R}$ (порождающая функция) не убывает и не постоянна.
+
+<br><br>
+
+<p id="Definition8.2.1"><b>Определение 8.2.1:</b> Разбиением отрезка $[a,b]$ будем называть всякий содержащий $a$ и $b$ конечный набор точек
+из отрезка $[a,b]$ пронумерованный в порядке возрастания.
+$$n\in\mathbb{N}, P:=\{x_0=a,x_1,x_2,\dots,x_n=b\}:(\forall{i}\in\overline{1,n-1}(a&ltx_i&ltb)\wedge\forall{i}\in\overline{1,n}(x_{i-1}&ltx_i))$$
+
+<br><br>
+
+<p>Далее везде любое разбиение по умолчанию содержит точку $x_0=a$, которая явно не указывается. Точка $x_n=b$ - правый конец отрезка указывается явно,
+как последняя точка разбиения.
+
+<p>Для любого $i\in\overline{1,n}$ введем употребляемые далее везде обозначения:<br>
+$\Delta_i:=[x_{i-1},x_i]$ - $i$-тый отрезок разбиения,<br>
+$\Delta{x}_i:=x_i-x_{i-1}$ - длина $i$-того отрезка разбиения,<br>
+$\Delta\alpha_i:=\alpha(x_i)-\alpha(x_{i-1})$ (для любого $i\in\overline{1,n}$ $\Delta\alpha_i\geq0$ так как $\alpha(x)$ не убывает),<br>
+$\displaystyle\lambda(P):=\max_{1\leq{i}\leq{n}}\Delta{x}_i$ - диаметр разбиния $P$,<br>
+$\displaystyle{m}_i:=\inf_{x\in\Delta_i}f(x)$,<br>
+$\displaystyle{M}_i:=\sup_{x\in\Delta_i}f(x)$.
+
+<br><br>
+
+<p id="Definition8.2.2"><b>Определение 8.2.2:</b> Если $P=\{x_1,x_2,\dots,x_n\}$ - разбиение отрезка и вектор точек $\xi:=(\xi_1,\xi_2,\dots,\xi_n)$ такой, 
+что для любого $i\in\overline{1,n}$ $\xi_i\in\Delta_i$, тогда пару $(P,\xi)$ называют разбиением с помеченными точками.
+
+<br><br>
+
+<p id="Definition8.2.3"><b>Определение 8.2.3:</b> Если $P$ разбиение отрезка, тогда
+$$S(f,P,\alpha):=\sum_{(P)}(M_i\Delta\alpha_i):=\sum_{i=1}^n(M_i\Delta\alpha_i)$$
+верхняя сумма Дарбу отвечающей разбиению $P$ для функции $f(x)$ относительно пораждающей функции $\alpha(x)$,
+$$s(f,P,\alpha):=\sum_{(P)}(m_i\Delta\alpha_i):=\sum_{i=1}^n(m_i\Delta\alpha_i)$$
+нижняя сумма Дарбу отвечающая разбиению $P$ для функции $f(x)$ относительно пораждающей фукнции $\alpha(x)$.
+
+<br><br>
+
+<p id="Definition8.2.4"><b>Определение 8.2.4:</b> Если $(P,\xi)$ разбиение с помеченными точками, тогда сумма
+$$\sigma(f,P,\xi,\alpha):=\sum_{(P)}(f(\xi_i)\Delta\alpha_i):=\sum_{i=1}^n(f(\xi_i)\Delta\alpha_i)$$
+называется интегральной суммой Римана - Стилтьеса отвечающей разбиению с помеченными точками $(P,\xi)$ для фукнции $f(x)$ 
+относительно пораждающей фукнции $\alpha(x)$.
+
+<br><br>
+
+<p id="Statement8.2.1"><b>Утверждение 8.2.1:</b> Если $(P,\xi)$ разбиение с помеченными точками, то
+<ol>
+<li>$s(f,P,\alpha)\leq\sigma(f,P,\xi,\alpha)\leq{S}(f,P,\alpha)$,</li>
+<br>
+<li>$\displaystyle\sup_{(\xi)}\sigma(f,P,\xi,\alpha)=S(f,P,\alpha)$<br>
+$\displaystyle\inf_{(\xi)}\sigma(f,P,\xi,\alpha)=s(f,P,\alpha)$<br>
+где верхняя и нижняя грань беруться по всем наборам помеченных точек, допуститмым для фиксированного разбиения $P$,
+</li>
+<li>$\displaystyle{S}(f,P,\alpha)-s(f,P,\alpha)=\sum_{i=1}^n(\omega(f,\Delta_i)\Delta\alpha_i)$<br>
+здесь $\omega(f,\Delta)$ - это <a href="./math_analisis5.3.html#Definition5.3.1">колебания функции</a> $f(x)$ на множестве $\Delta$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$\forall{i}\in\overline{1,n}(\forall\xi\in\Delta_i(\inf_{x\in\Delta_i}f(x)=m_i\leq{f}(\xi)\leq{M}_i=\sup_{x\in\Delta_i}f(x)))\Rightarrow
+\forall\xi_1\in\Delta_1,\forall\xi_2\in\Delta_2,\dots,\forall\xi_n\in\Delta_n\left
+(\sum_{i=1}^n(m_i\Delta\alpha_i)\leq\sum_{i=1}^n(f(\xi_i)\Delta\alpha_i)\leq\sum_{i=1}^n(M_i\Delta\alpha_i)\right)\Rightarrow$$
+$$\Rightarrow{s}(f,P,\alpha)\leq\sigma(f,P,\xi,\alpha)\leq{S}(f,P,\alpha).$$
+</li>
+<li>
+Для доказательства утверждения понадобятся арифметические свойства 
+<a href="./math_analisis3.1.html#Definition3.1.3.5">верхней и нижней грани числового множества</a>.<br>
+Для любых множеств $X,Y\subset\mathbb{R}$ обозначим $X+Y:=\{x+y\:|\:(x,y)\in{X}\times{Y}\}$ и для любого $c\in\mathbb{R}$ $cX:=\{cx\:|\:x\in{X}\}$,
+тогда
+<ol>
+<li>
+$\sup(X+Y)=\sup{X}+\sup{Y}$, $\inf(X+Y)=\inf{X}+\inf{Y}$<br>
+<i>
+Действительно
+$$\forall(x,y)\in{X}\times{Y}(x\leq{X}\wedge{y}\leq{Y}\Rightarrow{x}+y\leq\sup{X}+\sup{Y})$$
+Следовательно, $\sup{X}+\sup{Y}$ мажоранта множества $X+Y$. Покажем, что это минимальная из мажорант. Действительно для любого $c\in\mathbb{R}$
+$$c&lt\sup{X}+\sup{Y}\Rightarrow{c}-\sup{X}&lt\sup{Y}\Rightarrow\exists{y}_0\in{Y}:y_0&gt{c}-\sup{X}\Rightarrow\sup{X}&gtc-y_0\Rightarrow
+\exists{x}_0\in{X}:x_0&gtc-y_0\Rightarrow(x_0+y_0\in{X}+Y\wedge{x}_0+y_0&gtc)$$
+Таким образом число $\sup{X}+\sup{Y}$ минимальная из мажорант множества $X+Y$, то есть $\sup{X}+\sup{Y}=\sup(X+Y)$.
+Случай для нижней грани доказывается аналогично.
+</i>
+</li>
+<li>$\forall{c}\geq0(\sup(cX)=c\sup{X}\wedge\inf(cX)=c\inf{X})$</li>
+<li>$\sup(-X)=-\inf{X}$, $\inf(-X)=-\sup{X}$</li>
+<li>$\sup(X-Y)=\sup{X}+\sup(-Y)=\sup{X}-\inf{Y}$</li>
+</ol>
+Тогда
+$$\sup_{(\xi)}\sigma(f,P,\xi,\alpha)=
+\sup\left\{\sum_{i=1}^n(f(\xi_i)\Delta\alpha_i)\:\middle|\:(\xi_1,\xi_2,\dots,\xi_n)\in\Delta_1\times\Delta_2\times\dots\times\Delta_n\right\}=^{(1)}
+\sum_{i=1}^n\sup_{\xi\in\Delta_i}(f(\xi)\Delta\alpha_i)=^{(2)}\sum_{i=1}^n(\Delta\alpha_i\sup_{\xi\in\Delta_i}f(\xi))=\sum_{i=1}^n(M_i\Delta\alpha_i)=
+S(f,P,\alpha)$$
+Выражение $\Delta\alpha_i$ можно вынести из под знака верхней грани по свойству 2, так как значение $\Delta\alpha_i$ не зависит от выбора точки $\xi$
+и $\Delta\alpha_i\geq0$ в силу не убывания пораждающей функции $\alpha(x)$.<br>
+Аналогично доказывается, что $\displaystyle\inf_{(\xi)}\sigma(f,P,\xi,\alpha)=s(f,P,\alpha)$.
+</li>
+<li>
+Так как 
+$$\forall{i}\in\overline{1,n}(M_i-m_i=\sup_{x\in\Delta_i}f(x)-\inf_{y\in\Delta_i}f(y)=^{(4)}\sup_{x,y\in\Delta_i}(f(x)-f(y))=
+\sup_{x,y\in\Delta_i}|f(x)-f(y)|)$$
+где последнее равенство верно так как $f(x)-f(y)=-(f(y)-f(x))$, то
+$$S(f,P,\alpha)-s(f,P,\alpha)=\sum_{i=1}^n((M_i-m_i)\Delta\alpha_i)=\sum_{i=1}^n(\sup_{x,y\in\Delta_i}|f(x)-f(y)|\Delta\alpha_i)=
+\sum_{i=1}^n(\omega(f,\Delta_i)\Delta\alpha_i)$$
+</li>
+</ol>
+
+<br><br>
+
+<p id="Definition8.2.5"><b>Определение 8.2.5:</b> Нижняя грань множества верхних <a href="#Definition8.2.3">сумм Дарбу</a> отвечающих всем возможным
+разбиениям отрезка $[a,b]$ для функции $f(x)$ относительно порождающей функции $\alpha(x)$ называется верхним интегралом Стилтьеса для функции $f(x)$
+относительно порождающей функции $\alpha(x)$ по отрезку $[a,b]$. Обозначают
+$$\int\limits_a^{b*}f(x)d\alpha:=\inf_{(P)}S(f,P,\alpha):=
+\inf_{n\in\mathbb{N}}\{S(P,f,\alpha)\:|\:P=\{x_1,x_2,\dots,x_{n-1}\}\in[a,b]^n:a&ltx_1&ltx_2&lt\dots&ltx_{n-1}&ltb\}.$$
+Верхняя грань множества нижних <a href="#Definition8.2.3">сумм Дарбу</a> отвечающих всем возможным разбиениям отрезка $[a,b]$ для функции $f(x)$
+относительно порождающей функции $\alpha(x)$ называется нижним интегралом Стилтьеса для функции $f(x)$ относительно порождающей функции $\alpha(x)$ 
+по отрезку $[a,b]$. Обозначают
+$$\int\limits_{a*}^bf(x)d\alpha:=\sup_{(P)}s(f,P,\alpha):=
+\sup_{n\in\mathbb{N}}\{s(f,P,\alpha)\:|\:P=\{x_1,x_2,\dots,x_{n-1}\}\in[a,b]^n:a&ltx_1&ltx_2&lt\dots&ltx_{n-1}&ltb\}.$$
+
+<br><br> 
+
+<p>Так как функция $f(x)$ ограничена на отрезке $[a,b]$, то
+$$\exists{m},M\in\mathbb{R}:\forall{x}\in[a,b](m\leq{f}(x)\leq{M})\Rightarrow\forall{P}\left(S(f,P,\alpha)=\sum_{i=1}^n(M_i\Delta\alpha_i)\leq
+M\sum_{i=1}^n\Delta\alpha_i=M(\alpha(b)-\alpha(a))\right)\Rightarrow\int\limits_a^{b*}f(x)d\alpha\leq{M}(\alpha(b)-\alpha(a))$$
+Аналогично
+$$\forall{P}(s(f,P,\alpha)\geq{m}(\alpha(b)-\alpha(a)))\Rightarrow\int\limits_{a*}^bf(x)d\alpha\geq{m}(\alpha(b)-\alpha(a))$$
+<a href="#Statement8.2.2">Позже</a> будет доказано, что нижний интеграл Дарбу вседга меньше либо равен верхнему, то есть
+$$m(\alpha(b)-\alpha(a))\leq\int\limits_{a*}^bf(x)d\alpha\leq\int\limits_a^{b*}f(x)d\alpha\leq{M}(\alpha(b)-\alpha(a))$$ 
+
+<br><br>
+
+<p id="Definition8.2.6"><b>Определение 8.2.6:</b> Если нижний интеграл Стилтьеса для функции $f(x)$ относительно порождающей фукнции $\alpha(x)$
+по отрезку $[a,b]$ равен верхнему интегралу Стилтьеса для функции $f(x)$ относительно порождающей функции $\alpha(x)$ по отрезку $[a,b]$, то
+говорят, что функция $f(x)$ интегрируема по Стилтьесу на отрезке $[a,b]$ относительно порождающей функции $\alpha(x)$. При этом число
+$$\int\limits_a^bf(x)dx:=\int\limits_a^{b*}f(x)dx=\int\limits_{a*}^bf(x)dx$$
+называют значением интеграла Стилтьеса для функции $f(x)$ относительно порождающей функции $\alpha(x)$ по отрезку $[a,b]$.<br>
+С помощью $\mathcal{R}(\alpha)[a,b]$ обозначают класс функций интегрируемых по Стилтьесу на отрезке $[a,b]$ относительно порождающей функции $\alpha(x)$.
+При $\alpha(x)\equiv{x}$ класс $\mathcal{R}(\alpha)[a,b]$ называют классом функций интегрируемых по Риману и обозначают $\mathcal{R}[a,b]$.
+
+<h5 id="8.2.2">8.2.2 Вопросы существования интеграла Стилтьеса.</h5> 
+
+<p id="Definition8.2.7"><b>Определение 8.2.7: </b> Будем говорить, что разбиение $P_1=\{x_1^{(1)},x_2^{(1)},\dots,x_n^{(1)}\}$ вложено в разбиение
+$P_2=\{x_1^{(2)},x_2^{(2)},\dots,x_m^{(2)}\}$, если множество точке разбиения есть подмножество точек разбиения $P_2$, то есть 
+$\{x_1^{(1)},x_2^{(1)},\dots,x_n^{(1)}\}\subset\{x_1^{(2)},x_2^{(2)},\dots\,x_m^{(2)}\}$. Обозначают $P_1\prec{P}_2$.<br>
+В данном случае разбиение $P_2$ называют продолжением разбиения $P_1$.
+
+<br><br>
+
+<p id="Statement8.2.2"><b>Утверждение 8.2.2: Характерные свойства верхних и нижних сумм Дарбу.</b><br>
+<ol>
+<li>Если $P_1\prec{P}_2$, то $S(f,P_2,\alpha)\leq{S}(f,P_1,\alpha)$ и $s(f,P_2,\alpha)\geq{s}(f,P_1,\alpha)$.</li>
+<br>
+<li>Для любых двух разбиений $P_1,P_2$ верно $s(f,P_1,\alpha)\leq{S}(f,P_2,\alpha)$.</li>
+<li>$\displaystyle\int\limits_{a*}^bf(x)d\alpha\leq\int\limits_a^{b*}f(x)d\alpha$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Пусть $P_1:=\{x_1^{(1)},x_2^{(1)},\dots,x_n^{(1)}\}$, $P_2:=\{x_1^{(2)},x_2^{(2)},\dots,x_m^{(2)}\}$ разбиения отрезка $[a,b]$ такие,
+что $P_1\prec{P}_2$, следовательно, $P_2\backslash{P}_1\neq\varnothing$. Обозначим $k:=|P_2\backslash{P}_1|$.<br>
+Докажем индукцией по $k$, что $S(f,P_2,\alpha)\leq{S}(f,P_1,\alpha)$<br>
+Пусть $k=1$, то есть $|P_2\backslash{P}_1|=1$, значит существует единственное $c\in{P}_2:c\notin{P}_1$, то есть существует $i\in\overline{1,n}$ такое, 
+что $x_{i-1}^{(1)}&lt{c}&lt{x}_i^{(1)}$. Без ограничения общности будем считать, что $i=1$, тогда
+$$\forall{i}\in\overline{2,n}(M_i^{(1)}=\sup_{x\in\Delta_i^{(1)}}f(x)=\sup_{x\in\Delta_i^{(2)}}f(x)=M_i^{(2)})\Rightarrow
+S(f,P_2,\alpha)=\sum_{i=2}^n(M_i^{(1)}\Delta\alpha_i)+\sup_{a\leq{x}\leq{c}}f(x)(\alpha(c)-\alpha(a))+
+\sup_{c\leq{x}\leq{x}_1^{(1)}}(\alpha(x_1^{(1)})-\alpha(c))\leq$$ $$\leq\sum_{i=2}^n(M_i^{(1)}\Delta\alpha_i)+
+\max\{\sup_{a\leq{x}\leq{c}}f(x),\sup_{c\leq{x}\leq{x}_1^{(1)}}f(x)\}(\alpha(c)-\alpha(a)+\alpha(x_1^{(1)})-\alpha(c))\leq
+\sum_{i=2}^n(M_i^{(1)}\Delta\alpha_i)+\sup_{x\in\Delta_1^{(1)}}f(x)\Delta\alpha_1=\sum_{i=1}^n(M_i\Delta\alpha_i)=S(f,P_1\alpha)$$
+Последнее неравенство следует из того, что верхняя грань множества меньше или равна чем верхняя грань любого его подмножества.
+Пусть для любых разбиений $P_1=\{x_1^{(1)},x_2^{(1)},\dots,x_n^{(1)}\}$, $P_2=\{x_1^{(2)},x_2^{(2)},\dots,x_m^{(2)}\}$ таких, что $P_1\prec{P}_2$
+и $|P_2\backslash{P}_1|=k$ верно, что $S(f,P_2,\alpha)\leq{S(f,P_1,\alpha)}$, тогда пусть разбиения $P_1:=\{x_1^{(1)},x_2^{(1)},\dots\,x_n^{(1)}\}$, 
+$P_2=\{x_1^{(2)},x_2^{(2)},\dots,x_m^{(2)}\}$ такие, что $P_1\prec{P}_2$ и $|P_2\backslash{P}_1|=k+1$. Обозначим 
+$\{x_1,x_2,\dots,x_{k+1}\}:=P_2\backslash{P}_1$ и рассмотрим разбиение $P'_1:=P_1\cup\{x_1,x_2,\dots,x_k\}$ тогда
+$$P_1\prec{P}'_1\prec{P}_2\wedge|P_2\backslash{P}'_1|=1\wedge|P'_1\backslash{P}_1|=k,$$
+следовательно, по базе индукции $S(f,P_2,\alpha)\leq{S}(f,P'_1,\alpha)$ и по предположению индукции $S(f,P'_1,\alpha)\leq{S}(f,P_1,\alpha)$,
+то есть $S(f,P_2,\alpha)\leq{S}(f,P_1,\alpha)$.<br>
+Утверждение для нижних сумм доказывается аналогично.
+</li>
+<li>
+Так как
+$$\forall{P}\left(S(f,P,\alpha)-s(f,P,\alpha)=\sum_{i=1}^n((M_i-m_i)\Delta\alpha_i)\geq0\right)\Rightarrow\forall{P}(S(f,P,\alpha)\geq{s}(f,P,\alpha))$$
+тогда по пункту 1
+$$P:=P_1\cup{P}_2\Rightarrow(P_1\prec{P}\wedge{P}_2\prec{P})\Rightarrow{s}(f,P_1,\alpha)\leq{s}(f,P,\alpha)\leq{S}(f,P,\alpha)\leq{S}(f,P_2,\alpha).$$
+</li>
+<li>
+По пункту 2 для любых двух разбиений $P_1,P_2$ $s(f,P_1,\alpha)\leq{S}(f,P_2,\alpha)$, тогда
+$$\forall{P}_1,P_2(s(f,P_1,\alpha)\leq{S}(f,P_2,\alpha))\Rightarrow\forall{P}_2\left(\sup_{(P)}s(f,P,\alpha)\leq{S}(f,P_2,\alpha)\right)\Rightarrow
+\sup_{(P)}s(f,P,\alpha)\leq\inf_{(P)}S(f,P,\alpha)\Rightarrow\int\limits_{a*}^bf(x)d\alpha\leq\int\limits_a^{b*}f(x)d\alpha.$$
+</li>
+</ol>
+
+<br><br>
+
+<p id="Statement8.2.3"><b>Утверждение 8.2.3: Критерий существования интеграла Стилтьеса.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ ограничена, порождающая функция $\alpha(x):[a,b]\to\mathbb{R}$ не убывает и не постоянна, то
+$$f(x)\in\mathcal{R}(\alpha)[a,b]\Leftrightarrow\forall\varepsilon&gt0\:\exists{P}:S(f,P,\alpha)-s(f,P,\alpha)&lt\varepsilon.$$
+где $P$ - разбиение отрезка $[a,b]$.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Фиксируем $\varepsilon&gt0$.
+$$\int\limits_a^{b*}f(x)d\alpha=\inf_{(P)}S(f,P,\alpha)\Rightarrow\exists{P}_1:S(f,P_1,\alpha)&lt\int\limits_a^{b*}f(x)d\alpha+\frac{\varepsilon}{2}.$$
+$$\int\limits_{a*}^bf(x)d\alpha=\sup_{(P)}s(f,P,\alpha)\Rightarrow
+\exists{P}_2:s(f,P_2,\alpha)&gt\int\limits_{a*}^bf(x)d\alpha-\frac{\varepsilon}{2}\Rightarrow
+{s}(f,P_2,\alpha)+\frac{\varepsilon}{2}&gt\int\limits_{a*}^bf(x)d\alpha.$$
+$$P_3:=P_1\cup{P}_2\Rightarrow(P_1\prec{P}_3\wedge{P}_2\prec{P}_3)\Rightarrow
+{S}(f,P_3,\alpha)\leq{S}(f,P_1,\alpha)&lt\int\limits_a^{b*}f(x)d\alpha+\frac{\varepsilon}{2}$$
+$$f(x)\in\mathcal{R}(\alpha)[a,b]\Rightarrow\int\limits_a^{b*}f(x)d\alpha+\frac{\varepsilon}{2}=\int\limits_{a*}^bf(x)d\alpha+\frac{\varepsilon}{2}&lt
+s(f,P_2,\alpha)+\frac{\varepsilon}{2}+\frac{\varepsilon}{2}\leq{s}(f,P_3,\alpha)+\varepsilon\Rightarrow{S}(f,P_3,\alpha)-s(f,P_3,\alpha)&lt\varepsilon.$$
+</li>
+<li>$\Leftarrow)$<br>
+$$\forall{P}\left(s(f,P,\alpha)\leq\int\limits_{a*}^bf(x)d\alpha\leq\int\limits_a^{b*}f(x)d\alpha\leq{S}(f,P,\alpha)\right)\Rightarrow
+\forall{P}\left(\int\limits_a^{b*}f(x)d\alpha-\int\limits_{a*}^bf(x)d\alpha\leq{S}(f,P,\alpha)-s(f,P,\alpha)\right)$$
+$$\forall\varepsilon&gt0(\exists{P}:S(f,P,\alpha)-s(f,P,\alpha)&lt\varepsilon)\Rightarrow
+\forall\varepsilon&gt0\left(\int\limits_a^{b*}f(x)d\alpha-\int\limits_{a*}^bf(x)d\alpha&lt\varepsilon\right)\Rightarrow
+\int\limits_a^{b*}f(x)d\alpha=\int\limits_{a*}^bf(x)d\alpha.$$
+</li>
+</ul>
+
+<br><br>
+
+<p id="Statement8.2.4"><b>Утверждение 8.2.4:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ непрерывна, порождающая функция 
+$\alpha(x):[a,b]\to\mathbb{R}$ не убывает и не постоянна, тогда $f(x)\in\mathcal{R}(\alpha)[a,b]$.
+<p><b>Доказательство:</b> Функция $f(x)$ непрерывна на отрезке $[a,b]$, <a href="./math_analisis5.5.3.html#Theorem5.5.4">следовательно</a>, 
+она равномерно непрерывна на нем. Фиксируем $\varepsilon&gt0$, тогда
+$$\exists\delta&gt0:\forall{x}_1,x_2\in[a,b]\left(|x_1-x_2|&lt\delta\Rightarrow|f(x_1)-f(x_2)|&lt\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\right)$$
+Выберем разбиение $P$ отрезка $[a,b]$ такое, что $\lambda(P)&lt\delta$, тогда 
+$$\forall{i}\in\overline{1,n}\left(\Delta{x}_i&lt\delta\Rightarrow
+\omega(f,\Delta_i):=\sup_{x_1,x_2\in\Delta_i}|f(x_1)-f(x_2)|\leq\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\right)\Rightarrow$$
+$$\Rightarrow{S}(f,P,\alpha)-s(f,P,\alpha)=\sum_{i=1}^n(\omega(f,\Delta_i)\Delta\alpha_i)\leq
+\sum_{i=1}^n\left(\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\Delta\alpha_i\right)=
+\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\sum_{i=1}^n\Delta\alpha_i=\frac{\varepsilon(\alpha(b)-\alpha(a))}{2(\alpha(b)-\alpha(a))}=
+\frac{\varepsilon}{2}&lt\varepsilon$$
+Таким образом для функции $f(x)$ реализован <a href="#Statement8.2.3">критерий интегрируемости по Стилтьесу</a>.
+<br><br>
+
+<p id="Statement8.2.5"><b>Утверждение 8.2.5:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ ограничена и монотонна, порождающая функция 
+$\alpha(x):[a,b]\to\mathbb{R}$ не убывает, не постоянна и непрерывна, тогда $f(x)\in\mathcal{R}(\alpha)[a,b]$.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что функция $f(x)$ ну убывает. Построим разбиение $P=\{x_1,x_2,\dots,x_n\}$
+отрезка $[a,b]$ реализующее <a href="#Statement8.2.3">критерий интегрируемости по Стилтьесу</a>. По 
+<a href="./math_analisis3.3.html#Corollary3.3.2">принципу Архимеда</a> существуе $n\in\mathbb{N}$ такое, что 
+$\displaystyle\frac{(\alpha(b)-\alpha(a))(f(b)-f(a))}{n}&lt\varepsilon$. Так как порождающая функция $\alpha(x)$ непрерывна на отрезке $[a,b]$ и не убывает, 
+то она принимает на все промежуточные значения на $[\alpha(a),\alpha(b)]$, тогда
+<ul>
+<li>1) $x_0:=a$;</li>
+<li>2) 
+$\displaystyle\exists{x}_1&gtx_0:\alpha(x_1)=\alpha(x_0)+\frac{\alpha(b)-\alpha(a)}{n}\Rightarrow
+\Delta\alpha_1=\alpha(x_1)-\alpha(x_0)=\frac{\alpha(b)-\alpha(a)}{n};$
+</li>
+<li>3)
+$\displaystyle\exists{x}_2&gtx_1:\alpha(x_2)=\alpha(x_1)+\frac{\alpha(b)-\alpha(a)}{n}\Rightarrow
+\Delta\alpha_2=\alpha(x_2)-\alpha(x_1)=\frac{\alpha(b)-\alpha(a)}{n};$
+</li>
+<li>$\dots$</li>
+<li>n)
+$\displaystyle\exists{x}_{n-1}&gtx_{n-2}:\alpha(x_{n-1})+\frac{\alpha(b)-\alpha(a)}{n}\Rightarrow
+\Delta\alpha_{n-1}=\alpha(x_{n-1})-\alpha(x_{n-2})=\frac{\alpha(b)-\alpha(a)}{n};$
+</li>
+<li>n+1)
+$\displaystyle{x}_n:=b\Rightarrow\Delta\alpha_n=\alpha(b)-\alpha(a)-(n-1)\frac{\alpha(b)-\alpha(a)}{n}=\frac{\alpha(b)-\alpha(a)}{n}.$
+</li>
+</ul>
+Так как функция $f(x)$ не убывает на $[a,b]$ то она не убывает на $\Delta_i$ для любого $i\in\overline{1,n}$. Следовательно, для любого $i\in\overline{1,n}$
+$\displaystyle{M}_i:=\sup_{x\in\Delta_i}f(x)=f(x_i)$ и $\displaystyle{m}_i:=\inf_{x\in\Delta_i}f(x)=f(x_{i-1})$, тогда
+$$S(f,P,\alpha)-s(f,P,\alpha)=\sum_{i=1}^n((M_i-m_i)\Delta\alpha_i)=\sum_{i=1}^n\left((f(x_i)-f(x_{i-1}))\frac{\alpha(b)-\alpha(a)}{n}\right)=
+\frac{\alpha(b)-\alpha(a)}{n}(f(b)-f(a))&lt\varepsilon.$$
+
+<br><br>
+
+<p id="Statement8.2.6"><b>Утверждение 8.2.6:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ ограничена и имеет конечное число точек разрыва, то 
+$f(x)\in\mathcal{R}[a,b]$.
+<p><b>Доказательство:</b> Пусть функция $f(x)$ имеет на отрезке $[a,b]$ $s$ точек разрыва, обозначим их $\tilde{x}_1,\tilde{x}_2,\dots,\tilde{x}_s$.
+Функция $f(x)$ ограничена на отрезке $[a,b]$ значит существует $K:=\omega(f,[a,b])\in\mathbb{R}$. Построим разбиение $P$ отрезка $[a,b]$
+реализующее <a href="#Statement8.2.3">критерий интегрируемости по Стилтьесу</a> при $\alpha(x)\equiv{x}$.<br>
+Фиксируем $\varepsilon&gt0$. Обозначим $\delta_1:=\frac{\varepsilon}{8Ks}$, 
+$$\bigcup_{j=1}^mI_j:=[a,b]\backslash\bigcup_{k=1}^sU^{\delta_1}(\tilde{x}_k).$$
+Множество $\bigcup_{j=1}^mI_j$ - это разность множества точек отрезка $[a,b]$ и объединения $\delta_1$-окрестностей всех точек разрыва функции $f(x)$. 
+Следовательно, множество $\bigcup_{j=1}^mI_j$ представляет из себя объединение конечного числа отрезков, то есть для любого $j\in\overline{1,m}$ множество
+$I_j$ - отрезок такой, что $f(x)\in{C}(I_j)$. <a href="./math_analisis5.5.3.html#Theorem5.5.4">Следовательно</a>, для любого $j\in\overline{1,m}$
+функция $f(x)$ равномерно непрерывна на отрезке $I_j$. Тогда
+$$\forall{j}\in\overline{1,m}\left(\exists\delta^{(j)}&gt0:\forall{x}_1,x_2\in{I}_j\left(|x_1-x_2|&lt\delta^{(j)}\Rightarrow
+|f(x_1)-f(x_2)|&lt\frac{\varepsilon}{2(b-a)}\right)\right)\quad(10)$$
+Обозначим $\delta:=\min\{\delta_1,\delta^{(1)},\delta^{(2)},\dots,\delta^{(m)}\}$. Выберем разбиение $P:=\{x_1,x_2,\dots,x_n\}$ отрезка $[a,b]$ такое,
+что $\displaystyle\lambda(P):=\max_{1\leq{i}\leq{n}}\Delta{x}_i&lt\delta$, тогда
+$$\forall{i}\in\overline{1,n}\left(\Delta_i\cap\bigcup_{k=1}^sU^{\delta_1}(\tilde{x}_k)=\varnothing\vee
+\Delta_i\cap\bigcup_{k=1}^sU^{(\delta_1)}(\tilde{x}_k)\neq\varnothing)\right)$$
+Пусть числа $\{u_1,u_2,\dots,u_r\}\subset\overline{1,n}$ такие, что для любого $j\in\overline{1,r}$ верно 
+$\displaystyle\Delta_{u_j}\cap\bigcup_{k=1}^sU^{(\delta_1)}(\tilde{x}_k)\neq\varnothing$, а числа 
+$\{v_1,v_2,\dots,v_t\}=\overline{1,n}\backslash\{u_1,u_2,\dots,u_r\}$ такие, что для любого $j\in\overline{1,t}$ верно обратное, то есть
+$\displaystyle\Delta_{v_j}\cap\bigcup_{k=1}^sU^{(\delta_1)}(\tilde{x}_k)=\varnothing$, тогда
+$$S(f,P)-s(f,P)=\sum_{i=1}^n((M_i-m_i)\Delta{x}_i)=\sum_{j=1}^r\left(\left(M_{u_j}-m_{u_j}\right)\Delta{x}_{u_j}\right)+
+\sum_{j=1}^t\left(\left(M_{v_j}-m_{v_j}\right)\Delta{x}_{v_j}\right)$$
+Оценим сверху сумму длин отрезков разбиения $P$ входящих в первую сумму. Для любого $k\in\overline{1,s}$ суммарная длина отрезков разбиения $P$ 
+пересекающихся с окрестностью $U^{\delta_1}(\tilde{x}_k)$ не превосходит суммы длины этой окрестности и двух длин отрезков разбиения $P$. Так как
+$$\lambda(P)&lt\delta\Rightarrow\forall{i}\in\overline{1,n}(\Delta{x}_i&lt\delta)\Rightarrow
+\forall{j}\in\overline{1,r}\left(|\Delta_{u_j}|=\Delta{x}_{u_j}&lt\delta\right)$$
+то для любого $k\in\overline{1,s}$ суммарная длина отрезков разбинения $P$ пересекающихся с окрестностью $U^{\delta_1}(\tilde{x}_k)$ не превосходит
+$2\delta_1+2\delta$. Таким образом 
+$$\sum_{j=1}^r\left(\left(M_{u_j}-m_{u_j}\right)\Delta{x}_{u_j}\right)\leq\sum_{j=1}^r(\omega(f,[a,b])\Delta{x}_{u_j})=K\sum_{j=1}^r\Delta{x}_{u_j}\leq
+K\sum_{j=1}^r(2\delta_1+2\delta)\leq{K}4\delta_1s=4Ks\frac{\varepsilon}{8Ks}=\frac{\varepsilon}{2}$$
+где последнее неравенство справедливо в силу выбора $\delta$.<br>
+Оценим сверху вторую сумму
+$$\forall{j}\in\overline{1,t}\:\exists{k}\in\overline{1,m}:\left(\Delta_{v_j}\subset{I}_k\wedge
+|\Delta_{v_j}|=\Delta{x}_{v_j}\leq\lambda(P)&lt\delta\leq\delta^{(k)}\right)\Rightarrow^{(10)}M_{v_j}-m_{v_j}=\omega(f,\Delta_{v_j})=
+\sup_{x,y\in\Delta_{v_j}}|f(x)-f(y)|\leq\frac{\varepsilon}{2(b-a)}\Rightarrow$$ 
+$$\Rightarrow\sum_{j=1}^t\left(\left(M_{v_j}-m_{v_j}\right)\Delta{x}_{v_j}\right)\leq
+\frac{\varepsilon}{2(b-a)}\sum_{j=1}^t\Delta{x}_{v_j}\leq\frac{\varepsilon}{2(b-a)}(b-a)=\frac{\varepsilon}{2}.$$
+Таким образом
+$$S(f,P)-s(f,P)=\sum_{j=1}^r\left(\left(M_{u_j}-m_{u_j}\right)\Delta{x}_{u_j}\right)+\sum_{j=1}^t\left(\left(M_{v_j}-m_{v_j}\right)\Delta{x}_{v_j}\right)&lt
+\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$
+
+<br><br>
+
+<i>
+<p id="Example8.2.1"><b>Пример 8.2.1:</b> Утверждение сформулировано для интегрируемости по Риману, так как если порождающая функция $\alpha(x)$ 
+произвольная, то оценить таким же образом первую сумму нельзя.<br>
+Например, рассмотрим функцию 
+$f(x)=\begin{cases}0, & -1\leq{x}\leq0\\1, & 0&ltx\leq1\end{cases}$ и порождающую функцию 
+$\alpha(x)=\begin{cases}0, & -1\leq{x}\leq0\\1, & 0&ltx\leq1\end{cases}$.<br>
+Функция $f(x)$ имеет одну точку разрыва на отрезке $[-1,1]$ это точка 0, следовательно, по утверждению 8.2.6 существует интеграл Римана 
+$\int\limits_{-1}^1f(x)dx=1$ (то что она равен 1 несложно вывести непосредственно из <a href="#Definition8.2.6">определения</a>). Однако,
+интеграла Стилтьеса функции $f(x)$ на отрезке $[-1,1]$ относительно порождающей функции $\alpha(x)$ не существует. Так как для любого $0&lt\varepsilon&lt1$
+и для любого разбиения $P$ отрезка $[-1,1]$ один из его отрезков $\Delta_i$ будет содержать точку 0, следовательно, $M_i=1$, $m_i=0$, $\Delta\alpha_i=1$,
+$M_i\Delta\alpha_i=1$, $m_i\Delta\alpha_i=0$ и $S(f,P,\alpha)-s(f,P,\alpha)=1&gt\varepsilon$.  
+</i>
+
+<br><br>
+<a href="./math_analisis8.1.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.2.3.html">next</a>
+</body>
+</html>

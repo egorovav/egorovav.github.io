@@ -1,0 +1,216 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 3.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analisis3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis3.5.html">next</a>
+
+<h4 id="3.3">3.3 Принцип Архимеда.</h4>
+<p>Слово принцип используется не в смысле "без доказательно". Принцип Архимеда, как будет, покзано следует 
+из принципа <a href="./math_analisis3.1.html#Lemma3.1.3.1">верхней (нижней) грани</a>, который в свою очередь следует из 
+<a href="./math_analisis3.1.html#IV">аксиомы полноты</a>.<br>
+
+<p id="Statement3.3.1"><b>Утверждение 3.3.1:</b>Любое ограниченное сверху (снизу) подмножество целых чисел имеет максимальный (минимальный) элемент.<br>
+<p><b>Доказательство:</b> Пусть множество $E\subset\mathbb{Z}$ ограничено сверху. Тогда 
+по принципу <a href="./math_analisis3.1.html#Lemma3.1.3.1">верхней грани</a> существует $s\in\mathbb{R}$ супремум множества $E$:<br>
+($s=\sup{E}\wedge{s}-1&lts)\Rightarrow\exists{n}\in{E}: s-1&ltn\leq{s}$.<br>
+Покажем от противного, что число $n$ - максимум множества $E$. Предположим, что $n$ не максимум $E$, тогда<br>
+$\exists{m}\in{E}:m&gtn\Rightarrow(m-n\in\mathbb{Z}\wedge{m}-n&gt0)\Rightarrow{m}-n\in\mathbb{N}\Rightarrow1\leq{m}-n$,<br>
+где последнее неравенство следует из пункта 5 <a href="./math_analisis3.2.html#Statement3.2.3">утверждения 3.2.3</a>, тогда<br>
+$(s-1&ltn\wedge1\leq{m}-n\Rightarrow{s}&ltn+1\wedge{n}+1\leq{m}\Rightarrow{s}&lt{m}\Rightarrow{s}\neq\sup{E}$<br>
+Получено противоречие с определением $s$.<br>
+
+<p id="Corollary3.3.1"><b>Следствие 3.3.1:</b> 
+<ol>
+<li>Множество натуральных чисел не ограничено сверху.</li>
+<li>Множество рациональных чисел не ограничино сверху.</li>
+<li>Множество рациональных чисел не огранчино снизу.</li>
+</ol>
+
+<p><b>Доказательство:</b> 
+<ol>
+<li>Пусть $n_0=\max\mathbb{N}\in\mathbb{N}$ , но тогда $n_0&ltn_0+1\in\mathbb{N}$. </li>
+<li>Из неограниченности сверху множества $\mathbb{N}$ следует неограниченность снизу множества $-\mathbb{N}$,
+а следовательно неограниченносто множества $\mathbb{Z}$. Из неограниченности множества $\mathbb{Z}$ следует
+неограниченность сверху множества $\mathbb{Q}$.</li>
+<li>Следует из неограниченности множества $\mathbb{Z}$.</li>
+</ol>
+<br>
+
+<p id="Statement3.3.2"><b>Утверждение 3.3.2: Принцип Архимеда.</b><br>
+ $$\forall{x}\in\mathbb{R}, \forall{h}&gt0(\exists!k\in\mathbb{Z}:(k-1)h\leq{x}&ltkh)$$
+<p><b>Доказательство:</b> Рассмотрим множество $M:=\{n\in\mathbb{Z}\:|\:n&gt\frac{x}{h}\}$.<br>
+<ol>
+<li>Множество $M$ ограничено снизу, так как число $\frac{x}{h}$ явялется его минорантой.</li>
+<li>Множестов $M$ не пусто, так как множество $\mathbb{Z}$ не ограничено сверху.</li>
+</ol>
+Следовательно <a href="#Statement3.3.1">по утверждению 3.3.1</a> существует $k:=\min{M}$.<br>
+$k\in{M}\Rightarrow{k}&gt\frac{x}{h}\Rightarrow{k}h&gtx$<br>
+$k=\min{M}\Rightarrow{k}-1\notin{M}\Rightarrow{k}-1\leq\frac{x}{h}\Rightarrow(k-1)h\leq{x}$<br>
+Таким образом число $k=\min{M}$ удовлетворяет условию утверждения.<br>
+С другой стороны если некоторое целое число $k_1$ удовлетворяет условию утверждения, то <br>
+$(k_1-1)h\leq{x}&ltk_1h\Rightarrow(k_1-1)h\leq\frac{x}{h}&ltk_1\Rightarrow(k_1\in{M}\wedge{k}_1-1\notin{M})\Rightarrow{k}_1=\min{M}$<br>
+Поэтому единственность целого числа удовлетворяющего условию утверждения следует из единственности минимально элемента множества $M$.<br>
+
+<p id="Corollary3.3.2"><b>Следствие 3.3.2:</b>
+<ol>
+<li>$\forall\varepsilon&gt0(\exists{n}\in\mathbb{N}:0&lt\frac{1}{n}&lt\varepsilon)$.</li>
+<li>$(x\geq0\wedge\forall{n}\in\mathbb{N}(x&lt\frac1{n}))\Rightarrow{x}=0$.</li>
+<li>$\forall{a},b\in\mathbb{R}(a&ltb\Rightarrow\exists{r}\in\mathbb{Q}:a&ltr&ltb)$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Если в условиях принципа Архимеда положить $h:=\varepsilon, x:=1$, то получим $$\forall\varepsilon&gt0(\exists{n}\in\mathbb{Z}:1&ltn\varepsilon)$$
+$(\varepsilon&gt0\wedge1&ltn\varepsilon)\Rightarrow({n}&gt0\wedge1&ltn\varepsilon)\Rightarrow(n\in\mathbb{N}\wedge\frac1{n}&lt\varepsilon)$</li>
+<li>Утверждение верно, так как противоположное ему $$\exists{x}&gt0:\forall{n}\in\mathbb{N}\left(x&lt\frac1{n}\right)$$
+противоречит пункту 1.</li>
+<li>Так как $a&ltb$, то $b-a&gt0$, тогда по пункту 1 существует $n\in\mathbb{N}$, такое что $0&lt\frac1{n}&ltb-a$.<br>
+Тогда если в условиях принципа Архимеда положить $h:=\frac1{n}, x:=a$, то получим $$\exists{m}\in\mathbb{Z}:(m-1)\frac1{n}\leq{a}&ltm\frac1{n}$$ 
+Тогда в свою очередь
+$$\frac1{n}&ltb-a\Rightarrow\frac1{n}+a&ltb\Rightarrow{b}&gt\frac1{n}+(m-1)\frac1{n}=\frac1{n}+\frac{m}{n}-\frac1{n}=\frac{m}{n}\Rightarrow
+{a}&lt\frac{m}{n}&ltb$$
+</li>
+</ol>
+<br><br>
+<p>Если в условиях принципа Архимеда положить $h:=1$, тогда $$\forall{x}\in\mathbb{R}(\exists!k\in\mathbb{Z}:k-1\leq{x}&ltk).$$
+В этом случае целое число $[x]:=k-1$ называют целой частью действительного числа $x$, a действительное число $\{x\}:=x-[x]$ 
+называют дробной частью действительно числа $x$.<br>
+
+<p id="Definition3.3.1"><b>Определение 3.3.1: Корень из положительного числа.</b><br>
+Пусть дано $a\in\mathbb{R}$ такое, что $a&gt0$, $n\in\mathbb{N}$, такое что $n\geq2$, тогда корнем n-той степени из числа $a$
+будем называть такое число $y$, которое при возведении в степень $n$ равно $x$, то есть $y^n=x$.<br>
+
+<p id="Definition3.3.2"><b>Определение 3.3.2: Арифметический корень из положительного числа.</b><br>
+Если в условиях определения 3.3.1 потребовать чтобы число $y$ было положительно, то оно называется арифметическим корнем из числа $a$.<br>
+
+<p>Доказано, что для любых $x&gt0, n\in\mathbb{N}$ существует единственный $y&gt0$ такой, что $y^n=x$.<br>
+
+<h4 id="3.4">3.4. Некоторые топологические свойства множества вещественных чисел.</h4>
+
+<h5 id="3.4.1">3.4.1 Расширенное множество действительных чисел $\overline{\mathbb{R}}$.</h5>
+
+<i>Перед прочтением этого раздела полезно изучить геометрическую интерпретацию множества действительных чисел например по Зорич т. 1. с. 62.
+Далее в качестве альтернативы термину "действительное число" употребляется термин "точка", при этом подразумевается точка на числовой прямой.</i>
+
+<p id="Definition3.4.1.1"><b>Оперделение 3.4.1.1: Числовые промежутки.</b><br>
+Для любых $a,b\in\mathbb{R}$ таких что $a\leq{b}$
+<ol>
+<li>множество $[a,b]:=\{x\in\mathbb{R}\:|\:a\leq{x}\leq{b}\}$ будем называть отрезком a, b,</li>
+<li>множество $[a,b):=\{x\in\mathbb{R}\:|\:a\leq{x}&ltb\}$ будем называть полуинтервалом a, b открытым справа,</li>
+<li>множество $(a,b]:=\{x\in\mathbb{R}\:|\:a&ltx\leq{b}\}$ будем называть полуинтервалом a, b открытым слева,</li>
+<li>множество $(a,b):=\{x\in\mathbb{R}\:|\:a&ltx&lty\}$ будем называть интервалом a, b.</li>
+</ol>
+Все четыре типа множеств будем называть числовыми промежутками.<br>
+Произвольный числовой промежуток с концами $a,b$ обоазначают $\Delta(a,b)$.<br>
+Длиной числового промежутка с концами $a,b$ называют число $b-a$, и обозначают $|\Delta(a,b)|$.<br>
+Для обозначения неограниченных числовых промежутков используют символы положительной "$+\infty$" и отрицательной "$-\infty$" бесконечности.<br>
+$[a,+\infty):=\{x\in\mathbb{R}\:|\:a\leq{x}\}$<br>
+$(a,+\infty):=\{x\in\mathbb{R}\:|\:a&ltx\}$<br>
+$(-\infty,a]:=\{x\in\mathbb{R}\:|\:x\leq{a}\}$<br>
+$(-\infty,a):=\{x\in\mathbb{R}\:|\:x&lta\}$<br>
+$(-\infty,+\infty):=\mathbb{R}$<br>
+
+<p id="Definition3.4.1.2"><b>Определение 3.4.1.2: Расширенное множество действительных чисел.</b><br>
+Расширенным множество действиельных чисел называют множество $\overline{\mathbb{R}}:=\mathbb{R}\cup\{-\infty\}\cup\{+\infty\}$.<br>
+При этом считаются корректными следующие операции с элементами $-\infty,+\infty$:<br>
+$+\infty+(+\infty):=+\infty$<br>
+$-\infty+(-\infty):=-\infty$<br>
+$+\infty*(+\infty):=+\infty$<br>
+$-\infty*(-\infty):=+\infty$<br>
+$-\infty*(+\infty):=-\infty$<br>
+$\forall{a}\in\mathbb{R}(+\infty+a:=+\infty\wedge-\infty+a:=-\infty)$<br>
+$\forall{a}&gt0(+\infty*a:=+\infty\wedge-\infty*a:=-\infty)$<br>
+$\forall{a}&lt0(+\infty*a:=-\infty\wedge-\infty*a:=+\infty)$<br>
+$\forall{a}\in\mathbb{R}(a&lt+\infty\wedge{a}&gt-\infty)$<br>
+$-\infty&lt+\infty$<br>
+Как видно множество $\overline{\mathbb{R}}$ не замкнуто относительно операций сложения и умножения, так как не определены результаты
+операций $-\infty+(+\infty)$, $+\infty*0$, $-\infty*0$, однако использование символов $-\infty, +\infty$ в некоторых случаях позволяет
+значительно упростить нотацию. Далее везде если символ $\infty$ употребляется без знака, то имеется ввиду, что в данном контексте
+можно употребить как $-\infty$, так $+\infty$, то есть $\infty\sim\pm\infty$.<br>
+
+<h5 id="3.4.2">3.4.2 Окрестность точки.</h5>
+
+<p id="Definition3.4.2.1"><b>Определение 3.4.2.1: Окрестность точки.</b><br>
+Окрестностью точки $x\in\mathbb{R}$ будем называть любой интервал $(a,b)$ такой что $a,b\in\overline{\mathbb{R}}$ и $a&ltx&ltb$.<br>
+При этом, если $a,b\in\mathbb{R}$, то говорят о конечной окрестности точки $x$, а если $a\in\{-\infty,+\infty\}$ или $b\in\{-\infty,+\infty\}$
+то говорят о бесконесной окрестности точки $x$.<br>
+Для обозначения произвольной окрестности точки $x\in\mathbb{R}$ используют выражение $U(x)$, при этом для любого $x\in\mathbb{R}$ считаются
+коректными выражения $U(-\infty):=(-\infty,x)$, $U(+\infty):=(x,+\infty)$<br><br>
+
+<p id="Definition3.4.2.2"><b>Определение 3.4.2.2: Центральносимметричная окрестность.</b><br>
+Для любого $\delta&gt0$ центральнсимметричной $\delta$-окрестностью точки $x$ называют интервал вида $U^\delta(x):=(x-\delta,x+\delta)$<br><br>
+
+<p id="Statement3.4.2.1"><b>Утверждение 3.4.2.1: Простейшие свойства окрестностей.</b>
+<ol>
+<li>$\forall{a}\in\mathbb{R}\:\exists{U}(a)$</li>
+<li>Пересечение двух любых окрестностей одной и той же точки, будет окрестностью этой точки.</li>
+<li>$\forall{a}\in\mathbb{R},\forall{U}_1(a),\forall{U}_2(a)(\exists{U}_3(a):U_3(a)\subsetneq{U}_1(a)\cap{U}_2(a))$</li>
+<li>Свойство отделимости окрестностей для множества действительных чисел.<br>
+$\forall{a},b\in\overline{\mathbb{R}}(a\neq{b}\Rightarrow\exists{U}(a), \exists{U}(b):U(a)\cap{U}(b)=\varnothing)$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<i>
+<li>Так как множество $\mathbb{N}$ не ограничено сверху, то для любого $a\in\mathbb{R}$ существует $n\in\mathbb{N}$ такое,
+что $n&gta$, тогда $-n&lta$, следовательно, интервал $(-n,n)$ будет окрестностью точки $a$.</li>
+<li>Пусть даны две окрестности $(a_1,b_1), (a_2,b_2)$ точки $y\in\mathbb{R}$.<br>
+$x\in(a_1,b_1)\cap(a_2,b_2)\Leftrightarrow(a_1&ltx&ltb_1\wedge{a}_2&ltx&ltb_2)\Leftrightarrow\max\{a_1,a_2\}&ltx&lt\min\{b_1,b_2\}$<br>
+$(a_1&lty&ltb_1\wedge{a}_2&lty&ltb_2)\Rightarrow\max\{a_1,a_2\}&lty&lt\min\{b_1,b_2\}\Rightarrow\max\{a_1,a_2\}&lt\min\{b_1,b_2\}$<br>
+Таким образом интревал $(\max\{a_1,a_2\},\min\{d_1,b_2\})$ является окрестностью точки $y$.
+</li>
+<li>По пункту 2 $(c,d):=U_1(a)\cap{U}_2(a)$ будет окрестностью точки $a$, то есть $c&lta&ltd$. 
+По пункту 3 <a href="#Corollary3.3.1">следствия</a> из принципа Архимеда существуют $r_1,r_2\in\mathbb{Q}$ такие что $c&ltr_1&lta&ltr_2&ltd$,
+следовательно $(r_1,r_2)$ окрестность точки $a$ и $(r_1,r_2)\subsetneq{U}_1(a)\cap{U}_2(a)$  
+</li>
+</i>
+<li> Если $a\notin\mathbb{R}$ или $b\notin\mathbb{R}$, то утвержедение очевидным образом следует из неограниченности множества дейтсвительных чисел.<br>
+Рассмотри случай, когда $a,b\in\mathbb{R}$. Без ограничения общности (б. о. о.) будем считать, что $a&ltb$ (случай $b&lta$ доказывается аналогично).
+$$\delta:=\frac{b-a}{3}\Rightarrow\left(a+\delta=a+\frac{b-a}{3}\wedge{b}-\delta=b-\frac{b-a}{3}\right)\Rightarrow
+\left(a+\delta=\frac{2a+b}{3}\wedge{b}-\delta=\frac{a+2b}{3}\right)$$
+$$a&ltb\Rightarrow{a}+a+b&ltb+a+b\Rightarrow2a+b&lta+2b\Rightarrow\frac{2a+b}{3}&lt\frac{a+2b}{3}\Rightarrow
+{a}+\delta&ltb-\delta\Rightarrow(a-\delta,a+\delta)\cap(b-\delta,b+\delta)=\varnothing$$
+</li>
+</ol><br>
+
+<h5 id="3.4.3">3.4.3 Модуль действительного числа.</h5>
+
+
+<p id="Definition3.4.3.1"><b>Определение 3.4.3.1: Модуль действиельного числа.</b><br>
+Функция $|x|:\mathbb{R}\to\mathbb{R}$ такая что $|x|=\begin{cases}\;\;\;{x},&\quad{x}\geq0\\-x,&\quad{x}&lt0\end{cases}$ называется модулем числа $x$.
+<br><br>
+<p>Свойства модуля:
+<ol>
+<li>$\forall{x}\in\mathbb{R}(0\leq|x|)$</li>
+<li>$|x|=0\Leftrightarrow{x}=0$</li>
+<li>$|xy|=|x||y|$</li>
+<li>Неравенство треугольников <br> $|x+y|\leq|x|+|y|$</li>
+</ol>
+<br>
+
+<p id="Definition3.4.3.2"><b>Определение 3.4.3.2</b> Функция $\rho(x,y):\mathbb{R}^2\to\mathbb{R}$ такая, что для любых $x,y\in\mathbb{R}$ $\rho(x,y)=|x-y|$
+называется расстоянием между точками $x, y$.<br>
+
+<p>Свойства расстояния:
+<ol>
+<li>$\forall{x},y\in\mathbb{R}(0\leq\rho(x,y))$</li>
+<li>$\rho(x,y)=0\Leftrightarrow{x}=y$</li>
+<li>Неравенство треугольников <br> $\forall{x},y,z\in\mathbb{R}(\rho(x,y)\leq\rho(x,z)+\rho(y,z))$</li>
+<li>$\forall{x},y\in\mathbb{R}(\rho(x,y)=\rho(y,x))$</li>
+</ol>
+
+<a href="./math_analisis3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis3.5.html">next</a>
+
+</body>
+</html>

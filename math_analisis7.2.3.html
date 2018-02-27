@@ -1,0 +1,209 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 7.2.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analisis7.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.3.1.html">next</a>
+
+<h5 id="7.2.3">7.2.3 Схема Куммера и следствия из нее: признаки Даламбера, Раабе, Бертрана, Гаусса.</h5>
+
+<p id="Theorem7.2.5"><b>Теорема 7.2.5: Схема Куммера.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$, последовательность $\{c_n\}$ такая, что для любого $n\in\mathbb{N}$
+$c_n&gt0$ и ряд $\sum_{n=1}^\infty\frac1{c_n}$ расходится, для любого $n\in\mathbb{N}$ $K_n:=c_n\frac{a_n}{a_{n+1}}-c_{n+1}$, тогда
+<ol>
+<li>если существуют $\delta&gt0$, $n_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $K_n\geq\delta$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $K_n\leq0$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как
+$$\exists\delta&gt0,\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}\geq\delta\right)\Rightarrow
+\forall{n}&gtn_0(c_na_n-c_{n+1}a_{n+1}\geq{a}_{n+1}\delta&gt0)$$
+то последовательность, $\{c_na_n\}$ убывает и ограничена снизу нулем, так как по условию для любого $n\in\mathbb{N}$ $c_n&gt0$ и $a_n&gt0$.
+<a href="./math_analisis4.3.html#Theorem4.3.2">Следовательно</a>, существует конечный предел $A:=\displaystyle\lim_{n\to\infty}(a_nc_n)$. 
+Рассмотрим ряд $\sum_{n=1}^\infty{b}_n$ такой, что для любого $n\in\mathbb{N}$ $b_n=c_na_n-c_{n+1}a_{n+1}$, тогда
+$$S_n^{(b)}=\sum_{k=1}^nb_n=\sum_{k=1}^n(c_na_n-c_{n+1}a_{n+1})=c_1a_1-c_{n+1}a_{n+1}\Rightarrow\exists\lim_{n\to\infty}S_n^{(b)}=c_1a_1-A$$
+То есть ряд $\sum_{n=1}^\infty{b}_n$ сходится и так как для любого $n\in\mathbb{N}$ $0&lta_{n+1}\delta\leq{b}_n$, 
+<a href="./math_analisis7.2.1.html#Theorem7.2.2">следовательно</a>, ряд $\sum_{n=1}^\infty(a_{n+1}\delta)$ сходится и сходится ряд $\sum_{n=1}^\infty{a}_n$.
+</li>
+<li>
+Так как
+$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}\leq0\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_n}{a_{n+1}}\leq\frac{c_{n+1}}{c_n}\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_n}\geq\frac{c_n}{c_{n+1}}=\frac{\frac1{c_{n+1}}}{\frac1{c_n}}\right)$$
+Так как знакопостоянный ряд $\sum_{n=1}^\infty\frac1{c_n}$ расходится, <a href="./math_analisis7.2.2.html#Corollary7.2.6">то</a> расходится и ряд 
+$\sum_{n=1}^\infty{a}_n$.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.7"><b>Следствие 7.2.7: Допредельная форма признака Даламбера.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$, тогда 
+<ol>
+<li>
+если сушествуют $\delta&gt0$, $n_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $\frac{a_n}{a_{n+1}}-1\geq\delta$, то ряд $\sum_{n=1}^\infty{a}_n$
+сходится.
+</li>
+<br>
+<li>если существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $\frac{a_n}{a_{n+1}}-1\leq1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b> Если для любого $n\in\mathbb{N}$ положить $c_n=1$, то ряд $\sum_{n=1}^\infty\frac1{c_n}$ расходится, значит можем применить схему 
+Куммера, тогда $K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}=\frac{a_n}{a_{n+1}}-1$ и утверждение следует из утверждения схемы Куммера.
+
+<br><br>
+
+<p>Данное утверждение следует так же из <a href="./math_analisis7.2.2.html#Statement7.2.2">признака Даламбера</a>. Действительно, пусть существует предел
+$\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q$, тогда 
+<ol>
+<li>
+$q&lt1\Rightarrow\exists\delta:=\frac{1-q}{2q}&gt0\wedge{q}=\frac1{1+2\delta}$<br>
+Положим $\varepsilon:=\frac1{1+\delta}-\frac1{1+2\delta}=\frac{\delta}{(1+\delta)(1+2\delta)}&gt0$ тогда по 
+<a href="./math_analisis4.1.html#Definition4.1.1">определению предела последовательности</a>
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_n}&ltq+\varepsilon=\frac1{1+2\delta}+\varepsilon=\frac1{1+\delta}\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_n}{a_{n+1}}-1\geq\delta\right)$$
+</li>
+<li>
+$q&gt1\Rightarrow\exists\varepsilon&gt0:q-\varepsilon&gt1$<br>
+Тогда по <a href="./math_analisis4.1.html#Definition4.1.1">определению предела последовательности</a>
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_n}&gtq-\varepsilon&gt1\right)\Rightarrow\forall{n}&gtn_0\left(\frac{a_n}{a_{n+1}}-1\leq0\right)$$
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.8"><b>Следствие 7.2.8: Допредельная форма признака Раабе.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$, тогда
+<ol>
+<li>
+если существуют $\delta&gt0$, $\exists{n}_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $n\left(\frac{a_n}{a_{n+1}}-1\right)\geq1+\delta$, 
+то ряд $\sum_{n=1}^\infty{a}_n$ сходится,
+</li>
+<li>
+если существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $n\left(\frac{a_n}{a_{n+1}}-1\right)\leq1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.
+</li>
+</ol>
+<p><b>Доказательство:</b> Если для любого $n\in\mathbb{N}$ положить $c_n=n$, то ряд $\sum_{n=1}^\infty\frac1{c_n}=\sum_{n=1}^\infty\frac1{n}$
+расходится, значит можем применить <a href="#Theorem7.2.5">схему Куммера</a>, тогда 
+$$K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}=n\frac{a_n}{a_{n+1}}-n-1=n\left(\frac{a_n}{a_{n+1}}-1\right)-1$$
+и утверждение следует из утверждения схемы Куммера.
+
+<br><br>
+
+<p id="Corollary7.2.9"><b>Следствие 7.2.9: Предельная форма признака Раабе.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$ и 
+$\displaystyle\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)$, тогда
+<ol>
+<li>если $p&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если $p&lt1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b> Предельная форма признака Раабе сводится к допредельной форме.
+<ol>
+<li>
+$p&gt1\Rightarrow\exists\delta&gt0:p=1+2\delta$<br>
+Тогда по <a href="./math_analisis4.1.html#Definition4.1.1">определению предела последовательности</a>
+$$\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=p\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|n\left(\frac{a_n}{a_{n+1}}-1\right)-p\right|&lt\delta\right)\Rightarrow
+\forall{n}&gtn_0\left(n\left(\frac{a_n}{a_{n+1}}-1\right)&gtp-\delta=1+\delta\right)$$
+Следовательно, ряд $\sum_{n=1}^\infty{a}_n$ сходится по следствию 7.2.8.
+</li>
+<li>
+$p&lt1\Rightarrow\exists\varepsilon&gt0:p+\varepsilon&lt1$<br>
+Тогда по <a href="./math_analisis4.1.html#Definition4.1.1">определению предела последовательности</a>. 
+$$\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=p\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|n\left(\frac{a_n}{a_{n+1}}-1\right)-p\right|&lt\delta\right)\Rightarrow
+\forall{n}&gtn_0\left(n\left(\frac{a_n}{a_{n+1}}-1\right)&ltp+\varepsilon&lt1\right)$$
+Следовательно, ряд $\sum_{n=1}^\infty{a}_n$ расходится по следствию 7.2.8.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.10"><b>Следствие 7.2.10: Признак Бертрана (промежуточный результат необходимый для доказательства признака Гаусса).</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ и последовательность $\{B_n\}$ такие, что для любого $n\in\mathbb{N}$ $a_n&gt0$, 
+$\displaystyle{B}_n=\left(n\left(\frac{a_{n+1}}{a_n}-1\right)-1\right)\ln{n}$ и $\displaystyle\lim_{n\to\infty}B_n=B$, тогда
+<ol>
+<li>если $B&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если $B&lt1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b> Для любого $n\in\mathbb{N}$ положим $c_n=n\ln{n}$, тогда ряд $\sum_{n=1}^\infty\frac1{c_n}$ 
+<a href="./math_analisis7.2.2.html#Example7.2.9">расходится по признаку Коши-Макларена</a>. Следовательно, можем применить 
+<a href="#Theorem7.2.5">схему Куммера</a>, тогда
+$$K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}=n\ln{n}\frac{a_n}{a_{n+1}}-(n+1)\ln(n+1)=n\ln{n}\frac{a_n}{a_{n+1}}-(n+1)(\ln(n+1)-\ln{n})-(n+1)\ln{n}=$$ 
+$$\left(n\left(\frac{a_n}{a_{n+1}}-1\right)-1\right)\ln{n}-\ln\left(\frac{n+1}{n}\right)^{n+1}=B_n-\ln\left(1+\frac1{n}\right)^{n+1}\Rightarrow
+\lim_{n\to\infty}K_n=B-\lim_{n\to\infty}\ln\left(1+\frac1{n}\right)^{n+1}=B-1$$
+<ol>
+<li>
+Если $B&gt1$, то $\displaystyle\lim_{n\to\infty}K_n=B-1&gt0$, следовательно,
+$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(|K_n-(B-1)|&lt\frac{B-1}{2}\right)\Rightarrow
+\forall{n}&gtn_0\left(K_n&gt(B-1)-\frac{B-1}{2}=\frac{B-1}{2}&gt0\right)$$
+Следовательно, по схеме Куммера ряд $\sum_{n=1}^\infty{a}_n$ сходится.
+</li>
+<li>
+Если $B&lt1$, то $\displaystyle\lim_{n\to\infty}K_n=B-1&lt0$, следовательно
+$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0(|K_n-(B-1)|&lt1-B)\Rightarrow\forall{n}&gtn_0(K_n&lt(B-1)+1-B=0)$$
+Следовательно, по схеме Куммера ряд $\sum_{n=1}^\infty{a}_n$ расходится.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.11"><b>Следствие 7.2.11: Признак Гаусса.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$ и существуют $\lambda,\mu\in\mathbb{R}$, $\delta&gt0$, $n_0\in\mathbb{N}$
+и ограниченная последовательность $\{\theta_n\}$ такие, что для любого $n&gtn_0$ 
+$\displaystyle\frac{a_n}{a_{n+1}}=\lambda+\frac{\mu}{n}+\frac{\theta_n}{n^{1+\delta}}$, тогда
+<ol>
+<li>если $\lambda&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится, а если $\lambda&lt1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится;</li><br>
+<li>если $\lambda=1$ и $\mu&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li><br>
+<li>если $\lambda=1$ и $\mu\leq1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как 
+$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\frac{a_n}{a_{n+1}}=\lambda+\frac{\mu}{n}+\frac{\theta_n}{n^{1+\delta}}\right)\Rightarrow
+\lim_{n\to\infty}\frac{a_n}{a_{n+1}}=\lim_{n\to\infty}\left(\lambda+\frac{\mu}{n}+\frac{\theta_n}{n^{1+\delta}}\right)=\lambda$$
+то утверждение следует из <a href="./math_analisis7.2.2.html#Statement7.2.2">признака Даламбера</a>.
+</li>
+<br>
+Пусть $\lambda=1$, тогда 
+$$n\frac{a_n}{a_{n+1}}-n=n+\mu+\frac{\theta_n}{n^\delta}-n=\mu+\frac{\theta_n}{n^\delta}\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(n\left(\frac{a_n}{a_{n+1}}-1\right)=\mu+\frac{\theta_n}{n^\delta}\right)\Rightarrow
+\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=\mu$$
+<li>
+Так как $\displaystyle\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=\mu$, то утверждение следует из 
+<a href="#Corollary7.2.9">признака Раабе</a>.
+</li>
+<li>
+Так как $\displaystyle\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=\mu$, то при $\mu&lt1$, ряд $\sum_{n=1}^\infty{a}_n$
+расходится по <a href="#Corollary7.2.9">признаку Раабе</a>.<br>
+Если $\mu=1$, тогда в условиях <a href="#Corollary7.2.10">признака Бертрана</a>
+$$B_n=\left(n\frac{a_n}{a_{n+1}}-n-1\right)=\left(n\lambda+\mu+\frac{\theta_n}{n^\delta}-n-1\right)\ln{n}=\theta_n\frac{\ln{n}}{n^\delta}\Rightarrow
+\lim_{n\to\infty}B_n=\lim_{n\to\infty}\left(\theta_n\frac{\ln{n}}{n^\delta}\right)=0&lt1$$
+Следоваетльно, по признаку Бератрана ряд $\sum_{n=1}^\infty{a}_n$ расходится.
+</li>
+</ol>
+
+<br><br>
+<a href="./math_analisis7.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.3.1.html">next</a>
+</body>
+</html>

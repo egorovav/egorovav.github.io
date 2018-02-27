@@ -1,0 +1,332 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 5.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'],['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script> 
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis5.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis5.4.1.html">next</a>
+
+<h4 id="5.3">5.3 Вопросы существования предела функции.</h4>
+
+<h5 id="5.3.1">5.3.1 Критерий Коши существования предела функции.</h5>
+
+<p id="Definition5.3.1"><b>Определение 5.3.1</b> Пусть $X\subset\mathbb{R},f(x):X\to\mathbb{R}$, тогда
+число $\omega(f,X):=\sup\{|f(x')-f(x'')|\:|\:x',x''\in{X}\}$ называется колебанием функции $f(x)$ на множестве $X$.
+
+<br><br>
+
+<p id="Theorem5.3.1"><b>Теорема 5.3.1: Критерий Коши существования предела функции.</b><br>
+Пусть $f(x):E\to\mathbb{R},a\in\mathring{E}\subset\overline{\mathbb{R}}$, тогда
+$$\exists\lim_{E\ni{x}\to{a}}f(x)\in\mathbb{R}\Leftrightarrow
+\forall\varepsilon&gt0(\exists{U}(a):\forall{x}',x''\in\mathring{U}_E(a)(|f(x')-f(x'')|&lt\varepsilon))\quad(1)$$
+Если дополнительно потребовать, что $a\in\mathbb{R}$, то утверждение (1) можно сформулировать следующим образом
+$$\exists\lim_{E\ni{x}\to{a}}f(x)\in\mathbb{R}\Leftrightarrow
+\forall\varepsilon&gt0(\exists\delta&gt0:\forall{x}',x''\in{E}(0&lt|x'-a|&lt\delta\wedge0&lt|x''-a|&lt\delta\Rightarrow|f(x')-f(x'')|&lt\varepsilon))\quad(2)$$
+Используя введенное выше понятие колебания функции на множестве утверждение (1) можно сформулировать следующим образом
+$$\exists\lim_{E\ni{x}\to{a}}f(x)\in\mathbb{R}\Rightarrow\forall\varepsilon&gt0(\exists{U}(a):\omega(f,\mathring{U}_E(a))&lt\varepsilon)\quad(3)$$
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Фиксируем $\varepsilon&gt0$, тогда
+$$\lim_{E\ni{x}\to{a}}f(x)=A\Rightarrow\exists{U}(a):\forall{x}\in\mathring{U}_E(a)\left(|f(x)-A|&lt\frac\varepsilon{2}\right)\Rightarrow$$
+$$\Rightarrow\forall{x}',x''\in\mathring{U}_E(a)\left(|f(x')-f(x'')|=|(f(x')-A)-(f(x'')-A)|\leq|f(x')-A|+|f(x'')-A|&lt
+\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon\right)$$
+</li>
+<li>$\Leftarrow)$<br>
+Факт существования конечного предела функции $f(x)$ при $E\ni{x}\to{a}$ докажем с помощью 
+<a href="./math_analisis5.1.html#Statement5.1.2">критерия существования предела функции по Гейне</a>.<br>
+Фиксируем $\varepsilon&gt0$, тогда по условию
+$$\exists{U}(a):\forall{x}',x''\in\mathring{U}_E(a)(|f(x')-f(x'')|&lt\varepsilon)$$
+Фиксируем последовательность $\{x_n\}$ из $E\backslash\{a\}$ такую, что $\displaystyle\lim_{E\ni{x}\to{a}}x_n=a$, тогда
+$$\lim_{n\to\infty}x_n=a\Rightarrow\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in\mathring{U}_E(a))\Rightarrow
+\forall{n}&gtk,\forall{m}&gtk(x_n,x_m\in\mathring{U}_E(a)\Rightarrow|f(x_n)-f(x_m)|&lt\varepsilon)$$
+Таким образом последовательность $\{f(x_n)\}$ <a href="./math_analisis4.3.html#Definition4.3.1">фундаментальна</a> и, следовательно, по
+<a href="./math_analisis4.3.html#Theorem4.3.1">критерию Коши существования предела последовательности</a> последовательность $\{f(x_n)\}$
+сходится.<br>
+Для реализации критерия существования передела функции по Гейне осталось доказать, что для любой последовательности $\{x_n\}$ из $E\backslash\{a\}$
+последовательности $\{f(x_n)\}$ сходятся к одному и тому же пределу, не зависящему от выбора последовательности $\{x_n\}$. Доказательство
+проведем от противного, предположим, что существуют последовательности $\{x'_n\},\{x''_n\}$ такие, что 
+$$\lim_{n\to\infty}x'_n=\lim_{n\to\infty}x''_n=a\wedge\lim_{n\to\infty}f(x'_n)=A_1\wedge\lim_{n\to\infty}f(x''_n)=A_2\wedge{A}_1\neq{A}_2$$
+Рассмотрим последовательность $\{x'''_n\}$ такую, что для любого $n\in\mathbb{N}$ $x'''_n=\begin{cases}x''_k,n=2k\\x'_k,n=2k-1\end{cases}$, 
+то есть $\{x'''_n\}=\{x'_1,x''_1,x'_2,x''_2,\dots,x'_s,x''_s,\dots\}$. Проверим, что последовательность $\{x'''_n\}$ сходится к $a$.<br>
+Фиксируем окрестность $U(a)$. Тогда по <a href="./math_analisis4.1.html#Definition4.1.1">определению предела последовательности</a>
+$$\lim_{n\to\infty}x'_n=a\Rightarrow\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1(x'_n\in{U}(a))$$
+$$\lim_{n\to\infty}x''_n=a\Rightarrow\exists{n}_2\in\mathbb{N}:\forall{n}&gtn_2(x''_n\in{U}(a))$$
+следовательно, по построению последовательности $\{x'''_n\}$ 
+$$\exists{n}_0:=2\max\{n_1,n_2\}+1:\forall{n}&gtn_0(x'''_n\in{U}(a))\Rightarrow\lim_{n\to\infty}x'''_n=a.$$
+Следовательно, по доказанному, последовательность $\{f(x'''_n)\}$ сходится, но она имеет как минимум два различных частичных предела
+$\displaystyle\lim_{n\to\infty}x'''_{n_{2k}}=\lim_{n\to\infty}x''_n=A_1$ и $\displaystyle\lim_{n\to\infty}x'''_{n_{2k-1}}\lim_{n\to\infty}x'_{n}=A_2$.
+Таким образом получено противоречие с <a href="./math_analisis4.4.html#Statement4.4.3">утверждением 4.4.3</a>
+</li>
+</ul>
+
+<br><br>
+
+<p>Логическое отрицание критерия Коши существования предела функции.
+$$\exists\varepsilon&gt0:\forall{U}(a)(\exists{x'},x''\in\mathring{U}_E(a):|f(x')-f(x'')|\geq\varepsilon)$$
+
+<br><br>
+
+<p id="Task5.3.1"><b>Задача 5.3.1:</b> Доказать эквивалентность формулировок критерия Коши существования предела функции.
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>$(1)\Leftrightarrow(2)$ при $a\in\mathbb{R}$<br>
+Фиксируем $\varepsilon&gt0$.
+<ul>
+<li>$\Rightarrow)$<br>
+$$\exists{U}(a):\forall{x}',x''\in\mathring{U}_E(a)(|f(x')-f(x'')|&lt\varepsilon)$$
+$$\exists\delta&gt0:U^\delta(a)\subset{U}(a)\Rightarrow\forall{x}',x''\in{E}(0&lt|x'-a|&lt\delta\wedge0&lt|x''-a|&lt\delta\Rightarrow
+{x}',x''\in\mathring{U}_E(a)\Rightarrow|f(x')-f(x'')|&lt\varepsilon)$$
+</li>
+<li>$\Leftarrow)$<br>
+$$\exists\delta&gt0:\forall{x}',x''\in{E}({x}',x''\in\mathring{U}{}^\delta(a)\Rightarrow0&lt|x'-a|&lt\delta\wedge0&lt|x''-a|&lt\delta\Rightarrow
+|f(x')-f(x'')|&lt\varepsilon)$$
+</li>
+</ul>
+</li>
+<li>$(1)\Leftrightarrow(3)$<br>
+Фиксируем $\varepsilon&gt0$.
+<ul>
+<li>$\Rightarrow)$<br>
+$$\exists{U}(a):\forall{x}',x''\in\mathring{U}_E(a)\left(|f(x')-f(x'')|&lt\frac\varepsilon{2}\right)\Rightarrow\omega(f,\mathring{U}_E(a))&lt\varepsilon$$
+</li>
+<li>$\Leftarrow)$<br>
+$$\omega(f,\mathring{U}_E(a))&lt\varepsilon\Rightarrow\forall{x}',x''\in\mathring{U}_E(a)(|f(x')-f(x'')|\leq\omega(f,\mathring{U}_E(a))&lt\varepsilon)$$
+</li>
+</ul>
+</li>
+</ol>
+</i>
+
+<h5 id="5.3.2">5.3.2 Предел композиции функций (сложной функции).</h5>
+
+<p>Приводимая ниже теорема помимо чисто теоритического значения имеет огромное практическое значение, так как является удобным
+способом вычисления пределов функций.
+
+<br><br>
+
+<p id="Theorem5.3.2"><b>Теорема 5.3.2:</b> Пусть для функций $f(x):E\to\mathbb{R}$, $F(y):Y\to\mathbb{R}$, где 
+$f(E)\subset{Y},a\in\mathring{E}\subset\overline{\mathbb{R}}$, $b\in\mathring{Y}\subset\overline{\mathbb{R}}$
+выполнены две предпосылки
+<ol>
+<li>$\displaystyle\lim_{E\ni{x}\to{a}}f(x)=b\wedge\lim_{Y\ni{y}\to{b}}F(y)=A\in\overline{\mathbb{R}}$</li>
+<li>$\exists{U}^*(a):\forall{x}\in\mathring{U}{}^*_E(a)(f(x)\neq{b})$</li>
+</ol>
+тогда<br> $\displaystyle\lim_{E\ni{x}\to{a}}F(f(x))=A$
+<p><b>Доказательство:</b> Фиксируем окрестность $V(A)$. Тогда по <a href="./math_analisis5.1.html#Definition5.1.1">определению предела функции</a>
+$$\lim_{Y\ni{y}\to{b}}F(y)=A\Rightarrow\exists{U}(b):\forall{y}\in\mathring{U}_Y(b)(F(y)\in{V}(A))\quad(*)$$
+$$(\lim_{E\ni{x}\to{a}}f(x)=b\wedge{f}(E)\subset{Y})\Rightarrow\exists{U}'(a):\forall{x}\in\mathring{U}{}'_E(a)(f(x)\in{U}_Y(b))\Rightarrow$$
+$$\Rightarrow\exists{U}(a):=U^*(a)\cap{U}'(a):\forall{x}\in\mathring{U}_E(a)(f(x)\neq{b}\wedge{f}(x)\in{U}_Y(b))\Rightarrow
+\forall{x}\in\mathring{U}_E(a)(f(x)\in\mathring{U}_Y(b))\Rightarrow^{(*)}\forall{x}\in\mathring{U}_E(a)(F(f(x))\in{V}(A))$$
+
+<br><br>
+
+<p id="Example5.3.1"><b>Пример 5.3.1: Контрпример к условию (2) теоремы.</b><br>
+${E}:=\mathbb{R},a=0,f(x)=x\sin\frac1{x},b:=\displaystyle\lim_{E\ni{x}\to{a}}f(x)=0$<br>
+$\displaystyle{Y}:=\mathbb{R},F(y):=\begin{cases}\ln|y|,y\neq0\\0,\quad\;\;{y}=0\end{cases},\lim_{Y\ni{y}\to{b}}F(Y)=-\infty$<br>
+Первое условие теоремы вполнено, но не выполнено второе так как по пункту 1 
+<a href="./math_analisis3.3.html#Corollary3.3.2">следствия из принципа Архимеда</a> для любого $\varepsilon&gt0$ существует $n\in\mathbb{N}$
+такое, что $\frac1{\pi{n}}&lt\varepsilon$ и $f(\frac1{\pi{n}})=\frac1{\pi{n}}\sin{\pi{n}}=0$. Следовательно, любая окрестность $a=0$
+содержит точку $x=\frac1{\pi{n}}$ такую что $f(x)=0=b$. Докажем, что функция $F(f(x))$ не имеет предела при $E\ni{x}\to{0}$.
+$$F(f(x))=\begin{cases}\ln|x\sin\frac1{x}|, & x\neq\frac1{\pi{n}}\\0, & {x}=\frac1{\pi{n}}\end{cases}$$
+Рассмотрим две последовательности $\{x'_n\},\{x''_n\}$ из $E$ такие, что для любого $n\in\mathbb{N}$ 
+$\displaystyle{x}'_n=\frac1{\pi{n}},x''_n=\frac1{\frac{\pi}{2}+\pi{n}}$, тогда
+$$\forall{n}\in\mathbb{N}\left(F(f(x'_n))=F\left(f\left(\frac1{\pi{n}}\right)\right)=F\left(\frac1{\pi{n}}\sin\pi{n}\right)=F(0)=0\right)\Rightarrow
+\lim_{n\to\infty}F(f(x'_n))=0$$
+$$\forall{n}\in\mathbb{N}\left(F(f(x''_n))=F\left(f\left(\frac1{\frac{\pi}{2}+\pi{n}}\right)\right)=
+F\left(\frac1{\frac{\pi}{2}+\pi{n}}\sin\left(\frac{\pi}{2}+\pi{n}\right)\right)=ln\frac1{\frac{\pi}{2}+\pi{n}}\right)\Rightarrow
+\lim_{n\to\infty}F(f(x''_n))=-\infty$$
+Таким образом $\displaystyle\lim_{n\to\infty}x'_n=\lim_{n\to\infty}x''_n=0$, но последовательности $\{f(x'_n)\}$ и $\{f(x''_n)\}$
+имеют разные пределы. Следовательно, в соответствии с 
+<a href="./math_analisis5.1.html#Statement5.1.2">критерием существования предела функции по Гейне</a>, функция $F(f(x))$ не имеет предела
+при $E\ni{x}\to{a}$.
+
+<br><br>
+
+<p id="Corollary5.3.1"><b>Следствие 5.3.1</b> Пусть для функций $f(x):E\to\mathbb{R}$, $F(y):Y\to\mathbb{R}$, где 
+$f(E)\subset{Y},a\in\mathring{E},b\in\mathring{Y},A\in\overline{\mathbb{R}}$ выполнены условия
+<ol>
+<li>существуют окрестности ${U}^*(a),{U}^{**}(b)$ такие, что функция $f(x):\mathring{U}{}^*_E(a)\to\mathring{U}{}^{**}_Y(b)$ биективна,</li>
+<li>$\displaystyle\lim_{E\ni{x}\to{a}}f(x)=b$,</li>
+<li>$\displaystyle{f}^{-1}(y):\mathring{U}{}^{**}_Y(b)\to\mathring{U}{}^*_E(a):\lim_{\mathring{U}{}^{**}_Y(b)\ni{y}\to{b}}f^{-1}(y)=a$,</li>
+</ol> 
+тогда<br>
+$\displaystyle\lim_{Y\ni{y}\to{b}}F(y)=A\Leftrightarrow\lim_{E\ni{x}\to{a}}F(f(x))=A$.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Из первой предпосылки следует, что $f(\mathring{U}{}^*_E(a))=\mathring{U}{}^{**}_Y(b)$ и так как $b\notin\mathring{U}{}^{**}_Y(b)$,
+то для любого $x\in\mathring{U}{}^*_E(a)$ $f(x)\neq{b}$. Следовательно, для функций $f(x)$ и $F(y)$ выполнены условия 
+<a href="#Theorem5.3.2">теоремы о пределе композиции</a>, и тогда $\displaystyle\lim_{E\ni{x}\to{a}}F(f(x))=A$.
+</li>
+<li>$\Leftarrow)$<br>
+Рассмотрим функцию $F'(x):=F(f(x)):E\to\mathbb{R}$.
+Из первой предпосылки следует, что $f^{-1}(\mathring{U}{}^{**}_Y(b))=\mathring{U}{}^*_E(a)$ и так как $a\notin\mathring{U}{}^*_E(a)$,
+то для любого $y\in\mathring{U}{}^{**}_Y(b)$ $f^{-1}(y)\neq{a}$. Таким образом для пары функций $f^{-1}(y)$ и $F'(x)$ можно 
+применить <a href="#Theorem5.3.2">теорему о пределе композиции функций</a>, тогда
+$$(\lim_{\mathring{U}{}^{**}_Y(b)\ni{y}\to{b}}f^{-1}(y)=a\wedge\lim_{E\ni{x}\to{a}}F'(x)=\lim_{E\ni{x}\to{a}}F(f(x))=A)\Rightarrow
+\lim_{\mathring{U}{}^{**}_Y(b)\ni{y}\to{b}}F'(f^{-1}(y))=A$$
+Фиксируем окрестнось $V(A)$, тогда по <a href="./math_analisis5.1.html#Definition5.1.1">опредлению предела</a> для функции $F'(f^{-1}(y))$ 
+по множеству $\mathring{U}^{**}_Y(b)$
+$$\exists{U}'(b):\forall{y}\in\mathring{U}{}'(b)\cap{U}^{**}_Y(b)(F'(f^{-1}(y))\in{V}(A))\Rightarrow
+\exists{U}(b):=U'(b)\cap{U}^{**}(b):\forall{y}\in\mathring{U}_Y(F'(f^{-1}(b))=F(f(f^{-1}(y)))=F(y)\in{V}(A))\Rightarrow\lim_{Y\ni{y}\to{b}}F(y)=A.$$
+</li>
+</ul>
+
+<h5 id="5.3.3">5.3.3 Предел монотонной функции.</h5>
+
+<p id="Definition5.3.3"><b>Определение 5.3.3:</b> Будем говорить, что функция $f(x):E\to\mathbb{R}$ является
+<ol>
+<li>неубывающей на множестве $E$, если $$\forall{x}_1,x_2\in{E}(x_1&gtx_2\Rightarrow{f}(x_1)\geq{f}(x_2)),$$</li>
+<li>возрастающей на множестве $E$, если $$\forall{x}_1,x_2\in{E}(x_1&gtx_2\Rightarrow{f}(x_1)\&gtf(x_2)),$$</li>
+<li>невозраствющей на множестве $E$, если $$\forall{x}_1,x_2\in{E}(x_1&gtx_2\Rightarrow{f}(x_1)\leq{f}(x_2)),$$</li>
+<li>убывающей на множестве $E$, если $$\forall{x}_1,x_2\in{E}(x_1&gtx_2\Rightarrow{f}(x_1)&ltf(x_2)).$$</li>
+</ol>
+Любую из четырех видов функций будем называть монотонной. Функции вида 2, 4 называют строго монотонными. 
+
+<br><br>
+
+<i>
+Для строгомонотонной функции верно и обратное. Например, для возрастающей функции, если $f(x_1)&gtf(x_2)$, то $x_1&gtx_2$.
+Доказывается от противного: предположим, что $f(x_1)&gtf(x_2)$ и $x_1\leq{x}_2$, тогда $x_1&ltx_2$ и по возрастанию $f(x_1)&ltf(x_2)$.
+</i>
+
+<br><br>
+
+<p id="Theorem5.3.3"><b>Теорема 5.3.3: Теорема о пределе монотонной функции. Вариант теоремы для неубывающей функции.</b><br>
+Пусть функция $f(x):E\to\mathbb{R}$ не убывает на множестве $E$, $s:=\sup{E}\in\overline{\mathbb{R}}$, $i:=\inf{E}\in\overline{\mathbb{R}}$,
+$s\in\mathring{E},i\in\mathring{E}$, тогда
+<ol>
+<li>существует конечный предел $\displaystyle\lim_{E\ni{x}\to{s}}f(x)$ тогда и только тогда, когда $f(x)$ ограничена сверху на $E$,</li>
+<li>существует конечный предел $\displaystyle\lim_{E\ni{x}\to{i}}f(x)$ тогда и только тогда, когда $f(x)$ ограничена снизу на $E$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+<ul>
+<li>$\Rightarrow)$<br>
+Если $s\in{E}$, то по неубыванию функции $f(x)$ число $f(s)$ является мажорантой множества ее значений.<br>
+Если $s\notin{E}$, тогда
+$$A:=\lim_{E\ni{x}\to{s}}f(x)\Rightarrow\forall\varepsilon&gt0(\exists{U}(s):\forall{x}\in{E}(x\in\mathring{U}(s)\Rightarrow|f(x)-A|&lt\varepsilon))$$
+$$\varepsilon:=2|A|\Rightarrow\exists{U}^*(x):\forall{x}\in{E}(x\in\mathring{U}(s)\Rightarrow|f(x)-A|&lt2|A|\Rightarrow{f}(x)-A&lt2|A|\Rightarrow
+{f}(x)&lt2|A|+A)$$
+$$M_0:=2|A|+A&gt0\Rightarrow\forall{x}\in\mathring{U}{}^*_E(s)(f(x)\leq{M}_0)$$
+$$x\notin{U}^*(s):=(\alpha,\beta)\Rightarrow(x\leq\alpha\wedge\alpha&lts\wedge{x}\in\mathring{E})\Rightarrow
+(x\leq\alpha\wedge\exists{x}'\in{E}:\alpha&lt{x}'&lts)\Rightarrow{x}&ltx'\Rightarrow{f}(x)\leq{f}(x')\leq{M}_0\Rightarrow\forall{x}\in{E}(f(x)\leq{M}_0)$$
+Необходимо было рассмотреть случай $s\in{E}$ отдельно, потому что, если $s\in{E}$, то возможно, что точка $f(s)$ будет изолированной в множестве
+$f(E)$ и тогда может быть $M_0&lt{f}(s)$. Например, $E:=(0,1], f(x)=\begin{cases}x,x\in(0,1)\\5,x=1\end{cases}$, тогда $s=1,f(s)=5,M_0=3$, так как
+$\displaystyle\lim_{E\ni{x}\to1}f(x)=1$, и $M_0$ не является мажорантой множества $f(E)$.
+</li>
+<li>$\Leftarrow)$<br>
+Если функция $f(x)$ <a href="./math_analisis5.1.html#Definition5.1.3">ограничена</a> сверху на множестве $E$, то по 
+<a href="./math_analisis3.1.html#Lemma3.1.3.1">принципу верхней грани</a> множество $f(E)$ имеет конечный супремум 
+$A:=\sup\{f(x)\:|\:x\in{E}\backslash\{s\}\}$.
+Покажем, что $\displaystyle{A}=\lim_{E\ni{x}\to{s}}f(x)$. Фиксируем $\varepsilon&gt0$.
+$$A=\sup\{f(x)\:|\:x\in{E}\backslash\{s\}\}\Rightarrow\exists{x}_0\in{E}\backslash\{s\}:f(x_0)&gtA-\varepsilon$$
+Так как $f(x)$ не убывает, то
+$$(s=\sup{E}\wedge{x}_0\neq{s})\Rightarrow{x}_0&lts\Rightarrow\exists{U}(s):=(x_0,+\infty):\forall{x}\in\mathring{U}_E(s)(x&gtx_0)\Rightarrow
+\forall{x}\in\mathring{U}_E(s)(f(x)\geq{f}(x_0)&gtA-\varepsilon)$$
+С другой стороны 
+$$A=\sup\{f(x)\:|\:x\in{E}\backslash\{s\}\}\Rightarrow\forall{x}\in\mathring{U}_E(f(x)\leq{A}&ltA+\varepsilon)\Rightarrow
+\forall{x}\in\mathring{U}_E(s)(|f(x)-A|&lt\varepsilon).$$
+</li>
+</ul>
+</li>
+<li>Доказывается аналогично пункту 1.</li>
+</ol>
+
+<br><br>
+
+<p>Получим несколько типичный следствий.
+
+<p id="Corollary5.3.2"><b>Следствие 5.3.2</b> Если функция $f(x):E\to\mathbb{R}$ не убывает на $E$, $s:=\sup{E},i:=\inf{E}$,
+$s\in\mathring{E},i\in\mathring{E}$, тогда
+<ol>
+<li>предел $\displaystyle\lim_{E\ni{x}\to{s}}f(x)$ равен $+\infty$ тогда и только тогда, когда функция $f(x)$ не ограничена сверху на множестве $E$,</li>
+<li>предел $\displaystyle\lim_{E\ni{x}\to{i}}f(x)$ равен $-\infty$ тогда и только тогда, когда функция $f(x)$ не ограничена снизу на множестве $E$.</li>
+</ol>
+<p><b>Доказательство:</b> 
+<ol>
+<li>
+<ul>
+<li>$\Rightarrow)$<br>
+Докажем от противного. Предположим, что $\displaystyle\lim_{E\ni{x}\to{s}}f(x)=+\infty$ и $f(x)$ ограничена сверху на $E$. 
+Но это противоречин теореме, так как из ограниченности следует существование конечного предела $\displaystyle\lim_{E\ni{x}\to{s}}f(x)$.
+</li>
+<li>$\Leftarrow)$<br>
+Фиксируем окрестность $V(+\infty):=(a,+\infty)$, где $a\in\mathbb{R}$.<br>
+Функция $f(x)$ не ограничена сверху на $E$, следовательно, она не ограничена сверху и на $E\backslash\{s\}$, 
+тогда существует $x_0\in{E}\backslash\{s\}$ такое, что $f(x_0)&gta$.
+$$(s=\sup{E}\wedge{x}_0\neq{s})\Rightarrow{x}_0&lts\Rightarrow\exist{U}(s):=(x_0,+\infty):\forall{x}\in\mathring{U}_E(s)(x&gtx_0)\Rightarrow
+\forall{x}\in\mathring{U}_E(s)(f(x)\geq{f}(x_0)&gta)\Rightarrow\forall{x}\in\mathring{U}_E(f(x)\in{V}(+\infty)).$$
+</li>
+</ul>
+</li>
+<li>Доказывается аналогично пункту 1.</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary5.3.3"><b>Следствие 5.3.3: Монотонные функции и <a href="./math_analisis5.1.html#Definition5.1.5">односторонние пределы</a>.</b><br>
+Если функция $f(x):E\to\mathbb{R}$ не убывает на $E$, $a\in\mathring{E}{}^+_a\cap\mathring{E}{}^-_a$, тогда
+$$\exists{f}(a-0)\wedge\exists{f}(a+0)\wedge{f}(a-0)\leq{f}(a+0)$$
+<p><b>Доказательство:</b>Так как функция $f(x)$ не убывает, то
+$$a\in\mathring{E}{}^+_a\Rightarrow\exists{a}_0\in{E}:(a_0&gta)\Rightarrow\forall{x}\in{E}^-_a(x&lta&lta_0)\forall{x}\in{E}^-_a(f(x)\leq{f}(a_0))$$
+Следовательно, функция $f(x)$ ограничена сверху на множестве ${E}^-_a$.
+Тогда по <a href="#Theorem5.3.3">теореме 5.3.3</a>
+$$a\in\mathring{E}{}^-_a\Rightarrow{a}=\sup{E}^-_a\Rightarrow\exists{f}(a-0):=\lim_{E^-_a\ni{x}\to{a}}f(x)=\sup({f}(E^-_a))\in\mathbb{R}$$
+Аналогично доказывается, что 
+$$\exists{f}(a+0):=\lim_{E^+_a\ni{x}\to{a}}f(x)=\inf(f(E^+_a))\in\mathbb{R}$$
+По неубыванию функции $f(x)$ имеем
+$$\forall{x}'\in{E}^-_a,\forall{x}''\in{E}^+_a(x'&ltx'')\Rightarrow\forall{x}'\in{E}^-_a,\forall{x}''\in{E}^+_a(f(x')\leq{f}(x''))\Rightarrow$$
+$$\Rightarrow\forall{x}\in{E}^+_a(\sup(f(E^-_a))=f(a-0)\leq{f}(x))\Rightarrow{f}(a-0)\leq\inf(f(E^+_a))=f(a+0))\Rightarrow{f}(a-0)\leq{f}(a+0).$$
+
+<br><br>
+
+<p id="Corollary5.3.4"><b>Следствие 5.3.4: Один типичный частный случай следствия 5.3.3.</b><br>
+Пусть $E:=(\alpha,\beta)$, функция $f(x):E\to\mathbb{R}$ не убывает на $E$, тогда
+$$\forall{x}_0\in(\alpha,\beta)(\exists{f}(x_0-0)\wedge\exists{f}(x_0+0)\wedge{f}(x_0-0)\leq{f}(x_0+0))$$
+<p><b>Доказательство:</b>
+<i>Утверждение следует из следствия 5.3.3, так как если $E=(\alpha,\beta),a\in{E}$, то $a\in\mathring{E}{}^+_a\cap\mathring{E}{}^-_a$.</i>
+
+<br><br>
+
+<p id="Corollary5.3.5"><b>Следствие 5.3.5:</b> Пусть $f(x):(\alpha,\beta)\to\mathbb{R}$, тогда
+$$\forall{x}_0\in(\alpha,\beta)(\exists\lim_{(\alpha,\beta)\ni{x}\to{x}_0}f(x)\in\mathbb{E})\Leftrightarrow{f}(x_0-0)=f(x_0+0)$$
+<p><b>Доказательство:</b> 
+<i>
+Из пункта 3 <a href="./math_analisis3.3.html#Corollary3.3.2">следствия из принципа Архимеда</a> следует, что 
+если $E=(\alpha,\beta),a\in{E}$, то $a\in\mathring{E}{}^+_a\cap\mathring{E}{}^-_a$. И тогда утверждение следует из решения 
+<a href="./math_analisis5.1.html#Task5.1.1">задачи 5.1.1</a>.
+</i>
+
+<br><br>
+
+<p id="Definition5.3.4"><b>Определение 5.3.4:</b> Пусть $f(x):E\to\mathbb{R},a\in\mathring{E}$, тогда число $A\in\overline{\mathbb{R}}$
+является частичным пределом функции $f(x)$ при $E\ni{x}\to{a}$, если существует последовательность $\{x_n\}$ из $E$ такая, что
+$\displaystyle\lim_{n\to\infty}x_n=a$ и $\displaystyle\lim_{n\to\infty}f(x_n)=A$
+
+<br><br>
+
+<p>Как и для случая последовательности можно доказать, для множества $P\subset\overline{\mathbb{R}}$ частичных пределов функции что
+<ol>
+<li>$\mathring{E}\neq\varnothing\Rightarrow{P}\neq\varnothing$</li>
+<li>$P\neq\varnothing\Rightarrow(\exists{i}:=\inf{P}\wedge\exists{s}:=\sup{E})$</li>
+<li>$(s\in{P}\wedge{i}\in{P})$</li>
+<li>$(s=\max{P}\wedge{i}=\min{P})$</li>
+</ol>
+
+<br><br>
+<a href="./math_analisis5.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis5.4.1.html">next</a>
+</body>
+</html>
