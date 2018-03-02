@@ -1,2 +1,1 @@
-Для того чтобы отображались формулы необходимо создать папку MathJax на уровень выше папки в которой создан репозиторий
-и распаковать туда скрипты MathJax. Скрипты MathJax можно найти по адресу https://github.com/mathjax/MathJax/releases
+﻿View this site by https://egorovav.github.io/
