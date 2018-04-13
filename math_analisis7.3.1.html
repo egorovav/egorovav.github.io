@@ -27,7 +27,7 @@ $\sum_{n=1}^\infty|a_n|$.
 <p id="Corollary7.3.1"><b>Следствие 7.3.1:</b> Если ряд сходится абсолютно, то он сходится.
 <p><b>Доказательство:</b> Если ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, то сходится ряд $\sum_{n=1}^\infty|a_n|$.
 Тогда по <a href="./math_analisis7.1.html#Theorem7.1.1">критерию Коши сходимости рядов</a> и 
-<a href="./math_analisis3.3.html#Definition3.4.3.1">неравенству треугольников</a> имеем
+<a href="./math_analisis3.3.html#Definition3.4.4">неравенству треугольников</a> имеем
 $$\forall\varepsilon&gt0\:\exists{n}_0\in\mathbb{N}:\forall{m}\geq{n}&gtn_0\left(\left|\sum_{k=n}^m|a_k|\right|&lt\varepsilon\right)\Rightarrow
 \forall{m}\leq{n}&ltn_0\left(\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right)$$
 Таким образом ряд $\sum_{n=1}^\infty{a}_n$ сходится по критерию Коши.
@@ -81,7 +81,7 @@ $\sum_{n=1}^\infty{b}_n=\frac1{n^2}$.<br>
 существуют пределы $\lim_{m\to\infty}\sum_{k=n}^m|a_k|$ и $\lim_{m\to\infty}\sum_{k=n}^m{a}_k$. Так как функция модуля непрерывна, 
 <a href="./math_analisis5.5.1.html#Statement5.5.3">то</a> 
 $$\lim_{m\to\infty}\left|\sum_{k=n}^m{a}_k\right|=\left|\lim_{n\to\infty}\sum_{k=1}^m{a}_k\right|$$
-тогда по <a href="./math_analisis3.3.html#Definition3.4.3.1">нераветству треугольников</a>
+тогда по <a href="./math_analisis3.3.html#Definition3.4.4">нераветству треугольников</a>
 $$\forall{m}\geq{n}\left(\left|\sum_{k=n}^m{a}_k\right|\leq\sum_{k=n}^m|a_k|\right)\Rightarrow\lim_{m\to\infty}\left|\sum_{k=n}^m{a}_k\right|=
 \left|\lim_{m\to\infty}\sum_{k=n}^m{a}_k\right|=\left|\sum_{k=m}^m{a}_k\right|\leq\lim_{m\to\infty}\sum_{k=n}^m|a_k|=\sum_{k=n}^\infty|a_k|$$
 

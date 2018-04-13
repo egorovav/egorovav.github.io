@@ -33,7 +33,7 @@ $$\forall\varepsilon&gt0\:\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\forall{m}&g
 <li>$\Rightarrow)$
 Пусть последовательность $\{x_n\}$ сходится к числу $A\in\mathbb{R}$. Фикскруем $\varepsilon&gt0$, тогда по 
 <a href="./math_analisis4.1.html#Definition4.1.2">определениею предела последовательности по Коши</a> и 
-<a href="./math_analisis3.3.html#Definition3.4.3.1">неравенству треугольников</a>.
+<a href="./math_analisis3.3.html#Definition3.4.4">неравенству треугольников</a>.
 $$\lim_{n\to\infty}x_n=A\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(|x_n-A|&lt\frac\varepsilon{2}\right)\Rightarrow
 \forall{n}&ltn_0,\forall{m}&ltn_0\left(|x_m-x_n|\leq|x_n-A|+|x_m-A|&lt\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon\right)$$
 </li>
@@ -49,14 +49,14 @@ $\max\{|x_1|,|x_2|,\dots,|x_{n_0}|,|x_{n_0+1}|+1\}$.<br><br>
 <li>Для любого $n\in\mathbb{N}$ $E_{n+1}\subset{E_n}$.</li>
 <li>Для любого $n\in\mathbb{N}$ множество $E_n$ ограничено, так как по доказаному ограничено $E_1$.</li>
 </ol><br>
-Согласно <a href="./math_analisis3.1.html#Lemma3.1.3.1">лемме о верхней и нижней грани</a> для любого $n\in\mathbb{N}$
+Согласно <a href="./math_analisis3.1.html#Lemma3.1.2">лемме о верхней и нижней грани</a> для любого $n\in\mathbb{N}$
 существует $a_n:=\inf{E}_n,b_n:=\sup{E}_n$.
 <ol>
 <li>$\forall{n}\in\mathbb{N}(a_n\leq{b}_n)$</li>
 <li>$\forall{n}\in\mathbb{N}(E_{n+1}\subset{E}_n)\Rightarrow\forall{n}\in\mathbb{N}(a_{n+1}\geq{a}_n\wedge{b}_{n+1}\leq{b}_n)$</li>
 </ol><br>
 Таким образом построена последовательность вложенных отрезков $\{[a_n,b_n]\}$, тогда по 
-<a href="./math_analisis3.6.html#Lemma3.6.1.1">принципу Коши - Кантора</a> существует $A\in\mathbb{R}$ принадлежащее пересечению всех
+<a href="./math_analisis3.6.html#Lemma3.6.1">принципу Коши - Кантора</a> существует $A\in\mathbb{R}$ принадлежащее пересечению всех
 отрезков. Докажем, что число $A$ будет пределом последовательности $\{x_n\}$.
 $$A\in\bigcap_{n\in\mathbb{N}}[a_n,b_n]\Rightarrow\forall{n}\in\mathbb{N}(A\in[a_n,b_n]))\Rightarrow
 \forall{n}\in\mathbb{N}(a_n\leq{A}\leq{b}_n\wedge\forall{x}\in{E}_n(a_n\leq{x}\leq{b_n}))\Rightarrow
@@ -163,8 +163,8 @@ $$\forall{k}\in\mathbb{N}(\forall{n}&gtk(\exists{m}:=n+1&gtk:|x_m-x_n|=|(-1)^{n+
 </li>
 <li>$\Leftarrow)$
 Последовательность $\{x_n\}$ ограничена сверху значит множество $E:=\{x_n\:|\:n\in\mathbb{N}\}$ ограничено сверху. 
-Следовательно, по <a href="./math_analisis3.1.html#Lemma3.1.3.1">принципу верхней грани</a> существует действительное число $s:=\sup{E}$.<br>
-Фиксируем $\varepsilon&gt0$. По <a href="./math_analisis3.1.html#Definition3.1.3.5">определению верхней грани</a> существует $k\in\mathbb{N}$
+Следовательно, по <a href="./math_analisis3.1.html#Lemma3.1.2">принципу верхней грани</a> существует действительное число $s:=\sup{E}$.<br>
+Фиксируем $\varepsilon&gt0$. По <a href="./math_analisis3.1.html#Definition3.1.7">определению верхней грани</a> существует $k\in\mathbb{N}$
 такое, что $s-\varepsilon&ltx_k\leq{s}$. А так как последовательность $\{x_n\}$ не убывает, то для любого $n&gtk$ 
 $s-\varepsilon&ltx_k\leq{x}_n\leq{s}&lts+\varepsilon$. Таким образом 
 $$\exists{k}\in\mathbb{N}:\forall{n}&gtk(|x_n-s|&lt\varepsilon)\Rightarrow\lim_{n\to\infty}x_n=s$$
