@@ -1,0 +1,328 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 7.5.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+
+<a href="./math_analisis7.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.1.html">next</a>
+
+<h5 id="7.5.4">7.5.4 Разложение функций в степенные ряды. Ряд Тэйлора.</h5>
+
+<p id="Definition7.5.11"><b>Определение 7.5.11:</b> Пусть функция $f(x):E\to\mathbb{R}$ и точка $x_0\in{E}\cap\mathring{E}$ такие, что для любого
+$n\in\mathbb{N}$ существует производная $f^{(n)}(x_0)$, тогда ряд $\displaystyle\sum_{n=0}^\infty\left(\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n\right)$
+называется рядом Тэйлора функции $f(x)$ с центром в точке $x_0$.
+
+<br><br>
+
+<p>Ряд Тэйлора - важный частный случай степеннго ряда, поэтому все результаты полученные выше для степенных рядов могут быть применимы к ряду Тэйлора.
+Вопрос исследования сходимости ряда Тэйлора распадается на несколько подвопросов:
+<ol>
+<li>Каково множество сходимости ряда?</li>
+<li>При каких значениях $x$ сумма ряда будет равна $f(x)$?</li>
+</ol>
+
+<br><br>
+
+<p id="Example7.5.5"><b>Пример 7.5.5:</b> Рассмотрим функцию 
+$\displaystyle{f}(x)=\begin{cases}e^{-\frac1{x^2}}, & x\neq0\\0, & x=0\end{cases}:\mathbb{R}\to\mathbb{R}$.<br>
+$$\left(e^{-\frac1{x^2}}\in{C}(\mathbb{R}\backslash\{0\})\wedge\lim_{x\to0}f(x)=0\right)\Rightarrow
+{f}(x)\in{C}(\mathbb{R}),f^{(n)}(x)=P_s\left(\frac1{x}\right)e^{-\frac1{x^2}}$$
+где $P_s$ - многочлен степени $s=s(n)$.
+По <a href="./math_analisis6.4.html#Corollary6.4.6">следствию 6.4.6 из теормы Лагранжа</a> из существование предела производной
+$K:=\displaystyle\lim_{x\to{x}_0}f'(x)$ следует существование производной в точке $x_0$ $f'(x_0)=K$. Тогда при $x_0=0$
+$$\forall{s}\in\mathbb{N}\left(\lim_{x\to0}\left(P_s\left(\frac1{x}\right)e^{-\frac1{x^2}}\right)=0\right)\Rightarrow
+\forall{n}\in\mathbb{N}(\lim_{x\to0}f^{(n)}(x)=0)\Rightarrow\forall{n}\in\mathbb{N}(\exists{f}^{(n)}(0)=0)$$
+Тогда ряд Тэйлора для функции $f(x)$ с центром в точке 0 $\displaystyle\sum_{n=0}^\infty\left(\frac{f^{(n)}(x_0)}{n!}x^n\right)$ будет сходится к нулю
+при любом значении $x$. Таким образом получен пример функции, ряд Тэйлора которой сходится на всей вещественной прямой, но к значению функции только 
+в точке 0.
+
+<br><br>
+
+<p id="Theorem7.5.5"><b>Теорема 7.5.5: Достаточные условия сходимости ряда Тэйлора.</b><br>
+Пусть функция $f(x):E\to\mathbb{R}$ и точка $x_0\in{E}$ такие, что
+$$\exists{h}&gt0:\left(U^h(x_0):=(x_0-h,x_0+h)\subset{E}\wedge\forall{x}\in{U}^h(x_0),\forall{n}\in\mathbb{N}\:\exists{f}^{(n)}(x)\right)$$
+тогда
+<ol>
+<li>
+$$\forall{x}\in{U}^h(x_0)\forall{n}\in\mathbb{N}(f(x)=T_n(x_0,x)+r_n(x_0,x)),$$
+где
+$$T_n(x_0,x)=\sum_{k=0}^n\left(\frac{f^{(k)}(x_0)}{n!}(x-x_0)^k\right),$$
+а $r_n(x_0,x)$ представимо в видах
+$$r_n(x_0,x)=\frac1{(n+1)!}f^{(n+1)}(\xi)(x-x_0)^{n+1},$$
+$$r_n(x_0,x)=\frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^n(x-x_0),$$
+где $\xi$ лежит между $x$ и $x_0$ и в виде
+$$r_n(x_0,x)=\frac{f^{(n+1)}(x_0+\theta(x-x_0))}{n!}(1-\theta)^n(x-x_0),$$
+где $\theta\in(0,1)$,
+</li>
+<li>
+$$f(x)=\sum_{n=0}^\infty\left(\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n\right)\Leftrightarrow\lim_{n\to\infty}r_n(x_0,x)=0,$$
+</li>
+<li>
+$$\exists{M}&gt0:\forall{x}\in{U}^h(x_0),\forall{n}\in\mathbb{N}(|f^{(n)}(x)|\leq{M})\Rightarrow
+\forall{x}\in{U}^h(x_0)\left(f(x)=\sum_{n=0}^\infty\left(\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n\right)\right).$$
+</li>
+</ol> 
+<p><b>Доказательство:</b>
+<ol>
+<li>
+При сделанных предпосылках для функции $f(x)$ и любого натурального $n$ будет верна <a href="./math_analisis6.5.html#6.5.1">формула Тэйлора</a>
+степени $n$ с центром в точке $x_0$ и остаточным членом в формах Шлемельха-Роша, Коши, Лагранжа.
+</li>
+<li>
+Из пункта (1) следует, что существует $h&gt0$ такое, что для любого $x\in{U}^h(x_0)$ и для любого $n\in\mathbb{N}_0$ 
+$\displaystyle{f}(x)=\sum_{k=0}^n\left(\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\right)+r_n(x-x_0)$. Фиксируем $x\in{U}^h(x_0)$
+$$f(x)=\sum_{n=0}^\infty\left(\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n\right)\Leftrightarrow
+\exists\lim_{n\to\infty}\sum_{k=0}^n\left(\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\right)=f(x)\Leftrightarrow
+\exists\lim\left(f(x)-\sum_{k=0}^n\left(\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\right)\right)=0\Leftrightarrow\exists\lim_{n\to\infty}r_n(x_0,x)=0$$
+</li>
+<li>
+$$\exists{M}&gt0:\forall{n}\in\mathbb{N}(\forall{x}\in{U}^h(x_0)(|f^{(n)}(x)|\leq{M}))\Rightarrow
+\forall{x}\in{U}^h(x_0)\left(\forall\xi\in(x,x_0)\left(|r_n(x,x_0)|=\left|\frac{f^{(n+1)}(\xi)}{(x+1)!}(x-x_0)^{n+1}\right|\leq
+\left|\frac{M(x-x_0)^{n+1}}{(n+1)!}\right|\right)\right)\Rightarrow$$
+$$\Rightarrow\forall{x}\in{U}^h(x_0)\left(-\frac{M(x-x_0)^{n+1}}{(n+1)!}\leq{r}_n(x,x_0)\leq\frac{M(x-x_0)^{n+1}}{(n+1)!}\right)$$
+<a href="./math_analisis4.3.html#Example4.3.6">Ранее</a> было показано, что для любого $a\in\mathbb{R}$ существует предел 
+$\displaystyle\lim_{n\to\infty}\frac{a^n}{n!}=0$, следовательно, по <a href="./math_analisis4.1.html#Theorem4.2.3">теореме о двух милиционерах</a> 
+$$\lim_{n\to\infty}\frac{M(x-x_0)^{n+1}}{(n+1)!}=\lim_{n\to\infty}-\frac{M(x-x_0)^{n+1}}{(n+1)!}=0\Rightarrow\lim_{n\to\infty}r_n(x_0,x)=0$$
+</li>
+</ol>
+
+<br><br>
+
+<p> Получим разложения некоторых элементарных функций в ряд Тэйлора. Везде далее в рамках этого пункта $x_0:=0$, $h&gt0$, $U^h(x_0)=(-h,h)$.
+<ol>
+<li> $f(x)=e^x$.<br>
+Положим $M:=e^h$, тогда
+$$\forall{n}\in\mathbb{N}_0(\forall{x}\in\mathbb{R}(\exists{f}^{(n)}(x)=e^x))\Rightarrow
+\forall{n}\in\mathbb{N}_0(\exists{f}^{(n)}(0)=e^0=1\wedge\forall{x}\in{U}(0)(|f^{(n)}(x)|\leq{M}))$$
+Следовательно, по пункту 3 <a href="#Theorem7.5.5">теоремы 7.5.5</a> для любого $x\in{U}(0)$ ряд $\sum_{n=0}^\infty\left(\frac1{n!}x^n\right)$
+сходится к значению функции $e^x$. Так как это верно для любого $h&gt0$, то
+$$\forall{x}\in\mathbb{R}\left(e^x=\sum_{n=0}^\infty\frac{x^n}{n!}\right).$$
+Откуда в частности следует, что для любого $x\in\mathbb{R}$ $a^x=e^{x\ln{a}}=\sum_{n=0}^\infty\left(\frac{(\ln{a})^n}{n!}x^n\right)$ 
+</li>
+<br><br>
+<p id=Definition 7.5.12><b>Определение 7.5.12:</b> Так как для любого $z\in\mathbb{C}$ ряд $\sum_{n=0}^\infty\frac{z^n}{n!}$ сходится абсолютно
+по <a href="./math_analisis7.2.2.html#Statement7.2.2">признаку Даламбера</a>, то можно определить функцию $e^z$ над $\mathbb{C}$ как 
+$$\forall{z}\in\mathbb{C}\left(e^z:=\sum_{n=0}^\infty\frac{z^n}{n!}\right)$$
+<li> $f(x)=\sin{x}$.<br>
+Положим $M:=1$, тогда 
+$$\forall{n}\in\mathbb{N}_0\left(\forall{x}\in\mathbb{R}\left(\exists{f}^{(n)}(x)=\sin\left(x+\frac{\pi{n}}{2}\right)\right)\right)\Rightarrow
+\forall{n}\in\mathbb{N}_0\left(\exists{f}^{(n)}(0)=\sin\frac{\pi{n}}{2}=\begin{cases}0, & n=2k\\(-1)^k, & n=2k+1\end{cases}\right)\wedge
+\forall{x}\in\mathbb{R}\left(|f^{(n)}(x)|=\left|\sin\left(x+\frac{\pi{n}}{2}\right)\right|\leq{M}\right)$$
+Следовательно по пункту 3 <a href="#Theorem7.5.5">теоремы 7.5.5</a> для любого $x\in{U}(0)$ ряд 
+$\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)!}x^{2n+1}\right)$ сходится к значению функции $\sin{x}$. Так как это верно для любого $h&gt0$, то
+$$\forall{x}\in\mathbb{R}\left(\sin{x}=\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)!}x^{2n+1}\right)\right).$$
+$f(x)=\cos{x}$.<br>
+Аналогично
+$$\forall{n}\in\mathbb{N}\left(\forall{x}\in\mathbb{R}\left(\exists{f}^{(n)}(x)=\sin^{(n+1)}(x)=\sin\left(x+\frac{\pi(n+1)}{2}\right)\right)\right)
+\Rightarrow\forall{n}\in\mathbb{N}\left(\exists{f}^{(n)}(0)=\sin\frac{\pi(n+1)}{2}=\begin{cases}0, & n=2k+1\\(-1)^k, & n=2k\end{cases}\right)$$
+Следовательно
+$$\forall{x}\in\mathbb{R}\left(\cos{x}=\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n)!}x^{2n}\right)\right)$$ 
+</li>
+<br><br>
+<p id=Definition7.5.13><b>Определение 7.5.13:</b> Так как для любого $z\in\mathbb{C}$ ряды $\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)}z^{2n+1}\right)$,
+$\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n)!}z^{2n}\right)$ сходятся абсолютно по <a href="./math_analisis7.2.2.html#Statement7.2.2">признаку Даламбера</a>, 
+то можно определить функции $\sin{z}$, $\cos{z}$ над $\mathbb{C}$
+$$\forall{z}\in\mathbb{C}\left(\sin{z}=\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)!}z^{2n+1}\right)\wedge
+\cos{z}=\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n)!}z^{(2n)}\right)\right)$$ 
+В частности эти определения можно считать определениями тригонометрических функций в $\mathbb{R}$. Для этого надо доказать сходимость рядов 
+$\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)!}x^{2n+1}\right)$, $\sum_{n=0}^\infty\left(\frac{(-1)^{n}}{(2n)!}x^{2n}\right)$ независимо от 
+<a href="#Theorem7.5.5">теоремы 7.5.5</a>. Это можно сделать воспользовавшись <a href="./math_analisis7.4.1.html#Theorem7.4.2">признаком Лейбница</a>.
+$\newcommand{\ch}{\operatorname{ch}}$
+$\newcommand{\sh}{\operatorname{sh}}$
+<li> $f(x)=\ch(x)$ - гиперкосинус, $f(x)=\sh(x)$ - гиперсинус.<br>
+$$\forall{x}\in\mathbb{R}\left(\ch(x):=\frac{e^x+e^{-x}}{2}=
+\frac1{2}\left(\sum_{n=0}^\infty\frac{x^n}{n!}+\sum_{n=0}^\infty\frac{(-x)^n}{n!}\right)\right)=\sum_{n=0}^\infty\left(\frac{1+(-1)^n}{2n!}x^n\right)=
+\sum_{n=0}^\infty\frac{x^{2n}}{(2n)!}$$
+Аналогично
+$$\forall{x}\in\mathbb{R}\left(\sh(x):=\frac{e^x-e^{-x}}{2}=\sum_{n=0}^\infty\frac{x^{2n+1}}{(2n+1)!}\right)$$
+</li>
+<br><br>
+<p id="Definition7.5.14"><b>Определение 7.5.14:</b> Так как для любого $z\in\mathbb{C}$ ряды $\sum_{n=0}^\infty\frac{z^{2n+1}}{(2n+1)!}$,
+$\sum_{n=0}^\infty\frac{z^{2n}}{(2n)!}$ сходятся абсолютно по <a href="./math_analisis7.2.2.html#Statement7.2.2">признаку Даламбера</a>, 
+то можно определить функции $\sh{z}$, $\ch{z}$ над $\mathbb{C}$
+$$\forall{z}\in\mathbb{C}\left(\sh{z}=\sum_{n=0}^\infty\frac{z^{2n+1}}{(2n+1)!},\ch=\sum_{n=0}^\infty\frac{z^{2n}}{(2n)!}\right)$$
+<li> $f(x)=\ln(1+x)$.<br>
+$$\forall{n}\in\mathbb{N}\left(\forall{x}\in\mathbb{R}\left(\exists{f}^{(n)}(x)=\frac{(-1)^{n-1}(n-1)!}{(1+x)^n}\right)\right)\Rightarrow
+\forall{n}\in\mathbb{N}(\exists{f}^{(n)}(0)=(-1)^n(n-1)!)$$
+В данном случае не получится подобрать $M&gt0$ удовлетворяющее условиям пункта 3 <a href="#Theorem7.5.5">теоремы 7.5.5</a>, тогда применим пункт 2.
+Так как $f(0)=0$, по подставляя полученное выше выражение для производной в определение <a href="#Definition7.5.11">ряда Тэйлора</a> с центром в 
+точке 0 получим
+$$\sum_{n=0}^\infty\left(\frac{f^{(n)}(0)}{n!}x^n\right)=\sum_{n=1}^\infty\left(\frac{(-1)^{n-1}}{n}x_n\right)$$
+Найдем радиус $R$ сходимости ряда $\sum_{n=1}^\infty\left(\frac{(-1)^{n-1}}{n}z^n\right)$ над $\mathbb{C}$. По
+<a href="./math_analisis7.5.3.html#Corollary7.5.3">следствию 7.5.3</a> $\displaystyle{R}=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=
+\lim_{n\to\infty}\left|-\frac{n+1}{n}\right|=1$. Таким образом ряд $\sum_{n=1}^\infty\left(\frac{(-1)^{n-1}}{n}z^n\right)$ сходится абсолютно при
+$|z|&lt1$ и расходится при $|z|&gt1$, следовательно, ряд $\sum_{n=1}^\infty\left(\frac{(-1)^{n-1}}{n}x^n\right)$ сходится абсолютно при $|x|&lt1$ и 
+расходится при $|x|&gt1$. При $x=-1$ $a_n=\frac{(-1)^{n-1}}{n}x^n=\frac{(-1)^{n-1}}{n}(-1)^n=\frac{(-1)^{2n-1}}{n}=-\frac1{n}$, при $x=1$
+$a_n=\frac{(-1)^{n-1}}{n}$. Значит при $x=1$ ряд расходится как гармонический, а при $x=-1$ <a href="./math_analisis7.4.3.html#Example7.4.3">сходится</a>
+не абсолютно. То есть множество сходимости ряда полуинтервал $(-1, 1]$. Как было показано в <a href="./math_analisis6.5.html#Example6.5.4">примере 6.5.4</a>
+$$|x|&lt1\Rightarrow|r_n(0,x)|=\left|\frac1{n!}\frac{(-1)^nn!}{(1+\xi)^{n+1}}(x-\xi)^nx\right|\leq\frac{|x|^{n+1}}{1-|x|}=o(1),n\to\infty$$
+Следовательно,
+$$\forall{x}\in(-1,1]\left(\ln(1+x)=\sum_{n=1}^\infty\left(\frac{(-1)^{n-1}}{n}x^n\right)\right)$$
+</li>
+<li> $f(x)=(1+x)^\alpha$, $\alpha\in\mathbb{R}$.<br>
+$$\forall{n}\in\mathbb{N}(\forall{x}\in\mathbb{R}(\exists{f}^{(n)}(x)=\alpha(\alpha-1)\dots(\alpha-n+1)(1+x)^{\alpha-n}))\Rightarrow
+\forall{n}\in\mathbb{N}(\exists{f}^{(n)}(0)=\alpha(\alpha-1)\dots(\alpha-n+1))$$
+В данном случае не получится подобрать $M&gt0$ удовлетворяющее условиям пункта 3 <a href="#Theorem7.5.5">теоремы 7.5.5</a>, применим пункт 2.
+$$f(0)=1\Rightarrow\sum_{n=0}^\infty\left(\frac{f^{(n)}(0)}{n!}x^n\right)=1+\sum_{n=1}^\infty\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}x^n$$
+Таким образом при $x=0$ равенство $f(x)=\sum_{n=0}^\infty\left(\frac{f^{(n)}}{n!}x^n\right)$ верно, везде далее считаем, что $x\neq0$.
+Если $\alpha\in\mathbb{N}_0$ то последняя сумма имеет конечное число ненулевых слагаемых и по биному Ньютона ряд Тэйлора сходится к значению функции 
+$$\forall{x}\in\mathbb{R}\backslash\{0\}(f(x)=(1+x)^\alpha=\sum_{n=0}^\alpha(C^n_{\alpha}x^n)=
+1+\sum_{n=1}^\infty\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}x^n)$$
+Если $\alpha\notin\mathbb{N}_0$, то сумма не будет содержать нулевых слагаемых, значит для вычисления радиуса сходимости $R$ можем воспользоваться
+формулой $\displaystyle{R}=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|$, тогда
+$$R=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=
+\lim_{n\to\infty}\left|\frac{\alpha(\alpha-1)\dots(\alpha-n+1)(n+1)!}{\alpha(\alpha-1)\dots(\alpha-n)n!}\right|=
+\lim_{n\to\infty}\left|\frac{n+1}{\alpha-n}\right|=1$$
+Таким образом ряд $\sum_{n=0}^\infty\left(\frac{f^{(n)}(0)}{n!}x^n\right)$ сходится абсолютно при $|x|&lt1$.
+<br>
+<i>
+Исследуем сходимость ряда на границах интервала сходимости.<br>
+При $x=1$ $a_n=\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}$ и $\left|\frac{a_{n+1}}{a_n}\right|=\left|\frac{\alpha-n}{n+1}\right|$.
+<ol type="a">
+<li>
+Если $\alpha\leq-1$, то $\left|\frac{\alpha_{n+1}}{\alpha_n}\right|\geq1$, то есть общий член ряда не убывает по модулю и, 
+следовательно, не может стремится к нулю, поэтому ряд расходится.
+</li>
+<li>
+Если $\alpha&gt-1$, то $|a_{n+1}|=|a_n|\frac{|\alpha-n|}{n+1}$ и для любого $n&gt\frac{\alpha-1}{2}$ $|a_{n+1}|&gt|a_n|$. То есть начиная с некоторого 
+$n_0$ последовательность $\{|a_n|\}$ будет убывать, тогда
+$$\forall{n}&gtn_0\left(|a_n|&lt|a_{n_0}|\frac{n_0!(n-n_0)!}{n!}&lt|a_{n_0}|n_0!\frac1{n}\right)\Rightarrow\lim_{n\to\infty}|a_n|=0$$
+Следовательно, знакопеременный ряд $\sum_{n=0}^\infty{a}_n=\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}$ сходится не абсолютно по 
+<a href="./math_analisis7.4.1.html#Theorem7.4.2">признаку Лейбница</a>.
+</li>
+<li>
+Разложив функцию $\frac{a_n}{a_{n+1}}=\frac{\alpha-n}{n+1}$ по степеням $\frac1{n}$ получим 
+$\frac{a_n}{a_{n+1}}=1+\frac{1+\alpha}{n}+O\left(\frac1{n^2}\right)$, тогда по <a href="./math_analisis7.2.3.html#Corollary7.2.11">признаку Гаусса</a> 
+ряд сходится абсолютно при $\alpha&gt0$.<br>
+При $\alpha=0$ ряд так же сходится абсолютно так как $a_n\equiv0$.
+</li>
+</ol>
+При $x=-1$ общий член ряда $a_n=\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}(-1)^n$ и $\left|\frac{a_{n+1}}{a_n}\right|=\left|\frac{\alpha-n}{n+1}\right|$,
+и по признаку Гаусса ряд сходится абсолютно при $\alpha&gt0$. Признак Лейбница (как и другие признаки неабсолютной сходимости) тут применять нельзя
+так как ряд будет знакопеременным только конечное число первых членов, а потом начиная с некоторого $n_0$ в зависимости от четности $[\alpha]$
+везде далее будет либо положительным, либо отрицательным.
+</i>
+<br>
+Покажем, что при любых $\alpha\in\mathbb{R}$ и $x\in(-1,1)$ ряд $1+\sum_{n=1}^\infty\frac{\alpha(\alpha-1)\dots(\alpha-n+1)}{n!}x^n$ сходится не просто
+куда-нибудь, а к значению функции $f(x)=(1+x)^\alpha$. Докажем, что значение остаточного члена $r_n(0,x)$ в 
+<a href="./math_analisis6.5.html#Corollary6.5.1">форме Коши</a> стремится к нулю при $n\to\infty$.
+$$|r_n(0,x)|=\left|\frac{f^{(n+1)}(\xi)}{n!}(x-\xi)^nx\right|=\left|\frac{\alpha(\alpha-1)\dots(\alpha-n)(x-\xi)^{\alpha-n-1}}{n!}x\right|\leq
+\left|\alpha\left(1-\frac{\alpha}{1}\right)\left(1-\frac{\alpha}{2}\right)\dots\left(1-\frac{\alpha}{n}\right)\right||1+\xi|^{\alpha-1}|x|^{n+1}$$
+где $\xi=\xi(n)$ такое, что $|\xi|\leq|x|$.
+$$K:=\max_{|x|&lt1}\{(1-|x|)^{\alpha-1},(1+|x|)^{\alpha-1}\}\Rightarrow\forall{n}\in\mathbb{N}(|1+\xi(n)|^{\alpha-1}\leq{K})\Rightarrow
+|r_n(0,x)|&lt\left|\alpha\left(1-\frac{\alpha}{1}\right)\left(1-\frac{\alpha}{2}\right)\dots\left(1-\frac{\alpha}{n}\right)\right|K|x|^{n+1}$$
+Фиксируем $x\in(-1,1)$. Рассмотрим ряд 
+$$\sum_{n=0}^\infty{a}_n=
+\sum_{n=0}^\infty\left(\left|\alpha\left(1-\frac{\alpha}{1}\right)\left(1-\frac{\alpha}{2}\right)\dots\left(1-\frac{\alpha}{n}\right)
+|x|^{n+1}\right|\right)\Rightarrow\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=x\lim_{n\to\infty}\left|\frac{n-\alpha}{n}\right|=x&lt1$$
+Следовательно, по <a href="./math_analisis7.2.2.html#Statement7.2.2">признаку Даламбера</a> ряд $\sum_{n=0}^\infty{a}_n$ сходится, 
+<a href="./math_analisis7.1.html#Theorem7.1.1">следовательно</a>, существует предел
+$$\lim_{n\to\infty}a_n=\lim_{n\to\infty}\left(\left|\alpha\left(1-\frac{\alpha}{1}\right)\left(1-\frac{\alpha}{2}\right)\dots
+\left(1-\frac{\alpha}{n}\right)\right||x|^{n+1}\right)=0$$
+Так что существует и предел $\displaystyle\lim_{n\to\infty}|r_n(0,x)|=0$.
+</li>
+</ol>
+
+<br><br>
+
+<p>Установим взаимосвязь функций $e^z$, $\sh{z}$, $\ch{z}$, $\sin{z}$, $\cos{z}$ над полем комплексных чисел $\mathbb{C}$.
+Так как
+$$\forall{n}\in\mathbb{N}_0\left(i^n=
+\begin{cases}
+1, & n=4k\\
+i, & n=4k+1\\
+-1, & n=4k+2\\
+-i, & n=4k+3
+\end{cases}
+\right)\Rightarrow(i^{2n}=(-1)^n\wedge{i}^{2n+1}=(-1)^ni),$$
+то
+$$\forall{z}\in\mathbb{C}\left(\ch(iz)=\frac{e^{iz}+e^{-iz}}{2}=\sum_{n=0}^\infty\frac{(iz)^{2n}}{(2n)!}=
+\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n)!}z^{2n}\right)=\cos{z}\right)$$
+$$\forall{z}\in\mathbb{C}\left(\frac1{i}\sh(iz)=\frac{e^{iz}-e^{-iz}}{2i}=\frac1{i}\sum_{n=0}^\infty\frac{(iz)^{2n+1}}{(2n+1)!}=
+\sum_{n=0}^\infty\left(\frac{(-1)^n}{(2n+1)!}z^{2n+1}\right)=\sin{z}\right)$$
+Таким образом
+$$\forall{z}\in\mathbb{C}\left(\cos{z}+i\sin{z}=\frac{e^{iz}+e^{-iz}}{2}+\frac{e^{iz}-e^{-iz}}{2}=e^{iz}\right)$$
+В частности при $z=\pi$ $\cos\pi+i\sin\pi=-1=e^{i\pi}$.<br>
+Формулы $\ch(iz)=\cos{z}$, $\sh(iz)=i\sin{z}$, $\cos{z}+i\sin{z}=e^{iz}$ принято называть формулами Эйлера.<br>
+Так как любое комплексное число представимо в виде $z=|z|(\cos\varphi+i\sin\varphi)$, то любое комплексное число представимо в виде $z=|z|e^{i\varphi}$.
+Такую форму записи принято называть показательной формой записи. Показательную форму записи удобно использовать при умножении комплексных чисел
+$$z_1z_2=|z_1|e^{i\varphi_1}|z_2|e^{i\varphi_2}=|z_1||z_2|e^{i(\varphi_1+\varphi_2)}$$
+$$z^n=(|z|e^{i\varphi})^n=|z|^ne^{i\varphi{n}}=|z|^n(\cos(n\varphi)+i\sin(n\varphi))$$
+<br><br>
+
+<p><i>В качестве примера применения полученных выше разложений элементарных функций в ряд Тэйлора рассмотрим доказательство формулы Стирлинга.</i>
+
+<br><br>
+
+<p id="Theorem7.5.6"><b>Теорема 7.5.6: Формула Стирлинга.</b><br>
+$$\lim_{n\to\infty}\frac{n!e^n}{n^n\sqrt{2\pi{n}}}=1$$
+(или на языке <a href="./math_analisis5.4.2.html#Definition5.4.13">O-символики</a> $\displaystyle{n}!\sim\frac{n^n\sqrt{2\pi{n}}}{e^n},n\to\infty$.)
+<p><b>Доказательство:</b> Докажем для любого $n\in\mathbb{N}$ вспомогательное неравенство: $\displaystyle\left(1+\frac1{n}\right)^{n+\frac1{2}}&gte$.
+Воспользуемся <a href="./math_analisis7.1.html#Theorem7.1.2">теоремой об арифметических опреациях над сходящимися рядами</a>.
+$$\forall{x}\in(-1,1)\left(\ln\frac{1+x}{1-x}=\ln(1+x)-\ln(1-x)=
+\sum_{n=1}^\infty\frac{(-1)^{n-1}x^n}{n}-\sum_{n=1}^\infty\frac{(-1)^{n-1}(-x)^n}{n}=
+\sum_{n=0}^\infty\left(((-1)^{n-1}+(-1)^{2n})\frac{x^n}{n}\right)=\sum_{n=0}^\infty\left([(-1)^{n-1}+1]\frac{x^n}{n}\right)\right)$$
+При четном $n$ значение в квадратной скобке равно 0, а при нечетном 2, следовательно
+$$\forall{x}\in(-1,1)\left(\sum_{n=0}^\infty\left([(-1)^{n-1}+1]\frac{x^n}{n}\right)=\sum_{n=0}^\infty\left(2\frac{x^{2n+1}}{2n+1}\right)=
+2x\sum_{n=0}^\infty\frac{x^{2n}}{2n+1}\right)$$
+В последнем выражении в сумме первое слагаемое равно 1, и все остальные положительные, то есть значение выражения больше $2x$.
+Таким образом
+$$\forall{x}\in(0,1)\left(\ln\frac{1+x}{1-x}&gt2x\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(\ln\frac{1+\frac1{2n+1}}{1-\frac1{2n+1}}=\ln\frac{2n+2}{2n}=\ln\left(1+\frac1{n}\right)&gt
+2\frac1{2n+1}=\frac1{n+\frac1{2}}\right)\Rightarrow$$
+$$\Rightarrow\forall{n}\in\mathbb{N}\left(\left(n+\frac1{2}\right)\ln\left(1+\frac1{n}\right)&gt1\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(\left(1+\frac1{n}\right)^{n+\frac1{2}}&gte\right)$$
+$$\forall{n}\in\mathbb{N}\left(\frac1{e}\left(1+\frac1{n}\right)^{n+\frac1{2}}&gt1\right)\quad(3)$$
+Рассмотрим последовательность $\displaystyle{x}_n:=\frac{n!e^n}{n^{n+\frac1{2}}}$. Для любого $n\in\mathbb{N}$ $x_n&gt0$, значит последовательнось $\{x_n\}$
+ограничена снизу. Докажем, что она убывающая, действительно
+$$\frac{x_n}{x_{n+1}}=\frac{n!e^n(n+1)^{n+1+\frac1{2}}}{n^{n+\frac1{2}}(n+1)!e^{n+1}}=\frac{(n+1)!e^n(n+1)^{n+\frac1{2}}}{(n+1)!e^{n+1}n^{n+\frac1{2}}}=
+\frac1{e}\left(1+\frac1{n}\right)^{n+\frac1{2}}&gt1.$$
+где последнее неравенство - это доказанное выше неравенство (3). Следовательно, последовательность $\{x_n\}$ ограничена снизу и убывающая, значит по
+<a href="./math_analisis4.3.html#Theorem4.3.2">теореме Вейерштрасса</a> существует предел $\displaystyle{a}:=\lim_{n\to\infty}x_n\in\mathbb{R}$.
+Значит существует последовательность $\{\varepsilon_n\}$ такая, что 
+$$\forall{n}\in\mathbb{N}(x_n=a(1+\varepsilon_n))\wedge\varepsilon_n=o(1),n\to\infty$$
+$$x_n=\frac{n!e^n}{n^{n+\frac1{2}}}=a(1+\varepsilon_n)\Rightarrow{n}!=\frac{a(1+\varepsilon_n)n^{n+\frac1{2}}}{e^n}\wedge
+\varepsilon_n=o(1),n\to\infty\Rightarrow{n}!\sim\frac{an^{n+\frac1{2}}}{e^n},n\to\infty$$
+Для определения значения константы $a$ воспользуемся формулой Валлиса, которая будет доказана 
+<a href="./math_analisis8.5.4.html#Statement8.6.1">после изучения интегрального исчисления</a>. 
+$$\frac{\pi}{2}=\lim_{n\to\infty}\left[\frac1{2n+1}\left(\frac{(2n)!!}{(2n+1)!!}\right)^2\right]$$
+Здесь $(2n)!!=2\cdot4\cdot6\dots(2n-2)\cdot2n$ - произведение всех четных чисел меньших либо равных $2n$, а 
+$(2n-1)!!=3\cdot5\cdot7\dots(2n-3)\cdot(2n-1)$ - произведение всех нечетных чисел меньших чем $2n$.<br>
+Подставим полученную оценку для $n!$ в формулу Валлиса
+$$\frac{(2n)!!}{(2n-1)!!}=\frac{(2n)!!(2n)!!}{(2n-1)!!(2n)!!}=\frac{2^{2n}(n!)^2}{(2n)!}=
+\frac{2^{2n}a^2(1+\varepsilon_n)^2n^{2n+1}e^{2n}}{e^{2n}a(1+\varepsilon_{2n})(2n)^{2n+\frac1{2}}}=
+\frac{a(1+\varepsilon_n)^2\sqrt{n}}{(1+\varepsilon_{2n})\sqrt{2}}\Rightarrow$$
+$$\Rightarrow\frac{\pi}{2}=\lim_{n\to\infty}\left[\frac1{2n+1}\left(\frac{a(1+\varepsilon_n)^2\sqrt{n}}{(1+\varepsilon_{2n})\sqrt{2}}\right)^2\right]=
+\lim_{n\to\infty}\left(\frac1{2n+1}\frac{a^2(1+\varepsilon_n)^4n}{(1+\varepsilon_{2n})^22}\right)=
+a^2\lim_{n\to\infty}\left(\frac{n}{4n+2}\frac{(1+\varepsilon_n)^4}{(1+\varepsilon_{2n})^2}\right)=\frac{a^2}{4}\Rightarrow
+a=\sqrt{2\pi}\Rightarrow{n}!\sim\frac{n^n\sqrt{2\pi{n}}}{e^n},n\to\infty.$$
+
+<br><br>
+
+<p id="Task7.5.2"><b>Задача 7.5.2:</b> Доказать сходимость и найти сумму ряда $\displaystyle\sum_{n=1}^\infty\left(n\ln\frac{2n+1}{2n-1}-1\right)$.
+<p><b>Решение:</b> 
+<i>
+$$\sum_{k=1}^n\left(k\ln\frac{2k+1}{2k-1}-1\right)=\sum_{k=1}^n(k(\ln(2k+1)-\ln(2k-1))-1)=
+\sum_{k=1}^n(k\ln(2n+1))-\sum_{k=0}^{n-1}((k+1)\ln(2k+1))-n=$$ $$=\sum_{k=1}^n(k\ln(2k+1))-\sum_{k=0}^{n-1}(k(2k+1))+\sum_{k=0}^{n-1}\ln(2k+1)-n=
+n\ln(2n+1)-\sum_{k=0}^{n-1}\ln(2k+1)-n=n\ln(2n+1)-\ln\prod_{k=0}^{n-1}(2k+1)-n=$$ $$=n\ln(2n+1)-\ln\frac{(2n)!}{2^nn!}-n\sim
+n\ln(2n+1)-\ln\frac{\sqrt{2\pi}(2n)^{2n+\frac1{2}}e^n}{e^{2n}\sqrt{2\pi}n^{n+\frac1{2}}2^n}-n=
+n\ln(2n+1)-\ln\frac{2^{2n+\frac1{2}}n^{2n+\frac1{2}}}{e^nn^{n+\frac1{2}}2^n}-n=n\ln(2n+1)-\ln\frac{\sqrt{2}(2n)^n}{e^n}-n=$$
+$$=n\ln(2n+1)-n\ln(2n)-\frac1{2}\ln{2}+n-n=\ln\left(\frac{2n+1}{2n}\right)^n-\frac1{2}\ln2,n\to\infty\Rightarrow$$
+$$\Rightarrow\lim_{n\to\infty}\sum_{k=1}^n\left(k\ln\frac{2k+1}{2k-1}-1\right)=\lim_{n\to\infty}\ln\left(1+\frac{1/2}{n}\right)^n-\frac1{2}\ln{2}=
+\ln\lim_{n\to\infty}\left(1+\frac{1/2}{n}\right)^n-\frac1{2}\ln{2}=\ln{e^{\frac1{2}}}-\frac1{2}\ln{2}=\frac1{2}(1-\ln2).$$
+</i>
+
+<br><br>
+<a href="./math_analisis7.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.1.html">next</a>
+</head>
+<body>
+</body>
+</html>

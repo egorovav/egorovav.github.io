@@ -1,0 +1,207 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 8.2.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis8.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.3.html">next</a>
+
+<h5 id="8.2.4">8.2.4 Замкнутость класса $\mathcal{R}(\alpha)[a,b]$ относительно основных операций.</h5>
+
+<p id="Statement8.2.12"><b>Утверждение 8.2.12</b> Если функции $f(x),g(x),\alpha(x):[a,b]\to\mathbb{R}$, $\varphi(x):[c,d]\to\mathbb{R}$ такие, что
+<ol>
+<li>$f(x),g(x)\in\mathcal{R}(\alpha)[a,b]$,</li>
+<br>
+<li>$\varphi(x)\in{C}[c,b]$ и $f([a,b])\subset[c,d]$,</li>
+</ol>
+тогда,
+<ol>
+<li>$f(x)+g(x)\in\mathcal{R}(\alpha)[a,b]$,</li>
+<br>
+<li>$\varphi(f(x))\in\mathcal{R}(\alpha)[a,b]$,</li>
+<br>
+<li>$\forall\beta\in\mathbb{R}(\beta{f}(x)\in\mathcal{R}[a,b])$,</li>
+<br>
+<li>$|f(x)|\in\mathcal{R}(\alpha)[a,b]$,</li>
+<br>
+<li>$f(x)g(x)\in\mathcal{R}(\alpha)[a,b]$,</li>
+<br>
+<li>$\forall[a_1,b_1]\subset[a,b](f(x)\in\mathcal{R}(\alpha)[a_1,b_2])$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Фиксируем $\varepsilon&gt0$, <a href="./math_analisis8.2.html#Statement8.2.3">тогда</a>
+$$f(x)\in\mathcal{R}(\alpha)[a,b]\Rightarrow\exists{P}_1:S(f,P_1,\alpha)-s(f,P_1,\alpha)&lt\frac{\varepsilon}{2}$$
+$$g(x)\in\mathcal{R}(\alpha)[a,b]\Rightarrow\exists{P}_2:S(g,P_2,\alpha)-s(f,P_2,\alpha)&lt\frac{\varepsilon}{2}$$
+Из <a href="./math_analisis3.3.html#Definition3.4.4">неравенства треугольников</a> следует.
+$$\forall{E}\subset[a,b](\omega(f+g,E)\leq\omega(f,E)+\omega(g,E))$$
+Обозначим $P:=P_1\cup{P}_2$, тогда
+$$S(f+g,P,\alpha)-s(f+g,P,\alpha)=\sum_{(P)}(\omega(f+g,\delta_i)\Delta\alpha_i)\leq
+\sum_{(P)}(\omega(f,\Delta_i)\Delta\alpha_i)+\sum_{(P)}(\omega(g,\Delta_i)\Delta\alpha_i)=S(f,P,\alpha)-s(f,P,\alpha)+S(g,P,\alpha)-s(g,P,\alpha)\leq$$
+$$\leq{S}(f,P_1,\alpha)-s(f,P_1,\alpha)+S(g,P_2,\alpha)-s(g,P_2,\alpha)&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$
+</li>
+<li>
+Функция $\varphi(x)$ непрерывна на отрезке $[c,d]$, <a href="./math_analisis5.5.3.html#Theorem5.5.3">следовательно</a>, она ограничена 
+<a href="./math_analisis5.5.3.html#Theorem5.5.4">и</a> равномерно непрерывна на нем. Обозначим $\displaystyle{K}:=\sup_{x\in[c,d]}|\varphi(x)|$, тогда
+$$\exists\delta&gt0:\left(\delta&lt\frac{\varepsilon}{4K}\wedge
+\forall{t},s\in[c,d]\left(|t-s|&lt\delta\Rightarrow|\varphi(t)-\varphi(s)|&lt\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\right)\right)\quad(16)$$
+$$f(x)\in\mathcal{R}(\alpha)[a,b]\Rightarrow\exists{P}:={x_1,x_2,\dots,x_n}:S(f,P,\alpha)-s(f,P,\alpha)&lt\delta^2.$$
+Обозначим
+$$\forall{i}\in\overline{1,n}\left(M_i:=\sup_{x\in\Delta_i}f(x),m_i:=\inf_{x\in\Delta_i}f(x),M_i^*:=\sup_{x\in\Delta_i}\varphi(f(x)),
+m_i^*:=\inf_{x\in\Delta_i}\varphi(f(x))\right),$$
+тогда $M_i^*-m_i^*\leq2K$. Обозначим
+$$A:=\{i\in\overline{1,n}\:|\:M_i-m_i&lt\delta\},B:=\{i\in\overline{1,n}\:|\:M_i-m_i\geq\delta\},$$
+тогда $A\cup{B}=\overline{1,n}$ и $A\cap{B}=\varnothing$. Оценим колебание функции $\varphi(f(x))$ на промежутках $\Delta_i$ таких, что $i\in{A}$
+$$i\in{A}\Rightarrow{M}_i-m_i=\omega(f,\Delta_i)&lt\delta\Rightarrow\forall{x},y\in\Delta_i\left(|f(x)-g(x)|\leq\omega(f,\Delta)&lt\delta\Rightarrow^{(16)}
+|\varphi(f(x))-\varphi(g(x))|&lt\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\right)\Rightarrow$$
+$$\Rightarrow\omega(\varphi(f(x)),\Delta_i)&lt\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\quad(17)$$
+С другой стороны
+$$\delta\sum_{i\in{B}}\Delta\alpha_i=\sum_{i\in{B}}(\delta\alpha_i)\leq\sum_{i\in{B}}((M_i-m_i)\Delta\alpha_i)\leq\sum_{i=1}^n((M_i-m_i)\Delta\alpha_i)=
+S(f,P,\alpha)-s(f,P,\alpha)&lt\delta^2\Rightarrow\sum_{i\in{B}}\Delta\alpha_i&lt\delta&lt\frac{\varepsilon}{4K}\quad(18)$$
+Таким образом
+$$S(\varphi(f(x)),P,\alpha)-s(\varphi(f(x)),P,\alpha)=\sum_{i=1}^n(M_i^*\Delta\alpha_i)-\sum_{i=1}^n(m_i^*\Delta\alpha_i)=
+\sum_{i=1}^n((M_i^*-m_i^*)\Delta\alpha_i)=\sum_{i=1}^n\left(\omega(\varphi(f(x)),\Delta_i)\Delta\alpha_i\right)=$$
+$$=\sum_{i\in{A}}\left(\omega(\varphi(f(x)),\Delta_i)\Delta\alpha_i\right)+\sum_{i\in{B}}\left(\omega(\varphi(f(x)),\Delta_i)\Delta\alpha_i\right)\leq^{(17)}
+\sum_{i\in{A}}\left(\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}(\alpha(b)-\alpha(a))\right)+\sum_{i\in{B}}(2K\Delta\alpha_i)=$$
+$$=\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}\sum_{i\in{A}}\Delta\alpha_i+2K\sum_{i\in{B}}\Delta\alpha_i\leq^{(18)}
+\frac{\varepsilon}{2(\alpha(b)-\alpha(a))}(\alpha(b)-\alpha(a))+2K\frac{\varepsilon}{4K}=\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+</li>
+<li>Следует из пункта 2 при $\varphi(t):=\beta{t}$.</li>
+<li>Следует из пункта 2 при $\varphi(t):=|t|$.</li>
+<li>
+По пункту 2 при $\varphi(t)=t^2$ для любой функции $f(x)\in\mathcal{R}(\alpha)[a,b]$ верно $f^2(x)\in\mathcal{R}(\alpha)[a,b]$.
+Тогда по пункту 1 для любых двух функций $f(x),g(x)\in\mathcal{R}(\alpha)[a,b]$ верно $(f(x)+g(x))^2\in\mathcal{R}(\alpha)[a,b]$, 
+$(f(x)-g(x))^2\in\mathcal{R}(\alpha)[a,b]$. Тогда по пунктам 1 и 3 для любых двух функций $f(x),g(x)\in\mathcal{R}(\alpha)[a,b]$ верно
+$f(x)g(x)=\frac1{4}((f(x)+g(x))^2-(f(x)-g(x))^2)\in\mathcal{R}(\alpha)[a,b]$.
+</li>
+<li>
+Фиксируем $\varepsilon&gt0$, тогда
+$$f(x)\in\mathcal{R}(\alpha)[a,b]\Rightarrow\exists{P}:S(f,P,\alpha)-s(f,P,\alpha)&lt\varepsilon$$
+Фиксируем $[a_1,b_1]\subset[a,b]$ и обозначим $\tilde{P}:=P\cup{a_1,b_1}:=\{x_1,x_2,\dots,x_n\}$, тогда $P\prec\tilde{P}$ и 
+$S(f,\tilde{P},\alpha)-s(f,\tilde{P},\alpha)&lt\varepsilon$. По определению разбиения $\tilde{P}$ существуют $i,j\in\overline{1,n}$ такие, что
+$x_i=a$, $x_j=b$, значит существует разбиение $\tilde{P}^*:=\{x_{i+1},x_{i+2},\dots,x_j\}$ отрезка $[a_1,b_1]$, тогда
+$$S(f,\tilde{P}^*,\alpha)-s(f,\tilde{P}^*,\alpha)=\sum_{\tilde{P}^*}(\omega(f,\Delta_k)\Delta\alpha_k)=\sum_{k=i+1}^j(\omega(f,\Delta_k)\Delta\alpha_k)\leq
+\sum_{k=1}^n(\omega(f,\Delta_i)\Delta\alpha_i)=S(f,\tilde{P},\alpha)-s(f,\tilde{P},\alpha)&lt\varepsilon$$ 
+</li>
+</ol>
+<br><br>
+
+<h5 id="8.2.5">8.2.5 Критерий Лебега интегрируемости функции по Риману.</h5>
+
+<p id="Definition8.2.9"><b>Определение 8.2.9:</b> Числовое множество $E\subset\mathbb{R}$ имеет меру Лебега равную 0, если для любого $\varepsilon&gt0$
+существует не более чем счетная система интервалов $\{I_n^{(\varepsilon)}\:|\:n\in{A}\subset\mathbb{N}\}$ такая, что 
+$E\subset\bigcup_{n\in{A}}I_n^{(\varepsilon)}$ и $\sum_{n\in{A}}|I_n^{(\varepsilon)}|&lt\varepsilon$. При этом используют обозначение $\mu(E)=0$.
+
+<br><br>
+
+<p><i>
+Вообще говоря под $\sum_{n\in{A}}|I_n^{(\varepsilon)}|$ понимается сумма ряда. Если множество $A$ конечно, то все члены ряда начиная с 
+некоторого полагаются равными нулю. Так что неравенство $\sum_{n\in{A}}|I_n^{(\varepsilon)}|&lt\varepsilon$ означает, что ряд 
+$\sum_{n\in{A}}|I_n^{(\varepsilon)}|$ сходится и его сумма меньше $\varepsilon$. 
+</i> 
+
+<br><br>
+
+<p id="Statement8.2.13"><b>Утверждение 8.2.13: Простейшие свойства множеств имеющих меру Лебега равной нулю.</b><br>
+<ol>
+<li>Если множество $E$ конечно, то $\mu(E)=0$.</li>
+<li>Объединение не более чем счетного числа множеств меры нуль имеет меру нуль.</li>
+<li>Счетное множество имеет меру нуль.</li>
+<li>Любое подмножество множества меры нуль имеет меру нуль.</li>
+<li>Мера Лебега любого числового отрезка не равна нулю.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Пусть $card{E}=m\in\mathbb{N}$, то есть $E:=\{x_1,x_2,\dots,x_m\}$. Фиксируем $\varepsilon&gt0$, тогда в качестве искомой совокупности интервалов
+можно взять $m$ интервалов вида $I_n:=\left(x_n-\frac{\varepsilon}{2(m+1)},x_n+\frac{\varepsilon}{2(m+1)}\right)$, тогда 
+$\sum_{i=1}^m|I_n|=\frac{m}{m+1}\varepsilon&lt\varepsilon$.
+</li>
+<li>
+Пусть $\{E_n\:|\:n\in{A}\subset\mathbb{N}\}$ не более чем счетная совокупность множеств такая, что для любого $n\in{A}$ $\mu(E_n)=0$.
+Фиксируем $\varepsilon&gt0$, тогда 
+
+$$\forall{n}\in{A}\left(\exists\left\{I_k^{(n)}\:\middle|\:k\in{A}_n\subset\mathbb{N}\right\}:
+\left(E_n\subset\bigcup_{k\in{A}_n}I_k^{(n)}\wedge\sum_{k\in{A}_n}\left|I_k^{(n)}\right|&lt\frac{\varepsilon}{2^n}\right)\right)$$
+
+Рассмотрим систему интервалов $\displaystyle{S}:=\bigcup_{n\in{A}}\left\{I_k^{(n)}\:\middle|\:k\in{A}_n\right\}$. Ряд 
+$\sum_{n\in{A}}\frac{\varepsilon}{2^n}$ сходится абсолютно, так как сходится абсолютно ряд $\sum_{n=1}^\infty\frac{\varepsilon}{2^n}$,
+следовательно, сходится абсолютно повторный ряд $\sum_{n\in{A}}\sum_{k\in{A}_n}|I_k^{(n)}|&lt\sum_{n\in{A}}\frac{\varepsilon}{2^n}&lt\varepsilon$.
+Следовательно, сходится двойной ряд  $\sum_{(S)}|I_k^{(n)}|=\sum_{n\in{A},k\in{A}_n}|I_k^{(n)}|=\sum_{n\in{A}}\sum_{k\in{A}_n}|I_k^{(n)}|&lt\varepsilon$.
+Доказательство последнего факта можно найти, например, в Фихтенгольц т. 2, стр. 337. 
+</li>
+<li>Следует из пункта 2.</li>
+<li>Если некоторая система интервалов покрвает числовое множество, то оно покрывает и любое его подмножество.</li>
+<li>
+Докажем индукцией по $n$, что для любой системы интервалов $\{I_k\:|\:k\in\overline{1,n}\}$ мощности $n$ и для любого отрезка $[a,b]$ верно
+$$[a,b]\subset\bigcup_{k=1}^nI_k\Rightarrow\sum_{k=1}^n|I_k|&gtb-a&gt0.$$
+При $n=1$ $I_1=(\alpha,\beta)$
+$$[a,b]\subset(\alpha,\beta)\Rightarrow\alpha&lta&ltb&lt\beta\Rightarrow|(\alpha,\beta)|=\beta-\alpha&gtb-a.$$
+Пусть утверждение верно для $n=k$, докажем, что он верно при $n=k+1$ 
+$$\{I_s\:|\:s\in\overline{1,k+1}\}:[a,b]\subset\bigcup_{s=1}^{k+1}I_k\Rightarrow\exists{s}_0\in\overline{1,k+1}:a\in{I}_{s_0}:=(\alpha,\beta)\Rightarrow
+\alpha&lta&lt\beta$$
+Если $b\leq\beta$, тогда $|I_{s_0}|=\beta-\alpha&gtb-a$, следовательно, $\sum_{s=1}^{k+1}|I_s|&gtb-a$.<br>
+Если $b&gt\beta$, то отрезок $[\beta,b]$ покрывается системой интервалов $\{I_s\:|\:s\in\overline{1,k+1}\wedge{s}\neq{s}_0\}$ мощности $k$.
+Следовательно, по предположению индукции 
+$$\sum_{\substack{s=1\\s\neq{s}_0}}^{k+1}|I_k|&gtb-\beta\Rightarrow\sum_{s=1}^{k+1}|I_k|&gt|I_{s_0}|+b-\beta=\beta-\alpha+b-\beta=b-\alpha&gtb-a.$$
+Таким образом доказано, что суммарная длина элементов любой конечной системы интервалов покрывающих отрезок больше длины этого отрезка.
+Если система бесконечна, то суммарная длина ее интервалов больше чем суммарная длина интервалов любой ее конечной подсистемы, и так как по
+<a href="./math_analisis3.6.html#Lemma3.6.2">принципу Бореля - Лебега</a> существует конечная подсистема покрывающая отрезок, то по доказанному
+длина это этой подсистемы будет больше длины отрезка, следовалтельно, больше длины отрезка будет и суммарная длина интервалов всей системы.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example8.2.2"><b>Пример 8.2.2:</b> Мера Лебега множества $E_1:=[0,1]\cap(\mathbb{R}\backslash\mathbb{Q})$ не может быть равной 0, так как по пункту 3 
+утверждения 8.2.3 множество $E_2:=[0,1]\cap\mathbb{Q}$ имеет меру Лебега 0. Так что если предположить, что мера Лебега множества $E_1$ равна нулю,
+то по пункту 2 была бы равна нулю и мера Лебега множества $E_1\cup{E}_2=[0,1]$, что противоречит пункту 5 утверждение 8.2.12.
+
+<br><br>
+
+<p id="Definition8.2.10"><b>Определение 8.2.10:</b> Будем говорить, что свойство $\mathcal{P}$ выполняется почти для всех точек множества 
+$E\subset\mathbb{R}$ (почти всюду на $E$), если мера Лебега множества, состоящего из точек для которых оно не выполняется, равна нулю.
+
+<br><br>
+
+<p id="Example8.2.3"><b>Пример 8.2.3:</b> Функция Дирихле $\mathcal{D}(x)=\begin{cases}0, & x\in\mathbb{Q}\\1, & x\in\mathbb{R}\backslash\mathbb{Q}\end{cases}$
+почти всюду на $\mathbb{R}$ равна нулю.
+
+<br><br>
+
+<p id="Theorem8.2.1"><b>Теорема 8.2.1: Критерий Лебега интегрируемости по Риману.</b><br>
+Функция $f(x):[a,b]\to\mathbb{R}$ интегрируема по Риману тогда, и только тогда, когда она ограничена на отрезке $[a,b]$ и непрерывна почти всюду на нем.
+<p><b>Доказательство:</b> Будет доказано <a href="some there other the rainbow">позже</a> в более общем виде.
+
+<p id="Example8.2.4"><b>Пример 8.2.4:</b> Функция Римана 
+$\mathcal{R}(x)=\begin{cases}\frac1{n}, & x=\frac{m}{n}\in\mathbb{Q},(m,n)=1\\0, & x\in\mathbb{R}\backslash\mathbb{Q}\end{cases}$ непрерывна почти всюду на 
+$\mathbb{R}$ (<a href="./math_analisis5.5.1.html#Task5.5.3">так как</a> она непрерывна на $\mathbb{R}\backslash\mathbb{Q}$), следовательно, она 
+интегрируема по Риману на любом числовом отрезке (интеграл равен 0).
+
+<br><br>
+$\newcommand{\sgn}{\operatorname{sgn}}$
+
+<p id="Task8.2.1"><b>Задача 8.2.1:</b> Функции $f(x)=\mathcal{R}(x)$ и $g(x)=|\sgn{x}|$ интегрируемы по Риману на отрезке $[1,2]$. Будет ли интегрируема
+по Риману на отрезке $[1,2]$ их композиция $g\circ{f}=|\sgn\mathcal{R}(x)|$?
+<p><b>Решение:</b> Функция $|\sgn\mathcal{R}(x)|$ не будет интегрируемой по Риману на отрезке $[1,2]$ так как любой отрезок любого разбиения будет 
+содержать как рациональные, так и иррациональные точки. Так что верхняя грань множества значений функции $|\sgn\mathcal{R}(x)|$ на любом отрезке равна 1,
+а нижняя 0, следовательно, верхняя гарнь нижних <a href="./math_analisis8.2.html#Definition8.2.3">сумм Дарбу</a> не может быть равна нижней грани верхних 
+сумм Дарбу.<br>
+При этом нет противоречия с пунктом 2 <a href="#Statement8.2.12">утверждения 8.2.12</a> так как $f([1,2])=[0,1]$, а функция
+$|\sgn{x}|$ не является непрерывной на отрезке $[0,1]$, то есть условие 2 утверждения 8.2.12 не выполнено.
+
+<br><br>
+<a href="./math_analisis8.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.3.html">next</a>
+
+</body>
+</html>

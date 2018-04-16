@@ -1,0 +1,386 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 4.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+ 
+ 
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis3.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis4.3.html">next</a>
+<br>
+
+<h3 id="4">4. ПРЕДЕЛ ЧИСЛОВОЙ ПОСЛЕДОВАТЕЛЬНОСТИ.</h3>
+
+<p> Наша цель сформулировать понятие предела для числовых последовательностей и числовых функций. Понятие предела является содержательным
+только для бесконечных подмножеств множества $\mathbb{R}$. Мы начнем изучение предела с минимального бесконечного подмножества
+множества $\mathbb{R}$ множества натуральных чисел $\mathbb{N}$. Результатов полученных для последовательностей хватит для 
+изучения предела функции.<br> 
+
+<h4 id="4.1">4.1 Определение и общие свойства предела.</h4>
+
+<h5 id="4.1.1">4.1.1 Опредление и примеры.</h5>
+
+<p>Объектом рассмотрения в данном разделе будет <a href="./math_analisis3.6.html#Definition3.6.1">числовая поледовательность</a> $\{x_n\}$. 
+<br><br>
+
+<p id="Definition4.1.1"><b>Определение 4.1.1: Общее определение предела числовой последовательности.</b><br>
+Предел числовой последовательности $\{x_n\}$ при $n$ стремящемся к бесконечности существует и равен $a\in\overline{\mathbb{R}}$, 
+если для любой окрестности точки $a$ найдется такое $k\in\mathbb{N}$, что для любого $n&gtk$ $x_n$ лежит в этой окрестности. То есть
+$$(\lim_{n\to\infty}x_n=a):=(\forall{U}(a)\:\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in{U}(a)))$$
+<br>
+
+<p>Из определения предела в частности следует, что изменение конечного числа членов последовательности не влияет ни на существование предела,
+ни на его численное значение. Допустим, $\{x_n\}$ числовая последовательность, $n_1,n_2,\dots,n_k$ - номера измененных членов,
+$\hat{n}:=\max\{n_1,n_2,\dots,n_k\}$. Тогда если существует $n_0$ удовлетворяющее условиям определения предела для исходной последовательности,
+то условиям определения предела для измененной последовательности будет удовлетворять $n_1:=\max\{n_0,\hat{n}\}$.<br>
+В частности, для любой последовательности $\{x_n\}$ и для любого $k\in\mathbb{N}$ предел последовательности $\{x_n\}$ существует, 
+тогда и только тогда, когда существует предел последовательности $\{x_{n+k}\}$ и вслучае сходимости оба предела будут равны. 
+Этот факт далее часто будет использоваться при доказательстве утвержденией и решении задач.  
+<br><br>
+
+<p id="Definition4.1.2"><b>Определение 4.1.2: Определение предела числовой последовательности по Коши.</b><br>
+Если $a\in\mathbb{R}$, то 
+$$(\lim_{x\to\infty}x_n=a):=(\forall\varepsilon&gt0\:\exists{k}\in\mathbb{N}:\forall{n}&gtk(|x_n-a|&lt\varepsilon)$$
+Эквивалентная формулировка определения по Коши в терминах окрестностей.
+$$(\lim_{n\to\infty}x_n=a):=(\forall\varepsilon&gt0\:\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in{U}^\varepsilon(a)))$$
+<ol>
+<li>Определение 4.1.1 общее, потому что в нем используется понятие окрестности точки, которое сформулировано для расширенного множества
+действительных чисел $\overline{\mathbb{R}}$, то есть оно годится и для $a\in\{-\infty,+\infty\}$.
+<li>В определении по Коши мы берем только центральносимметричные $\varepsilon$-окрестности, а в определении 4.1.1 любые.</li>
+</ol>
+<br>
+
+<p id="Statement4.1.1"><b>Утверждение 4.1.1:</b> Если известно, что $a\in\mathbb{R}$, то определения 4.1.1 и 4.1.2 эквивалентны.<br>
+<p><b>Доказательство:</b>
+<ol>
+<li>$4.1.1\Rightarrow4.1.2$<br>
+Поскольку $\varepsilon$-окрестность является окрестностью то утверждение можно считать доказанным.
+</li>
+<li>
+$4.1.2\Rightarrow4.1.1$<br>
+По пункту 3 <a href="./math_analisis3.3.html#Corollary3.3.2">следствия из принципа Архимеда</a>
+$$\forall{a}\in\mathbb{R},\forall{U}(a)(\exists\varepsilon&gt0:U^\varepsilon(a)\subset{U}(a)).$$
+То есть любая окрестность любой точки содержит некоторую $\varepsilon$-подокрестность. Фиксируем окрестность $U(a)$
+$$\exists\delta&gt0:U^\delta(a)\subset{U}(a)$$
+$$\forall\varepsilon&gt0\:\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in{U}^\varepsilon(a))\Rightarrow
+\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in{U}^\delta(a)\subset{U}(a))\Rightarrow
+\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\in{U}(a))$$ 
+</li>
+</ol>
+<br><br>
+<p>Определение 4.1.1 удобнее применять для доказательства теорем, а 4.1.2 для решения задач.<br><br>
+
+<p id="Definition4.1.3"><b>Определение 4.1.3:</b> Если последовательность $\{x_n\}$ имеет конечный предел (т. е. $\exists\lim_{n\to\infty}x_n\in\mathbb{R}$),
+то ее называют сходящейся. Если последовательность не имеет конечного предела, то ее называют расходящейся.<br><br>
+
+Отрицание общего определения предела: 
+$$(\lim_{n\to\infty}x_n\neq{a}):=(\exists{U}(a):\forall{k}\in\mathbb{N}(\exists{n}&gtk:x_n\notin{U}(a)))$$
+
+Отрицание определения предела по Коши: 
+$$(\lim_{n\to\infty}x_n\neq{a}):=(\exists\varepsilon&gt0:\forall{k}\in\mathbb{N}(\exists{n}&gtk:|x_n-a|\geq\varepsilon))$$
+
+<p id="Example4.1.1"><b>Пример 4.1.1:</b>$\displaystyle\lim_{n\to\infty}\frac{k}{n}=0$, где $k\in\mathbb{R}$.<br>
+Так как $0\in\mathbb{R}$ используем определение предела по Коши. Фиксируем $\varepsilon&gt0$. Найдем $n_0\in\mathbb{N}$ такое, что
+$$\forall{n}&gtn_0\left(\left|\frac{k}{n}-0\right|=\left|\frac{k}{n}\right|&lt\varepsilon\right)$$
+$$n_0:=\left[\frac{|k|}{\varepsilon}\right]\Rightarrow\forall{n}\in\mathbb{N}\left(n&gtn_0\Rightarrow{n}&gt\left[\frac{|k|}{\varepsilon}\right]\Rightarrow
+{n}&gt\frac{|k|}{\varepsilon}\Rightarrow\left|\frac{k}{n}\right|&lt\varepsilon\right)$$ <br>
+
+<p id="Example4.1.2"><b>Пример 4.1.2:</b>$\displaystyle\lim_{n\to\infty}\frac{n+1}{n}=1$,<br>
+Так как $1\in\mathbb{R}$ используем определение предела по Коши. Фиксируем $\varepsilon&gt0$. Найдем $n_0\in\mathbb{N}$ такое, что 
+для любого $n&gtn_0$ $|\frac{n+1}{n}-1|=|\frac1{n}|&lt\varepsilon$. Задача эквивалентна задаче примера 4.1.1 при $k=1$, 
+следовательно, $n_0=[\frac1{\varepsilon}]$.<br>
+
+<p id="Example4.1.3"><b>Пример 4.1.3:</b> $\displaystyle\lim_{n\to\infty}\left(1+\frac{(-1)^n}{n}\right)=1$.<br>
+Так как $1\in\mathbb{R}$ импользуем опредление предела по Коши. Фиксируем $\varepsilon&gt0$. Найдем $n_0\in\mathbb{N}$ такое, что
+для любого $n&gtn_0$ $|1+\frac{(-1)^n}{n}-1|=|\frac{(-1)^n}{n}|=\frac1{n}&lt\varepsilon$. Задача эквивалентна задаче из 
+примера 4.1.2, следовательно, $n_0=[\frac1\varepsilon]$<br>
+
+<p id="Example4.1.4"><b>Пример 4.1.4:</b> $\displaystyle\lim_{n\to\infty}\frac{\sin{n}}{n}=0$.<br>
+Так как $0\in\mathbb{R}$ используем определение предела по Коши. Фиксируем $\varepsilon&gt0$. Найдем $n_0\in\mathbb{N}$ такое, что 
+для любого $n&gtn_0$ $|\frac{\sin{n}}{n}|\leq\frac1{n}&lt\varepsilon$. Задача эквивалентна задаче из примера 4.1.2,
+следовательно, $n_0=[\frac1{\varepsilon}]$. <br>
+
+<p id="Example4.1.5"><b>Пример 4.1.5:</b> $\displaystyle\lim_{n\to\infty}\frac1{q^n}=0$, где $|q|&gt1$.<br>
+Докажем от противного, что для любого $q&gt1$ множество $M:=\{|q|^n\:|\:n\in\mathbb{N}\}$ не ограничено сверху. Предположим 
+существует $s:=\sup{M}\in\mathbb{R}$. Обозначим $s':=\frac{s}{q}&lts$, тогда 
+$$(\forall{n}\in\mathbb{N}(|q|^n\leq{s})\wedge{s'}&lts)\Rightarrow\exists{m}\in\mathbb{N}:|q|^m&gts'=\frac{s}{q}\Rightarrow
+\exists{n}=m+1\in\mathbb{N}:|q|^n=|q|^mq&gts\Rightarrow{s}\neq\sup{M}$$
+Так как $0\in\mathbb{R}$ используем определение предела по Коши. Фиксируем $\varepsilon&gt0, c:=\frac1{\varepsilon}$. 
+Число $c$ не может быть мажорантой для множества $M$, значит 
+$$q&gt1\Rightarrow\forall{n}\in\mathbb{N}(|q|^{n+1}&gt|q|^n)\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(|q|^n&gtc=\frac1{\varepsilon}\right)
+\Rightarrow\forall{n}&gt{n}_0\left(\left|\frac1{q^n}\right|&lt\varepsilon\right)$$
+<br>
+
+<p id="Example4.1.6"><b>Пример 4.1.6:</b> Существует ли и если существует, то чему равен предел последовательности $x_n=n^{(-1)^n}$?<br>
+Уточним для ясности что $x_n=n^{(-1)^n}=\begin{cases}n,\;n=2k\\\frac1{n},\;n=2k-1\end{cases}$<br>
+Докажем, что последовательность $\{x_n\}$ не имеет предела в $\overline{\mathbb{R}}$
+<ol>
+<li>Предел не может быть равен $-\infty$ так как все члены последовательности $\{x_n\}$ положительны.</li>
+<li>Предел не может быть равен $+\infty$ так как существует $a:=1$ такое что 
+$$\forall{k}\in\mathbb{N}\left(\exists{n}=2k+1&gtk:x_n=(2k+1)^{(-1)^{2k+1}}=\frac1{2k+1}\leq{a}\right)$$</li>
+<li>Предел не может быть равен $a\in\mathbb{R}$, так как существует $\varepsilon:=1&gt0$ такое что
+$$\forall{k}\in\mathbb{N}\:\exists{n}=2([|a|]+k)&gtk:|x_n-a|=|2([|a|]+k)-a|\geq|2([|a|]+1)-a|&gt|a|+1\geq\varepsilon$$ 
+</li>
+</ol>
+<br>
+
+<h5 id="4.1.2">4.1.2 Общие свойства предела последовательности.</h5>
+
+<p id="Definition4.1.4"><b>Определение 4.1.4:</b> Числовую последовательность $\{x_n\}$ будем считать ограниченной (сверху\снизу), 
+если ограничено (сверху\снизу) множество членов последоваетельности $E:=\{x_n\:|\:n\in\mathbb{N}\}$.<br>
+Другими словами последовательность $\{x_n\}$ ограничена, тогда и только тогда, когда 
+$$\exists{M}\in\mathbb{R}:\forall{n}\in\mathbb{N}(-M\leq{x_n}\leq{M})\sim\exists{M}\in\mathbb{R}:\forall{n}\in\mathbb{N}(|x_n|\leq{M})$$
+
+<p id="Theorem4.1.1"><b>Теорема 4.1.1:</b>
+<ol>
+<li>Всякая сходящаяся последовательность ограничена.</li>
+<li>$$a_1,a_2\in\overline{\mathbb{R}}:(\lim_{n\to\infty}x_n=a_1\wedge\lim_{n\to\infty}x_n=a_2)\Rightarrow{a}_1=a_2$$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Пусть существует $A\in\mathbb{R}$ такое что $\displaystyle\lim_{n\to\infty}x_n=A$, $\varepsilon:=1&gt0$, тогда
+по <a href="#Definition4.1.2">определениею предела последовательности по Коши</a>
+$$\exists{k}\in\mathbb{N}:\forall{n}&gtk(|x_n|\leq|A|+|x_n-A|&lt|A|+1)$$
+$$M:=\max\{|x_1|,|x_2|,\dots,|x_k|,|A|+1\}\Rightarrow\forall{n}\in\mathbb{N}(|x_n|\leq{M})\Rightarrow\forall{n}\in\mathbb{N}(-M\leq{x}_n\leq{M}).$$
+</li>
+<li>Предположим $a_1,a_2\in\overline{\mathbb{R}},\displaystyle\lim_{n\to\infty}x_n=a_1,\displaystyle\lim_{n\to\infty}x_n=a_2$ и $a_1\neq{a}_2$.<br>
+Воспользуемся <a href="./math_analisis3.3.html#Statement3.4.1">свойством отделимости окрестностей:</a>
+$$a_1\neq{a}_2\Rightarrow\exists{U}(a_1),\exists{U}(a_2):U(a_1)\cap{U}(a_2)=\varnothing.$$
+По <a href="#Definition4.1.1">общему определению предела последовательности</a>:
+$$\lim_{n\to\infty}x_n=a_1\Rightarrow\exists{n_1}\in\mathbb{N}:\forall{n}&gtn_1(x_n\in{U}(a_1))$$
+$$\lim_{n\to\infty}x_n=a_2\Rightarrow\exists{n_2}\in\mathbb{N}:\forall{n}&gtn_2(x_n\in{U}(a_2))$$
+$$k:=\max\{n_1,n_2\}\Rightarrow(x_{k+1}\in{U}(a_1)\wedge{x}_{k+1}\in{U}(a_2)\Rightarrow{U}(a_1)\cap{U}(a_2)\neq\varnothing.$$
+Получено противоречие с отделимостью окрестностей $U(a_1)$ и $U(a_2)$, следовательно, $a_1=a_2$.
+</li>
+</ol>
+<br><br>
+
+<p id="Task4.1.1"><b>Задача 4.1.1:</b> Пусть $\{x_n\}$ произвольная числовая последовательность, $\{y_n\}$ числовая последовательность такая, что
+$$\forall{n}\in\mathbb{N}\left(y_n=\frac{x_1+x_2+\dots+x_n}{n}\right)$$
+Доказать, что если последовательность $\{x_n\}$ сходится к числу $a\in\mathbb{R}$, то последовательность $\{y_n\}$ сходится к тому же числу.<br>
+Верно ли обратное?
+<p><b>Решение:</b> 
+<i>
+Пусть $\displaystyle\lim_{n\to\infty}x_n=a\in\mathbb{R}$. Фиксируем $\varepsilon&gt0$. Следовательно, 
+существует $m\in\mathbb{N}$ такое, что для любого $n&gtm$ $|x_n-a|&lt\frac\varepsilon{2}$, тогда
+$$\forall{n}&gtm\left(|y_n-a|=\left|\frac{x_1+x_2+\dots+x_n}{n}-a\right|=\left|\frac{(x_1-a)+(x_2-a)+\dots+(x_n-a)}{n}\right|&lt
+\frac{|x_1-a|+|x_2-a|+\dots+|x_m-a|+\frac\varepsilon{2}(n-m)}{n}=\frac{\sum_{i=1}^m|x_i-a|-\frac\varepsilon{2}m}{n}+\frac\varepsilon{2}\right)$$
+В последнем выражении знаменатель первого слагаемого не зависит от $n$ и, следовательно, по <a href="#Example4.1.1">примеру 4.1.1</a>:
+$$\lim_{n\to\infty}\frac{\sum_{i=1}^m|x_i-a|-\frac\varepsilon{2}m}{n}=0\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\frac{\sum_{i=1}^m|x_i-a|-\frac\varepsilon{2}m}{n}&lt\frac\varepsilon{2}\right)$$
+Таким образом для любого $n\in\mathbb{N}$ большего $k:=\max\{m,n_0\}$ $|y_n-a|&lt\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon$.<br>
+Обратное не верно, например, для последовательности $x_n=(-1)^{n+1}$. В этом случае
+$$\forall{n}\in\mathbb{N}\left(y_n=\frac{\sum_{i=1}^{n}(-1)^n}{n}\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(y_n=\begin{cases}0,\;\;n=2k\\\frac1{n},\;n=2k-1\end{cases}\right)\Rightarrow\lim_{n\to\infty}y_n=0$$
+В то время как последовательнсть $\{x_n\}$ предела не имеет. Действительно, положим $\varepsilon:=1$.
+<ul>
+<li>Если существует предел $\displaystyle\lim_{n\to\infty}(-1)^{n+1}=a\leq0$, тогда для любого $k\in\mathbb{N}$ найдется $n=2k+1&gtk$
+такое, что $|x_n-a|=|(-1)^{2k+2}-a|=|1-a|\geq1$.</li>
+<li>Если существует предел $\displaystyle\lim_{n\to\infty}(-1)^{n+1}=a&gt0$, тогда для любого $k\in\mathbb{N}$ найдется $n=2k&gtk$
+такое, что $|x_n-a|=|(-1)^{2k+1}-a|=|-1-a|&gt1$</li>
+</ul>
+</i>
+<br><br>
+
+<h4 id="4.2">4.2 Свойства предела последовательности.</h4>
+
+<h5 id="4.2.1">4.2.1 Бесконечно малые последовательности и их свойства.</h5>
+
+<p id="Definition4.2.1"><b>Определение 4.2.1: Бесконечномалая последовательность.</b><br>
+Числовая последовательность $\{x_n\}$ называется бесконечномалой, если ее предел равен 0.<br>
+При этом используется обозначение $x_n=o(1),n\to\infty$, которое читается как "о-малое от единицы, при $n$ стремящемся к $\infty$".<br><br>
+
+<p id="Theorem4.2.1"><b>Теорема 4.2.1: Свойства бесконечно малых последовательностей.</b><br>
+Пусть $\{x_n\},\{y_n\},\{c_n\}$ числовые последовательности, причем $\{x_n\},\{y_n\}$ - бесконечномалые, а $\{c_n\}$ ограничена, тогда
+<ol>
+<li>последовательность $\{x_n\pm{y}_n\}$ - бесконечномалая,</li>
+<li>последовательность $\{x_nc_n\}$ - бесконечномалая,</li>
+<li>последоваетльность $\{x_ny_n\}$ - бесконечномалая.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Фиксируем $\varepsilon&gt0$, тогда из <a href="#Definition4.1.2">определение предела последовательности по Коши</a> следует
+$$\lim_{n\to\infty}x_n=0\Rightarrow\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1\left(|x_n|&lt\frac\varepsilon{2}\right),$$
+$$\lim_{n\to\infty}y_n=0\Rightarrow\exists{n}_2\in\mathbb{N}:\forall{n}&gtn_2\left(|y_n|&lt\frac\varepsilon{2}\right),$$
+тогда
+$$n_0:=\max\{n_1,n_2\}\Rightarrow\forall{n}&gtn_0\left(|x_n\pm{y}_n|\leq|x_n|+|y_n|&lt\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon\right)$$
+</li>
+<li>
+Последовательность $\{c_n\}$ <a href="#Definition4.1.4">ограничена</a> значит существует $M\in\mathbb{R}$ такое, что
+для любого $n\in\mathbb{N}$ $|c_n|\leq{M}$<br>
+Фиксируем $\varepsilon&gt0$, тогда из <a href="#Definition4.1.2">определения предела последовательности по Коши</a> следует
+$$\lim_{n\to\infty}x_n=0\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}&gt{n}_0\left(|x_n|&lt\frac\varepsilon{M}\right)\Rightarrow
+\forall{n}&gtn_0\left(|x_nc_n|=|x_n||c_n|\leq|x_n|M&lt\frac\varepsilon{M}M=\varepsilon\right)$$
+</li>
+<li>
+Поскольку последовательность $\{y_n\}$ бесконечномалая, то по первому <a href="#Theorem4.1.1">общему свойству пределов</a> она ограничена,
+следовательно, последовательнось $\{x_ny_n\}$ бесконечномалая по пункту 2 теоремы.
+</li>
+</ol>
+<br><br>
+
+<p>Из четырех известных арифметических действий осталось одно - деление.<br>
+Пусть последовательности $\{x_n\},\{y_n\}$ бесконечномалые, при этом для любого $n\in\mathbb{N}$ $y_n\neq0$.<br>
+Будет ли бесконечномалой последовательность $\{\frac{x_n}{y_n}\}$?
+
+<p id="Task4.2.1"><b>Задача 4.2.1:</b> Привести примеры бесконечномалых последовательностей $\{x_n\},\{y_n\}$ таких, что
+последовательность $\{\frac{x_n}{y_n}\}$ бесконечномалая и нет.
+<p><b>Решение:</b>
+<i> 
+<ol>
+<li>$x_n=\frac1{n^2},y_n=\frac1{n}\Rightarrow\frac{x_n}{y_n}=\frac{n}{n^2}=\frac1{n}$ - бесконечномалая по <a href="#Example4.1.1">примеру 4.1.1</a></li>
+<li>$x_n=\frac1{n},y_n=\frac1{n^2}\Rightarrow\frac{x_n}{y_n}=\frac{n^2}{n}=n$ - не бесконечномалая, так как не ограничена и, следовательно,
+не сходится по <a href="#Theorem4.1.1">первому общему свойству пределов</a>.</li>
+<li>$x_n=\frac1{n},y_n=\frac1{n}\Rightarrow\frac{x_n}{y_n}=\frac{n}{n}=1$ - не бесконечномалая так как сходится, но не к нулю.</li>
+</ol>
+</i>
+<br><br>
+
+<p>При желании методом математической индукции можно доказать, что сумма и произведение любого конечного числа бесконечномалых последовательностей
+тоже будет бесконечномалой последовательностью.<br><br>
+
+<h5 id="4.2.2">4.2.2 Предельный предеход и арифметические операции.</h5>
+
+<p id="Lemma4.2.1"><b>Лемма 4.2.1:</b> Числовая последовательность $\{x_n\}$ сходится к числу $A\in\mathbb{R}$, тогда и только тогда, когда
+последовательность $\{x_n-A\}$ - бесконечномалая.
+<p><b>Доказательство:</b> Так как по условию $A\in\mathbb{R}$ можем применить <a href="#Definition4.1.2">определение предела по Коши</a>
+тогда $$\lim_{n\to\infty}x_n=A\Leftrightarrow\forall\varepsilon&gt0\:\exists{k}\in\mathbb{N}:\forall{n}&gtn(|x_n-A|=|(x_n-A)-0|&lt\varepsilon
+\Leftrightarrow\lim_{n\to\infty}(x_n-A)=0).$$
+
+<br>
+
+<p id="Theorem4.2.2"><b>Теорема 4.2.2: Арифметические свойства предела.</b><br>
+Если $\{x_n\}, \{y_n\}$ числовые последовательности такие, что $$\lim_{n\to\infty}x_n=A\in\mathbb{R},\lim_{n\to\infty}y_n=B\in\mathbb{R},$$
+тогда
+<ol>
+<li>$\displaystyle\lim_{n\to\infty}(x_n\pm{y}_n)=A\pm{B}$,</li>
+<li>$\displaystyle\lim_{n\to\infty}(x_ny_n)=AB$.</li>
+<li>Если дополнительно известно, что $B\neq0$, и для любого $n\in\mathbb{N}$ $y_n\neq0$, то<br>
+$\displaystyle\lim_{n\to\infty}\frac1{y_n}=\frac1{B}$.
+</li>
+<li>Если дополнительно известно, что $B\neq0$, и для любого $n\in\mathbb{N}$ $y_n\neq0$, то<br>
+$\displaystyle\lim_{n\to\infty}\frac{x_n}{y_n}=\frac{A}{B}$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Для любого $n\in\mathbb{N}$ положим $\alpha_n:=A-x_n,\beta_n:=y_n-B$, тогда по лемме последовательности $\{\alpha_b\},\{\beta_n\}$ - бесконечномалые и
+для любого $n\in\mathbb{N}$ $x_n=A+\alpha_n,y_n=B+\beta_n$. 
+<ol>
+<li>Так как по <a href="#Theorem4.2.1">свойствам бесконечномалых</a> последовательности $\{\alpha_n\pm\beta_n\}$ - бесконечномалые, то по лемме имеем:
+$$x_n\pm{y_n}=(A+\alpha_n)\pm(B+\beta_n)=(A\pm{B})+(\alpha_n\pm\beta_n)\Rightarrow\lim_{n\to\infty}(x_m\pm{y}_n)=A\pm{B}$$</li>
+<li>Так как по <a href="#Theorem4.2.1">свойствам бесконечномалых</a> последовательность $\{A\beta_n+B\alpha_n+\alpha_n\beta_n\}$ -
+бесконечномалая, то по лемме имеем $$x_ny_n=(A+\alpha_n)(B+\beta_n)=AB+(A\beta_n+B\alpha_n+\alpha_n\beta_n)\Rightarrow\lim_{n\to\infty}(x_ny_n)=AB$$
+</li>
+<li>Докажем, что последовательность $\{\frac1{y_n}-\frac1{B}\}$ бесконечномалая.
+$$\frac1{y_n}-\frac1{B}=\frac1{B+\beta_n}-\frac1{B}=-\frac1{(B+\beta_n)B}\beta_n$$
+Докажем, что последовательность $z_n=-\frac1{(B+\beta_n)B}$ ограничена.
+$$B\neq0\Rightarrow\frac{|B|}{2}&gt0\Rightarrow\exists{k}\in\mathbb{N}:\forall{n}&gtk\left(|\beta_n|&lt\frac{|B|}{2}\right)\Rightarrow
+\forall{n}&gtk\left(|B+\beta_n|\geq|B|-|\beta_n|&gt|B|-\frac{|B|}{2}=\frac{|B|}{2}\right)\Rightarrow$$ 
+$$\Rightarrow\forall{n}&gtk\left(\left|\frac1{(B+\beta_n)B}\right|=\frac1{|B+\beta_n||B|}&lt\frac{2}{B^2}\right)\Rightarrow
+\forall{n}&gtk\left(|z_n|&lt\frac{2}{B^2}\right)$$
+Таким образом для любого $n\in\mathbb{N}$ $|z_n|\leq{M}$, где $M:=\max\{|z_1|,|z_2|,\dots,|z_k|,\frac{2}{B^2}\}$, то есть последовательность 
+$\{z_n\}$ ограничена, следовательно, последовательность $\frac1{y_n}-\frac1{B}=\beta_n{z}_n$ бесконечномалая по 
+<a href="#Theorem4.2.1">свойству 2 бесконечномалых последовательностей</a>. Тогда по лемме $\displaystyle\lim_{n\to\infty}\frac1{y_n}=\frac1{B}$.
+
+</li>
+<li>Из пункта 3 следует, что существует предел $\displaystyle\lim_{n\to\infty}\frac1{y_n}=\frac1{B}$. Тогда по пункту 2 существует предел
+$$\lim_{n\to\infty}\frac{x_n}{y_n}=\lim_{n\to\infty}\left(x_n\frac1{y_n}\right)=\lim_{n\to\infty}x_n\lim_{n\to\infty}\frac1{y_n}=A\frac1{B}=\frac{A}{B}$$
+</li>
+</ol>
+<br><br>
+
+<ol>
+<li>С подключением метода математической индукции пункты 1 и 2 теоремы распространяются на любое конечное число последовательностей.</li>
+<li>Все черыре пункта теоремы нельзя обратить. То есть из существования пределов суммы, произведения или частного последовательностей
+не следует существования пределов каждой последовательности в отдельности.</li>
+</ol>
+<br><br>
+
+<p id="Task4.2.2"><b>Задача 4.2.2:</b> Привести примеры расходящихся последовательностей $\{x_n\},\{y_n\}$, таких, что существуют пределы последовательностей
+$\{x_n+y_n\},\{x_ny_n\}$.
+<p><b>Решение:</b>
+<i>
+При решении <a href="#Task4.1.1">задачи 4.1.1</a> было показано, что последовательность $\{(-1)^n\}$ расходится, однако
+$$x_n=(-1)^n,y_n=(-1)^{n+1}\Rightarrow{x}_n+y_n=\begin{cases}-1+1=0,\quad{n}=2k-1\\1+(-1)=0,\,n=2k\end{cases}\Rightarrow\forall{n}\in\mathbb{N}(x_n+y_n=0)
+\Rightarrow\lim_{n\to\infty}(x_n+y_n)=0$$
+$$x_n=(-1)^n,y_n=(-1)^n\Rightarrow{x}_ny_n=\begin{cases}1*1=1,\quad\quad\;{n}=2k\\-1*(-1)=1,n=2k-1\end{cases}\Rightarrow
+\forall{n}\in\mathbb{N}(x_ny_n=1)\Rightarrow\lim_{n\to\infty}(x_ny_n)=1$$
+</i>
+<br>
+<p>Если на ряду с существованием предела последовательности $\{x_n+y_n\}$ потребовать сходимости последовательности 
+$\{x_n\}$ то из этого будет следовать сходимость последовательности $\{y_n\}$.<br>
+Если на ряду с существованием предела последовательности $\{x_ny_n\}$ потребовать, чтобы существовал предел $\lim_{n\to\infty}x_n\neq0$
+и для любого $n\in\mathbb{N}$ $x_n\neq0$, то из этого будет следовать сходимость последовательности $\{y_n\}$.<br><br>
+
+<h5 id="4.2.3">4.2.3 Предельный переход и неравенства.</h5>
+
+<p id="Theorem4.2.3"><b>Теорема 4.2.3</b> Пусть $\{x_n\},\{y_n\},\{z_n\}$ числовые последовательности такие, что 
+$$\lim_{n\to\infty}x_n=A\in\overline{\mathbb{R}},\lim_{n\to\infty}y_n=B\in\overline{\mathbb{R}}.$$
+тогда
+<ol>
+<li>$A&ltB\Rightarrow\exists{n}_0:\forall{n}&gt{n}_0(x_n&lty_n)$</li>
+<li>Теорема о двух милиционерах.
+$$(\exists{k}\in\mathbb{N}:\forall{n}&gtk(x_n\leq{z}_n\leq{y}_n)\wedge{A}=B)\Rightarrow\lim_{n\to\infty}z_n=A$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как $A&ltB$, то $A\neq{B}$ тогда существует $c\in(A,B)$ и существует пара окрестностей $U(A),U(B)$ таких, что
+$c$ правый конец $U(A)$ и левый $U(B)$, тогда по <a name="#Definition4.1.1">общему определению предела</a>:
+$$\lim_{n\to\infty}x_n=A\Rightarrow\exists{n}_1\in\mathbb{N}:\forall{n}&gt{n}_1(x_n\in{U}(A))\Rightarrow\forall{n}&gtn_1(x_n&ltc)$$
+$$\lim_{n\to\infty}y_n=B\Rightarrow\exists{n}_2\in\mathbb{N}:\forall{n}&gt{n}_2(y_n\in{U}(B))\Rightarrow\forall{n}&gtn_2(y_n&gtc)$$
+тогда
+$$n_0:=\max\{n_1,n_2\}\Rightarrow\forall{n}&gt{n}_0(x_n&ltc&lty_n)$$
+</li>
+<li>
+Фиксируем $U(A)=(\alpha,\beta),\alpha&ltA&lt\beta$, тогда по общему <a href="#Definition4.1.1">определению предела</a>:
+$$\lim_{n\to\infty}x_n=A\Rightarrow\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1(x_n\in{U}(A))$$
+$$\lim_{n\to\infty}y_n=A\Rightarrow\exists{n}_2\in\mathbb{N}:\forall{n}&gtn_2(y_n\in{U}(A))$$
+тогда
+$$k:=\max\{n_0,n_1,n_2\}\Rightarrow\forall{n}&gtk(\alpha&ltx_n\leq{z}_n\leq{y}_n&lt\beta)\Rightarrow\forall{n}&gtk(z_n\in{U}(A))$$
+</li>
+</ol>
+<br><br>
+
+<p id="Corollary4.2.1"><b>Следствие 4.2.1:</b> Пусть $\{x_n\},\{y_n\}$ числовые последовательности такие, что 
+$$\lim_{n\to\infty}x_n=A\in\overline{\mathbb{R}},\lim_{n\to\infty}=B\in\overline{\mathbb{R}}$$
+тогда
+<ol>
+<li>$\exists{n}_0\in\mathbb{N}:\forall{n}&gt{n}_0(x_n&lty_n)\Rightarrow{A}\leq{B}$</li>
+<li>$\exists{n}_0\in\mathbb{N}:\forall{n}&gt{n}_0(x_n\leq{y}_n)\Rightarrow{A}\leq{B}$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<i>
+<li>Докажем от противного предположим, что $A&gtB$, тогда по пункту 1 теоремы существует $n_1\in\mathbb{N}$ такой, что 
+для любого ${n}&gtn_1$ $x_n&gty_n$, но тогда для любого $n&gt\max\{n_0,n_1\}$ одновременно $x_n&lty_n$ и $x_n&gty_n$.
+</li>
+<li>Аналогично пункту 1. Если предположить, что $A&gtB$, то найдется такое $k\in\mathbb{N}$, что для любого 
+$n&gtk$ одновременно $x_n\leq{y}_n$ и $x_n&gty_n$</li>
+</ol>
+</i>
+<br><br>
+<p>Таким образом, можно сказать, что предельный переход сохраняет знак, но не в строгом смысле.<br> 
+<i>
+То есть существуют пары последовательностей
+$\{x_n\},\{y_n\}$ такие, что для любого $n\in\mathbb{N}$ $x_n&lty_n$ и тем не менее пределы их будут равны. Например 
+$$x_n=\frac1{n^2+1},y_n=\frac1{n}\Rightarrow\forall{n}\in\mathbb{N}(x_n&lty_n)$$
+но при этом $\displaystyle\lim_{n\to\infty}x_n=\lim_{n\to\infty}y_n=0$.  
+</i>
+<br><br>
+
+<br><br>
+<a href="./math_analisis3.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis4.3.html">next</a>
+
+</body>
+</html>

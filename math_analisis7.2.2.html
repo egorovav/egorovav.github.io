@@ -1,0 +1,340 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 7.2.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analisis7.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.2.3.html">next</a>
+
+<h5 id="7.2.2">7.2.2 Асимптотические признаки сравнения для знакопостоянных рядов.</h5>
+
+<p id="Theorem7.2.4"><b>Теорема 7.2.4:</b> Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n\geq0$, $b_n\geq0$ и $a_n=O(b_n)$ при $n\to\infty$, тогда
+<ol>
+<li>из сходимости ряда $\sum_{n=1}^\infty{b}_n$ следует сходимость ряда $\sum_{n=1}^\infty{a}_n$,</li>
+<br>
+<li>из расходимости ряда $\sum_{n=1}^\infty{a}_n$ следует расходимость ряда $\sum_{n=1}^\infty{b}_n$.</li>
+</ol>
+<p><b>Доказательство:</b> Так как $a_n=O(b_n)$ при $n\to\infty$, <a href="./math_analisis5.4.2.html#Statement5.4.1">то</a> $\exists{k}&gt0$, 
+$\exists{n}_0\in\mathbb{N}$ такие, что для любого $n&gt{n}_0$
+$a_n\leq{k}b_n$.
+<ol>
+<li>
+Ряд $\sum_{n=1}^\infty{b}_n$ сходится, <a href="./math_analisis7.1.html#Theorem7.1.2">следовательно</a>, сходится ряд $\sum_{n=1}^\infty(kb_n)$, 
+следовательно, по <a href="./math_analisis7.2.1.html#Theorem7.2.2">теореме 7.2.2</a> сходится ряд $\sum_{n=1}^\infty{a}_n$. 
+</li>
+<li>
+Докажем от противного. Пусть ряд $\sum_{n=1}^\infty{b}_n$ сходится. Тогда по пункту 1 ряд $\sum_{n=1}^\infty{a}_n$ тоже сходится, а это противоречит
+условию.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.3"><b>Следствие 7.2.3:</b> Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n\geq0$, $b_n\geq0$ и $a_n=O^*(b_n)$ при $n\to\infty$, тогда ряд $\sum_{n=1}^\infty{b}_n$ сходится тогда и только тогда, когда сходится ряд 
+$\sum_{n=1}^\infty{a}_n$.
+<p><b>Доказательство:</b>Так как $a_n=O^*(b_n)$ при $n\to\infty$, <a href="./math_analisis5.4.2.html#Definition5.4.12">то</a> $a_n=O(b_n)$ и $b_n=O(a_n)$
+при $n\to\infty$, по этому утверждение следует из теоремы 7.2.4.
+
+<br><br>
+
+<p id="Corollary7.2.4"><b>Следствие 7.2.4:</b> Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n\geq0$, $b_n&gt0$ и существует $k\in\overline{\mathbb{R}}$ такое, что $\displaystyle{k}=\lim_{n\to\infty}\frac{a_n}{b_n}$, тогда
+<ol>
+<li>если $0&ltk&lt\infty$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда ряд $\sum_{n=1}^\infty{b}_n$,</li>
+<br>
+<li>если $k=0$, то из сходимости ряда $\sum_{n=1}^\infty{b}_n$ следует сходимость ряда $\sum_{n=1}^\infty{a}_n$,</li>
+<br>
+<li>если $k=+\infty$, то из расходимости ряда $\sum_{n=1}^\infty{b}_n$ следует расходимотсь ряда $\sum_{n=1}^\infty{a}_n$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Утверждение следует из следствия 7.2.3 так как из существования конечного не нулевого предела $\displaystyle\lim_{n\to\infty}\frac{a_n}{b_n}$ 
+<a href="./math_analisis5.4.2.html#Statement5.4.4">следует</a>, что $a_n=O^*(b_n)$.
+</li>
+<li>
+Утверждение следует из <a href="#Theorem7.2.4">теоремы 7.2.4</a>, так как из существования конечного предела $\displaystyle\lim_{n\to\infty}\frac{a_n}{b_n}$
+<a href="./math_analisis5.4.2.html#Statement5.4.2">следует</a>, что $a_n=O(b_n)$.
+</li>
+<li>
+Если $\displaystyle\lim_{n\to\infty}\frac{a_n}{b_n}=+\infty$, то последовательность $\frac{a_n}{b_n}$ не ограничена, следовательно, существует 
+$n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $\frac{a_n}{b_n}&gt1$, то есть $a_n&gtb_n$, и тогда утверждение следует из 
+<a href="./math_analisis7.2.1.html#Theorem7.2.1">теоремы 7.2.2</a>.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary7.2.5"><b>Следствие 7.2.5: Шкала Дирихле.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n\geq0$ и существует $p&gt0$ такое, что $a_n=O^*(\frac1{n^p})$
+при $n\to\infty$, тогда ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда $p&gt1$.
+<p><b>Доказательство:</b> Ряд $\sum_{n=1}^\infty\frac1{n^p}$ сходится <a href="./math_analisis7.2.1.html#Example7.2.3">тогда и только тогда</a>, 
+когда $p&gt1$, поэтому утверждение следует из <a href="#Corollary7.2.3">следствия 7.2.3</a>.
+
+<br><br>
+
+<p id="Corollary7.2.6"><b>Следствие 7.2.6:</b> Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n&gt0$, $b_n&gt0$ и существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $\frac{a_{n+1}}{a_n}\leq\frac{b_{n+1}}{b_n}$, тогда
+<ol>
+<li>из сходимости ряда $\sum_{n=1}^\infty{b}_n$ следует сходимость ряда $\sum_{n=1}^\infty{a}_n$,</li>
+<br>
+<li>из расходимости ряда $\sum_{n=1}^\infty{a}_n$ следует расходимоть ряда $\sum_{n=1}^\infty{b}_n$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<i>
+Так как функция $\ln{x}$ возрастает на области определения, то 
+$$\forall{a},b\in\mathbb{R}^+(a\leq{b}\Leftrightarrow\ln{a}\leq\ln{b})\Rightarrow
+\forall{n}&gtn_0\left(\ln\frac{a_{n+1}}{a_n}=\ln{a}_{n+1}-\ln{a}_n\leq\ln\frac{b_{n+1}}{b_n}=\ln{b_{n+1}}-\ln{b}_n\right)\Rightarrow
+\forall{n}&gtn_0\left(\sum_{k=n_0+1}^n\ln{a}_{n+1}-\sum_{k=n_0+1}^n\ln{a}_n\leq\sum_{k=n_0+1}^n\ln{b}_{n+1}-\sum_{k=n_0+1}^n\ln{b}_n\right)\Rightarrow$$ 
+$$\Rightarrow\forall{n}&gtn_0\left(\ln{a}_{n+1}-\ln{a}_{n_0+1}=\ln\frac{{a}_{n+1}}{a_{n_0+1}}\leq\ln{b}_{n+1}-\ln{b}_{n_0+1}=
+\ln\frac{b_{n+1}}{b_{n_0+1}}\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_{n_0+1}}\leq\frac{b_{n+1}}{b_{n_0+1}}\right)\Rightarrow
+\forall{n}&gtn_0\left(a_{n+1}\leq{b}_{n+1}\frac{a_{n_0+1}}{b_{n_0+1}}\right)$$
+<a href="./math_analisis5.4.2.html#Statement5.4.1">Таким образом</a> $a_n=O(b_n)$ при $n\to\infty$ и утверждение следует из 
+<a href="#Theorem7.2.4">теоремы 7.2.4</a>. 
+</i>
+
+<br></br>
+
+<p id="Example7.2.5"><b>Пример 7.2.5:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n=1-\cos\frac{\pi}{n}$.<br>
+<a href="./math_analisis5.4.2.html#Example5.4.21">Ранее было показано</a>, что $\cos{x}=1-\frac{x^2}{2}+o(x^2)$ при $x\to0$. Тогда
+$$a_n=1-\cos\frac{\pi}{n}=1-1+\frac{\pi^2}{2n^2}+o\left(\frac1{n^2}\right)=O\left(\frac1{n^2}\right),\:n\to\infty$$
+Следовательно, ряд $\sum_{n=1}^\infty{a}_n$ сходится по <a href="#Corollary7.2.5">шкале Дирихле</a>.
+
+<br><br>
+
+$\newcommand{\tg}{\operatorname{tg}}$
+
+<p id="Example7.2.6"><b>Пример 7.2.6:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n$ такой, что $a_1=a_2=0$ и для любого $n&gt2$ 
+$\displaystyle{a}_n=\ln\frac{1+\tg\frac{\pi}{n}}{1-\tg\frac{\pi}{n}}$.<br>
+<a href="./math_analisis5.4.2.html#Example5.4.13">Ранее было показано</a>, что $\ln(1+x)=x+o(x)$ 
+<a href="./math_analisis5.4.2.html#Example5.4.18">и</a> $\tg{x}=x+o(x)$ при $x\to\infty$, тогда применяя теоремы 
+<a href="./math_analisis5.2.html#Theorem5.2.1">об арифметичиских свойствах предела функции</a> и 
+<a href="./math_analisis5.3.html#Theorem5.3.2">предела композиции функций</a> получим
+$$(\ln(1+x)=x+o(x),\:x\to\infty\wedge\tg{x}=x+o(x),\:x\to\infty)\Rightarrow$$ 
+$$\Rightarrow{a}_n=\ln\frac{1+\tg\frac{\pi}{n}}{1-\tg\frac{\pi}{n}}=\ln(1+\tg\frac{\pi}{n})-\ln(1-\tg\frac{\pi}{n})=
+\ln\left(1+\frac{\pi}{n}+o\left(\frac1{n}\right)\right)-\ln\left(1-\frac{\pi}{n}+o\left(\frac1{n}\right)\right)=
+\frac{\pi}{n}+\frac{\pi}{n}+o\left(\frac1{n}\right)=O\left(\frac1{n}\right),\:n\to\infty$$
+Следовательно, ряд $\sum_{n=1}^\infty{a}_n$ расходится по <a href="#Corollary7.2.5">шкале Дирихле</a>.
+
+<br><br>
+
+<p id="Example7.2.7"><b>Пример 7.2.7:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ 
+$a_n=\frac{n}{\sqrt{n^3+n^2+1}}$.<br>
+$$\lim_{n\to\infty}\frac{\frac1{\sqrt{n}}}{a_n}=\lim_{n\to\infty}\frac{\sqrt{n^3+n^2+1}}{\sqrt{n^3}}=\lim_{n\to\infty}\sqrt\frac{n^3+n^2+1}{n^3}=
+\lim_{n\to\infty}\sqrt{1+\frac1{n}+\frac1{n^3}}$$
+Последний предел существует так как последовательность стоящая под знаком предела убывает и ограничена снизу нулем. Тогда существует и 
+предел квадрата этой последовательности, который, очевидно, равен 1, а, следовательно, и исходный предел равен 1.
+<a href="./math_analisis5.4.2.html#Statement5.4.4">Следовательно</a>, $a_n=O^*(\frac1{\sqrt{n}})$ при $n\to\infty$ и ряд
+$\sum_{n=1}^\infty{a}_n$ расходится по <a href="#Corollary7.2.5">шкале Дирихле</a>.
+
+<br><br>
+
+<p id="Statement7.2.1"><b>Утверждение 7.2.1: Радикальный признак Коши.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n\geq0$ и $q\in\overline{\mathbb{R}}$ такое, что
+$\displaystyle{q}=\varlimsup_{n\to\infty}\sqrt[n]{a_n}$, тогда
+<ol>
+<li>если $q&lt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если $q&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b> Так как для любого $n\in\mathbb{N}$ $a_n\geq0$, то $q\geq0$.
+<ol>
+<li>
+Так как $0&ltq&lt1$, то $q\in\mathbb{R}$. Так как $q&lt1$, то существует $\varepsilon&gt0$ такое, 
+что $q+\varepsilon&lt1$, тогда по определению <a href="./math_analisis4.4.html#Definition4.4.4">верхнего предела последовательности</a> 
+$$q\in\mathbb{R}\Rightarrow{q}=\lim_{n\to\infty}(\sup\{\sqrt[k]{a_k}\:|\:k\geq{n}\})\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0(\sup\{\sqrt[k]{a_k}\:|\:k\geq{n}\}&ltq+\varepsilon)\Rightarrow
+\sup\{\sqrt[k]{a_k}\:|\:k\geq{n}_0+1\}&ltq+\varepsilon\Rightarrow$$
+$$\Rightarrow\forall{n}&gtn_0(0\leq\sqrt[n]{a_n}&lt{q}+\varepsilon)\Rightarrow\forall{n}&gt{n}_0(a_n&lt(q+\varepsilon)^n)$$
+Так как $q+\varepsilon&lt1$, <a href="./math_analisis7.1.html#Example7.1.1">то</a> ряд $\sum_{n=1}^\infty(q+\varepsilon)^n$ сходится, следовательно, по 
+<a href="./math_analisis7.2.1.html#Theorem7.2.2">теореме сравнениня для знакопостоянных рядов</a> сходистя и ряд $\sum_{n=1}^\infty{a}_n$.
+</li>
+<li>
+Если $q=+\infty$, то по <a href="./math_analisis4.4.html#Definition4.4.4">определению верхнего предела</a> последовательность 
+$s_n=\sup\{\sqrt[k]{a_k}\:|\:k\geq{n}\}$ не ограничена сверху, следовательно, не ограничена сверху последовательность $\sqrt[n]{a_n}$,
+тогда не ограничена сверху и последовательность $\{a_n\}$, то есть общий член ряда $\sum_{n=1}^\infty{a}_n$ не стремится к нулю, значит ряд расходится.<br>
+Пусть теперь $q\in\mathbb{R}$ тогда по <a href="math_analisis4.4.html#Theorem4.4.1">теореме 4.4.1</a> существует подпоследовательности
+$\displaystyle\sqrt[n_k]{a_{n_k}}$ такая, что $\displaystyle\lim_{k\to\infty}\sqrt[n_k]{a_{n_k}}=q$. Так как $q&gt1$, то существует $\varepsilon&gt0$ такое, 
+что $q-\varepsilon&gt1$, тогда
+$$\lim_{k\to\infty}\sqrt[n_k]{a_{n_k}}=q\Rightarrow
+\exists{s}\in\mathbb{N}:\forall{k}&gts\left(\left|\sqrt[n_k]{a_{n_k}}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{k}&gts\left(\sqrt[n_k]{a_{n_k}}&gtq-\varepsilon\right)\Rightarrow\forall{k}&gts(a_{n_k}&gt(q-\varepsilon)^{n_k}&gt1)$$
+<a href="./math_analisis4.4.html#Statement4.4.3">Таким образом</a> предел последовательности $\{a_n\}$ не может быть равен нулю,
+следовательно, ряд $\sum_{n=1}^\infty{a}_n$ не сходится так как его общий член не стремится к нулю. 
+</li>
+</ol>
+<br><br>
+
+<p>Утверждение универсально, так как любая числовая последовательность имеет <a href="./math_analisis4.4.html#Definition4.4.4">верхний предел</a> 
+на расширенной прямой.<br>
+Если $\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{a_n}=1$, то ряд $\sum_{n=1}^\infty{a}_n$ может как сходится, так и расходится, например, 
+<a href="./math_analisis5.4.1.html#Example5.4.8">так как</a> $\displaystyle\lim_{n\to\infty}\frac{\ln{n}}{n}=0$, то
+$$\forall{p}\in\mathbb{R}\left(\varlimsup_{n\to\infty}\sqrt[n]{\frac1{n^p}}=\lim_{n\to\infty}\sqrt[n]{\frac1{n^p}}=\lim_{n\to\infty}n^{-\frac{p}{n}}=
+\lim_{n\to\infty}\exp\left(-p\frac{\ln{n}}{n}\right)=e^0=1\right)$$
+однако, ряд $\sum_{n=1}^\infty\frac1{n^p}$ может как сходится, так и расходится <a href="#Corollary7.2.5">в зависимости от значения</a> $p$.
+
+<br><br>
+
+<p id="Statement7.2.2"><b>Утверждение 7.2.2: Признак Даламбера.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$ и существует $q\in\overline{\mathbb{R}}$ такое, 
+что $\displaystyle{q}=\lim_{n\to\infty}\frac{a_{n+1}}{a_n}$, тогда 
+<ol>
+<li>если $q&lt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если $q&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b>Так как для любого $n\in\mathbb{N}$ $a_n&gt0$, то $q\geq0$.
+<ol>
+<li>
+Так как $q&lt1$, то существует $\varepsilon&gt0$ такое, что $q+\varepsilon&lt1$, тогда по определению 
+<a href="./math_analisis4.1.html#Definition4.1.1">предела последовательности</a>
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_n}&ltq+\varepsilon&lt1\right)\Rightarrow$$
+$$\Rightarrow\forall{n}&gtn_0\left(a_n=\frac{a_n}{a_{n-1}}\frac{a_{n-1}}{a_{n-2}}\dots\frac{a_{n_0+1}}{a_{n_0}}a_{n_0}&lt(q+\varepsilon)^{n-n_0}a_{n_0}=
+\frac{a_{n_0}}{(q+\varepsilon)^{n_0}}(q+\varepsilon)^n\right)$$
+<a href="./math_analisis7.1.html#Example7.1.1">Так как</a> при $q+\varepsilon&lt1$ ряд с общим членом 
+$\displaystyle\frac{a_{n_0}}{(q+\varepsilon)^{n_0}}(q+\varepsilon)^n$ сходится, то по 
+<a href="./math_analisis7.2.1.html#Theorem7.2.2">теореме сравнения для знакопостоянных рядов</a> сходится и ряд $\sum_{n=1}^\infty{a}_n$.
+</li>
+<li>
+Если $q=+\infty$, то существует $n_1\in\mathbb{N}$ такое, что для любого $n&gtn_1$ $\frac{a_{n+1}}{a_n}&gt1$.<br>
+$$\exists{n_1}\in\mathbb{N}:\forall{n}&gtn_1\left(\frac{a_{n}}{a_{n-1}}&gt1\right)\Rightarrow\forall{n}&gtn_1(a_{n}&gta_{n-1})\Rightarrow
+\forall{n}&gtn_1(a_{n}&gta_{n_1})$$
+Фиксируем $M&gt0$, тогда
+$$\exists{n_M}\in\mathbb{N}:\forall{n}&gtn_M\left(\frac{a_{n+1}}{a_n}&gt\frac{M}{a_{n_1}}\right)\Rightarrow
+\exists{n}_0:=\max\{n_1,n_M\}:\forall{n}&gtn_0\left(a_{n+1}&gt\frac{a_n}{a_{n_1}}M&gtM\right)$$
+Таким образом последовательность $\{a_n\}$ не ограничена, следовательно, ряд $\sum_{n=1}^\infty{a}_n$ расходится 
+так как его общий член не стремится к нулю.<br>
+Пусть теперь $q\in\mathbb{R}$. Существует $\varepsilon&gt0$ такое, что $q-\varepsilon&gt1$, тогда
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(\frac{a_{n+1}}{a_n}&gtq-\varepsilon&gt1\right)\Rightarrow\forall{n}&gtn_0(a_{n+1}&gta_n&gt0)$$
+Таким образом предел последовательности $\{a_n\}$ не может быть равен нулю, так как она положительна и возрастает.
+Предел же возрастающей последовательности по <a href="./math_analisis4.3.html#Theorem4.3.2">теореме Вейерштрасса</a> равен супремуму множества ее значений.
+Следовательно, ряд $\sum_{n=1}^\infty{a}_n$ не сходится, так как его общий член не стремится к нулю.
+</li>
+</ol>
+
+<br><br>
+
+<p>Если $\displaystyle\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=1$, то ряд $\sum_{n=1}^\infty{a}_n$ может как сходится, так и расходится, например,
+если для любого $n\in\mathbb{N}$ $a_n=\frac1{n^p}$, то 
+$$\forall{p}\in\mathbb{R}\left(\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=\lim_{n\to\infty}\left(\frac{n}{n+1}\right)^p=1\right)$$
+однако, ряд $\sum_{n=1}^\infty\frac1{n^p}$ может как сходится, так и расходится <a href="#Corollary7.2.5">в зависимости от значения</a> $p$.<br>
+Утверждение признака Даламбера следует из утверждения признака Коши так как 
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow\lim_{n\to\infty}\sqrt[n]{a_n}=q$$
+<i>
+Действительно, докажем для случая $q&gt0$ (при $q=0$ доказывается аналогично), фиксируем $\varepsilon&gt0$ такое, что $q&gt\varepsilon$ тогда
+$$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_n}{a_{n-1}}-q\right|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(q-\varepsilon&lt\frac{a_n}{a_{n-1}}&ltq+\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left((q-\varepsilon)^{n-n_0-1}&lt\frac{a_n}{a_{n_0}}&lt(q+\varepsilon)^{n-n_0-1}\right)\Rightarrow$$
+$$\Rightarrow\forall{n}&gtn_0\left(\left(\frac{q-\varepsilon}{q}\right)^{n_0+1}(q-\varepsilon)^{n-n_0-1}&lt\frac{a_n}{a_{n_0}}&lt
+\left(\frac{q+\varepsilon}{q}\right)^{n_0+1}(q+\varepsilon)^{n-n_0-1}\right)\Rightarrow
+\forall{n}&gtn_0\left((q-\varepsilon)^n&ltq^{n_0+1}\frac{a_n}{a_{n_0}}&lt(q+\varepsilon)^n\right)\Rightarrow
+\forall{n}&gtn_0\left(q-\varepsilon&lt\sqrt[n]{q^{n_0+1}\frac{a_n}{a_{n_0}}}&ltq+\varepsilon\right)\Rightarrow$$
+$$\Rightarrow\exists\lim_{n\to\infty}\sqrt[n]{q^{n_0+1}\frac{a_n}{a_{n_0}}}$$
+Таким образом предел $\displaystyle\lim_{n\to\infty}\left(\sqrt[n]{\frac{q^{n_0+1}}{a_{n_0}}}\sqrt[n]{a_n}\right)$ существует и равен $q$.
+Предел $\displaystyle\lim_{n\to\infty}\sqrt[n]{\frac{q^{n_0+1}}{a_{n_0}}}$ <a href="./math_analisis4.3.html#Example4.3.5">существует и равен 1</a>.
+<a href="./math_analisis4.1.html#Theorem4.2.2">Тогда</a> существует и равен $q$ предел $\displaystyle\lim_{n\to\infty}\sqrt[n]{a_n}$. 
+</i>
+
+<br><br>
+
+<p id="Statement7.2.3"><b>Утверждение 7.2.3: Интегральный признак Коши-Макларена.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n\geq0$, $a\geq0$ и функции $f(x):[a,+\infty)\to\mathbb{R}$, 
+$F(x):[a,+\infty)\to\mathbb{R}$ удовлетворяют условиям
+<ol>
+<li>$\forall{n}&gtn_0:=[a]+1(a_n=f(n))$,</li>
+<br>
+<li>$\forall{x}\in[a,+\infty)(f(x)\geq0)$,</li>
+<br>
+<li>функция $f(x)$ не возрастает на $[a,+\infty)$,</li>
+<br>
+<li>$\forall{x}\in[a,+\infty)(\exists{F}'(x)=f(x))$</li>
+</ol>
+тогда
+<ol>
+<li>если существует конечный предел фукнции $F(x)$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
+<br>
+<li>если существует предел функции $F(x)$ равный бесконечности, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+</ol>
+<p><b>Доказательство:</b> Так как для любого $x\in[a,+\infty)$ $F'(x)=f(x)\geq0$, <a href="./math_analisis6.4.html#Corollary6.4.3">то</a> функция 
+$F(x)$ не убывает, значит по <a href="./math_analisis5.3.html#Theorem5.3.3">теореме о пределе монотонной функции и следствию из нее</a>
+она имеет предел в $\overline{\mathbb{R}}$. <br>
+Для любого $n\geq{n}_0$ применим на отрезке $[n,n+1]$ <a href="./math_analisis6.4.html#Theorem6.4.3">теорему Лагранжа</a>, тогда
+$$\forall{n}\geq{n}_0(\exists\xi\in(n,n+1):F(n+1)-F(n)=F'(\xi))$$
+Так как функция $f(x)$ не возрастает и $f(\xi)=F'(\xi)$, то
+$$\forall{n}\geq{n}_0(a_{n+1}=f(n+1)\leq{F}'(\xi)\leq{f}(n)=a_n)\Rightarrow\forall{n}\geq{n}_0(a_{n+1}\leq{F}(n+1)-F(n)\leq{a}_n)\Rightarrow$$
+$$\Rightarrow\forall{m}\geq{n}_0\left(\sum_{k=n_0}^ma_{k+1}\leq\sum_{k=n_0}^m(F(k+1)-F(k))\leq\sum_{k=n_0}^ma_k\right)\Rightarrow
+\forall{m}\geq{n}_0\left(\sum_{k=n_0+1}^{m+1}a_k\leq{F}(m+1)-F(n_0)\leq\sum_{k=n_0}^ma_k\right)\Rightarrow$$
+$$\Rightarrow\forall{m}\geq{n}_0\left(S_{m+1}-S_{n_0}\leq{F}(m+1)-F(n_0)\leq{S}_m-S_{n_0-1}\right)$$
+Если $n_0=1$, то в последнем неравенстве и далее считаем $S_0:=0$ при этом неравенство не нарушается. Таким образом имеем:
+$$\forall{m}\geq{n}_0(S_{m+1}\leq{S}_{n_0}-F(n_0)+F(m+1)\wedge{S}_m\geq{S}_{n_0-1}-F(n_0)+F(m+1))$$
+В обоих неравенствах первые два слагаемых не зависят от $m$.
+<ol>
+<li>
+Если предел $\displaystyle\lim_{x\to\infty}F(x)$ конечен, то функция $F(x)$ ограничена и, следовательно, ограничена последовательность $\{F(m)\}$, 
+и так как для любого $m\geq{n}_0$ $S_{m+1}\leq{S}_{n_0}-F(n_0)+F(m+1)$, то в этом случае будет огранчена и последовательность $\{S_m\}$
+частичных сумм ряда $\sum_{n=1}^\infty{a}_n$. Так как ряд $\sum_{n=1}^\infty{a}_n$ знакопостоянен, то ограниченность сверху последовательности
+$\{S_n\}$ <a href="./math_analisis7.2.1.html#Theorem7.2.1">влечет</a> его сходимость.
+</li>
+<li>
+Если $\displaystyle\lim_{x\to\infty}F(x)=\infty$, <a href="./math_analisis5.1.html#Statement5.1.3">то</a> существует предел 
+$\displaystyle\lim_{\mathbb{N}\ni{m}\to\infty}F(m)=\infty$ и так как для любого $m\geq{n}_0$ $S_m\geq{S}_{n_0-1}-F(n_0)+F(m+1)$, 
+то последовательность $\{S_m\}$ не ограничена, и ряд $\sum_{n=1}^\infty{a}_n$ расходится.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example7.2.8"><b>Пример 7.2.8: Контрпример на условие (3) утверждения 7.2.3.</b><br>
+Рассмотрим функции $f(x)=1-\cos(2\pi{x})$ и $F(x)=x-\frac{\sin(2\pi{x})}{2\pi}$. 
+$$\forall{x}\in[0,+\infty)\left(F'(x)=\left(x-\frac{\sin(2\pi{x})}{2\pi}\right)'=1-\frac1{2\pi}\cos(2\pi{x})2\pi=1-\cos(2\pi{x})\right)$$
+Положим $a=0$, тогда $n_0=[a]+1=1$ и для любого $n\in\mathbb{N}$ $a_n=f(n)=1-\cos(2\pi{n})=0$.<br>
+Таким образом функции $f(x)$, $F(x)$ и последовательность $\{a_n\}$ удовлетворяют всем предпосылкам утверждения 7.2.3 кроме третьего,
+так как функия $f(x)$ не является монотонной. Следовательно, в данном случае утверждение 7.2.3 применять нельзя. Действительно,
+$\displaystyle\lim_{x\to\infty}F(x)=\lim_{x\to\infty}\left(x-\frac{\sin(2\pi{x})}{2\pi}\right)=+\infty$, однако, так как для любого $n\in\mathbb{N}$ 
+$a_n=0$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится к нулю.
+
+<br><br>
+
+<p id="Example7.2.9"><b>Пример 7.2.9:</b> Исследуем условия сходимости ряда $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\frac1{n\ln^pn}$ при любых 
+$p\in\mathbb{R}$.<br>
+Положим $f(x):=\frac1{x\ln^px}$ и $F(x):=\begin{cases}\ln(\ln{x}), & p=1,\\\frac{\ln^{1-p}x}{1-p}, & p\neq1\end{cases}$
+Проверим четвертое условие <a href="#Statement7.2.3">признака Коши-Макларена</a>.
+$$p=1\Rightarrow{F}'(x)=(\ln(\ln{x}))'=\frac1{\ln{x}}\frac1{x}=\frac1{x\ln{x}}$$
+$$p\neq1\Rightarrow{F}'(x)=\left(\frac{\ln^{1-p}x}{1-p}\right)'=\frac1{1-p}(1-p)\ln^{-p}x\frac1{x}=\frac1{x\ln^px}$$
+Проверим третье условие для этого найдем производную функции $f(x)$.
+$$f'(x)=\left(\frac1{x\ln^px}\right)'=-\frac{\ln^px+xp\ln^{p-1}x\frac1{x}}{(x\ln^px)^2}=-\frac{\ln^{p-1}x(\ln{x}+p)}{(x\ln^px)^2}$$
+Знак производной определяется знаком числителя, так как для любого $x\in\mathbb{R}^+$ $(x\ln^px)^2\geq0$, так что
+$$\forall{p}\in\mathbb{R}(x&gt\max\{1,e^{-p}\}\Rightarrow(\ln^{p-1}x&gt0\wedge\ln{x}+p&gt0)\Rightarrow\ln^{p-1}x(\ln{x}+p)&gt0\Rightarrow{f}'(x)&lt0)$$
+То есть начиная с некоторого $x_0$ функция $f(x)$ убывает, значит условие 3, выполнено. Тогда, так как
+$$
+\lim_{x\to\infty}F(x)=
+\begin{cases}
+\lim_{x\to\infty}\frac{\ln^{1-p}x}{1-p}=+\infty, & p&lt1\\
+\lim_{x\to\infty}\ln(\ln{x})=+\infty, & p=1\\
+\lim_{x\to\infty}\frac{\ln^{1-p}x}{1-p}=0, & p&gt1
+\end{cases}
+$$
+то ряд $\sum_{n=1}^\infty\frac1{n\ln^pn}$ сходится при $p&gt1$, при остальных значениях $p$ расходится.
+
+<br><br>
+<a href="./math_analisis7.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.2.3.html">next</a>
+</body>
+</html>

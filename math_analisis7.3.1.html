@@ -1,0 +1,173 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 7.3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['//(', '//)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+ fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis7.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.3.2.html">next</a>
+
+<h4 id="7.3">7.3 Абсолютно сходящиеся ряды.</h4>
+
+<h5 id="7.3.1">7.3.1 Определения и простейшие свойства абсолютно сходящихся рядов.</h5>
+
+<p id="Definition3.1.1"><b>Определение 7.3.1:</b> Говорят, что ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, если сходится ряд
+$\sum_{n=1}^\infty|a_n|$.
+
+<br><br>
+
+<p id="Corollary7.3.1"><b>Следствие 7.3.1:</b> Если ряд сходится абсолютно, то он сходится.
+<p><b>Доказательство:</b> Если ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, то сходится ряд $\sum_{n=1}^\infty|a_n|$.
+Тогда по <a href="./math_analisis7.1.html#Theorem7.1.1">критерию Коши сходимости рядов</a> и 
+<a href="./math_analisis3.3.html#Definition3.4.4">неравенству треугольников</a> имеем
+$$\forall\varepsilon&gt0\:\exists{n}_0\in\mathbb{N}:\forall{m}\geq{n}&gtn_0\left(\left|\sum_{k=n}^m|a_k|\right|&lt\varepsilon\right)\Rightarrow
+\forall{m}\leq{n}&ltn_0\left(\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right)$$
+Таким образом ряд $\sum_{n=1}^\infty{a}_n$ сходится по критерию Коши.
+
+<br><br>
+
+<p id="Example7.3.1"><b>Пример 7.3.1: Из сходимости не следует абсолютная сходимость.</b><br>
+Пусть
+$$\forall{n}\in\mathbb{N}\left(a_n=\begin{cases}\frac1{k}, & n=2k-1\\-\frac1{k}, & n=2k\end{cases}\right)\Rightarrow
+\sum_{n=1}^\infty{a}_n=1-1+\frac1{2}-\frac1{2}+\dots+\frac1{n}-\frac1{n}+\dots$$
+тогда 
+$$S_n=\begin{cases}0, & n=2k\\\frac1{k}, & n=2k-1\end{cases}\Rightarrow\exists\lim_{n\to\infty}S_n=0$$
+то есть ряд $\sum_{n=1}^\infty{a}_n$ сходится.<br>
+Но ряд $\sum_{n=1}^\infty|a_n|$ расходится, так как это удвоенный <a href="./math_analisis7.1.html#Example7.1.4">гармонический ряд</a>.
+
+<br><br> 
+
+<p id="Definition7.3.2"><b>Определение 7.3.2:</b> Будем говорить, что ряд $\sum_{n=1}^\infty$ сходится не абсолютно или условно, если ряд
+$\sum_{n=1}^\infty{a}_n$ сходится, а ряд $\sum_{n=1}^\infty|a_n|$ расходится.
+
+<br><br>
+
+<ol>
+<li>Для случая знакопостоянных рядов сходимость и абсолютная сходимость эквивалентны.</li>
+<li>Для исследования на абсолютную сходимость работают все результаты полученные для знакопостоянных рядов.</li>
+<li>Для рядов сходящихся не абсолютно приведенная выше техника не работает.</li>
+<li>Для случая не абсолютной сходимости нужно получать новые признаки сходимости (Лейбниц, Абель, Дирихле).</li>
+</ol>
+
+<br><br>
+
+<p id="Statement7.3.1"><b>Утверждение 7.3.1: Мажорантный признак Вейерштрасса абсолютной сходимости.</b><br>
+Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ и $n_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $|a_n|&ltb_n$, 
+то если ряд $\sum_{n=1}^\infty{b}_n$ сходится, то ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно.
+<p><b>Доказательство:</b> Так как начиная с некоторого $n_0\in\mathbb{N}$ $0&lt|a_n|\leq{b}_n$, то ряд $\sum_{n=1}^\infty{b}_n$ знакопостоянный,
+следовательно, знакопостоянный ряд $\sum_{n=1}^\infty|a_n|$ сходится по <a href="./math_analisis7.2.1.html#Theorem7.2.2">основной теореме сравнения</a>,
+то есть ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно.
+
+<br></br>
+
+<p id="Example7.3.2"><b>Пример 7.3.2:</b> Рассмотрим ряды $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\frac{\sin{n}}{n^2}$ и 
+$\sum_{n=1}^\infty{b}_n=\frac1{n^2}$.<br>
+Для любого $n\in\mathbb{N}$ $|a_n|\leq{b}_n$ и ряд $\sum_{n=1}^\infty\frac1{n^2}$ <a href="./math_analisis7.2.1.html#Example7.2.3">сходится</a>, 
+следовательно, ряд $\sum_{n=1}^\infty\frac{\sin{n}}{n^2}$ сходится абсолютно, то есть сходится ряд $\sum_{n=1}^\infty|\frac{\sin{n}}{n}|$.
+
+<br><br>
+
+<p id="Statement7.3.2"><b>Утверждение 7.3.2: Неравенство теругольников для счетных сумм.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, то для любого $n\in\mathbb{N}$ $|\sum_{k=n}^\infty{a}_k|\leq\sum_{k=n}^\infty|a_k|$.
+<p><b>Доказательство:</b> Так как ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, то сходится абсолютно любой его остаток, то есть 
+существуют пределы $\lim_{m\to\infty}\sum_{k=n}^m|a_k|$ и $\lim_{m\to\infty}\sum_{k=n}^m{a}_k$. Так как функция модуля непрерывна, 
+<a href="./math_analisis5.5.1.html#Statement5.5.3">то</a> 
+$$\lim_{m\to\infty}\left|\sum_{k=n}^m{a}_k\right|=\left|\lim_{n\to\infty}\sum_{k=1}^m{a}_k\right|$$
+тогда по <a href="./math_analisis3.3.html#Definition3.4.4">нераветству треугольников</a>
+$$\forall{m}\geq{n}\left(\left|\sum_{k=n}^m{a}_k\right|\leq\sum_{k=n}^m|a_k|\right)\Rightarrow\lim_{m\to\infty}\left|\sum_{k=n}^m{a}_k\right|=
+\left|\lim_{m\to\infty}\sum_{k=n}^m{a}_k\right|=\left|\sum_{k=m}^m{a}_k\right|\leq\lim_{m\to\infty}\sum_{k=n}^m|a_k|=\sum_{k=n}^\infty|a_k|$$
+
+<br>
+
+<p id="Example7.3.3"><b>Пример 7.3.3: </b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n=1-1+\frac1{2}-\frac1{2}+\dots+\frac1{n}-\frac1{n}+\dots$ такой,
+что для любого $n\in\mathbb{N}$ $a_n=\begin{cases}\frac1{k}, & n=2k-1\\-\frac1{k}, & n=2k\end{cases}$. <a href="#Example7.3.1">Как было показано выше</a> 
+ряд $\sum_{n=1}^\infty{a}_n$ сходится не абсолютно и $\sum_{n=1}^\infty{a}_n=0$.<br>
+Переставим члены ряда: сначала берем два положительных слагаемых, потом одно отрицательное и т. д. Исследуем полученный ряд $\sum_{n=1}^\infty{b}_n$
+на сходимость
+$$\sum_{n=1}^\infty{b}_n=1+\frac1{2}-1+\frac1{3}+\frac1{4}-\frac1{2}+\dots+\frac1{2n-1}+\frac1{2n}-\frac1{n}+\dots\Rightarrow
+\forall{n}\in\mathbb{N}\:b_n=
+\begin{cases}
+\frac1{2k-1}, & n=3k-2\\
+\frac1{2k}, & n=3k-1\\
+-\frac1{k}, & n=3k
+\end{cases}\Rightarrow$$ $$\Rightarrow{S}_{3n}=\sum_{k=1}^n\left(\frac1{2k-1}+\frac1{2k}-\frac1{k}\right)=
+\sum_{k=1}^n\left(\frac1{2k-1}+\frac1{2k}-\sum_{k=1}^n\frac1{k}\right)=\sum_{k=1}^{2n}\frac1{k}-\sum_{k=1}^n\frac1{k}$$
+Ранее было показано, что существует последовательность $\{\alpha_n\}$ такая, что
+$$\left(\lim_{n\to\infty}\alpha_n=0\wedge\forall{n}\in\mathbb{N}\left(\sum_{k=1}^n\frac1{k}=\ln(n+1)+c+\alpha_n\right)\right)\Rightarrow
+\lim_{n\to\infty}S_{3n}=\lim_{n\to\infty}\left(\sum_{k=1}^{2n}\frac1{k}-\sum_{k=1}^n\frac1{k}\right)=
+\lim_{n\to\infty}(\ln(2n+1)+c+\alpha_{2n}-\ln(n+1)-c-\alpha_n)=$$ $$=\lim_{n\to\infty}\left(\ln\frac{2n+1}{n+1}+\alpha_{2n}-\alpha_n\right)=
+\ln{2}+\lim_{n\to\infty}(\alpha_{2n}-\alpha_n)$$
+Так как из сходимости последовательности <a href="./math_analisis4.4.html#Statement4.4.3">следует</a> сходимость любой ее подпоследовательности 
+к тому же пределу, то $\displaystyle\lim_{n\to\infty}\alpha_{2n}=0$ и $\displaystyle\lim_{n\to\infty}S_{3n}=\ln{2}$, тогда
+$$\lim_{n\to\infty}S_{3n-1}=\lim_{n\to\infty}\left(S_{3n}+\frac1{n}\right)=\lim_{n\to\infty}S_{3n}+\lim_{n\to\infty}\frac1{n}=\ln{2}$$
+$$\lim_{n\to\infty}S_{3n-2}=\lim_{n\to\infty}\left(S_{3n-1}-\frac1{2n}\right)=\ln{2}$$
+Так как 
+$$\forall{n}\in\mathbb{N}\:\exists{k}\in\mathbb{N}:(n=3k\vee{n}=3k-1\vee{n}=3k-2)$$
+то $\lim_{n\to\infty}S_n=\ln{2}$, так как при реализации <a href="./math_analisis4.1.html#Definition4.1.1">предела последовательности</a> 
+можно взять максимальный индекс из тех что реализуют опредение пределов $\displaystyle\lim_{n\to\infty}S_n$, $\displaystyle\lim_{n\to\infty}S_{3n-1}$, 
+$\displaystyle\lim_{n\to\infty}S_{3n-2}$. Таким образом получена перестановка $\sum_{n=1}^\infty{b}_n$ членов ряда $\sum_{n=1}^\infty{a}_n$
+такая, что $\sum_{n=1}^\infty{b}_n=\ln{2}\neq0=\sum_{n=1}^\infty{a}_n$. Это означает, что преместительное свойство не работает для рядов 
+сходящихся не абсолютно.
+
+<br><br>
+
+<p id="Definition7.3.3"><b>Определение 7.3.3:</b> Будем говорить, что ряд $\sum_{n=1}^\infty{a}_n^*$ получен из ряда $\sum_{n=1}^\infty$
+путем перестановки членов, если существует биективное отображение $\varphi:\mathbb{N}\to\mathbb{N}$ такое, что для любого $n\in\mathbb{N}$
+$a_n^*=a_{\varphi(n)}$.
+
+<br><br>
+
+<p id="Theorem7.3.1"><b>Теорема 7.3.1: Переместительное свойство абсолютно сходящихся рядов.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, то любой ряд $\sum_{n=1}^\infty{a}_n^*$ полученный 
+из него с помощью престановки членов сходится абсолютно и $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty{a}_n^*$.
+<p><b>Доказательство:</b> 
+<ol type="I">
+<li> Пусть ряд $\sum_{n=1}^\infty{a}_n^*$ получет из ряда $\sum_{n=1}^\infty$ путем перестановки $\varphi$.
+Докажем, что ряд $\sum_{n=1}^\infty{a}_n^*$ сходится абсолютно.<br>
+Обозначим $\displaystyle{l}(n):=\max_{1\leq{k}\leq{n}}\varphi(k)$, тогда $l(n)$-тая частичная сумма $S_{l(n)}:=\sum_{k=1}^{l(n)}|a_k|$ 
+будет содержать все слагаемые из $n$-той частичной суммы $S_n^*\sum_{k=1}^n|a_k^*|$. Следовательно, для любого $n\in\mathbb{N}$ $S_n^*\leq{S}_{l(n)}^*$. 
+И так как ряд $\sum_{n=1}^\infty|a_n|$ сходится то по <a href="./math_analisis7.2.1.html#Theorem7.2.1">критерию сходимости знакопостоянных рядов</a> 
+последовательность его частичных сумм огрнаиченна, следовательно, ограничена и последовательнось частичных сумм ряда $\sum_{n=1}^\infty|a_n^*|$, 
+значит он сходится по тому же критерию.
+</li>
+<li>
+Докажем, что суммы рядов равны, т. е. что $S:=\sum_{n=1}^\infty{a}_n=S:=\sum_{n=1}^\infty{a}_n^*$.<br>
+Фиксируем $\varepsilon$. Ряд $\sum_{n=1}^\infty{a}_n$ сходится абсолютно, следовательно, сходится ряд $\sum_{n=1}^\infty|a_n^*|$. Тогда по 
+<a href="./math_analisis7.1.html#Theorem7.1.1">критерию Коши</a> сходимости рядов
+$$\exists{n}_1\in\mathbb{N}:\forall{m}\geq{n}&gtn_1\left(\left|\sum_{k=n}^m|a_k|\right|=
+\sum_{k=n}^m|a_k|&lt\frac{\varepsilon}{3}\right)$$
+Положим $n:=n_1+1&gtn_1$, так как любой остаток сходящегося ряда сходится, то можем перейти к пределу при $m\to\infty$
+$$\sum_{k=n}^\infty|a_k|=\lim_{m\to\infty}\sum_{k=n}^m|a_k|\leq\frac{\varepsilon}{3}&lt\frac{\varepsilon}{2}$$
+тогда
+$$|S-S_{n_1}|=\left|\lim_{n\to\infty}\sum_{k=1}^na_k-\sum_{k=1}^{n_1}a_k\right|=
+\left|\lim_{n\to\infty}\left(\sum_{k=1}^na_k-\sum_{k=1}^{n_1}a_k\right)\right|=\left|\lim_{n\to\infty}\sum_{k=n_1+1}^na_k\right|=
+\left|\sum_{k=n_1+1}^\infty{a}_k\right|\leq\sum_{k=n_1+1}^\infty|a_k|&lt\frac{\varepsilon}{2}$$
+Предпоследнее неравенство следует из <a href="#Statement7.3.2">неравенства треугольников для счетных сумм</a>.<br>
+Так как отображение $\varphi$ биективно, то существует $\displaystyle{m}=m(\varepsilon):=\max_{1\leq{k}\leq{n}_1}\varphi^{-1}(k)$.
+Здесь $m$ зависит от $\varepsilon$ потому, что значение $n_1$ зависит от $\varepsilon$. Таким образом $m$ - это минмальное число такое,
+что $\{1,2,\dots,n_1\}\subset\{\varphi(1),\varphi(2),\dots,\varphi(m)\}$, тогда для любого $n&gtm(\varepsilon)$ 
+$\{1,2,\dots,n_1\}\subset\{\varphi(1),\varphi(2)\dots,\varphi(m),\dots,\varphi(n)\}$. Следовательно, для любого $n&gtm(\varepsilon)$ $n$-тая частичная сумма
+$\sum_{k=1}^na_k^*$ ряда перестановки содержит все слагаемые $n_1$-ой частичной суммы $\sum_{k=1}^{n_1}a_k$ исходного ряда. Значит
+$$\forall{n}&gtm(\varepsilon)\left(|S_n^*-S_{n_1}|=\left|\sum_{\substack{k\in\overline{1,n}:\\\varphi(k)\geq{n}_1+1}}a_k^*\right|=
+\left|\sum_{\substack{k\in\overline{1,n}:\\\varphi(k)\geq{n}_1+1}}a_{\varphi(k)}\right|\leq\sum_{\substack{k\in\overline{1,n}:\\\varphi(k)
+\geq{n}_1+1}}|a_{\varphi(k)}|\leq\sum_{k=n_1+1}^\infty|a_k|&lt\frac{\varepsilon}{2}\right)$$
+Предпоследнее неравенство справедливо так как все слагаемые в правой сумме положительны. Здесть работает условие абсолютной сходимости.
+Действительно, правая сумма содержит все члены ряда $\sum_{n=1}^\infty|a_n|$ с индексом больше $n_1$, а левая сумма те и только те из них,
+которые содержаться в сумме $\sum_{k=1}^n|a_k^*|$. Таким образом
+$$\forall{n}&gtm(\varepsilon)(|S_n^*-S|\leq|S-S_{n_1}|+|S_n^*-S_{n_1}|&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon)\Rightarrow
+\forall\varepsilon&gt0\:\exists{m}=m(\varepsilon):\forall{n}&gtm(\varepsilon)(|S_n^*-S|&lt\varepsilon)\Rightarrow{S}^*=\lim_{n\to\infty}S_n^*=S$$
+</li>
+</ol> 
+
+<br><br>
+<a href="./math_analisis7.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.3.2.html">next</a>
+</body>
+</html> 

@@ -1,0 +1,262 @@
+﻿<html>
+<head>
+<meta charset="utf-8" >
+<title>Mathematical analisis 8.1.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis8.1.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.2.html">next</a>
+
+<h5 id="8.1.4">8.1.4 Некотороые типы интегралов сводящиеся к интегралам от рациональных функций.</h5>
+
+<p id="Definition8.1.6"><b>Определение 8.1.6:</b> Элементарным многочленом от двух вещественных переменных $u$ и $v$ называется функция 
+$F(u,v):\mathbb{R}^2\to\mathbb{R}:F(u,v)=u^iv^j$, где $i,j\in\mathbb{N}$.<br>
+Многочленом от двух вещественных переменных $P(u,v)$ называется любая конечная линейная комбинация элементарных многочленов от двух переменных
+$$P(u,v)=\sum^{i=n,j=m}_{i=j=0}(a_{i,j}u^iv^j),m,n\in\mathbb{N}_0,\forall{i}\in\overline{0,n},\forall{j}\in\overline{0,m}(a_{i,j}\in\mathbb{R})$$
+Рациональной функцией от двух вещественных переменных называется частное двух многочленов от двух вещественных переменных
+$$R(u,v)=\frac{P(u,v)}{Q(u,v)},\forall{u},v\in\mathbb{R}(Q(u,v)\neq0)$$
+
+<br><br>
+
+<p>Если $R(u,v)$ рациональная функция от двух переменных $y(x)$ <a href="./math_analisis5.4.1.html#Definition5.4.6.2">элементарная функция</a>,
+то в некоторых случаях интеграл вида $\int{R}(x,y(x))dx$ может быть сведен к интегралу от рациональной функции.<br>
+Например, если существует замена переменной $x=x(t)$ такая, что
+<ol>
+<li>$x(t)$ - рациональная функция от $t$,</li>
+<li>$y(x(t))$ - рациональная функция от $t$,</li>
+</ol>
+тогда
+<ol>
+<li>$x'(t)$ - рациональная функция от $t$,</li>
+<li>$R(x(t),y(x(t)))$ - рациональная функция от $t$.</li>
+</ol>
+Следовательно, функция $R(x(t),y(x(t)))x'(t)$ тоже будет рациональной и $\int{R}(x,y(x))dx=\int{R}(x(t),y(x(t)))x'(t)dt$
+
+<br><br>
+
+<p id="Example8.1.6"><b>Пример 8.1.6:</b> Рассмотрим неопределенный интеграл вида $\displaystyle\int{R}\left(x,\sqrt[n]\frac{ax+b}{cx+d}\right)dx$.<br>
+Произведем замену переменной $\displaystyle{t}=\sqrt[n]\frac{ax+b}{cx+d}$, тогда $\displaystyle{x}(t)=\frac{-dt^n+b}{ct^n-a}$ - рациональная функция от 
+$t$.<br>
+$\displaystyle{y}(x)=\sqrt[n]\frac{ax+b}{cx+d}=t$ - рациональная функция от $t$.
+<i>
+$$x'(t)=\left(\frac{-dt^n+b}{ct^n-a}\right)'=\frac{-dnt^{n-1}(ct^n-a)-cnt^{n-1}(-dt^n+b)}{(ct^n-a)^2}=\frac{nt^{n-1}(-cdt^n+ad+cdt^n-cb)}{(ct^n-a)^2}=
+\frac{nt^{n-1}(ad-cb)}{(ct^n-a)^2}\Rightarrow$$
+$$\Rightarrow\int{R}\left(x,\sqrt[n]\frac{ax+b}{cx+d}\right)dx=\int{R}\left(\frac{-dt^n+b}{ct^n-a},t\right)\frac{nt^{n-1}(ad-cb)}{(ct^n-a)^2}dt$$
+В последнем интеграле подинтегральное выражение является рациональной функцией от $t$. Таким образом вычисление исходного интеграла сведено 
+к вычислению интеграла от рациональной функции.
+</i>
+<br><br>
+
+<p id="Example8.1.7"><b>Пример 8.1.7:</b> Следующие типы интегралов так же сводятся к интегралам от рациональных функций в чем можно убедится
+обратившись к соответствующим парагафам учебника.
+<ol>
+<li>Кудрявцев т. 1, стр. 424 $$\int{R}\left(x,\sqrt{ax^2+bx+c}\right)dx;\:a\neq0$$</li>
+<li>Кудрявцев т. 1, стр. 429 $$\int\frac{P_n(x)}{\sqrt{ax^2+bx+c}}dx;\:a\neq0$$</li>
+<li>Кудрявцев т. 1, стр. 429 $$\int\frac{dx}{(x-\lambda)^k\sqrt{ax^2+bx+c}};\:k\in\mathbb{N},\lambda\in\mathbb{R}$$</li>
+<li>Кудрявцев т. 1, стр. 426 $$\int{x}^m(a+bx^n)^pdx;a,b\in\mathbb{R};\:m,n,p\in\mathbb{Q}$$</li>
+<li>Кудрявцев т. 1, стр. 431 $$\int{R}(\sin{x},\cos{x})dx$$</li>
+</ol>
+
+<br><br>
+
+<p id="Task8.1.1"><b>Задача 8.1.1:</b> Представить превообразную $\displaystyle\int\sqrt[3]\frac{x-1}{x+1}dx$ в виде элементарной функции.<br>
+<i><b>Решение:</b> В Зорич т. 1, стр. 373 приведено более простое решение с помощью интегрирования по частям (в четверном издании от 2002 года
+не хватает двух двоек в ответе, очевидные опечатки при выводе). Здесь в качестве примера использования вышеописанного метода приведено решение 
+с помощью разложения рациональной функции в сумму простейших дробей.<br>
+В условиях <a href="#Example8.1.6">примера 8.1.6</a> положим $a=1$, $b=-1$, $c=1$, $d=1$, $n=3$, $\displaystyle{y}(x)=\sqrt[3]\frac{x-1}{x+1}$, тогда
+$R(x,y(x))=y(x)$ и
+$$t:=\sqrt[3]\frac{x-1}{x+1}\Rightarrow{x}(t)=\frac{-dt^n+b}{ct^n-a}=\frac{-t^3-1}{t^3-1}\Rightarrow
+\left(x'(t)=\frac{nt^{n-1}(ad-bc)}{(ct^n-a)^2}=\frac{6t^2}{(t^3-1)^2}\wedge{R}(x(t),y(x(t)))=y(x(t))=t\right)\Rightarrow$$
+$$\Rightarrow\int\sqrt[3]\frac{x-1}{x+1}dx=\int{R}(x(t),y(x(t)))x'(t)dt=\int{t}\frac{6t^2}{(t^3-1)^2}dt=\int\frac{6t^3}{(t^3-1)^2}dt$$
+Применим метод <a href="./math_analisis8.1.3.html#Example8.1.4">неопределенных коэффициентов</a>
+$$\frac{6t^3}{(t^3-1)^2}=\frac{6t^3}{(t-1)^2(t^2+t+1)^2}=\frac{A}{t-1}+\frac{B}{(t-1)^2}+\frac{Ct+D}{t^2+1+1}+\frac{Et+F}{(t^2+t+1)^2}=
+\frac{A(t-1)(t^2+t+1)^2+B(t^2+t+1)^2+(Ct+D)(t-1)^2(t^2+t+1)+(Et+F)(t-1)^2}{(t-1)^2(t^2+t+1)^2}=$$
+$$=\frac{A(t^3-1)(t^2+t+1)+B(t^2+t+1)^2+(Ct+D)(t^3-1)(t-1)+(Et+F)(t-1)^2}{(t-1)^2(t^2+t+1)^2}=$$
+$$=\frac{A(t^5+t^4+t^3-t^2-t-1)+B(t^4+2t^3+3t^2+2t+1)+(Ct+D)(t^4-t^3-t+1)+(Et+F)(t^2-2t+1)}{(t-1)^2(t^2+t+1)^2}=$$
+$$=\frac{A(t^5+t^4+t^3-t^2-t-1)+B(t^4+2t^3+3t^2+2t+1)+C(t^5-t^4-t^2+t)+D(t^4-t^3-t+1)+E(t^3-2t^2+t)+F(t^2-2t+1)}{(t-1)^2(t^2+t+1)^2}=$$
+$$=\frac{t^5(A+C)+t^4(A+B-C+D)+t^3(A+2B-D+E)+t^2(-A+3B-C-2E+F)+t(-A+2B+C-D+E-2F)+(-A+B+D+F)}{(t-1)^2(t^2+t+1)^2}$$
+В числителе рациональной функции подинтегрального выражения стоит многочлен $6t^3$, следовательно, 
+$$
+\begin{cases}
+A+C=0\\
+A+B-C+D=0\\
+A+2B-D+E=6\\
+-A+3B-C-2E+F=0\\
+-A+2B+C-D+E-2F=0\\
+-A+B+D+F=0
+\end{cases}\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0\\
+1 & 1 &-1 & 1 & 0 & 0\\
+1 & 2 & 0 &-1 & 1 & 0\\
+-1& 3 &-1 & 0 &-2 & 1\\
+-1& 2 & 1 &-1 & 1 &-2\\
+-1& 1 & 0 & 1 & 0 & 1  
+\end{array}
+\right)
+\left(\begin{array}{rr}A\\B\\C\\D\\E\\F\end{array}\right)=\left(\begin{array}{rr}0\\0\\6\\0\\0\\0\end{array}\right)
+$$
+Решим полученную систему методом Гаусса
+$$
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+1 & 1 &-1 & 1 & 0 & 0 & 0\\
+1 & 2 & 0 &-1 & 1 & 0 & 6\\
+-1& 3 &-1 & 0 &-2 & 1 & 0\\
+-1& 2 & 1 &-1 & 1 &-2 & 0\\
+-1& 1 & 0 & 1 & 0 & 1 & 0
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 2 &-1 &-1 & 1 & 0 & 6\\
+0 & 3 & 0 & 0 &-2 & 1 & 0\\
+0 & 2 & 2 &-1 & 1 &-2 & 0\\
+0 & 1 & 1 & 1 & 0 & 1 & 0
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 1 & 0 & 6\\
+0 & 0 & 6 &-3 &-2 & 1 & 0\\
+0 & 0 & 6 &-3 & 1 &-2 & 0\\
+0 & 0 & 3 & 0 & 0 & 1 & 0
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 1 & 0 & 6\\
+0 & 0 & 0 & 3 &-4 & 1 &-12\\
+0 & 0 & 0 & 3 &-1 &-2 &-12\\
+0 & 0 & 0 & 3 &-1 & 1 &-6
+\end{array}
+\right)\Rightarrow$$
+$$\Rightarrow\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 1 & 0 & 6\\
+0 & 0 & 0 & 3 &-4 & 1 &-12\\
+0 & 0 & 0 & 0 & 3 &-3 & 0\\
+0 & 0 & 0 & 0 & 3 & 0 & 6
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 1 & 0 & 6\\
+0 & 0 & 0 & 3 &-4 & 1 &-12\\
+0 & 0 & 0 & 0 & 3 &-3 & 0\\
+0 & 0 & 0 & 0 & 0 & 3 & 6
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 1 & 0 & 6\\
+0 & 0 & 0 & 3 &-4 & 0 &-14\\
+0 & 0 & 0 & 0 & 3 & 0 & 6\\
+0 & 0 & 0 & 0 & 0 & 1 & 2
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 1 & 0 & 0 & 0\\
+0 & 0 & 3 &-3 & 0 & 0 & 4\\
+0 & 0 & 0 & 3 & 0 & 0 &-6\\
+0 & 0 & 0 & 0 & 1 & 0 & 2\\
+0 & 0 & 0 & 0 & 0 & 1 & 2 
+\end{array}
+\right)\Rightarrow$$
+$$\Rightarrow\left(
+\begin{array}{rr}
+1 & 0 & 1 & 0 & 0 & 0 & 0\\
+0 & 1 &-2 & 0 & 0 & 0 & 2\\
+0 & 0 & 3 & 0 & 0 & 0 &-2\\
+0 & 0 & 0 & 1 & 0 & 0 &-2\\
+0 & 0 & 0 & 0 & 1 & 0 & 2\\
+0 & 0 & 0 & 0 & 0 & 1 & 2 
+\end{array}
+\right)\Rightarrow
+\left(
+\begin{array}{rr}
+1 & 0 & 0 & 0 & 0 & 0 &2/3\\
+0 & 1 & 0 & 0 & 0 & 0 &2/3\\
+0 & 0 & 1 & 0 & 0 & 0 &-2/3\\
+0 & 0 & 0 & 1 & 0 & 0 &-2\\
+0 & 0 & 0 & 0 & 1 & 0 & 2\\
+0 & 0 & 0 & 0 & 0 & 1 & 2
+\end{array}
+\right)\Rightarrow{A}=\frac{2}{3},B=\frac{2}{3},C=-\frac{2}{3},D=-2,E=2,F=2\Rightarrow$$
+$$\Rightarrow\frac{6t^3}{(t^3-1)^2}=\frac{2}{3(t-1)}+\frac{2}{3(t-1)^2}-\frac{2t+6}{3(t^2+t+1)}+\frac{2t+2}{(t^2+t+1)^2}=
+\frac{2}{3(t-1)}+\frac{2}{3(t-1)^2}-\frac{2t}{3(t^2+t+1)}-\frac{2}{t^2+t+1}+\frac{2t}{(t^2+t+1)^2}+\frac{2}{(t^2+t+1)^2}\Rightarrow$$
+$$\Rightarrow\int\frac{6t^3}{(t^3-1)^2}dt=\frac{2}{3}\ln|t-1|-\frac{2}{3(t-1)}-\frac1{3}\int\frac{2tdt}{\left(t+\frac1{2}\right)^2+\frac{3}{4}}-
+2\int\frac{dt}{\left(t+\frac1{2}\right)^2+\frac{3}{4}}+\int\frac{2tdt}{\left(\left(t+\frac1{2}\right)^2+\frac{3}{4}\right)^2}+
+2\int\frac{dt}{\left(\left(t+\frac1{2}\right)^2+\frac{3}{4}\right)^2}=\frac{2}{3}\ln|t-1|-\frac{2}{3(t-1)}-\frac1{3}I_1-2I_2+I_3+2I_4$$
+Обозначим $u:=t+\frac1{2}$, $b^2=\frac{3}{4}$, тогда $dt=du$, $du^2=d(t^2+t+\frac1{4})=(2t+1)dt$. 
+
+$\newcommand{\arctg}{\operatorname{arctg}}$
+
+$\displaystyle{I}_1=\int\frac{2tdt}{\left(t+\frac1{2}\right)^2+\frac{3}{4}}=\int\frac{(2t+1-1)dt}{\left(t+\frac1{2}\right)^2+\frac{3}{4}}=
+\int\frac{du^2}{u^2+b^2}-\int\frac{du}{u^2+b^2}=\ln(u^2+b^2)-\frac1{b}\arctg\frac{u}{b}$<br>
+$\displaystyle{I}_2=\int\frac{dt}{\left(t+\frac1{2}\right)^2+\frac{3}{4}}=\int\frac{du}{u^2+b^2}=J_1=\frac1{b}\arctg\frac{u}{b}$<br>
+$\displaystyle{I}_3=\int\frac{2tdt}{\left(\left(t+\frac1{2}\right)^2+\frac{3}{4}\right)^2}=\int\frac{(2t+t-1)dt}{(u^2+b^2)^2}=
+\int\frac{du^2}{(u^2+b^2)^2}-\int\frac{du}{(u^2+b^2)^2}=-\frac1{u^2+b^2}-J_2$<br>
+$\displaystyle{I}_4=\int\frac{dt}{\left(\left(t+\frac1{2}\right)^2+\frac{3}{4}\right)^2}=\int\frac{du}{(u^2+b^2)^2}=J_2$<br>
+<a href="./math_analisis8.1.3.html#Definition8.1.5">где</a><br>
+$\displaystyle{J}_2=\frac1{2b^2}\frac{u}{u^2+b^2}+\frac1{2b^2}J_1=\frac1{2b^2}\frac{u}{u^2+b^2}+\frac1{2b^2}\frac1{b}\arctg\frac{u}{b}$<br>
+Таким образом
+$$\int\frac{6t^3}{(t^3-1)^2dt}=\frac{2}{3}\ln|t-1|-\frac{2}{3(t-1)}-\frac1{3}\left(\ln(u^2+b^2)-\frac1{b}\arctg\frac{u}{b}\right)-
+2\frac1{b}\arctg\frac{u}{b}-\frac1{u^2+b^2}-J_2+2J_2=$$
+$$=\frac{2}{3}\ln|t-1|-\frac{2}{3(t-1)}-\frac1{3}\ln(u^2+b^2)-\frac1{3b}\arctg\frac{u}{b}-2\frac1{b}\arctg\frac{u}{b}-\frac1{u^2+b^2}+
+\frac1{2b^2}\frac{u}{u^2+b^2}+\frac1{2b^2}\frac1{b}\arctg\frac{u}{b}=$$
+$$=\frac{2}{3}\ln|t-1|-\frac1{3}\ln(u^2+b^2)-\frac1{b}\left(\frac1{3}-2+\frac1{2b^2}\right)\arctg\frac{u}{b}-\frac1{u^2+b^2}+
+\frac1{2b^2}\frac{u}{u^2+b^2}-\frac{2}{3(t-1)}=$$
+$$=\frac{2}{3}\ln|t-1|-\frac1{3}\ln(u^2+b^2)-\frac1{b}\arctg\frac{u}{b}+\frac{2(-3t)}{3(t^2+t+1)(t-1)}=$$
+$$=\frac{2}{3}\ln|t-1|-\frac1{3}\ln\left(\left(t+\frac1{2}\right)^2+\frac{3}{4}\right)-
+\frac{2}{\sqrt{3}}\arctg\left(\frac{2}{\sqrt{3}}\left(t+\frac1{2}\right)\right)+\frac{2t}{1-t^3}+C$$
+где $\displaystyle{t}=\sqrt[3]\frac{x-1}{x+1}$.<br>
+Для проверки полученного результата проведем дифференцирование первообразной по $x$. <a href="./math_analisis6.2.html#Theorem6.2.2">Для этого</a> 
+продифференцируем по $t$, подставим в получившееся выражение $\displaystyle{t}=\sqrt[3]\frac{x-1}{x+1}$ и умножим результат на 
+$\displaystyle{t}'(x)=\left(\sqrt[3]\frac{x-1}{x+1}\right)'=\frac1{3}\left(\frac{x-1}{x+1}\right)^{-\frac{2}{3}}\frac{2}{(x+1)^2}$.<br>
+$\displaystyle\left(\frac{2}{3}\ln|t-1|\right)'=\frac{2}{3(t-1)}$<br>
+$\displaystyle\left(\frac1{3}\ln(t^2+t+1)\right)'=\frac1{3}\frac{2t+1}{t^2+t+1}$<br>
+$\displaystyle\left(\frac{2}{\sqrt{3}}\arctg\left(\frac{2}{\sqrt{3}}\left(t+\frac1{2}\right)\right)\right)'=
+\frac{2}{\sqrt{3}}\frac{2}{\sqrt{3}}\frac1{\frac{4}{3}\left(t^2+t+\frac1{4}\right)+1}=
+\frac{4}{3}\frac1{\frac{4}{3}\left(\left(t^2+t+\frac1{4}\right)+\frac{3}{4}\right)}=\frac1{t^2+t+1}$<br>
+$\displaystyle\left(\frac{2t}{1-t^3}\right)'=\frac{2(1-t^3)+3t^22t}{(1-t^3)^2}=\frac{4t^3+2}{(1-t^3)^2}$<br>
+$$F'(t)=\frac{2}{3(t-1)}-\frac1{3}\frac{2t+1}{t^2+t+1}-\frac1{t^2+t+1}+\frac{4t^3+2}{(1-t^3)^2}=
+\frac{2}{3(t-1)}-\frac1{3}\frac{2t+4}{t^2+t+1}+\frac{4t^3+2}{(1-t^3)^2}=\frac1{3}\frac{2t^2+2t+2-2t^2-4t+2t+4}{(t-1)(t^2+t+1)}+\frac{4t^3+2}{(1-t^3)^2}=$$
+$$=\frac{2}{t^3-1}+\frac{4t^3+2}{(t^3-1)^2}=\frac{2t^3-2+4t^3+2}{(t^3-1)^2}=\frac{6t^3}{(t^3-1)^2}=\frac{6\frac{x-1}{x+1}}{\left(\frac{x-1}{x+1}-1\right)^2}=
+\frac{3}{2}(x-1)(x+1)$$
+$$F'(t(x))=F'(t)t'(x)=\frac{3}{2}(x-1)(x+1)\frac1{3}\left(\frac{x-1}{x+1}\right)^{-\frac{2}{3}}\frac{2}{(x+1)^2}=
+\left(\frac{x-1}{x+1}\right)^{-\frac{2}{3}}\frac{x-1}{x+1}=\left(\frac{x-1}{x+1}\right)^{\frac1{3}}=\sqrt[3]\frac{x-1}{x+1}$$
+В результате получено подинтегральное выражение - задача решена.
+$$\int\sqrt[3]\frac{x-1}{x+1}dx=\frac{2}{3}\ln\left|\sqrt[3]\frac{x-1}{x+1}-1\right|-
+\frac1{3}\ln\left(\left(\sqrt[3]\frac{x-1}{x+1}+\frac1{2}\right)^2+\frac{3}{4}\right)-
+\frac{2}{\sqrt{3}}\arctg\left(\frac{2}{\sqrt{3}}\left(\sqrt[3]\frac{x-1}{x+1}+\frac1{2}\right)\right)+(x+1)\sqrt[3]\frac{x-1}{x+1}$$
+</i>
+
+<br><br>
+<a href="./math_analisis8.1.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis8.2.html">next</a>
+</body>
+</html>

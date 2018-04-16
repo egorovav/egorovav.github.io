@@ -1,0 +1,266 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 6.6.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analisis6.6.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.1.html">next</a>
+
+<h5 id="6.6.2">6.6.2 Условия выпуклости функции. Точки перегиба.</h5>
+
+<p id="Definition6.6.1"><b>Определение 6.6.1:</b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$, тогда фукнция $f(x):(a,b)\to\mathbb{R}$
+называется выпуклой (выпуклой вниз) если 
+$$\forall{x}_1,x_2\in(a,b),\forall\alpha_1\geq0,\forall\alpha_2\geq0(\alpha_1+\alpha_2=1\Rightarrow
+{f}(\alpha_1x_1+\alpha_2x_2)\leq\alpha_1f(x_1)+\alpha_2f(x_2)).$$
+
+<br><br>
+$\newcommand{\sgn}{\operatorname{sgn}}$
+
+<p>Так как $\alpha_1,\alpha_2$ положительны, и $\alpha_1+\alpha_2=1$, то $\alpha_1,\alpha_2\in[0,1]$ и $\alpha_1=1-\alpha_2$. 
+Положим $\alpha:=\alpha_1$, тогда $\alpha_2=1-\alpha$ и в условиях определения 6.6.1
+$$\forall{x}_1,x_2\in(a,b),\forall\alpha\in[0,1](f(\alpha{x}_1+(1-\alpha)x_2)\leq\alpha{f}(x_1)+(1-\alpha)f(x_2))\Rightarrow
+\forall{x}_1,x_2\in(a,b),\forall\alpha\in[0,1](f(\alpha(x_1-x_2)+x_2)\leq\alpha(f(x_1)-f(x_2))+f(x_2))$$
+Без ограничения общности будем считать, что $x_1&ltx_2$ и положим $x:=x_2-(x_2-x_1)\alpha$, тогда $x\in[x_1,x_2]$ и $\alpha=\frac{x_2-x}{x_2-x_1}$.
+Тогда условие выпоклость функции $f(x)$ на интревале $(a,b)$ можно записать в виде: для любых $x_1,x_2\in(a,b)$ таких, что $x_1&ltx_2$ выполняется
+$$\forall{x}\in[x_1,x_2]\left(f\left(\frac{x_2-x}{x_2-x_1}(x_1-x_2)+x_2\right)\leq\frac{x_2-x}{x_2-x_1}(f(x_1)-f(x_2))+f(x_2)\right)\Rightarrow$$
+$$\Rightarrow\forall{x}\in[x_1,x_2]\left({f}(x)\leq\frac{x_2-x}{x_2-x_1}(f(x_1)-f(x_2))+f(x_2)\right)$$
+Выражение стоящее в правой части неравенства, линейно зависит от $x$ и определено на $\mathbb{R}$, следовательно, она задает прямую 
+$y(x)=\frac{x_2-x}{x_2-x_1}(f(x_1)-f(x_2))+f(x_2)$, при этом $y(x_1)=\frac{x_2-x_1}{x_2-x_1}(f(x_1)-f(x_2))+f(x_2)=f(x_1)-f(x_2)+f(x_2)=f(x_1)$ и
+$f(x_2)=\frac{x_2-x_2}{x_2-x_1}(f(x_1)-f(x_2))+f(x_2)=f(x_2)$. То есть прямая $y(x)$ проходит через точки $(x_1,f(x_1))$, $(x_2,f(x_2))$.
+Таким образом, геометрический смысл определения 6.6.1 состоит в том, что если функция выпукла на интервале $(a,b)$, то 
+любая хорда графика функции на этом интревале, лежит выше участка графика функции, который эта хорда стягивает.
+
+<br><br>
+
+<p id="Definition6.6.2"><b>Определение 6.6.2:</b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$, тогда функция $f(x):(a,b)\to\mathbb{R}$
+называется вогнутой (выпуклой вверх) если функция $-f(x)$ выпукла (выпукла вниз) на интервале $(a,b)$.
+
+<br><br>
+
+<details>
+<summary><i>Замечание к геометрическому смыслу определения выпуклости.</i></summary>
+<i>
+Важно понимать, что для выпуклости функции $f(x)$ на интервале $(a,b)$ не достаточно того, чтобы график функции на интервале $(a,b)$ лежал
+ниже хорды проходящей через точки $(a,f(a))$, $(b,f(b))$ (функция $f(x)$ может быть даже не определена в точках $a$ и\или $b$). 
+Например, <a href="https://www.google.ru/search?newwindow=1&dcr=0&source=hp&q=x%5E4%2Bx%5E3-x%5E2-x-1&oq=x%5E4%2Bx%5E3-x%5E2-x-1&gs_l=psy-ab.3..0i30k1l6j0i5i30k1l3j0i8i30k1.4295.23725.0.25239.17.16.0.0.0.0.139.1056.14j1.16.0....0...1.1.64.psy-ab..1.16.1203.6..0j35i39k1j0i131k1.149.h2Zp7wZUvho">функция</a>
+$f(x)=x^4+x^3-x^2-x-1$ не выпукла на интервале $(-2,1)$ (так же как и на интервале $(-\infty,+\infty)$), но выпукла на интервале $(0,1)$. 
+При этом функция $f(x)$ так же и не вогнута на интервале $(-2,1)$, то есть, вообще говоря, отсутствие выпуклости функции на интервале 
+не влечет ее вогнутость на этом интервале. 
+</i>
+</details>
+
+
+<br><br>
+<p>Получим некоторое эквивалентное выражение для <a href="#Definition6.6.1">определения выпуклости</a>:
+В условиях определения 6.6.1
+$$\forall{x}_1,x_2\in(a,b),\forall\alpha_1\geq0,\forall\alpha_2\geq0(\alpha_1+\alpha_2=1
+\Rightarrow{f}(\alpha_1x_1+\alpha_2x_2)\leq\alpha_1f(x_1)+\alpha_2f(x_2))$$
+положим $x:=x_1\alpha_1+x_2\alpha_2$, тогда 
+$$\left(\alpha_1=\frac{x_2-x}{x_2-x_1}\wedge\alpha_2=\frac{x-x_1}{x_2-x_1}\wedge{x}_1&ltx&ltx_2\right)\Rightarrow
+f(x)\leq\frac{x_2-x}{x_2-x_1}f(x_1)+\frac{x-x_1}{x_2-x_1}f(x_2)\Rightarrow$$ 
+$$\Rightarrow{f}(x)(x_2-x_1)=f(x_2-x_1+x-x)\leq{f}(x_1)(x_2-x)+f(x_2)(x-x_1)\Rightarrow
+{f}(x)(x_2-x)+f(x)(x-x_1)\leq{f}(x_1)(x_2-x)+f(x_2)(x-x_1)\Rightarrow$$ 
+$$\Rightarrow(f(x)-f(x_1))(x_2-x)\leq(f(x_2)-f(x))(x-x_1)\Rightarrow\frac{f(x)-f(x_1)}{x-x_1}\leq\frac{f(x_2)-f(x)}{x_2-x}$$
+Таким образом условие выпуклости функции $f(x)$ на интервале $(a,b)$ можно записать в виде
+$$\forall{x},x_1,x_2\in(a,b)\left(x_1&ltx&ltx_2\Rightarrow\frac{f(x)-f(x_1)}{x-x_1}\leq\frac{f(x_2)-f(x)}{x_2-x}\right)\quad(4)$$
+
+<br><br>
+
+<p id="Statement6.6.5"><b>Утверждение 6.6.5: </b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$ и фукнция $f(x):(a,b)\to\mathbb{R}$
+дифференцируема на $(a,b)$, тогда функция $f(x)$ выпукла на интервале $(a,b)$ тогда и только тогда, когда производная $f'(x)$ не убывает 
+на интервале $(a,b)$.
+<p><b>Доказательство:</b> Фиксируем $x_1,x_2\in(a,b)$ такие, что $x_1&ltx_2$.
+<ul>
+<li>$\Rightarrow)$<br>
+Так как функция $f(x)$ дифференуируема на интервале $(a,b)$, то в неравенстве (4) можем перейти к пределу при $x\to{x}_1+0$, тогда 
+$$\forall{x}\in(x_1,x_2)\left(\frac{f(x)-f(x_1)}{x-x_1}\leq\frac{f(x_2)-f(x)}{x_2-x}\right)\Rightarrow
+\lim_{x\to{x}_1+0}\frac{f(x)-f(x_1)}{x-x_1}\leq\lim_{x\to{x}_1+0}\frac{f(x_2)-f(x)}{x_2-x}\Rightarrow
+f'(x_1)=f'_+(x_1)\leq\frac{f(x_2)-f(x_1)}{x_2-x_1}$$
+Аналогично, переходя в неравенстве (4) к пределу при $x\to{x}_2-0$ получим $f'(x_2)\geq\frac{f(x_2)-f(x_1)}{x_2-x_1}$, тогда
+$$f'(x_1)\leq\frac{f(x_2)-f(x_1)}{x_2-x_1}\leq{f}'(x_2)\Rightarrow{f}'(x_1)\leq{f}'(x_2)$$
+то есть функция $f'(x)$ не убывает на $(a,b)$.
+</li>
+<li>$\Rightarrow)$<br>
+Для любого $x\in(x_1,x_2)$ функция $f(x)$ удовлетворяет условиям теоремы Лагранжа на отрезках $[x_1,x]$ и $[x,x_2]$, значит
+$$\exists\xi_1\in(x_1,x):\frac{f(x)-f(x_1)}{x-x_1}=f'(\xi_1)\wedge\exists\xi_2\in(x,x_2):\frac{f(x_2)-f(x)}{x_2-x}=f'(\xi_2)$$
+Так как по условию функция $f'(x)$ не убывает на $(a,b)$, и $\xi_1&ltx&lt\xi_2$, то $f'(\xi_1)\leq{f}'(\xi_2)$, следовательно,
+$\frac{f(x)-f(x_1)}{x-x_1}\leq\frac{f(x_2)-f(x)}{x_2-x}$. Таким образом получено неравенство (4) эквивалентное определению выпуклости.
+</li>
+</ul>
+
+<br><br>
+
+<p id="Corollary6.6.2"><b>Следствие 6.6.2:</b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$ и функция $f(x):(a,b)\to\mathbb{R}$
+дифференцируема на $(a,b)$, тогда
+<ol>
+<li>если вторая производная $f''(x)$ положительна на $(a,b)$ то функция $f(x)$ <a href="#Definition6.6.1">выпукла</a> на $(a,b)$,</li>
+<li>если вторая производная $f''(x)$ отрицательна на $(a,b)$ то функция $f(x)$ <a href="#Definition6.6.2">вогнута</a> на $(a,b)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как $f''(x)=(f')'(x)$, то по пункту 1 <a href="./math_analisis6.6.1.html#Statement6.6.1">утверждения 6.6.1</a> функция $f'(x)$ не убывает, следовательно, 
+по утверждению 6.6.5 функция $f(x)$ выпукла.
+</li>
+<li>
+Аналогично по пункту 3 <a href="./math_analisis6.6.1.html#Statement6.6.1">утверждения 6.6.1</a> функция $f'(x)$ не возрастает, следовательно, 
+функция $-f'(x)=(-f)'(x)$ не убывает, тогда по утверждению 6.6.5 функция $-f(x)$ выпукла, а $f(x)$ вонгута.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example6.6.9"><b>Пример 6.6.9:</b> Пусть $a\neq1$, $a&gt0$. Рассмотрим функцию $f(x)=a^x:\mathbb{R}\to\mathbb{R}$<br>
+<a href="./math_analisis6.3.html#Task6.3.1">Для любого</a> $x\in\mathbb{R}$ $f''(x)=a^x\ln^2a&gt0$, следовательно, функция $a^x$ выпукла на $\mathbb{R}$.
+
+<br><br>
+
+<p id="Example6.6.10"><b>Пример 6.6.10:</b> Рассмотрим функцию $f(x)=x^\alpha:(0,+\infty)\to\mathbb{R}$<br>
+<a href="./math_analisis6.3.html#Task6.3.1">Для любого</a> $x\in(0,+\infty)$ $f''(x)=\alpha(\alpha-1)x^{\alpha-2}$.
+Так как $x&gt0$, то $x^{\alpha-2}&gt0$, значит для любого $x\in(0,+\infty)$ $\sgn{f}''(x)=\sgn\alpha(\alpha-1)$.
+Значит функция $f''(x)$ положительна тогда и только тогда, когда $\sgn\alpha=\sgn(\alpha-1)$, то есть при $\alpha&gt1$ и $\alpha&lt0$.
+Таким образом фукнция $x^\alpha$ вогнута на $(0,+\infty)$ при $\alpha\in(0,1)$ и выпукла при $\alpha\in\mathbb{R}\backslash(0,1)$.<br>
+<i>
+При $\alpha=0$ $f(x)=-f(x)\equiv1$, $f'(x)=(-f)'(x)\equiv0$, <a href="#Statement6.6.5">следовательно</a>, выпуклыми являются и функция $f(x)$
+и функция $-f(x)$, то есть фукнция $f(x)$ и выпукла и вогнута на $(0,+\infty)$.<br>
+При $\alpha=1$ $f(x)=x$, $f'(x)\equiv1$, $-f'(x)\equiv-1$, <a href="#Statement6.6.5">следовательно</a>, выпуклыми являются и функция $f(x)$ 
+и функция $-f(x)$, то есть функция $f(x)$ и выпукла и вогнута на $(0,+\infty)$.  
+</i>
+
+<br><br>
+<p id="Definition6.6.3"><b>Определение 6.6.3: Точка перегиба.</b><br>
+Число $x_0\in{i}nt{E}$ являестя точкой перегиба функции $f(x):E\to\mathbb{R}$, если
+<ol>
+<li>функция $f(x)$ непрерывна в точке $x_0$,</li>
+<li>$\exists{U}(x_0):\forall{x}\in\mathring{U}(x_0)\:\exists{f'}(x_0)$</li>
+<li>$\exists{f}'(x_0)\in\overline{\mathbb{R}}$</li>
+<li>функция $f(x)$ выпукла на $U^-(x_0)$ и вогнута на $U^+(x_0)$, или наоборот: вогнута на $U^-(x_0)$ и выпукла на $U^+(x_0)$.</li>
+</ol>
+
+<br><br>
+
+<p id="Definition6.6.4"><b>Определение 6.6.4: Критическая точка второго рода.</b><br>
+Число $x_0\in{i}nt{E}$ является критической точкой второго рода функции $f(x):E\to\mathbb{R}$, если 
+<ol>
+<li>функция $f(x)$ непрерывна в точке $x_0$,</li>
+<li>$\exists{U}(x_0):\forall{x}\in\mathring{U}(x_0)\:\exists{f}'(x_0)$</li>
+<li>функция $f(x)$ не имеет второй производной в точке $x_0$ или вторая производная в точке $x_0$ равна нулю.</li>
+</ol>
+
+<br><br>
+
+<p id="Statement6.6.6"><b>Утверждение 6.6.6: Необходимые и достаточные условия существования точки перегиба.</b><br>
+Пусть функция $f(x):E\to\mathbb{R}$ и число $x_0\in{i}nt{E}$ удовлетворяют условиям
+<ol>
+<li>функция $f(x)$ непрерывна в точке $x_0$,</li>
+<li>$\exists{U}(x_0):\forall{x}\in\mathring{U}(x_0)\:\exists{f}''(x_0)$</li>
+<li>$\exists{f}'(x_0)\in\overline{\mathbb{R}}$</li>
+</ol>
+тогда
+<ol>
+<li>если $x_0$ точка перергиба функции $f(x)$, то она является критической точкой второго рода функции $f(x)$;</li>
+<li>
+если
+$$(\forall{x}\in{U}^-(x_0)(f''(x)&gt0)\wedge\forall{x}\in{U}^+(x_0)(f''(x)&lt0))\vee
+(\forall{x}\in{U}^-(x_0)(f''(x)&lt0)\wedge\forall{x}\in{U}^+(x_0)(f''(x)&gt0))$$
+то $x_0$ точка перегиба функции $f(x)$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Если $x_0$ точка перегиба функции $f(x)$, то по <a href="#Definition6.6.3">определению</a> б. о. о. функция функция $f(x)$ выпукла
+на $U^-(x_0)$ и вогнута на $U^+(x_0)$, тогда по <a href="#Statement6.6.5">утверждению 6.6.5</a> функция $f'(x)$ не убывает на $U^-(x_0)$
+и не возрастает на $U^+(x_0)$. Следовательно, если существует производная $f'(x_0)$, то $x_0$ точка внутреннего локального экстремума
+для функции $f'(x)$, тогда по <a href="./math_analisis6.4.html#Corollary6.4.2">следствию 6.4.2</a> из Леммы Ферма функция $(f')'(x)=f''(x)$
+либо не определена в точке $x_0$, либо равна в ней нулю. То есть $x_0$ <a href="#Definition6.6.4">критическая точка второго рода</a>.
+</li>
+<li>
+Пусть б. о. о. функция $f''(x)$ положительна на $U^-(x_0)$ и отрицательна на $U^+(x_0)$, <a href="./math_analisis6.6.1.html#Statement6.6.1">тогда</a>
+функция $f'(x)$ не убывает на $U^-(x_0)$ и не возрастает на $U^+(x_0)$, следовательно, по <a href="#Statement6.6.5">утверждению 6.6.5</a>
+функция $f(x)$ выпукла на $U^-(x_0)$ и вогнута на $U^+(x_0)$, тогда по <a href="#Definition6.6.3">определению</a> $x_0$ точка перегиба
+функции $f(x)$.  
+</li>
+</ol>
+
+<br><br>
+<p>Из утверждения в частности следует, что точки перегиба следует искать, только среди критических точек второго рода.
+
+<h5 id="6.6.3">6.6.3 Наклонные (не вертикальные) асимптоты.</h5>
+
+<p>Будем гворить, что функция $f(x):E\to\mathbb{R}$ имеет в точке $x_0\in\mathring{E}$ вертикальную асимптоту, если хотя бы один из пределов
+при $x\to{x}_0-0$ или $x\to{x}_0+0$ равен $\infty$.<br>
+Для произвольной функции $f(x):E\to\mathbb{R}$ введем в рассмотрение фукнцию $M_f(x):E\to\mathbb{R}^2$ такую, что для любого $x\in{E}$
+$M_f(x)=(x,f(x))$.<br>
+Введем в рассмотрение функцию расстояния между точками плоскости $\rho((x_1,y_1),(x_2,y_2)):=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$.
+
+<br><br>
+
+<p id="Definition6.6.5"><b>Определение 6.6.5: Наклонная асимптота.</b><br>
+Пусть существует число $M\in\mathbb{R}$ такое, что $[M,+\infty)\subset{E}$ и $a,b\in\mathbb{R}$, тогда будем говорить, 
+что прямая $y(x)=ax+b$ является наклонной асимптотой для графика функции $f(x):E\to\mathbb{R}$ при $x\to+\infty$, если
+$\displaystyle\lim_{E\ni{x}\to+\infty}\rho(M_f(x),M_y(x))=0$.
+
+<br><br>
+
+<p>Так как $M_f(x)=(x,f(x))$, $M_y(x)=(x,y(x))$, то $\rho(M_f(x),M_y(x))=\sqrt{(x-x)^2+(f(x)-y(x))^2}=|f(x)-y(x)|=|f(x)-ax-b|$.
+Таким образом, прямая $y(x)=ax+b$ является наклонной асимптотой для графика функции $f(x)$ при $x\to+\infty$ тогда и только тогда,
+когда $\displaystyle\lim_{x\to+\infty}|f(x)-ax-b|=0$.
+
+<br><br>
+
+<p id="Example6.6.11"><b>Пример 6.6.11:</b> Рассмотрим функцию $f(x)=\frac{\sin{x}}{x}$ и прямую $y(x)\equiv0$ ($a=b=0$).<br>
+$$\lim_{E\ni{x}\to+\infty}|f(x)-y(x)|=\lim_{E\ni{x}\to+\infty}|f(x)|=\lim_{E\ni{x}\to+\infty}\left|\frac{\sin{x}}{x}\right|=0$$
+Следовательно, прямая $y(x)\equiv0$ - наклонная асимптота для функции $f(x)=\frac{\sin{x}}{x}$ при $x\to+\infty$.
+
+<br><br>
+
+<p id="Statement6.6.7"><b>Утверждение 6.6.7: Критерий наличия наклонной асимптоты.</b><br>
+Пусть существует число $M\in\mathbb{R}$ такое, что $[M,+\infty)\subset{E}$ и $a,b\in\mathbb{R}$, тогда прямая $y=ax+b$ является наклонной асимптотой
+для графика функции $f(x):E\to\mathbb{R}$ при $x\to+\infty$ тогда и только тогда, когда существуют пределы 
+$\displaystyle\lim_{E\ni{x}\to+\infty}\frac{f(x)}{x}=a$ и $\displaystyle\lim_{E\ni{x}\to+\infty}(f(x)-ax)=b$.
+<p><b>Доказательство:</b> Из <a href="./math_analisis5.1.html#Definition5.1.1">определения предела функции</a> следует
+$$\lim_{E\to{x}\to+\infty}|f(x)-ax-b|\Leftrightarrow\lim_{E\ni{x}\to+\infty}(f(x)-ax-b)=0$$
+<ul>
+<li>$\Rightarrow)$<br>
+По <a href="./math_analisis5.2.html#Theorem5.2.1">теореоме об арифметических свойствах предела функции</a>
+$$(\lim_{E\ni{x}\to+\infty}(f(x)-ax-b)=0\wedge\lim_{E\ni{x}\to+\infty}\frac1{x}=0)\Rightarrow
+\lim_{E\ni{x}\to+\infty}\left(\frac1{x}(f(x)-ax-b)\right)=0\Rightarrow
+\lim_{E\ni{x}\to+\infty}\left(\frac{f(x)}{x}-a-\frac{b}{x}\right)=0\Rightarrow$$
+$$\Rightarrow\lim_{E\ni{x}\to+\infty}\frac{f(x)}{x}-a-\lim_{E\ni{x}\to+\infty}\frac{b}{x}=0\Rightarrow\lim_{E\ni{x}\to+\infty}\frac{f(x)}{x}=a$$
+$$\lim_{E\ni{x}\to+\infty}(f(x)-ax-b)=0\Rightarrow\lim_{E\ni{x}\to+\infty}(f(x)-ax)=b$$
+</li>
+<li>$\Leftarrow)$<br>
+$$\lim_{E\ni{x}\to+\infty}(f(x)-ax)=b\Rightarrow\lim_{E\ni{x}\to+\infty}(f(x)-ax-b)=0$$
+</li>
+</ul>
+
+<br><br>
+
+<p>Подводя итоги приведем примерную схему построения графика функции с применением методов дифференциального исчисления.
+<ol>
+<li>Определение ОДЗ, четности, нечетности, периодичности, симметрии и других конкретных признаков.</li>
+<li>Промежутки непрерывности, точки разрыва и их характер, вертикальные асимптоты, поведение на границах области определения.</li>
+<li>Промежутки знакопостоянства, нули, пересечения с координатными осями.</li>
+<li>Промежутки монотонности, критические точки первого рода, локальные экстремумы.</li>
+<li>Граничные и абсолютные (глобальные) экстремумы.</li>
+<li>Характер выпуклости, критические точки второго рода, точки перегиба.</li>
+<li>Наклонные асимптоты.</li>
+</ol>
+
+
+<br><br>
+<a href="./math_analisis6.6.1html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis7.1.html">next</a>
+
+</body>
+</html>

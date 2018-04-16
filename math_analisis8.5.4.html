@@ -1,0 +1,247 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 8.5.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<a href="./math_analisis8.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis9.html">next</a>
+
+<h5 id="8.5.4">8.5.4 Несобственные интегралы с несколькими особенностями.</h5>
+
+<ol type="I">
+<li>
+<p id="Definition8.5.5"><b>Определение 8.5.5:</b> Пусть $\omega_1,\omega_2\in\overline{\mathbb{R}}$ и функция $f(x):(\omega_1,\omega_2)\to\mathbb{R}$
+такакя, что для любого отрезка $[a,b]\subset(\omega_1,\omega_2)$ $f(x)\in\mathcal{R}$, тогда несобственный интеграл 
+$\int\limits_{\omega_1}^{\omega_2}f(x)dx$ сходится тогда и только тогда, когда существует $c\in(\omega_1,\omega_2)$ такое, что сходятся оба несобственных
+интеграла $\int\limits_{\omega_1}^cf(x)dx$ и $\int\limits_c^{\omega_2}f(x)dx$ при этом
+$\int\limits_{\omega_1}^{\omega_2}f(x)dx:=\int\limits_{\omega_1}^cf(x)dx+\int\limits_c^{\omega_2}f(x)dx$.
+
+<br><br>
+
+<p>
+<i>
+Определение 8.5.5 корректно, так как если такое $c\in(\omega_1,\omega_2)$ не едиственно, то в силу пункта 3
+<a href="./math_analisis8.5.html#Theorem8.5.1">теоремы 8.5.1</a> значение несобственного интеграла
+$\int\limits_{\omega_1}^{\omega_2}f(x)dx$ не будет зависить от выбора значения $c$.
+</i>
+</li>
+<li>
+<p id="Definition8.5.6"><b>Определение 8.5.6:</b> Если функция $f(x):[a,b]\backslash\{\omega\}\to\mathbb{R}$ такая, что $\omega\in(a,b)$, для любых
+$c\in[a,\omega)$, $d\in[a,\omega)$ $f(x)\in\mathcal{R}[a,c]$, $f(x)\in\mathcal[d,b]$ и функция $f(x)$ не ограничена на любой окрестности точки $\omega$,
+то несобственный интеграл $\int\limits_a^bf(x)dx$ считают сходящимся, если сходятся оба несобственных интеграла $\int\limits_a^\omega{f}(x)dx$ и
+$\int\limits_\omega^bf(x)dx$ при этом $\int\limits_a^bf(x)dx:=\int\limits_a^\omega{f}(x)dx+\int\limits_\omega^bf(x)dx$.
+
+<br><br>
+
+<p>
+<i>
+В этом случае на первый взгляд особенность одна, что не соответствует теме раздела, но на самом деле их две: $\omega-0$ и $\omega+0$.
+</i>
+
+<br><br>
+
+<p id="Example8.5.10"><b>Пример 8.5.10:</b> Исследуем сходимость несобственного интеграла $\displaystyle\int\limits_{-1}^1\frac{dx}{\sqrt{|x|}}$ на 
+множестве $[-1,1]\backslash\{0\}$.<br>
+По <a href="#Definition8.5.6">определению 8.5.6</a> имеем
+$$\int\limits_{-1}^1\frac{dx}{\sqrt{|x|}}=\int\limits_{-1}^0\frac{dx}{\sqrt{-x}}+\int\limits_0^1\frac{dx}{\sqrt{x}}=-2\sqrt{-x}|_{-1}^0+2\sqrt{x}|_0^1=
+2+2=4$$
+
+<br><br>
+
+<p id="Example8.5.11"><b>Пример 8.5.11:</b> Исследуем сходимость несобственного интеграла $\int\limits_{-1}^1\frac{dx}{x}$ на множестве 
+$[-1,1]\backslash\{0\}$.<br>
+По <a href="#Definition8.5.6">определению 8.5.6</a> имеем
+$$\int\limits_{-1}^1\frac{dx}{x}=\int\limits_{-1}^0\frac{dx}{x}+\int\limits_0^1\frac{dx}{x}=\ln{|x|}|_{-1}^0+\ln{|x|}|_0^1$$
+Таким образом интеграл расходится, так как не существует предела функции $\ln{x}$ при $x\to0$.
+
+<br><br>
+
+<p id="Example8.5.12"><b>Пример 8.5.12:</b> Исследуем сходимость несобственного интеграла от функции 
+$f(x)=\begin{cases}\ln{x}, & 0&ltx\leq1\\\frac1{x^2}, & -1\leq{x}&lt0\end{cases}$ на множестве $[-1,1]\backslash\{0\}$.<br>
+В соответствии с <a href="#Definition8.5.6">опредлением 8.5.6</a> данный интеграл расходится так как расходится несобственный интеграл от фукнкции 
+$\displaystyle\frac{dx}{x^2}$ на промежутеке $[-1,0)$.<br>
+(При этом несобственный интеграл $\int\limits_0^1f(x)dx=\int\limits_0^1\ln{x}dx=(x\ln{x}-x)|_0^1=-1-\lim_{x\to0}(x\ln{x})=-1$ сходится, но в рамках
+определения 8.5.6 это не имеет значения.)
+</li>
+<li>
+<p id="Definition8.5.7"><b>Определение 8.5.7:</b> Пусть функция $f(x)$ имеет на промежутке $\Delta(c,d)$ конечное число особенностей 
+$c=\omega_0&lt\omega_1&lt\dots&lt\omega_{s-1}&lt\omega_s=d$, тогда говорят, что несобственный интеграл $\int\limits_c^df(x)dx$ сходится, 
+если для любого $i\in\overline{1,s}$ существует $c_i\in(\omega_{i-1},\omega_i)$ такие, что интегралы $\int\limits_{\omega_{i-1}}^{c_i}f(x)dx$ и
+$\int\limits_{c_i}^{\omega_i}f(x)dx$ сходятся. При этом 
+$\int\limits_c^df(x)dx:=\sum_{i=1}^s\left(\int\limits_{\omega_{i-1}}^{c_i}f(x)dx+\int\limits_{c_i}^{\omega_i}f(x)dx\right)$.
+
+<br><br>
+
+<p id="Task8.5.1"><b>Задача 8.5.1:</b> Исследовать сходимость несобственного интеграла 
+$\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+<i>
+<b>Решение:</b> Особенностями интеграла являются точки, в которых подинтегральная функция не стремится к бесконечности: $\omega_0=0$, $\omega_1=1$,
+$\omega_2=2$, $\omega_3=+\infty$. Положим
+$$g(x):=x^2\ln{x}\sqrt[3]{x-2},\:f(x):=\frac1{g(x)}=\frac1{x^2\ln{x}\sqrt[3]{x-2}}$$
+тогда
+$$f'(x)=\left(\frac1{x^2\ln{x}\sqrt[3]{x-2}}\right)'=-\frac{g'(x)}{(g(x))^2}-\frac{(x^2\ln{x}\sqrt[3]{x-2})'}{(x^2\ln{x}\sqrt[3]{x-2})^2}$$
+где
+$$(x^2\ln{x})'=2x\ln{x}+x^2\frac1{x}=x(2\ln{x}+1)\Rightarrow{g}'(x)=x(2\ln{x}+1)\sqrt[3]{x-2}+x^2\ln{x}\frac1{3}\frac1{(\sqrt[3]{x-2})^2}=
+\frac{3x(2\ln{x}+1)(x-2)+x^2\ln{x}}{3(\sqrt[3]{x-2})^2}$$
+Как не сложно видеть функция в числителе $3(2\ln{x}+1)(x-2)+x\ln{x}$ обращается в ноль один раз на интервале $(0,1)$ и еще один на интервале $(1,2)$.
+Обозначим эти точки $a$ и $b$. В точках $a$ и $b$ функция имеет локальные экстремумы. На интервале $(a,b)$ производная $f'(x)$ положительна,
+следовательно, фукция $f(x)$ возрастает на интервале $(a,b)$, во всех прочих положительныз точках фукнция $f(x)$ убывает. В рамках 
+<a href="#Definition8.5.7">определения 8.5.7</a> положим $c_1:=a$, $c_2:=b$, $c_3:=3$, тогда
+$$\int\limits_0^{+\infty}f(x)dx=\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}=
+\int\limits_0^af(x)dx+\int\limits_a^1f(x)dx+\int\limits_1^bf(x)dx+\int\limits_b^2f(x)dx+\int\limits_2^3f(x)dx+\int\limits_3^{+\infty}f(x)dx$$
+Исследуем сходимость каждого из шести интегралов.
+<ol>
+<li>
+Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac1{n+1}}^{\frac1{n+1}}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+Так как функция $f(x)$ непрерывна, убывает и положительна на интервале $(0,a)$, <a href="./math_analisis8.3.html#Corollary8.3.2">то</a>
+$$\int\limits_{\frac1{n+1}}^{\frac1{n}}f(x)dx\geq\left(\frac1{n}-\frac1{n+1}\right)f\left(\frac1{n}\right)=
+\frac1{n(n+1)}\frac1{\left(\frac1{n}\right)^2\ln\frac1{n}\sqrt[3]{\frac1{n}-2}}=\frac1{n(n+1)}\frac{n^{7/3}}{-\ln{n}\sqrt[3]{1-2n}}=
+\frac1{n+1}\frac{n^{4/3}}{\ln{n}\sqrt[3]{2n-1}}\sim\frac1{\ln{n}},n\to\infty$$
+Так как ряды $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty\frac1{\ln{n}}$ положительны, и ряд $\sum_{n=1}^\infty\frac1{\ln{n}}$ расходится, 
+<a href="./math_analisis7.2.1.html#Theorem7.2.2">то</a> ряд $\sum_{n=1}^\infty{a}_n$ тоже расходится. Так как последовательность $\left\{\frac1{n}\right\}$
+стремится к нулю, <a href="./math_analisis8.5.html#Statement8.5.2">следовательно</a>, несобственный интеграл $\int\limits_0^af(x)dx$ заданный на промежутке
+$(0,a]$ расходится. Из чего можно сразу сделать вывод, что в смысле <a href="#Definition8.5.7">определения 8.5.7</a> расходится и исходный интеграл
+$\int\limits_0^{+\infty}f(x)dx$.
+</li>
+<li>
+Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac{n+1}{n+1}}^{\frac{n}{n+1}}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+Так как функция $f(x)$ непрерывна, возрастает и положительна на интервале $(a,1)$, <a href="./math_analisis8.3.html#Corollary8.3.2">то</a>
+$$a_n=\int\limits_{\frac{n}{n+1}}^{\frac{n+1}{n+2}}f(x)dx\geq\left(\frac{n+1}{n+2}-\frac{n}{n+1}\right)f\left(\frac{n}{n+1}\right)=
+\frac1{(n+1)(n+2)}\frac1{\left(\frac{n}{n+1}\right)^2\ln\frac{n}{n+1}}\sqrt[3]{\frac{n}{n+1}-2}\sim\frac1{(n+1)(n+1)}\frac1{\ln\frac{n}{n+1}},n\to\infty$$
+$$\ln\frac{n}{n+1}=\ln\left(1-\frac1{n+1}\right)\sim\frac1{n},n\to\infty\Rightarrow\frac1{(n+2)(n+1)}\frac1{\ln\frac{n}{n+1}}\sim\frac1{n},n\to\infty$$
+Так как ряд $\sum_{n=1}^\infty\frac1{n}$ расходится, то аналогично пункту 1 расходится и несобственный интеграл $\int\limits_a^1f(x)dx$ по промежутку
+$[a,1)$.
+</li>
+<li>
+Аналогично пункту 2 доказывается, что несобственный интеграл $\displaystyle\int\limits_1^b\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ расходится. Функция $f(x)$ на
+промежутке $(1,b)$ не положительна, а отрицательна, но это не влияет на характер стремления ее к бесконечности при $x\to1$.
+</li>
+<li>
+Попробуем воспользоваться приемом примененным в предыдущих трех пунктах. Зафиксируем последовательность сходящуюся к двум, напрмер, 
+$\left\{\frac{2n}{n+1}\right\}$, тогда получим 
+$$\left(\frac{2(n+1)}{n+2}-\frac{2n}{n+1}\right)f\left(\frac{2n}{n+1}\right)=
+\frac{2}{(n+2)(n+1)}\frac1{\left(\frac{2n}{n+1}\right)^2\ln\frac{2n}{n+1}\sqrt[3]{\frac{2n}{n+1}-2}}\sim\frac1{(n+2)(n+1)}\frac1{\sqrt[3]\frac{-2}{n+1}}\sim
+\frac1{n^{5/3}},n\to\infty$$
+Так как $\frac{5}{3}&gt1$, <a href="./math_analisis7.2.2.html#Corollary7.2.5">то</a> ряд $\sum_{n=1}^\infty\frac1{n^{5/3}}$ сходится. Таким образом
+доказать расходимость несобственного интеграла $\int\limits_b^2f(x)dx$ с помощью <a href="./math_analisis8.5.html#Statement8.5.2">утверждения 8.5.2</a> 
+не удалось. Попробуем доказать его сходимость. Действительно, по пункту 3 <a href="./math_analisis8.5.3.html#Theorem8.5.2">теоремы 8.5.2</a>
+несобственный интеграл $\displaystyle\int\limits_b^2\frac{dx}{\sqrt[3]{x-2}}$ сходится, а функция $\displaystyle\frac1{x^2\ln{x}}$ убывает и ограничена на
+интервале $(b,2)$, следовательно, по признаку Абеля несобственный интеграл $\displaystyle\int\limits_b^2\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ сходится
+по промежутку $[b,2)$. 
+</li>
+<li>
+Аналогично пункту 4 доказывается, что несобственный интеграл $\displaystyle\int\limits_2^3\frac{dx}{x^3\ln{x}\sqrt[3]{x-2}}$ сходится по промежутку $(2,3]$.
+</li>
+<li>
+Несобственный интеграл $\displaystyle\int\limits_3^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ сходится по пункту 3 
+<a href="./math_analisis8.5.3.html#Theorem8.5.2">теоремы 8.5.2</a>.
+</li>
+</ol>
+Таким образом в сумме 
+$$\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}=\int\limits_0^af(x)dx+\int\limits_a^1f(x)dx+\int\limits_1^bf(x)dx+\int\limits_b^2f(x)dx+
+\int\limits_2^3f(x)dx+\int\limits_3^{+\infty}f(x)dx$$
+сходятся только три последних интеграла так что несобственный интеграл $\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ 
+расходится в смысле <a href="#Definition8.5.7">определения 8.5.7</a>. Сходящимся можно считать только интеграл 
+$\displaystyle\int\limits_b^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.
+</i>
+</li>
+<p>
+<i>
+Все предложенные выше модели имеют один существенный недостаток: каждый из несобственных интегралов составляющих сумму рассматривается независимо от других,
+что не всегда может быть полезно для применения на практике. Рассмотрим модель не имеющую указанного недостатка.
+</i>
+<li>
+<p id="Definition8.5.8"><b>Определение 8.5.8: Определение несобственного интеграла в смысле главного значения.</b><br> 
+Пусть функция $f(x):[a,b]\backslash\{c\}\to\mathbb{R}$ такая, что для любого 
+$[\alpha,\beta]\subset[a,b]\backslash\{c\}$ $f(x)\in\mathcal{R}[\alpha,\beta]$, тогда говорят, что существует интеграл в смысле главного значения фукнция 
+$f(x)$ по отрезку $[a,b]$ если существует предел 
+$\displaystyle\lim_{\varepsilon\to0+}\left(\int\limits_a^{c-\varepsilon}f(x)dx+\int\limits_{c+\varepsilon}^bf(x)dx\right)$.
+В этом случае значение несобственного интеграла помечают аббривиатурой V. P. (valuer principal - главное значение <i>фр.</i>), то есть
+$$V.P.\int\limits_a^bf(x)dx:=\lim_{\varepsilon\to0+}\left(\int\limits_a^{c-\varepsilon}f(x)dx+\int\limits_{c+\varepsilon}^bf(x)dx\right)$$
+
+<br><br>
+
+<p>Из существования несобственного интеграла от фукнции, не ограниченной в окрестности внутренней точки отрезка интегрирования, в смысле 
+определения 8.5.6 следует существование несобственного интеграла в смысле главного значения, так как
+$$\left(\exists\int\limits_a^cf(x)dx\wedge\exists\int\limits_c^bf(x)dx\right)\Rightarrow
+\left(\exists\lim_{x\to{c}-}\int\limits_a^xf(t)dt\wedge\exists\lim_{x\to{c}+}\int\limits_c^bf(t)dt\right)\Rightarrow$$
+$$\Rightarrow\exists\lim_{\varepsilon\to0+}\left(\int\limits_a^{c-\varepsilon}f(x)dx+\int\limits_{c+\varepsilon}^bf(x)dx\right)=
+V.P.\int\limits_a^bf(x)dx=
+\lim_{x\to{c}-}\int\limits_a^xf(t)dt+\lim_{x\to{c}+}\int\limits_x^bf(t)dt=\int\limits_a^cf(x)dx+\int\limits_c^bf(x)dx$$
+
+<p>Обратное верно не всегда. Из существования несобственного интеграла в смысле главного значения не следует существования левого и правого интегралов.
+
+<br><br>
+
+<p id="Example8.5.13"><b>Пример 8.5.13:</b> Несобственного интеграла от функции $\frac1{x}$ по отрезку $[-1,1]$ не существует, 
+<a href="./math_analisis8.5.3.html#Theorem8.5.2">так как</a> не сходятся несобственные интегралы от фукнции $\frac1{x}$ по промежуткам $[-1,0)$, $(0,1]$,
+однако интеграл в смысле главного значения существует
+$$V.P.\int\limits_{-1}^1\frac{dx}{x}=\lim_{\varepsilon\to0}\left(\int\limits_{-1}^{-\varepsilon}\frac{dx}{x}+\int\limits_{\varepsilon}^1\frac{dx}{x}\right)=
+\lim_{\varepsilon\to0}\left(\ln{|x|}|_{-1}^{-\varepsilon}+\ln{|x|}|_{\varepsilon}^1\right)=
+\lim_{\varepsilon\to0}(\ln{\varepsilon}-\ln{1}+\ln{1}-\ln{\varepsilon})=0$$
+
+<br><br>
+
+<p id="Definition8.5.9"><b>Определение 8.5.9:</b> Пусть функция $f(x):\mathbb{R}\to\mathbb{R}$ такая, что для любых $a,b\in\mathbb{R}$ 
+$f(x)\in\mathcal{R}[a,b]$, тогда интегралом в смысле главного значения от функции $f(x)$ по промежутку $(-\infty,+\infty)$ называют предел
+$$V.P.\int\limits_{-\infty}^{+\infty}f(x)dx:=\lim_{R\to\infty}\int\limits_{-R}^Rf(x)dx$$
+
+<br><br>
+
+<p id="Example8.5.14"><b>Пример 8.5.14:</b> 
+$$V.P.\int\limits_{-\infty}^{+\infty}xdx=\lim_{R\to\infty}\int\limits_{-R}^Rxdx=\lim_{R\to\infty}\left(\left.\frac{x^2}{2}\right|_{-R}^R\right)=
+\lim_{R\to\infty}\left(\frac{R^2}{2}-\frac{R^2}{2}\right)=0$$
+</li>
+</ol>
+
+<h4 id="8.6">8.6 Формула Валлиса.</h4>
+
+<p><i>Как пример приложения определенного интеграла Римана приведем доказательство формулы Валлиса.</i>
+
+<br><br>
+
+<p id="Statement8.6.1"><b>Утверждение 8.6.1:</b>
+$$\frac{\pi}{2}=\lim_{n\to\infty}\left(\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2\right)$$
+<p><b>Доказательство:</b> Для любого $n\in\mathbb{N}$ обозначим $I_n:=\int\limits_0^{\pi/2}\sin^n{x}dx$, таким образом 
+$I_0:=\int\limits_0^{\pi/2}dx=\frac{\pi}{2}$, $I_1:=\int\limits_0^{\pi/2}\sin{x}dx=1$ и
+$$\forall{n}\in\mathbb{N}_0\left(I_{n+2}=\int\limits_0^{\pi/2}\sin^nxdx=-\int\limits_0^{\pi/2}\sin^{n+1}xd(\cos{x})=
+-(\sin^{n+1}x\cos{x})|_0^{\pi/2}+(n+1)\int\limits_0^{\pi/2}\sin^nx\cos^2xdx=(n+1)\int\limits_0^{\pi/2}\sin^nx(1-\sin^2x)dx=
+(n+1)(I_n-I_{n+2})\right)\Rightarrow$$ $$\Rightarrow(n+2)I_{n+2}=(n+1)I_n\Rightarrow{I}_{n+2}=\frac{n+1}{n+2}I_n$$ 
+Докажем индукцией по $n$, что $I_{2n}=\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}$.<br>
+При $n=1$ $I_{2n}=I_2=\frac1{2}I_0=\frac{1!!}{2!!}\frac{\pi}{2}$.<br>
+Пусть утверждение верно для $n=k$, докажем, что оно верно для $n=k+1$.
+$$I_{2(k+1)}=I_{2k+2}=\frac{2k+1}{2k+2}I_{2k}=\frac{2k+1}{2k+2}\frac{(2k-1)!!}{(2k)!!}\frac{\pi}{2}=\frac{(2(2k+1)-1)!!}{(2(k+1))!!}\frac{\pi}{2}$$
+Аналогично доказывается, что $I_{2n+1}=\frac{(2n)!!}{(2n+1)!!}I_1=\frac{(2n)!!}{(2n+1)!!}$
+С другой стороны
+$$\forall{x}\in\left[0,\frac{\pi}{2}\right](0\leq\sin{x}\leq1)\Rightarrow
+\forall{x}\in\left[0,\frac{\pi}{2}\right],\forall{n}\in\mathbb{N}(\sin^{2n+1}x\leq\sin^{2n}x\leq\sin^{2n-1}x)\Rightarrow
+{I}_{2n+1}\leq{I}_{2n}\leq{I}_{2n-1},$$
+следовательно,
+$$\frac{(2n)!!}{(2n+1)!!}\leq\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}\leq\frac{(2n-2)!!}{(2n-1)!!}\Rightarrow
+\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2\leq\frac{\pi}{2}\leq\frac1{2n}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2.$$ 
+Обозначим
+$$\alpha_n:=\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2,\beta_n:=\frac1{2n}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2$$
+тогда
+$$\frac{\alpha_{n+1}}{\alpha_n}=
+\frac1{2n+3}\left(\frac{(2n)!!(2n+2)}{(2n-1)!!(2n+1)}\right)^2:\left(\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2\right)=
+\frac{2n+1}{2n+3}\left(\frac{2n+2}{2n+1}\right)^2=\frac{(2n+2)^2}{(2n+1)(2n+3)}=\frac{4n^2+8n+4}{4n^2+8n+3}&gt1$$
+Таким образом последовательность $\{\alpha_n\}$ возрастает и ограничена сверху, а, <a href="./math_analisis4.3.html#Theorem4.3.2">следовательно</a>, 
+существует конечный предел $\displaystyle{A}:=\lim_{n\to\infty}\alpha_n$, тогда
+$$\beta_n-\alpha_n=\frac1{2n}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2-\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2=
+\frac1{2n}\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2\leq\frac1{2n}\frac{\pi}{2}=o(1),n\to\infty\Rightarrow$$
+$$\Rightarrow\exists\lim_{n\to\infty}\beta_n=\lim_{n\to\infty}\alpha_n=A\Rightarrow{A}\leq\frac{\pi}{2}\leq{A}\Rightarrow
+\frac{\pi}{2}=A=\lim_{n\to\infty}\alpha_n=\lim_{n\to\infty}\left(\frac1{2n+1}\left(\frac{(2n)!!}{(2n-1)!!}\right)^2\right)$$
+
+<br><br>
+<a href="./math_analisis8.5.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis9.html">next</a>
+</body>
+</html>
