@@ -1,1 +1,273 @@
-﻿
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analisis 10.2.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-textvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analisis10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis10.2.2.html">next</a>
+
+<h4 id=10.2>10.2 Равномерная сходимость последовательностей и рядов из функций.</h4>
+<h5 id=10.2.1>10.2.1 Определения и простейшие свойства.</h5>
+
+\(
+\newcommand{\UniformConv}{\substack{\xrightarrow[]{}\\ \xrightarrow[]{}\\n\to\infty}}
+\)
+
+<p id=Definition10.2.1: Равномерная сходимость функциональных последовательностей.><b></b><br>
+Пусть $X\subset\mathbb{P}$ и для любого $n\in\mathbb{N}$ $f_n(x)\colon{X}\to\mathbb{P}$, тогда говорят, что последовательность функций $\{f_n(x)\}$
+сходится равномерно на множестве $E\subset{X}$ при $n\to\infty$ к функции $f(t)\colon{E}\to\mathbb{P}$, если 
+$$\forall\varepsilon>0\,\exists{n_0}=n_0(\varepsilon)\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}(|f_n(t)-f(t)|<\varepsilon)$$
+При этом обозначают:
+$f_n(x)\UniformConv{f}(t),t\in{E}$ 
+
+<br><br>
+
+<p>Из равномерной сходимости на множестве $E$ следует поточечная сходимость. Действительно, зафиксируем $\varepsilon>0$, тогда
+$$f_n(x)\UniformConv{f}(t),n\in{E}\Rightarrow
+\exists{n}_0=n_0(\varepsilon)\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}(|f_n(t)-f(t)|<\varepsilon)\Rightarrow
+\forall{t}\in{E}(\exists{n}_1=n_1(\varepsilon,t):=n_0\colon\forall{n}>n_0(|f_n(t)-f(t)|<\varepsilon))$$
+Обратное верно, только если множество $E$ конечно, пусть например $E:=\{t_1,\ldots,t_s\}$, тогда
+$$f_n(x)\xrightarrow[n\to\infty]{}f(t),t\in{E}\Rightarrow
+\forall{k}\in\overline{1,s}\,\exists{n}_k\in\mathbb{N}\colon\forall{n}>n_k(|f_n(t_k)-f(t_k)|<\varepsilon)\Rightarrow
+\exists{n}_0:=\max_{k\in\overline{1,s}}n_k\in\mathbb{N}:\forall{n}>n_0\,\forall{t}\in{E}(|f_n(t)-f(t)|<\varepsilon)$$
+В дальнейшем функцию $f(t)$ будем называть "предельной", путаницы с аналогичным термином для случая поточечной сходимости не возникнет, 
+так как далее речь пойдет в основном о равномерной сходимости.
+<br>
+Логическое отрицание определения равномерной сходимости:
+$$\exists\varepsilon>0\colon\forall{k}\in\mathbb{N}\,\exists{n}>k\,\exists{t}\in{E}\colon|f_n(t)-f(t)|\geq\varepsilon.$$ 
+
+<br><br>
+
+<p id=Definition10.2.2><b>Определение 10.2.2: Равномерная сходимость функциональных рядов.</b><br>
+Пусть $X\subset\mathbb{P}$ и для любого $n\in\mathbb{N}$ $a_n(x)\colon{X}\to\mathbb{P}$, тогда говорят, что функциональный ряд 
+$\sum_{n=1}^{\infty}a_n(x)$ сходится равномерно на множестве $E\subset{X}$, если функциональная последовательность его частичных сумм
+$S_n(t):=\sum_{k=1}^na_k(t)\colon{X}\to\mathbb{P}$ сходится равномерно на множестве $E$.
+
+<br><br>
+
+<p id=Statement10.2.1><b>Утверждение 10.2.1: Простейший критерий равномерной сходимости.</b><br>
+Пусть $X\subset\mathbb{R}$, для любого $n\in\mathbb{N}$ $f_n(x)\colon{X}\to\mathbb{R}$, $E\subset{X}$, $f(t)\colon{E}\to\mathbb{R}$, тогда
+$$f_n(x)\UniformConv{f}(t),t\in{E}\Leftrightarrow\exists\lim_{n\to\infty}\left(\sup_{t\in{E}}|f_n(t)-f(t)|\right)=0$$
+<p><b>Доказательство:</b> Для любого $n\in\mathbb{N}$ обозначим $r_n:=\sup_{t\in{E}}|f_n(t)-f(t)|$. Фиксируем $\varepsilon>0$.<br>
+$\Rightarrow)$
+$$\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}\left(|f_n(t)-f(t)|<\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{n}>n_0\left(r_n\leq\frac{\varepsilon}{2}<\varepsilon\right)\Rightarrow\lim_{n\to\infty}r_n=0.$$
+$\Leftarrow$
+$$\lim_{n\to\infty}r_n=0\Rightarrow\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\left(\sup_{t\in{E}}|f_n(t)-f(t)|<\varepsilon\right)\Rightarrow
+\forall{n}>n_0\,\forall{t}\in{E}(|f_n(t)-f(t)|<\varepsilon)\Rightarrow{f}_n(x)\UniformConv{f}(t),t\in{E}.$$
+
+<br><br>
+
+<p id=Example10.2.1><b>Пример 10.2.1:</b> Рассмотрим последовательность функций из <a href="./math_analisis10.1.html#Example10.1.1">примера 10.1.1</a>
+$f_n(x)=x^n:[0,1]\to\mathbb{R}$.<br>
+Данная последовательность сходится поточечно к функции $f(t)=\begin{cases}0,0\leq{t}<1\\ 1, \quad{t}=1\end{cases}$ на множестве $[0,1]$.
+Для проверки равномерной сходимости применим утверждение 10.2.1, тогда 
+$$r_n=\sup_{t\in[0,1]}|t^n-f(t)|=\sup_{t\in[0,1)}t^n=1\Rightarrow\lim_{n\to\infty}r_n=1\neq0.$$ 
+Таким образом функциональная последовательность $\{x_n\}$ не сходится равномерно к функции $f(t)$ на множестве $[0,1]$.
+
+<br><br>
+
+<p id=Example10.2.2><b>Пример 10.2.2:</b> Рассмотрим функциональную последовательность 
+$\displaystyle{f}_n=\frac{\sin{nx}}{n}\colon\mathbb{R}\to\mathbb{R}$.<br>
+В <a href="./math_analisis10.1.html#Example10.1.3">примере 10.1.3</a> показано, что функциональная последовательность $\{f_n(x)\}$ сходится поточечно
+к функции $f(t)\equiv0$. Для проверки равномерной сходимости применим <a href="#Statement10.2.1">утверждение 10.2.1</a>, тогда
+$$r_n=\sup_{t\in\mathbb{R}}\left|\frac{\sin{nt}}{n}-0\right|=\frac1{n}\Rightarrow\lim_{n\to\infty}r_n=0\Rightarrow
+{f}_n(x)\UniformConv{f}(t),t\in\mathbb{R}.$$
+
+<br><br>
+
+<p id=Statement10.2.2><b>Утверждение 10.2.2: Критерий Коши равномерной сходимости функциональных рядов.</b><br>
+Пусть $X\in\mathbb{P}$, для любого $n\in\mathbb{N}$ $a_n(x)\colon{X}\to\mathbb{P}$, тогда функциональный ряд $\sum_{n=1}^{\infty}a_n(x)$
+сходится на множестве $E\subset{X}$ тогда и только тогда, когда 
+$$\forall\varepsilon>0\,\exists{n}_0\in\mathbb{N}\colon\forall{m}\geq{n}>n_0\,\forall{t}\in{E}\left(\left|\sum_{k=m}^na_k(t)\right|<\varepsilon\right).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+Поскольку равномерная сходимость влечет поточечную, то с точки зрения теории можном ввести для равномерно сходящегося ряда сумму ряда,
+то есть функцию $S(t)\colon{E}\to\mathbb{P}$ такую, что для любого $t\in{E}$ $S(t):=\sum_{n=1}^{\infty}a_n(t)$.<br>
+Фиксируем $\varepsilon>0$, тогда
+$\begin{multline}
+\exists{n}'_0\in\mathbb{N}\colon\forall{n}>n'_0\,\forall{t}\in{E}\left(|S_n(t)-S(t)|<\frac{\varepsilon}{2}\right)\Rightarrow\\
+\Rightarrow\exists{n}_0:=n'_0+1\colon\forall{m}\geq{n}>n_0\,\forall{t}\in{E}\left(\left|\sum_{k=m}^na_k(t)\right|=
+|S_m(t)-S_{n-1}(t)|\leq|S_m(t)-S(t)|+|S_{n-1}(t)-S(t)|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)
+\end{multline}$ 
+$\Leftarrow)$<br>
+Согласно условию при любом фиксированном $t\in{E}$ числовой ряд $\sum_{n=1}^{\infty}a_n(t)$ сходится по 
+<a href="./math_analisis7.1.html#Theorem7.1.1">критерию Коши</a>, следовательно, можно определить функцию $S(t)\colon{E}\to\mathbb{P}$ такую, 
+что для любого $t\in{E}$ $S(t):=\lim_{n\to\infty}S_n(t):=\lim_{n\to\infty}\sum_{k=1}^na_k(t)$.<br>
+Фиксируем $\varepsilon>0$, тогда по условию с учетом введенных обозначений имеем
+$$\exists{n}_0\in\mathbb{N}\colon\forall{m}\geq{n}>n_0\,\forall{t}\in{E}\left(|S_m(t)-S_{n-1}(t)|<\frac{\varepsilon}{2}\right)$$
+Поскольку неравенство выполняется при любом $m>m_0$, то можем при фиксированном $n$ перейти к пределу при $m\to\infty$. Тогда
+$$\exists{n}_1:=n_0+1:\forall{n}>n_1\,\forall{t}\in{E}\left(|S(t)-S_n(t)|\leq\frac{\varepsilon}{2}<\varepsilon\right)
+\Rightarrow{S}_n(t)\UniformConv{S}(t),t\in{E}.$$ 
+
+<br><br>
+
+<p>Логическое отрицаний критерия Коши равномерной сходимости функциональных рядов:
+$$\exists\varepsilon>0\colon\forall{n_0}\in\mathbb{N}\,\exists{m}\geq{n}>n_0\colon\left|\sum_{k=n}^ma_k(t)\right|\geq\varepsilon$$
+
+<br><br>
+
+<p id=Corollary10.2.1><b>Следствие 10.2.1:</b> Пусть $X\subset\mathbb{P}$ и для любого $n\in\mathbb{N}$ функции $a_n(x)\colon{X}\to\mathbb{P}$ такие,
+что функциональный ряд $\sum_{n=1}^{\infty}a_n(x)$ сходится равномерно на множестве $E\subset{X}$, тогда
+$$\forall\varepsilon>0\,\exists{n}_0=n_0(\varepsilon)\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}(|a_n(t)<\varepsilon|),$$
+что можно так же обозначить, как $a_n(x)\UniformConv0,t\in{E}$.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon>0$, тогда по критерию Коши
+$$\exists{n}_0\in\mathbb{N}\colon\forall{m}\geq{n}>n_0\,\forall{t}\in{E}\left(\left|\sum_{k=n}^ma_k(t)\right|<\varepsilon\right)\Rightarrow
+\forall{n}>n_0\,\forall{t}\in{E}\left(\left|\sum_{k=n}^na_k(t)\right|=|a_n(t)|<\varepsilon\right)$$
+
+<br><br>
+
+<p id=Statement10.2.3><b>Утвержедние 10.2.3: Критерий Коши равномерной сходимости функциональных последовательностей.</b><br>
+Пусть $X\subset\mathbb{P}$, для любого $n\in\mathbb{N}$ $f_n(x)\colon{X}\to\mathbb{P}$, тогда функциональная последовательность $\{f_n(x)\}$
+сходится равномерно на множестве $E\subset{X}$ тогда и только тогда, когда 
+$$\forall\varepsilon>0\,\exists{n}_0=n_0(\varepsilon)\in\mathbb{N}\colon\forall{m}\geq{n}>n_0\,\forall{t}\in{E}(|f_m(t)-f_n(t)|<\varepsilon).$$
+<p><b>Доказательство:</b> Доказывается аналогично <a href="#Statement10.2.2">утверждению 10.2.2</a>. 
+
+<br><br>
+
+<h5 id=10.2.2>10.2.2 Некоторые признаки равномерной сходимости функциональных рядов.</h5>
+
+<p id=Statement10.2.4><b>Утверждение 10.2.4: Мажорантный признак Вейерштрасса.</b><br>
+Пусть $X\subset{P}$, для любого $n\in\mathbb{N}$ $a_n(x)\colon{X}\to\mathbb{P}$, $E\subset{X}$, $\{M_n\}$ - числовая последовательность такая,
+что ряд $\sum_{n=1}^{\infty}M_n$ сходится и
+$$\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}(|a_n(t)|<{M}_n),$$
+тогда функциональный ряд сходится равномерно на множестве $E$.<br>
+<p><b>Доказательство:</b> Фиксируем $\varepsilon>0$, тогда по <a href="./math_analisis7.1.html#Theorem7.1.1">критерию Коши сходимости числовых рядов</a>
+$$\exists{n}_1=n_1(\varepsilon)\colon\forall{m}\geq{n}>n_1\left(\left|\sum_{k=n}^mM_k\right|<\varepsilon\right)\Rightarrow
+\exists{n}_2:=\max\{n_0,n_1\}\colon\forall{m}\geq{n}>n_2\,\forall{t}\in{E}\left(\left|\sum_{k=n}^ma_k(t)\right|\leq\sum_{k=n}^m|a_k(t)|\leq
+\sum_{k=n}^mM_k\leq\left|\sum_{k=n}^mM_k\right|<\varepsilon\right)$$
+Таким образом функциональный ряд $\sum_{k=n}^{\infty}a_n(x)$ сходится равномерно на множестве $E$ по <a href="#Statement10.2.2">критерию Коши</a>.
+
+<br><br>
+
+<p id=Statement10.2.5><b>Утверждение 10.2.5: Признаки Абеля и Дирихле.</b><br>
+Пусть $X\subset\mathbb{P}$, для любого $n\in\mathbb{N}$ $a_n(x)\colon{X}\to\mathbb{R}$, $b_n(x)\colon{X}\to\mathbb{P}$, $E\subset{X}$, тогда
+функциональный ряд $\sum_{n=1}^{\infty}(a_n(x)b_n(x))$ сходится равномерно на множестве $E$, если выполняется одно из условий:
+<ol type="I">
+<li>Признак Дирихле
+<ol>
+<li>$\exists{M}>0\colon\forall{n}\in\mathbb{N}\,\forall{t}\in{E}\left(\left|\sum_{k=1}^nb_k(t)\right|<{M}\right)$,</li>
+<li>для любого $t\in{E}$ числовая последовательность $\{a_n(t)\}$ монотонна,</li>
+<li>$a_n(x)\UniformConv0,t\in{E}$.</li>
+</ol>
+</li>
+<li>Признак Абеля
+<ol>
+<li>функциональный ряд $\sum_{n=1}^{\infty}b_n(x)$ сходится равномерно на множестве $E$,</li>
+<li>для любого $t\in{E}$ числовая последовательность $\{a_n(t)\}$ монотонна,</li>
+<li>$\exists{M}>0\colon\forall{n}\in\mathbb{N}\,\forall{t}\in{E}(|a_n(t)|\leq{M})$.</li>
+</ol>
+</li>
+</ol> 
+<p><b>Доказательство:</b> Доказательство реализуется с помощью 
+<a href="./math_analisis4.3.html#Theorem4.3.1">критерия Коши сходимости числовых последовательностей</a>,
+<a href="#Statement10.2.2">критерия Коши равномерной сходимости функциональных рядов</a> и 
+<a href="./math_analisis7.4.1.html#Statement7.4.2">неравенства Абеля</a>,
+аналогично доказательству одноименных признаков для числовых рядов.
+
+<br><br>
+
+<pid=Example10.2.3><b>Пример 10.2.3:</b> Рассмотрим функциональный ряд $\displaystyle\sum_{n=1}^{\infty}\frac{\sin{nx}}{n^\alpha}$, при $\alpha>0$.<br>
+Поточечная сходимость на $\mathbb{R}$ следует из ограниченности функции $\sin{x}$ на $\mathbb{R}$. Проверим равномерную сходимость.
+<ol>
+<li>
+При $\alpha>1$ для любого $x\in\mathbb{R}$ $\displaystyle\left|\frac{\sin{nx}}{n^\alpha}\right|\leq\frac1{n^\alpha}$ и ряд 
+$\displaystyle\sum_{n=1}^{\infty}\frac1{n^\alpha}$ <a href="./math_analisis7.2.1.html#Example7.2.3">сходится</a>, следовательно, 
+по <a href="#Statement10.2.4">мажорантному признаку Вейерштрасса</a> рассматриваемый функциональный ряд сходится равномерно на $\mathbb{R}$
+</li>
+<li>
+При $0<\alpha\leq1$ применим призрак Дирихле положив $\displaystyle{a}_n(x):=\frac1{n^\alpha}$, $b_n(x):=\sin{nx}$. Последовательность $a_n(x)$ монотонна и 
+сходится к нулю при этм не зависит от $x$, следовательно, $a_n(x)\UniformConv0,x\in\mathbb{R}$.
+С другой стороны, для любого $x\in\mathbb{R}$ такого, что $x\notin2\pi\mathbb{Z}:=\{2\pi{k}\mid{k}\in\mathbb{Z}\}$ верно
+$$\left|\sum_{k=1}^nb_k(x)\right|=\left|\sum_{k=1}^n\sin{kx}\right|=\left|\frac1{2\sin\frac{x}{2}}\sum_{k=1}^n\left(2\sin{kx}\sin\frac{x}{2}\right)\right|=
+\left|\frac1{1\sin\frac{x}{2}}\sum_{k=1}^n\left(\cos\frac{(2k-1)x}{2}-\cos\frac{(2k+1)x}{2}\right)\right|=
+\frac{\cos\frac{x}{2}-\cos\frac{(2n+1)x}{2}}{2\sin\frac{x}{2}}\leq\frac1{\sin\frac{x}{2}}$$
+Следовательно, для любого множества $E\subset{R}$ такого, что $(E\cup\mathring{E})\cap2\pi\mathbb{Z}=\varnothing$ верно
+$$\forall{t}\in{E}\left(\left|\sum_{k=1}^nb_k(t)\right|<{M}:=\frac1{\inf_{t\in{E}}\sin\frac{t}{2}}\right)$$
+Таким образом функциональный ряд $\displaystyle\sum_{n=1}^{\infty}\frac{\sin{nx}}{n^\alpha}$ сходится равномерно на таком множестве $E$.<br>
+Если же множество $E\subset\mathbb{R}$ такое, что $(E\cup\mathring{E})\cap2\pi\mathbb{Z}\neq\varnothing$, то сходимость не будет равномерной.
+Обоснование этого факта можно найти например в Кудрявцев т. 1, стр. 610.
+</li>
+</ol>
+<br><br>
+
+<p id=Task10.2.1><b>Задача 10.2.1:</b> Доказать, что функциональный ряд 
+$\displaystyle\sum_{n=1}^{\infty}a_n(x)=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}x^2}{(1+x^2)^n}$ сходится равномерно на $\mathbb{R}$.
+<p><b>Решение:</b>
+<i>
+Ряд $\sum_{n=1}^{\infty}a_n(x)$ сходится поточечно по <a href="./math_analisis7.4.1.html#Theorem7.4.2">признаку Лейбница</a>. 
+Обозначим сумму ряда $S(t)$, тогда, так как ряд знакопеременный и его общий член по модулю монотонно убывает, то для любого $t\in\mathbb{R}$
+$\displaystyle|S(t)-S_n(t)|<|a_n|=\frac{t^2}{(1+t^2)^n}<\frac{t^2}{1+nt^2}<\frac1{n}$. Фиксируем $\varepsilon>0$, тогда
+$$\exists{n}_0\in\mathbb{N}\colon\frac1{n_0}<\varepsilon\Rightarrow
+\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in\mathbb{R}\left(|S(t)-S_n(t)|<\frac1{n}<\frac1{n_0}<\varepsilon\right)$$
+</i>
+<br><br>
+
+<p id=Task10.2.2><b>Задача 10.2.2:</b> Доказать, что функциональный ряд 
+$\displaystyle\sum_{n=1}^{\infty}a_n(x)=\sum_{n=1}^{\infty}\frac{x^2}{(1+x^2)^n}$ сходится на $\mathbb{R}$ поточечно, но не равномерно.
+<p><b>Решение:</b>
+<i>
+Из <a href="./math_analisis7.1.html#Example7.1.1">примера 7.1.1</a> следует, что при $q\neq1$ 
+$\displaystyle\sum_{k=1}^n(aq^k)=q\sum_{k=1}^n(aq^{k-1})=\frac{aq(1-q^n)}{1-q}$. Положив $\displaystyle{q}:=\frac1{1+x^2}$, $a:=x^2$, получим,
+что для любого $t\neq0$ сумма ряда равна 
+$$\lim_{n\to\infty}\sum_{k=1}^n(aq^k)=\lim_{n\to\infty}\frac{aq(1-q^n)}{1-q}=\frac{aq}{1-q}=\frac{t^2}{\left(1-\frac1{1+t^2}\right)(1+t^2)}=1.$$
+Тогда для любого $t\neq0$ $\displaystyle|S(t)-S_n(t)|=|1-(1-q^n)|=q^n=\frac1{(1+x^2)^n}$. Тогда при $\varepsilon:=\frac1{2}$ для любого $n\in\mathbb{N}$
+и для любого $t\in\mathbb{R}$ такого, что $\displaystyle0<{t}<\sqrt{\sqrt[n]{2}-1}$ выполняется неравенство $|S(t)-S_n(t)|\geq\varepsilon$.
+</i>
+
+<br><br>
+
+<p id=Corollary10.2.2><b>Следствие 10.2.2:</b> Пусть для любого $n\in\mathbb{N}$ $c_n\in\mathbb{C}$, $z\in\mathbb{C}$, $R\in[0,+\infty]$ - 
+<a href="./math_analisis7.5.3.html#Definition7.5.10">радиус сходимости</a> степенного ряда $\sum_{n=0}^{\infty}(c_nz^n)$, тогда для любого
+$\rho\in(0,R)$ степенной ряд $\sum_{n=0}^{\infty}(c_nz^n)$ сходится абсолютно и непрерывно на замкнутом круге $K:=\{z\mid|z|\leq\rho\}$ 
+радиуса $\rho$.
+<p><b>Доказательство:</b> <a href="./math_analisis7.5.3.html#Corollary7.5.2">Ранее</a> было показано, что для любого $\rho\in(0,R)$ степенной ряд
+сходится абсолютно, это означает, что сходится числовой ряд $\sum_{n=0}^{\infty}|c_n\rho^n|$. При этом для любого $z\in{K}_{\rho}$ и для любого 
+$n\in\mathbb{N}$ $M_n:=|c_n\rho^n|=|c_n|\rho^n\geq|c_n||z|^n=|c_nz^n|$, следовательно, последовательность $\{M_n\}$ удовлетворяет условиям 
+<a href="#Statement10.2.4">мажорантного признака Вейерштрасса</a>.
+
+<br><br>
+
+<p id=Corollary10.2.3><b>Следствие 10.2.3: Вторая теорема Абеля.</b><br> 
+Пусть для любого $n\in\mathbb{N}$ $c_n\in\mathbb{C}$, и степенной ряд $\sum_{n=0}^{\infty}(c_nz^n)$ сходится в точке $\xi\in\mathbb{C}$,
+тогда он равномерно сходится на множестве $E:=\{t\xi\mid{t}\in[0,1]\}$.
+<p><b>Доказательство:</b> Рассмотрим ряд $\sum_{n=0}^{\infty}((c_n\xi^n)t^n)$. Применим признак Абеля при $a_n(t):=t^n$, $b_n(t):=c_n\xi^n$.
+Ряд $\sum_{n=0}^{\infty}b_n(t)$ сходится по условию и так как общий член ряда не зависит от $t$, то сходимость равномерная на $[0,1]$. При этом
+для любого $n\in\mathbb{N}$ для любого $t\in[0,1]$ $|a_n(t)|\leq1$. Следовательно, ряд 
+$\sum_{n=0}^{\infty}((c_n\xi^n)t^n)=\sum_{n=0}^{\infty}(c_n(\xi{t})^n)$ сходится равномерно на $[0,1]$, а это равносильно равномерной сходимости
+ряда $\sum_{n=0}^{\infty}(c_nz^n)$ на множестве $E$.
+
+<br><br>
+
+<p>Если $|\xi|<{R}$, то результат тривиален, так как очевидным образом следует из следствия 10.2.2. 
+Утверждение наполняется содержанием только при $|\xi|=R$.
+
+<p id=Example10.2.4><b>Пример 10.2.4:</b> Исследуем сходимость функционального ряда 
+$\displaystyle\sum_{n=1}^{\infty}a_n(x)=\frac{(-1)^{n-1}x^n}{n}$.<br>
+<a href="./math_analisis7.5.4.html#Definition7.5.14">Ранее</a> было показано, что ряд сходится для любого $x\in(-1,1]$, следовательно, он сходится
+в точке $\xi=1$, тогда по второй теорема Абеля сходится равномерно на отрезке $[0,1]$.
+<br><br>
+
+<p id=Task10.2.3><b>Задача 10.2.3:</b> Доказать, что функциональный ряд 
+$\displaystyle\sum_{n=1}^{\infty}a_n(x)=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}x^n}{n}$ не сходится равномерно на множестве $(-1,1]$.
+<b>Решение:</b>
+<i>
+$$\exists\varepsilon:=\frac14\colon\forall{n}_0\in\mathbb{N}\,\exists{n}:=n_0+1>n_0\,\exists{m}:=2n\geq{n}\,\exists{t}:=-2^{-\frac1{2n}}\in(-1,1]\colon
+\left|\sum_{k=n}^m\frac{(-1)^{k-1}t^k}{k}\right|=\sum_{k=n}^{2n}\frac1{2^\frac{k}{2n}k}\geq\frac12\sum_{k=n}^{2n}\frac1{k}\geq
+\frac12n\frac1{2n}=\frac14=\varepsilon.$$
+</i>
+
+<br><br>
+<a href="./math_analisis10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analisis10.2.2.html">next</a>
+</body>
+</html>
