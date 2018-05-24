@@ -1,0 +1,543 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 6.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analysis6.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis6.5.html">next</a>
+
+<h4 id="6.4">6.4 Основные теоремы дифференциального исчисления.</h4>
+
+<h5 id="6.4.1">6.4.1 Лемма Ферма.</h5>
+
+<p id="Definition6.4.1"><b>Определение 6.4.1:</b> Будем говорить, что функция $f(x):E\to\mathbb{R}$ имеет в точке $x_0\in{E}$
+локальный 
+<table>
+<tr><td>1.</td><td>минимум если</td><td>$\exists{U}(x_0):\forall{x}\in{U}_E(x_0)(f(x)\geq{f}(x_0))$</td></tr>
+<tr><td>2.</td><td>строгий минимум если</td><td>$\exists{U}(x_0):\forall{x}\in{U}_E(x_0)(f(x)&gtf(x_0))$</td></tr>
+<tr><td>3.</td><td>максимум если</td><td>$\exists{U}(x_0):\forall{x}\in{U}_E(x_0)(f(x)\leq{f}(x_0))$</td></tr>
+<tr><td>4.</td><td>строгий максимум если</td><td>$\exists{U}(x_0):\forall{x}\in{U}_E(x_0)(f(x)&ltf(x_0))$</td></tr>
+</table>
+Если для точки $x_0$ выполнено одно из условий, то она называется точкой локального экстремума функции $f(x)$, а значение $f(x_0)$
+локальным экстремумом. Если выполнено условие 2 или 4, то точка $x_0$ называется точкой строгого локального экстремума.
+
+<br><br>
+
+<p id="Definition6.4.2"><b>Определение 6.4.2</b> Если точка $x$ точка локального экстремума функции $f(x):E\to\mathbb{R}$ и
+$x\in\mathring{E}{}^-_x\cap\mathring{E}^+_x$ то принято говорить, что $x$ точка внутреннего локального экстремума функции $f(x)$.
+
+<br><br>
+
+<p id="Example6.4.1"><b>Пример 6.4.1:</b> Рассмотрим функцию $f(x):[-1,3]\to\mathbb{R}$ такую, что 
+$f(x)=\begin{cases}x^2, & -1\leq{x}\leq2\\4, & 2&ltx\leq3\end{cases}$.
+<ul>
+<li>$x=-1$ - точка строгого локального максимума,</li>
+<li>$x=0$ - точка строгого внутреннего локального минимума,</li>
+<li>$x=2$ - точка внутреннего локального максимума,</li>
+<li>для любого $x\in(2,3)$, $x$ - точка внутреннего локального максимума и минимума,</li>
+<li>$x=3$ - точка локального максимума и минимума.</li>
+</ul>
+
+<br><br>
+
+<p id="Lemma6.4.1"><b>Лемма 6.4.1: Лемма Ферма.</b><br>
+Если точка $x_0\in{E}\cap\mathring{E}$ точка внутреннего локального экстремума функции $f(x):E\to\mathbb{R}$ и функция $f(x)$
+дифференцируема в точке $x_0$, то $f'(x_0)=0$.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что $x_0$ точка локального минимума, то есть существует окрестность $U(x_0)$
+такая, что для любого $x\in{U}_E(x_0)$ $f(x)\geq{f}(x_0)$.<br>
+Обозначим $E_1:=U_E(x_0)\cap(x_0,+\infty)$, $E_2:=U_E(x_0)\cap(-\infty,x_0)$. Тогда $E_1\subset{E}$, $E_2\subset{E}$ и
+$$\forall{x}\in{E}_1(x-x_0\geq0\wedge{f}(x)-f(x_0)\geq0)\Rightarrow\forall{x}\in{E}_1\left(\frac{f(x)-f(x_0)}{x-x_0}\geq0\right)\quad(1)$$
+$$\forall{x}\in{E}_2(x-x_0\leq0\wedge{f}(x)-f(x_0)\geq0)\Rightarrow\forall{x}\in{E}_2\left(\frac{f(x)-f(x_0)}{x-x_0}\leq0\right)\quad(2)$$
+Так как $x_0$ внутренний экстремум, то $x_0\in\mathring{E}_1\cap\mathring{E}_2$ и может переходить к пределу при $E_1\ni{x}\to{x}_0$, 
+$E_2\ni{x}\to{x}_0$. Так как из существования предела функции по множеству <a href="./math_analysis5.1.html#Statement5.1.3">следует</a> 
+существование предела по подмножеству и численное равенство занчений пределов, то 
+$$\lim_{E_1\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}=\lim_{E_2\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}=\lim_{E\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}=f'(x)$$
+Отсюда <a href="./math_analysis5.2.html#Corollary5.2.1">так как</a> операция взятия предела сохраняет знак в нестрогом смысле имеем
+$$(1)\Rightarrow\forall{x}\in{E}_1\left(\frac{f(x)-f(x_0)}{x-x_0}\geq0\right)\Rightarrow{f}'(x_0)=\lim_{E_1\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}\geq0$$
+$$(2)\Rightarrow\forall{x}\in{E}_2\left(\frac{f(x)-f(x_0)}{x-x_0}\leq0\right)\Rightarrow{f}'(x_0)=\lim_{E_2\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}\leq0
+\Rightarrow(f'(x_0)\geq0\wedge{f}'(x_0)\leq0)\Rightarrow{f}'(x)=0$$
+
+<br><br>
+<details>
+<summary><i>Альтернативное доказательство от противного.</i></summary>
+<hr>
+<i>
+Предположим, что $f'(x_0)\neq0$ б. о. о. $f'(x_0)=\lim_{x\to{x_0}}\frac{f(x)-f(x_0)}{x-x_0}&gt0$. 
+<a href="./math_analysis5.2.html#Theorem5.2.2">Тогда</a> функция $\frac{f(x)-f(x_0)}{x-x_0}$ локально сохраняет знак 
+при $E\ni{x}\to{x}_0$, то есть существует окрестность $U'(x_0)$ такая, что для любого $x\in{U}(x_0)$ $\frac{f(x)-f(x_0)}{x-x_0}&gt0$. 
+Для любой фиксированной окрестности $U(x_0)$, существует окрестность $U''(x_0):=U(x_0)\cap{U}'(x_0)$.
+Так как точка $x_0$ внутренний локальный экстремум, то есть $x_0\in\mathring{E}{}^-_{x_0}\cap\mathring{E}{}^+_{x_0}$, то существуют 
+точки $x_1,x_2\in{U}''_E(x_0)$ такие, что $x_1&ltx_0&ltx_2$, тогда
+$$(x_1,x_2\in{U}''_E(x)\wedge{x}_1&ltx_0&ltx_2)\Rightarrow
+\left(x_1,x_2\in{U}(x_0)\wedge\frac{f(x_1)-f(x_0)}{x_1-x_0}&gt0\wedge\frac{f(x_2)-f(x_0)}{x-x_0}&gt0\wedge{x}_1-x_0&lt0\wedge{x}_2-x_0&gt0\right)
+\Rightarrow$$ $$\Rightarrow(x_1,x_2\in{U}(x_0)\wedge{f}(x_1)-f(x_0)&lt0\wedge{f}(x_2)-f(x_0)&gt0)\Rightarrow
+(x_1,x_2\in{U}(x_0)\wedge{f}(x_1)&ltf(x_0)\wedge{f}(x_2)&gtf(x_0))$$
+Таким образом
+$$\forall{U}(x_0)\:\exists{x}_1,x_2\in{U}_E(x_0):(f(x_1)&ltf(x_0)\wedge{f}(x_2)&gtf(x_0))$$
+Последнее утверждение противоречит <a href="#Definition6.4.1">определению локального экстремума</a> для точки $x_0$.  
+</i>
+<hr>
+</details>
+
+<br><br>
+
+<p id="Definition6.4.3"><b>Определение 6.4.3:</b> Говорят, что число $x_0\in{E}\subset\mathbb{R}$ внутренняя точка множества $E$, если
+существует интервал $(\alpha,\beta)\subset{E}$ такой, что $x_0\in(\alpha,\beta)$.<br>
+Совокупность всех внутренних точек множества $E$ обозначают $int{E}$.
+$$int{E}:=\{x\in{E}\:|\:\exists(\alpha,\beta):(x\in(\alpha,\beta)\wedge(\alpha,\beta)\subset{E})\}$$
+
+<br><br> 
+
+<p>Из определения внутренней точки очевидно следует, что если $x\in{i}nt{E}$, то $x\in\mathring{E}{}^-_x\cap\mathring{E}{}^+_x$.<br>
+Обратное неверно, например, для любого $r\in\mathbb{Q}$ $r\in\mathring{\mathbb{Q}}{}^-_r\cap\mathring{\mathbb{Q}}{}^+_r$, но $r\notin{i}nt\mathbb{Q}$,
+так как $int\mathbb{Q}=\varnothing$. Из этого в частности следует, что не всякая точка <a href="#Definition6.4.2">внутреннего локального экстремума</a> 
+является внутренней точкой для области определения функции. 
+
+<br><br>
+
+<p id="Corollary6.4.1"><b>Следствие 6.4.1: Традиционная формулировка леммы Ферма.</b><br>
+Если $x_0\in{i}nt{E}$ точка локального экстремума функции $f(x):E\to\mathbb{R}$ дифференцируемой с точке $x_0$, то $f'(x_0)=0$.
+<p><b>Доказательство:</b> Следует из <a href="#Lemma6.4.1">леммы Ферма</a> так как внутренняя точка является предельной и справа и слева.
+
+<br><br>
+
+<p id="Corollary6.4.2"><b>Следствие 6.4.2:</b> Если $x_0$ точка внутреннего локального экстремума функции $f(x):E\to\mathbb{R}$,
+то либо функция не дифференцируема в точке $x_0$, либо $f'(x_0)=0$.
+<p><b>Доказательство:</b> Предположим противное функция $f(x)$ дифференцируема в точке $x_0$, и $f'(x_0)\neq0$, но это есть логическое 
+отрицание утверждения <a href="#Lemma6.4.1">леммы Ферма</a>. 
+
+<br><br>
+
+<p id="Example6.4.2"><b>Пример 6.4.2:</b> Точка $x=0$ точка внутреннего локального экстремума функции $f(x)=|x|$, но функция $f(x)$
+<a href="./math_analysis6.1.html#Example6.1.1">не дифференцируема в точке 0</a>. 
+
+<br><br>
+
+<p id="Definition6.4.4"><b>Определение 6.4.4:</b> Точка $x_0\in{E}\cap\mathring{E}$ называется стационарной точкой функции $f(x):E\to\mathbb{R}$,
+если $f'(x_0)=0$.
+
+<br><br>
+
+<p id="Definition6.4.5"><b>Определение 6.4.5:</b> Точка $x_0\in{E}\cap\mathring{E}$ называется критической точкой первого рода функции 
+$f(x):E\to\mathbb{R}$, если она является стационарной точкой либо функция $f(x)$ не дифференцируема в точке $x_0$.
+
+<p>Таким образом внутренние локальные экстремумы функции следует искать только среди критических точек первого рода.
+
+<h5 id="6.4.2">6.4.2 Теоремы Ролля, Лагранжа, Коши.</h5>
+
+<p>Формулируемые ниже теоремы Ролля, Лагранжа, Коши называются теоремами о среднем. В них участвует промежуточная точка средняя $\xi$.
+
+<br><br>
+
+<p id="Theorem6.4.1"><b>Теорема 6.4.1: Теорема Ролля (1625-1719).</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x)\in{C}[a,b]$,</li>
+<br>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x)$,</li>
+<br>
+<li>$f(a)=f(b)$,</li>
+</ol> 
+тогда существует точка $\xi\in(a,b):f'(\xi)=0$.
+<p><b>Доказательство:</b> По <a href="./math_analysis5.5.3.html#Theorem5.5.3">теореме Вейерштрасса об экстремальном значении</a>
+функция $f(x)$ достигает своего максимума и минимума
+$$\exists{x}_m,x_M\in[a,b]:(f(x_m)=\min_{a\leq{x}\leq{b}}f(x)\wedge{f}(x_M)=\max_{a\leq{x}\leq{b}}f(x)\Rightarrow
+\forall{x}\in[a,b](f(x_m)\leq{f}(x)\leq{f}(x_M))$$
+Следовательно, $x_m$ точка локального минимума, $x_M$ точка локального максимума. Так $f(x_m)\leq{f}(x_M)$, то либо $f(x_m)=f(x_m)$,
+либо $f(x_m)&ltf(x_M)$.
+<ul>
+<li>
+Если $f(x_m)=f(x_m)$, то для любого $x\in[a,b]$ $f(x_m)=f(x)=f(x_M)$, то есть $f(x)\equiv{f}(x_M)$ и тогда в качестве точки $\xi$ можно
+взять любую точку интервала $(a,b)$.
+</li>
+<li>
+Если $f(x_m)&ltf(x_M)$, то
+$$(f(x_m)&ltf(x_M)\wedge{f}(a)=f(b))\Rightarrow\{x_m,x_M\}\neq\{a,b\}\Rightarrow(x_m\in(a,b)\vee{x}_M\in(a,b))\Rightarrow
+(x_m\in{i}nt(a,b)\vee{x}_M\in{i}nt(a,b))$$
+Последняя импликация корректна так как $int(a,b)=(a,b)$. Из предпосылки 2 следует, что существуют производные $f'(x_m)$, $f'(x_M)$
+тогда по <a href="#Corollary6.4.2">следствию 6.4.2</a> из леммы Ферма либо $f'(x_m)=0$, либо $f'(x_M)=0$.
+</li>
+</ul> 
+
+<br><br>
+
+<p id="Example 6.4.3"><b>Пример 6.4.3:</b> Контрпример к каждому из условий теоремы Ролля.<br>
+<ol>
+<li>
+Пусть $[a,b]=[0,1]$, $f(x)=\begin{cases}x, & 0\leq{x}&lt1\\0, & x=1\end{cases}$, тогда выполнены все условия теоремы 6.4.1 кроме первого.
+Так как для любого $x\in(0,1)$ существует производная $f'(x)=1$ и $f(1)=f(0)=1$, но $f(x)\notin{C}[a,b]$. Точка $x=1$ является точкой разрыва
+так как $\lim_{x\to1}f(x)=1\neq0=f(1)$.
+</li>
+<br>
+<li>
+Пусть $[a,b]=[-1,1]$, $f(x)=|x|$, тогда выполнены все условия теоремы 6.4.1 кроме второго, так как $f(-1)=f(1)=1$ и 
+$f(x)\in{C}[-1,1]$, но <a href="./math_analysis6.1.html#Example6.1.1">не дифференцируема в точке $0\in(-1,1)$</a>.
+Таким образом не существует точки $\xi\in(-1,1)$ такой, что $f'(\xi)=0$, так как для любой положительной точки производная равна 1,
+для любой отрицательной -1, а в точке 0 производной не существует. 
+</li>
+<br>
+<li>
+Пусть $[a,b]=[0,1]$, $f(x)=x$, выполнены все условия теоремы 6.4.1 кроме третьего так как $f(x)\in{C}^1[0,1]$, но $f(0)=0\neq1=f(1)$.
+Таким образом не существует точки $\xi\in(0,1)$ такой, что $f'(\xi)=0$, так как для любого $x\in(0,1)$ $f'(x)=1$.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Theorem6.4.2"><b>Теорема 6.4.2: Теорема Коши.</b><br>
+Если функции $x(t),y(t):[\alpha,\beta]\to\mathbb{R}$ такие, что
+<ol>
+<li>$x(t),y(t)\in{C}[\alpha,\beta]$,</li>
+<br>
+<li>$\forall{t}\in(\alpha,\beta)\:(\exists{x}'(t)\wedge\exists{y}'(t))$,</li>
+<br>
+<li>$\forall{t}\in(\alpha,\beta)(x'(t)\neq0)$,</li>
+</ol>
+тогда существует $\xi\in(\alpha,\beta)$ такое, что $\displaystyle\frac{y(\beta)-y(\alpha)}{x(\beta)-x(\alpha)}=\frac{y'(\xi)}{x'(\xi)}$.
+<p><b>Доказательство:</b> При сделанных предпосылках формулировка теоремы корректна, в том смысле, что $x(\beta)-x(\alpha)$ не может
+быть равно нулю, так как если $x(\beta)=x(\alpha)$, то по <a href="#Theorem6.4.1">теореме Ролля</a> существует $t\in(\alpha,\beta)$
+такое, что $x'(t)=0$, а это противоречит предпосылке 3.<br>
+Рассмотрим функцию 
+$$F(t):[\alpha,\beta]\to\mathbb{R}:
+\forall{x}\in[\alpha,\beta]\left(F(t):=y(t)-y(\alpha)-\frac{y(\beta)-y(\alpha)}{x(\beta)-x(\alpha)}(x(t)-x(\alpha))\right)$$ 
+Тогда для $F(t)$ выполняются предпосылки <a href="#Theorem6.4.1">теоремы Ролля</a>.
+<ol>
+<li>Функция $F(t)$ непрерывна на $[a,b]$ как <a href="./math_analysis5.5.3.html#Theorem5.5.1">сумма непрерывных функций</a>.</li>
+<li>Для любого $t\in(\alpha,\beta)$ существует производная $F'(t)=y'(t)-\frac{y(\beta)-y(\alpha)}{x(\beta)-x(\alpha)}x'(t)$.</li>
+<li>$F(\alpha)=F(\beta)=0$</li>
+</ol>
+Таким образом по <a href="#Theorem6.4.1">теореме Ролля</a>
+$$\exists\xi\in(\alpha,\beta):F'(\xi)=0\Rightarrow{y}'(\xi)-\frac{y(\beta)-y(\alpha)}{x(\beta)-x(\alpha)}x'(\xi)=0\Rightarrow
+\frac{y(\beta)-y(\alpha)}{x(\beta)-x(\alpha)}=\frac{y'(\xi)}{x'(\xi)}$$
+
+<br><br>
+
+<p id="Theorem6.4.3"><b>Теорема 6.4.3: Теорема Лагранжа.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ такая, что 
+<ol>
+<li>$f(x)\in{C}[a,b]$</li>
+<br>
+<li>$\forall{x}\in(\alpha,\beta)\:\exists{f}'(x)$</li>
+</ol>
+тогда существует $\xi\in(\alpha,\beta)$ такое, что $f(b)-f(a)=f'(\xi)(b-a)$.
+<p><b>Доказательство:</b> Применив <a href="#Theorem6.4.2">теорему Коши</a> при $[\alpha,\beta]:=[a,b]$, $t:=x$, $y(t):=f(t)$, $x(t):=t$
+получим
+$$\exists\xi\in(a,b):\left(\frac{f(b)-f(a)}{b-a}=\frac{f'(\xi)}{1}=f'(\xi)\right)\Rightarrow{f}(b)-f(a)=f'(\xi)(b-a)$$ 
+
+<br><br>
+
+<p>Теорема Лагранжа задает связь между приращением аргумента и приращением значения функции. Ее геометрический смысл состоит в том, что где-то 
+на интервале $(a,b)$ найдется точка, касательная к которой параллельна прямой соединяющей концы графика функции точки $(a,f(a))$ и $(b,f(b))$.
+В предпосылках <a href="#Theorem6.4.1">теоремы Ролля</a> эта прямая будет горизонтальной.
+
+<br><br>
+
+<p id="Corollary6.4.3"><b>Следствие 6.4.3:</b> Пусть $a,b\in\overline{\mathbb{R}}$ такие, что $a&ltb$ и функция $f(x):\Delta(a,b)\to\mathbb{R}$
+удовлетворяет условиям
+<ol>
+<li>$f(x)\in{C}(\Delta(a,b))$,</li>
+<br>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x)$</li>
+</ol>
+тогда
+<ul>
+<li>если для любого $x\in(a,b)$ $f'(x)\geq0$, то функция $f(x)$ не убывает,</li>
+<li>если для любого $x\in(a,b)$ $f'(x)&gt0$, то функция $f(x)$ возрастает,</li>
+<li>если для любого $x\in(a,b)$ $f'(x)\leq0$, то функция $f(x)$ не возрастает,</li>
+<li>если для любого $x\in(a,b)$ $f'(x)&lt0$, то функция $f(x)$ убывает.</li>
+</ul>
+<p><b>Доказательство:</b> Фиксируем $x_1,x_2\in\Delta(a,b)$ такие, что $x_1&ltx_2$, тогда
+$$[x_1,x_2]\subset\Delta(a,b)\Rightarrow(f(x)\in{C}[x_1,x_2]\wedge\forall{x}\in(x_1,x_2)\:\exists{f}'(x))$$
+Применим <a href="#Theorem6.4.3">теорему Лагранжа</a> для функции $f(x)$ на отрезке $[x_1,x_2]$, тогда существует $\xi\in(a,b)$
+такое, что $f(x_2)-f(x_1)=f'(\xi)(x_2-x_1)$.<br>
+Рассмотрим случай $f'(x)\geq0$ 
+$$\forall{x}\in(a,b)(f'(x)\geq0)\Rightarrow\forall{x}\in[x_1,x_2](f'(x)\geq0)\Rightarrow{f}'(\xi)\geq0\Rightarrow
+{f}(x_2)-f(x_1)=f'(\xi)(x_2-x_1)\geq0\Rightarrow{f}(x_2)\geq{f}(x_1)$$
+Таким образом
+$$\forall{x}_1,x_2\in\Delta(a,b)(x_1&ltx_2\Rightarrow{f}(x_1)\leq{f}(x_2))$$
+то есть функция $f(x)$ не убывает.<br>
+Утверждения для случаев $f'(x)&gt0$, $f'(x)\leq0$, $f'(x)&lt0$ доказываются аналогично. Знак приращения значения функции определяется знаком производной.
+
+<br><br>
+
+<p id="Corollary6.4.4."><b>Следствие 6.4.4:</b> Если функция $f(x):E\to\mathbb{R}$ такая, что 
+<ol>
+<li>$f(x)\in{C}[a,b]$</li>
+<br>
+<li>$\forall{x}\in(a,b)(f'(x)&gt0)$</li>
+</ol>
+тогда существует функция $f^{-1}(y):[f(a),f(b)]\to[a,b]$ обратная для функции $f(x)$ и для любого $y\in[f(a),f(b)]$
+существует производная $(f^{-1})'(y)=\frac1{f'(f^{-1}(y))}$
+<p><b>Доказательство:</b> При сделанных предпосылках функция $f(x)$ строго монотонна на $[a,b]$ по следствию 6.4.3, следовательно, 
+она биективна на $[a,b]$ и $[f(a),f(b)]$. Следовательно, по <a href="./math_analysis5.5.5.html#Theorem5.5.5">теореме о непрерывности обратной функции</a> 
+существует обратная функция строго монотонная и непрерывная на своей области определения. Тогда по 
+<a href="./math_analysis6.2.html#Theorem6.2.3">теореме о производной обратной функции</a> существует производная $(f^{-1})'(y)=\frac1{f'(f^{-1}(y))}$.
+
+<br><br>
+
+<p id="Task6.4.1"><b>Задача 6.4.1:</b> Доказать аналогичное утверждение для случая функции заданной на интервале.
+<p><b>Решение:</b>
+<i>
+Доказывается аналогично, так как <a href="#Corollary6.4.3">следствие 6.4.3</a> сформулировано для произвольного числового промежутка, 
+и вместо теоремы о непрерывности обратной функции для случая интервала можно использовать 
+<a href="./math_analysis5.5.5.html#Corollary5.5.5">следствие из нее</a>.
+</i>
+
+<br><br>
+
+<p id="Corollary6.4.5"><b>Следствие 6.4.5:</b> Если функция $f(x):E\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x)\in{C}[a,b]$,</li>
+<br>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x)$,</li>
+</ol>
+тогда существует $c\in\mathbb{R}$ такое, что $f(x)\equiv{c}$ тогда и только тогда, когда $f'(x)\equiv0$.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+$$\exists{c}\in\mathbb{R}:f(x)\equiv{c}\Rightarrow\forall{x},x_0\in[a,b](f(x)-f(x_0)=c-c=0)\Rightarrow\forall{x},x_0\in[a,b](x\neq{x}_0\Rightarrow
+\frac{f(x)-f(x_0)}{x-x_0}=0)\Rightarrow(\exists{f}'(x_0)=\lim_{[a,b]\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}\Rightarrow{f}'(x_0)=0)$$
+</li>
+<li>$\Leftarrow)$<br>
+Для любого $x\in(a,b]$ $f(x)\in{C}[a,x]$ и $f(x)$ дифференцируема на $(a,x)$, тогда по <a href="#Theorem6.4.3">теореме Лагранжа</a>
+$$\forall{x}\in(a,b]\:\exists\xi\in(a,x):f(x)-f(a)=f'(\xi)(x-a)=0\Rightarrow\forall{x}\in[a,b](f(x)=f(a))$$
+</li>
+</ul>
+
+<br><br>
+
+<p id="Corollary6.4.6"><b>Следствие 6.4.6: Теорема о пределе производной.</b><br>
+Пусть $a,b\in\overline{\mathbb{R}}$, $a&ltb$, $x_0\in(a,b)$ и функция $f(x):E\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x)\in{C}[a,b]$</li>
+<br>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x)$</li>
+<br>
+<li>$\displaystyle\exists{K}\in\mathbb{R}:\lim_{x\to{x}_0}{f}'(x)=K$</li>
+</ol>
+тогда функция $f(x)$ дифференцируема в точке $x_0$ и $f'(x_0)=K$.
+<p><b>Доказательство:</b> По <a href="#Theorem6.4.3">теореме Лагранжа</a> имеем
+$$\forall{x}\in[a,b](x&gtx_0\Rightarrow\exists\xi\in(x_0,x):f(x)-f(x_0)=f'(\xi)(x-x_0))\Rightarrow
+\forall{x}\in[a,b]\left(x&gtx_0\Rightarrow\exists\xi\in(x_0,x):f'(\xi)=\frac{f(x)-f(x_0)}{x-x_0}\right)$$
+$$\forall{x}\in[a,b](x&ltx_0\Rightarrow\exists\xi\in(x,x_0):f(x_0)-f(x)=f'(\xi)(x_0-x))\Rightarrow
+\forall{x}\in[a,b]\left(x&ltx_0\Rightarrow\exists\xi\in(x,x_0):{f}'(\xi)=\frac{f(x_0)-f(x)}{x_0-x}=\frac{f(x)-f(x_0)}{x-x_0}\right)$$
+Таким образом
+$$\forall{x}\in[a,b]\left(x\neq{x}_0\Rightarrow\exists\xi\in\left(\min\{x_0,x\},\max\{x_0,x\}\right):f'(\xi)=\frac{f(x)-f(x_0)}{x-x_0}\right)$$
+Значение $\xi$ зависит от выбора точки $x$, значит можно рассмотреть функцию $\xi(x)$. Тогда по 
+<a href="./math_analysis5.2.html#Theorem5.2.2">теореме о двух милиционерах</a>
+$$\xi(x)\in(\min\{x_0,x\},\max\{x_0,x\})\Rightarrow0&lt|\xi(x)-x_0|&lt|x-x_0|\Rightarrow\lim_{x\to{x}_0}\xi(x)=x_0$$
+Применим теорему о <a href="./math_analysis5.3.html#Theorem5.3.2">пределе композиции функций</a> для функций $\xi(x)$, $f'(\xi)$ при $x\to{x}_0$.
+$$f'(x_0)=\lim_{x\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}=\lim_{x\to{x}_0}f'(\xi(x))=\lim_{\xi\to{x}_0}f'(\xi)=K$$
+
+<br><br>
+<i>
+Таким образом производная не может иметь <a href="./math_analysis5.5.1.html#Definition5.5.7">точек разрыва первого рода</a>. 
+Однако, может иметь точки <a href="./math_analysis5.5.1.html#Definition5.5.8">разрыва второго рода</a>.
+Например, функция $f(x)=\begin{cases}x^2\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$ дифференцируема на $\mathbb{R}$.
+При $x\neq0$ $f'(x)=2x\sin\frac1{x}-\cos\frac1{x}$, а $f'(0)=\lim_{x\to0}\frac{x^2\sin\frac1{x}}{x}=\lim_{x\to0}(x\sin\frac1{x})=0$.
+Таким образом предела функции $f'(x)$ при $x\to0$ не существует. То есть 0 точка разрыва второго рода для функции $f'(x)$.
+</i>
+
+<br><br>
+
+<p id="Theorem6.4.4"><b>Теорема 6.4.4: Теорема Дарбу.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ такая, что
+<ol>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x)$,</li>
+<br>
+<li>$\exists{f}'_+(a),\exists{f}'_-(b)$,</li>
+</ol>
+тогда функция $g(x):=\begin{cases}f'_+(a), & x=a\\f'(x), & x\in(a,b)\\f'_-(b), & x=b\end{cases}$ принимает на отрезке $[a,b]$ все промежуточные значения.
+<p><b>Доказательство:</b>
+<i>
+Доказательство см., например, Фихтенгольц т. 1, стр. 224.
+</i>
+<br><br>
+
+<p>Чтобы доказывать теорему Дарбу с помощью <a href="./math_analysis5.5.3.html#Theorem5.5.2">теоремы Больцано-Коши о промежуточном значении</a>
+надо потребовать, чтобы функция $f'(x)$ была непрерывна на отрезке $[a,b]$, но такого условия нет в предпосылках, и оно, как мы выяснили, 
+не следует из существования производной на отрезке (производная может иметь точки разрыва второго рода).
+
+<br><br>
+
+<p id="Corollary6.4.7"><b>Следствие 6.4.7:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ такая, что для любого $x\in(a,b)$ 
+существует производная $f'(x)\neq0$, тогда функция $f'(x)$ знакопостонянна на интервале $(a,b)$.
+<p><b>Доказательство:</b> Докажем от противного. Пусть существуют $x_1,x_2\in(a,b)$ такие, что $f'(x)&ltx_1$ и $f'(x)&gtx_2$, тогда по теореме Дарбу
+существует $\xi\in(\min\{x_1,x_2\},\max\{x_1,x_2\})$ такое, что $f'(\xi)=0$, но это противоречит условию.
+
+<br><br>
+
+<h5 id="6.4.3">6.4.3 Правило Лопиталя.</h5>
+
+<p id="Theorem6.4.5"><b>Теорема 6.4.5:</b>
+Пусть $a,b&lt\overline{\mathbb{R}}$ и функции $f(x),g(x):(a,b)\to\mathbb{R}$ такие, что
+<ol>
+<li>$\forall{x}\in(a,b)\:\exists{f}'(x),\exists{g}'(x)$,</li>
+<br>
+<li>$\forall{x}\in(a,b)(g'(x)\neq0)$,</li>
+<br>
+<li>$\displaystyle\exists{A}\in\overline{\mathbb{R}}:\lim_{x\to{a}+0}\frac{f'(x)}{g'(x)}=A$,</li>
+</ol>
+тогда в одном из следующих случаев
+<ol type="i">
+<li>$\displaystyle\lim_{x\to{a}+0}f(x)=0$ и $\displaystyle\lim_{x\to{a}+0}g(x)=0$,</li>
+<li>$\displaystyle\lim_{x\to{a}+0}|g(x)|=+\infty$</li>
+</ol>
+$\displaystyle\lim_{x\to{a+0}}\frac{f(x)}{g(x)}=A$<br>
+Комментарии к формулировке:
+<ol>
+<li>
+Предложена версия теоремы на языке правосторонних пределов. Теорему можно симметрично сформулировать на языке левосторонних пределов.
+Если же предпосылки выполнены и для правого и для левого пределов, то при желании можно сформулировать правило Лопиталя на языке предела.
+То есть если для точки $c\in(a,b)$ выполнены предпосылки на интервале $(a,c)$ при $x\to{x}-0$ и на интервале $(c,b)$ при $x\to{c}+0$,
+то правило Лопиталя можно сформулировать для предела при $x\to{c}$.
+</li>
+<li>
+Неправильно формулировать правило Лопиталя просто как: "Предел отношения функций равен пределу отношения производных." Предпосылки гораздо богаче.
+</li>
+<li>
+В условии говорится о раскрытии неопределенностей типа $\frac0{0}$ и $\frac{\infty}{\infty}$, остальные пять типов неопределенностей $\infty-\infty$,
+$\infty^0$, $0^\infty$, $1^\infty$, $0\cdot\infty$ сводятся к этим двум.
+</li>
+</ol>
+<p><b>Доказательство:</b> Чтобы рассматривать предел отношения $\frac{f(x)}{g(x)}$ при $x\to{a}+0$, покажем для корректности, что $g(x)\neq0$ в некоторой 
+окрестности точки $a$. Действительно, производная $g'(x)$ не равна нулю на интервале $(a,b)$, <a href="#Corollary6.4.3">следовательно</a>, 
+функция $f(x)$ стро гмонотонна, а <a href="./math_analysis5.5.5.html#Statement5.5.9">значит</a> инъективна, поэтому существует не более одного
+значения $c\in(a,b)$ такого, что $g(c)=0$. Следовательно, существует $c_1\in(a,b)$ такое, что для любого $x\in(a,c_1)$ $g(x)\neq0$. Всюду далее
+ограничимся аргументами $x\in(a,c_1)$. 
+<ol type="I">
+<li>этап. $A&lt+\infty$<br>
+Фиксируем $p,q\in\mathbb{R}$ такие, что $A&ltp&ltq$. В любом из двух случаев рассматриваемых в формулировке теоремы найдем $c_q\in(a,b)$ такое, что
+для любого $x\in(a,c_q)$ $\frac{f(x)}{g(x)}&ltq$.
+$$\left(\lim_{x\to{a}+0}\frac{f'(x)}{g'(x)}\wedge{A}&ltp\right)\Rightarrow
+\exists{U}(a):\forall{x}\in(a,b)\left(x\in{U}(a)\Rightarrow\frac{f'(x)}{g'(x)}\in(-\infty,p)\right)\Rightarrow
+\exists{c}_3\in(a,b):\forall{x}\in(a,c_3)\left(\frac{f'(x)}{g'(x)}&ltp\right)\quad(2)$$
+Фиксируем $x,y\in(a,c_3)$ такие, что $x\neq{y}$. На отрезке $[x,y]$ применим <a href="#Theorem6.4.2">теорему Коши</a>:
+$$\exists\xi\in(x,y)\subset(a,c_3):\frac{f(x)-f(y)}{g(x)-g(y)}=\frac{f'(\xi)}{g'(\xi)}\Rightarrow^{(2)}\frac{f(x)-f(y)}{g(x)-g(y)}&ltp\quad(4)$$
+<ol type="i">
+<li>$\displaystyle\lim_{x\to{a}+0}f(x)=\lim_{x\to{a}+0}g(x)=0$<br>
+Фиксируем $x\in(a,c_3)$ и переходим в неравенстве (4) к пределу при $y\to{a}+0$. Переход к пределу возможен, так как функция $g(x)$
+инъективна и, следовательно, для любых различных $x,y\in(a,b)$ $f(x)\neq{g}(y)$, тогда так как 
+<a href="./math_analysis5.2.html#Corollary5.2.1">переход к пределу сохраняет знак в нестрогом смысле</a>, то 
+$$p\geq\lim_{y\to{a}+0}\frac{f(x)-f(y)}{g(x)-g(y)}=\frac{f(x)-\lim_{y\to{a}+0}f(y)}{g(x)-lim_{y\to{a}+0}g(y)}=\frac{f(x)}{g(x)}$$
+Таким образом найдено искомое $c_q:=c_3$ такое, что для любого $x\in(a,c_q)$ $\frac{f(x)}{g(x)}&ltq$.
+</li>
+<li>$\displaystyle\lim_{x\to{a}+0}|g(x)|=+\infty$<br>
+Фиксируем $y\in(a,c_3)$
+$$\lim_{x\to{a}+0}|g(x)|=+\infty\Rightarrow\lim_{x\to{a}+0}\frac{g(y)}{g(x)}=0\Rightarrow
+{c}_4\in(a,c_3):\forall{x}\in(a,c_4)\left(\frac{g(y)}{g(x)}&lt1\right)\Rightarrow\forall{x}\in(a,c_4)\left(\frac{g(x)-g(y)}{g(x)}&gt0\right)\quad(5)$$
+
+$$(a&lty&ltc_3\wedge{c}_4&ltc_3)\Rightarrow^{(4)}\forall{x}\in(a,c_4)\left(\frac{f(x)-f(y)}{g(x)-g(y)}&ltp\right)\Rightarrow
+\forall{x}\in(a,c_4)\left(\frac{f(x)-f(y)}{g(x)}=\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)}&lt^{(5)}p\frac{g(x)-g(y)}{g(x)}\right)\Leftrightarrow$$ 
+$$\Rightarrow\forall{x}\in(a,c_4)\left(\frac{f(x)}{g(x)}-\frac{f(y)}{g(x)}&ltp\left(1-\frac{g(y)}{g(x)}\right)\right)\Rightarrow
+\forall{x}\in(a,c_4)\left(\frac{f(x)}{g(x)}&lt\frac{f(y)}{g(x)}+p-p\frac{g(y)}{g(x)}\right)\Rightarrow$$ 
+$$\Rightarrow\lim_{x\to{a}+0}\frac{f(x)}{g(x)}\leq\lim_{x\to{a}+0}\left(\frac{f(y)}{g(x)}+p-p\frac{g(y)}{g(x)}\right)=p&ltq\Rightarrow
+\exists{c}_5\in(a,c_4):\forall(a,c_5)\left(\frac{f(x)}{g(x)}&ltq\right)$$
+
+Таким образом найдено искомое $c_q:=c_5:\forall{x}\in(a,c_q)$ $\frac{f(x)}{g(x)}&ltq$.
+</li>
+</ol>
+Итого в обоих случаях при $A&lt+\infty$.
+$$\forall{q}&gtA\left(\exists{c}_q\in(a,b):\forall{x}\in(a,c_q)\left(\frac{f(x)}{g(x)}&ltq\right)\right)\quad(8)$$
+
+</li>
+<li>этап. $A&gt-\infty$<br>
+Аналогично первому этапу доказывается, что
+$$\forall\tilde{q}&ltA\left(\exists{c}_{\tilde{q}}\in(a,b):\forall{x}(a,c_{\tilde{q}})\left(\frac{f(x)}{g(x)}&gt\tilde{q}\right)\right)\quad(9)$$
+</li>
+<li>этап.<br>
+<ol>
+<li>$A\in\mathbb{R}\Rightarrow(A&lt+\infty\wedge{A}&gt-\infty)$<br>
+Обозначим $U(a):=(q,\tilde{q})$, тогда
+$$(8)\Rightarrow\exists{c}_q\in(a,b):\forall{x}\in(a,c_q)\left(\frac{f(x)}{g(x)}&ltq\right)$$
+$$(9)\Rightarrow\exists{c}_{\tilde{q}}\in(a,b):\forall{x}\in(a,c_{\tilde{q}})\left(\frac{f(x)}{g(x)}&gt\tilde{q}\right)$$
+Обозначим $c'=\min\{c_q,c_{\tilde{q}}\}$, тогда
+$$\forall{x}\in(a,c')\left(\tilde{q}&lt\frac{f(x)}{g(x)}&ltq\right)\Rightarrow\forall{x}\in(a,c')\left(\frac{f(x)}{g(x)}\in{U}(A)\right)\Rightarrow
+\lim_{x\to{a}+0}\frac{f(x)}{g(x)}=A$$
+</li>
+<li>
+$$A=-\infty\Rightarrow{A}&lt+\infty\Rightarrow^{(8)}
+\forall{q}\in\mathbb{R}\left(\exists{c}_q\in(a,b):\forall{x}\in(a,c_q)\left(\frac{f(x)}{g(x)}&ltq\right)\right)\Rightarrow
+\lim_{x\to{a}+0}\frac{f(x)}{g(x)}=-\infty.$$
+</li>
+<li>
+$$A=+\infty\Rightarrow{A}&gt-\infty\Rightarrow^{(9)}
+\forall\tilde{q}\in\mathbb{R}\left(\exists{c}_{\tilde{q}}\in(a,b):\forall{x}\in(a,c_{\tilde{q}})\left(\frac{f(x)}{g(x)}&gt\tilde{q}\right)\right)
+\Rightarrow\lim_{x\to{a}+0}\frac{f(x)}{g(x)}=+\infty.$$
+</li>
+</ol>
+</li>
+</ol>
+
+<br><br>
+<p id="Example6.4.4"><b>Пример 6.4.4:</b> Рассмотрим предел функции $\frac{\sin{x}}{x}$ при $x\to0$.<br>
+Можно применить правило Лопиталя, так как $\displaystyle\lim_{x\to0}\sin{x}=\lim_{x\to0}x=0$. Таким образом
+$$\lim_{x\to0}\frac{\sin{x}}{x}=\lim_{x\to0}\frac{\sin'x}{x'}=\lim_{x\to0}\frac{\cos{x}}{1}=\lim_{x\to0}\cos{x}=1.$$
+
+<br><br>
+
+<p id="Example6.4.5"><b>Пример 6.4.5:</b> Рассмотрим предел функции $\frac{\sin{x}}{\cos{x}}$ при $x\to0$.<br>
+Правило Лопиталя применять нельзя, так как $\displaystyle\lim_{x\to0}\cos{x}=1$.
+
+<br><br>
+
+<p id="Example6.4.6"><b>Пример 6.4.6:</b> Рассмотрим предел функции $\frac{x-\sin{x}}{x+\sin{x}}$ при $x\to\infty$.<br>
+Правило Лопиталя применять нельзя, так как 
+$$\forall{x}&gt0(\exists{x}_0:=(2[x]+1)\pi&gtx:(x+\sin{x})'|_{x=x_0}=1+\cos{x}_0=0)$$
+а это противоречит второму условию теоремы. Производная функции стоящей в числителе должна быть отлична от нуля в некоторой окрестности предельной точки.<br>
+Вместо применения правила Лопиталя предел можно вычислить так
+$$\lim_{x\to\infty}\frac{x-\sin{x}}{x+\sin{x}}=\lim_{x\to\infty}\frac{1-\frac{\sin{x}}{x}}{1+\frac{\sin{x}}{x}}=1$$
+
+<br><br>
+
+<p id="Example6.4.7"><b>Пример 6.4.7:</b> Рассмотрим предел отношения функций $f(x)=x^2\sin{\frac1{x}}$, и $f(x)=\sin{x}$ при $x\to0$.<br>
+<i>
+Правило Лопиталя применять нельзя так как отношение производных $\displaystyle\frac{f'(x)}{g'(x)}=\frac{2x\sin{\frac1{x}}-\cos{\frac1{x}}}{\cos{x}}$ 
+не имеет предела при $x\to0$. Так как существуют последовательности $x'_n=\frac2{\pi(2n-1)}$ и $x''_n=\frac1{2\pi{n}}$ такие, что 
+$\lim_{x\to\infty}x'_n=\lim_{n\to\infty}x''_n=0$, в то время как 
+$$\lim_{n\to\infty}f(x'_n)=\lim_{n\to\infty}\frac4{\pi(2n-1)\cos{\frac2{\pi(2n-1)}}}=0\neq\lim_{n\to\infty}\frac{-1}{\cos{\frac1{2\pi{n}}}}=-1$$
+Следовательно, в соответствии с <a href="./math_analysis5.1.html#Statement5.1.1">критерием существования предела по Гейне</a> предела отношения 
+производных $\frac{f'(x)}{g'(x)}$ при $x\to0$ не существует, а предел отношения функций $\frac{f(x)}{g(x)}$ при $x\to0$ существует
+$$\lim_{x\to0}\frac{f(x)}{g(x)}=\lim_{x\to0}\frac{x^2\sin{\frac1{x}}}{\sin{x}}=\lim_{x\to0}\left(x\frac{x}{\sin{x}}\sin{\frac1{x}}\right)=0$$
+</i>
+
+<br><br>
+
+<p id="Example6.4.8"><b>Пример 6.4.8:</b> Покажем с помощью правила Лопиталя, <a href="./math_analysis5.4.1.html#Example5.4.6">что при $a&gt1$</a> 
+$\displaystyle\lim_{x\to\infty}\frac{x^{\alpha}}{a^x}=0$.<br>
+Действительно, применив $n&gt\alpha$ раз правило Лопиталя получим
+$$\lim_{x\to\infty}\frac{x^{\alpha}}{a^x}=\lim_{x\to\infty}\frac{\alpha{x}^{\alpha-1}}{a^x\ln{a}}=
+\lim_{x\to\infty}\frac{\alpha(\alpha-1)x^{\alpha-2}}{a^x(\ln{a})^2}=\dots
+=\lim_{x\to\infty}\frac{\alpha(\alpha-1)\dots(\alpha-n+1)x^{\alpha-n}}{a^x(\ln{a})^n}$$
+Так как $n&gt\alpha$, то показатель степени в числителе $\alpha-n$ меньше нуля, то есть числитель стремится к нулю, а знаменатель к бесконечности
+значит предел равен нулю.
+
+<br><br>
+
+<p id="Example6.4.9"><b>Пример 6.4.9:</b> Рассмотрим предел функции $x^{\alpha}\log_a{x}$ при $x\to0+$ и $\alpha&gt0$<br>
+$$\lim_{x\to0+}(x^{\alpha}\log_a{x})=\lim_{x\to0+}\frac{\log_a{x}}{x^{-\alpha}}=\lim_{x\to0+}\frac{(\log_a{x})'}{(x^{-\alpha})'}=
+\lim_{x\to0+}\frac1{-\alpha{x}^{-\alpha-1}x\ln{a}}=-\frac1{\alpha\ln{a}}\lim_{x\to0+}x^{\alpha}=0$$
+Здесь неопределенность вида $0\cdot\infty$ сведена к неопределенности вида $\frac{\infty}{\infty}$, что позволяет применить правило Лопиталя.<br>
+Отсюда в частности следует, что
+$$\lim_{x\to0+}x^x=\lim_{x\to0+}e^{x\ln{x}}=\exp(\lim_{x\to0+}(x\ln{x}))=e^0=1.$$
+Здесь используется, то что так как функция $e^x$ непрерывна, то она 
+<a href="./math_analysis5.5.1.html#Statement5.5.4">перестановочна с операцией перехода к пределу</a>.
+
+<br><br>
+
+
+<br><br>
+<a href="./math_analysis6.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis6.5.html">next</a>
+
+</body>
+</html>

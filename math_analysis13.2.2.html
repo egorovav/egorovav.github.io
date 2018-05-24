@@ -1,0 +1,248 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 13.2.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.3.html">next</a>
+
+$\newcommand{\FUniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\Y\ni{y}\to{y}_0}}$
+$\newcommand{\UniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\n\to\infty}}$
+$\newcommand{\arctg}{\operatorname{arctg}}$
+
+<h5 id=13.2.3>13.2.3 Предельный переход по параметру в несобственном интеграле.</h5>
+
+<p id=Theorem13.2.1><b>Теорема 13.2.1:</b> Пусть $Y\subset\mathbb{R}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, 
+$\varphi(x)\colon[a,\omega)\to\mathbb{R}$, $y_0\in\mathring{Y}\cap\overline{R}$ такие, что 
+<ol>
+<li>несобственный интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{Y}$,</li>
+<li>$\forall{b}\in[a,\omega)\left(f(x,y)\FUniformConv\varphi(x),x\in[a,b]\right)$,</li>
+</ol>
+тогда
+<ol>
+<li>несобственный интеграл $\int_a^{\omega}\varphi(x)\,dx$ сходится,</li>
+<li>существует предел $\displaystyle\lim_{Y\ni{y}\to{y}_0}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\varphi(x)\,dx$.</li>
+</ol>
+<p><b>Доказательство:</b> Так как из равномерной сходимости следует поточечная, то из условия 2 следует, что для любого $x\in[a,\omega)$
+$\displaystyle\lim_{Y\ni{y}\to{y}_0}f(x,y)=\varphi(x)$. То есть необходимо доказать, что при сделанных предпосылках имеет место коммутирование 
+предельных переходов $\displaystyle\lim_{Y\ni{y}\to{y}_0}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\lim_{Y\ni{y}\to{y}_0}f(x,y)\,dx$.<br>
+Для любого $b\in[a,\omega)$ на отрезке $[a,b]$ можно применить <a href="./math_analysis13.1.1.html#Statement13.1.1">теорему</a> о предельном переходе по 
+параметру. Фиксируем последовательность $\{a_n\}$ из $[a,\omega)$ такую, что существует предел $\lim_{n\to\infty}a_n=\omega$. Для любого 
+$n\in\mathbb{N}$ обозначим $\displaystyle{F}_n(y):=\int_a^{a_n}f(x,y)\,dx\colon{Y}\to\mathbb{R}$, тогда
+<ol>
+<li>
+из условия 1 по <a href="./math_analysis13.2.1.html#Statement13.2.3">утверждению 13.2.3</a>
+$$F_n(y)=\int_a^{a_n}f(x,y)\,dx\UniformConv{F}(y):=\int_a^{\omega}f(x,y)\,dx,y\in{Y}$$
+</li>
+<li>
+из условия 2 по <a href="./math_analysis13.1.1.html#Statement13.1.1">теореме</a> о коммутировании предельного перехода со знаком собственного интеграла
+$$\forall{n}\in\mathbb{N}\left(\exists\lim_{Y\ni{y}\to{y}_0}F_n(y)=\lim_{Y\ni{y}\to{y}_0}\int_a^{a_n}f(x,y)\,dx=
+\int_a^{a_n}\lim_{Y\ni{y}\to{y}_0}f(x,y)\,dx=\int_a^{a_n}\varphi(x)\,dx\right)$$
+</li>
+</ol>
+Тогда для функциональной последовательности $\{F_n(y)\}$ можем применить <a href="./math_analysis10.2.2.html#Theorem10.2.1">теорему</a> о коммутировании 
+предельных переходов. Тогда
+<ol>
+<li>$\displaystyle\exists\lim_{n\to\infty}\left(\lim_{Y\ni{y}\to{y}_0}F_n(y)\right)=\lim_{n\to\infty}\int_a^{a_n}\varphi(x)\,dx$,</li>
+<li>$\displaystyle\exists\lim_{Y\ni{y}\to{y}_0}\left(\lim_{n\to\infty}F_n(y)\right)=
+\lim_{Y\ni{y}\to{y}_0}\left(\lim_{n\to\infty}\int_a^{a_n}f(x,y)\,dx\right)=\lim_{Y\ni{y}\to{y}_0}\int_a^{\omega}f(x,y)\,dx$,</li>
+<li>$\displaystyle\lim_{x\to\infty}\left(\lim_{Y\ni{y}\to{y}_0}F_n(y)\right)=\lim_{Y\ni{y}\to{y}_0}\left(\lim_{n\to\infty}F_n(y)\right)$.</li>
+</ol>
+В силу произвольности выбора последовательности $\{a_n\}$ из (1) и <a href="./math_analysis5.1.html#Statement5.1.2">критерия</a> существования предела 
+функции по Гейне следует, что существует предел $\displaystyle\int_a^{\omega}\varphi(x)\,dx=\lim_{b\to\omega}\int_a^{b}\varphi(x)\,dx$. То есть 
+несобственный интеграл $\int_a^{\omega}\varphi(x)\,dx$ сходится. Тогда из (3) следует, что 
+$\displaystyle\lim_{Y\ni{y}\to{y}_0}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\varphi(x)\,dx$.
+
+<br><br>
+<p id=Example13.2.5><b>Пример 13.2.5: Контрпример к условию 1 теоремы 13.2.1.</b><br>
+Пусть $Y=(0,+\infty)$, $y_0=+\infty$, $a=0$, 
+$\displaystyle{f}(x,y)=\begin{cases}\frac1{y}&,0\leq{x}\leq{y}\\0&,x>y\end{cases}\colon[0,+\infty)\times{Y}\to\mathbb{R}$, тогда
+$$\forall\varepsilon>0\exists{B}:=\frac1{\varepsilon}\colon\forall{y}\in(B,+\infty)\forall{x}\in[0,+\infty)
+\left(|f(x,y)|<\frac1{B}=\varepsilon\right)\Rightarrow{f}(x,y)\FUniformConv\varphi(x)\equiv0,x\in[0,+\infty)$$
+Таким образом условие 2 теоремы 13.2.1 выполнено. С другой стороны 
+$$\forall{y}>0\left(F(y)=\int_0^{+\infty}f(x,y)\,dx=\int_0^{y}\frac1{y}\,dx=\frac1{y}y=1\right)$$
+в то время, как $\int_0^{+\infty}\varphi(x)\,dx=0\neq1$. То есть результат теоремы 13.2.1 не выполняется для функции $f(x,y)$. Это происходит потому, что 
+не выполняется условие 1 теоремы, то есть нет равномерной сходимости интеграла $\int_0^{+\infty}f(x,y)\,dx$ по $y>0$. Действительно
+$$\exists\varepsilon:=\frac12\colon\forall{B}>0\,\exists{b}':=B\,\exists{b}'':=2B\,\exists{y}:=2B\colon\left|\int_{b'}^{b''}f(x,y)\,dx\right|=
+\left|\int_B^{2B}\frac1{2B}\,dx\right|=\frac12=\varepsilon.$$
+Получено отрицание <a href="./math_analysis13.2.1.html#Statement13.2.1">критерия Коши</a> равномерной сходимости несобственного интеграла по параметру.
+<br><br>
+<p id=Theorem13.2.2><b>Теорема 13.2.2: Непрерывность несобственного интеграла по параметру.</b><br>
+Пусть $Y:=[c,d]$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$ такие, что 
+<ol>
+<li>несобственный интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{Y}$,</li>
+<li>$f(x,y)\in{C}\{[a,\omega)\times[c,d]\}$,</li>
+</ol>
+тогда $F(y):=\int_a^{\omega}f(x,y)\,dx\in{C}[c,d]$.
+<p><b>Доказательство:</b> Фиксируем $y_0\in[c,d]$, обозначим $\varphi(x):=f(x,y_0)$, тогда по пункту 1 условий несобственный интеграл сходится.
+Фиксируем $b\in[a,\omega)$, тогда множество $P_b:=[a,b]\times[c,d]$ компакт в $\mathbb{R}^2$. Так как $f(x,y)\in{C}\{[a,\omega)\times[c,d]\}$, то
+$f(x,y)\in{C}(P_b)$. Тогда по <a href="./math_analysis5.5.3.html#Theorem5.5.4">теореме Кантора</a> функция $f(x,y)$ равномерно непрерывна на $P_b$.
+Тогда
+$$\forall\varepsilon>0\,\exists\delta=\delta(b,\varepsilon)>0\colon\forall{x}\in[a,b]\forall{y}\in[c,d]
+\left(|y-y_0|<\delta\Rightarrow\|(x,y)-(x,y_0)\|<\delta\Rightarrow|f(x,y)-f(x,y_0)|<\varepsilon\right)\Rightarrow{f}(x,y)\FUniformConv{f}(x,y_0)=
+\varphi(x),x\in[a,b].$$
+Тогда по теореме 13.2.1 и непрерывности функции $f(x,y)$
+$$\exists\lim_{y\to{y}_0}F(y)=\int_a^{\omega}\lim_{y\to{y}_0}f(x,y)\,dx=\int_a^{\omega}f(x,y_0)\,dx=F(y_0).$$
+Следовательно, в силу произвольности выбора $y_0$ теорема доказана.
+<br><br>
+
+<p id=Example13.2.6><b>Пример 13.2.6:</b> В <a href="./math_analysis13.2.1.html#Example13.2.4">примере 13.2.4</a> было показано, что интеграл 
+$\displaystyle{F}(y)=\int_0^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx$ сходится равномерно по $y\in[0,+\infty)$. Значит на основании теоремы 13.2.2 можно
+утверждать, что функция $F(y)$ непрерывна на любом отрезке $[0,d]\subset[0,+\infty)$, то есть непрерывна на всем промежутке $[0,+\infty)$. 
+В частности отсюда следует, что $\displaystyle\lim_{y\to0+}\int_0^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx=F(0)=\int_0^{+\infty}\frac{\sin{x}}{x}\,dx$.
+<br>
+<i>
+<p>Этот пример можно обобщить для любой непрерывной функции  $f(x)$ такой, что интеграл $\int_0^{+\infty}f(x)\,dx$ сходится. Действительно, если интеграл
+$\int_0^{+\infty}f(x)\,dx$ сходится, то интеграл $\displaystyle\int_0^{+\infty}e^{-xy}f(x)\,dx$ сходится равномерно по 
+<a href="./math_analysis13.2.1.html#Statement13.2.5">признаку Абеля</a>. Следовательно, 
+$\displaystyle\lim_{y\to0+}\int_0^{+\infty}e^{-xy}f(x)\,dx=\int_0^{+\infty}f(x)\,dx$. Это равенство можно использовать для вычисления 
+несобственных интегралов см., например, Фихтенгольц т. 2, стр. 718.
+</i>
+
+<h5 id=13.2.4>13.2.4 Дифференцирование несобственного интеграла по параметру.</h5>
+
+<p id=Theorem13.2.3><b>Теорема 13.2.3:</b> Пусть $Y=[c,d]$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x,y)\in{C}\{[a,\omega)\times{Y}\}$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)\in{C}\{[a,\omega)\times{Y}\}$,</li>
+<li>несобственный интеграл $\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$ сходится равномерно по $y\in{Y}$,</li>
+<li>существует $y_0\in[c,d]$ такое, что несобственный интеграл $\int_a^{\omega}f(x,y_0)\,dx$ сходится,</li>
+</ol>
+тогда
+<ol>
+<li>несобственный интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{Y}$,</li>
+<li>$\displaystyle\forall{y}\in{Y}\left(\exists\frac{d}{dy}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right)$</li>
+</ol>
+<p><b>Доказательство:</b> Существует сходство между формулировкой этой теоремы и <a href="./math_analysis10.2.3.html#Corollary10.2.7">теоремы</a> 
+о почленном дифференцировании функциональный рядов. Воспользуемся этой теоремой для доказательства.<br>
+Фиксируем последовательность $\{a_n\}$ из $[a,\omega)$ такую, что $a_0=a$ и существует предел $\lim_{n\to\infty}a_n=\omega$. Для любого $n\in\mathbb{N}$
+обозначим $\displaystyle{u}_n(y)=\int_{a_{n-1}}^{a_n}f(x,y)\,dx$. Покажем, что для функционального ряда $\sum_{n=1}^{\infty}u_n(y)$ выполнены
+предпосылки теоремы о почленном дифференцировании. Действительно
+<ol>
+<li>
+для любых $n\in\mathbb{N}$ $y\in{Y}$ применим <a href="./math_analysis13.1.1.html#Statement13.1.3">правило Лейбница</a> для функции $u_n(y)$, тогда по
+пункту 2 условий теоремы 
+$$\forall{n}\in\mathbb{N}\,\exists{u}'_n(y)=\frac{d}{dy}\int_{a_{n-1}}^{a_n}f(x,y)\,dx=\int_{a_{n-1}}^{a_n}\frac{\partial{f}}{\partial{y}}(x,y)$$
+</li>
+<li>
+фиксируем $\varepsilon>0$, тогда по пункту 3 условий теоремы
+$$\exists{b}_0=b_0(\varepsilon)\in[a,\omega)\colon\forall{n}\in(b_0,\omega)\forall{y}\in{Y}
+\left(\left|\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|<\varepsilon\right)$$
+$$\lim_{n\to\infty}a_n=\omega\Rightarrow\exists{n}_0=n_0(\varepsilon)\colon\forall{n}>n_0(a_n>b_0)\Rightarrow
+\forall{n}>n_0\forall{y}\in{Y}\left(\left|\int_{a_n}^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|<\varepsilon\right)\Rightarrow$$ 
+$$\Rightarrow\forall{n}>n_0\forall{y}\in{Y}\left(\left|\sum_{k=1}^nu'_k(y)-\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|=
+\left|\int_a^{a_n}\frac{\partial{f}}{\partial{y}}(x,y)\,dx-\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|=
+\left|\int_{a_n}^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|<\varepsilon\right)\Rightarrow
+\sum_{n=1}^{\infty}u'_n(y)\UniformConv\int_a^{\omega}f(x,y)\,dx,y\in{Y}.$$
+</li>
+<li>
+из <a href="./math_analysis5.1.html#Statement5.1.2">критерия</a> существования предела функции по Гейне следует, что сходимость интеграла 
+$\int_a^{\omega}f(x,y_0)\,dx$ влечет сходимость ряда $\sum_{n=1}^{\infty}u_n(y_0)$.
+</li>
+</ol>
+Таким образом предпосылки теоремы о почленном дифференцировании рядов выполнены, следовательно существует производная 
+$\displaystyle\frac{d}{dy}\left(\sum_{n=1}^{\infty}u_n(y)\right)=\sum_{n=1}^{\infty}u'_n(y)$. Так как по 
+<a href="./math_analysis13.2.1.html#Statement13.2.3">утверждению 13.2.3</a> $\sum_{n=1}^{\infty}u_n(y)=\int_a^{\omega}f(x,y)\,dx$ и
+$\sum_{n=1}^{\infty}u'_n(y)=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$, то 
+$\frac{d}{dy}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$.
+
+<br><br>
+<p id=Definition13.2.2><b>Определение 13.2.2: Равномерная сходимость по параметру в точке.</b><br>
+Пусть $Y\in\mathbb{R}$, $y_0\in{i}nt{Y}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, тогда говорят, что несобственный интеграл 
+$\int_a^{\omega}f(x,y)\,dx$ сходится равномерно при значении параметра $y=y_0$, если существует окрестность $U(y_0)\subset{Y}$ такая, что интеграл
+$\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{U}(y_0)$.
+
+<br><br>
+<p>Применяя определение 13.2.2 можно отказаться от условия $Y=[c,d]$ в формулировке <a href="#Theorem13.2.3">теоремы 13.2.3</a>
+<br><br>
+<p id=Corollary13.2.1><b>Следствие 13.2.1:</b> Пусть $Y$ открытое множество в $\mathbb{R}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x,y)\in{C}\{[a,\omega)\times{Y}\}$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)\in{C}\{[a,\omega)\times{Y}\}$,</li>
+<li>для любого $y_0\in{Y}$ несобственный интеграл $\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$ сходится равномерно при $y=y_0$,</li>
+<li>для любого $y\in{Y}$ несобственный интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится,</li>
+</ol>
+тогда для любого $y\in{Y}$ существует производная 
+$\displaystyle\frac{d}{dy}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$.
+<p><b>Доказательство:</b> Фиксируем $y_0\in{Y}$, тогда по пункту 3 условий существует окрестность $U(y_0)\subset{Y}$ такая, что несобственный интеграл 
+$\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$ сходится равномерно по $y\in{U}(y_0)$. Любая окрестность точки содержит в себе некоторый отрезок $I$
+содержащий эту точку, тогда для такого отрезка и функции $f(x,y)$ определенной на $[a,\omega)\times{I}$ можно применить 
+<a href="#Theorem13.2.3">теорему 13.2.3</a>. Тогда в точке $y_0$ существует производная 
+$\displaystyle\frac{d}{dy}\left.\left(\int_a^{\omega}f(x,y)\,dx\right)\right|_{y=y_0}=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y_0)\,dx$ и 
+в силу произвольности выбора $y_0$ для любого $y\in{Y}$ $\frac{d}{dy}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$.
+
+<br><br>
+<p id=Example13.2.7><b>Пример 13.2.7:</b> Пусть $[a,\omega):=[0,+\infty)$, $Y:=(0,+\infty)$, $f(x,y)=e^{-xy}\colon[0,+\infty)\times{Y}\to\mathbb{R}$, тогда
+<ol>
+<li>$f(x,y)\in{C}(\mathbb{R}^2)$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)=-xe^{-xy}\in{C}(\mathbb{R}^2)$,</li>
+<li>
+при любом $\alpha>0$, $y_0>0$ интеграл $\displaystyle\int_0^{+\infty}x^{\alpha}e^{-xy}\,dx$ сходится равномерно по $y\in[y_0,+\infty)$, так как 
+для любого достаточно большого $x$ справедлива оценка 
+$\displaystyle0\leq{x}^{\alpha}e^{-xy}<{x}^{\alpha}e^{-xy_0}=e^{-xy_0+\alpha\ln{x}}<{e}^{-xy_0/2}$, следовательно, можно применить 
+<a href="./math_analysis13.2.1.html#Statement13.2.4">мажорантный признак Вейерштрасса</a>. Следовательно, несобственный интеграл 
+$\int_0^{+\infty}f(x,y)\,dx$ сходится равномерно по $y\in{Y}$.
+</li>
+<li>
+для любого $y>0$ интеграл $F(y)=\int_0^{+\infty}f(x,y)\,dx$ сходится $F(y)=\int_0^{+\infty}e^{-xy}\,dx=-\frac1{y}e^{-xy}|_0^{+\infty}=\frac1{y}$
+</li>
+</ol>
+Таким образом функция $f(x,y)$ (и ее производные по $y$ любого порядка) удовлетворяет условиям следствия 13.2.1, следовательно, функция $F(y)$ бесконечное 
+число раз дифференцируема на $Y$ при этом 
+$$F^{(n)}(y)=\int_0^{+\infty}\frac{\partial}{\partial{y}}f_y^{(n-1)}(x,y)\,dx=(-1)^{n-1}\int_0^{+\infty}\frac{\partial}{\partial{y}}(x^{n-1}e^{-xy}\,dx)=
+(-1)^n\int_0^{+\infty}x^ne^{-xy}\,dx$$
+С другой стороны $F(y)=\frac1{y}$, следовательно, $\displaystyle{F}^{(n)}(y)=\frac{(-1)^nn!}{y^{n+1}}$, то есть для любого $y>0$
+$\displaystyle\int_0^{+\infty}x^ne^{-xy}\,dx=\frac{n!}{y^{n+1}}$. В частности при $y=1$ $\displaystyle\int_0^{+\infty}x^ne^{-x}\,dx=n!$
+
+<br><br>
+<p id=Example13.2.8><b>Пример 13.2.8: Интеграл Дирихле:</b><br>
+Интеграл $I=\displaystyle\int_0^{+\infty}\frac{\sin{x}}{x}\,dx$ сходится по <a href="./math_analysis8.5.3.html#Statement8.5.3">признаку Дирихле</a>. Докажем введением 
+параметра, что $I=\frac{\pi}{2}$. Рассмотрим интеграл 
+$\displaystyle{F}(y):=\int_0^{+\infty}f(x,y)\,dx:=\int_0^{+\infty}e^{-xy}\frac{\sin{x}}{x}\,dx$. Обозначим 
+$D:=[0,+\infty)\times[0,+\infty)$, тогда
+<ol>
+<li>$f(x,y)\in{C}(D)$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)=-\sin{x}e^{-xy}\in{C}(D)$,</li>
+<li>
+аналогично предыдущему примеру показывается, что для любого $y_0>0$ интеграл $\int_0^{+\infty}\frac{\partial{f}}{\partial{y}}(x,y)\,dx$ сходится 
+равномерно по $y\in[y_0,+\infty)$,
+</li>
+<li>поточечная сходимость интеграла $\int_0^{+\infty}f(x,y)\,dx$ для любого $y>0$ следует из признака Дирихле.</li>
+</ol>
+Таким образом, можем применить для интеграла $\int_0^{+\infty}f(x,y)\,dx$ <a href="#Corollary13.2.1">следствие 13.2.1</a>, то есть продифференцировать
+под знаком интеграла по $y$. Тогда для любого $y>0$
+$$F'(y)=-\int_0^{+\infty}\sin{x}e^{-xy}\,dx=\frac1{y}\int_0^{+\infty}\sin{x}\,d(e^{-xy})=
+\frac1{y}(\sin{x}e^{-xy})|_0^{+\infty}-\frac1{y}\int_0^{+\infty}\cos{x}e^{-xy}\,dx=
+-\frac1{y^2}(\cos{x}e^{-xy})|0^{+\infty}+\frac1{y^2}\int_0^{+\infty}\sin{x}e^{-xy}\,dx=-\frac1{y^2}-\frac1{y^2}F'(y)\Rightarrow$$
+$$\Rightarrow{F}'(y)=-\frac1{y^2+1}\Rightarrow{F}(y)=\int{F}'(y)\,dy=-\int\frac{dy}{y^2+1}=-\arctg{y}+C\qquad(8)$$
+Для нахождения константы $C$ рассмотрим функцию $F(y)$ при $y\to0$. Покажем, что существует предел $\lim_{y\to+\infty}F(y)=0$.<br>
+Фиксируем $\varepsilon>0$. Функция $\frac{\sin{x}}{x}$, доопределенная единицей в точке 0, непрерывна на отрезке $[0,1]$, следовательно, она достигает на
+отрезке $[0,1]$ максимума и минимума, то есть ограничена на нем. Тогда
+$$\exists{M}>0\colon\forall{x}\in[0,1]\left(0<\frac{\sin{x}}{x}\leq{M}\right)\Rightarrow
+\forall\delta\in(0,1)\left(0<\int_0^{\delta}\frac{\sin{x}}{x}\,dx\leq{M}\delta\right)\Rightarrow
+\exists\delta\in(0,1)\colon\int_0^{\delta}\frac{\sin{x}}{x}\,dx<\frac{\varepsilon}{2}\Rightarrow$$
+$$\Rightarrow\exists\delta>0\colon\forall{y}>0
+\left(\left|\int_0^{\delta}\frac{\sin{x}}{x}e^{-xy}\,dx\right|\leq\int_0^{\delta}\frac{\sin{x}}{x}\,dx<\frac{\varepsilon}{2}\right)\quad(10)$$
+$$\left|\int_{\delta}^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx\right|\leq\int_{\delta}^{+\infty}\frac{|\sin{x}|}{x}e^{-xy}\,dx\leq
+\frac1{\delta}\int_{\delta}^{+\infty}e^{-xy}\,dx=\frac1{\delta}\left(\left.-\frac{e^{-xy}}{y}\right|_{\delta}^{+\infty}\right)=
+\frac1{\delta}\frac{e^{-\delta{y}}}{y}$$
+$$\lim_{y\to\infty}\frac{e^{-\delta{y}}}{\delta{y}}=0\Rightarrow
+\exists{y}_0=y_0(\epsilon,\delta)\colon\forall{y}>y_0\left(\frac{e^{-\delta{y}}}{\delta{y}}<\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{y}>y_0\left(\left|\int_{\delta}^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx\right|<\frac{\varepsilon}{2}\right)\Rightarrow^{(10)}$$
+$$\Rightarrow\forall\varepsilon>0\,\exists{y}_0>0\colon\forall{y}>{y}_0\left(|F(y)|=\left|\int_0^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx\right|<
+\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)\Rightarrow\lim_{y\to\infty}F(y)=0\Rightarrow^{(8)}C=\lim_{y\to+\infty}{\arctg{y}}=
+\frac{\pi}{2}\Rightarrow\int_0^{+\infty}\frac{\sin{x}}{x}\,dx=F(0)=\frac{\pi}{2}-\arctg{0}=\frac{\pi}{2}.$$ 
+
+<br><br>
+<a href="./math_analysis13.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.3.html">next</a>
+</body>
+</html>

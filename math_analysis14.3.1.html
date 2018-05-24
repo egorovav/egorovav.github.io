@@ -1,0 +1,209 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.2.html">next</a>
+
+$\newcommand{\diam}{\operatorname{diam}}$
+
+<h4 id=14.3>14.3 Кратный интеграл Римана по множеству.</h4>
+
+<h5 id=14.3.1>14.3.1 Кратный интеграл Римана по $n$-мерному промежутку.</h5>
+
+<p>Введем некоторые обозначения:<br>
+$I:=[a,b]:=[a_1,b_1]\times\cdots\times[a_n,b_n]\subset\mathbb{R}^n$; $\mu(I):=\prod_{k=1}^n(b_k-a_k)$;<br>
+функция $f(x)=f(x_1,\ldots,x_n)\colon{I}\to\mathbb{R}$ ограничена на $I$;<br>
+для каждого $k\in\overline{1,n}$ разобьем отрезок $[a_k,b_k]$ на $s_k$ отрезков, через каждую точку деления проведем гиперплоскость перпендикулярную
+прямой содержащей отрезок $[a_k,b_k]$, получим некоторое разбиение параллелепипеда $I$: $P:=\{I_1,\ldots,I_N\}$, где $N=s_1\cdots{s}_n$;<br>
+$\displaystyle\lambda(P):=\diam{P}:=\sup_{i\in\overline{1,N}}{(\diam{I}_i)}$;<br>
+для каждого $i\in\overline{1,N}$ зафиксируем точку $\xi_i\in{I}_i$, совокупность $\xi=(\xi_1,\ldots,\xi_N)$ будем называть помеченными точками разбиения $P$;
+<br>
+$(P,\xi)$ - разбиение параллелепипеда $I$ с помеченными точками;<br>
+разбиение $P'$ параллелепипеда $I$ будем называть продолжением разбиения $P$, если для любого $k\in\overline{1,n}$ множество точек разбивающих отрезок
+$[a_k,b_k]$ для разбиения $P$ есть подмножество точек разбивающих отрезок $[a_k,b_k]$ для разбиения $P'$, обозначается $P\prec{P}'$;<br>
+выражение 
+$$\sigma(f,P,\xi):=\sum_{(P)}(f(\xi_k)\mu(I_k)):=\sum_{k=1}^N(f(\xi_k)\mu(I_k))$$
+будем называть интегральной суммой Римана отвечающей разбиению с помеченными точками $(P,\xi)$ для функции $f(x)$;<br>
+$\displaystyle\forall{k}\in\overline{1,N}\left(m_k:=\inf_{x\in{I}_k}{f(x)},M_k:=\sup_{x\in{I}_k}{f(x)}\right)$;<br>
+выражения 
+$$s(P,f):=\sum_{(P)}(m_k\mu(I_k)):=\sum_{k=1}^N(m_k\mu(I_k)),\quad{S}(P,f):=\sum_{(P)}(M_k\mu(I_k)):=\sum_{k=1}^N(M_k\mu(I_k))$$
+будем называть соответственно нижней и верхней суммой Дарбу отвечающей разбиению $P$ для функции $f(x)$;<br>
+выражения $\underline{\mathcal{J}}(f,I):=\sup_{(P)}{s(f,P)}$, $\overline{\mathcal{J}}(f,I):=\inf_{(P)}{S(f,P)}$ будем называть соответственно нижним и
+верхним интегралом Римана от функции $f(x)$ по $n$-мерному промежутку $I$. Где верхняя и нижняя грань берутся по всем возможным разбиениям $n$-мерного 
+промежутка $I$, каждое из которых задается $n$ разбиениями отрезков $[a_k,b_k]$.
+<br><br>
+
+<p id=Definition14.3.1><b>Определение 14.3.1:</b> Пусть $I$ $n$-мерный числовой промежуток, тогда говорят, что функция $f(x)\colon{I}\to\mathbb{R}$
+интегрируема по Риману на $I$, если существует $A\in\mathbb{R}$ такое, что
+$$\forall\varepsilon>0\,\exists\delta>0\colon\forall(P,\xi)(\diam{P}<\delta\Rightarrow|\sigma(f,P,\xi)-A|<\varepsilon).$$
+При этом считают, что значение интеграла Римана от функции $f(x)$ по промежутку $I$ равно $A$.<br>
+Обозначают 
+$$A=\lim_{\lambda(P)\to0}{\sigma(f,P,\xi)}:=\int_If(x)\,dx:=\int_If(x_1,\ldots,x_n)\,dx_1\ldots{d}x_n:=\iint\cdots\int_If(x_1,\ldots,x_n)\,dx_1\ldots{d}x_n$$
+<br><br>
+<p id=Statement14.3.1><b>Утверждение 14.3.1: Свойства сумм Дарбу.</b>
+<ol>
+<li>
+$s(f,P)=\inf_{\xi}{\sigma(f,P,\xi)}$,<br>
+$S(f,P)=\sup_{\xi}{\sigma(f,P,\xi)}$,
+</li>
+<li>$\forall{\xi}(s(f,P)\leq\sigma(f,P,\xi)\leq{S}(f,P))$,</li>
+<li>$P'\prec{P}\Rightarrow(s(f,P')\geq{s}(f,P)\wedge{S}(f,P')\leq{S}(f,P))$,</li>
+<li>$\forall{P}_1,P_2(s(f,P_1)\leq{S}(f,P_2))$,</li>
+<li>$\underline{\mathcal{J}}(f,I)\leq\overline{\mathcal{J}}(f,I)$,</li>
+<li>$\displaystyle\exists\lim_{\lambda(P)\to0}{\sigma(f,P,\xi)}=A\Rightarrow
+\forall\{(P_n,\xi_n)\}\left(\exists\lim_{n\to\infty}{\lambda(P_n)}=0\Rightarrow\exists\lim_{n\to\infty}{\sigma(f,P_n,\xi_n)}=A\right)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<i>
+Доказательство аналогично доказательству соответствующих утверждений для случая $n=1$ 
+<ol>
+<li>п. 2 <a href="./math_analysis8.2.html#Statement8.2.1">утверждения 8.2.1</a></li>
+<li>п. 1 <a href="./math_analysis8.2.html#Statement8.2.1">утверждения 8.2.1</a></li>
+<li>п. 1 <a href="./math_analysis8.2.html#Statement8.2.2">утверждения 8.2.2</a></li>
+<li>п. 2 <a href="./math_analysis8.2.html#Statement8.2.2">утверждения 8.2.2</a></li>
+<li>п. 3 <a href="./math_analysis8.2.html#Statement8.2.2">утверждения 8.2.2</a></li>
+<li>доказательство аналогичного утверждения для случая $n=1$ приведено при доказательстве п. 1 
+<a href="./math_analysis8.3.html#Theorem8.3.1">теоремы 8.3.1</a>.</li>
+</ol>
+</i>
+<br><br>
+<p id=Theorem14.3.1><b>Теорема 14.3.1: Критерий Дарбу интегрируемости по Риману.</b><br>
+Пусть $I$ $n$-мерный числовой промежуток, $f(x)\colon{I}\to\mathbb{R}$, тогда функция $f(x)$ интегрируема по Риману на $I$ тогда и только тогда, когда
+функция $f(x)$ ограничена и $\underline{\mathcal{J}}(f,I)=\overline{\mathcal{J}}(f,I)$.<br>
+Или тогда и только тогда, когда 
+$$\forall\varepsilon>0\,\exists{P}\colon{S}(f,P)-s(f,P)<\varepsilon.$$
+<p><b>Доказательство:</b><i>Зорич т. 2, стр. 139.</i>
+<br><br>
+<p id=Task14.3.1><b>Задача 14.3.1:</b> Доказать, что если $I$ компактный числовой промежуток (замкнутый параллелепипед) и функция 
+$f(x)\colon{I}\to\mathbb{R}$ непрерывна на $I$, то $f(x)$ интегрируема на $I$.
+<p><b>Решение:</b>
+<i>
+Фиксируем $\varepsilon>0$. Функция непрерывна на компакте, следовательно, она равномерно непрерывна на нем, тогда
+$$\exists\delta>0\colon\forall{x}',x''\in{I}\left(\rho(x',x'')<\delta\Rightarrow|f(x')-f(x'')|<\frac{\varepsilon}{2\mu(I)}\right).$$
+Следовательно,
+$$\lambda(P)<\delta\Rightarrow{S}(f,P)-s(f,P)=\sum_{(P)}((M_k-m_k)\mu(I_k))\leq\sum_{(P)}\left(\frac{\varepsilon}{2\mu(I)}\mu(I_k)\right)=
+\frac{\varepsilon}{2\mu(I)}\sum_{(P)}\mu(I_k)=\frac{\varepsilon}{2\mu(I)}\mu(I)<\varepsilon.$$
+</i>
+<br><br>
+<p id=Definition14.3.2><b>Определение 14.3.2:</b> Пусть $A\subset\mathbb{R}^n$, $\mathcal{P}$ - некоторое свойство точек из $\mathbb{R}^n$,
+$A_0:=\{x\in{A}\mid\neg\mathcal{P}(x)\}$, тогда говорят, что свойство $\mathcal{P}$ выполняется почти всюду на множестве $A$, если 
+$\mu^*(A)=0$.<br>
+Обозначают: $\mathring{\forall}x\in{A}(\mathcal{P})$.
+<br><br>
+<p id=Theorem14.3.2><b>Теорема 14.3.2: Критерий Лебега интегрируемости по Риману.</b><br>
+Пусть $I$ $n$-мерный промежуток, $f(x)\colon{I}\to\mathbb{R}$, тогда $f(x)$ интегрируема по Риману на $I$ тогда и только тогда, когда функция $f(x)$
+ограничена на $I$ и непрерывна почти всюду на $I$.
+<p><b>Доказательство:</b><i>Зорич т. 2, стр. 135.</i>
+
+<h5 id=14.3.2>14.3.2 Кратный интеграл Римана по множеству измеримому по Жордану.</h5>
+
+<p>Далее везде в разделе 14.3 рассматривается функция $f(x)\colon{A}\to\mathbb{R}$, где $A\in{G}(m,H)$, 
+$H=\{[a,b)=[a_1,b_1)\times\cdots\times[a_n,b_n)\mid\forall{k}\in\overline{1,n}(a_k,b_k\in\mathbb{R},a_k<{b}_k)\}$ - полукольцо $n$-мерных полуоткрытых
+параллелепипедов, $m([a,b)):=\prod_{k=1}^n(b_k-a_k)$. Мера Жордана множества $A\in{G}(m,H)$ обозначается $\overline{\mu}(A)$. Продолжение меры $m$ с $H$
+на $R(H)$ обозначается $R(H)$.
+<br><br>
+<p id=Definition14.3.3><b>Определение 14.3.3:</b> Пусть $A\subset\mathbb{R}^n$, тогда характеристической функцией множества $A$ называется функция 
+$\chi_A(x)\colon\mathbb{R}^n\to\mathbb{R}$ такая, что $\chi_A(x)=\begin{cases}1,x\in{A}\\0,x\notin{A}\end{cases}$.
+<br><br>
+<p id=Statement14.3.2><b>Утверждение 14.3.2: О точках разрыва функции $\chi_A$.</b>
+<ol>
+<li>Если $x_0\in{i}ntA$, то функция $\chi_A(x)$ непрерывна в точке $x_0$.</li>
+<li>Если $A\in{G}(m,H)$, то функция $\chi_A(x)$ непрерывна почти всюду на $\mathbb{R}^n$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Если $x_0\in{i}ntA$, то существует некоторая окрестность $U(x_0)\subset{A}$ такая, что для любого $x\in{U}(x_0)$ $\chi_A(x)=\chi_A(x_0)=1$. Таким образом
+$\displaystyle\lim_{x\to{x}_0}\chi_A(x)=\chi_A(x_0)$, то есть функция $\chi_A(x)$ непрерывна в точке $x_0$. 
+</li>
+<li>
+Аналогично пункту 1 показывается, что если $x_0\in{i}nt\bar{A}$, то функция $\chi_A(x)$ непрерывна в точке $x_0$. Следовательно, множество точек разрыва
+функции $\chi_A(x)$ есть подмножество множества $\partial{A}$, а по <a href="./math_analysis14.2.3.html#Theorem14.2.7">теореме 14.2.7</a> 
+$\mu^*(\partial{A})=0$.
+</li>
+</ol>
+<br><br>
+<p id=Definition14.3.4><b>Определение 14.3.4:</b> Пусть $A\in{G}(m,H)$, $f(x)\colon{A}\to\mathbb{R}$, существует $n$-мерный промежуток $I$ такой, что 
+$A\subset{I}$, функция $f_{\chi_A}(x)\colon{I}\to\mathbb{R}$ такая, что $f_{\chi_A}(x)=\begin{cases}f(x)&,x\in{A}\\0&,x\notin{A}\end{cases}$, тогда говорят,
+что функция $f(x)$ интегрируема по Риману на $A$, если существует интеграл $\int_If_{\chi_A}(x)\,dx$. При этом считают, что 
+$\int_Af(x)\,dx:=\int_If_{\chi_A}(x)\,dx$.<br>
+<br>
+Употребляется так же обозначение $\int_If(x)\chi_A(x)\,dx\sim\int_If_{\chi_A}(x)\,dx$, при этом считается, что функция $f(x)$ доопределена на множестве 
+$I\backslash{A}$ каким-либо произвольным образом так как значение интеграла не будет зависеть от способа доопределения.<br> 
+Класс функций интегрируемых по Риману на измеримом по Жордану множестве $A$ будем обозначать $\mathcal{R}$.<br>
+<br><br>
+Корректность определения 14.3.4 упирается в положительное решение вопроса о том, что факт существования и значение интеграла $\int_If(x)\chi_A(x)\,dx$ 
+не зависит от выбора промежутка $I$ покрывающего множество $A$.
+<br><br>
+<p id=Statement14.3.3><b>Утверждение 14.3.3:</b> Пусть $A\in{G}(m,H)$, $f(x)\colon{A}\to\mathbb{R}$, $I_1$, $I_2$ $n$-мерные числовые промежутки такие, что
+$A\subset{I}_1$, $A\subset{I}_2$. Тогда интеграл Римана от функции $f_{\chi_A}(x)$ по промежутку $I_1$ существует тогда и только тогда, когда существует
+интеграл Римана от функции $f_{\chi_A}(x)$ по промежутку $I_2$ и в случае существования интегралов их численные значения равны.
+<p><b>Доказательство:</b> Положим $I:=I_1\cap{I}_2$, $B_0$ множество точек разрыва функции $f(x)$, $B_1$ множество точек разрыва функции 
+$f(x)\chi_A(x)$. Тогда $B_1\subset{B}_0\cup\partial{A}$, с другой стороны, очевидно, что $B_0\subset{B}_1$, следовательно, $\mu^*(B_1)=\mu^*(B_0)$.
+То есть значение $\mu^*(B_1)$ не зависит от выбора промежутка интегрирования.<br>
+С другой стороны функция $f(x)\chi_A(x)$ ограничена на $I_1$ тогда и только тогда, когда она ограничена на $I$ так как для любого 
+$x\in{I}_1\backslash{I}$ $f(x)\chi_A(x)=0$. Следовательно, по <a href="#Theorem14.3.2">критерию Лебега интегрируемости по Риману</a>:
+$$\exists\int_{I_1}f(x)\chi_A(x)\,dx\Leftrightarrow\exists\int_If(x)\chi_A(x)\,dx\Leftrightarrow\exists\int_{I_2}f(x)\chi_A(x)\,dx.$$
+Покажем, что в случае существования численные значения интегралов $\int_{I_1}f(x)\chi_A(x)\,dx$ и $\int_{I_2}f(x)\chi_A(x)\,dx$ совпадают. Как было
+показано выше из существования интеграла $\int_{I_1}f(x)\chi_A(x)\,dx$ следует существование интеграла $A:=\int_If(x)\chi_A(x)\,dx$. Фиксируем
+последовательность разбиений с помеченными точками $\{(P_n,\xi_n)\}$ промежутка $I$ такую, что $\lim_{n\to\infty}\lambda(P_n)=0$. Легко видеть, что для 
+любого $n\in\mathbb{N}$ разбиение $(P_n,\xi_n)$ может быть продолжено до разбиения $(P'_n,\xi'_n)$ промежутка $I_1$ так, что $\lambda(P'_n)=\lambda(P_n)$.
+При этом не зависимо от выбора помеченных точек если $\xi'_k\in{I}_1\backslash{I}\subset{I_1}\backslash{A}$, то $f_{\chi_A}(\xi'_k)=0$, следовательно, 
+для любого $n\in\mathbb{N}$
+$$\sigma(f_{\chi_A},P'_n,\xi'_n)=\sum_{(P'_n)}\left(f_{\chi_A}(\xi'_k)\mu(I'_k)\right)=\sum_{(P_n)}\left(f_{\chi_A}(\xi_k)\mu(I_k)\right)=
+\sigma(f_{\chi_A},P_n,\xi_n).$$
+Тогда по пункту б <a href="#Statement14.3.1">утверждения 14.3.1</a>
+$$\lim_{n\to\infty}\lambda(P_n)=0\Rightarrow\lim_{n\to\infty}\lambda(P'_n)=0\Rightarrow\int_{I_1}f_{\chi_A}(x)\,dx=
+\lim_{n\to\infty}\sigma(f_{\chi_A},P'_n,\xi'_n)=\lim_{n\to\infty}\sigma(f_{\chi_A},P_n,\xi_n)=A.$$
+<br><br>
+<p id=Statement14.3.4><b>Утверждение 14.3.4: Критерий Лебега интегрируемости на $A\in{G}(m,H)$.</b><br>
+Функция $f(x)$ интегрируема по Риману на множестве $A\in{G}(m,H)$ тогда и только тогда, когда функция $f(x)$ ограничена на $A$ и непрерывна почти всюду на 
+$A$.
+<p><b>Доказательство:</b> Сведем утверждение к критерию Лебега интегрируемости на числовом промежутке.<br>
+$\Rightarrow)$<br>
+Если $f(x)\in\mathcal{R}(A)$, то существует числовой промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}$ и функция $f_{\chi_A}(x)$ интегрируема на 
+$I$.
+Тогда по <a href="#Theorem14.3.2">критерию Лебега</a> интегрируемости на промежутке функция $f_{\chi_A}(x)$ ограничена на $I$, и так как для любого $x\in{A}$
+$f(x)=f_{\chi_A}(x)$, то $f(x)$ ограничена на $A$.<br>
+Так же из критерия Лебега следует, что функция $f_{\chi_A}(x)$ непрерывна почти всюду на $I$, следовательно, она непрерывна почти всюду на $A$, 
+следовательно, он непрерывна почти во всех внутренних точках $A$, следовательно, функция $f(x)$ также непрерывна почти во всех внутренних точках $A$,
+и так как $A\subset{i}ntA\cup\partial{A}$ и $\mu^*(\partial{A})=0$, то $f(x)$ непрерывна почти всюду на $A$.
+$\Leftarrow)$<br>
+Так как $A\in{G}(m,H)$, то $A$ ограничено, следовательно, существует числовой промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}$. Функция $f(x)$
+ограничена на $A$, следовательно, функция $f_{\chi_A}(x)$ ограничена на $I$. Функция $f(x)$ непрерывна почти всюду на $A$, следовательно, функция 
+$f_{\chi_A}(x)$ непрерывана почти всюду на $I\backslash\partial{A}$, и так как $\mu^*(\partial{A})=0$, то функция $f_{\chi_A}(x)$ непрерывна почти
+всюду на $I$. Таким образом по критерию Лебега интегрируемости по промежутку существует интеграл $\int_If_{\chi_A}(x)\,dx$, следовательно, по 
+<a href="#Definition14.3.4">определению</a> интегрируемости существует интеграл $\int_Af(x)\,dx$.
+<br><br>
+<p id=Task14.3.2><b>Задача 14.3.2:</b> Доказать, что если $f(x)\in\mathcal{R}(A)$ и $f(x)=0$ почти всюду на $A$, то $\int_Af(x)\,dx=0$.<br>
+<p><b>Решение:</b>
+<i>
+Обозначим $B:=\{x\in{A}\mid{f}(x)\neq0\}$.<br>
+Так как $A\in{G}(m,H)$, то оно ограничено, следовательно, существует числовой промежуток $I$ такой, что $A\subset{I}$. Для любого разбиения $P$ 
+промежутка $I$ существует набор помеченных точек $\{\xi_1,\ldots,\xi_N\}$ такой, что для любого $k\in\overline{1,N}$ либо $f(\xi_k)=0$, либо 
+$\chi_A(\xi_k)=0$. Действительно, если $I_k\subset{A}$, то найдется точка $\xi_k\in{I}_k$ такая, что $f(\xi_k)=0$. Иначе $\mu(B)$ не равнялось бы нулю,
+так как $\mu(I_k)>0$. Если же $I_k\backslash{A}\neq\varnothing$, то для любого $\xi_k\in{I}_k\backslash{A}$ $\chi_A(\xi_k)=0$. Таким образом, для любого
+разбиения $P$ промежутка $I$ существует набор помеченных точек $\{\xi_1,\ldots,\xi_N\}$ такой, что для любого $k\in\overline{1,N}$ 
+$f_{\chi_A}(\xi_k):=f(\xi_k)\chi_A(\xi_k)=0$.
+Тогда так как $f(x)\in\mathcal{R}(A)$ по <a href="#Theorem14.3.1">теореме 14.3.1</a>, <a href="#Statement14.3.1">утверждению 14.3.1</a>
+$$\int_Af(x)\,dx=\int_If_{\chi_A}(x)\,dx=\underline{\mathcal{J}}(f_{\chi_A},I)=\sup_{(P)}\left(\inf_{\xi}{\sigma(f_{\chi_A},P,\xi)}\right)=
+\sup_{(P)}\left(\inf_{\xi}{\sum_{(P)}(f_{\chi_A}(\xi_k)\mu(I_k))}\right)=\sup_{(P)}0=0$$
+</i>
+
+ 
+
+<br><br>
+<a href="./math_analysis14.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.2.html">next</a>
+</body>
+</html>

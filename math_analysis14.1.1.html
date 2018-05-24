@@ -1,0 +1,344 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 14.1.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.1.2.html">next</a>
+<h3><i>2 курс. 2 семестр.</i></h3>
+
+<h3 id=14>14. КРАТНЫЕ ИНТЕГРАЛЫ.</h3>
+<h4 id=14.1> 14.1 Классы множеств и функции множеств.</h4>
+<h5 id=14.1.1> 14.1.1 Кольца и алгебры множеств.</h5>
+
+<p>Введем обозначение. Пусть $S=\{A_{\alpha}\mid\alpha\in{I}\}$ класс множеств такой, что 
+$$\forall\alpha_1,\alpha_2\in{I}(\alpha_1\neq\alpha_2\Rightarrow{A}_{\alpha_1}\cap{A}_{\alpha_2}\neq\varnothing).$$
+тогда говорят, что класс $S$ дизъюнктивный.<br>
+Объединение множеств, входящих в дизъюнктивный класс, обозначают как $\bigsqcup_{\alpha\in{I}}A_{\alpha}$. Равенство $A=\bigsqcup_{\alpha\in{A}}A_{\alpha}$
+задает разложение множества $A$ в дизъюнктивное объединение (объединение не пересекающихся множеств).
+<br><br>
+
+<p id=Definition14.1.1><b>Определение 14.1.1:</b> Пусть $K$ - не пустой класс множеств, тогда будем говорить, что $K$ - кольцо множеств, если
+<ol>
+<li>$\forall{A},B\in{K}(A\cup{B}\in{K})$,</li>
+<li>$\forall{A},B\in{K}(A\backslash{B}\in{K})$.</li>
+</ol>
+
+<br><br>
+<p>Таким образом кольцо множеств - это класс множеств замкнутый относительно объединения и разности.
+<br><br>
+<p id=Definition14.1.2><b>Определение 14.1.2:</b> Пусть $M:=\{A_{\alpha}\mid\alpha\in{I}\}$ непустой класс множеств. Тогда множество 
+$E:=\bigcup_{\alpha\in{I}}A_{\alpha}=\bigcup_{A\in{M}}A$ называется единицей класса $M$.
+
+<br><br>
+<p>Вообще говоря класс множеств может не содержать свою единицу. Даже замкнутость относительно объединения не гарантирует этого если класс бесконечен.
+<br><br>
+<p id=Definition14.1.3><b>Определение 14.1.3:</b> Класс множеств $M$ называют алгеброй множеств, если 
+<ol>
+<li>$M$ - <a href="#Definition14.1.1">кольцо множеств</a>,</li>
+<li>$M$ содержит свою единицу.</li>
+</ol>
+<br><br>
+<p>Таким образом алгебра множеств - это кольцо множеств с единицей.
+<br><br>
+<p id=Example14.1.1><b>Пример 14.1.1:</b>
+<ol>
+<li>
+Класс множеств $K:=\{\varnothing\}$ состоящий из одного пустого множества является алгеброй множеств, так как он, очевидно замкнут относительно объединения
+и разности и содержит свою единицу $E:=\bigcup_{A\in{K}}A=\varnothing$. 
+</li>
+<li>
+Для любого множества $M$ класс множеств $K:=\{M,\varnothing\}$ является алгеброй множеств, так как $M\backslash\varnothing=M\cup\varnothing=M\in{K}$, 
+$\varnothing\backslash{M}=\varnothing\in{K}$ и $E:=\bigcup_{A\in{K}}A=M\cup\varnothing=M\in{K}$.
+</li>
+<li>
+Класс множеств $K:=\mathcal{P}(M)$ состоящий из всех подмножеств некоторого множества $M$ является алгеброй множеств, так как он, очевидно, замкнут
+относительно пересечения и разности и $E:=\bigcup_{A\in\mathcal{P}(M)}A=M\in\mathcal{P}(M)$.
+</li>
+<li>
+Класс множеств $K$ состоящий из всех конечных подмножеств некоторого множества $M$ является алгеброй множеств если множество $M$ конечно, и не является 
+алгеброй множеств если $M$ бесконечно. В первом случае $K=\mathcal{P}(M)$ - алгебра множеств, во втором случае единица класса $K$ 
+$E=\bigcup_{A\in{M}}A\supset\bigcup_{a\in{M}}\{a\}=M$ является бесконечным множество, следовательно, $E\notin{K}$.
+</li>
+<li>
+Класс множеств $K$ состоящий из всех не более чем счетных подмножеств некоторого множества $M$ является алгеброй, если множество $M$ не более чем
+счетно, и не является алгеброй, если $M$ не счетно. Показывается аналогично предыдущему пункту. 
+</li>
+<li>
+Класс всех ограниченных подмножеств $\mathbb{R}^n$ является кольцом множеств, но алгеброй множеств не является, так как $E=\mathbb{R}^n\notin{K}$.
+</li>
+</ol>
+<br><br>
+<p id=Statement14.1.1><b>Утверждение 14.1.1: Свойства кольца множеств.</b><br>
+Если $K$ кольцо множеств, то 
+<ol>
+<li>$\varnothing\in{K}$,</li>
+<li>$\forall{A},B\in{K}(A\cap{B}\in{K}\wedge{A}\Delta{B}\in{K})$,</li>
+<li>$\forall{n}\in\mathbb{N}(\forall{i}\in\overline{1,n}(A_i\in{K})\Rightarrow\left(\bigcup_{i=1}^nA_i\in{K}\wedge\bigcap_{i=1}^nA_i\in{K}\right))$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>$K\neq\varnothing\Rightarrow\exists{A}\in{K}\Rightarrow\varnothing=A\backslash{A}\in{K}$.</li>
+<li>$A,B\in{K}\Rightarrow(A\cap{B}=A\backslash(A\backslash{B})\in{K}\wedge{A}\Delta{B}=(A\backslash{B})\sqcup(B\backslash{A})\in{K})$.</li>
+<li>
+Докажем индукцией по $n$. Пусть утверждение верно при $n=k$, то есть 
+$$\forall{i}\in\overline{1,k}(A_i\in{K})\Rightarrow\left(\bigcup_{i=1}^kA_i\in{K}\wedge\bigcap_{i=1}^kA_i\in{K}\right).$$
+Тогда по <a href="#Definition14.1.1">определению</a> кольца множеств и пункту 2 утверждения 
+$$\forall{A}_{k+1}\in{K}\left(A_{k+1}\cup\bigcup_{i=1}^kA_i\in{K}\wedge{A}_{k+1}\cap\bigcap_{i=1}^kA_i\in{K}\right)\Rightarrow
+\left(\forall{i}\in\overline{1,k+1}(A_i\in{K})\Rightarrow\left(\bigcup_{i=1}^{k+1}A_i\in{K}\wedge\bigcap_{i=1}^{k+1}A_i\in{K}\right)\right).$$
+</li>
+</ol>
+<br><br>
+<p>Таким образом кольцо множеств замкнуто относительно операций $\cup$, $\cap$, $\backslash$. При определении кольца множеств за основу взята замкнутость
+относительно операций $\cup$, $\backslash$, потому что из замкнутости относительно операций $\cup$, $\cap$ не следует замкнутость относительно
+операции $\backslash$ и из замкнутости относительно операций $\cap$, $\backslash$ не следует замкнутость относительно операции $\cup$.
+
+<br><br>
+<p id="Example14.1.2"><b>Пример 14.1.2:</b>
+<ol>
+<li>
+Класс множеств $K:=\{\varnothing,[0,1],[2,3]\}$ замкнут относительно операций $\cap$, $\backslash$, но не замкнут относительно операции $\cup$, так как 
+$[0,1]\cup[2,3]\notin{K}$.
+</li>
+<li>
+Класс множеств $K:=\{\varnothing, [0,1], [0,2]\}$ замкнут относительно операций $\cup$, $\cap$, но не замкнут относительно операций $\backslash$, так как 
+$[0,2]\backslash[0,1]=(1,2]\notin{K}$.
+</li>
+</ol>
+<br><br>
+<p>Среди простейших свойств кольца множеств не случайно отсутствуют такие свойства как замкнутость относительно счетных объединений и пересечений. Далее
+будут даны усиления понятия кольца.
+<br><br>
+<p id=Statement14.1.2><b>Утверждение 14.1.2: Минимальное кольцо.</b><br>
+<ol>
+<li>Пусть для любого $\alpha\in{I}$ $K_{\alpha}$ - кольцо множеств, тогда $\bigcap_{\alpha\in{I}}K_{\alpha}$ - кольцо множеств.</li>
+<li>
+Для любого класса множеств $M$ существует кольцо множеств $K$ которое
+<ol type="i">
+<li>содержит все множества класса $M$,</li>
+<li>содержится в любом другом кольце обладающим свойством i.</li>
+</ol>
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$A,B\in\bigcap_{\alpha\in{I}}K_{\alpha}\Rightarrow\forall\alpha\in{I}(A\in{K}_{\alpha}\wedge{B}\in{K}_{\alpha})\Rightarrow
+\forall\alpha\in{I}(A\cup{B}\in{K}_{\alpha}\wedge{A}\backslash{B}\in{K}_{\alpha})\Rightarrow
+\left(A\cup{B}\in\bigcap_{\alpha\in{I}}K_{\alpha}\wedge{A}\backslash{B}\in\bigcap_{\alpha\in{I}}A_{\alpha}\right).$$
+</li>
+<li>
+Множество всех подмножеств <a href="#Definition14.1.2">единицы</a> $E:=\bigcup_{A\in{M}}$ класса $M$ является кольцом множеств. При этом 
+$M\subset\mathcal{P}(E)$. Таким образом совокупность колец множеств содержащих в себе класс множеств $M$ не пуста. Пересечение всех колец принадлежащих этой
+совокупности по пункту 1 будет кольцом и будет содержать в себе $M$. Таким образом это пересечение и есть искомое кольцо $K$. 
+</li>
+</ol>
+<br><br>
+<p>Утверждение 14.1.2 вводит в рассмотрение минимальное по включению кольцо множеств содержащее заданный класс множеств $M$. Это кольцо обозначают $R(M)$.
+<br><br>
+<p id=Definition14.1.4><b>Определение 14.1.4: Полукольцо.</b><br>
+Не пустой класс множеств $H$ называют полукольцом множеств, если для любых $A,B\in{H}$
+<ol>
+<li>$A\cap{B}\in{H}$,</li>
+<li>$\exists{n}=n(A,B)\in\mathbb{N}\,\exists\{A_i\in{H}\mid{i}\in\overline{1,n}\}\colon{A}\backslash{B}=\bigsqcup_{i=1}^nA_i$.</li>
+</ol>
+<br><br>
+<p>Таким образом класс множеств является полукольцом, если он замкнут относительно пересечения и разность любых двух множеств класса допускает конечное
+дизъюнктивное разложение в элементы этого класса.<br>
+Так как кольцо множеств замкнуто относительно разности и по <a href="#Statement14.1.1">утверждению 14.1.1</a> относительно пересечения, то любое кольцо 
+является полукольцом. Обратное не верно.
+<br><br>
+<p id=Example14.1.3><b>Пример 14.1.3:</b>
+<ol>
+<li>
+Множество $H:=\{[\alpha,\beta)\mid\alpha\in\mathbb{R},\beta\in\overline{\mathbb{R}},\alpha\leq\beta\}$ всех полуинтервалов действительной прямой является
+полукольцом, так как оно замкнуто относительно пересечения и разность любых двух полуинтервалов представима в виде дизъюнктивного объединения не более чем
+двух полуинтервалов. При этом множество $H$, очевидно, не является кольцом. 
+</li>
+<li>
+Пусть $a,b\in\mathbb{R}^m$. Обозначим $a\leq{b}$, если для любого $i\in\overline{1,m}$ $a_i\leq{b}_i$. Для любых $a\leq{b}$ положим
+$[a,b):=[a_1,b_1)\times\cdots\times[a_m,b_m)$ - $m$-мерный полуинтервал.<br>
+Множество всех $m$-мерных полуинтервалов из $\mathbb{R}^m$ является полукольцом, так как разность двух $m$-мерных полуинтервалов представима в виде
+дизъюнктивного объединения не более чем $2m$ $m$-мерных полуинтервалов.
+</li>
+</ol>
+<br><br>
+<p id=Task14.1.1><b>Задача 14.1.1:</b> Доказать, что разность двух 2-мерных полуинтервалов представима в виде дизъюнктивного объединения четырех 2-мерных
+полуинтервалов.
+<p><b>Решение:</b>
+<i>
+Пусть $(a_1,b_1),(a_2,b_2),(a'_1,b'_1),(a'_2,b'_2)\in\mathbb{R}^2$ такие, что $a_1\leq{b}_1$, $a_2\leq{b}_2$, $a'_1\leq{b}'_1$ $a'_2\leq{b}'_2$. Тогда 
+множества $I:=[a_1,b_1)\times[a_2,b_2)$, $I':=[a'_1,b'_1)\times[a'_2,b'_2)$ являются двумерными полуинтервалами. Рассмотрим только случай, когда 
+$I'\subset{I}$, так как случаи когда $I'\backslash{I}\neq\varnothing$ более просты.<br>
+Так как $I'\subset{I}$, то $a_1\leq{a}'_1\leq{b}'_1\leq{b}_2$ и $a_2\leq{a}'_2\leq{b}'_2\leq{b}_2$, тогда следующие множества 
+$I_1:=[a_1,a'_1)\times[a_2,b_2)$, $I_2:=[a'_1,b'_1)\times[a_2,a'_2)$, $I_3:=[a'_1,b'_1)\times[b'_2,b_2)$, $I_4:=[b'_1,b_1)\times[a_2,b_2)$ являются 
+двумерными полуинтервалами такими, что $I\backslash{I}'=\bigsqcup_{k=1}^4I_k$. Действительно, $I_1\cap{I}_2=I_1\cap{I}_3=I_1\cap{I}_4=\varnothing$ так как 
+$a_1\leq{a}'_1\leq{b}'_1$; $I_4\cap{I}_2=I_4\cap{I}_3=\varnothing$ так как $a'_1\leq{b}'_1\leq{b}_1$; $I_2\cap{I}_3=\varnothing$ так как $a'_2\leq{b}'_2$.
+Обозначим $M:=\bigsqcup_{k=1}^4I_k$, тогда
+$$\forall(x,y)\in{I}\backslash{I}'(a_1\leq{x}<{b}_1\wedge{a}_2\leq{y}<{b}_2\wedge(x<{a}'_1\vee{x}\geq{b}'_1\vee{y}<{a}'_2\vee{y}\geq{b}'_2))\Rightarrow$$
+$$\Rightarrow\forall(x,y)\in{I}\backslash{I}'((a_1\leq{x}<{b}_1\wedge{x}<{a}'_1\wedge{a}_2\leq{y}<{b}_2)\vee
+(a_1\leq{x}<{b}_1\wedge{x}\geq{b}'_1\wedge{a}_2\leq{y}<{b}_2)\vee(a'_1\leq{x}<{b}'_1\wedge{a}_2\leq{y}<{b}_2\wedge(y<{a}'_2\wedge{y}\geq{b}'_2)))\Rightarrow$$
+$$\Rightarrow\forall(x,y)\in{I}\backslash{I}'((a_1\leq{x}<{a}'_1\wedge{a}_2\leq{y}<{b}_2)\vee(b'_1\leq{x}<{b}_1\wedge{a}_2\leq{y}<{b}_2)\vee
+(a'_1\leq{x}<{b}'_1\wedge{a}_2\leq{y}<{a}'_2)\vee(a'_1\leq{x}<{b}'_1\wedge{b}'_2\leq{y}<{b}_2))\Rightarrow$$
+$$\Rightarrow\forall(x,y)\in{I}\backslash{I}'((x,y)\in{I}_1\sqcup{I}_4\sqcup{I}_2\sqcup{I}_3)\Rightarrow{I}\backslash{I}'\subset{M}.$$
+С другой стороны
+$$\forall(x,y)\in{M}(a_1\leq{x}<{b}_1\wedge{a}_2\leq{y}<{b}_2)\Rightarrow\forall(x,y)\in{M}((x,y)\in{I})$$
+и 
+$$\forall(x,y)\in{M}(x<{a}'_1\vee{x}<{a}'_2\vee{y}\geq{b}'_2\vee{y}\geq{b}'_1)\Rightarrow\forall(x,y)\in{M}((x,y)\notin{I}')\Rightarrow
+\forall(x,y)\in{M}((x,y)\in{I}\backslash{I}')\Rightarrow{M}\subset{I}\backslash{I}'\Rightarrow{M}=I\backslash{I}'.$$
+</i>
+<br><br>
+<p id=Statement14.1.3><b>Утверждение 14.1.3: Следствие из определения полукольца.</b><br>
+Пусть $H$ полукольцо множеств, тогда
+<ol>
+<li>$\varnothing\in{H}$</li>
+<li>$\forall{n}\in\mathbb{N}\left(\forall{i}\in\overline{1,n}(A_i\in{H})\Rightarrow\bigcap_{i=1}^nA_i\in{H}\right)$,</li>
+<li>Минимальным по включению кольцом множеств над классом $H$ будет множество $R(H):=\{\bigsqcup_{i=1}^nA_i\mid{n}\in\mathbb{N},A_i\in{H}\}$
+всевозможных конечных дизъюнктивных объединений элементов класса $H$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$H\neq\varnothing\Rightarrow\exists{A}\in{H}\Rightarrow
+\exists{n}\in\mathbb{N}\,\exists{A}_1,\ldots,{A}_n\in{H}\colon\varnothing=A\backslash{A}=\bigsqcup_{i=1}^nA_i\Rightarrow
+\forall{i}\in\overline{1,n}(A_i=\varnothing)\Rightarrow\varnothing\in{H}$.
+</li>
+<li>Доказывается индукцией по $n$ аналогично пункту 3 <a href="#Statement14.1.1">утверждения 14.1.1</a>.</li>
+<li>
+Пусть $A,B\in{R}(H)$, тогда
+$$\exists{n},m\in\mathbb{N}\,\exists{A}_1,\ldots,A_n,B_1,\ldots,B_m\in{H}\colon\left(A=\bigsqcup_{i=1}^nA_i\wedge{B}=\bigsqcup_{j=1}^mB_j\right).$$
+Применив обобщенное <a href="./math_analysis1.html#Statement1.2">правило Де Моргана</a> получим
+<ol type="i">
+<li>
+$$A\cap{B}=\bigcup_{i\in\overline{1,n},j\in\overline{1,m}}(A_i\cap{B}_j)=\bigcup_{i=1}^n\left(\bigcup_{j=1}^m(A_i\cap{B}_j)\right)=
+\bigsqcup_{i=1}^n\left(\bigsqcup_{j=1}^m(A_i\cap{B}_j)\right)\in{R}(H).$$
+Где последнее равенство в силу того, что для любых $i\neq{j}$ $A_i\cap{A}_j=\varnothing$ и $B_i\cap{B}_j=\varnothing$. Таким образом множество $R(H)$
+замкнуто относительно операции пересечения.
+</li>
+<li>
+$$A\backslash{B}=\left(\bigsqcup_{i=1}^nA_i\right)\backslash\left(\bigsqcup_{j=1}^mB_j\right)=
+\bigsqcup_{i=1}^n\left(\bigcap_{j=1}^m(A_i\backslash{B}_j)\right).$$
+Так как $A_i,B_j\in{H}$, то по определению полукольца $A_i\backslash{B}_j\in{R}(H)$. Тогда по подпункту 3i $\bigcap_{j=1}^m(A_i\backslash{B}_j)\in{R}(H)$, 
+следовательно, $A\backslash{B}\in{R}(H)$. Таким образом класс $R(H)$ замкнут относительно операции вычитания. 
+</li>
+<li>Так как по подпункту 3ii $A\backslash{B}\in{R}(H)$, то $A\cup{B}=(A\backslash{B})\sqcup{B}\in{R}(H)$.</li>
+</ol>
+<br>
+Таким образом класс $R(H)$ замкнут относительно операций объединения и разности, следовательно, $R(H)$ - кольцо множеств.<br>
+Остается заметить, что если $K$ любое другое кольцо множеств такое, что $H\subset{K}$, то поскольку $K$ кольцо, то оно замкнуто относительно операции
+объединения и в частности относительно операции конечного дизъюнктивного объединения. Следовательно, для любого $A\in{R}(H)$ верно $A\in{K}$, то есть 
+$R(H)\subset{K}$. Таким образом, класс множеств $R(H)$ минимальное по включению кольцо множеств над $H$.
+</li>
+</ol>
+<br><br>
+<p id=Example14.1.4><b>Пример 14.1.4:</b> Пусть $I$ некоторый числовой промежуток, тогда множество полуинтервалов 
+$H=\{[\alpha,\beta)\mid\alpha<\beta;\alpha,\beta\in{I}\}$ является полукольцом, а множество 
+$R(H)=\left\{\bigsqcup_{i=1}^n[\alpha_i,\beta_i)\mid{n}\in\mathbb{N},[\alpha_i,\beta_i)\in{H}\right\}$ минимальное по включению кольцо над $H$.
+<br>
+
+<h5 id=14.1.2>14.1.2 Борелевские кольца и алгебры, $\delta$-кольца.</h5>
+
+<p>В данном пункте будут предложены модели усиления структуры кольца.
+
+<p id=Definition14.1.5><b>Определение 14.1.5:</b> Класс множеств $K$ называется борелевским кольцом или $\sigma$-кольцом множеств, если
+<ol>
+<li>$K$ - кольцо множеств,</li>
+<li>$K$ - замкнуто относительно счетных объединений, то есть для любой последовательности $\{A_n\}$ из $K$ $\bigcup_{i=1}^{\infty}A_i\in{K}$.</li>
+</ol>
+<br><br>
+<p id=Definition14.1.6><b>Определение 14.1.6:</b> Если $\sigma$-кольцо множеств содержит свою <a href="#Definition14.1.2">единицу</a>, то оно называется
+$\sigma$-алгеброй множеств.
+<br><br>
+<p id=Statement14.1.4><b>Утверждение 14.1.4: Свойства $\sigma$-колец.</b><br>
+<ol>
+<li>$\sigma$ - кольцо замкнуто относительно счетных пересечений,</li>
+<li>пересечение любого семейства $\sigma$-колец есть $\sigma$-кольцо,</li>
+<li>для любого класса множеств $M$ существует минимальное $\sigma$-кольцо, содержащее $M$.</li>
+</ol> 
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Пусть класс множеств $K$ $\sigma$-кольцо, $\{A_n\}$ - последовательность из $K$, тогда
+$$A:=\bigcup_{n=1}^{\infty}A_n\in{K}\Rightarrow\bigcup_{n=1}^{\infty}(A\backslash{A}_n)\in{K}\Rightarrow
+\bigcap_{n=1}^{\infty}A_n=A\backslash\bigcup_{n=1}^{\infty}(A\backslash{A}_n)\in{K}.$$
+</li>
+<li>Доказывается аналогично пункту 1 <a href="#Statement14.1.2">утверждения 14.1.2</a>.</li>
+<li>Доказывается аналогично пункту 2 <a href="#Statement14.1.2">утверждения 14.1.2</a>.</li>
+</ol>
+<br><br>
+<p id=Definition14.1.7><b>Определение 14.1.7:</b> Класс множеств $K$ называют $\delta$-кольцом множеств, если
+<ol>
+<li>$K$ - кольцо множеств,</li>
+<li>$K$ - замкнуто относительно счетных пересечений, то есть для любой последовательности множеств $\{A_n\}$ из $K$ $\bigcap_{n=1}^{\infty}A_n\in{K}$.</li>
+</ol>
+Аналогично понятию $\sigma$-алгебры вводится понятие $\delta$-алгебры, как $\delta$-кольца содержащего свою <a href="#Definition14.1.2">единицу</a>.
+<br><br>
+<p id=Example14.1.5><b>Пример 14.1.5:</b> Из <a href="#Statement14.1.4">утверждения 14.1.4</a> следует, что любое $\sigma$-кольцо так же является и 
+$\delta$-кольцом. Обратное не верно. Например, множество всех конечных подмножеств бесконечного множества являются $\delta$-кольцом, но не являются 
+$\sigma$-кольцом. Так как, например, для любого счетного множества $M$ счетное объединение $\bigcup_{a\in{M}}\{a\}$ будет бесконечным.
+
+<br><br>
+<p id=Task14.1.2><b>Задача 14.1.2:</b> Доказать, что если класс множеств является $\delta$-алгеброй, то он так же является и $\sigma$-алгеброй.
+<p><b>Решение:</b>
+<i>
+Пусть класс множеств $K$ является $\delta$-алгеброй, следовательно, $E:=\bigcup_{A\in{K}}A\in{K}$. Фиксируем последовательность множеств $\{A_n\}$ из $K$,
+тогда так как для любого $n\in\mathbb{N}$ $A_n\subset{E}$, то
+$$\left(x\in\bigcup_{n=1}^{\infty}A_n\Leftrightarrow\exists{k}\in\mathbb{N}\colon{x}\in{A}_k\Leftrightarrow
+\exists{k}\in\mathbb{N}\colon{x}\notin{E}\backslash{A}_k\Leftrightarrow{x}\notin\bigcap_{n=1}^{\infty}(E\backslash{A}_n)\Leftrightarrow
+x\in{E}\backslash\bigcap_{n=1}^{\infty}(E\backslash{A}_n)\right)\Rightarrow\bigcup_{n=1}^{\infty}A_n=E\backslash\bigcap_{n=1}^{\infty}(E\backslash{A}_n).$$
+Последнее множество в свою очередь принадлежит $K$ так как $E\in{K}$ и $K$ замкнуто относительно разности и счетных пересечений.
+</i>
+<br><br>
+<p id=Definition14.1.8><b>Определение 14.1.8:</b> Пусть $n\in\mathbb{N}$. Обозначим класс всех 
+<a href="./math_analysis11.1.html#Definition11.1.4">замкнутых</a> в $\mathbb{R}^n$ множеств как $\mathcal{F}$; класс всех 
+<a href="./math_analysis11.1.html#Definition11.1.3">открытых</a> в $\mathbb{R}^n$
+множеств как $\mathcal{G}$. Тогда семейством борелевских множеств в $\mathbb{R}^n$ называется минимальное $\sigma$-кольцо над $\mathcal{F}$.<br>
+Семейство борелевских множеств обозначают как $\mathcal{B}$ или $R_{\sigma}(\mathcal{F})$.<br>
+Для любого класса множеств $M$ будем называть борелевским замыканием класса $M$ минимальное $\sigma$-кольцо над $M$ обозначаемое $R_{\sigma}(M)$.
+<br><br>
+<p id=Statement14.1.5><b>Утверждение 14.1.5:</b> $R_{\sigma}(\mathcal{F})=R_{\sigma}(\mathcal{G})$.
+<p><b>Доказательство:</b> Фиксируем множество $F$ замкнутое в $\mathbb{R}^n$, то есть $F\in\mathcal{F}$. Тогда множество $G:=\mathbb{R}^n\backslash{F}$ 
+открыто в $\mathbb{R}^n$, следовательно, $G\in\mathcal{G}\subset{R}_{\sigma}(\mathcal{G})$. Так как 
+$\mathbb{R}^n\in\mathcal{G}\subset{R}_{\sigma}(\mathcal{G})$ и класс $R_{\sigma}(\mathcal{G})$ замкнут относительно разности, то 
+$F=\mathbb{R}^n\backslash{G}\in{R}_{\sigma}(\mathcal{G})$, таким образом в силу произвольности выбора множества $F\in\mathcal{F}$ имеем 
+$\mathcal{F}\subset{R}_{\sigma}(\mathcal{G})$. Так как $R_{\sigma}(\mathcal{F})$ минимальное $\sigma$-кольцо содержащее класс $\mathcal{F}$, следовательно, 
+$R_{\sigma}(\mathcal{F})\subset{R}_{\sigma}(\mathcal{G})$.<br>
+Аналогично, фиксируя множество $G\in\mathcal{G}$, доказывается, что $R_{\sigma}(\mathcal{G})\subset{R}_{\sigma}(\mathcal{F})$. Здесь используется тот факт,
+что множество $\mathbb{R}^n$ является и замкнутым и открытым одновременно.
+<br><br>
+<p id=Task14.1.3><b>Задача 14.1.3:</b> Пусть $M_1:=\{[a,b]\mid{a},b\in\mathbb{Q}\}$, $M_2:=\{(a,b)\mid{a},b\in\mathbb{Q}\}$, 
+$M_3:=\{[a,b)\mid{a},b\in\mathbb{Q}\}$, $M_4:=\{[a,+\infty)\mid{a}\in\mathbb{Q}\}$. Доказать, что 
+$R_{\sigma}(M_1)=R_{\sigma}(M_2)=R_{\sigma}(M_3)=R_{\sigma}(M_4)=R_{\sigma}(\mathcal{F})$.
+<p><b>Решение:</b>
+<i>
+Любое открытое множество в $\mathbb{R}$ - это счетное объединение интервалов. Действительно, пусть $G$ открыто в $\mathbb{R}$, тогда для любого $x\in{G}$
+существует интервал $(a,b)\subset{G}$ такой, что $x\in(a,b)$. Поскольку $a<{x}<{b}$, то по 
+<a href="./math_analysis3.3.html#Corollary3.3.2">принципу Архимеда</a> существуют $a',b'\in\mathbb{Q}$ такие, что $(a',b')\subset{G}$ и $x\in(a',b')$.
+Таким образом для любого $x\in{G}$ существует интервал с рациональными концами содержащий точку $x$ и содержащийся в $G$, следовательно, объединение 
+этих интервалов будет равно $G$. Поскольку множество $\mathbb{Q}$ счетно, то это объединение будет не более чем счетно. Таким образом 
+$\mathcal{G}\subset{R}_{\sigma}(M_2)$, следовательно, $R_{\sigma}(\mathcal{G})\subset{R}_{\sigma}(M_2)$. С другой стороны $M_2\subset{\mathcal{G}}$,
+следовательно, $R_{\sigma}(M_2)\subset{R}_{\sigma}(\mathcal{G})$, то есть $R_{\sigma}(M_2)=R_{\sigma}(\mathcal{G})=R_{\sigma}(\mathcal{F})$.<br>
+Так как любой интервал представим в виде последовательности вложенных в него отрезков, то
+$$(M_2\subset{R}_{\sigma}(M_1)\wedge{M}_1\subset\mathcal{F})\Rightarrow(R_{\sigma}(\mathcal{F})=R_{\sigma}(M_2)\subset{R}_{\sigma}(M_1)\wedge
+R_{\sigma}(M_1)\subset{R}_{\sigma}(\mathcal{F}))\Rightarrow{R}_{\sigma}(M_1)=R_{\sigma}(\mathcal{F}).$$
+Так как любой интервал представим в виде последовательности вложенных в него полуинтервалов, а любой полуинтервал представим в виде последовательности
+вложенных в него отрезков, то
+$$R_{\sigma}(\mathcal{F})=R_{\sigma}(M_2)\subset{R}_{\sigma}(M_3)\subset{R}_{\sigma}(M_1)=R_{\sigma}(\mathcal{F})\Rightarrow
+R_{\sigma}(M_3)=R_{\sigma}(\mathcal{F}).$$
+Доказательство для класса $M_4$ аналогично доказательству для класса $M_3$. 
+</i>
+
+
+<br><br>
+<a href="./math_analysis13.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.1.2.html">next</a>
+</body>
+</html>

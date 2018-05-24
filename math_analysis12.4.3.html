@@ -1,0 +1,133 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.4.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.4.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.1.1.html">next</a>
+
+<h5 id=12.4.4> 12.4.4 Метод множителей Лагранжа поиска относительного экстремума.</h5>
+
+<p>Постановка задачи.<br>
+Пусть $m,n\in\mathbb{N}$, $G$ область в $\mathbb{R}^n$.
+<ol>
+<li>Пусть функция $f(x)\colon{G}\to\mathbb{R}$ такая, что $f(x)\in{C}^1(G)$.</li>
+<li>
+Для любого $i\in\overline{1,m}$ задано $F_i\colon{G}\to\mathbb{R}$ такое, что $F_i(x_1,\ldots,x_n)=0$. Обозначим как $S$ множество решений
+системы уравнений $\begin{cases}F_1(x_1,\ldots,x_n)=0\\\qquad\cdots\\F_m(x_1,\ldots,x_n)=0\end{cases}$.<br>
+Задача поиска относительного (условного) экстремума заключается в поиске экстремума функции $f(x)$ на множестве $S$, при этом множество $S$ может
+не содержать внутренних точек $\mathbb{R}^n$.
+</li>
+<li>
+Обозначим $F=(F_1,\ldots,F_m)\colon{G}\to\mathbb{R}^m$.<br>
+Система $F(x)=0$ может быть произвольной, поэтому гарантировать ее разрешимость можно только локально при условии, что для любого $i\in\overline{1,m}$ 
+$F_i\in{C}^1(G)$ (при этом она сводится к СЛУ (если функции аналитические)) и 
+</li>
+<li>ранг матрицы $F'(x)=
+\begin{pmatrix}
+\frac{\partial{F}_1}{\partial{x}_1}(x) & \cdots & \frac{\partial{F}_1}{\partial{x}_n}(x)\\
+\vdots & \ddots & \vdots\\
+\frac{\partial{F}_m}{\partial{x}_1}(x) & \cdots & \frac{\partial{F}_m}{\partial{x}_n}(x)
+\end{pmatrix}$
+равен $m$ для любого $x\in{G}$.
+</li>
+</ol>
+Тогда подключая <a href="./math_analysis12.4.2.html#Theorem12.4.4">теорему о неявной функции</a> можно выразить локально $m$ переменных через функции 
+$m$ функций от $n-m$ переменных. Тогда нахождение условного экстремума сведется к нахождению абсолютного экстремума для сложной функции.
+
+<br>
+<p>Обозначим 
+$$L(x_1,\ldots,x_n,\lambda_1,\ldots,\lambda_m):=f(x_1,\ldots,x_n)+\sum_{i=1}^m(\lambda_i{F}_i(x_1,\ldots,x_n))\colon{G}\times\mathbb{R}\to\mathbb{R}.$$
+Вектор $\lambda=(\lambda_1,\ldots,\lambda_m)$ называется линейными множителями Лагранжа.<br>
+Для любого $i\in\overline{1,m}$ $\displaystyle\frac{\partial{L}}{\partial{\lambda_i}}=F_i(x)\in{C}^1(G)$ и из условий 1 и 3 следует, что 
+$L\in{C}^1(G\times\mathbb{R}^m)$.
+
+<br><br>
+<p id=Statement12.4.3><b>Утверждение 12.4.3: Необходимые условия существования условного экстремума.</b><br> 
+Пусть выполнены условия 1-4, тогда, если точка $x_0\in{S}$ точка локального экстремума функции $f(x)$ по множеству $S$, то существует единственный 
+$\lambda_0=(\lambda_1^0,\ldots,\lambda_m^0)\in\mathbb{R}^m$ такой, что $(x_0,\lambda_0)\in\mathbb{R}^{m+n}$ стационарная точка для обображения 
+$L(x,\lambda)$.
+<p><b>Доказательство:</b> <i>Доказательство можно найти в Фихтенгольц т.1, стр. 467.</i>
+<br><br>
+Таким образом условные экстремумы функции $f(x)$ при сделанных предпосылках следует искать только среди точек $x_0\in{S}$ для которых существует 
+$\lambda_0\in\mathbb{R}^m$ такое, что $L'(x_0,\lambda_0)=0$, что, в силу непрерывности частных производных отображения $L$, эквивалентно 
+справедливости $n+m$ равенств:
+$$\begin{cases}
+\forall{i}\in\overline{1,n}\left(\frac{\partial{L}}{\partial{x}_i}(x_0,\lambda_0)=
+\frac{\partial{f}}{\partial{x}_i}(x_0)+\sum_{j=0}^m\left(\lambda_j^0\frac{\partial{F}_j}{\partial{x}_i}(x_0)\right)=0\right)\\
+\forall{k}\in\overline{1,m}\left(\frac{\partial{L}}{\partial\lambda_k}(x_0,\lambda_0)=F_k(x_0)=0\right)
+\end{cases}$$
+
+<br>
+<p id=Example12.4.6><b>Пример 12.4.6:</b> Пусть $n=2$, $m=1$, $f(x,y)=y$, $F(x,y)=y-x^3=0$, тогда $L(x,y,\lambda)=y+\lambda(y-x^3)$.<br>
+Решив систему уравнений 
+$$\begin{cases}
+\frac{\partial{L}}{\partial{x}}(x,y,\lambda)&=-3\lambda{x}^2&=0\\
+\frac{\partial{L}}{\partial{y}}(x,y,\lambda)&=1+\lambda&=0\\
+\frac{\partial{L}}{\partial{\lambda}}(x,y\lambda)&=y-x^3&=0
+\end{cases}$$
+получим $x=y=0$, при $\lambda=0$.<br>
+<i>
+Однако, в данном случае точка $(0,0)$ не является условным минимумом функции $f(x,y)$ при условии $F(x,y)=0$, так как $f(0,0)=0$, но $f(-1,-1)=-1<0$, 
+$F(-1,-1)=0$ и не является условным максимумом, так как $f(1,1)=1>0$, $F(1,1)=0$. Таким образом, в силу единственности решения системы уравнений, 
+можно заключить, что функция $f(x,y)$ не имеет экстремумов при заданном условии.<br>
+Если же наложить на функцию $f(x,y)$ условие $F(x,y)=x^2-y=0$, то аналогичным образом можно найти точку $(0,0)$ и убедится, что она является условным 
+минимумом. Действительно, область значений функции $f(x,y)$ вся действительная прямая, а при условии $F(x,y)=0$ $y\geq0$.
+</i>
+<br><br>
+<p id=Statement12.4.4:><b>Утверждение 12.4.4: Достаточные условия локального экстремума.</b><br>
+Пусть выполнены предпосылки 1-4 изложенные в начале раздела, точка $(x_0,\lambda_0)\in{S}\times\mathbb{R}^m$ стационарная для $L(x,\lambda)$, 
+$f(x)\in{C}^2(G)$, для любого $i\in\overline{1,m}$ $F_i(x)\in{C}^2(G)$. 
+$\displaystyle{Q}(\xi):=d^2L(x_0,\lambda_0,\xi):=\sum_{i,j=1}^n\left(\frac{\partial^2L}{\partial{x}_i\partial{x}_j}(x_0,\lambda_0)\xi_i\xi_j\right)$ - 
+квадратичная форма от $n$ переменных. $S_T$ - множество векторов $\xi\in\mathbb{R}^n$ таких, что для любого $k\in\overline{1,m}$
+$\displaystyle{d}F_k(x_0,\xi)=\sum_{i=1}^n\left(\frac{\partial{F}_k}{\partial{x}_i}(x_0)\xi_i\right)=0$. Тогда
+<ol>
+<li>Если квадратичная форма $Q(\xi)$ положительно определена на множестве $S_T$, то $x_0$ точка условного локального минимума на $S_T$.</li>
+<li>Если квадратичная форма $Q(\xi)$ отрицательно определена на множестве $S_T$, то $x_0$ точка условного локального максимума на $S_T$.</li>
+<li>Если квадратичная форма $Q(\xi)$ знакопеременна на множестве $S_T$, то $x_0$ не является точкой условного локального экстремума.</li>
+</ol>
+<p><b>Доказательство:</b> <i>Обоснование можно найти в Фихтенгольц т. 1, стр. 472.</i>
+
+<br><br>
+<p>В основе доказательств <a href="#Statement12.4.3">утверждений 12.4.3</a> и 12.4.4 лежит 
+<a href="./math_analysis12.4.2.html#Theorem12.4.4">теорема о неявной функции</a>.
+<br><br>
+<p id=Example12.4.7><b>Пример 12.4.7:</b> Пусть $n\in\mathbb{N}$, $A$ симметрическая матрица над $\mathbb{R}$ размера $n\times{n}$, 
+$f(x):=A_{x,x}:=(Ax)x=\sum_{i,j=1}^n(a_{i,j}x_ix_j)\colon\mathbb{R}^n\to\mathbb{R}$. Найдем максимум и минимум функции $f(x)$ на единичной сфере, то есть 
+на множестве $S:=\{x\in\mathbb{R}^n\mid\sum_{i=1}^nx_i^n=1\}$. Единственным ограничением связывающим переменные функции $f(x)$ будет уравнение:
+$\displaystyle{F}_1(x):=1-\sum_{i=1}^nx_i^2=0$, тогда функция Лагранжа имеет вид 
+$\displaystyle{L}(x,\lambda)=A_{x,x}+\lambda\left(1-\sum_{i=1}^nx_i^2\right)$. Любая точка условного локального экстремума $x=(x_1,\ldots,x_n)$ должна
+удовлетворять системе $n+1$ уравнений
+$$\begin{cases}
+\forall{i}\in\overline{1,n}\left(\frac{\partial{L}}{\partial{x}_i}(x,\lambda)=2\left(\sum_{j=1}^n(a_{ij}x_j)-\lambda{x}_i\right)=0\right)\\
+\qquad\frac{\partial{L}}{\partial\lambda}=1-\sum_{i=1}^nx_i^2=0
+\end{cases}\qquad(*)$$
+Так как $S$ компакт в $\mathbb{R}^n$ и функция $f(x)$ непрерывна, то $f(x)$ достигает своего максимума и минимума на $S$, то есть множество решений 
+системы не пусто. Глобальным условным максимумом и минимумом будет максимум и минимум множества решений системы, следовательно
+$$\exists\lambda_0\in\mathbb{R}\,\exists{x}_0=(x_1^0,\ldots,x_n^0)\in\mathbb{R}^n\backslash0\colon
+\forall{i}\in\overline{1,n}\left(\sum_{j=1}^n(a_{ij}x_i^0)=\lambda_0x_0\right)\Rightarrow{A}x_0=\lambda_0x_0$$
+Таким образом матрица $A$ имеет по крайней мере одно <a href="https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors">собственное значение</a>.<br>
+Для всех $i\in\overline{1,n}$ умножим $i$-тое уравнение системы на $x_i$ и сложим первые $n$ уравнений получившейся системы, получим 
+$$\sum_{i=1}^n\left(x_i\left(\sum_{j=1}^n(a_{ij}x_j)-\lambda{x}_i\right)\right)=\sum_{i,j=1}^n(a_{ij}x_ix_j)-\lambda\sum_{i=1}^nx_i^2=f(x)-\lambda=0\quad(**)$$
+где последнее равенство следует из последнего равенства системы.<br>
+<i>
+Таким образом, системе могут удовлетворять только те $\lambda$, которые являются собственными значениями матрицы $A$. Как известно из курса алгебры
+(параграф 12.2 теорема 3) собственные значения матрицы $A$ находятся из уравнения $|Ex-A|=0$. Таким образом определив и подставив поочередно все 
+допустимые $\lambda$ в систему уравнений найдем из первых ее $n$ уравнений все точки $x$, которые могут являться точками условных локальных экстремумов.
+Глобальный же условный максимум и минимум функции $f(x)$ можно определить и не находя точек условных локальных экстремумов так как из соотношения (**) 
+следует, что глобальным условным максимумом и минимумом будет соответственно максимальное и минимальное собственное значение матрицы $A$.   
+</i> 
+
+<br><br>
+<a href="./math_analysis12.4.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.1.1.html">next</a>
+</body>
+</html>

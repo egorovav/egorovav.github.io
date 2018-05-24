@@ -1,0 +1,259 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 7.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis6.6.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.2.1.html">next</a>
+
+<h3 id="7">7. ЧИСЛОВЫЕ РЯДЫ.</h3>
+
+<h4 id="7.1">7.1 Основные понятия, общие свойства сходящихся рядов.</h4>
+
+<h5 id="7.1.1">7.1.1 Определения и примеры.</h5>
+
+<p>Если $a,b\in\mathbb{R}$, то $a+b$ - сумма двух действительных чисел.<br>
+Если $n\in\mathbb{N}$, и для любого $k\in\overline{1,n}$ $a_k\in\mathbb{R}$, то $\displaystyle\sum_{k=1}^na_k:=a_1+a_2+\dots+a_n$ - 
+сумма $n$ действительных чисел.<br>
+Если $\{a_n\}$ последовательность из $\mathbb{R}$ и $n,m\in\mathbb{N}$ такие, что $n\leq{m}$, то 
+$\displaystyle\sum_{k=m}^ma_k:=a_n+a_{n+1}+\dots+a_m$ - сумма $n-m$ последовательных членов числовой последовательности.<br>
+Это все <a href="./math_analysis3.5.html#Definition3.5.5">конечные</a> суммы. Теория числовых рядов исследует понятие 
+<a href="./math_analysis3.5.html#Definition3.5.8">счетной</a> суммы, а есть и <a href="./math_analysis3.5.html#Definition3.5.11">несчетные</a>.
+
+<br><br>
+<p id="Definition7.1.1"><b>Определение 7.1.1:</b> Пусть $\{a_n\}$ последовательность из $\mathbb{R}$. Последовательность $\{S_n\}$
+такая, что для любого $n\in\mathbb{N}$ $S_n=\sum_{k=1}^na_k$, тогда говорят, что пара последовательностей $\{a_n\}$, $\{S_n\}$ задает числовой ряд
+обозначаемый $\sum_{n=1}^\infty{a}_n\sim{a}_1+a_2+\dots+a_n+\dots$.<br>
+При этом элементы последовательности $\{a_n\}$ называются элементами числового ряда, а элементы последовательности $\{S_n\}$ частичными 
+суммами числового ряда.
+<br><br>
+
+<p>Если задана последовательность $\{S_n\}$, то последовательность $\{a_n\}$ восстанавливается однозначно как: $a_1=S_1$ и для любого
+$k&gt1$ $a_k=S_k-S_{k-1}$.
+
+<br><br>
+
+<p id="Definition7.1.2"><b>Определение 7.1.2:</b> Говорят, что числовой ряд $\sum_{n=1}^\infty{a}_n$ сходится, если существует 
+<a href="./math_analysis4.1.html#Definition4.1.1">предел последовательности</a> его частичных сумм $\{S_n\}$.<br> 
+При этом число $S:=\lim_{n\to\infty}S_n=\lim_{n\to\infty}\sum_{k=1}^na_k$ называется суммой числового ряда $\sum_{n=1}^\infty{a}_n$.<br>
+Если числовой ряд сходится, то он называется сходящимся, если числовой ряд не сходится, то он называется расходящимся.
+
+<br><br>
+
+<p>При необходимости можно ввести понятие сходимости числового ряда в $\overline{\mathbb{R}}$.<br>
+<i>Везде далее символ "$\sum_{n=1}^\infty{a}_n$" может использоваться в двух значениях: как обозначение числового ряда, например, 
+"$\sum_{n=1}^\infty{a}_n=1-1+1-1+\dots$", или как обозначение суммы числового ряда "$\sum_{n=1}^\infty{a}_n=0$". 
+При этом второе выражение имеет смысл только для сходящихся рядов.</i>
+
+<br><br>
+
+<p id="Definition7.1.3"><b>Определение 7.1.3:</b> Если числовой ряд $\sum_{n=1}^\infty{a}_n$ задан последовательностью $\{a_n\}$, 
+а ряд $\sum_{n=1}^\infty{b}_n$ задан последовательностью $\{b_n\}$ такой, что для любого $n\in\mathbb{N}$ $b_n:=a_{n+k}$, то 
+ряд $\sum_{n=1}^\infty{b}_n=\sum_{n=k+1}^\infty{a}_n=a_{k+1}+a_{k+2}+\dots$ называют $k$-тым остатком ряда $\sum_{n=1}^\infty{a}_n$.
+
+<br><br>
+
+<p id="Example7.1.1"><b>Пример 7.1.1:</b> Рассмотрим ряд $\sum_{n=1}^\infty(aq^{n-1})=a+aq+aq^2+\dots+aq^{n-1}+\dots$, где $q\neq1$.<br>
+Вычислим частичную сумму ряда
+$$S_n=\sum_{k=1}^n(aq^{k-1})\Rightarrow{S}_n(1-q)=\sum_{k=1}^n(aq^{k-1})-q\sum_{k=1}^n(aq^{k-1})=\sum_{k=1}^n(aq^{k-1})-\sum_{k=2}^{n+1}(aq^{k-1})=
+a-aq^n\Rightarrow{S}_n=\frac{a(1-q^n)}{1-q}$$
+Таким образом последовательность частичных сумм $\{S_n\}$ сходится тогда и только тогда, когда сходится последовательность $\{q^n\}$, 
+<a href="./math_analysis4.1.html#Example4.1.5">то есть</a> при $|q|&lt1$. При этом 
+$\sum_{n=1}^\infty(aq^{n-1})=\lim_{n\to\infty}\frac{a(1-q^n)}{1-q}=\frac{a}{1-q}$. 
+
+<br><br>
+
+<p id="Example7.1.2"><b>Пример 7.1.2:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\ln(1+\frac1{n})$.<br>
+Вычислим частичную сумму ряда
+$$a_n=\ln\left(\frac{n+1}{n}\right)=\ln(n+1)-\ln{n}\Rightarrow{S}_n=\sum_{k=2}^{n+1}\ln{k}-\sum_{k=1}^n\ln{k}=\ln(n+1)-\ln1=\ln(n+1)$$
+<a href="./math_analysis5.4.1.html#Theorem5.4.2">Так как</a> последовательность $\{\ln{n}\}$ не имеет предела, то ряд $\sum_{n=1}^\infty{a}_n$ 
+расходится.
+
+<br><br>
+
+<p id="Example7.1.3"><b>Пример 7.1.3:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\frac1{(\alpha+n)(\alpha+n+1)}$, 
+где $\alpha\in\{\mathbb{R}\backslash-\mathbb{N}\}$.<br>
+Вычислим частичную сумму ряда
+$$a_n=\frac1{(\alpha+n)(\alpha+n+1)}=\frac1{\alpha+n}-\frac1{\alpha+n+1}\Rightarrow{S}_n=\sum_{k=1}^n\frac1{\alpha+k}-\sum_{k=2}^{n+1}\frac1{\alpha+k+1}=
+\frac1{\alpha+1}-\frac1{\alpha+n+1}\Rightarrow$$ 
+$$\Rightarrow\lim_{n\to\infty}S_n=\lim_{n\to\infty}\left(\frac1{\alpha+1}-\frac1{\alpha+n+1}\right)=\frac1{\alpha+1}$$
+Таким образом ряд $\sum_{n=1}^\infty{a}_n$ сходится к сумме $\frac1{\alpha+1}$.
+
+<br><br>
+
+<p id="Example7.1.4"><b>Пример 7.1.4:</b> Рассмотрим ряд $\sum_{n=1}^\infty\frac1{n}$ (так называемый "гармонический ряд").<br>
+<a href="./math_analysis4.3.html#Example4.3.2">Как было показано ранее</a> последовательность $S_n=\sum_{k=1}^n\frac1{n}$ не имеет предела, 
+следовательно, ряд $\sum_{n=1}^\infty\frac1{n}$ расходится.
+
+<br><br>
+
+<p id="Example7.1.5"><b>Пример 7.1.5:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\frac1{(\alpha+n)(\alpha+n+1)(\alpha+n+2)}$,
+где $\alpha\in\mathbb{N}_0$.<br>
+$$a_n=\frac1{(\alpha+n)(\alpha+n+1)(\alpha+n+2)}=\left(\frac1{\alpha+n}-\frac1{\alpha+n+1}\right)\frac1{\alpha+n+2}=
+\frac1{(\alpha+n)(\alpha+n+2)}-\frac1{(\alpha+n+1)(\alpha+n+2)}=$$ $$=\frac1{2}\left(\frac1{\alpha+n}-\frac1{\alpha+n+2}\right)-
+\left(\frac1{\alpha+n+1}-\frac1{\alpha+n+2}\right)=\frac1{2}\frac1{\alpha+n}-\frac1{2}\frac1{\alpha+n+1}-\frac1{2}\frac1{\alpha+n+1}+
+\frac1{2}\frac1{\alpha+n+2}=$$ $$=\frac1{2}\left(\left(\frac1{\alpha+n}-\frac1{\alpha+n+1}\right)-\left(\frac1{\alpha+n+1}-\frac1{\alpha+n+2}\right)\right)
+\Rightarrow$$ $$\Rightarrow{S}_n=\frac1{2}\left(\left(\sum_{k=1}^n\frac1{\alpha+k}-\sum_{k=2}^{n+1}\frac1{\alpha+k}\right)-
+\left(\sum_{k=2}^{n+1}\frac1{\alpha+k}-\sum_{k=3}^{n+2}\frac1{\alpha+k}\right)\right)=\frac1{2}\left(\frac1{\alpha+1}-\frac1{\alpha+n+1}-
+\frac1{\alpha+2}+\frac1{\alpha+n+3}\right)\Rightarrow$$ $$\Rightarrow\lim_{n\to\infty}S_n=
+\frac1{2}\lim_{n\to\infty}\left(\frac1{\alpha+1}-\frac1{\alpha+n+1}-\frac1{\alpha+2}+\frac1{\alpha+n+3}\right)=
+\frac1{2}\left(\frac1{\alpha+1}-\frac1{\alpha+2}\right)=\frac1{2}\frac1{(\alpha+1)(\alpha+2)}$$.
+
+<h5 id="7.1.2">7.1.2 Общие свойства сходящихся рядов.</h5>
+
+<p id="Theorem7.1.1"><b>Теорема 7.1.1:</b>
+<ol>
+<li>
+Критерий Коши сходимости числового ряда.<br>
+Ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда:
+$$\forall\varepsilon&gt0\:\exists{N}\in\mathbb{N}:\forall{m}\geq{n}&gtN\left(|S_m-S_{n-1}|=\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right).$$
+</li>
+<li>Если числовой ряд $\sum_{n=1}^\infty{a}_n$ сходится, то $\lim_{n\to\infty}{a}_n=0$.</li>
+<li>
+Если в числовом ряде $\sum_{n=1}^\infty{a}_n$ изменить конечное число членов, то полученный числовой ряд $\sum_{n=1}^\infty{a}'_n$ 
+сходится тогда и только тогда, когда сходится исходный ряд $\sum_{n=1}^\infty{a}_n$.</li>
+<li>
+Если числовой ряд $\sum_{n=1}^\infty{a}_n$ сходится, то для любого $k\in\mathbb{N}$ его $k$-тый остаток $\sum_{n=k+1}^\infty{a}_n$
+сходится.<br>
+Если существует $k\in\mathbb{N}$ такое, что $k$-тый остаток ряда сходится, то сам ряд тоже сходится.  
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+По <a href="#Definition7.1.2">определению сходимости</a> ряд сходится тогда и только тогда, когда существует конечный предел
+последовательности его частичных сумм $\{S_n\}$. По <a href="./math_analysis4.3.html#Theorem4.3.1">критерию Коши</a> существования предела 
+последовательности 
+$$\exists\lim_{n\to\infty}S_n\Leftrightarrow\forall\varepsilon&gt0\:\exists{N}'\in\mathbb{N}:\forall{m},n&gt{N}'(|S_m-S_n|&lt\varepsilon)$$    
+Положим $N:=N'+1$ и без ограничения общности будем считать, что $m\geq{n}$, тогда
+$$\forall{m},n\in\mathbb{N}(m\geq{n}&gtN'\Leftrightarrow{m}&gtn-1&gtN)\Rightarrow
+\left(\exists\lim_{n\to\infty}S_n\Leftrightarrow
+\forall\varepsilon&gt0\:\exists{N}\in\mathbb{N}:\forall{m}\geq{n}&gtN\left(|S_m-S_{n-1}|=\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right)\right).$$
+</li>
+<li>
+Утверждение следует из пункта 1 при $n=m$
+$$\exists\lim_{n\to\infty}S_n\Rightarrow
+\forall\varepsilon&gt0\:\exists{N}\in\mathbb{N}:\forall{n}&gtN\left(|S_n-S_{n-1}|=\left|\sum_{k=n}^na_k\right|=|a_n|&lt\varepsilon\right)\Rightarrow
+\lim_{n\to\infty}a_n=0.$$
+</li>
+<li>
+Пусть в числовом ряде $\sum_{n=1}^\infty{a}_n$ изменено конечное число членов и получен новый ряд $\sum_{n=1}^\infty{a}_n$.
+Тогда существует натуральное $n_0:=\max\{k\:|\:a_k\neq{a}'_k\}$ - индекс максимального измененного члена. В критерии Коши (пункт 1)
+при необходимости можно увеличить число $N$, сделать его больше $n_0$, тогда измененные члены не будут участвовать в условии критерия. 
+То есть, если
+$$\forall\varepsilon&gt0\:\exists{N}\in\mathbb{N}:\forall{m}\geq{n}&gtN\left(\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right)$$
+то положив $N':=\max\{n_0,N\}$ получим
+$$\forall{k}&gtN'(k&gtN\wedge{a}_k=a'_k)\Rightarrow
+\forall\varepsilon&gt0\:\exists{N}'\in\mathbb{N}:\forall{m},n&gtN'\left(\left|\sum_{k=n}^ma_k\right|&lt\varepsilon\right)$$
+В обратную сторону доказывается аналогично.
+</li>
+<li>Фиксируем $k\in\mathbb{N}$. Докажем, что из сходимости ряда $\sum_{n=1}^\infty{a}_n$ следует сходимость его $k$-того остатка $\sum_{n=1}^\infty{b}_n$.
+обозначим $n$-тую частичную сумму ряда $\sum_{n=1}^\infty{a}_n$ как $S_n^{(a)}$, 
+а $n$-тую частичную сумму ряда $\sum_{n=1}^\infty{b}_n$ как $S_n^{(b)}$, тогда для любого $n&gtk$ $S_n^{(b)}=S_n^{(a)}-\sum_{i=1}^ka_i$.
+Следовательно, если ряд $\sum_{n=1}^\infty{a}_n$ сходится к сумме $S:=\lim_{n\to\infty}S_n^{(a)}$, то ряд 
+$\sum_{n=1}^\infty{b}_n=\sum_{n=k+1}^\infty{a}_n$ сходится к числу
+$\lim_{n\to\infty}S_n^{(b)}=\lim_{n\to\infty}(S_n^{(a)}-\sum_{i=1}^ka_i)=S-\sum_{i=1}^ka_i$.<br>
+Пусть существует $k\in\mathbb{N}$ такое, что $k$-тый остаток ряда $\sum_{n=1}^\infty{a}_n$ сходится, тогда
+$$\exists\lim_{n\to\infty}\sum_{i=k+1}^na_i\Rightarrow\exists\lim_{n\to\infty}\left(\sum_{i=1}^ka_i+\sum_{i=k+1}^na_i\right)\Rightarrow
+\exists\lim_{n\to\infty}S_n$$
+</li>
+</ol>
+
+<br><br>
+
+<p>При теоретическом исследовании числовых рядов используется критерий расходимости числового ряда.
+
+<br><br>
+
+<p id="Corollary7.1.1"><b>Следствие 7.1.1:</b> Ряд $\sum_{n=1}^\infty{a}_n$ расходится тогда и только тогда, когда
+$$\exists\varepsilon&gt0:\forall{N}\in\mathbb{N}(\exists{m}\geq{n}&gtN:|S_m-S_{n-1}|\geq\varepsilon)$$
+<p><b>Доказательство:</b> Утверждение следует из пункта 1 теоремы 7.1.1, <a href="./math_analysis1.html#0.1">так как</a> для любых утверждений $A,B$ 
+$(A\Leftrightarrow{B})\Leftrightarrow(\neg{A}\Leftrightarrow\neg{B})$
+
+<br><br>
+
+<p id="Theorem7.1.2"><b>Теорема 7.1.2: Простейшие арифметические операции над сходящимися рядами.</b><br>
+<ol>
+<li>
+Если ряд $\sum_{n=1}^\infty{a}_n$ сходится, то для любого $c\in\mathbb{R}$ ряд $\sum_{n=1}^\infty(ca_n)$ сходится и 
+$\sum_{n=1}^\infty(ca_n)=c\sum_{n=1}^\infty{a}_n$
+</li>
+<br>
+<li>
+Если ряды $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ сходятся, то ряд $\sum_{n=1}^\infty(a_n+b_n)$ сходится и 
+$\sum_{n=1}^\infty(a_n+b_n)=\sum_{n=1}^\infty{a}_n+\sum_{n=1}^\infty{b}_n$
+</li>
+</ol>
+<p><b>Доказательство:</b> При доказательстве обоих пунктов используются 
+<a href="./math_analysis4.1.html#Theorem4.2.2">арифметические свойства предела последовательности</a>.
+<ol>
+<li>
+Для любого $c\in\mathbb{R}$ и любой числовой последовательности $\{x_n\}$ из существования предела $\lim_{n\to\infty}x_n$
+следует существование предела последовательности $\{cx_n\}$ и в случае существования пределов 
+$\lim_{n\to\infty}(cx_n)=c\lim_{n\to\infty}x_n$. <a href="./math_analysis3.1.html#I,II">Так как</a> константу можно вынести за знак конечной суммы, 
+то для любого $n\in\mathbb{N}$ $\sum_{k=1}^n(ca_n)=c\sum_{k=1}^n{a}_n$, тогда положив для любого $n\in\mathbb{N}$ $x_n:=\sum_{k=1}^n{a}_k$ 
+получим доказываемое утверждение.  
+</li>
+<li>
+<a href="./math_analysis3.1.html#3+">Так как</a> 
+$$\forall{n}\in\mathbb{N}\left(\sum_{k=1}^n(a_k+b_k)=\sum_{k=1}^n{a}_k+\sum_{k=1}^n{b}_n\right)$$
+и правая часть имеет предел при $n\to\infty$, значит левая часть тоже имеет предел, то есть
+$$\sum_{n=1}^\infty(a_n+b_n)=\lim_{n\to\infty}\sum_{k=1}^n(a_k+b_k)=\lim_{n\to\infty}\sum_{k=1}^n{a}_k+\lim_{n\to\infty}\sum_{k=1}^n{b}_k=
+\sum_{n=1}^\infty{a}_n+\sum_{n=1}^\infty{b}_n$$ 
+</li>
+</ol>
+
+<br><br>
+
+<i>
+Если дан ряд $\sum_{n=1}^\infty{a}_n$ и $\{n_k\}$ строго возрастающая последовательность из $\mathbb{N}$,
+то ряд $\sum_{n=1}^\infty{b}_n$ такой, что $\displaystyle{b}_1:=\sum_{i=1}^{n_1}a_i$ и для любого $k&gt1$ $\displaystyle{b}_k:=\sum_{i=n_{k-1}+1}^{n_k}a_i$, 
+называют группировкой ряда $\sum_{n=1}^\infty{a}_n$.<br>
+<ul>
+<li>Первое слагаемое группировки $b_1$ равно сумме первых $n_1$ слагаемых ряда $\sum_{n=1}^\infty{a}_n$.</li>
+<li>Второе слагаемое группировки $b_2$ равно сумме элементов ряда $\sum_{n=1}^\infty{a}_n$ c индексами от $n_1+1$ до $n_2$.</li>
+<li>$\dots$</li>
+<li>$k$-тое слагаемое группировки $b_k$ равно сумме элементов ряда $\sum_{n=1}^\infty{a}_n$ с индексами от $n_{k-1}+1$ до $n_k$.</li>
+<li>$\dots$</li>
+</ul>
+Так как последовательность $\{n_k\}$ строго возрастает, то такое определение корректно.
+</i>
+
+<br><br>
+
+<p id="Theorem7.1.3"><b>Теорема 7.1.3: Сочетательное свойство сходящихся рядов.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ сходится, $\{n_k\}$ строго возрастающая последовательность из $\mathbb{N}$,
+ряд $\sum_{n=1}^\infty{b}_n$ такой, что $\displaystyle{b}_1:=\sum_{i=1}^{n_1}a_i$ и для любого $k&gt1$ $\displaystyle{b}_k:=\sum_{i=n_{k-1}+1}^{n_k}a_i$, 
+то ряд $\sum_{n=1}^\infty{b}_n$ сходится к той же сумме, что и ряд $\sum_{n=1}^\infty{a}_n$.
+<p><b>Доказательство:</b> Обозначим $k$-тую частичную сумму рядов $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ как $S_k^{(a)}$ и $S_k^{(b)}$
+соответственно. Тогда
+$$S_k^{(b)}=\sum_{i=1}^k{b}_i=\sum_{j=1}^{n_1}a_j+\sum_{i=2}^k\left(\sum_{j=n_{k-1}+1}^{n_k}a_j\right)=\sum_{i=1}^{n_k}a_k=S_{n_k}^{(a)}$$
+Таким образом последовательность $\{S_k^{(b)}\}$ является подпоследовательностью $\{S_{n_k}^{(a)}\}$ последовательности $\{S_n^{(a)}\}$.
+И <a href="./math_analysis4.4.html#Statement4.4.3">так как</a> предел любой подпоследовательности сходящиеся последовательности существует и 
+численно равен пределу последовательности, то
+$$\sum_{n=1}^\infty{b}_n=\lim_{k\to\infty}S_k^{(b)}=\lim_{k\to\infty}S_{n_k}^{(a)}=\lim_{n\to\infty}S_n^{(a)}=\sum_{n=1}^\infty{a}_n.$$
+
+<br><br>
+<p>Обратное, вообще говоря, не верно. То есть, существуют расходящиеся ряды, некоторые группировки которых сходятся. Например,
+ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty(-1)^n=-1+1-1+1-\dots$ <a href="./math_analysis4.4.html#Statement4.4.3">расходится, так как</a> 
+для любого $k\in\mathbb{N}$ $S_{2k-1}=-1$, а $S_{2k}=0$. Однако, если для любого $k\in\mathbb{N}$ положить $n_k=2k$, то группировка 
+$\sum_{n=1}^\infty{b}_n$ порождаемая последовательностью $\{n_k\}$ будет сходится, действительно
+$$\left(b_1=\sum_{i=1}^{n_1}a_i=\sum_{i=1}^2a_i=-1+1=0\wedge\forall{k}&gt1\left(b_k=\sum_{i=n_{k-1}+1}^{n_k}a_i=\sum_{i=2k-1}^{2k}=-1+1=0\right)\right)
+\Rightarrow\forall{n}\in\mathbb{N}(S_n^{(b)}=0)\Rightarrow\sum_{n=1}^\infty{b}_n=\lim_{n\to\infty}S_n^{(b)}=0$$
+При этом различные группировки расходящегося ряда могут сходится к разным суммам. Например, если положить для любого $k\in\mathbb{N}$ $n_k=2k-1$
+то группировка ряда $\sum_{n=1}^\infty{a}_n$ порождаемая последовательностью $\{n_k\}$ будет иметь суммой -1.
+
+
+<br><br>
+<a href="./math_analysis6.6.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.2.1.html">next</a>
+</body>
+</html>

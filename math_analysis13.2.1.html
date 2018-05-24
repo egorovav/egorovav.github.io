@@ -1,0 +1,226 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.2.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.2.html">next</a>
+
+<h4 id=13.2>13.2 Несобственные интегралы зависящие от параметра.</h4>
+
+<p>В главе 10 <a href="./math_analysis10.1.html#10">"ФУНКЦИОНАЛЬНЫЕ ПОСЛЕДОВАТЕЛЬНОСТИ И РЯДЫ"</a> рассматривались счетные суммы вида 
+$\sum_{n=1}^{\infty}u_n(x)$. Здесь индекс суммирования $n\in\mathbb{N}$, а переменную $x$ можно рассматривать как параметр. Аналогично несобственный 
+интеграл $\int_0^{\omega}f(x,y)\,dx$ можно рассматривать как несчетную сумму, где $x\in[a,\omega)$ - индекс суммирования, а $y$ параметр.
+
+<h5 id=13.2.1>13.2.1 Свойство равномерной сходимости по параметру несобственного интеграла.</h5>
+
+<p id=Definition13.2.1><b>Определение 13.2.1:</b> Пусть $a<\omega\leq+\infty$, $Y\subset\mathbb{R}$, $E\subset{Y}$, 
+$f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$ такие, что 
+<ol>
+<li>для любого $y\in{Y}$ существует интеграл $\int_a^{\omega}f(x,y)\,dx$;</li>
+<li>$$\forall\varepsilon>0\,\exists{B}=B(\varepsilon)\in[a,\omega)\forall{b}\in[B,\omega)\forall{y}\in{E}
+\left(\left|\int_b^{\omega}f(x,y)\,dx\right|<\varepsilon\right),$$</li>
+</ol>
+тогда говорят, что интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по параметру $y$ на множестве $E$.
+
+<br><br>
+<p>Определение 13.2.1 может быть сформулировано в другом виде. Обозначим $F(b,y):=\int_a^bf(x,y)\,dx$, тогда по условию 1 определения для любого 
+$y\in{Y}$ существует предел $\displaystyle{F}(y):=\int_a^{\omega}f(x,y)\,dx:=\lim_{b\to\omega-0}F(b,y)$. Тогда условие равномерной сходимости интеграла
+$\int_a^{\omega}f(x,y)\,dx$ эквивалентно условию $F(b,y)\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\b\to\omega-0}F(y),y\in{E}$.
+
+<br><br>
+<p id=Statement13.2.1><b>Утверждение 13.2.1: Критерий Коши равномерной сходимости интеграла по параметру.</b><br>
+Пусть $a<\omega\leq+\infty$, $Y\subset\mathbb{R}$, $E\subset{Y}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, тогда несобственный интеграл
+$\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{E}$ тогда и только тогда, когда 
+$$\forall\varepsilon>0\,\exists{B}=B(\varepsilon)\in[a,\omega)\colon\forall{b}',b''\in[B,\omega)\forall{y}\in{E}
+\left(\left|\int_{b'}^{b''}f(x,y)\,dx\right|<\varepsilon\right).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+Пусть интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{E}$. Фиксируем $\varepsilon>0$, тогда по определению 13.2.1
+$\begin{multline}
+\exists{B}=B(\varepsilon)\in[a,\omega)\colon\forall{b}\in[B,\omega)\forall{y}\in{E}
+\left(\left|\int_b^{\omega}f(x,y)\,dx\right|<\frac{\varepsilon}{2}\right)\Rightarrow\\
+\Rightarrow\forall{b}',b''\in[B,\omega)\forall{y}\in{E}
+\left(\left|\int_{b'}^{b''}f(x,y)\,dx\right|=\left|\int_{b'}^{\omega}f(x,y)\,dx-\int_{b''}^{\omega}f(x,y)\,dx\right|\leq
+\left|\int_{b'}^{\omega}f(x,y)\,dx\right|+\left|\int_{b''}^{\omega}f(x,y)\,dx\right|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right).
+\end{multline}$
+$\Leftarrow)$<br>
+Из условия 
+$$\forall\varepsilon>0\,\exists{B}=B(\varepsilon)\in[B,\omega)\colon\forall{b}',b''\in(B,\omega)\forall{y}\in{E}
+\left(\left|\int_{b'}^{b''}f(x,y)\,dx\right|<\frac{\varepsilon}{2}\right)$$
+по <a href="./math_analysis8.5.html#Statement8.5.1">критерию Коши</a> сходимости несобственного интеграла следует, что для любого фиксированного $y\in{E}$
+интеграл $\int_{b'}^{b''}f(x,y)\,dx$ сходится. То есть имеет место поточечная сходимость интеграла.<br>
+Фиксируем $\varepsilon>0$, тогда
+$$\exists{B}=B(\varepsilon)\in[a,\omega)\colon\forall{b}',b''\in(B,\omega)\forall{y}\in{E}
+\left(\left|\int_{b'}^{b''}f(x,y)\,dx\right|<\frac{\varepsilon}{2}\right)$$
+Так как имеет место поточечная сходимость, то в последнем неравенстве можно перейти к пределу при $b''\to\omega-0$. Так как при переходе к пределу 
+неравенство сохраняет знак в не строгом смысле, то 
+$$\exists{B}=B(\varepsilon)\in[a,\omega)\colon\forall{b}'\in(B,\omega)\forall{y}\in{E}\left(\left|\int_{b'}^{\omega}f(x,y)\,dx\right|=
+\lim_{b''\to\omega-0}\left|\int_{b'}^{b''}f(x,y)\,dx\right|\leq\frac{\varepsilon}{2}<\varepsilon\right)$$
+
+<br><br>
+<p id=Statement13.2.2><b>Утверждение 13.2.2: Признак поточечной сходимости интеграла по параметру.</b><br> 
+Пусть функция $f(x,y)\colon[a,\omega)\times[c,d]\to\mathbb{R}$ такая, что 
+<ol>
+<li>$f(x)\in{C}\{[a,b]\times[c,d]\}$,</li>
+<li>для любого $y\in(c,d)$ интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится,</li>
+<li>интеграл $\int_a^{\omega}f(x,c)\,dx$ расходится</li>
+</ol>
+тогда интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится по $y\in(c,d)$ поточечно, но не равномерно.
+<p><b>Доказательство:</b> Поточечная сходимость следует из условия, докажем, что сходимость не равномерна. Используем логическое отрицание 
+<a href="./math_analysis8.5.html#Statement8.5.1">критерия Коши</a> сходимости несобственного интеграла $\int_a^{\omega}f(x,c)\,dx$
+$$\exists\varepsilon>0\colon\forall{B}=B(\varepsilon)\in[a,\omega)\,\exists{b}',b''\in(B,\omega)\colon
+\left|\int_{b'}^{b''}f(x,c)\,dx\right|\geq2\varepsilon$$
+Так как функция $f(x,y)$ непрерывна, то из 
+<a href="./math_analysis13.1.1.html#Statement13.1.2">теоремы о непрерывности собственного интеграла по параметру</a> следует, что функция 
+$F(y):=\int_{b'}^{b''}f(x,y)\,dx$ непрерывна, то есть $\displaystyle\lim_{y\to{c}-0}F(y)=F(c)$. Следовательно
+$$\exists{y}\in[c,d]\colon|F(c)|-|F(y)|\leq|F(c)-F(y)|<\varepsilon\Rightarrow|F(y)|\geq|F(c)|-\varepsilon\geq\varepsilon.$$
+Таким образом 
+$$\exists\varepsilon>0\colon\forall{B}\in[a,\omega)\,\exists{b}',b''\in(B,\omega)\,\exists{y}\in[c,d]\colon
+\left|\int_{b'}^{b''}f(x,y)\,dx\right|\geq\varepsilon.$$
+
+<br><br>
+<p>Легко видеть, что данное утверждение можно обобщить заменив точку $c$ на любую другую точку $y_0\in[c,d]$ предельную для множества сходимости интеграла.
+<br>
+Пусть $f(x,y)$ непрерывна, интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится поточечно по $y\in{E}\subset[c,d]$ и существует 
+$y_0\in[c,d]\cap\mathring{E}\backslash{E}$ такое, что интеграл $\int_a^{\omega}f(x,y_0)\,dx$ расходится, тогда интеграл $\int_a^{\omega}f(x,y)\,dx$
+не сходится равномерно по $y\in{E}$.
+<br><br>
+<p id=Statement13.2.3><b>Утверждение 13.2.3:</b> Пусть $a<\omega\leq+\infty$, ${Y}\subset\mathbb{R}$, $E\subset{Y}$, 
+$f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, тогда интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{E}$ тогда и только тогда, когда
+для любой последовательности $\{a_n\}$ из $[a,\omega)$ такой, что $\lim_{n\to\infty}a_n=\omega$ функциональный ряд 
+$\displaystyle\sum_{n=1}^{\infty}u_n(y):=\sum_{n=1}^{\infty}\int_{a_{n}}^{a_{n+1}}f(x,y)\,dx$ сходится равномерно по $y\in{E}$.
+<p><b>Доказательство:</b><br>
+<i>
+$\Rightarrow)$
+Пусть интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{E}$. Тогда поточечная сходимости функционального ряда $\sum_{i=1}^{\infty}u_n(y)$
+следует из <a href="./math_analysis8.5.html#Statement8.5.2">утверждения 8.5.2</a>. Докажем равномерную сходимость. Фиксируем $\varepsilon>0$, тогда
+$$\exists{B}=B(\varepsilon)\in[a,\omega)\forall{y}\in{Y}\left(\left|\int_b^{\omega}f(x,y)\,dx\right|<\frac{\varepsilon}{2}\right)$$ 
+Фиксируем последовательность $\{a_n\}$ из $[a,\omega)$ такую, что $\lim_{n\to\infty}a_n=\omega$, тогда
+$\begin{multline}
+\exists{n}_0\in\mathbb{N}:\forall{n}>n_0 (a_n\in[B,\omega))\Rightarrow\\ \Rightarrow\forall{m}\geq{n}>n_0\forall{y}\in{Y}
+\left(\left|\sum_{k=n}^mu_n(y)\right|=\left|\int_{a_n}^{a_m}f(x,y)\,dx\right|=\left|\int_{a_n}^{\omega}f(x,y)\,dx-\int_{a_m}^{\omega}f(x,y)\,dx\right|\leq
+\left|\int_{a_m}^{\omega}f(x,y)\,dx\right|+\left|\int_{a_n}^{\omega}f(x,y)\,dx\right|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)
+\end{multline}$
+Таким образом реализован <a href="./math_analysis10.2.1.html#Statement10.2.2">критерий Коши</a> сходимости функционального ряда.<br>
+$\Leftarrow)$<br>
+Обозначим $F(y,z):=\int_a^zf(x,y)\,dx$, $\varphi(y):=\int_a^{\omega}f(x,y)\,dx$.<br>
+Предположим, что $F(x,z)$ не сходится равномерно к $\varphi(y)$, тогда
+$$\exists\varepsilon>0\colon\forall\delta>0\,\exists{z}'\in[a,\omega)\,\exists{y}'\in{E}\colon
+(|z'-\omega|<\delta\wedge|F(y',z')-\varphi(y')|\geq\varepsilon)$$
+Фиксируем последовательность $\delta_n$ такую, что $\lim_{n\to\infty}\delta_n=0$, тогда
+$$\forall{n}\in\mathbb{N}\,\exists{a}_n\in[a,\omega)\,\exists{y}_n\in{E}\colon(|a_n-\omega|<\delta_n\wedge|F(y_n,a_n)-\varphi(y_n)|\geq\varepsilon)$$
+Таким образом найдена последовательность $\{a_n\}$ такая, что $\lim_{n\to\infty}a_n=\omega$ и
+$$S_k(y):=\sum_{n=1}^ku_n(y)=\int_{a_1}^{a_k}f(x,y)\,dx=F(y,a_k)-\int_a^{a_1}(x,y)\,dx$$
+Так как функциональная последовательность $\{F(y,a_k)\}$ не сходится равномерно по $y\in{E}$, то и отличающаяся от нее на константу последовательность 
+$S_k(y)$ так же не сходится равномерно, а это противоречит условию.
+</i>
+<br><br>
+<p>Если функция $f(x,y)$ положительна на $[a,\omega)\times{Y}$, то для равномерной сходимости интеграла $\int_a^{\omega}f(x,y)\,dx$ необходимо и достаточно
+существования возрастающей последовательности $\{a_n\}$ из $[a,\omega)$ такой, что ряд $\sum_{n=1}^{\infty}\int_{a_n}^{a_{n+1}}f(x,y)\,dx$ сходится
+равномерно по $y\in{E}$.
+<br><br>
+
+<p id=Example13.2.1><b>Пример 13.2.1:</b> Пусть $f(x,y)=e^{-xy}$, $x\in[0,+\infty)$, $y\in{Y}:=(0,+\infty)$. Рассмотрим интеграл 
+$\displaystyle\int_0^{+\infty}f(x,y)\,dx=\int_0^{+\infty}e^{-xy}\,dx$.<br>
+$$\forall{y}\in{Y}\int_0^{+\infty}e^{-xy}\,dx=\frac1{y}\int_0^{+\infty}e^{-xy}\,d(xy)=\frac1{y}(-e^{-xy})|_0^{+\infty}=
+\frac1{y}\left(\lim_{x\to+\infty}{e^{-xy}}+1\right)=\frac1{y}$$
+Таким образом на лицо поточечная сходимость интеграла на $Y$.
+<ol>
+<li>
+Фиксируем $y_0\in{Y}$. Тогда
+$$\forall{y}\geq{y}_0\forall{b}\in[0,+\infty)\left(\left|\int_b^{+\infty}e^{-xy}\,dx\right|\leq\int_b^{+\infty}e^{-xy}\,dx\leq
+\int_b^{+\infty}e^{-xy_0}\,dx=\frac1{y_0}e^{-by_0}=o(1),b\to\infty\right)$$
+Следовательно,
+$$\forall\varepsilon>0\,\exists{B}\in(0,+\infty)\colon\forall{y}\geq{y}_0\forall{b}\in(B,+\infty)
+\left(\left|\int_b^{+\infty}e^{-xy}\right|\,dx<\varepsilon\right)$$
+То есть интеграл сходится равномерно на $[y_0,+\infty)$
+</li>
+<li>
+Однако, равномерной сходимости на $Y=(0,+\infty)$ нет, так как интеграл $\displaystyle\int_0^{+\infty}e^{-xy}\,dx$ очевидно расходится при $y=0$.
+Следовательно, по утверждению 2 для любого $d>0$ равномерной сходимости на $(0,d)$ нет, значит ее нет и на $(0,+\infty)$.
+</li>
+</ol>
+<br><br>
+<p id=Example13.2.2><b>Пример 13.2.2:</b> Рассмотрим интеграл 
+$\displaystyle{F}(p)=\int_{\pi}^{+\infty}\frac{dx}{x^p\sqrt[3]{\sin^3x+1}}$ при $p\in(1,+\infty)$.<br>
+Применим идею <a href="#Statement13.2.3">утверждения 13.2.3</a> положив для любого $n\in\mathbb{N}$ $a_n=\pi{n}$. Тогда для любого $n\in\mathbb{N}$
+$\displaystyle{u}_n(p)=\int_{\pi{n}}^{\pi(n+1)}\frac{dx}{x^p\sqrt[3]{\sin^3x+1}}$...
+
+<h5 id=13.2.2>13.2.2. Признаки равномерной сходимости несобственного интеграла по параметру.</h5>
+
+<p id=Statement13.2.4><b>Утверждение 13.2.4: Мажорантный признак Вейерштрасса.</b><br>
+Пусть $f(x,y),g(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, $E\subset{Y}$, для любого $(x,y)\in[a,\omega)\times{E}$ $|f(x,y)|\leq{g}(x,y)$, тогда
+если интеграл $\int_a^{\omega}g(x,y)\,dx$ сходится равномерно по $y\in{E}$, то интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно и абсолютно по
+$y\in{E}$.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon>0$, тогда по <a href="#Statement13.2.1">критерию Коши</a> равномерной сходимости
+$$\exists{B}\in[a,\omega)\colon\forall{b}',b''\in[B,\omega)\forall{y}\in{E}\left(\left|\int_{b'}^{b''}f(x,y)\,dx\right|\leq
+\left|\int_{b'}^{b''}|f(x,y)|dx\right|\leq\left|\int_{b'}^{b''}g(x,y)\,dx\right|<\varepsilon\right).$$
+
+<br><br>
+<p id=Statement13.2.5><b>Утверждение 13.2.5: Признаки Абеля, Дирихле.</b><br>
+Пусть $f(x,y),g(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, $E\subset{Y}$, тогда интеграл $\int_a^{\omega}f(x,y)g(x,y)\,dx$ сходится равномерно, если
+<ol type="I">
+<li>выполняются условия признака Дирихле:<br>
+<ol>
+<li>$\exists{K}>0\colon\forall{y}\in{E},\forall{b}\in[a,\omega)\left(\left|\int_a^bf(x,y)\,dx\right|\leq{K}\right)$,</li>
+<li>функция $g(x,y)$ монотонна по $x\in[a,\omega)$ при любом фиксированном $y\in{E}$,</li>
+<li>$g(x,y)\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\x\to\omega-0}0,y\in{E}$.</li>
+</ol>
+</li>
+или
+<li>выполняются условия признака Абеля:<br>
+<ol>
+<li>интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{E}$,</li>
+<li>функция $g(x,y)$ монотонна по $x\in[a,\omega)$ при любом фиксированном $y\in{E}$,</li>
+<li>$\exists{M}>0\colon\forall{y}\in{E},\forall{x}\in[a,\omega)(|g(x,y)|\leq{M})$.</li>
+</ol>
+</li>
+</ol>
+<p><b>Доказательство:</b> <i>Зорич т. 2, стр. 496.</i>
+<br><br>
+
+<p id=Statement13.2.6><b>Утверждение 13.2.6: Теорема Дини.</b><br>
+Пусть $I:=[a,\omega)$, $Y$ - компакт в $\mathbb{R}$ и функция $f(x,y)\colon{I}\times{Y}\to\mathbb{R}$ такая, что 
+<ol>
+<li>$f(x,y)\in{C}\{I\times{Y}\}$,</li>
+<li>$\forall(x,y)\in{I}\times{Y}(f(x,y)\geq0)$,</li>
+<li>для любого $y\in{E}$ интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится,</li>
+<li>функция $F(y):=\int_a^{\omega}f(x,y)\,dx$ непрерывна на $Y$,</li>
+</ol>
+тогда интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно на $y\in{Y}$.
+<p><b>Доказательство:</b> <i>Не обнаружено.</i>
+<br><br>
+<p>Последний результат показывает, при каких условиях из поточечной сходимости несобственного интеграла по параметру следует равномерная сходимость.
+<br><br>
+<p id=Exapmle13.2.3><b>Пример 13.2.3:</b> Докажем, что интеграл $\displaystyle\int_1^{\infty}\frac{dx}{x^2+y^2}$ сходится равномерно по $y\in\mathbb{R}$.<br>
+Действительно, для любого $y\in\mathbb{R}$ $\displaystyle0\leq\frac{1}{x^2+y^2}\leq\frac1{x^2}$ и интеграл 
+$\displaystyle\int_1^{+\infty}\frac{dx}{x^2}$ сходится (<a href="./math_analysis8.5.html#Example8.5.1">пример 8.5.1</a>) равномерно по $y\in\mathbb{R}$,
+следовательно, интеграл $\displaystyle\int_1^{+\infty}\frac{dx}{x^2+y^2}$ сходится равномерно на $y\in\mathbb{R}$ по 
+<a href="#Statement13.2.4">мажорантному признаку Вейерштрасса</a>.
+<br><br>
+<p id=Example13.2.4><b>Пример 13.2.4:</b> Докажем, что интеграл $\displaystyle\int_0^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx$ сходится равномерно по 
+$y\in[0,+\infty)$.<br>
+Положим $f(x,y):=\frac{\sin{x}}{x}$, $g(x,y)=e^{-xy}$. Тогда интеграл $\int_0^{+\infty}f(x,y)\,dx$ сходится 
+(<a href="./math_analysis8.5.3.html#Example8.5.8">пример 8.5.8</a> при этом интеграл $\int_0^{\pi/2}f(x,y)\,dx$ сходится так как для любого $x>0$
+$\frac{sin{x}}{x}<1$) равномерно по $y\in[0,\omega)$. И для любых $x,y\in[0,\omega)$ 
+$|g(x,y)|\leq1$. Следовательно, интеграл $\displaystyle\int_0^{+\infty}\frac{\sin{x}}{x}e^{-xy}\,dx$ сходится равномерно на $y\in[0,+\infty)$ по 
+<a href="#Statement13.2.5">признаку Абеля</a>. 
+<br><br>
+<p>Если несобственный интеграл зависящий от параметра имеет несколько особенностей, тогда он разбивается на конечное число интегралов с одной
+односторонней особенностью. После чего сходимость каждого из интегралов исследуется отдельно. 
+
+
+<br><br>
+<a href="./math_analysis13.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.2.html">next</a>
+</body>
+</html>

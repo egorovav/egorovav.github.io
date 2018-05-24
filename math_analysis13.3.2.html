@@ -1,0 +1,235 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.3.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.1.1.html">next</a>
+
+<h5 id=13.3.3>13.3.3 Эйлеровы интегралы.</h5>
+
+<p id=Definition13.3.1><b>Определение 13.3.1:</b> Следуя Лежандру, эйлеровыми интегралами первого и второго рода называются интегралы вида:
+<ol>
+<li>$\displaystyle{B}(\alpha,\beta):=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\,dx$ - бета-функция;</li>
+<li>$\displaystyle\Gamma(\alpha)\int_0^{+\infty}x^{\alpha-1}e^{-x}\,dx$ - гамма-функция.</li>
+</ol>
+
+<br><br>
+<p>Свойства бета-функции.
+<ol>
+<li>
+Бета-функция представляет из себя несобственный интеграл зависящий от двух параметров с двумя особенностями $x\to0+$ и  $x\to1-$.<br>
+Так как $\displaystyle{x}^{\alpha-1}(1-x)^{\beta-1}=O^*\left(\frac1{x^{1-\alpha}}\right)$, то по 
+<a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a> интеграл $B(\alpha,\beta)$ может сходится только при $1-\alpha<1$, то есть при $\alpha>0$.
+Аналогично так как $\displaystyle{x}^{\alpha-1}(1-x)^{\beta-1}=O^*\left(\frac1{x^{1-\beta}}\right)$, то $\beta>0$. Таким образом область определения 
+бета-функции $(0,+\infty)\times(0,+\infty)$.
+</li>
+<li>$B(\alpha,\beta)=B(\beta,\alpha)$.<br>
+Сделаем замену $y=x-1$, тогда $B(\alpha,\beta)=-\int_1^0(1-y)^{\alpha-1}y^{\beta-1}\,dy=\int_0^1y^{\beta-1}(1-y)^{\alpha-1}\,dy=B(\beta,\alpha).$
+</li>
+<li>Для любых $\alpha>1$, $\beta>0$ $B(\alpha,\beta)=\frac{\alpha-1}{\alpha+\beta-1}B(\alpha-1,\beta).$<br>
+<p><b>Доказательство:</b> Для любых $\alpha>1$, $\beta>0$ верно 
+$$B(\alpha,\beta)=\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\,dx=-\frac1{\beta}\int_0^1x^{\alpha-1}\,d(1-x)^{\beta}=
+-\frac1{\beta}\left.\left(x^{\alpha-1}(1-x)^{\beta}\right)\right|_0^1+\frac1{\beta}(\alpha-1)\int_0^1x^{\alpha-1}(1-x)^{\beta}\,dx=
+\frac{\alpha-1}{\beta}\int_0^1x^{\alpha-2}(1-x)^{\beta-1}(1-x)\,dx=$$
+$$=\frac{\alpha-1}{\beta}\int_0^1x^{\alpha-2}(1-x)^{\beta-1}\,dx-\frac{\alpha-1}{\beta}\int_0^1x^{\alpha-1}(1-x)^{\beta-1}\,dx=
+\frac{\alpha-1}{\beta}B(\alpha-1,\beta)-\frac{\alpha-1}{\beta}B(\alpha,\beta)\Rightarrow{B}(\alpha,\beta)=\frac{\beta-1}{\alpha+\beta-1}B(\alpha-1,\beta)$$
+$$B(\alpha,\beta)=B(\beta,\alpha)=\frac{\alpha-1}{\alpha+\beta-1}B(\beta-1,\alpha)=\frac{\beta-1}{\alpha+\beta-1}B(\alpha,\beta-1)$$
+</li>
+</ol>
+Так как для любого $\alpha>0$ $B(\alpha,1)=\int_0^1x^{\alpha-1}\,dx=\frac1{\alpha}$, то из свойства 3 следует, что для любых $\alpha>0$, $n\in\mathbb{N}$
+$B(\alpha,n)=\frac{n-1}{\alpha+n-1}B(\alpha,n-1)=\frac{(n-1)!}{(\alpha+n-1)\cdots(\alpha+1)}B(\alpha,1)=\frac{(n-1)!}{\alpha(\alpha-1)\cdots(\alpha+n-1)}$.
+В частности для любых $m,n\in\mathbb{N}$ $B(m,n)=\frac{(m-1)!(n-1)!}{(m+n-1)!}$.<br>
+Сделав замену $x=x(y)=\frac{y}{y+1}\colon[0,+\infty)\to[0,1)$ можно получить альтернативное выражение для бета-функции 
+$$B(\alpha,\beta)=\int_0^{+\infty}\frac{y^{\alpha-1}}{(y+1)^{\alpha-1}}\frac1{(y+1)^{\beta-1}}\,d\left(\frac{y}{y+1}\right)=
+\int_0^{+\infty}\frac{y^{\alpha-1}}{(y+1)^{\alpha+\beta-2}}\frac1{(y+1)^2}\,dy=\int_0^{+\infty}\frac{y^{\alpha-1}}{(y+1)^{\alpha+\beta}}\,dy$$ 
+<br>
+<p>Свойства гамма-функции.
+<ol>
+<li>
+Так как $\displaystyle{x}^{\alpha-1}e^{-x}=O^*\left(\frac1{x^{1-\alpha}}\right)$ при $x\to0+$, то по 
+<a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a> интеграл $\Gamma(\alpha)$ сходится только при $\alpha>0$. Так как при любом $\alpha>0$
+$x^{\alpha-1}e^{x/2}=o(1)$ при $x\to+\infty$, то существуют $k,x_0>0$ такие, что для любого 
+$x\geq{x}_0$ $|x^{\alpha-1}e^{-x}|\leq{x}^{\alpha-1}e^{-x/2}e^{-x/2}\leq{k}e^{-x/2}$, следовательно, по 
+<a href="./math_analysis13.2.1.html#Statement13.2.4">мажорантному признаку Вейерштрасса</a> интеграл 
+$\Gamma(\alpha)=\int_0^{+\infty}x^{\alpha-1}e^{-x}\,dx$ сходится равномерно по $\alpha\in(0,+\infty)$. 
+</li>
+<li>
+Для любого $n\in\mathbb{N}$ существует производная $\Gamma^{(n)}(\alpha)=\int_0^{+\infty}(\ln{x})^nx^{\alpha-1}e^{-x}\,dx$.<br>
+<p><b>Доказательство:</b> Реализуем предпосылки <a href="./math_analysis13.2.2.html#Theorem13.2.3">теоремы 13.2.3</a> о дифференцировании несобственного 
+интеграла по параметру:
+<ol type="i">
+<li>$f(x,\alpha)=x^{\alpha-1}e^{-x}\in{C}\{(0,+\infty)\times(0,+\infty)\}$,</li>
+<li>$\displaystyle\forall{n}\in\mathbb{N}\left(\exists\frac{\partial{f}(x,\alpha)}{\partial\alpha^n}=
+(\ln{x})^nx^{\alpha-1}e^{-x}\in{C}\{(0,+\infty)\times(0,+\infty)\}\right)$;</li>
+<li>
+Фиксируема отрезок $[a,b]\subset[0,+\infty)$, $n\in\mathbb{N}$.<br>
+При $x\to0+$ $|(\ln{x})^n|x^{a/2}=o(1)$, следовательно, существуют $x_0,k>0$ такие, что для любого $0<{x}<{x}_0$, $\alpha\in[a,b]$ и
+$$\left|\frac{\partial{f}(x,\alpha)}{\partial\alpha^n}\right|\leq|(\ln{x})^{a-1}|x^{a-1}e^{-x}\leq|(\ln{x})^n|x^{a/2}x^{a/2-1}e^{-x}=kx^{a/2-1}=
+O^*\left(\frac1{x^{1-a/2}}\right),x\to0+$$
+При $x\to+\infty$ $(\ln{x})^nx^{b-1}e^{-x/2}=o(1)$, следовательно, существуют $x_0,k>0$ такие, что для любого $x>x_0$, $\alpha\in[a,b]$ и
+$$\left|\frac{\partial{f}(x,\alpha)}{\partial\alpha^n}\right|\leq(\ln{x})^n=x^{b-1}e^{-x}e^{-x}=(\ln{x})^nx^{b-1}e^{-x/2}e^{-x/2}\leq{d}e^{-x/2}$$
+Таким образом в обоих случаях удалось оценить функцию $\displaystyle\left|\frac{\partial{f}(x,\alpha)}{\partial\alpha^n}\right|$ с помощью некоторой 
+функции $g(x)$ не зависящей от $\alpha$. И так как $a>0$, то $1-\frac{a}{2}<1$, следовательно, по
+<a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a> интеграл $\int_0^{+\infty}g(x)\,dx$ сходится. Следовательно, по мажорантному признаку
+Вейерштрасса интеграл $\displaystyle\int_0^{+\infty}\frac{\partial{f}(x,\alpha)}{\partial\alpha^n}\,dx$ сходится равномерно по $\alpha\in[a,b]$
+</li>
+</ol>
+Таким образом для любого $[a,b]\subset(0,+\infty)$ и $n\in\mathbb{N}_0$ для интеграла $\displaystyle\int_0^{+\infty}f_{\alpha}^{(n)}(x,\alpha)\,dx$
+можно применить <a href="./math_analysis13.2.2.html#Theorem13.2.3">теорему 13.2.3</a> на отрезке $[a,b]$. Поскольку отрезок $[a,b]\subset(0,+\infty)$ 
+произволен, то дифференцировать по параметру можно на всем интервале $(0,+\infty)$. Следовательно, для любого $\alpha\in(0,+\infty)$ существует производная
+$$\Gamma^{(n)}(\alpha)=\int_0^{+\infty}f_{\alpha}^{(n)}(x,\alpha)\,dx=\int_0^{+\infty}(\ln{x})^nx^{\alpha-1}e^{-x}\,dx$$ 
+</li>
+<li>$\forall\alpha>0(\Gamma(\alpha+1)=\alpha\Gamma(\alpha))$.<br>
+$$\Gamma(\alpha+1)=\int_0^{+\infty}x^{\alpha}e^{-x}\,dx=(-e^{-x}x^{\alpha})|_0^{+\infty}+\int_0^{+\infty}e^{-x}\alpha{x}^{\alpha-1}\,dx=
+\alpha\Gamma(\alpha)$$
+В частности, так как $\Gamma(1)=\int_0^{+\infty}e^{-x}\,dx=1$, то для любого $n\in\mathbb{N}$ $\Gamma(n+1)=n!$. Поэтому для любого $\alpha>-1$ функцию 
+$\alpha!:=\Gamma(\alpha+1)=\int_0^{+\infty}x^{\alpha}e^{-x}\,dx$ называют факториалом числа $\alpha$.
+</li>
+<li>Формула Эйлера - Гаусса:
+$\displaystyle\forall\alpha>0\left(\Gamma(\alpha)=\lim_{n\to\infty}\frac{n^{\alpha}(n-1)!}{\alpha(\alpha+1)\cdots(\alpha+n-1)}\right)$.<br>
+<p><b>Доказательство:</b> <i>Зорич т. 2, стр. 518.</i>
+</li>
+<li>
+Формула дополнения: $\displaystyle\forall\alpha\in(0,1)\left(\Gamma(\alpha)\Gamma(1-\alpha)=\frac{\pi}{\sin(\pi\alpha)}\right)$.<br>
+<p><b>Доказательство:</b> 
+$$\Gamma(\alpha)\Gamma(1-\alpha)=
+\lim_{n\to\infty}\left[n^{\alpha}\frac{(n-1)!}{\alpha(\alpha+1)\cdots(\alpha+n-1)}n^{1-\alpha}\frac{(n-1)!}{(1-\alpha)\cdots(n-\alpha)}\right]=
+\lim_{n\to\infty}\left[\frac1{\frac{n}{\alpha}\left(1+\frac{\alpha}{1}\right)\left(1+\frac{\alpha}{2}\right)\cdots\left(1+\frac{\alpha}{n-1}\right)}
+\frac1{\left(1-\frac{\alpha}{1}\right)\left(1-\frac{\alpha}{2}\right)\cdots\left(1-\frac{\alpha}{n-1}\right)(n-\alpha)}\right]=$$
+$$=\lim_{n\to\infty}\left[\frac{n}{\alpha(n-\alpha)}\prod_{k=1}^{n-1}\frac1{1-\frac{\alpha^2}{k^2}}\right]=
+\frac1{\alpha}\lim_{n\to\infty}\prod_{k=1}^{n-1}\frac1{1-\frac{\alpha^2}{k^2}}=
+\frac1{\alpha}\left[\lim_{n\to\infty}\prod_{k=1}^n\left(1-\frac{\alpha^2}{k^2}\right)\right]^{-1}$$
+<a href="some where over the rainbow">Позже</a> будет доказано равенство 
+$\displaystyle\sin(\pi\alpha)=\pi\alpha\prod_{k=1}^{\infty}\left(1-\frac{\alpha^2}{k^2}\right)$ при $\alpha\in(0,1)$, тогда 
+$\displaystyle\Gamma(\alpha)\Gamma(1-\alpha)=\frac1{\alpha}\frac{\pi\alpha}{\sin(\pi\alpha)}=\frac{\pi}{\sin(\pi\alpha)}$. 
+</li>
+</ol>
+<br><br>
+<p><b>Пример 13.3.1:</b> Воспользуемся свойствами гамма-функции для вычисления <a href="./math_analysis13.3.1.html#13.3.1">интеграла Эйлера - Пуассона</a>
+$$\int_0^{+\infty}e^{-t^2}\,dt=\int_0^{+\infty}e^{-x}\,d\sqrt{x}=\int_0^{+\infty}e^{-x}\frac12x^{-1/2}\,dx=\frac12\int_0^{+\infty}x^{-1/2}e^{-x}\,dx=
+\frac12\Gamma\left(\frac12\right)=\frac12\sqrt{\Gamma\left(\frac12\right)\Gamma\left(1-\frac12\right)}=\frac12\sqrt{\frac{\pi}{\sin\frac{\pi}{2}}}=
+\frac{\sqrt{\pi}}{2}$$
+<br><br>
+
+<p id=Statement13.3.1><b>Утверждение 13.3.1:</b> 
+$\displaystyle\forall\alpha>0\forall\beta>0\left(B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}\right)$.
+<p><b>Доказательство:</b> Получим альтернативное выражение для гамма-функции $\Gamma(\alpha)=\int_0^{+\infty}t^{\alpha-1}e^{-t}\,dt$, сделав замену
+$t=t(x)=xy$, где $y>0$, тогда 
+$$\Gamma(\alpha)=\int_0^{+\infty}(xy)^{\alpha-1}e^{-xy}d(xy)=y^{\alpha}\int_0^{+\infty}x^{\alpha-1}e^{-xy}\,dx$$
+Сделав замену $y:=y+1$ получим $\Gamma(\alpha+\beta)=(1+y)^{\alpha+\beta}\int_0^{+\infty}x^{\alpha+\beta-1}e^{-x(y+1)}\,dx$. Тогда учитывая
+полученное ранее представление для бета-функции $\displaystyle{B}(\alpha,\beta)=\int_0^{+\infty}\frac{y^{\alpha-1}}{(1+y)^{\alpha+\beta}}\,dy$ для любых
+$\alpha,\beta\in(0,+\infty)$ имеем
+$$\Gamma(\alpha+\beta)B(\alpha,\beta)=\Gamma(\alpha+\beta)\int_0^{+\infty}\frac{y^{\alpha-1}}{(1+y)^{\alpha+\beta}}\,dy=
+\int_0^{+\infty}\left(\frac{y^{\alpha-1}}{(1+y)^{\alpha+\beta}}(1+y)^{\alpha+\beta}\int_0^{+\infty}x^{\alpha+\beta-1}e^{-x(y+1)}\,dx\right)\,dy=
+\int_0^{+\infty}\left(y^{\alpha-1}\int_0^{+\infty}x^{\alpha+\beta-1}e^{-x(y+1)}\,dx\right)\,dy$$ 
+Позже будет показано, что в последнем выражении можно изменить порядок интегрирования, то есть 
+$\begin{multline}
+\Gamma(\alpha+\beta)B(\alpha,\beta)=\\=\int_0^{+\infty}\left(x^{\alpha+\beta-1}e^{-x}\int_0^{+\infty}y^{\alpha-1}e^{-xy}\,dy\right)\,dx=
+\int_0^{+\infty}\left(x^{\beta-1}e^{-x}\int_0^{+\infty}(xy)^{\alpha-1}e^{-xy}d(xy)\right)\,dx=
+\int_0^{+\infty}\left(x^{\beta-1}e^{-x}\int_0^{+\infty}t^{\alpha-1}e^{-t}\,dt\right)\,dx=
+\int_0^{+\infty}x^{\beta-1}e^{-x}\Gamma(\alpha)\,dx=\\=\Gamma(\alpha)\Gamma(\beta).
+\end{multline}$  
+Оправдаем теперь возможность изменения порядка интегрирования. Реализуем для функции 
+$f(x,y)=x^{\alpha+\beta-1}y^{\alpha-1}e^{-x(y+1)}\colon[0,+\infty)\times[0,+\infty)\to\mathbb{R}$ предпосылки 
+<a href="./math_analysis13.2.3.html#Theorem13.2.5">теоремы 13.2.5</a> об интегрировании несобственного интеграла по параметру. Проверим предпосылки
+теоремы при $\alpha>1$, $\beta>1$. Пункты 1 и 3 очевидны: $f(x,y)\in{C}\{[0,+\infty)\times[0,+\infty)\}$ и как было показано
+$\int_0^{+\infty}\left(\int_0^{+\infty}f(x,y)\,dy\right)\,dx=\Gamma(\alpha)\Gamma(\beta)$. Сложности возникают только при обосновании пункта 2, а именно
+проверки равномерной сходимости интегралов $\int_0^{+\infty}f(x,y)\,dx$, $\int_0^{+\infty}f(x,y)dy$.<br>
+Для любого $d>0$ интеграл $\int_0^{+\infty}f(x,y)\,dx$ сходится равномерно по $y\in[0,d]$ по 
+<a href="./math_analysis13.2.1.html#Statement13.2.4">мажорантному признаку Вейерштрасса</a>, так как при $\alpha>1$
+для любого $y\in[0,d]$ $0\leq{f}(x,y)\leq{x}^{\alpha+\beta-1}d^{\alpha-1}e^{-x}$ и при этом интеграл 
+$\int_0^{+\infty}x^{\alpha+\beta-1}d^{\alpha-1}e^{-x}\,dx$ сходится. Следовательно, интеграл $\int_0^{+\infty}f(x,y)\,dx$ сходится равномерно по 
+$y\in[0,+\infty)$.<br>
+Оценить подобным образом интеграл $\int_0^{+\infty}f(x,y)\,dy$ не получится, так как для любого $a>0$ интеграл 
+$\int_0^{+\infty}a^{\alpha+\beta-1}y^{\alpha-1}e^{-a}\,dy$ расходится при $\alpha>1$. Докажем равномерную сходимость интеграла $\int_0^{+\infty}f(x,y)\,dy$
+по <a href="./math_analysis13.2.1.html#Definition13.2.1">определению</a>.<br>
+Обозначим $I(A,x):=\int_A^{+\infty}f(x,y)\,dy=\int_{Ax}^{+\infty}t^{\alpha-1}e^{-t}x^{\beta-1}e^{-x}\,dt$, где последнее равенство получено заменой $t=xy$.
+Фиксируем $a>0$, $\varepsilon>0$, тогда при $\beta>1$
+$$\exists\lim_{x\to0+}(x^{\beta-1}e^{-x})=0\Rightarrow
+\exists{x}_0\in(0,a)\colon\forall{x}\in(0,x_0)\left(0<{x}^{\beta-1}e^{-x}<\frac{\varepsilon}{\Gamma(\alpha)}\right)\Rightarrow
+\forall{x}\in(0,x_0)\left(0<{I}(A,x)<\int_0^{+\infty}t^{\alpha-1}e^{-t}\frac{\varepsilon}{\Gamma(\alpha)}\,dt=\varepsilon\right)$$ 
+Пусть теперь $x\in[x_0,a]$, тогда $\displaystyle0<{I}(A,x)<{a}^{\beta-1}e^{-x_0}\int_{Ax_0}^{+\infty}t^{\alpha-1}e^{-t}\,dt$ и так как интеграл 
+$\int_0^{+\infty}t^{\alpha-1}e^{-t}\,dt$ сходится, то 
+$$\exists\lim_{A\to+\infty}\int_{Ax_0}^{+\infty}t^{\alpha-1}e^{-t}\,dt=0\Rightarrow\exists{A}_0=A_0(\varepsilon,x_0)>0\colon\forall{A}>A_0
+\left(\int_{Ax_0}^{+\infty}t^{\alpha-1}e^{-t}\,dt<\frac{\varepsilon}{a^{\beta-1}e^{-x_0}}\right)\Rightarrow\forall{A}>A_0(0<{I}(A,x)<\varepsilon).$$
+Таким образом 
+$$\forall\varepsilon>0\,\exists{A}_0>0\colon\forall{A}>{A}_0\forall{x}\in[0,a]\left(I(A,x)=\int_A^{+\infty}f(x,y)\,dy<\varepsilon\right),$$
+что в силу произвольности выбора $a>0$ означает равномерную сходимость интеграла $\int_0^{+\infty}f(x,y)\,dy$ по $x\in[0,+\infty)$.<br>
+Таким образом обоснованы предпосылки <a href="./math_analysis13.2.3.html#Theorem13.2.5">теоремы 13.2.5</a> для функции 
+$f(x,y)=x^{\alpha+\beta-1}y^{\beta-1}e^{-x(y+1)}$ при $\alpha>1$, $\beta>1$, то есть равенство 
+$B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ доказано при $\alpha>1$, $\beta>1$. Докажем его при $\alpha>0$, $\beta>0$,
+действительно, из свойства 3 бета-функции следует
+$$B(\alpha,\beta)=\frac{\alpha+\beta}{\alpha}B(\alpha+1,\beta)=\frac{(\alpha+\beta)(\alpha+\beta+1)}{\alpha\beta}B(\alpha+1,\beta+1)$$
+Так как $\alpha+1>1$, $\beta+1>1$, то по доказанному $B(\alpha+1,\beta+1)=\frac{\Gamma(\alpha+1)\Gamma(\beta+1)}{\Gamma(\alpha+\beta+2)}$, тогда из свойства
+3 гамма-функции следует
+$$B(\alpha,\beta)=\frac{(\alpha+\beta)(\alpha+\beta+1)}{\alpha\beta}\frac{\Gamma(\alpha+1)\Gamma(\beta+1)}{\Gamma(\alpha+\beta+2)}=
+\frac{(\alpha+\beta)(\alpha+\beta+1)}{\alpha\beta}\frac{\alpha\Gamma(\alpha)\beta\Gamma(\beta)}{(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)}=
+\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}.$$
+
+<br><br>
+<p id=Task13.3.2:><b>Задача 13.3.2:</b>
+<ol>
+<li>
+Для любых $\alpha>0$, $\beta>0$ доказать равенство 
+$\displaystyle\int_0^{\pi/2}\sin^{\alpha-1}{\varphi}\cos^{\beta-1}{\varphi}\,d\varphi=\frac12B\left(\frac{\alpha}{2},\frac{\beta}{2}\right)$.
+</li>
+<li>
+Для любого $\alpha\in(0,1)$ доказать равенство 
+$\displaystyle{B}(\alpha,1-\alpha)=\frac{\pi}{\sin(\pi\alpha)}=\int_0^{+\infty}\frac{x^{\alpha-1}}{1+x}\,dx$.
+</li>
+<li>
+Доказать, что 
+<ul>
+<li>существует $x_0\in(1,2)$ такое, что $\Gamma'(x_0)=0$;</li>
+<li>$\Gamma'(x)$ монотонно возрастает на $(0,+\infty)$;</li>
+<li>$\Gamma(x)$ убывает на $(0,x_0)$</li>
+<li>$\Gamma(x)$ возрастает на $(x_0,+\infty)$</li>
+<li>$\Gamma(x)\sim\frac1{x},x\to0$</li>
+</ul>
+</li>
+<li>Доказать равенство $\int_0^1\ln{\Gamma(x)}\,dx=\ln{\sqrt{2\pi}}$</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>
+$$\int_0^{\pi/2}\sin^{\alpha-1}{\varphi}\cos^{\beta-1}{\varphi}\,d\varphi=
+\int_0^1\sin^{2\frac{\alpha-1}{2}}{\varphi}\cos^{2\frac{\beta-1}{2}}{\varphi}\frac1{2\sin{\varphi}\cos{\varphi}}d(\sin^2{\varphi})=
+\frac12\int_0^1\sin^{2\left(\frac{\alpha}{2}-1\right)}{\varphi}\cos^{2\left(\frac{\beta}{1}-1\right)}{\varphi}\,d(\sin^2{\varphi})=
+\int_0^1x^{\frac{\alpha}{2}-1}(1-x)^{\frac{\beta}{2}-1}\,dx=\frac12B\left(\frac{\alpha}{2},\frac{\beta}{2}\right).$$
+</li>
+<li>
+$$B(\alpha,1-\alpha)=\frac{\Gamma(\alpha)\Gamma(1-\alpha)}{\Gamma(\alpha+1-\alpha)}=\frac1{\Gamma(1)}\frac{\pi}{\sin(\pi\alpha)}=
+\frac{\pi}{\sin(\pi\alpha)}.$$
+$$B(\alpha,\beta)=\int_0^1\frac{x^{\alpha-1}}{(1+x)^{\alpha+\beta}}\,dx\Rightarrow{B}(\alpha,1-\alpha)=\int_0^1\frac{x^{\alpha-1}}{1+x}\,dx.$$
+</li>
+<li>
+Так как по свойству 3 гамма-функции $\Gamma(2)=1\Gamma(1)=\Gamma(1)$, то по <a href="./math_analysis6.4.html#Theorem6.4.1">теореме Ролля</a> существует
+$x_0\in(1,2)$ такое, что $\Gamma'(x_0)=0$.<br>
+Так как по свойству 2 гамма-функции $\Gamma''(x)=\int_0^1(\ln{y})^2y^{x-1}e^{-y}\,dy$, где подынтегральная функция положительна для любых $x,y>0$, то 
+$\Gamma''(x)>0$ для любого $x>0$, следовательно, функция $\Gamma'(x)$ монотонно возрастает на $(0,+\infty)$.<br>
+Так как функция $\Gamma'(x)$ монотонно возрастает, на $(0,+\infty)$, значит точка $x_0$ является единственной точкой такой, что $\Gamma'(x_0)=0$, то есть
+для любого $x\in(0,x_0)$ $\Gamma'(x)<0$ и для любого $x\in(x_0,+\infty)$ $\Gamma'(x)>0$, следовательно, функция $\Gamma(x)$ монтонно убывает на $(0,x_0)$
+и монотонно возрастает на $(x_0,+\infty)$.<br>
+Существует предел $\lim_{n\to\infty}\frac{x\pi}{\sin(\pi{x})}=1$, следовательно, по свойству 5 гамма-функции
+$$\exists\lim_{x\to0+}(x\Gamma(x)\Gamma(1-x))=\lim_{x\to0+}(x\Gamma(x))\lim_{x\to0+}{\Gamma(1-x)}=\lim_{x\to0+}(x\Gamma(x))\Gamma(1)=1\Rightarrow
+\Gamma(x)\sim\frac1{x},x\to0+$$
+</li>
+<li>См. Фихтенгольц т. 2, стр. 759.</li>
+</ol>
+</i>
+
+<br><br>
+<a href="./math_analysis13.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.1.1.html">next</a>
+</body>
+</html>

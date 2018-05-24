@@ -1,0 +1,215 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.3.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.3.html">next</a>
+
+<h5 id=14.3.3>14.3.3. Общие свойства кратного интеграла Римана.</h5>
+
+<p id=Statement14.3.5><b>Утверждение 14.3.5: Линейность кратного интеграла Римана.</b><br>
+Пусть $A\in{G}(m,H)$, $f_1(x),f_2(x)\in\mathcal{R}(A)$, тогда для любых $\lambda_1,\lambda_2\in\mathbb{R}$ 
+$\lambda_1{f}_1(x)+\lambda_2{f}_2(x)\in\mathcal{R}(A)$ и 
+$$\int_A\lambda_1{f}_1(x)+\lambda_1{f}_2(x)\,dx=\lambda_1\int_Af_1(x)\,dx+\lambda_2\int_Af_2(x)\,dx.$$
+<p><b>Доказательство:</b> Фиксируем $\lambda_1,\lambda_2\in\mathbb{R}$. Функции $f_1(x)$, $f_2(x)$ ограничены на $A$, следовательно, существуют 
+$M_1>0$, $M_2>0$ такие, что для любого $x\in{A}$ $|f_1(x)|<{M}_1$, $|f_2(x)|<{M}_2$ тогда
+$$\forall{x}\in{A}(|\lambda_1f_1(x)+\lambda_2f_2(x)|\leq|\lambda_1||f_1(x)|+|\lambda_2||f_2(x)|\leq|\lambda_1|M_1+|\lambda_2|M_2)$$
+то есть функция $\lambda_1f_1(x)+\lambda_2f_2(x)$ ограничена на $A$.<br>
+Если $B_1$, $B_2$ множество точек разрыва функций $f_1(x)$ и $f_2(x)$ соответственно, то по 
+<a href="./math_analysis14.3.1.html#Theorem14.3.2">критерию Лебега</a> $\mu^*(B_1)=\mu^*(B_2)=0$. Если $B$ множество точек разрыва функции 
+$\lambda_1f_1(x)+\lambda_2f_2(x)$, то, очевидно, $B\subset{B}_1\cup{B}_2$, следовательно, $\mu^*(B)=0$. Таким образом по критерию Лебега функция 
+$\lambda_1f_1(x)+\lambda_2f_2(x)$ интегрируема на $A$.<br>
+Для нахождения значения интеграла $\int_A\lambda_1f_1(x)+\lambda_2f_2(x)\,dx$ можем применить пункт 6 
+<a href="./math_analysis14.3.1.html#Statement14.3.1">утверждения 14.3.1</a>. Фиксируем промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}$.
+Для любого разбиения с помеченными точками $(P,\xi)$ промежутка $I$ верно
+$$\sigma((\lambda_1f_1+\lambda_2f_2)\chi_A,P,\xi)=\sum_{(P)}((\lambda_1f_1(\xi_k)+\lambda_2f_2(\xi_k))\chi_A(\xi_k)\mu(I_k))=
+\lambda_1\sum_{(P)}(f_1(\xi_k)\chi_A(\xi_k)\mu(I_k))+\lambda_1\sum_{(P)}(f_2(\xi_k)\chi_A(\xi_k)\mu(I_k))=
+\lambda_1\sigma(f_1\chi_A,P,\xi)+\lambda_2\sigma(f_2\chi_A,P,\xi)$$ 
+Фиксируем последовательность разбиений с помеченными точками $\{(P_n,\xi_n)\}$ промежутка $I$ такую, что $\lim_{n\to\infty}\lambda(P_n)=0$, тогда для любого
+$n\in\mathbb{N}$ $\sigma((\lambda_1f_1+\lambda_2f_2)\chi_A,P_n,\xi_n)=\lambda_1\sigma(f_1\chi_A,P_n,\xi_n)+\lambda_2\sigma(f_2\chi_A,P_n,\xi_n)$.
+Переходя к пределу при $n\to\infty$ получим
+$$\int_I(\lambda_1f_1(x)+\lambda_2f_2(x))\chi_A(x)\,dx=\lambda_1\int_If_1(x)\chi_A(x)\,dx+\lambda_2\int_If_2(x)\chi_A(x)\,dx\Rightarrow
+\int_A\lambda_1f_1(x)+\lambda_2f_2(x)\,dx=\lambda_1\int_Af_1(x)\,dx+\lambda_2\int_Af_2(x)\,dx.$$
+<br><br>
+<p id=Statement14.3.6><b>Утверждение 14.3.6: Связь меры Жордана с интегралом Римана.</b><br>
+$$\forall{A}\in{G}(m,H)\left(\int_Adx=\overline{\mu}(A)\right)$$
+<p><b>Доказательство:</b> Фиксируем числовой промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}\backslash\partial{I}$. Функция $f(x)\equiv1$ 
+ограничена и непрерывна на $A$, следовательно,
+$$\exists\int_Adx=\int_I\chi_A(x)\,dx=\overline{\mathcal{J}}(\chi_A,I)=\inf_{(P)}S(\chi_A,P)=\inf_{(P)}\sum_{(P)}(M_k\mu(I_k)),$$
+где $M_k\neq0$ тогда и только тогда, когда $I_k\cap{A}\neq\varnothing$.<br>
+Для любого разбиения $P$ промежутка $I$ обозначим $B'_P:=\bigsqcup_{k\colon{I}_k\cap{A}\neq\varnothing}I'_k$. Где $I'_k$ - это ячейка разбиения $I_k$, 
+некоторые границы которой удалены так, чтобы $I'_k$ являлась полуоткрытым параллелепипедом (то есть в элементом полукольца $H$), при этом 
+$\mu(I'_k)=\mu(I_k)$. Тогда для любого разбиения $P$ промежутка $I$ $B'_P\in{R}(H)$ и $A\subset{B'_P}$, следовательно,
+$$\int_Adx=\inf_{(P)}\sum_{(P)}(M_k\mu(I_k))=\inf_{(P)}\sum_{k\colon{I}_k\cap{A}\neq\varnothing}\mu(I_k)=\inf_{(P)}\mu(B'_P)\geq
+\inf_{B\in{R}(H)\colon{A}\subset{B}}\mu(B)=\overline{\mu}^*(A)=\overline{\mu}(A).$$
+Аналогичным образом получается неравенство в обратную сторону.
+$$\int_Adx=\int_I\chi_A(x)\,dx=\underline{\mathcal{J}}(\chi_A,I)=\sup_{(P)}s(\chi_A,P)=\sup_{(P)}\sum_{(P)}(m_k\mu(I_k)),$$
+где $m_k\neq0$ тогда и только тогда, когда $I_k\cap{A}=I_k$ (или что тоже самое $I_k\subset{A}$).<br>
+Для любого разбиения $P$ промежутка $I$ обозначим $B''_P:=\bigsqcup_{k\colon{I}_k\subset{A}}I'_k$. Тогда для любого разбиения $P$ промежутка $I$
+$B''_P\in{R}(H)$ и $B''_P\subset{A}$, следовательно,
+$$\int_Adx=\sup_{(P)}\sum_{(P)}(m_k\mu(I_k))=\sup_{(P)}\sum_{k\colon{I}_k\subset{A}}\mu(I_k)=\sup_{(P)}\mu(B''_P)\leq
+\sup_{B\in{R}(H)\colon{B}\subset{A}}\mu(B)=\overline{\mu}_*(A)=\overline{\mu}(A).$$
+<br><br>
+<p id=Statement14.3.7><b>Утверждение 14.3.7:</b>
+<ol>
+<li>$(A\in{G}(m,H)\wedge{f}(x)\in\mathcal{R}(A)\wedge\mathring{\forall}x\in{A}(f(x)=0))\Rightarrow\int_Af(x)\,dx=0.$</li>
+<li>
+Если функция $f(x)$ ограничена на множестве $A\in{G}(m,H)$ и $\overline{\mu}(A)=0$, то существует интеграл $\int_Af(x)\,dx=0$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Доказано в <a href="./math_analysis14.3.1.html#Task14.3.2">задаче 14.3.2</a>.</li>
+<li>
+Фиксируем промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}$.<br>
+Так как $\overline{\mu}(A)=0$ и $\chi_A(x)=0$ для любого $x\in{I}\backslash{A}$, то $f(x)\chi_A(x)$ непрерывна почти всюду на $I$. 
+<p><i>
+Действительно, если $\overline{\mu}(A)=0$, то для любого $\varepsilon>0$ существует конечное покрытие множества $A$ элементами полукольца $H$ $[a_k,b_k)$, 
+суммарная мера $m$ которых меньше $\varepsilon$. Для любой точки $x_0$ лежащей за пределами совокупности замкнутых параллелепипедов $[a_k,b_k]$ сущесвует 
+окрестность $U(x_0)$ такая, что для любого $y\in{U}(x_0)$ $\chi_A(y)=0$, следовательно, функция $\chi_A(x)$ непрерывана в точке $x_0$. Так как по пункту 1
+<a href="./math_analysis14.2.3.html#Theorem14.2.9">теоремы 14.2.9</a> добавление границ к параллелепипеду не меняет его меры Жордана, то суммарная 
+внешняя мера отрезков $[a_k,b_k]$ меньше $\varepsilon$, следовательно, функция $\chi_A(x)$ непрерывна почти всюду на $I$. 
+</i></p>
+Из ограниченности функции $f(x)$ на $A$ следует ограниченность функции $f(x)\chi_A(x)$ на $I$, тогда по 
+<a href="./math_analysis14.3.1.html#Statement14.3.4">критерию Лебега</a> $\int_Af(x)\,dx:=\int_If(x)\chi_A(x)\,dx$, значение которого по пункту 1 равно 0. 
+</li>
+</ol>
+<br><br>
+<p id=Statement14.3.8><b>Утверждение 14.3.8: Аддитивность кратного интеграла Римана.</b><br>
+Пусть $A,B\in{G}(m,H)$, $f(x)\colon{A}\cup{B}\to\mathbb{R}$, тогда
+<ol>
+<li>
+$$\exists\int_{A\cup{B}}f(x)\,dx\Leftrightarrow\left(\exists\int_Af(x)\,dx\wedge\exists\int_Bf(x)\,dx\right)\Rightarrow\exists\int_{A\cap{B}}f(x)\,dx.$$
+</li>
+<li>
+$$\left(\exists\int_Af(x)\,dx\wedge\exists\int_Bf(x)\,dx\right)\Rightarrow\exists\int_{A\cup{B}}f(x)\,dx=
+\int_Af(x)\,dx+\int_Bf(x)\,dx-\int_{A\cap{B}}f(x)\,dx.$$
+</li>
+<li>
+$$\left(\exists\int_Af(x)\,dx\wedge\exists\int_Bf(x)\,dx\wedge\mu(A\cap{B})=0\right)\Rightarrow\int_{A\cup{B}}f(x)\,dx=\int_Af(x)\,dx+\int_Bf(x)\,dx.$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$\Rightarrow)$<br>
+Если существует интеграл $\int_{A\cup{B}}f(x)\,dx$, то по <a href="./math_analysis14.3.1.html#Statement14.3.4">критерию Лебега</a> функция $f(x)$
+ограничена на множестве $A\cup{B}$ и непрерывна почти всюду на нем. Следовательно, функция $f(x)$ ограничена и непрерывна почти всюду на 
+$A\subset{A}\cup{B}$ и на $B\subset{A}\cup{B}$. Следовательно, существуют интегралы $\int_Af(x)\,dx$ и $\int_Af(x)\,dx$.<br>
+$\Leftarrow)$<br>
+Фиксируем промежуток $I\subset\mathbb{R}^n$ такой, что $A\cup{B}\subset{I}$.<br>
+Так как $f(x)\in\mathcal{R}(A)$, то функция $f(x)\chi_A(x)$ непрерывна почти всюду на $I$. Аналогично функция $f(x)\chi_B(x)$ непрерывна почти всюду на $I$.
+$$\chi_{A\cup{B}}(x)=\chi_A(x)+\chi_B(x)-\chi_{A\cap{B}}(x)=\chi_A(x)+\chi_B(x)-\chi_A(x)\chi_B(x)\Rightarrow
+f(x)\chi_{A\cup{B}}(x)=f(x)\chi_A(x)+f(x)\chi_B(x)-(f(x)\chi_A(x))\chi_B(x)$$
+В последнем выражении первые два слагаемых непрерывны почти всюду на $I$ по доказанному выше, третье слагаемое непрерывно почти всюду на $I$, как 
+произведение непрерывных почти всюду на $I$. Таким образом функция стоящая в правой части непрерывна почти всюду на $I$, следовательно, функция 
+$f(x)\chi_{A\cup{B}}(x)$ непрерывна почти всюду на $I$. Так как $f(x)\in\mathcal{R}(A)$ и $f(x)\in\mathcal{R}(B)$, то функция $f(x)$ ограничена на 
+$A\cup{B}$, следовательно, функция $f(x)\chi_{A\cup{B}}$ ограничена на $I$, тода по <a href="./math_analysis14.3.1.html#Theorem14.3.2">критерию Лебега</a> 
+существует интеграл $\int_{A\cup{B}}f(x)\,dx:=\int_If(x)\chi_{A\cup{B}}\,dx$.<br>
+Из ограниченности функции $f(x)$ на множестве $A$ следует ограниченность функции $f(x)\chi_{A\cap{B}}(x)$ на множестве $I$. Непрерывность почти всюду
+на $I$ функции $f(x)\chi_{A\cap{B}}(x)=(f(x)\chi_A(x))\chi_B(x)$ обоснована выше. Следовательно, существует интеграл 
+$\int_{A\cap{B}}f(x)\,dx:=\int_If(x)\chi_{A\cap{B}}(x)\,dx$.
+</li>
+<li>
+$$
+\int_{A\cup{B}}f(x)\,dx:=\int_If(x)\chi_{A\cup{B}}\,dx=\int_If(x)(\chi_A(x)+\chi_B(x)-\chi_{A\cap{B}}(x))\,dx=$$
+$$=\int_If(x)\chi_A(x)\,dx+\int_If(x)\chi_B(x)\,dx-\int_If(x)\chi_{A\cap{B}}(x)\,dx=\int_Af(x)\,dx+\int_Bf(x)\,dx-\int_{A\cap{B}}f(x)\,dx
+$$
+</li>
+<li>Следует из пункта 2 и пункта 2 утверждения 14.3.7.</li>
+</ol>
+<br><br>
+<p id=Theorem14.3.3><b>Теорема 14.3.3: Интеграл и неравенства.</b><br>
+Пусть $A\in{G}(m,H)$; $f(x),g(x)\colon{A}\to\mathbb{R}$; $f(x),g(x)\in\mathcal{R}(A)$, тогда
+<ol>
+<li>$\forall{x}\in{A}(f(x)\geq0)\Rightarrow\int_Af(x)\,dx\geq0$,</li>
+<li>$\forall{x}\in{A}(f(x)\geq{g}(x))\Rightarrow\int_Af(x)\,dx\geq\int_Ag(x)\,dx$,</li>
+<li>$\left|\int_Af(x)\,dx\right|\leq\int_A|f(x)|\,dx$,</li>
+<li>$\exists{m},M\in\mathbb{R}\colon\forall{x}\in{A}(m\leq{f}(x)\leq{M}\wedge{g}(x)\geq0)\Rightarrow
+\exists\theta\in[m,M]\colon\int_Af(x)g(x)\,dx=\theta\int_Ag(x)\,dx$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Если $A$ числовой промежуток, то $\int_Af(x)\,dx=\lim_{n\to\infty}\sigma(f,P_n,\xi_n)\geq0$, так как для любого разбиения $P$ и для любого набора помеченных
+точек $\xi$ при неотрицательной $f(x)$ $\sigma(f,P,\xi)\geq0$.<br>
+Если $A$ не числовой промежуток, то $\int_Af(x)\,dx:=\int_If(x)\chi_A(x)\,dx$, где $I$ числовой промежуток, и для любого $x\in{I}$ $f(x)\chi_A(x)\geq0$,
+тогда по доказанному $\int_Af(x)\,dx\geq0:=\int_If(x)\chi_A(x)\,dx\geq0$.
+</li>
+<li>
+По <a href="#Statement14.3.5">линейности интеграла</a> и пункту 1
+$$(f(x),g(x)\in\mathcal{R}(A)\wedge\forall{x}\in{A}(f(x)\geq{g}(x)))\Rightarrow(f(x)-g(x)\in\mathcal{R}(A)\wedge\forall{A}(f(x)-g(x)\geq0))\Rightarrow$$
+$$\Rightarrow\int_Af(x)\,dx-\int_Ag(x)\,dx=\int_Af(x)-g(x)\,dx\geq0\Rightarrow\int_Af(x)\,dx\geq\int_Ag(x)\,dx.$$
+</li>
+<li>
+Из ограниченности на $A$ и непрерывности почти всюду на $A$ функции $f(x)$ следует следует ограниченность на $A$ и непрерывность почти всюду на $A$
+функции $|f(x)|$. Следовательно, функция $|f(x)|$ интегрируема на $A$, при этом по пункту 2 имеем
+$$\forall{x}\in{A}(-|f(x)|\leq{f}(x)\leq|f(x)|)\Rightarrow-\int_A|f(x)|\,dx\leq\int_Af(x)\,dx\leq\int_A|f(x)|\,dx\Rightarrow
+\left|\int_Af(x)\,dx\right|\leq\int_A|f(x)|\,dx.$$
+</li>
+<li>
+Функция $f(x)g(x)$ интегрируема на $A$ по <a href="./math_analysis14.3.1.html#Statement14.3.4">критерию Лебега</a>, поэтому по пункту 2
+$$\forall{x}\in{A}(m\leq{f}(x)\leq{M})\Rightarrow\forall{x}\in{A}(mg(x)\leq{f}(x)g(x)\leq{M}g(x))\Rightarrow
+m\int_Ag(x)\,dx\leq\int_Af(x)g(x)\,dx\leq{M}\int_Ag(x)\,dx$$
+Так как функция $g(x)$ не отрицательна, то $\int_Ag(x)\,dx\geq0$.<br>
+Если $\int_Ag(x)\,dx=0$, то из полученных неравенств следует, что $\int_Af(x)g(x)\,dx=0$. Следовательно, в качестве искомого $\theta$ можно выбрать любое
+вещественное число.<br>
+Если $\int_Ag(x)\,dx>0$, то $\displaystyle\theta:=\frac{\int_Af(x)g(x)\,dx}{\int_Ag(x)\,dx}$.
+</li>
+</ol>
+<br><br>
+<p id=Corollary14.3.1><b>Следствие 14.3.1:</b> Если $A_-:=\{x\in{A}\mid{f}(x)<0\}$, тогда если $A,A_-\in{G}(m,H)$ и $\bar{\mu}(A_-)=0$, то 
+$\int_Af(x)\,dx\geq0$.
+<p><b>Доказательство:</b> По пункту 3 <a href="#Statement14.3.8">утверждения 14.3.8</a> $\int_Af(x)\,dx=\int_{A_-}f(x)\,dx+\int_{A\backslash{A_-}}f(x)\,dx$.
+Так как для любого $x\in{A}\backslash{A_-}$ $f(x)\geq0$, то по пункту 1 <a href="#Theorem14.3.3">теоремы 14.3.3</a> $\int_{A\backslash{A_-}}f(x)\,dx\geq0$.
+Так как $\bar{\mu}(A_-)=0$, то по пункту 2 <a href="#Statement14.3.7">утверждения 14.3.7</a> $\int_{A_-}f(x)\,dx=0$, следовательно,
+$\int_Af(x)\,dx=\int_{A\backslash{A_-}}f(x)\,dx\geq0$.
+
+<br><br>
+<p id=Corollary14.3.2><b>Следствие 14.3.2:</b> 
+$$\exists{m},M\in\mathbb{R}\colon\forall{x}\in{A}(m\leq{f}(x)\leq{M})\Rightarrow\exists\theta\in[m,M]\colon\int_Af(x)\,dx=\theta\mu(A)$$
+<p><b>Доказательство:</b> Следует из пункта 4 <a href="#Theorem14.3.3">теоремы 14.3.3</a> при $g(x)\equiv1$.
+<br><br>
+<p>В приведенных выше утверждениях (пункт 4 теоремы 14.3.3, следствие 14.3.2), если множество $A$ связное, $f(x)$ непрерывна на $A$, 
+$m:=\min_{x\in{A}}{f(x)}$, $M:=\max_{x\in{A}}{f(x)}$, то в качестве точки $\theta$ можно выбрать $f(\xi)$ для некоторого $\xi\in{A}$.
+<br><br>
+<p id=Lemma14.3.1><b>Лемма 14.3.1:</b> Если $A\in{G}(m,H)$, функция $f(x)\colon{A}\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x)\in\mathcal{R}(A)$,</li>
+<li>$\int_Af(x)\,dx=0$,</li>
+<li>$\forall{x}\in{A}(f(x)\geq0)$,</li>
+</ol>
+то $f(x)=0$ почти всюду на $A$.
+<p><b>Доказательство:</b> Обозначим $A_0$ множество всех точек из $intA$, в которых функция $f(x)$ непрерывна. Обозначим $B$ множество точек разрыва функции
+$f(x)$. Докажем от противного, что для любого $x_0\in{A}_0$ $f(x_0)=0$. Предположим, что $x_0\in{A}_0$ и $f(x_0)\neq0$, тогда
+$$f(x_0)\neq0\Rightarrow{f}(x_0)>0\Rightarrow\exists{U}(x_0)\subset{A}\colon\forall{x}\in{U}(x_0)\left(f(x)\geq{m}:=\frac{f(x_0)}{2}>0\right)\Rightarrow$$
+$$\Rightarrow\int_Af(x)\,dx=\int_{U(x_0)}f(x)\,dx+\int_{A\backslash{U}(x_0)}f(x)\,dx\geq\int_{U(x_0)}f(x)\,dx\geq{m}\int_{U(x_0)}dx=m\mu(U(x_0))>0.$$
+Получено противоречие с условием 2 леммы. Следовательно, для любого $x\in{A}_0$ $f(x)=0$ и так как 
+$\mu^*(A\backslash{A}_0)\leq\mu^*(\partial{A}\cup{B})=0$, то $f(x)=0$ почти всюду на $A$.
+
+<br><br>
+<p>Обозначим $S:=\{f(x)\in\mathcal{R}(A)\mid{f}(x)\not\equiv0\wedge\mathring\forall{x}\in{A}(f(x)=0)\}$. Введем на классе функций $\mathcal{R}(A)$
+норму $\|f(x)\|:=\int_A|f(x)|\,dx$, тогда по доказанному в данном разделе для любой функции $f(x)\in\mathcal{R}(A)$
+<ol>
+<li>$\|f(x)\|\geq0$,</li>
+<li>$\forall\lambda\in\mathbb{R}(\|(\lambda{f})(x)\|=|\lambda|\|f(x)\|)$,</li>
+<li>$\forall{g}(x)\in\mathcal{R}(A)(\|(f+g)(x)\|\leq\|f(x)\|+\|g(x)\|)$</li>
+и для любой функции $f(x)\in\mathcal{R}(A)\backslash{S}$
+<li>$\|f(x)\|=0\Rightarrow{f}(x)\equiv0$</li>
+</ol>
+<p>Таким образом класс функций $\mathcal{R}(A)\backslash{S}$ образует нормированное (фактор) пространство относительно нормы $\|f(x)\|$.  
+
+<br><br>
+<a href="./math_analysis14.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.3.html">next</a>
+</body>
+</html>

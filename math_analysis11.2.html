@@ -1,0 +1,177 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 11.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-textvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.1.html">next</a>
+
+<h4 id=11.2>11.2 Непрерывные отображения.</h4>
+
+<h5 id=11.2.1>11.2.1 Определение и локальные свойства.</h5>
+
+<i>
+<p id=Definition11.2.1><b>Определение 11.2.1:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, тогда отображение $f(x)\colon{X}\to{Y}$
+называется непрерывным в точке $a\in{X}$, если для любой окрестности $V(f(a))\subset{Y}$ точки $f(a)$ найдется окрестность $U(a)$ точки $a$ такая, что 
+$f(U(a))\subset{V}(f(a))$, то есть
+$$\forall{V}(f(a))\,\exists{U}(a)\colon{f}(U(a))\subset{V}(f(a))$$
+или
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon,a)>0\colon\forall{x}\in{X}(\rho_x(a,x)<\delta\Rightarrow\rho(f(a),f(x))<\varepsilon).$$
+
+<br><br>
+
+<p>Из определений <a href="./math_analysis11.1.html#Definition11.1.8">11.1.8</a>, 11.2.1 следует, что так же как и в случае вещественнозначной функции
+действительного аргумента, непрерывность функции в точке $a\in\mathring{X}$ равносильна существованию предела $\lim_{x\to{a}}f(x)=f(a)$.
+
+<br><br>
+<p id=Definition11.2.2><b>Определение 11.2.2:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства. Тогда отображение $f(x)\colon{X}\to{Y}$
+называется непрерывным, если оно непрерывно в каждой точке множества $X$.
+<br>
+Класс непрерывных отображений метрического пространства $X$ в метрическое пространство $Y$ обозначают $C(X,Y)$. 
+<br><br>
+
+<p id=Theorem11.2.1><b>Теорема 11.2.1: Критерий непрерывности.</b><br>
+Отображение $f(x)\colon{X}\to{Y}$ метрического пространства $X$ в метрическое пространство $Y$ непрерывно тогда и только тогда, когда прообраз любого 
+открытого подмножества $Y$ открыт в $X$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+Пусть $G_y\subset{Y}$ - открыто в $Y$, обозначим $G_x:=f^{-1}(G_y)$ тогда для любой точки $a\in{G}_x$ множество $G_y$ является окрестностью точки $f(a)$, 
+следовательно, по непрерывности функции $f(x)$ для любой точки $a\in{G}_x$ существует окрестность $U_x(a)$ такая, что $f(U_x(a))\subset{G}_y$, 
+следовательно, $U_x(a)\subset{f}^{-1}(G_y)=G_x$. Таким образом, для любого $a\in{G}_x$ существует окрестность $U_x(a)\subset{G}_x$, что означает, 
+что $G_x$ открыто.<br>
+$\Leftarrow)$<br>
+Фиксируем точку $a\in{X}$. Тогда по условию для любой окрестности $V_y(f(a))$ точки $f(a)$ прообраз $f^{-1}(V_y(f(a)))$ будет открыт, то есть будет 
+являтся некоторой окрестностью $U_x(a)$ точки $a$. Таким образом
+$$\forall{a}\in{G}_x(\forall{V}_y(f(a))\,\exists{U}_x(a):=f^{-1}(V_y(f(a)))\colon{f}(U_x(a))\subset{V}_y(f(a)))$$
+ реализовано определение непрерывности функции $f(x)$.
+</i>
+<br><br>
+
+<p id=Corollary11.2.1><b>Следствие 11.2.1:</b> Отображение $f(x):X\to{Y}$ метрического пространства $X$ в метрическое пространство $Y$ непрерывно тогда
+и только тогда, когда прообраз любого замкнутого подмножества $Y$ замкнут в $X$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+По <a href="./math_analysis11.1.html#Definition11.1.4">определению 11.1.4</a> множество $F_y\subset{Y}$ замкнуто в $Y$ тогда и только тогда, когда 
+множество $G_y:=Y\backslash{F}_y$ открыто в $Y$. Так как $f^{-1}(F_y)=f^{-1}(Y\backslash{G}_y)=f^{-1}(Y)\backslash{f}^{-1}(G_y)=X\backslash{f}^{-1}(G_y)$,
+то прообраз множества $F_y$ будет замкнут тогда и только тогда, когда открыт прообраз открытого множества $G_y$. По теореме 11.2.1 последнее утверждение 
+верно в силу непрерывности функции f(x).<br>
+$\Leftarrow)$<br>
+Для любого множества $G_y$ открытого в $Y$ множество $F_y:=Y\backslash{G}_y$ замкнуто в $Y$ и $f^{-1}(G_y)=X\backslash{f}^{-1}(F_y)$. Так как прообраз 
+$f^{-1}(F_y)$ замкнутого множества $F_y$ по условию замкнут, то множество $f^{-1}(G_y)$ открыто, тогда по теореме 11.2.1 отображение $f(x)$ непрерывно.
+
+<br><br>
+<p id=Definition11.2.3><b>Определение 11.2.3:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, тогда отображение $f(x)\colon{X}\to{Y}$
+называется гомеоморфизмом пространств $X$ и $Y$, если 
+<ol>
+<li>отображение $f(x)$ <a href="./math_analysis2.html#Definition2.2.2">биективно</a>,</li>
+<li>$f(x)\in{C}(X,Y)$,</li>
+<li>$f^{-1}(x)\in{C}(Y,X)$.</li>
+</ol>
+Если для метрических пространств $X$ и $Y$ существует гомеоморфизм, то эти пространства называются гомеоморфными.
+
+<br><br>
+<p>По <a href="#Theorem11.2.1">критерию непрерывности</a> гомеоморфные отображения сохраняют свойства открытости и замкнутости множеств.
+<br>
+<p>Сформулируем и докажем общие локальные и глобальные свойства непрерывных отображений в метрических пространствах.
+
+<br><br>
+
+<p id=Statement11.2.1><b>Утверждение 11.2.1: Общие локальные свойства непрерывных отображений.</b><br>
+Пусть $(X,\rho_x)$, $(Y,\rho_y)$, $(Z,\rho_z)$ метрические пространства. Функции $f(x)\colon{X}\to{Y}$, $g(y)\colon{Y}\to{Z}$ и точка $a\in{X}$
+такие, что функция $f(x)$ непрерывна в точке $a$, функция $g(y)$ непрерывна в точке $f(a)$, тогда
+<ol>
+<li>композиция отображений $(g\circ{f})(x)\colon{X}\to{Z}$ непрерывна в точке $x=a$,</li>
+<li>функция $f(x)$ <a href="./math_analysis11.1.html#Definition11.1.11">локально ограничена</a> при $x\to{a}$.</li>
+</ol> 
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Фиксируем окрестность $V(g(f(a)))\subset{Z}$, тогда по непрерывности функции $g(y)$ в точке $f(a)$
+$$\exists{U}_y(f(a))\subset{Y}\colon(y\in{U}_y(f(a))\Rightarrow{g}(y)\in{V}(g(f(a))))$$
+тогда по непрерывности функции $f(x)$ в точке $a$
+$$\exists{U}(a)\subset{X}\colon(x\in{U}(a)\Rightarrow{f}(x)\in{U}_y(f(a))\Rightarrow{g}(f(x))\in{V}(g(f(a)))).$$
+Таким образом реализовано <a href="#Definition11.2.1">определение непрерывности</a> функции $g\circ{f}$ в точке $a$.
+</li>
+<li>
+Фиксируем $\varepsilon>0$, тогда по <a href="#Definition11.2.1">определению непрерывности</a> функции $f(x)$ в точке $a$ существует окрестность $U(a)$
+такая, что $f(U(a))\subset{B}(a,\varepsilon)$. Таким образом реализовано 
+<a href="./math_analysis11.1.html#Definition11.1.11">определение локальной ограниченности</a> для функции $f(x)$ при $x\to{a}$.
+</li>
+</ol>
+
+<h5 id=11.2.2>11.2.2 Глобальные свойства непрерывных отображений.</h5>
+
+<p id=Statement11.2.2><b>Утверждение 11.2.2:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, $X$ 
+<a href="./math_analysis11.1.html#Definition11.1.7">компакт</a> в метрическом пространстве $(X,\rho_x)$, фукнция $f(x)\colon{X}\to{Y}$ непрерывна, 
+тогда множество $f(X)$ компакт в метрическом пространстве $(Y,\rho_y)$.
+<p><b>Доказательство:</b> Фиксируем совокупность множеств $\{G_y^{\alpha}\subset{Y}\mid\alpha\in{I}\}$ такую, что 
+$f(X)\subset\bigcup_{\alpha\in{I}}G_y^{\alpha}$ и для любого $\alpha\in{I}$ множество $G_y^{\alpha}$ открыто в $Y$. Тогда по критерию непрерывности 
+для любого $\alpha\in{I}$ множество $G_x^{\alpha}:=f^{-1}(G_y^{\alpha})$ открыто в $X$ и
+$$X=f^{-1}(f(X))=f^{-1}\left(\bigcup_{\alpha\in{I}}G_y^{\alpha}\right)=\bigcup_{\alpha\in{I}}f^{-1}(G_y^{\alpha})=\bigcup_{\alpha\in{I}}G_x^{\alpha}$$
+Таким образом совокупность множеств $\{G_x^{\alpha}\subset{X}\mid\alpha\in{I}\}$ является покрытием множества $X$ открытыми множествами. Так как 
+множество $X$ компактно, то существуют $n\in\mathbb{N}$ и $\alpha_1,\ldots,\alpha_n\in{I}$ такие, что 
+$$X\subset\bigcup_{i=1}^nG_x^{\alpha_i}\Rightarrow{f}(X)\subset{f}\left(\bigcup_{i=1}^nG_x^{\alpha_i}\right)=\bigcup_{i=1}^nf(G_x^{\alpha_i})=
+\bigcup_{i=1}^nG_y^{\alpha_i}$$
+Таким образом из системы множеств $\{G_y^{\alpha}\subset{Y}\mid\alpha\in{I}\}$ выделена конечная подсистема 
+$\{G_y^{\alpha_i}\subset{Y}\mid{i}\in\overline{1,n}\}$ покрывающая множество $f(X)$. То есть множество $f(X)$ компакт в $Y$.
+
+<br><br>
+
+<p id=Corollary11.2.2><b>Следствие 11.2.2:</b> Пусть $(X,\rho_x)$ метрическое пространство, $X$ - компакт, отображение $f(x)\colon{X}\to\mathbb{R}$
+непрерывно, тогда функция $f(x)$ ограничена и достигает на множестве $X$ своего минимума и максимума.
+<p><b>Доказательство:</b> По утверждению 11.2.2 множество $f(X)$ компакт в $\mathbb{R}$, следовательно, оно ограничено и замкнуто (по 
+<a href="./math_analysis11.1.html#Statement11.1.3">утверждению 11.1.3</a>). Так как для любого ограниченного числового множества $E$ 
+$\inf{E}\in{E}\cup\mathring{E}$ и $\sup{E}\in{E}\cup\mathring{E}$, то по <a href="./math_analysis11.1.html#Statement11.1.2">критерию замкнутости</a>
+$\inf{f(X)}\in{f}(X)$ и $\sup{f(X)}\in{f}(X)$, то есть
+$$\exists{x}_m\in{X}\colon{f}(x_m)=\inf{f}(X)=\max{f(X)}\wedge\exists{x}_M\in{X}\colon{f}(x_M)=\sup{f(X)}=\max{f(X)}$$
+
+<br>
+<p>Данное утверждение является обобщением теоремы Вейерштрасса об экстремальном значении, в которую оно превращается если положить $(X,\rho)=\mathbb{R}$.
+<br><br>
+
+<p id=Definition11.2.4><b>Определение 11.2.4:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, тогда говорят, что отображение 
+$f(x)\colon{X}\to{Y}$ равномерно непрерывно, если 
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon)>0\colon\forall{x}_1,x_2\in{X}(\rho_x(x_1,x_2)<\delta\Rightarrow
+\rho_y(f(x_1),f(x_2))<\varepsilon).$$ 
+
+<br><br>
+
+<p id=Statement11.2.3><b>Утверждение 11.2.3: Обобщение <a href="./math_analysis5.5.3.html#Theorem5.5.4">теоремы Кантора</a> о равномерной непрерывности.</b>
+<br>
+Если $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, $X$ - компакт и отображение $f(x)\colon{X}\to{Y}$ непрерывно, то отображение $f(x)$
+равномерно непрерывно.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon>0$, тогда по непрерывности $f(x)$ 
+$$\forall{x}\in{X}\,\exists\delta(\varepsilon,\delta)\colon\forall{x}^*\in{X}\left(\rho_x(x,x^*)<\delta(\varepsilon,x)\Rightarrow
+\rho(f(x),f(x^*))<\frac{\varepsilon}{2}\right)\qquad(1)$$
+Рассмотрим множество шаров $S:=\left\{B\left(x,\frac{\delta(\varepsilon,x)}{2}\right)\mid{x}\in{X}\right\}$. Система $S$ покрывает множество $X$ и 
+для любого $x\in{X}$ множество $B\left(x,\frac{\delta(\varepsilon,x)}{2}\right)$ открыто в $X$, тогда по определению компактности существует конечная 
+подсистема из $S$ покрывающая $X$, то  есть
+$$\exists{n}\in\mathbb{N}\,\exists{x}_1,\ldots,x_n\in{X}\colon{X}\subset\bigcup_{k=1}^nB\left(x_k,\frac{\delta(\varepsilon,x_k)}{2}\right)$$
+Положим $\displaystyle\delta(\varepsilon):=\min_{k\in\overline{1,n}}\frac{\delta(\varepsilon,x_k)}{2}$ и фиксируем $x',x''\in{X}$ такие, что
+$\rho_x(x',x'')<\delta(\varepsilon)$, тогда
+$$x'\in{X}\Rightarrow\exists{k}\in\overline{1,n}\colon{x}'\in{B}\left(x_k,\frac{\delta(\varepsilon,x_k)}{2}\right)\Rightarrow
+\rho_x(x',x_k)<\frac{\delta(\varepsilon,x_k)}{2}$$
+Оценим теперь расстояние от $x''$ до $x_k$
+$$\rho_x(x',x'')<\delta(\varepsilon)\Rightarrow\rho_x(x'',x_k)\leq\rho(x',x'')+\rho_x(x',x_k)<\delta(\varepsilon)+\frac{\delta(\varepsilon,x_k)}{2}\leq
+\frac{\delta(\varepsilon,x_k)}{2}+\frac{\delta(\varepsilon,x_k)}{2}=\delta(\varepsilon,x_k)$$
+Тогда по неравенству (1) справедливому для всех $x\in{X}$, a, следовательно, и для $x_k$
+$$(\rho_x(x',x_k)<\delta(\varepsilon,x_k)\wedge\rho_x(x'',x_k)<\delta(\varepsilon,x_k))\Rightarrow
+\left(\rho_y(f(x'),f(x_k))<\frac{\varepsilon}{2}\wedge\rho_y(f(x''),f(x_k))<\frac{\varepsilon}{2}\right)\Rightarrow
+\rho_y(f(x'),f(x''))\leq\rho_y(f(x'),f(x_k))+\rho_y(f(x''),f(x_k))<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$
+Таким образом
+$$\forall{x}',x''\in{X}(\rho_x(x',x'')<\delta(\varepsilon)\Rightarrow\rho_y(f(x'),f(x''))<\varepsilon)$$
+то есть для функции $f(x)$ реализовано определение равномерной непрерывности.
+<br><br>
+<a href="./math_analysis11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.1.html">next</a>
+</body>
+</html>

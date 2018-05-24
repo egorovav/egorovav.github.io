@@ -1,0 +1,176 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.2.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.3.html">next</a>
+
+<h5 id=14.2.3>14.2.3 Внешняя мера индуцированная $\sigma$-аддитивной мерой заданной на 
+<a href="./math_analysis14.1.1.html#Definition14.1.4">полукольце</a> с единицей.</h5>
+
+<p id=Definition14.2.4><b>Определение 14.2.4:</b> Пусть $H$ полукольцо с <a href="./math_analysis14.1.1.html#Definition14.1.2">единицей</a> $E$, $m$ 
+$\sigma$-аддитивная мера на $H$. Тогда функция $\mu^*(A)\colon\mathcal{P}(E)\to\mathbb{R}$ такая, что для любого $A\subset{E}$ 
+$\mu^*(A):=\inf_{\{B_n\}}\sum_{n=1}^{\infty}m(B_n)$ называется внешней мерой индуцированной $\sigma$-аддитивной мерой $m$ заданной на полукольце $H$ с 
+единицей $E$.<br>
+Здесь инфинум берется по всем не более чем счетным покрытиям $\{B_n\}$ множества $A$ таким, что для любого $n\in\mathbb{N}$ $B_n\in{H}$.
+<br><br>
+<p>Определение корректно, так как для любого $A\subset{E}$ существует по крайней мере одно покрытие множествами из $H$ - это покрытие состоящее из одного
+множества $E\in{H}$. Таким образом для любого $A\subset{E}$ (или что тоже самое $A\in\mathcal{P}(E)$) $0\leq\mu^*(A)\leq{m}(E)$.
+
+<br><br>
+<p id=Statement14.2.1><b>Утверждение 14.2.1: Свойства внешней меры.</b><br>
+Пусть $H$ полукольцо с единицей $E$, $m$ $\sigma$-аддитивная мера на $H$, $\mu^*$ внешняя мера индуцированная $m$, тогда 
+<ol>
+<li>$\mu^*(\varnothing)=0$,</li>
+<li>$\forall{A}\subset{E}(\mu^*(A)\geq0)$,</li>
+<li>$\forall{A}\subset{E}\left(\left(\forall{n}\in\mathbb{N}(A_n\subset{E})\wedge{A}\subset\bigcup_{n=1}^{\infty}A_n\right)\Rightarrow
+\mu^*(A)\leq\sum_{n=1}^{\infty}\mu^*(A_n)\right)$,</li>
+<li>если $\mu$ продолжение меры $m$ с $H$ на $R(H)$, то для любого $A\in{R}(H)$ $\mu^*(A)=\mu(A)$;</li>
+<li>$A\subset{B}\subset{E}\Rightarrow\mu^*(A)\leq\mu^*(B)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Следует из пункта 4 так как $\varnothing\in{H}$ и $\mu(\varnothing)=m(\varnothing)=0$.</li>
+<li>Следует из неотрицательности меры $m$.</li>
+<li>
+Пусть $A\in\mathcal{P}(E)$, для того любого $n\in\mathbb{N}$ $A_n\in\mathcal{P}(E)$ и $A\subset\bigcup_{n=1}^{\infty}A_n$. Фиксируем $\varepsilon>0$,
+тогда по определению нижней грани для любого $n\in\mathbb{N}$ существует последовательность $\{C_{n,k}\}$ из $H$ такая, что 
+$A_n\subset\bigcup_{k=1}^{\infty}C_{n,k}$ и
+$$\sum_{k=1}^{\infty}m(C_{n,k})<\mu^*(A_n)+\frac{\varepsilon}{2^n}.\qquad(*)$$
+Тогда 
+$$A\subset\bigcup_{m=1}^{\infty}A_n\subset\bigcup_{n=1}^{\infty}\left(\bigcup_{k=1}^{\infty}C_{n,k}\right)=\bigcup_{n=1,k=1}^{\infty}C_{n,k}\Rightarrow
+\mu^*(A)\leq\sum_{k=1,n=1}^{\infty}m(C_{n,k})=\sum_{n=1}^{\infty}\sum_{k=1}^{\infty}m(C_{n,k}),$$
+где последнее равенство справедливо по теории повторных рядов (см. Фихтенгольц т. 2, стр. 337) в силу неотрицательности меры $m$. Тогда из оценки (*)
+следует
+$$\mu^*(A)\leq\sum_{n=1}^{\infty}\left(\mu^*(A_n)+\frac{\varepsilon}{2^n}\leq\sum_{n=1}^{\infty}\mu^*(A_n)+\varepsilon\right).$$
+Поскольку последнее равенство справедливо для любого $\varepsilon>0$, то переходя к пределу при $\varepsilon\to0+$ получим доказываемое равенство 
+$\mu^*(A)\leq\sum_{n=1}^{\infty}\mu^*(A_n)$.
+</li>
+<li>
+Пусть $A\in{R}(H)$, тогда существует $n\in\mathbb{N}$, $B_1,\ldots,B_n\in{H}$ такие, что $A=\bigsqcup_{k=1}^nB_n$, тогда по определению внешней меры 
+$\mu^*(A)\leq\sum_{k=1}^nm(B_k)=\mu(A).$<br>
+С другой стороны, так как мера $m$ $\sigma$-аддитивна на $H$, то по <a href="./math_analysis14.2.1.html#Theorem14.2.2">теореме 14.2.2</a> мера $\mu$
+$\sigma$-аддитивна на $R(H)$, следовательно, для любого не более чем счетного покрытия $\{C_n\}$ множества $A$ элементами $H$ верно
+$$A\subset\bigcup_{n=1}^{\infty}A_n\Rightarrow\mu(A)\leq\mu\left(\bigcup_{n=1}^{\infty}C_n\right)\leq\sum_{n=1}^{\infty}\mu(C_n)=\sum_{n=1}^{\infty}m(C_n),$$
+тогда
+$$\mu(A)\leq\inf_{\{C_n\}}\sum_{n=1}^{\infty}m(C_n)=\mu^*(A)\Rightarrow\mu(A)=\mu^*(A).$$
+</li>
+<li>Следует из пункта 3.</li>
+</ol>
+<br><br>
+<p>Таким образом функция $\mu^*$ является продолжением меры $\mu$ с класса $R(H)$ на класс $\mathcal{P}(E)$ ($R(H)\subset\mathcal{P}(E)$). Однако, сама
+функция $\mu^*$ не обязательно является мерой, как видно по утверждению 14.2.1 оно не содержит свойства аддитивности.
+<br><br>
+<p id=Example14.2.4><b>Пример 14.2.4:</b> Пусть $E$ произвольное множество такое, что $cardE\geq2$, класс $H=\{\varnothing, E\}$ является полукольцом
+с единицей. Фиксируем $\alpha>0$, тогда функция $m(A)\colon{H}\to\mathbb{R}\colon\begin{cases}0,A=\varnothing\\\alpha,A=E\end{cases}$ является мерой на $H$,
+а функция $\mu^*(A)\colon\mathcal{P}(E)\to\mathbb{R}\colon\mu^*(A)=\begin{cases}0,A=\varnothing\\\alpha,A\neq\varnothing\end{cases}$ является внешней мерой
+индуцированной мерой $m$. Действительно, для любого не пустого $A\in\mathcal{P}(E)$ существует только два покрытия элементами $H$, а именно $\{E\}$ и 
+$\{\varnothing, E\}$, следовательно, $\mu^*(A)=\inf_{\{B_n\}}\sum_{n=1}^{\infty}m(B_n)=m(E)=\alpha$.<br>
+Поскольку $cardE\geq2$, то существуют множества $A_1,A_2\in\mathcal{P}(E)$ такие, что $A_1\neq\varnothing$, $A_2\neq\varnothing$ и 
+$A_1\cap{A}_2=\varnothing$, тогда $\mu^*(A_1)+\mu^*(A_2)=2\alpha\neq\mu^*(A_1\sqcup{A}_2)=\alpha$. Таким образом свойство аддитивности для функции $\mu^*$
+не выполняется, то есть она не является мерой на $\mathcal{P}(E)$.
+<br><br>
+<p>Таким образом внешняя мера $\mu^*$ не обязательно является мерой на $\mathcal{P}(E)$, однако, множество $\mathcal{P}(E)$ можно сузить до множества $M$
+такого, что $R(H)\subset{M}\subset\mathcal{P}(E)$ и функция $\mu^*$ является мерой на $M$. Так им образом будет получено продолжение меры $m$ заданной на 
+полукольце $H$ на класс более широкий чем $R(H)$. 
+
+<h5 id=14.2.4>14.2.4 Понятие измеримости множества по Лебегу и Каратеодори. Класс $L(m,H)$.</h5>
+
+<p>Везде далее в этом пункте используются следующие обозначения:<br>
+$H$ - полукольцо с единицей $E$,<br>
+$m$ - $\sigma$-аддитивная мера на $H$,<br> 
+$\mu$ - продолжение меры $m$ с $H$ на $R(H)$,<br>
+$\mu^*$ - внешняя мера, индуцированная мерой $m$.<br>
+<br>
+<p id=Definition14.2.5><b>Определение 14.2.5:</b> Говорят, что множество $A\in\mathcal{P}(E)$ измеримо по Лебегу относительно внешней меры
+$\mu^*$, если 
+$$\forall\varepsilon>0\,\exists{B}_{\varepsilon}\in{R}(H)\colon\mu^*(A\Delta{B}_{\varepsilon})<\varepsilon.$$
+<br><br>
+<p id=Definition14.2.6><b>Определение 14.2.6:</b> Говорят, что множество $A\in\mathcal{P}(E)$ измеримо по Каратеодори относительно внешней меры $\mu^*$,
+если
+$$\forall{T}\in\mathcal{P}(E)(\mu^*(T)=\mu^*(T\cap{A})+\mu^*(T\backslash{A})).$$
+<br><br>
+<p>Обозначим:<br>
+$L_1(m,H)$ - класс множеств измеримых по Лебегу относительно внешней меры индуцированной мерой $m$ заданной на полукольце $H$.<br>
+$L_2(m,H)$ - класс множеств измеримых по Каратеодори относительно внешней меры индуцированной мерой $m$ заданной на полукольце $H$.
+<br><br>
+<p id=Definition14.2.7><b>Определение 14.2.7:</b> Мера $\mu$ заданная на классе множеств $M$ называется полной, если
+$$\forall{B}\in{M}(\mu(B)=0\Rightarrow\forall{A}\subset{B}(A\in{M}\wedge\mu(A)=0)).$$
+<br><br>
+<p id=Theorem14.2.3><b>Теорема 14.2.3: Теорема Лебега - Каратеодори.</b><br>
+<ol>
+<li>$L_1(m,H)=L_2(m,H)$,</li>
+<li>класс множеств $L(m,H):=L_1(m,H)=L_2(m,H)$ является $\sigma$-алгеброй множеств,</li>
+<li>функция $\mu^*(A)\colon{L}(m,H)\to\mathbb{R}$ является $\sigma$-аддитивной полной мерой,</li>
+<li>мера $\mu^*$ является продолжением меры $\mu$ с $R(H)$ на $L(m,H)$.</li>
+</ol>
+<p><b>Доказательство:</b> Без доказательства.
+<br><br>
+<p id=Example14.2.5><b>Пример 14.2.5:</b> Как было показано <a href="./math_analysis14.1.1.html#Example14.1.3">ранее</a> класс 
+$H=\{[\alpha,\beta)\mid\alpha,\beta\in\mathbb{R}\colon\alpha<\beta\}$ полукольцо. Единицей полукольца $H$ является множество $\mathbb{R}\notin{H}$.
+То есть $H$ - полукольцо без единицы, следовательно, для полукольца $H$ нельзя применять теорему Каратеодори.
+<br><br>
+<p>Ослабим постановку задачи, исключив требование существования в кольце $H$ единицы и перенесем понятия меры на множества бесконечной длины.
+<br><br>
+<p id=Definition14.2.8><b>Определение 14.2.8:</b> Пусть $M$ класс множеств, тогда функция $\mu(A)\colon{M}\to\overline{\mathbb{R}}$ называется обобщенной
+мерой, если
+<ol>
+<li>$\mu$ - мера,</li>
+<li>$\exists{A}\in{M}(\mu(A)<{+\infty})$</li>
+</ol>
+<br><br>
+<p>Для того чтобы в случае полукольца без единицы $H$ дать гарантию существования хотя бы одного не более чем счетного покрытия любого множества из 
+$\mathcal{P}(E)$ элементами из $H$ введем понятие $\sigma$-конечной меры.
+<br><br>
+<p id=Definition14.2.9><b>Определение 14.2.9:</b> Мера $m$ на полукольце $H$ является $\sigma$-конечной, если существует последовательность множеств 
+$\{B_n\}$ такая, что
+<ol>
+<li>$\forall{n}\in\mathbb{N}(B_n\in{H})$,</li>
+<li>$\forall{m},n\in\mathbb{N}(m\neq{n}\Rightarrow{B}_m\cap{B}_n=\varnothing)$,</li>
+<li>$\bigsqcup_{n=1}^{\infty}B_n=E$.</li>
+</ol>
+<br><br>
+<p id=Definition14.2.10><b>Определение 14.2.10:</b> Пусть $M$ класс множеств, $F(A)\colon{M}\to\overline{\mathbb{R}}$, 
+$M_{\Phi}:=\{A\in{M}\mid|F(A)|<{+\infty}\}$, тогда говорят, что функция $F$ $\sigma$-конечна на классе $M$, если для любого $A\in{M}$ сущесвует
+последовательность множеств $\{A_n\}$ из $M_{\Phi}$ такая, что $A=\bigsqcup_{n=1}^{\infty}A_n$.
+<br><br>
+<p id=Definition14.2.11><b>Определение 14.2.11:</b> Пусть $m$ $\sigma$-аддитивная, $\sigma$-конечная мера на полукольце без единицы $H$. Тогда функция 
+множеств $\mu^*(A)\colon\mathcal{P})(E)\to\overline{\mathbb{R}}$ такая, что для любого $A\subset{E}$ $\mu^*(A)=\inf_{\{B_n\}}\sum_{n=1}^{\infty}m(B_n)$
+называется внешней мерой индуцированной мерой $m$.<br>
+Здесь инфинум как и в <a href="#Definition14.2.4">определении 14.2.4</a> берется по всем не более чем счетным покрытиям множества $A$ элементами полукольца
+$H$.
+
+<br><br>
+<p>Определение корректно, так как в силу $\sigma$-конечности $m$ как минимум одно не более чем счетное покрытие произвольного множества $A$ элементами $H$
+существует.<br>
+Возможно, что для некоторого $A\in\mathcal{P}(E)\backslash{R}(H)$ для любого покрытия $\{B_n\}$ $\sum_{n=1}^{\infty}m(B_n)=+\infty$, тогда 
+$\mu^*(A)=+\infty$. Для таких множеств <a href="#Definition14.2.5">определение измеримости по Лебегу</a> не работает так как 
+$$\forall{B}\in{R}(H)(\mu^*(B)=\mu(B)<{+\infty})\Rightarrow\forall\varepsilon>0\,\forall{B}\in{R}(H)(\mu^*(B\Delta{A})=+\infty>\varepsilon),$$
+но работает <a href="#Definition14.2.6">определение измеримости по Каратеодори</a>.
+<br><br>
+<p id=Theorem14.2.4><b>Определение 14.2.4: Обобщение теоремы Лебега - Каратеодори.</b><br>
+Пусть $m$ $\sigma$-аддитивная, $\sigma$-конечная мера на полукольце без единицы $H$, $\overline{L}(m,H)$ - класс множеств измеримых по Каратеодори,
+$\overline{L}_{\Phi}(m,H):=\{A\in\overline{L}(m,H)\mid\mu^*(A)<{+\infty}\}$, тогда
+<ol>
+<li>класс $\overline{L}(m,H)$ - $\sigma$-алгебра, при этом единица $\overline{L}(m,H)$ совпадает с единицей $H$;</li>
+<li>$\mu^*$-обобщенная, $\sigma$-аддитивная, $\sigma$-конечная, полная мера на $\overline{L}(m,H)$;</li>
+<li>мера $\mu^*(A)\colon\overline{L}(m,H)\to\overline{\mathbb{R}}$ является продолжением меры $m$ с $H$ на $\overline{L}(m,H)$;</li>
+<li>класс $\overline{L}_{\Phi}(m,H)$ не является кольцом.</li>
+</ol>
+<p><b>Доказательство:</b> Без доказательства.
+
+
+<br><br>
+<a href="./math_analysis14.2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.3.html">next</a>
+</body>
+</html>

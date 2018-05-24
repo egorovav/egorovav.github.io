@@ -1,0 +1,147 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.3.2.html">next</a>
+
+$\newcommand{\arctg}{\operatorname{arctg}}$
+$\newcommand{\FUniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\Y\ni{y}\to{y}_0}}$
+
+<h4 id=13.3>13.3 Применение интегралов зависящих от параметра к вычислению несобственных интегралов.</h4>
+
+<h5 id=13.3.1>13.3.1 Интеграл Эйлера-Пуассона.</h5>
+<p>Вычислим интеграл $\displaystyle{I}=\int_0^{+\infty}e^{-u^2}\,du$. Сходимость интеграла $I$ обоснована в 
+<a href="./math_analysis8.5.3.html#Example8.5.5">примере 8.5.5</a>.<br>
+Для вычисления применим <a href="./math_analysis13.2.3.html#Theorem13.2.5">теорему 13.2.5</a>. Дальнейшие действия разобьем на два этапа: формальное 
+вычисление значения интеграла и обоснование предпосылок теоремы 13.2.5.
+<ol type="I">
+<li>
+$$\forall{y}>0\left(y\int_0^{+\infty}e^{-(xy)^2}\,dx=\int_0^{+\infty}e^{-(xy)^2}\,d(xy)=I\right)$$
+
+$$I^2=I\int_0^{+\infty}e^{-y^2}\,dy=\int_0^{+\infty}e^{-y^2}y\left(\int_0^{+\infty}e^{-(xy)^2}\,dx\right)\,dy=
+\int_0^{+\infty}\left(\int_0^{+\infty}e^{-y^2(x^2+1)}y\,dx\right)\,dy=\int_0^{+\infty}\left(\int_0^{+\infty}e^{-y^2(x^2+1)}y\,dy\right)\,dx=$$
+$$=\int_0^{+\infty}\left(\frac1{2(x^2+1)}\int_0^{+\infty}e^{-y^2(x^2+1)}\,d(y^2(x^2+1))\right)\,dx=
+-\int_0^{+\infty}\left(\frac1{2(x^2+1)}\left.e^{-t}\right|_0^{+\infty}\right)\,dx=\int_0^{+\infty}\frac1{2(x^2+1)}\,dx=
+\frac12\arctg{x}|_0^{+\infty}=\frac{\pi}{4}\Rightarrow{I}=\frac{\sqrt{\pi}}{2}$$
+</li>
+<li>
+Обоснование корректности изменения порядка интегрирования.<br>
+Проверим предпосылки <a href="./math_analysis13.2.3.html#Theorem13.2.5">теоремы 13.2.5</a> для функции 
+$f(x,y)=ye^{-y^2(x^2+1)}\colon[0,+\infty)\times[0,+\infty)\to\mathbb{R}$.
+<ol>
+<li>$f(x,y)\in{C}\{[0,+\infty)\times[0,+\infty)\}$</li>
+<li>
+Для любого $[a,b]\subset[0,+\infty)$ несобственный интеграл $\int_0^{+\infty}f(x,y)\,dx$ сходится равномерно на $x\in[a,b]$ по мажорантному признаку
+Вейерштрасса, так как для любого $x\geq0$ $\left|ye^{-y^2(x^2+1)}\right|\leq{y}e^{y^2}$.<br>
+Для любого $y>0$ функция $\displaystyle{F}(y):=\int_0^{+\infty}f(x,y)\,dx=Ie^{-y^2}$, значит $\displaystyle\lim_{y\to0+}F(y)=I>0$ ($I>0$ так как $I$ - 
+интеграл от положительной непрерывной функции), но $F(0)=0$. То есть функция $F(y)$ имеет разрыв в точке 0, следовательно, интеграл 
+$\int_0^{+\infty}f(x,y)\,dx$ не может сходится равномерно на $[0,+\infty)$. Однако, для любого $y_0>0$ интеграл $\int_0^{+\infty}f(x,y)\,dx$ сходится
+равномерно на $[y_0,+\infty)$, следовательно, можно применить <a href="./math_analysis13.2.3.html#Theorem13.2.5">теорему 13.2.5</a> на промежутке
+$[y_0,+\infty)$ для функции $f(x,y)$. Таким образом для любого $y_0>0$ 
+$$\int_{y_0}^{+\infty}\left(\int_0^{+\infty}f(x,y)\,dx\right)\,dy=\int_0^{+\infty}\left(\int_{y_0}^{+\infty}f(x,y)\,dy\right)\,dx\qquad(8).$$
+Остается, только обосновать возможности предельного перехода в равенстве (8) при $y_0\to0+$. Для этого реализуем предпосылки 
+<a href="./math_analysis13.2.2.html#Theorem13.2.1">теоремы</a> о предельном переходе под знаком несобственного интеграла. Обозначим 
+$\varphi(x,t):=\int_t^{+\infty}f(x,y)\,dy\colon[0,+\infty)\times[0,+\infty)\to\mathbb{R}$, тогда 
+$\displaystyle\varphi(x,t)=\int_t^{+\infty}ye^{-y^2(x^2+1)}\,dy=\frac1{2(x^2+1)}e^{-(x^2+1)t^2}$. Обозначим $\displaystyle\psi(x):=\frac1{2(x^2+1)}$, тогда
+<ol type="i">
+<li>
+Для любых $t>0$, $x\geq0$ $|\varphi(x,t)|\leq\psi(x)$ и $\int_0^{+\infty}\psi(x)\,dx=\frac{\pi}{4}$, следовательно, интеграл 
+$\int_0^{+\infty}\varphi(x,t)\,dx$ сходится равномерно по $t\in(0,+\infty)$.
+</li>
+<li>
+$$\forall{x}\geq0\left(|\varphi(x,t)-\psi(x)|=\frac1{2(x^2+1)}\left|e^{-(x^+1)t^2}-1\right|\leq\frac12\left|e^{-t^2}-1\right|=o(1),t\to0\right)$$
+Таким образом $\varphi(x,y){\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\t\to0}}\psi(x),x\in[0,+\infty)$. Следовательно, к функции $\varphi(x,t)$ можно
+применить <a href="./math_analysis13.2.2.html#Theorem13.2.1">теорему 13.2.1</a>. Тогда
+$$\exists\lim_{t\to0+}\int_0^{+\infty}\varphi(x,t)\,dx=\int_0^{+\infty}\lim_{t\to0+}\varphi(x,t)\,dx=
+\int_0^{+\infty}\left(\lim_{t\to0+}\int_t^{+\infty}f(x,y)\,dy\right)\,dx=\int_0^{+\infty}\left(\int_0^{+\infty}f(x,y)\,dy\right)\,dx$$
+Таким образом предел выражения стоящего в правой части равенства (8) при $y_0\to0+$ существует, следовательно, существует и предел выражения стоящего в
+левой части равенства при этом
+$$\lim_{y_0\to0+}\int_{y_0}^{+\infty}\left(\int_0^{+\infty}f(x,y)\,dx\right)\,dy=\int_0^{+\infty}\left(\int_0^{+\infty}f(x,y)\,dy\right)\,dx$$ 
+</li>
+</ol>
+</li>
+<li>Интеграл $\int_0^{+\infty}\left(\int_0^{+\infty}|f(x,y)|\,y\right)\,dx=\frac{\pi}{4}$ сходится.</li>
+</ol>
+Таким образом предпосылки <a href="./math_analysis13.2.3.html#Theorem13.2.5">теоремы 13.2.5</a> для функции $f(x,y)$ обоснованы.
+</li>
+</ol>
+
+<h5 id=13.3.2>13.3.2 Правила Фруллани.</h5>
+Пусть $f(x)\colon[0,+\infty)\to\mathbb{R}$, $a>0$, $b>0$. Рассмотрим интеграл вида $\displaystyle{I}=\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,dx$.
+<ol>
+<li>
+Пусть $f(x)\in{C}[0,+\infty)$ и существует конечный предел $f(+\infty)=\lim_{x\to+\infty}f(x)$, тогда $I=(f(0)-f(+\infty))\ln\frac{b}{a}$.
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что $a\leq{b}$. Так как из непрерывности следует интегрируемость, то для любых 
+$0<\delta<\Delta<+\infty$ существует интеграл 
+$$\int_{\delta}^{\Delta}\frac{f(ax)-f(bx)}{x}\,dx=\int_{\delta}^{\Delta}\frac{f(ax)}{x}\,dx-\int_{\delta}^{\Delta}\frac{f(bx)}{x}\,dx=
+\int_{\delta}^{\Delta}\frac{f(ax)}{ax}\,d(ax)-\int_{\delta}^{\Delta}\frac{f(bx)}{bx}\,d(bx)=
+\int_{a\delta}^{a\Delta}\frac{f(z)}{z}\,dz-\int_{b\delta}^{b\Delta}\frac{f(z)}{z}\,dz=
+\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz-\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz\quad(*)$$
+В полученном выражении для каждого из двух интегралов применим теорему о среднем значении, тогда 
+$$\exists\xi=\xi(\delta)\in[a\delta,b\delta]\colon\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz=f(\xi)\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz=
+f(\xi)\ln\frac{b}{a}.$$
+$$\exists\eta=\eta(\Delta)\in[a\Delta,b\Delta]\colon\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz=f(\eta)\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz=
+f(\eta)\ln\frac{b}{a}.$$
+Так как $f(x)\in{C}[0,+\infty)$ и $\lim_{\delta\to0}\xi(\delta)=0$, то существует предел 
+$\displaystyle\lim_{\delta\to0}\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz=\ln\frac{b}{a}\lim_{\xi\to0}f(\xi)=f(0)\ln\frac{b}{a}$. Аналогично существует
+предел $\displaystyle\lim_{\Delta\to+\infty}\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz=f(+\infty)\ln\frac{b}{a}$. Следовательно, существует предел 
+выражения стоящего в правой части равенства (*) при $\delta\to0$, $\Delta\to0$, значит существует и предел выражения стоящего в левой части, то есть
+$$\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,dx=\lim_{\delta\to0}\lim_{\Delta\to+\infty}\int_{\delta}^{\Delta}\frac{f(ax)-f(bx)}{x}\,dx=
+\lim_{\delta\to0}\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz-\lim_{\Delta\to+\infty}\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz=
+(f(0)-f(+\infty))\ln\frac{b}{a}$$ 
+</li>
+<li>
+Пусть $f(x)\in{C}[0,+\infty)$ и существует $A>0$ такое, что интеграл $\int_A^{+\infty}\frac{f(z)}{z}\,dz$ сходится, тогда $I=f(0)\ln\frac{b}{a}$.
+<p><b>Доказательство:</b> В равенстве (*) 
+$\displaystyle\int_{\delta}^{\Delta}\frac{f(ax)-f(bx)}{x}\,dx=\int_{a\delta}^{b\delta}\frac{f(z)}{z}\,dz-\int_{a\Delta}^{b\Delta}\frac{f(z)}{z}\,dz$ 
+в правой части можем перейти к пределу при $\delta\to0$, $\Delta\to+\infty$. При этом первое слагаемое по доказанному выше равно $f(0)\ln\frac{b}{a}$, а 
+второе по <a href="./math_analysis8.5.html#Statement8.5.1">критерию Коши</a> сходимости несобственных интегралов равно 0.Следовательно, существует предел
+выражения стоящего в левой части, то есть $\displaystyle\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,dx=f(0)\ln\frac{b}{a}$.
+</li>
+<li>
+Пусть $f(x)\in{C}(0,+\infty)$, существует конечный предел $f(+\infty):=\lim_{x\to+\infty}f(x)$ и существует $A>0$ такое, что интеграл 
+$\int_0^A\frac{f(z)}{z}\,dz$ сходится, тогда $I=f(+\infty)\ln\frac{b}{a}$.
+<p><b>Доказательство:</b> 
+<i>
+Обозначим $g(t):=\begin{cases}f\left(\frac1{t}\right),t>0\\f(+\infty),t=0)\end{cases}\colon[0,+\infty)\to\mathbb{R}$, тогда $g(t)\in{C}(0,+\infty)$ и 
+$\lim_{t\to0}g(t)=\lim_{x\to+\infty}f(x)=f(+\infty)=g(0)$, то есть $g(t)\in{C}[0,+\infty)$. Интеграл $\displaystyle\int_{1/A}^{+\infty}\frac{f(t)}{t}\,dt=
+\int_{1/A}^{+\infty}\frac{f(\frac1{z})}{\frac1{z}}\,d\left(\frac1{z}\right)=\int_A^0\frac{f(x)}{x}\,dx=-\int_0^{A}\frac{f(x)}{x}\,dx$ сходится. Таким 
+образом для функции $g(t)$ можно применить доказанный выше пункт 2, тогда $\displaystyle\int_0^{+\infty}\frac{g(at)-g(bt)}{t}\,dt=g(0)\ln\frac{b}{a}$.<br>
+Интеграл $\displaystyle\int_0^{+\infty}\frac{g(at)-g(bt)}{t}\,dt$ сходится тогда и только тогда, когда сходится интеграл 
+$\displaystyle\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,dx$, при этом 
+$$\int_0^{+\infty}\frac{f(ax)-f(bx)}{x}\,dx=\int_{+\infty}^0\frac{g(at)-g(bt)}{t}\,dt=-g(0)\ln\frac{a}{b}=g(0)\ln\frac{a}{b}=f(+\infty)\ln\frac{a}{b}.$$
+</i>
+</li>
+</ol>
+<i>Примеры на применение правил Фруллани смотри Фихтенгольц т. 2, стр. 621.</i>
+<br><br>
+<p id=Task13.3.1><b>Задача 13.3.1:</b> Вычислить интегралы 
+<ol>
+<li>$\displaystyle\int_0^{+\infty}\frac{\cos(\beta{x})}{x^2+\alpha^2}\,dx$, $\displaystyle\int_0^{+\infty}\frac{x\sin(\beta{x})}{x^2+\alpha^2}\,dx$,
+при $\alpha,\beta>0$,</li>
+<li>$\displaystyle\int_0^{+\infty}\cos{x^2}\,dx$, $\displaystyle\int_0^{+\infty}\sin{x^2}\,dx$.</li>
+</ol>
+<p><b>Решение:</b> 
+<i>
+Задача к правилам Фруллани отношения не имеет.
+<ol>
+<li>Фихтенгольц т. 2, стр. 721.</li>
+<li>Фихтенгольц т. 2, стр. 721.</li>
+</ol>
+</i>
+
+<br><br>
+<a href="./math_analysis13.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.3.2.html">next</a>
+</body>
+</html>

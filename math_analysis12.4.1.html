@@ -1,0 +1,284 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.4.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.2.html">next</a>
+
+<h4 id=12.4>12.4 Экстремумы функций многих вещественных переменных.</h4>
+
+<h5 id=12.4.1>12.4.1 Условия существования внутреннего локального экстремума.</h5>
+
+<p id=Defintion12.4.1><b>Определение 12.4.1:</b> Пусть $E\subset{\mathbb{R}^n}$, $f(x)\colon{E}\to\mathbb{R}$, тогда говорят, что функция $f(x)$ имеет 
+в точке $x_0\in{E}$ локальный минимум, если 
+$$\exists{U}(x_0)\colon\forall{x}\in{U}_E(x_0)(f(x)\geq{f}(x_0));$$
+строгий локальный минимум, если 
+$$\exists{U}(x_0)\colon\forall{x}\in{U}_E(x_0)(f(x)>f(x_0));$$
+локальный максимум, если
+$$\exists{U}(x_0)\colon\forall{x}\in{U}_E(x_0)(f(x)\leq{f}(x_0));$$
+строгий локальный максимум, если 
+$$\exists{U}(x_0)\colon\forall{x}\in{U}_E(x_0)(f(x)<{f}(x_0)).$$
+Если точка $x_0$ внутренняя ($x_0\in{i}ntE$), то говорят о внутренних локальный минимумах и максимумах.
+
+<br><br>
+<p id=Statement12.4.1><b>Утверждение 12.4.1: Необходимые условия внутреннего локального экстремума.</b><br>
+Пусть $E\subset\mathbb{R}^n$, $x_0:=(x_1^0,x_2^0,\ldots,x_n^0)\in{i}ntE$ точка локального экстремума функции $f(x)$ и для любого $i\in\overline{1,n}$
+существует частная производная $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)$, тогда для любого $i\in\overline{1,n}$ 
+$\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)=0$
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что $x_0$ точка локального максимума. Тогда,
+$$x_0\in{i}ntE\Rightarrow\exists{U}(x_0)\colon\forall{x}\in{U}(x_0)(f(x)\leq{f}(x_0))\Rightarrow
+\exists{r}>0\colon\forall{x}\in{B}(x_0,r)\subset{U}(x_0)(f(x)\leq{f}(x_0))$$
+Фиксируем $i\in\overline{1,n}$, обозначим 
+$(\alpha,\beta):=B(x_0,r)\cap\{x=(x_1,\ldots,x_n)\in{E}\mid{x}_i^0\in\mathbb{R}\wedge\forall{k}\neq{i}(x_k=x_k^0)\}$ и
+$\varphi(t):=f(x_1^0,\ldots,x_{i-1}^0,t,x_{i+1}^0,\ldots,x_n^0)\colon(\alpha,\beta)\to\mathbb{R}$, тогда
+$$\forall{t}\in(\alpha,\beta)\subset{B}(x_0,r)(\varphi(t)=f(x_1^0,\ldots,x_{i-1}^0,t,x_{i+1}^0,\ldots,x_n^0)\leq\varphi(x_i^0)=f(x_0)).$$
+То есть точка $x_i^0$ является точкой локального максимума функции $\varphi(t)$.
+По <a href="./math_analysis12.3.1.html#Definition12.3.4">определению частной производной</a> существование частной производной 
+$\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)$ означает, что существует производная $\displaystyle\frac{d\varphi}{dt}(x_i^0)$ и 
+$\displaystyle\frac{d\varphi}{dt}(x_i^0)=\frac{\partial{f}}{\partial{x}_i}(x_0)$. Применив к функции $\varphi(t)$ 
+<a href="./math_analysis6.4.html#Lemma6.4.1">лемму Ферма</a> получим $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)=\frac{d\varphi}{dt}(x_i^0)=0$.
+
+$\newcommand{\grad}{\operatorname{grad}}$
+
+<br><br>
+<p id=Definition12.4.2><b>Определение 12.4.2:</b> Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\mathbb{R}$ такая, что для любого 
+$i\in\overline{1,n}$ в точке $x_0\in{i}ntE$ существуют частные производные $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)$, тогда градиентом 
+функции $f(x)$ в точке $x_0$ называется вектор 
+$\displaystyle\nabla{f}(x_0):=\grad{f}(x_0):=\left(\frac{\partial{f}}{\partial{x}_1}(x_0),\ldots,\frac{\partial{f}}{\partial{x}_n}(x_0)\right)$ 
+
+<br><br>
+<p id=Corollary12.4.1><b>Следствие 12.4.1:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x_0$ точка внутреннего локального экстремума
+функции $f(x)$, тогда
+<ol>
+<li>из дифференцируемости функции $f(x)$ в точке $x_0$ следует, что $f'(x)=0$;</li>
+<li>градиент функции $f(x)$ в точке $x_0$ либо не существует, либо равен 0.</li>
+</ol>
+<p><b>Доказательство:</b> 
+<ol>
+<li>
+По утверждениям <a href="./math_analysis12.3.1.html#Statement12.3.8">12.3.8</a>, <a href="#Statement12.4.1">12.4.1</a> и 
+<a href="./math_analysis12.3.1.html#Definition12.3.3">определению производной</a>
+$$\exists{f}'(x_0)\Rightarrow\forall{i}\in\overline{1,n}\,\exists\frac{\partial{f}}{\partial{x}_i}\Rightarrow
+\forall{i}\in\overline{1,n}\left(\frac{\partial{f}}{\partial{x}_i}=0\right)\Rightarrow
+\forall{h}\in\mathbb{R}^n\left(f'(x_0)(h)=\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x_0)h_i\right)=0\right)\Rightarrow{f}'(x_0)=0.$$
+</li>
+<li>
+Докажем от противного. Пусть градиент функции $f(x)$ в точке $x_0$ существует и не равен 0. Это означает, что существует $i\in\overline{1,n}$ такое, что
+$\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)\neq0$, а это противоречит <a href="#Statement12.4.1">утверждению 12.4.1</a>. 
+</li>
+</ol>
+
+<p>Из пункта 2 следствия 12.4.1 вытекает, что дифференцируемость функции в точке не является необходимым условием существования экстремума в этой точке.
+<br><br>
+<p id=Definition12.4.3><b>Определение 12.4.3:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x_0\in{E}$, тогда
+<ol>
+<li>точка $x_0$ является стационарной точкой функции $f(x)$, если $x_0\in{i}ntE$ и $\grad{f}(x_0)=0$;</li>
+<li>точка $x_0$ называется критической точкой первого рода функции $f(x)$, если $x_0$ стационарная точка или градиента в точке $x_0$ не существует.</li>
+</ol>
+
+<p> Таким образом локальные экстремумы следует искать только среди критических точек первого рода.
+<br><br>
+<p id=Definition12.4.4><b>Определение 12.4.4:</b> Квадратичной формой над векторным пространством $\mathbb{R}^n$ будем называть функцию 
+$f(x)=f(x_1,\ldots,x_n)\colon\mathbb{R}^n\to\mathbb{R}$ такую, что для любого $x\in\mathbb{R}^n$ $\f(x)=\sum_{i,j=1}^n(a_{ij}x_ix_j)$, где для любых
+$i,j\in\overline{1,n}$ $a_{ij}\in\mathbb{R}$ и $a_{ij}=a_{ji}$. <br>
+Квадратная матрица $A:=(a_{ij})_{n\times{n}}$ называется матрицей квадратичной формы.<br>
+Значение квадратичной формы c матрицей $A$ на векторе $x$ обозначают $(Ax)x$.
+<br><br>
+<p>Из определения следует, что матрица квадратичной формы симметрична и 
+$\displaystyle{f}(x)=(Ax)x=\sum_{i,j=1}^n(a_{ij}x_ix_j)=\sum_{i=1}^n(a_{ii}x_i^2)+2\sum_{i=1}^n\sum_{j=1}^{i-1}(a_{ij}x_ix_j).$  
+<br><br>
+<p>Квадратичная форма над $\mathbb{R}^2$ задается тремя числами $a,b,c\in\mathbb{R}$, при этом $A=\begin{pmatrix}a & b\\b & c\end{pmatrix}$, 
+$f(x)=ax^2+2bxy+cy^2$.
+
+<br><br>
+
+<p id= Definition12.4.5><b>Определение 12.4.5:</b> Квадратичная форма задаваемая матрицей $A$ называется 
+<ol>
+<li>положительно определенной, если для любого $x\neq0$ $(Ax)x>0$;</li>
+<li>отрицательно определенной, если для любого $x\neq0$ $(Ax)x<0$;</li>
+<li>знаконеопределнной, если существуют $x_1,x_2\in\mathbb{R}^n$ такие, что $(Ax)x_1>0$, $(Ax)x_2<0$;</li>
+<li>полуопределенной, если для любого $x\in\mathbb{R}^n$ $(Ax)x\geq0$, или для любого $x\in\mathbb{R}^n$ $(Ax)x\leq0$</li>
+</ol>
+<br><br>
+
+<p id=Theorem12.4.1><b>Теорема 12.4.1: Критерий Сильвестра.</b><br>  
+Пусть $A=
+\begin{pmatrix}
+a_{1,1} & \cdots & a_{1,n}\\
+\vdots & \ddots & \vdots\\
+a_{n,1} & \cdots & a_{n,n}
+\end{pmatrix}$,
+для любого $k\in\overline{1,n}$ обозначим $\Delta_k:=
+\begin{vmatrix}
+a_{1,1} & \cdots & a_{1,k}\\
+\vdots & \ddots & \vdots\\
+a_{k,1} & \cdots & a_{k,k}
+\end{vmatrix}$, 
+тогда
+<ol>
+<li>квадратичная форма $(Ax)x$ положительно определена тогда и только тогда, когда для любого $i\in\overline{1,n}$ $\Delta_i>0$;</li>
+<li>квадратичная форма $(Ax)x$ отрицательно определена тогда и только тогда, когда для всех нечетных $i\in\overline{1,n}$ $\Delta_i<0$,
+а для всех четных $\Delta_i>0$.</li>
+</ol>
+<p><b>Доказательство:</b> Доказывается в курсе алгебры параграф 16.3 теорема 4.
+
+<br><br>
+<p id=Example12.4.1><b>Пример 12.4.1:</b> Рассмотрим случай $n=2$ квадратичной формы $(Ax)x=f(x,y)$ над $\mathbb{R}^2$.<br>
+В этом случае $f(x,y)=ax^2+2bxy+cy^2$, $A=\begin{pmatrix}a & b\\c & d\end{pmatrix}$, $\Delta_1=a$, 
+$\Delta_2=|A|=\begin{vmatrix}a & b\\b & c\end{vmatrix}=ac-b^2$.<br>
+<i>
+Докажем пункт 1 критерия Сильвестра.<br>
+Фиксируем $y\in\mathbb{R}$. 
+Если $\Delta_1=a>0$, то $f(x,y)>0$ для любого $x\in\mathbb{R}$ тогда и только тогда, когда уравнение $ax^2+2bxy+y^2=0$ не имеет корней, т. е. 
+$$\forall{x}\in\mathbb{R}(f(x,y)>0)\Leftrightarrow4b^2y^2-4acy^2=4y^2(b^2-ac)<0\Leftrightarrow{a}c-b^2>0$$
+В свою очередь из условия положительности $f(x,y)$ для $(x,y)=(0,1)$ следует, что $a>0$.<br>
+Докажем пункт 2 критерия Сильвестра.<br>
+Если $\Delta_1=a<0$, то $f(x,y)<0$ для любого $x\in\mathbb{R}$ тогда и только тогда, когда уравнение $ax^2+2bxy+y^2-0$ не имеет корней, т. е.
+при $\Delta_2=ac-b^2>0$. В свою очередь из отрицательности $f(1,0)$ следует, что $a<0$.
+</i>
+
+<br><br>
+<p id=Theorem12.4.2><b>Теорема 12.4.2:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{f}(x)\to\mathbb{R}$, $x_0\in{i}ntE$ такие, что 
+<ol>
+<li>$\exists{U}(x_0)\subset{E}\colon{f}(x)\in{C}^2(U(x_0))$,</li>
+<li>$f'(x_0)=0$.</li>
+</ol>
+Обозначим $\displaystyle{Q}(h):=\sum_{i,j=1}^n\left(\frac{\partial^2f}{\partial{x}_i\partial{x}_j}(x_0)h_ih_j\right)=d^2(x_0,h)$, тогда
+<ol>
+<li>если $Q(h)$ положительно определена, то $x_0$ точка локального минимума;</li>
+<li>если $Q(h)$ отрицательно определена, то $x_0$ точка локального максимума;</li>
+<li>если $Q(h)$ знаконеопределена, то $x_0$ не является точкой локального экстремума.</li>
+</ol>
+<p><b>Доказательство:</b> Применим <a href="./math_analysis12.3.3.html#Corollary12.3.6">локальную формулу Тэйлора</a> степени 2 для функции $f(x)$
+с центром в точке $x_0$. Пусть $H:=\{h\in\mathbb{R}^n\mid[x_0,x_0+h]\subset{U(x_0)}\}$, тогда
+$$\Delta{f}(x_0,h)=f(x_0+h)-f(x_0)=df(x_0)(h)+\frac12d^2f(x_0)(h)+o(h^2)=\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x_0)h_i\right)+
+\frac12\sum_{i,j=1}^n\left(\frac{\partial^2f}{\partial{x}_i\partial{x}_j}(x_0)h_ih_j\right)+o(h^2),H\ni{h}\to0$$
+Так как $f'(x_0)=0$ то первое слагаемое последнего выражения равно нулю, следовательно $f(x_0+h)-f(x_0)=\frac12(Q(h)+o(h^2)),h\to0$.<br>
+Для любого $h\neq0$ обозначим $\displaystyle{e}_h:=\frac{h}{\|h\|}=\left(\frac{h_1}{\|h\|},\ldots,\frac{h_n}{\|h\|}\right)$, тогда $\|e_h\|=1$ и
+$$f(x_0+h)-f(x_0)=
+\frac{\|h\|^2}{2}\sum_{i,j=1}^n\left(\frac{\partial^2f}{\partial{x}_i\partial{x}_j}(x_0)\frac{h_i}{\|h\|}\frac{h_j}{\|h\|}\right)+\|h\|^2o(1)=
+\frac{\|h\|^2}{2}(Q(e_h)+o(1)),H\ni{h}\to0$$
+Обозначим $S:=\{x\in\mathbb{R}^n\mid\|h\|=1\}$ - единичная сфера с центром в точке 0. Функция $Q(h)$ непрерывна на $S$, так как все частные производные 
+$\displaystyle\frac{\partial^2f}{\partial{x}_i\partial{x}_j}$ непрерывны по условию 1. Так как $S$ замкнутое ограниченное множество, то есть компакт, 
+то по <a href="./math_analysis11.2.html#Corollary11.2.2">следствию 11.2.2</a> функция $Q(h)$ достигает на $S$ минимума $m:=\min_{h\in{S}}Q(h)$ и максимума 
+$M:=\max_{h\in{S}}Q(h)$. То есть 
+существуют $e_m,e_M\in{S}$ такие, что $Q(e_m)=m$, $Q(e_M)=M$.
+<ol>
+<li>
+Пусть $Q(h)$ положительно определена, тогда $m>0$, следовательно, 
+$$f(x_0+h)-f(x_0)\geq\frac{\|h\|^2}{2}(m+o(1)),H\ni{h}\to0\Rightarrow
+\exists\delta_1>0\colon\left(\|h\|<\delta_1\Rightarrow{f}(x_0+h)-f(x_0)\geq\frac{\|h\|^2}{2}\frac{m}{2}>0\right)\Rightarrow
+\forall{x}\in{B}(x_0,\delta_1)(f(x)-f(x_0)>0)$$
+</li>
+<li>
+Пусть $Q(h)$ отрицательно определена, тогда $M<0$, следовательно,
+$$f(x_0+h)-f(x_0)\leq\frac{\|h\|^2}{2}(M+o(1)),H\ni{h}\to0\Rightarrow
+\exists\delta_2>0\colon\left(\|h\|<\delta_2\Rightarrow{f}(x_0+h)-f(x_0)\leq\frac{\|h\|^2}{2}\frac{M}{2}<0\right)\Rightarrow
+\forall{x}\in{B}(x_0,\delta_2)(f(x)-f(x_0)<0)$$
+</li>
+<li>
+Пусть $Q(h)$ знаконеопределна, тогда существуют $u,v\in{U}(x_0)$ такие, что $Q(u)<0$, $Q(v)>0$. Тогда, так как для любого $h\in{U}(x_0)$
+$\displaystyle{Q}(e_h)=\frac{Q(h)}{\|h\|^2}$, то $Q(e_u)<0$, $Q(e_v)>0$, следовательно
+$$\exists\delta_3>0\colon(|t|<\delta_3\Rightarrow{t}e_u\in{H})\Rightarrow(|t|<\delta_3\Rightarrow{f}(x_0+te_u)-f(x_0)=
+\frac12(Q(te_u)+o((te_u)^2))=\frac{|t|^2}{2}(Q(e_u)+o(1))<0,t\to0)$$
+Тогда 
+$$\exists\delta_4<\delta_3\colon(|t|<\delta_4\Rightarrow{f}(x_0+te_u)-f(x_0)<0)\Rightarrow\forall\delta>0\,\exists{t}>0\colon\|te_u\|=
+|t|<\min{\{\delta,\delta_4\}}\Rightarrow\forall\delta>0\,\exists{h}\in{U}(x_0)\colon(\|h\|<\delta\wedge{f}(x_0+h)-f(x_0)<0)$$
+Аналогично с помощью $h_2$ показывается, что 
+$$\forall\delta>0\,\exists{h}\in{U}(x_0)\colon(\|h\|<\delta\wedge{f}(x_0+h)-f(x_0)>0)$$ 
+То есть точка $x_0$ не является точкой локального экстремума функции $f(x)$.
+</li>
+</ol>
+<br>
+<p>Если в условиях теоремы 12.4.2 квадратичная форма $Q(h)$ полуопределена, то нельзя ничего сказать о существовании локального экстремума в точке $x_0$.
+<br><br>
+
+<p id=Example12.4.2><b>Пример 12.4.2:</b> Рассмотрим функцию $f(x,y)=x^4+y^4-2x^2\colon\mathbb{R}^2\to\mathbb{R}$.<br>
+Вычислим частные производные первого порядка: $\frac{\partial{f}}{\partial{x}}(x,y)=4x^3-4x$, $\frac{\partial{f}}{\partial{y}}=4y^3$.<br>
+Приравняв к нулю обе производные и решив полученную систему уравнений найдем стационарные точки функции $f(x,y)$: $M_1=(-1,0)$, $M_2=(0,0)$, $M_3=(1,0)$. 
+Таким образом $f'(M_1)=f'(M_2)=f'(M_3)=0$.<br>
+Вычислим частные производные второго порядка: $f_{xx}(x,y)=12x^2-4$, $f_{xy}(x,y)=0$, $f_{yy}(x,y)=12y^2$.<br>
+Таким образом: $\displaystyle{Q}(h)=\frac12(f_{xx}(x,y)h_1^2+f_{yy}h_2^2)$.<br>
+При $(x,y)=M_1$ $Q(h)=(12-4)h_1^2=8h_1^2.$<br>
+При $(x,y)=M_2$ $Q(h)=-4h_1^2$.<br>
+При $(x,y)=M_3$ $Q(h)=(12-4)h_1^2=8h_1^2$.<br>
+То есть во всех трех точках квадратичная форма $Q(h)$ полуопределена, так как она равна нулю для любых $h\in\{(0,h_2)\mid{h}_2\in\mathbb{R}^2\}$, 
+а в остальных $h$ знакопостоянна.<br>
+Таким образом исследование квадратичной формы $Q(h)$ не дает никакой информации она наличии экстремумов функции $f(x)$, в то время как экстремумы есть.
+Действительно, так как $f(x,y)=(x^2-1)^2+y^4-1$, то $f(M_1)=f(M_2)=-1$ и для любого $(x,y)\notin\{M_1,M_2\}$ $f(x,y)>-1$, то есть $M_1$ и $M_2$ точки
+локального минимума функции $f(x,y)$.<br>
+В точке $M_2$ локального экстремума нет, так как $f(M_2)=0$ и для любого $y\in\mathbb{R}$ $f(0,y)=y^4>0$, a для любых $(x,y)\in\{(x,0)\mid|x|<1\}$
+$f(x,0)=x^4-2x^2=x^2(x^2-2)<0$.
+
+<br><br>
+<p>Поиск глобальных экстремумов.<br>
+Пусть $E$ компакт в $\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}$ непрерывна на $E$, тогда по 
+<a href="./math_analysis11.2.html#Corollary11.2.2">следствию 11.2.2</a> функция $f(x)$ достигает на $E$ максимума и минимума. Всякая точка из области
+определения является либо внутренней, либо граничной. Ко всем внутренним точкам применимы <a href="#Statement12.4.1">утверждение 12.4.1</a> и 
+<a href="#Theorem12.4.2">теорема 12.4.2</a>, что позволяет определить является ли точка, точкой локального экстремума. После того как все внутренние 
+локальные экстремумы найдены, надо исследовать точки границы области определения, которых при $n>1$ может быть много. При исследовании поведения функции 
+на границе области определения общей стратегии нет, но в отдельных случаях есть результаты (россыпь в одном пакете).<br>
+Если граница задается в виде конечного числа равенств $F_i(x,y)=0$ и при этом функции $F_i$ непрерывно дифференцируемы, то можно применить 
+<a href="./math_analysis12.4.3.html#12.4.4">метод множителей Лагранжа</a> (метод поиска условного экстремума).
+
+<p id=Definition12.4.6><b>Определение 12.4.6:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x_0\in\mathbb{R}^n$, $v\in\mathbb{R}^n$,
+$v\neq{x}_0$, тогда предел функции $\displaystyle\frac{f(x_0+tv)-f(x_0)}{t}$ при $t\to0$ по множеству $\{t\in\mathbb{R}\mid{x}_0+tv\in{E}\}$
+называется пределом по вектору $v$ от функции $f(x)$ в точке $x_0$. Если предел существует, то используется обозначение
+$$\frac{\partial{f}}{\partial{v}}(x_0):=\lim_{t\to0}\frac{f(x_0+tv)-f(x_0)}{t}$$
+Если при этом $\|v\|=1$, то производная $\frac{\partial{f}}{\partial{v}}$ называется производной по направлению $v$.
+
+<br><br>
+<p id=Example12.4.3><b>Пример 12.4.3:</b> Пусть $E:=\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}$ дифференцируема на $\mathbb{R}^n$, вектор
+$v=e_i=(x_1,\ldots,x_n)\in\mathbb{R}^n$ такой, что $x_i=1$ и для любого $k\neq{i}$ $x_k=0$. Тогда 
+$\displaystyle\frac{\partial{f}}{\partial{e}_i}=\frac{\partial{f}}{\partial{x}_i}$. То есть частная производная - это частный случай производной по
+направлению.
+
+<br><br>
+<p id=Statement12.4.2><b>Утверждение 12.4.2:</b> Пусть $E\subset{R}^n$, $x_0\in{i}nt{E}$, функция $f(x)\colon{E}\to\mathbb{R}$ дифференцируема в точке $x_0$,
+тогда для любого $v=(v_1,\ldots,v_n)\in\mathbb{R}^n$ существует производная по направлению 
+$$\frac{\partial{f}}{\partial{v}}(x_0)=\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x_0)v_i\right)=(\grad{f(x_0)},v)$$
+где последнее выражение это скалярное произведение $\grad{f(x_0)}$ и $v$.
+<p><b>Доказательство:</b> Рассмотрим функцию $\varphi(t):=f(x_0+tv)\colon\mathbb{R}\to\mathbb{R}^n$. Так как существует производная $f'(x_0)$ и существует
+производная $(x_0+vt)'|_t=v$, то по <a href="./math_analysis12.3.2.html#Statement12.3.13">теореме о производной композиции</a> существует производная 
+$$\frac{\partial{f}}{\partial{v}}(x_0):=\varphi'(0)=f'(x_0)\circ{v}=
+\left(\frac{\partial{f}}{\partial{x}_i}(x_0),\ldots,\frac{\partial{f}}{\partial{x}_n}(x_0)\right)\begin{pmatrix}v_1\\\vdots\\v_n\end{pmatrix}=
+(\grad{f(x_0)},v)=\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x_0)v_i\right)$$
+
+<br><br>
+<p>Из утверждения 12.4.2 в частности следует, что для любых $u,v\in\mathbb{R}^n$, $\alpha,\beta\in\mathbb{R}$
+$$\partial_{\alpha{u}+\beta{v}}f(x_0)=\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x_0)(\alpha{u}_i+\beta{v}_i)\right)=
+\alpha\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}u_i\right)+\beta\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}v_i\right)=
+\alpha\partial_{u}f(x_0)+\beta\partial_{v}f(x_0).$$
+То есть производная по направлению - <a href="./math_analysis12.3.1.html#Definition12.3.1">линейный оператор</a>.<br>
+Так как $\frac{\partial{f}}{\partial{v}}(x_0)=(\grad{f}(x_0),v)$, то по <a href="./math_analysis9.html#Statement9.1">неравенству Коши - Буняковского</a> 
+при $\|v\|=1$ имеем
+$$\left|\frac{\partial{f}}{\partial{v}}(x_0)\right|\leq\|\grad{f(x_0)}\|\|v\|=\|\grad{f(x_0)}\|\Rightarrow\|\frac{\partial{f}}{\partial{v}}(x_0)\|=
+\Leftrightarrow{v}=\frac{\grad{f(x_0)}}{\|\grad {f(x_0)}\|}$$
+Таким образом вектор $\displaystyle{v}_{max}:=\frac{\grad{f(x_0)}}{\|\grad{f(x_0)}\|}$ является направлением наибольшего возрастания функции $f(x)$ в точке 
+$x_0$, а вектор $\displaystyle{v}_{min}:=-\frac{\grad{f(x_0)}}{\|\grad{f(x_0)}\|}$ направление наибольшего убывания.<br>
+На данном свойстве градиента основан метод градиентного спуска поиска внутренних локальных экстремумов. Допустим надо найти локальный минимум функции $f(x)$,
+тогда 
+<ol>
+<li>Задаем начальное приближение $x_0$ и максимальную погрешность $\varepsilon$.</li>
+<li>Рассчитываем $x_{i+1}=x_i-\alpha_i\grad{f(x_i)}$.</li>
+<li>Если $\|\grad{f(x_{i+1})}\|>\varepsilon$, то $i:=i+1$ и переходим к шагу 2, иначе $x_{i+1}$ - искомая точка локального минимума.</li>
+</ol> 
+Положительные величины $\alpha_i$ являются параметрами метода, обычно это некоторая убывающая последовательность.<br><br>
+<i>
+Метод градиентного спуска применяется в том случае если поиск критических точек первого рода очень трудоемок. Напрмер, когда уравнения 
+$\frac{\partial{f}}{\partial{x}_i}(x)=0$ не разрешимы в радикалах.
+</i>
+<br><br>
+<a href="./math_analysis12.3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.2.html">next</a>
+</body>
+</html>

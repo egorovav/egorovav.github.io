@@ -1,0 +1,334 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 8.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis8.2.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis8.4.html">next</a>
+
+<h4 id="8.3">8.3 Основные свойства определенного интеграла Римана.</h4>
+
+<h5 id="8.3.1">8.3.1 Линейность, монотонность, аддитивность.</h5>
+
+<p id="Theorem8.3.1"><b>Теорема 8.3.1:</b> Пусть $f(x),g(x)\in\mathcal{R}[a,b]$, тогда
+<ol>
+<li>
+Линейность<br>
+$\displaystyle\forall\alpha,\beta\in\mathbb{R}\left(\alpha{f}(x)+\beta{g}(x)\in\mathcal{R}[a,b]\wedge
+\int\limits_a^b(\alpha{f}(x)+\beta{g}(x))dx=\alpha\int\limits_a^b{f}(x)dx+\beta\int\limits_a^bg(x)dx\right)$
+</li>
+<li>$\displaystyle\forall{x}\in[a,b](f(x)\geq0)\Rightarrow\int\limits_a^bf(x)dx\geq0$</li>
+<li>
+Монотонность<br>
+$\displaystyle\forall{x}\in[a,b](f(x)\geq{g}(x))\Rightarrow\int\limits_a^bf(x)dx\geq\int\limits_a^bg(x)dx$
+</li>
+<li>
+"Неравенство треугольников"<br>
+$|f(x)|\in\mathcal{R}[a,b]\wedge\left|\int\limits_a^bf(x)dx\right|\leq\int\limits_a^b|f(x)|dx$
+</li>
+<li>
+Аддитивность<br>
+$\displaystyle\forall{c}\in(a,b)\left(f(x)\in\mathcal{R}[a,c]\wedge{f}(x)\in\mathcal{R}[c,b]\wedge
+\int\limits_a^bf(x)dx=\int\limits_a^cf(x)dx+\int\limits_c^bf(x)dx\right)$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Интегрируемость функции $\alpha{f}(x)+\beta{g}(x)$, следует, из пунктов 1, 3 <a href="./math_analysis8.2.4.html#Statement8.2.12">утверждения 8.2.12</a>.<br>
+Докажем выражение для численного значения интеграла. Так как функция $\alpha(x)\equiv{x}$ непрерывна на любом отрезке, то в соответствии с 
+<a href="./math_analysis8.2.3.html#Statement8.2.9">утверждением 8.2.9</a> для любой интегрируемой по Риману функции численное значение интеграла
+равно <a href="./math_analysis8.2.3.html#Definition8.2.8">пределу интегральных сумм</a>. Зафиксируем последовательность разбиений
+с помеченными точками $\{(P_n,\xi_n)\}$ отрезка $[a,b]$ такую, что $\displaystyle\lim_{n\to\infty}\lambda(P_n)=0$ то есть
+$$\forall\delta&gt0\:\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0(\lambda(P)&lt\delta)$$
+<i>Как минимум одна такая последовательность существует. Первый элемент равен $P_1:=\{b\}$, а каждый следующий получается делением пополам всех
+отрезков предыдущего разбиения.</i><br>
+Фиксируем $\varepsilon&gt0$, тогда для любой функции $h(x)\in\mathcal{R}[a,b]$
+$$\int\limits_a^bh(x)dx=\lim_{\lambda(P)\to0}\sigma(f,P,\xi)\Rightarrow
+\exists\delta&gt0\:\forall(P,\xi)\left(\lambda(P)&lt\delta\Rightarrow\left|\sigma(h,P,\xi)-\int\limits_a^bh(x)dx\right|&lt\varepsilon\right)\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\sigma(h,P_n,\xi_n)-\int\limits_a^bh(x)dx\right|&lt\varepsilon\right)\Rightarrow$$
+$$\Rightarrow\lim_{n\to\infty}\sigma(h,P_n,\xi_n)=\int\limits_a^bh(x)dx$$
+Из <a href="./math_analysis8.2.html#Definition8.2.4">определения интегральной суммы</a> следует равенство 
+$\sigma(\alpha{f}+\beta{g},P,\xi)=\alpha\sigma(f,P,\xi)+\beta\sigma(g,P,\xi)$ и так как предел $\displaystyle\lim_{n\to\infty}\sigma(h,P_n,\xi_n)$
+это обычный предел числовой последовательности <a href="./math_analysis4.1.html#Theorem4.2.2">то</a> 
+$$\int\limits_a^b(\alpha{f}(x)+\beta{g}(x))dx=\lim_{n\to\infty}\sigma(\alpha{f}+\beta{g},P_n,\xi_n)=
+\alpha\lim_{n\to\infty}\sigma(f,P_n,\xi_n)+\beta\lim_{n\to\infty}\sigma(g,P_n,\xi_n)=\alpha\int\limits_a^bf(x)dx+\beta\int\limits_a^bg(x)dx.$$
+</li>
+<li>
+$$\forall{x}\in[a,b](f(x)\geq0)\Rightarrow\forall{P}:=\{x_1,x_2,\dots,x_n\}(\forall{i}\in\overline{1,n}(M_i:=\sup_{x\in\Delta_i}f(x)\geq0))\Rightarrow
+\forall{P}(S(f,P)=\sum_{i=1}^n(M_i\Delta{x}_i)\geq0)\Rightarrow\int\limits_a^bf(x)dx=\int\limits_a^{b*}f(x)dx=\inf_{(P)}S(f,P)\geq0$$
+</li>
+<li>
+$$\forall{x}\in[a,b](f(x)\geq{g}(x))\Rightarrow\forall{x}\in[a,b](f(x)-g(x)\geq0)\Rightarrow\int\limits_a^bf(x)dx-\int\limits_a^bg(x)dx=^{(1)}
+\int\limits_a^b(f(x)-g(x))dx\geq^{(2)}0\Rightarrow\int\limits_a^bf(x)dx\geq\int\limits_a^bg(x)dx$$
+</li>
+<li>
+Интегрируемость функции $|f(x)|$ следует из пункта 4 <a href="./math_analysis8.2.4.html#Statement8.2.12">утверждения 8.2.12</a> и
+$$\forall{x}\in[a,b](-|f(x)|\leq{f}(x)\leq|f(x)|)\Rightarrow^{(3)}-\int\limits_a^b|f(x)|dx\leq\int\limits_a^bf(x)dx\leq\int\limits_a^b|f(x)|dx\Rightarrow
+\left|\int\limits_a^bf(x)dx\right|\leq\int\limits_a^b|f(x)|dx$$
+</li>
+<li>
+Фиксируем последовательность разбиений с помеченными точками $\{P_n,\xi_n\}$ отрезка $[a,b]$ такую, что
+$$\{P_n:=\{x_1^{(n)},x_2^{(n)},\dots,x_{m_n}^{(n)}\}\}:
+(\lim_{n\to\infty}\lambda(P_n)=0\wedge\forall{n}\in\mathbb{N}(\exists{i}_n\in\overline{1,m_n-1}:(x_{i_n}^{(n)}=c)))$$
+<i>
+По крайней мере одна такая последовательность существует: $P_1:=\{c,b\}$ и каждое следующее разбиение получается делением пополам всех отрезков предыдущего.
+</i><br>
+Таким образом для любого $n\in\mathbb{N}$ по разбиению $P_n$ отрезка $[a,b]$ можно построить разбиение $P'_n:=\{x_1^{(n)},x_2^{(n)},\dots,x_{i_n}^{(n)}=c\}$
+отрезка $[a,c]$ и разбиение $P''_n:=\{x_{i_n+1}^{(n)},x_{i_n+2}^{(n)},\dots,x_{m_n}^{(n)}\}$ отрезка $[c,b]$. Так как максимум подмножества не превосходит
+максимум множества, то $\displaystyle\lim_{n\to\infty}\lambda(P'_n)=\lim_{n\to\infty}\lambda(P''_n)=\lim_{n\to\infty}\lambda(P_n)=0$. Тогда по 
+определению интегральной суммы и аналогично пункту 1 имеем
+$$\forall{n}\in\mathbb{N}(\sigma(f,P_n,\xi_n)=\sigma(f,P'_n,\xi'_n)+\sigma(f,P''_n,\xi''_n))\Rightarrow
+\int\limits_a^bf(x)dx=\lim_{n\to\infty}\sigma(f,P_n,\xi)=\lim_{n\to\infty}\sigma(f,P'_n,\xi'_n)+\lim_{n\to\infty}\sigma(f,P''_n,\xi''_n)=
+\int\limits_a^cf(x)dx+\int\limits_c^bf(x)dx$$
+</li>
+</ol>
+
+<br><br>
+
+<p>Из пунктов 1-4 следует, что класс функций $\mathcal{R}[a,b]$ образует векторное пространство над $\mathbb{R}$.
+<p>В целях общности получаемых далее результатов введем понятие интеграла Римана по ориентированному промежутку.<br>
+Пусть $a,b\in\mathbb{R}$ такие, что $a&ltb$ значение интеграла $\int\limits_a^bf(x)dx$ уже определено, положим $\int\limits_a^af(x)dx:=0$ 
+и $\int\limits_b^af(x)dx:=-\int\limits_a^bf(x)dx$.
+<br><br>
+
+<p id="Task8.3.1"><b>Задача 8.3.1:</b> Доказать, что если $f(x),g(x)\in\mathcal{R}[a,b]$, $\alpha,\beta,\gamma\in[a,b]$, то
+<ol>
+<li>$\displaystyle\int\limits_\alpha^\beta{f}(x)dx=\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$</li>
+<li>$\displaystyle\int\limits_\alpha^\beta{f}(x)dx+\int\limits_\beta^\gamma{f}(x)dx+\int\limits_\gamma^\alpha{f}(x)dx=0$</li>
+<li>
+Для любого $s\in\mathbb{N}$ и любого разбиения $a=c_0&ltc_1&lt\dots&ltc_{s-1}&ltc_s=b$ верно равенство<br>
+$\displaystyle\int\limits_a^bf(x)dx=\sum_{i=1}^s\int\limits_{c_{i-1}}^{c_i}f(x)dx$
+</li>
+</ol>
+<p><i><b>Решение:</b>
+<ol>
+<li>
+Надо рассмотреть шесть случаев взаимного расположения точек $\alpha,\beta,\gamma$
+<ul>
+<li>
+$\displaystyle\alpha&lt\beta&lt\gamma\Rightarrow\int\limits_\alpha^\gamma{f}(x)dx=
+\int\limits_\alpha^\beta{f}(x)dx+\int\limits_\beta^\gamma{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx=\int\limits_\alpha^\gamma{f}(x)dx-\int\limits_\beta^\gamma{f}(x)dx=
+\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+<li>
+$\displaystyle\alpha&lt\gamma&lt\beta\Rightarrow\int\limits_\alpha^\beta{f}(x)dx=\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+<li>
+$\displaystyle\beta&lt\alpha&lt\gamma\Rightarrow\int\limits_\beta^\gamma{f}(x)dx=
+\int\limits_\beta^\alpha{f}(x)dx+\int\limits_\alpha^\gamma{f}(x)dx\Rightarrow
+\int\limits_\beta^\alpha{f}(x)dx=\int\limits_\beta^\gamma{f}(x)dx-\int\limits_\alpha^\gamma{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx=-\int\limits_\beta^\gamma{f}(x)dx+\int\limits_\alpha^\gamma{f}(x)dx=
+\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+<li>
+$\displaystyle\beta&lt\gamma&lt\alpha\Rightarrow\int\limits_\beta^\alpha{f}(x)dx=
+\int\limits_\beta^\gamma{f}(x)dx+\int\limits_\gamma^\alpha{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx=-\int\limits_\beta^\gamma{f}(x)dx-\int\limits_\gamma^\alpha{f}(x)dx=
+\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+<li>
+$\displaystyle\gamma&lt\alpha&lt\beta\Rightarrow\int\limits_\gamma^\beta{f}(x)dx=\int\limits_\gamma^\beta{f}(x)dx+\int\limits_\alpha^\beta{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx=-\int\limits_\gamma^\alpha{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx=
+\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+<li>
+$\displaystyle\gamma&lt\beta&lt\alpha\Rightarrow\int\limits_\gamma^\alpha{f}(x)dx=
+\int\limits_\gamma^\beta{f}(x)dx+\int\limits_\beta^\alpha{f}(x)dx\Rightarrow
+\int\limits_\beta^\alpha{f}(x)dx=\int\limits_\gamma^\alpha{f}(x)dx-\int\limits_\gamma^\beta{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx=-\int\limits_\gamma^\alpha{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx=
+\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx$
+</li>
+</ul>
+Если какая либо пара точек совпадает, то один из интегралов обращается в ноль и доказываемое равенство становится тривиальным.
+</li>
+<li>
+$\displaystyle\int\limits_\alpha^\beta{f}(x)dx=\int\limits_\alpha^\gamma{f}(x)dx+\int\limits_\gamma^\beta{f}(x)dx\Rightarrow
+\int\limits_\alpha^\beta{f}(x)dx-\int\limits_\gamma^\beta{f}(x)dx-\int\limits_\alpha^\gamma{f}(x)dx=
+\int\limits_\alpha^\beta{f}(x)dx+\int\limits_\beta^\gamma{f}(x)dx+\int\limits_\gamma^\alpha{f}(x)dx=0$
+</li>
+<li>
+Докажем индукцией по $s$.<br>
+При $s=1$, $c_0=1$, $c_1=b$, $\int\limits_a^bf(x)dx=\int\limits_{c_0}^{c_1}f(x)dx$.<br>
+Пусть утверждение верно при $s=k$. Фиксируем разбиение состоящее из $k+2$ точек $a=c_0&ltc_1&lt\dots&ltc_{k-1}&ltc_k&ltc_{k+1}=b$, тогда
+разбиение $a=c_0&ltc_1&lt\dots&ltc_{k-1}&ltc_{k+1}=b$ содержит $k+1$ точек и по предположению индукции
+$$\int\limits_a^b{f}(x)dx=\sum_{i=1}^{k-1}\int\limits_{c_{i-1}}^{c_i}f(x)dx+\int\limits_{c_{k-1}}^{c_{k+1}}f(x)dx=
+\sum_{i=1}^{k-1}\int\limits_{c_{i-1}}^{c_i}f(x)dx+\int\limits_{c_{k-1}}^{c_k}f(x)dx+\int\limits_{c_k}^{c_{k+1}}f(x)dx=
+\sum_{i=1}^{k+1}\int\limits_{c_{i-1}}^{c_i}f(x)dx$$
+</li>
+</ol>
+</i>
+
+<h5 id="8.3.2">8.3.2 Теоремы о среднем.</h5>
+
+<p id="Theorem8.3.2"><b>Теорема 8.3.2: Первая теорема о среднем значении для интеграла Римана.</b><br>
+Пусть функции $f(x),g(x):[a,b]\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x),g(x)\in\mathcal{R}[a,b]$,</li>
+<li>функция $g(x)$ знакопостоянна,</li>
+</ol>
+тогда
+$$\forall{m},M\in\mathbb{R}\left(\forall{x}\in[a,b](m\leq{f}(x)\leq{M})\Rightarrow
+\exists\mu\in[m,M]:\int\limits_a^bf(x)g(x)dx=\mu\int\limits_a^bg(x)dx\right)$$
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что функция $g(x)$ неотрицательна на отрезке $[a,b]$, тогда для любого $x\in[a,b]$
+верно неравенство $mg(x)\leq{f}(x)g(x)\leq{M}g(x)$. Тогда по пункту 3 <a href="#Theorem8.3.1">теоремы 8.3.1</a>
+$$m\int\limits_a^bg(x)dx=\int\limits_a^bmg(x)dx\leq\int\limits_a^bf(x)g(x)dx\leq\int\limits_a^bMg(x)dx=M\int\limits_a^bg(x)dx$$
+Если $\int\limits_a^bg(x)dx=0$, то $\int\limits_a^bf(x)g(x)dx=0$ и доказываемое равенство верно для любого $\mu\in[m,M]$.<br>
+Если $\int\limits_a^bg(x)dx\neq0$, то
+$$\int\limits_a^bg(x)dx&gt0\Rightarrow{m}\leq\frac{\int\limits_a^bf(x)g(x)dx}{\int\limits_a^bg(x)dx}\leq{M}\Rightarrow
+\mu:=\frac{\int\limits_a^bf(x)g(x)dx}{\int\limits_a^bg(x)dx}$$
+
+<br><br>
+
+<p id="Corrolary8.3.1"><b>Следствие 8.3.1: Классический вариант первой теоремы о среднем.</b><br>
+Пусть функции $f(x),g(x):[a,b]\to\mathbb{R}$ такие, что 
+<ol>
+<li>$g(x)\in\mathcal{R}[a,b]$,</li>
+<li>$f(x)\in{C}[a,b]$,</li>
+<li>функция $g(x)$ знакопостоянна,</li>
+</ol>
+тогда
+$$\exists\xi\in[a,b]:\int\limits_a^bf(x)g(x)dx=f(\xi)\int\limits_a^bg(x)dx$$
+<p><b>Доказательство:</b> Так как функция $f(x)$ непрерывна на отрезке $[a,b]$, <a href="./math_analysis8.2.html#Statement8.2.4">то</a> 
+она интегрируема по Риману <a href="./math_analysis5.5.3.html#Theorem5.5.3">и</a> достигает минимума $\displaystyle{m}:=\min_{x\in[a,b]}f(x)$ 
+и максимума $\displaystyle{M}:=\max_{x\in[a,b]}f(x)$ на нем при этом $f([a,b])=[m,M]$, тогда по теореме 8.3.1
+$$\exists\mu\in[m,M]:\int\limits_a^bf(x)g(x)dx=\mu\int\limits_a^bf(x)dx$$
+и по непрерывности функции $f(x)$ существует $\xi\in[a,b]$ такое, что $f(\xi)=\mu$, следовательно, 
+$$\int\limits_a^bf(x)g(x)=f(\xi)\int\limits_a^bf(x)dx$$
+
+<br><br>
+
+<p id="Corollary8.3.2"><b>Следствие 8.3.2:</b> $\displaystyle{f}(x)\in{C}[a,b]\Rightarrow\exists\xi\in[a,b]:\int\limits_a^bf(x)dx=f(\xi)(b-a)$
+<p><b>Доказательство:</b> Следует из следствия 8.3.1 при $g(x)\equiv1$, так как для любого разбиения с помеченными точками $(P,\xi)$
+$\sigma(g,P,\xi)=\sum_{(P)}\Delta{x}_i=b-a$ то есть $\int\limits_a^bg(x)dx=\int\limits_a^bdx:=\int\limits_a^b1dx=b-a$.
+
+<br><br>
+
+<p id="Corollary8.3.3"><b>Следствие 8.3.3:</b> Если $f(x)\in\mathcal{R}[a,b]$, $n\in\mathbb{N}$ и для любого $i\in\overline{0,n-1}$ 
+$x_i:=a+\frac{b-a}{n}i$, то 
+$$\lim_{n\to\infty}\frac{f(x_0)+f(x_1)+\dots+f(x_{n-1})}{n}=\lim_{n\to\infty}\left(\frac1{n}\sum_{i=1}^{n}f(x_{i-1})\right)=
+\frac1{b-a}\int\limits_a^bf(x)dx$$
+<p><b>Доказательство:</b> Рассмотрим последовательность разбиений с помеченными точками $\{(P_n,\xi_n)\}$ отрезка $[a,b]$ такую, что
+$$\forall{n}\in\mathbb{N}\left(P_n:=\{x_1,x_2,\dots,x_n\}:\forall{i}\in\overline{1,n}\left(x_i:=a+\frac{b-a}{n}i\wedge\xi_i:=x_{i-1}\right)\right)$$
+Следовательно, для любого $n\in\mathbb{N}$ длина любого отрезка разбиения $P_n$ равна $\frac{b-a}{n}$, следовательно, 
+$\displaystyle\lim_{n\to\infty}\lambda(P_n)=\lim_{n\to\infty}\frac{b-a}{n}=0$, тогда
+$$\sigma(f,P_n,\xi_n)=\sum_{i=1}^n(f(\xi_i)\Delta{x}_i)=\sum_{i=1}^n\left(f(x_{i-1})\frac{b-a}{n}\right)=\frac{b-a}{n}\sum_{i=1}^nf(x_{i-1})\Rightarrow
+\int\limits_a^bf(x)dx=\lim_{n\to\infty}\sigma(f,P_n,\xi_n)=(b-a)\lim_{n\to\infty}\left(\frac1{n}\sum_{i=1}^nf(x_{i-1})\right)\Rightarrow$$
+$$\Rightarrow\lim_{n\to\infty}\left(\frac1{n}\sum_{i=1}^nf(x_{i-1})\right)=\frac1{b-a}\int\limits_a^bf(x)dx$$
+
+<br><br>
+
+<p id="Definition8.3.1"><b>Определение 8.3.1:</b> Средним значением интегрируемой на отрезке $[a,b]$ функции $f(x)$ называют величину 
+$S_{ср}:=\frac1{b-1}\int\limits_a^bf(x)dx$.
+
+<br><br>
+
+<p id="Statement8.3.1"><b>Утверждение 8.3.1:</b> $\displaystyle{f}(x)\in\mathcal{R}[a,b]\Rightarrow{F}(x):=\int\limits_a^xf(t)dt\in{C}[a,b]$.
+<p><b>Доказательство:</b> Функция $f(x)$ интегрируема на отрезке $[a,b]$, следовательно, он ограничена на нем, то есть существует 
+$\displaystyle{K}:=\sup_{x\in[a,b]}|f(x)|$, <a href="#Task8.3.1">следовательно</a>
+$$\forall{x}\in[a,b]\left(|F(x)-F(y)|=\left|\int\limits_a^xf(t)dt-\int\limits_a^yf(t)dt\right|=
+\left|\int\limits_a^xf(t)dt-\left(\int\limits_a^xf(t)dt+\int\limits_x^yf(t)dt\right)\right|=\left|\int\limits_x^yf(t)dt\right|\leq
+\int\limits_x^y|f(t)|dt\leq\int\limits_x^yKdt\leq{K}|x-y|\right)\Rightarrow$$
+$$\Rightarrow\forall\varepsilon&gt0\:\exists\delta:=\frac{\varepsilon}{K}:\left(|x-y|&lt\delta\Rightarrow|F(x)-F(y)|\leq{K}|x-y|&ltK\frac{\varepsilon}{K}=
+\varepsilon\right)$$
+Таким образом реализовано определение равномерной непрерывности для функции $F(x)$ на отрезке $[a,b]$. Из 
+<a href="./math_analysis5.5.3.html#Definition5.5.9">равномерной непрерывности</a> функции на множестве следует непрерывность функции на этом множестве.
+
+<br><br>
+
+<p id="Statement8.3.2"><b>Утверждение 8.3.2:</b> Пусть функции $f(x),g(x):[a,b]\to\mathbb{R}$ такие, что
+<ol>
+<li>$f(x),g(x)\in\mathcal{R}[a,b]$,</li>
+<li>функция $g(x)$ неотрицательна,</li>
+<li>функция $g(x)$ не возрастает,</li>
+</ol>
+тогда 
+$$\exists\xi\in[a,b]:\int\limits_a^bf(x)g(x)dx=g(a)\int\limits_a^\xi{f}(x)dx$$
+<p><b>Доказательство:</b> Фиксируем разбиение $P:=\{x_1,x_2,\dots,x_n\}$ отрезка $[a,b]$ <a href="#Task8.3.1">тогда</a>
+$$\int\limits_a^bf(x)g(x)dx=\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}f(x)g(x)dx=\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}f(x)g(x)dx-
+\sum_{i=1}^n\left(g(x_{i-1}\int\limits_{x_{i-1}}^{x_i}f(x)dx)\right)+\sum_{i=1}^n\left(g(x_{i-1})\int\limits_{x_{i-1}}^{x_i}f(x)dx\right)=$$
+$$=\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}f(x)(g(x)-g(x_{i-1}))dx+\sum_{i=1}^n\left(g(x_{i-1})\int\limits_{x_{i-1}}^{x_i}f(x)dx\right)$$  
+Обозначим
+$$I_1(P):=\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}f(x)(g(x)-g(x_{i-1}))dx,
+\:I_2(P):=\sum_{i=1}^n\left(g(x_{i-1})\int\limits_{x_{i-1}}^{x_i}f(x)dx\right),\:K:=\sup_{x\in[a,b]}|f(x)|$$
+тогда
+$$|I_1|\leq\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}|g(x)-g(x_{i-1})||f(x)|dx\leq\sum_{i=1}^n\int\limits_{x_{i-1}}^{x_i}\omega(g,\Delta_i)Kdx=
+K\sum_{i=1}^n(\omega(g,\Delta)\Delta{x}_i)=K(S(g,P)-s(g,P))\Rightarrow\forall{P}(|I_1(P)|\leq{K}(S(g,P)-s(g,P)))\quad(4)$$
+Для любого $i\in\overline{1,n}$ обозначим
+$$a_i:=g(x_{i-1}),\:b_i:=\int\limits_{x_{i-1}}^{x_i}f(x)dx,\:B_i:=\sum_{k=1}^ib_k=\sum_{k=1}^i\int\limits_{x_{k-1}}^{x_k}f(x)dx=
+\int\limits_a^{x_i}f(x)dx=F(x_i)$$
+Согласно утверждению 8.3.1 функция $F(x):=\int\limits_a^xf(x)dx$ непрерывна на отрезке $[a,b]$, 
+<a href="./math_analysis5.5.3.html#Theorem5.5.3">следовательно</a>, существуют $m,M\in\mathbb{R}$ такие, что $\displaystyle{m}:=\min_{x\in[a,b]}F(x)$ и
+$\displaystyle{M}:=\max_{x\in[a,b]}F(x)$, следовательно, для любого $i\in\overline{1,n}$ $m\leq{F}(x_i)=B_i\leq{M}$. Тогда по невозрастанию функции $g(x)$ 
+из <a href="./math_analysis7.4.1.html#Corollary7.4.1">неравенства Абеля</a> следует, $ma_1\leq\sum_{i=1}^n(a_kb_k)\leq{M}a_1$. Так как 
+$a_1=g(x_0)=g(a)$, то для любого разбиения $P$ $mg(a)\leq{I}_2(P)\leq{M}g(a)$.<br>
+Фиксируем последовательность разбиений $\{P_n\}$ отрезка $[a,b]$ такую, что $\displaystyle\lim_{n\to\infty}\lambda(P_n)=0$, тогда
+$$g(x)\in\mathcal{R}[a,b]\Rightarrow\lim_{n\to\infty}(S(g,P_n)-s(g,P_n))=0\Rightarrow\lim_{n\to\infty}|I_1(P_n)|=0$$
+$$\forall{n}\in\mathbb{N}\left(\int\limits_a^bf(x)g(x)dx=I_1(P_n)+I_2(P_n)\right)\Rightarrow\int\limits_a^bf(x)g(x)dx=\lim_{n\to\infty}(I_n(P_n)+I_2(P_n))=
+\lim_{n\to\infty}I_2(P_n)\Rightarrow{m}g(a)\leq\int\limits_a^bf(x)dx\leq{M}g(a).$$
+Если $g(a)=0$ то в силу неотрицательности и невозрастания $g(x)\equiv0$, следовательно, $\int\limits_a^bf(x)g(x)dx=0$ и для любого $\xi\in[a,b]$
+$\int\limits_a^bf(x)g(x)dx=g(a)\int\limits_a^\xi{f}(x)dx.$<br>
+Если $g(a)&gt0$, то $\displaystyle{m}\leq\mu:=\frac{\int\limits_a^bf(x)g(x)dx}{g(a)}\leq{M}$ и по непрерывности $F(x)$ существует $\xi\in[a,b]$ такое,
+что $F(\xi)=\mu$, тогда
+$$F(\xi)=\int\limits_a^\xi{f}(x)dx=\frac{\int\limits_a^bf(x)g(x)dx}{g(a)}\Rightarrow\int\limits_a^bf(x)g(x)dx=g(a)\int\limits_a^\xi{f}(x)dx.$$
+
+<br><br>
+
+<p id="Theorem8.3.3"><b>Теорема 8.3.3: Вторая теорема о среднем, формула Бонне (1819-1892).</b><br>
+Пусть функции $f(x),g(x):[a,b]\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x),g(x)\in\mathcal{R}[a,b]$,</li>
+<li>функция $g(x)$ монотонна,</li>
+</ol>
+тогда
+$$\exists\xi\in[a,b]:\int\limits_a^bf(x)g(x)dx=g(a)\int\limits_a^\xi{f}(x)dx+g(b)\int\limits_\xi^bf(x)dx.$$
+<p><b>Доказательство:</b> Если функция $g(x)$ не возрастает, то положим $G(x):=g(x)-g(b)$, если функция $g(x)$ не убывает, то положим $G(x):=g(b)-g(x)$.
+Тогда функция $G(x)$ будет не возрастать в обоих случаях и для функций $f(x)$ и $G(x)$ можно применить утверждение 8.3.2, тогда
+$$\exists\xi\in[a,b]:\int\limits_a^bf(x)G(x)dx=G(a)\int\limits_a^\xi{f}(x)dx\Rightarrow\int\limits_a^bf(x)(g(b)-g(x))dx=
+(g(b)-g(a))\int\limits_a^\xi{f}(x)dx\Rightarrow{g}(b)\int\limits_a^bf(x)dx-\int\limits_a^bf(x)g(x)dx=$$
+$$=g(b)\int\limits_a^\xi{f}(x)dx-g(a)\int\limits_a^\xi{f}(x)dx\Rightarrow\int\limits_a^bf(x)g(x)dx=
+g(a)\int\limits_a^\xi{f}(x)dx+\left(g(b)\int\limits_a^bf(x)dx-g(b)\int\limits_a^\xi{f}(x)dx\right)=
+g(a)\int\limits_a^\xi{f}(x)dx+g(b)\int\limits_\xi^bf(x)dx$$
+
+<br><br>
+
+<p id="Task8.3.2"><b>Задача 8.3.2:</b> Доказать, что если функция $f(x):[a,b]\to\mathbb{R}$ такая, что
+<ol>
+<li>$f(x)\in\mathcal{R}[a,b]$,</li>
+<li>функция $f(x)$ не отрицательна,</li>
+<li>существует $x_0\in[a,b]$ такое, что $f(x_0)&gt0$ и функция $f(x)$ непрерывна в $x_0$,</li>
+</ol>
+тогда $\int\limits_a^bf(x)dx&gt0$
+<i>
+<p><b>Решение:</b> Так как функция $f(x)$ непрерывна в точке $x_0$ и $\displaystyle\lim_{x\to{x}_0}f(x)=f(x_0)&gt0$ 
+<a href="./math_analysis5.2.html#Theorem5.2.2">то</a> она локально сохраняет в ней знак, то есть 
+$$\exists\delta&gt0:\forall{x}\in{U}^\delta(x)(f(x)&gt0)\Rightarrow
+\int\limits_a^bf(x)dx=\int\limits_a^{x_0-\delta}f(x)dx+\int\limits_{x_0-\delta}^{x_0+\delta}f(x)dx+\int\limits_{x_0+\delta}^bf(x)dx&gt0$$
+В данной сумме первое и третье слагаемые не отрицательны, а второе положительно.
+</i>
+
+<br><br>
+
+<p id="Task8.3.3"><b>Задача 8.3.3:</b> Доказать, что если функция $f(x):[a,b]\to\mathbb{R}$ такакя, что
+<ol>
+<li>$f(x)\in\mathcal{R}[a,b]$,</li>
+<li>функция $f(x)$ не отрицательна,</li>
+<li>$\int\limits_a^bf(x)dx=0$,</li>
+</ol>
+тогда функция $f(x)$ почти всюду на $[a,b]$ равна нулю.
+<p><b>Решение:</b> Следует из критерия интегрируемости по Риману и задачи 8.3.2.
+
+<br><br>
+<a href="./math_analysis8.2.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis8.4.html">next</a>
+</body>
+</html>

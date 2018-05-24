@@ -1,0 +1,326 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 5.5.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analysis5.5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis5.5.5.html">next</a>
+
+<h5 id="5.5.3">5.5.3 Свойства непрерывных функций.</h5>
+
+<p id="Theorem5.5.1"><b>Теорема 5.5.1: Основные локальные свойства непрерывных функций.</b><br>
+Пусть на множествах $E\subset\mathbb{R}$, $Y\subset\mathbb{R}$, заданы функции $f(x),g(x):E\to\mathbb{R}$, $F(y):Y\to\mathbb{R}$ такие, что
+$f(E)\subset{Y}$, $f(x),g(x)$ непрерывны в точке $a\in{E}$ по $E$, функция $F(y)$ непрерывна в точке $y=f(a)$ по $Y$, тогда
+<ol>
+<li>функция $f(x)$ локально ограничена при $E\ni{x}\to{a}$,</li>
+<li>если $f(a)\neq0$, то $f(x)$ локально сохраняет знак при $E\ni{x}\to{a}$, то есть
+$$\exists{U}(a):\forall{x}\in\mathring{U}_E(a)(f(x)f(a)&gt0),$$
+</li>
+<li>функции $f(x)\pm{g}(x)$, $f(x)g(x)$ непрерывны в точке $a$ по $E$,</li>
+<li>если для любого $x\in{E}$ $g(x)\neq0$, то функция $\frac{f(x)}{g(x)}$ непрерывна в точке $a$ по $E$,
+если $g(a)\neq0$, то функция $\frac{f(x)}{g(x)}:E'\to\mathbb{R}$ непрерывна в точке $a$ по множеству $E':=\{x\in{E}\:|\:g(x)\neq0\}$,</li>
+<li>функция $F(f(x)):E\to\mathbb{R}$ непрерывна в точке $a$ по $E$, то есть композиция непрерывных функций - непрерывна.</li>
+</ol>
+<p><b>Доказательство:</b>
+Если $a$ <a href="./math_analysis5.5.1.html#Definition5.5.3">изолированная точка</a>, то существует окрестность $U(a)$ такая, что $U_E(a)=\{a\}$
+и все пять пунктов теоремы выполняются для этой окрестности. Пусть далее точка $a$ не изолированная то есть $a\in{E}\cap\mathring{E}$, тогда по 
+<a href="./math_analysis5.5.1.html#Statement5.5.3">утверждению 5.5.3</a> существуют пределы $\displaystyle\lim_{E\ni{x}\to{a}}f(x)=f(a)$,
+$\displaystyle\lim_{E\ni{x}\to{a}}g(x)=g(a)$. Тогда
+<ol>
+<li>следует из пункта 1 <a href="./math_analysis5.1.html#Statement5.1.3">утверждения 5.1.3</a>,</li>
+<li>следует из пункта 2 <a href="./math_analysis5.2.html#Theorem5.2.2">теоремы 5.2.2</a>,</li>
+<li>следует из пунктов 1, 2 <a href="./math_analysis5.2.html#Theorem5.2.1">теоремы 5.2.1</a>,</li>
+<li>
+если $f(x)\neq0$ для любого $x\in{E}$, то утверждение следует из пункта 3 <a href="./math_analysis5.2.html#Theorem5.2.1">теоремы 5.2.1</a>,
+если известно, что $f(a)\neq0$ то по пункту 2 теоремы существует окрестность $U(a)$ такая, что для любого $x\in{U}_E(a)$ $g(x)\neq0$,
+следовательно, $a\in\mathring{E}{}'$ и утверждение следует из пункта 3 <a href="./math_analysis5.1.html#Statement5.1.3">утверждения 5.1.3</a>.
+</li>
+<li>
+Воспользуемся <a href="./math_analysis5.5.1.html#Definition5.5.1">общим определением непрерывности</a>. Фиксируем окрестность $V(F(f(a)))$.<br>
+Функция $F(y)$ непрерывна в точке $f(a)$ значит
+$$\exists{U}'(f(a)):\forall{y}\in{U}'_Y(f(a))(F(y)\in{V}(F(f(a)))).$$
+Функция $f(x)$ непрерывна в точке $a$ значит
+$$\exists{U}(a):\forall{x}\in{U}_E(a)(f(x)\in{U}'(f(a)))\Rightarrow\forall{x}\in{U}_E(a)(F(f(x))\in{V}(f(a))).$$
+</li>
+</ol>
+<p>Таким образом любая <a href="./math_analysis5.4.1.html#Definition5.4.6.2">элементарная функция</a> непрерывна на своей области определения.
+
+<br><br>
+
+<p id="Theorem5.5.2"><b>Теорема 5.5.2: Теорема Больцано - Коши о промежуточном значении.</b><br>
+Если функция $f(x):[a,b]\to\mathbb{R}$ непрерывна, не равна нулю на концах отрезка и принимает на них значения разных знаков, 
+то существует точка $c\in(a,b)$ такая, что $f(c)=0$, то есть
+$$(f(x)\in{C}[a,b]\wedge{f}(a)f(b)&lt0)\Rightarrow\exists{c}\in(a,b):f(c)=0.$$
+<p><b>Доказательство:</b>Без ограничения общности будем считать, что $f(a)&lt0$, $f(b)&gt0$.<br>
+Построим последовательность вложенных отрезков $\{I_n\}$.
+<ul>
+<li>1) $a_1:=a,b_1:=b$, $I_1:=[a_1,b_1]$</li>
+<li>2) положим $c_1:=\frac{a_1+b_1}{2}$, тогда ${a}_1&lt{c}_1&ltb_1$<br>
+если $f(c_1)=0$, то теорема доказана<br>
+если $f(c_1)&gt0$, то $a_2:=a_1,b_2:=c_1$<br>
+если $f(c_1)&lt0$, то $a_2:=c_1,b_2:=b_1$<br>
+тогда $a_2\geq{a_1}$, $b_2\leq{b_1}$, $f(a_2)&lt0$, $f(b_2)&gt0$,
+и если положить $I_2:=[a_2,b_2]$, то $|I_2|=\frac{|I_1|}{2}$ и $I_2\subset{I_1}$.
+</li>
+...
+<li>n) положим $c_{n-1}:=\frac{a_{n-1}+b_{n-1}}{2}$, тогда ${a}_{n-1}&ltc_{n-1}&ltb_{n-1}$<br>
+если $f(c_{n-1})=0$, то теорема доказана<br>
+если $f(c_{n-1})&gt0$, то $a_n:=a_{n-1},b_n:=c_{n-1}$<br>
+если $f(c_{n-1})&lt0$, то $a_n:=c_{n-1},b_n:=b_{n-1}$<br>
+тогда $a_n\geq{a}_{n-1}$, $b_n\leq{b}_{n-1}$, $f(a_n)&lt0$, $f(b_n)&gt0$,
+и если положить $I_n:=[a_n,b_n]$, то $|I_n|=\frac{|I_{n-1}|}{2}$ и $I_n\subset{I}_{n-1}$
+</li>
+...
+</ul>
+Таким образом либо для какого-то $k\in\mathbb{N}$ $f(c_k)=0$ и теорема доказана, либо ${I_n}$ это последовательность вложенных отрезков
+и тогда по принципу Коши - Кантора о вложенных отрезках существует $\displaystyle{c}\in\bigcap_{n\in\mathbb{N}}I_n$.<br>
+Как <a href="./math_analysis4.1.html#Example4.1.5">было показано</a>, $\displaystyle\lim_{n\to\infty}\frac{b-a}{2^n}=0$, следовательно,
+
+<details>
+<summary><i>Альтернативное доказательство.</i></summary>
+<hr>
+<p>
+<i>Далее возможно альтернативное доказательство без привлечения секвенциального подхода к пределу функции. По аналогии с доказательством
+<a href="./math_analysis3.6.html#Lemma3.6.2">леммы Бореля - Лебега о конечном подпокрытии</a>. 
+Предположим, что $f(c)\neq0$, пусть б. о. о. $f(c)&gt0$, тогда так как функция $f(x)$
+локально сохраняет знак в точке $c$, то найдется окрестность $U(c)$ такая, что для любого $x\in{U}(c)$ $f(x)&gt0$. И так как 
+$\displaystyle\lim_{n\to\infty}|I_n|=0$ и для любого $n\in\mathbb{N}$ $c\in{I}_n$, то найдется $k\in\mathbb{N}$ такое, что $I_k\subset{U}(a)$,
+a это означает, что $f(a_k)&gt0$, что противоречит способу построения последовательности $\{I_n\}$.
+</i> 
+<hr>
+</details>
+<br>
+
+$$\forall{n}\in\mathbb{N}(c\in{I_n})\Rightarrow\begin{cases}c-a_n\leq|I_n|=o(1),n\to\infty\\b_n-c\leq|I_n|=o(1),n\to\infty\end{cases}\Rightarrow
+\begin{cases}\lim_{n\to\infty}a_n=c\\\lim_{n\to\infty}b_n=c\end{cases}$$
+Так как функция $f(x)$ непрерывна в $c\in[a,b]$, то существует предел $\displaystyle\lim_{x\to{c}}f(x)=f(c)$, тогда из 
+<a href="./math_analysis5.1.html#Statement5.1.2">критерия существования предела функции по Гейне</a> следует, 
+что $\displaystyle\lim_{n\to\infty}f(a_n)=\displaystyle\lim_{n\to\infty}f(b_n)=f(c)$. Тогда по 
+<a href="./math_analysis4.1.html#Corollary4.2.1">следствию теоремы 4.2.3</a> имеем
+$$\forall{n}\in\mathbb{N}(f(a_n)&lt0\wedge{f}(b_n)&gt0)\Rightarrow(\lim_{n\to\infty}f(a_n)\leq0\wedge\lim_{n\to\infty}f(b_n)\geq0)\Rightarrow
+\lim_{n\to\infty}f(a_n)=\lim_{n\to\infty}f(b_n)=0\Rightarrow{f}(c)=0.$$ 
+$$(f(c)=0\wedge{f}(a)\neq0\wedge{f}(b)\neq0)\Rightarrow(c\neq{a}\wedge{c}\neq{b})\Rightarrow{c}\in(a,b)$$
+
+<br><br>
+
+<p id="Task5.5.3"><b>Задача 5.5.4:</b> Привести пример функции определенной на отрезке не равной нулю на концах отрезка, принимающей на них
+значения разных знаков и не принимающей значение нуль ни в одной точке отрезка.
+<p><b>Решение:</b>
+<i>
+$[a,b]:=[-1,1]$, $f(x):=\begin{cases}-1, & x\in[-1,0)\\1, & x\in[0,1]\end{cases}$
+</i>
+<br><br>
+<p>Для функции непрерывной на интервале теорему о промежуточном значении можно сформулировать следующим образом.
+
+<p id="Corollary5.5.1"><b>Следствие 5.5.1: </b>
+$$((a,b)\subset\overline{\mathbb{R}}\wedge{f}(x):(a,b)\to\mathbb{R}\in{C}[a,b]\wedge\exists{f}(a+0)\in\overline{\mathbb{R}}\wedge
+\exists{f}(b-0)\in\overline{\mathbb{R}}\wedge{f}(a+0)f(b-0)&gt0)\Rightarrow\exists{c}\in(a,b):f(c)=0.$$
+<p><b>Доказательство:</b>
+<i>
+Без ограничения общности будем считать, что $f(a+0)&lt0$, $f(b-0)&gt0$.<br>
+По <a href="./math_analysis5.2.html#Theorem5.2.2">теореме 5.2.2</a> функция локально сохраняет знак в точках $a$ и $b$, следовательно, 
+$$f(a+0)&lt0\Rightarrow\exists{U}'(a):=(\alpha_1,\beta_1):(\beta_1\in\mathbb{R}\wedge\forall{x}\in{U}'_{(a,b)}(a)(f(x)&lt0))\Rightarrow
+\exists{a}_1\in\mathbb{R}:(a&lta_1&lt\beta_1&ltb\wedge{f}(a_1)&lt0)$$
+$$f(b-0)&gt0\Rightarrow\exists{U}''(a):=(\alpha_2,\beta_2):(\alpha_2\in\mathbb{R}\wedge\alpha_2&gta_1\wedge\forall{x}\in{U}''_{(a,b)}(a)(f(x)&gt0)
+\Rightarrow\exists{b}_1\in\mathbb{R}:(a_1&lt\alpha_2&ltb_1&ltb\wedge{f}(b_1)&gt0)$$
+Так как функция $f(x)$ непрерывна на интервале $(a,b)$, то она будет непрерывна и на отрезке $[a_1,b_1]\subset(a,b)$. 
+Таким образом отрезок $[a_1,b_1]$ удовлетворяет условиям <a href="#Theorem5.5.2">теоремы 5.5.2</a>.
+</i>
+<br><br>
+
+<p id="Corollary5.5.2"><b>Следствие 5.5.2:</b> Если функция $f(x):[a,b]\to\mathbb{R}$ непрерывна, то она принимает все промежуточные значения
+между $f(a)$ и $f(b)$ включительно, то есть
+$$(f(x)\in{C}[a,b]\wedge{f}(a)=A\wedge{f}(b)=B\Rightarrow\forall{y}\in(A,B)\:\exists{x}\in(a,b):f(x)=y$$
+<p><b>Доказательство:</b> Без ограничения общности будем считать, что $A&ltB$. Фиксируем $y\in[A,B]$ и рассмотрим функцию $\varphi(x):=f(x)-y$.
+Функция $\varphi(x)$ непрерывна по пункту 3 <a href="#Theorem5.5.1">теоремы 5.5.1</a>, как сумма непрерывных функций, 
+$\varphi(a)=A-y&lt0$, $\varphi(b)=B-y&gt0$, тогда по <a href="#Theorem5.5.2">теореме Больцано - Коши о промежуточном значении</a> существует 
+$c\in(a,b)$ такая, что $\varphi(c)=f(с)-y=0$, следовательно, $f(c)=y$.
+
+<br><br>
+
+<p id="Theorem5.5.3"><b>Теорема 5.5.3: Теорема Вейерштрасса об экстремальном значении.</b><br>
+Если $f(x)\in{C}[a,b]$, то
+<ol>
+<li>функция $f(x)$ ограничена на отрезке $[a,b]$</li>
+<li>функция $f(x)$ достигает минимума и максимума на отрезке $[a,b]$, то есть 
+$$\exists{x}_1\in[a,b]:f(x_1)=\max_{x\in[a,b]}f(x)\wedge\exists{x}_2\in[a,b]:f(x_2)=\min_{x\in[a,b]}f(x)$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как функция $f(x)$ непрерывна на отрезке $[a,b]$, то она непрерывна в каждой его точке, а значит локально ограничена в каждой точке отрезка $[a,b]$
+то есть 
+$$\forall{x}\in[a,b]\:\exists{U}(x),\exists{M}_x&gt0:\forall{t}\in{U}_{[a,b]}(x)(|f(t)|\leq{M}_x)\Rightarrow[a,b]\subset\bigcup_{x\in[a,b]}U(x)$$
+Тогда <a href="./math_analysis3.6.html#Lemma3.6.2">по принципу Бореля - Лебега о конечном подпокрытии</a>
+$$\exists{m}\in\mathbb{N},\exists{x}_1,x_2,\dots{x}_m\in[a,b]:[a,b]\subset\bigcup_{i=1}^mU(x_i)\Rightarrow
+(\exists{M}:=\max_{i\in\overline{1,m}}{M}_{x_i}\wedge\forall{x}\in[a,b]\:\exists{i}\in\overline{1,m}:x\in{U}(x_i))\Rightarrow
+\forall{x}\in[a,b](|f(x)|\leq{M})$$
+Таким образом функция $f(x)$ ограничена на отрезке $[a,b]$.
+</li>
+<li>
+По пункту 1 функция $f(x)$ ограничена на отрезке $[a,b]$, следовательно, она ограничена сверху, тогда по 
+<a href="./math_analysis3.1.html#Lemma3.1.2">принципу верхней грани</a> существует число $\displaystyle{M}:=\sup_{x\in[a,b]}f(x)$.
+Покажем от противного, что $M$ максимум функции $f(x)$ на отрезке $[a,b]$. Предположим, что для любого $x\in[a,b]$ $f(x)&ltM$.<br>
+Рассмотрим функцию $\varphi(x):=\frac1{M-f(x)}$. По пункту 4 <a href="#Theorem5.5.1">теоремы 5.5.1</a>
+$$(f(x)\in{C}[a,b]\wedge\forall{x}\in[a,b](f(x)\neq{M}))\Rightarrow\varphi(x)\in{C}[a,b].$$
+$$M=\sup_{x\in[a,b]}f(x)\Rightarrow\forall{n}\in\mathbb{N}\:\exists{x}_n\in[a,b]:f(x_n)&gtM-\frac1{n}\Rightarrow
+\forall{n}\in\mathbb{N}\:\exists{x}_n\in[a,b]:M-f(x_n)&lt\frac1{n}\Rightarrow
+\forall{n}\in\mathbb{N}\:\exists{x}_n\in[a,b]:\varphi(x_n)=\frac1{M-f(x_n)}&gtn.$$
+То есть функция $\varphi(x)\in{C}[a,b]$ не ограничена на отрезке $[a,b]$, a это противоречит пункту 1.<br>
+Следовательно, существует $x_0\in[a,b]$ такое, что $f(x_0)=M$, то есть $M$ - максимум функции $f(x)$ на отрезке $[a,b]$.<br>
+Наличие минимума доказывается аналогично.  
+</li>
+</ol>
+
+<br><br>
+
+<p id="Corollary5.5.3"><b>Следствие 5.5.3: </b> Если $f(x)\in{C}[a,b]$, $\displaystyle{m}:=\min_{x\in[a,b]}f(x)$, 
+$\displaystyle{M}:=\max_{x\in[a,b]}f(x)$, то $f([a,b])=[m,M]$.
+<p><b>Доказательство:</b>
+$$\forall{x}\in[a,b](m\leq{f}(x)\leq{M})\Rightarrow{f}([a,b])\subset[m,M]$$
+По <a href="#Theorem5.5.3">теореме 5.5.3</a> существуют $x_1,x_2$ такие, что $f(x_1)=m$, $f(x_2)=M$. Без ограничения общности будем считать,
+что $x_1\leq{x}_2$, тогда $f(x)\in{C}[x_1,x_2]$ и по <a href="#Corollary5.5.2">следствию 5.5.2</a> из <a href="#Theorem5.5.2">теоремы 5.5.2</a> 
+функция $f(x)$ принимает все промежуточные значения на отрезке $[x_1,x_2]$, то есть 
+$$(f([x_1,x_2])=[m,M]\wedge[x_1,x_2]\subset[a,b])\Rightarrow[m,M]\subset{f}([a,b])\Rightarrow{f}([a,b])=[m,M]$$
+
+<br><br>
+
+<p id="Example5.5.4"><b>Пример 5.5.4:</b> 
+<ol>
+<li>
+Если $f(x)=x$, $E=(0,1)$, то $f(x)\in{C}(E)$, но функция $f(x)$ не принимает на множестве $E$
+ни максимального ни минимального значения так как множеством $f(E)$ будет интервал, а он не имеет ни минимума, ни максимума.<br>
+Если $E=(0,1]$, то функция $f(x)$ достигает максимума, но не достигает минимума.
+</li>
+<br>
+<li> Если $f(x)=\frac1{x}$, $E=(0,1)$, то $f(x)\in{C}(E)$, но функция $f(x)$ даже не ограничена на $E$.
+Так как $E$ не отрезок, то <a href="#Theorem5.5.3">теорема Вейерштрасса об экстремальном значении</a> не применима.<br>
+</li>
+<br>
+<li>Если $E=[a,b]$, но $f(x)\notin{C}[a,b]$ то <a href="#Theorem5.5.3">теорема Вейерштрасса</a> так же не применима.
+Например, если $E=[-1,1]$, $f(x)=\begin{cases}\frac1{x}, & x\neq0\\0, & x=0\end{cases}$, то $f(x)$ не ограничена так как $f(x)\notin{C}(E)$,
+потому что не существует предела при $E\ni{x}\to0$.
+</li>
+</ol>
+
+<br><br>
+
+<h5 id="5.5.4">5.5.4 Равномерно непрерывные функции.</h5>
+
+<p id="Definition5.5.9"><b>Определение 5.5.9:</b> Будем говорить, что функция $f(x):E\to\mathbb{R}$ равномерно непрерывна на множестве $E$, если 
+$$\forall\varepsilon&gt0\:\exists\delta:\forall{x}',x''\in{E}(|x'-x''|&lt\delta\Rightarrow|f(x')-f(x'')|&lt\varepsilon)$$
+
+<br><br>
+
+<p>Из равномерной непрерывности функции на множестве следует ее непрерывность на этом множестве. Действительно, для любого $a\in{E}$ 
+в определении равномерной непрерывности можно положить $x'':=a$ и получим 
+<a href="./math_analysis5.5.1.html#Definition5.5.2">определение непрерывности в точке $a$ по Коши</a>.<br>
+Обратное не верно. Из непрерывности функции на множестве не следует ее равномерная непрерывность на этом множестве.
+
+<br><br>
+
+<p id="Statement5.5.8"><b>Утверждение 5.5.8: Признак отсутствия свойства равномерной непрерывности.</b><br>
+Если $f(x):E\to\mathbb{R}$ и существует $a\in\mathring{E}\cap\mathbb{R}$ такая, что функция $f(x)$ не является локально ограниченной
+в точке $a$, то $f(x)$ не является равномерно непрерывной.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon&gt0$. Так как $a\in\mathring{E}$, то для любого $\delta&gt0$ существует 
+$x'\in(a-\frac{\delta}{2},a+\frac{\delta}{2})$. Так как функция $f(x)$ не ограничена локально в точке $a$, то
+$$\forall{x}'\in\left(a-\frac{\delta}{2},a+\frac{\delta}{2}\right)\exists{x}''\in\left(a-\frac{\delta}{2},a+\frac{\delta}{2}\right):|f(x'')|\geq|f(x')|+\varepsilon
+\Rightarrow|f(x'')-f(x')|\geq|f(x'')|-|f(x')|\geq\varepsilon$$ 
+Следовательно,
+$$\forall\delta&gt0\:\exists{x}',x''\in\left(a-\frac{\delta}{2},a+\frac{\delta}{2}\right):|f(x'')-f(x')|\geq\varepsilon\Rightarrow
+\forall\delta&gt0\:\exists{x}',x''\in{E}:(|x''-x'|&lt\delta\wedge|f(x'')-f(x')|\geq\varepsilon)$$
+Таким образом реализовано логическое отрицание <a href="#Definition5.5.9">определения равномерной непрерывности</a> функции $f(x)$ на множестве $E$.
+
+<br><br>
+
+<p id="Example5.5.7"><b>Пример 5.5.5:</b> 
+<ol>
+<li>Функция $f(x)=\frac1{x}$ не является равномерно непрерывной на множестве $E:=(0,1)$ так как она не ограничена локально при 
+${E}\ni{x}\to0\in\mathring{E}$.
+</li>
+<br>
+<li>
+Функция $f(x)=\log_p{x}$ не является равномерно непрерывной на множестве $E:=(0,+\infty)$ так как она не ограничена локально при 
+${E}\ni{x}\to0\in\mathring{E}$
+</li>
+</ol>
+
+<br><br>
+
+<p id="Task5.5.5"><b>Задача 5.5.5:</b> Реализовать логическое отрицание 
+<a href="#Definition5.5.9">определения равномерной непрерывности</a> на $\mathbb{R}$ для функций
+<ol>
+<li>$f(x)=\sin{x}^2$</li>
+<li>$f(x)=a^x$,</li>
+<li>$f(x)=x^2$.</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>По <a href="./math_analysis5.4.1.html#Theorem5.4.4">свойству 2 тригонометрических функций</a> множество значений функции $\sin{x}$,
+а значит и функции $\sin{x}^2$ равно $[-1,1]$, следовательно, она ограничена на $\mathbb{R}$ (т. е. $f(x)$ не удовлетворяет условиям 
+<a href="#Statement5.5.8">утверждения 5.5.8</a>). Функция $\sin{x}^2$ непрерывна по пункту 5 <a href="#Theorem5.5.1">теоремы 5.5.1</a> 
+как композиция непрерывных, однако не является равномерно непрерывной, докажем это.<br>
+Рассмотрим последовательности $x'_n=\sqrt{\frac{\pi}{2}(n+1)}$, $x''_n=\sqrt{\frac{\pi}{2}n}$.
+$$\lim_{n\to\infty}|x'_n-x''|=\sqrt{\frac{\pi}{2}}\lim_{n\to\infty}\left|\sqrt{n+1}-\sqrt{n}\right|=
+\sqrt{\frac{\pi}{2}}\lim_{n\to\infty}\left|\frac{(\sqrt{n+1}-\sqrt{n})(\sqrt{n+1}+\sqrt{n})}{\sqrt{n+1}+\sqrt{n}}\right|=
+\sqrt{\frac{\pi}{2}}\lim_{n\to\infty}\left|\frac{n+1-n}{\sqrt{n+1}+\sqrt{n}}\right|=
+\sqrt{\frac{\pi}{2}}\lim_{n\to\infty}\frac1{\sqrt{n+1}+\sqrt{n}}=0$$
+Следовательно, для любого $\delta&gt0$ существует $n\in\mathbb{N}$ такое, что $|x'_n-x''_n|&lt\delta$ с другой стороны для любого $n\in\mathbb{N}$ 
+$|f(x')-f(x'')|=\left|\sin{\frac{\pi(n+1)}{2}}-\sin{\frac{\pi{n}}{2}}\right|=1$, значит
+$$\exists\varepsilon=1&gt0:\forall\delta&gt0\:\exists{x}',x'':(|x'-x''|&lt\delta\wedge|f(x')-f(x'')|=1\geq\varepsilon)$$
+</li>
+<li>
+Фиксируем $\varepsilon&gt0$.
+$$\forall\delta&gt0,\forall{x}\in\mathbb{R}\left(\left|x-\left(x-\frac{\delta}{2}\right)\right|=
+\frac{\delta}{2}&lt\delta\wedge\left|a^x-a^{x+\frac{\delta}{2}}\right|=a^x\left|1-a^{\frac{\delta}{2}}\right|\right)\Rightarrow$$
+$$\Rightarrow\forall\delta&gt0\:\exists{x}=\log_a{\frac{\varepsilon}{\left|1-a^{\frac{\delta}{2}}\right|}},\exists{y}=x-\frac{\delta}{2}:
+(|x-y|&lt\delta\wedge\left|a^x-a^y\right|=a^x\left|1-a^{\frac{\delta}{2}}\right|=
+\frac{\varepsilon}{\left|1-a^{\frac{\delta}{2}}\right|}\left|1-a^{\frac{\delta}{2}}\right|=\varepsilon\leq\varepsilon)$$
+</li>
+<li>Фиксируем $\varepsilon&gt0$.
+$$\forall\delta&gt0\:\exists{x}=\frac{\varepsilon}{\delta}+\frac{\delta}{4},\exists{y}=x-\frac{\delta}{2}:\left(|x-y|=\frac{\delta}{2}&lt\delta\wedge
+\left|x^2-y^2\right|=\left|x\delta-\frac{\delta^2}{4}\right|=\left|\left(\frac{\varepsilon}{\delta}+\frac{\delta}{4}\right)\delta-\frac{\delta^2}{4}\right|=
+\varepsilon\leq\varepsilon\right)$$
+</li>
+</ol>
+</i>
+
+<br><br>
+
+<p id="Theorem5.5.4"><b>Теорема 5.5.4: Теорема Кантора о равномерной непрерывности.</b><br>
+Если функция непрерывна на отрезке, то она равномерно непрерывна на нем.
+<p><b>Доказательство:</b> Фиксируем $\varepsilon&gt0$, тогда
+$$f(x)\in{C}[a,b]\Rightarrow\forall{x}\in{E}\:\exists\delta_x&gt0:\forall{x}'\in{E}\left(|x'-x|&lt\delta_x\Rightarrow
+|f(x')-f(x)|&lt\frac{\varepsilon}{2}\right)$$
+Обозначим для краткости $E:=[a,b]$. Для любого $x\in{E}$ обозначим 
+$$V(x):=(x-\delta_x,x+\delta_x),\;W(x):=\left(x-\frac{\delta_x}{2},x+\frac{\delta_x}{2}\right)$$
+По принципу <a href="./math_analysis3.6.html#Lemma3.6.2">Бореля - Лебега о конечном подпокрытии</a>
+$$\exists{m}\in\mathbb{N},\exists{x}_1,x_2,...,x_m\in[a,b]:[a,b]\subset\bigcap_{i=1}^mW(x_i)\Rightarrow
+\exists\delta:=\min_{i\in\overline{1,m}}\frac{\delta_{x_i}}{2}&gt0$$
+тогда
+$$\forall{x}\in{E}(\exists{i}\in\overline{1,m}:x\in{W}(x_i)\subset{V}(x_i))\Rightarrow
+\forall{x}',x''\in{E}\left(|x'-x''|&lt\delta\Rightarrow
+\exists{i}\in\overline{1,m}:\left(|x'-x_i|&lt\frac{\delta_{x_i}}{2}\wedge|x''-x_i|\leq|x'-x''|+|x'-x_i|&lt\delta+\frac{\delta_{x_i}}{2}&lt\delta_{x_i}\right)\right)\Rightarrow$$
+$$\Rightarrow\forall{x}',x''\in{E}\left(|x'-x''|&lt\delta\Rightarrow\exists{i}\in\overline{1,m}:x',x''\in{V}(x_i)\Rightarrow
+|f(x')-f(x'')|\leq|f(x')-f(x_i)|+|f(x'')-f(x_i)|&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)$$
+Таким образом предъявлено $\delta&gt0$ такое, что
+$$\forall{x}',x''\in{E}(|x'-x''|&lt\delta\Rightarrow\exists{i}\in\overline{1,m}:x',x''\in{V}(x_i)\Rightarrow|f(x')-f(x'')|&lt\varepsilon)$$
+Реализовано <a href="#Definition5.5.9">определение равномерной непрерывности</a> для функции $f(x)$ на множестве $E$.
+
+<br><br>
+<a href="./math_analysis5.5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis5.5.5.html">next</a>
+
+</body>
+</html>

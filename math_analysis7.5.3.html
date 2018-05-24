@@ -1,0 +1,322 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 7.5.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis7.5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.5.4.html">next</a>
+
+<h5 id="7.5.3">7.5.3 Степенные ряды и их основные свойства.</h5>
+
+<p>Понятие степенных рядов будет вводится над полем комплексных чисел в целях общности изложения.
+
+<br><br>
+
+<p id="Definition7.5.8"><b>Определение 7.5.8:</b> Пусть $\{a_n\}$ последовательность из $\mathbb{C}$, $a_0,z_0\in\mathbb{C}$, тогда степенным рядом
+с центром в точке $z_0$ называют ряд вида
+$$\sum_{n=0}^\infty(a_n(z-z_0)^n)=a_0+a_1(z-z_0)+a_2(z-z_0)^2+\dots$$ 
+
+<br><br>
+
+<ol>
+<li>
+Степенной ряд можно рассматривать при фиксированном значении $z\in\mathbb{C}$, тогда это будет просто ряд из комплексных чисел. Задача состоит в том, 
+чтобы выяснить при каких значениях $z\in\mathbb{C}$ этот ряд сходится.
+</li>
+<li>
+Степенной ряд можно также рассматривать, как функциональный ряд, то есть ряд составленный из степенных функций $f(z)=a_n(z-z_0)^n$, при этом суммой
+ряда тоже будет функция.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Definition7.5.9"><b>Определение 7.5.9:</b> Множеством сходимости степеннго ряда называется множество
+$$K:=\left\{z\in\mathbb{C}\:\middle|\:\exists\lim_{n\to\infty}\sum_{k=0}^n(a_k(z-z_0)^k)\right\}$$
+
+<br><br>
+
+<p>Согласно <a href="#Theorem7.5.3">первой теореме Абеля</a> структура множества $K$ - круг.<br>
+С помощью замены $t=z-z_0$ можно перенести центр ряда в точку 0, тогда
+$$\forall{n}\in\mathbb{N}\left(\sum_{k=0}^n(a_k(z-z_0)^k)=\sum_{k=0}^n(a_kt^k)\right).$$
+В дальнейшем основным объектом изучения будет ряд вида $\sum_{n=0}^\infty(a_nz^n)$.
+
+<br><br>
+
+<p id="Theorem7.5.3"><b>Теорема 7.5.3: Первая теорема Абеля.</b><br>
+Если ряд $\sum_{n=0}^\infty(a_kz^k)$ сходится в точке $z_0\in\mathbb{C}$, то он сходится абсолютно в любой точке $z\in\mathbb{C}$ такой, что $|z|&lt|z_0|$.
+<p><b>Доказательство:</b> Если $z_0=0$, то не существует таких $z\in\mathbb{C}$ что $|z|&lt|z_0|$ и, следовательно, утверждение доказано. Пусть далее 
+$z_0\neq0$.<br>
+Ряд $\sum_{n=0}^\infty(a_nz^n)$ сходитя, <a href="./math_analysis7.1.html#Theorem7.1.1">следовательно</a>, общий член ряда стремится к нулю.
+<a href="./math_analysis4.1.html#Theorem4.1.1">Следовательно</a>, последовательность $\{a_nz^n\}$ ограничена, то есть 
+$$\exists{M}\in\mathbb{R}:(M&gt0\wedge\forall{n}\in\mathbb{N}_0(|a_nz^n|\leq{M}))$$
+Фиксируем $z\in\mathbb{C}$ такой, что $|z|&lt|z_0|$, обозначим $q:=\frac{|z|}{|z_0|}$, тогда $0\leq{q}&lt1$. По пункту 4 
+<a href="./math_analysis7.5.1.html#Statement7.5.1">утверждения 7.5.1</a>
+$$\forall{z}_1,z_2\in\mathbb{C}(|z_1z_2|=|z_1||z_2|)\Rightarrow\left(\forall{z}\in\mathbb{C},\forall{n}\in\mathbb{N}(|z^n|=|z|^n)\wedge
+\forall{z}_1,z_2\in\mathbb{C}\left(z_2\neq0\Rightarrow\left|\frac{z_1}{z_2}\right|=|z_1z_2^{-1}|=|z_1||z_2^{-1}|=|z_1||z_2|^{-1}=
+\frac{|z_1|}{|z_2|}\right)\right)\Rightarrow$$ $$\Rightarrow\forall{n}\in\mathbb{N}_0\left(|a_nz^n|=\left|a_nz^n_0\left(\frac{z}{z_0}\right)^n\right|=
+|a_nz^n_0|\left|\left(\frac{z}{z_0}\right)^n\right|=|a_nz^n_0|\left|\frac{z}{z_0}\right|^n\leq{M}q^n\right)$$
+Так как $q&lt1$, <a href="./math_analysis7.1.html#Example7.1.1">то</a> ряд $\sum_{n=0}^\infty(Mq^n)$ сходится, следовательно, по 
+<a href="./math_analysis7.2.1.html#Theorem7.2.2">основной теореме для знакопостоянных рядов</a> сходится и ряд $\sum_{n=0}^\infty|a_nz^n|$.
+
+<br><br>
+
+<p id="Corollary7.5.1"><b>Следствие 7.5.1:</b> Если ряд $\sum_{n=0}^\infty(a_nz^n)$ расходится в точке $z_0\in\mathbb{C}$, то он расходится 
+в любой точке $z\in\mathbb{C}$ такой, что $|z_0|&lt|z|$.
+<p><b>Доказательство:</b> Докажем от противного. Предположим, что существует $z_1\in\mathbb{C}$ такое, что $|z_0|&lt|z_1|$ и ряд сходится в точке $z_1$.
+Тогда по теореме 7.5.3 ряд $\sum_{n=0}^\infty|a_nz^n|$ сходится в точке $z_0$, <a href="./math_analysis7.5.1.html#Theorem7.5.2">следовательно</a>, 
+и ряд $\sum_{n=0}^\infty(a_nz^n)$ сходится в точке $z_0$, а это противоречит условию. 
+
+<br><br>
+
+<p id="Definition7.5.10"><b>Определение 7.5.10:</b> Если $K$ - это множество сходимости ряда, то радиусом сходимости ряда называется действительное 
+число $R:=\displaystyle\sup_{z\in{K}}|z|$.
+
+<br><br>
+
+<p id="Corollary7.5.2"><b>Следствие 7.5.2:</b> Если $R$ - это радиус сходимости ряда $\sum_{n=0}^\infty(a_nz^n)$, то для любого $z\in\mathbb{C}$
+если $|z|&ltR$, то ряд $\sum_{n=0}^\infty(a_nz^n)$ сходится абсолютно, а если $|z|&gtR$, то расходится.
+<p><b>Доказательство:</b> Если $\displaystyle|z|&ltR=\sup_{z\in{K}}|z|$, то по <a href="./math_analysis3.1.html#Definition3.1.7">определению супремума</a>
+существует $z_0\in{K}$ такое, что $|z|&lt|z_0|$, тогда по <a href="#Theorem7.5.3">первой теореме Абеля</a> ряд $\sum_{n=0}^\infty(a_nz^n)$
+сходится абсолютно в точке $z$.<br>
+Если $\displaystyle|z|&gtR=\sum_{z\in{K}}|z|$, то $z\notin{K}$, то есть ряд $\sum_{n=0}^\infty(a_nz^n)$ расходится в точке $|z|$.
+
+<br><br>
+
+<p>На границе круга сходимости поведение ряда может быть самым разнообразным (расходится, сходится не абсолютно, сходится абсолютно).<br>
+<i>Аналогично ведут себя степенные ряды на множестве действительных чисел. Рассмотрим, например, ряд $\sum_{n=1}^\infty\frac{x^n}{n}$.
+Это степенной ряд, у которого для любого $n\in\mathbb{N}$ $a_n=\frac1{n}$. <a href="./math_analysis7.1.html#Example7.1.1">Известно</a>, 
+что ряд $\sum_{n=1}^\infty\frac{x^n}{n}$ сходится абсолютно при $|x|&lt1$ и расходится при $|x|&gt1$, т. е. его радиус сходимости равен 1. 
+При этом на границах множества сходимости ряд ведет себя по разному: <a href="./math_analysis7.1.html#Example7.1.4">расходится</a> в точке 1 и 
+<a href="./math_analysis7.4.3.html#Example7.4.3">сходится не абсолютно</a> в точке -1.</i>
+
+<br><br>
+
+<p id="Example7.5.1"><b>Пример 7.5.1:</b> Рассмотрим ряд $\sum_{n=0}^\infty{c}_n=\sum_{n=0}^\infty(nz^{2n+1})$<br>
+Это <a href="#Definition7.5.8">степенной ряд</a> при $a_n=\begin{cases}n, & n=2k+1\\ 0, & n=2k\end{cases}$ для любого $k\in\mathbb{N}_0$. 
+Проверим ряд $\sum_{n=0}^\infty{c}_n$ на абсолютную сходимость. При $z=0$ ряд, очевидно, сходится к нулю. Для любого $z\neq0$ применим 
+<a href="./math_analysis7.2.2.html#Statement7.2.2">признак Даламбера</a>. 
+$$\lim_{n\to\infty}\frac{|c_{n+1}|}{|c_n|}=\lim_{n\to\infty}\left|\frac{c_{n+1}}{c_n}\right|=\lim_{n\to\infty}\left|\frac{(n+1)z^{2n+3}}{nz^{2n+1}}\right|=
+\lim_{n\to\infty}\left|\frac{n+1}{n}z^2\right|=|z^2|=|z|^2$$
+Таким образом ряд $\sum_{n=0}^\infty{c}_n$ сходится абсолютно, если $|z|^2&lt1$, то есть при $|z|&lt1$. При $z_0:=(1,0)=1$, ряд, очевидно, расходится,
+<a href="#Corollary7.5.1">следовательно</a>, он расходится для любого $z\in\mathbb{C}$ такого, что $|z|&gt|z_0|=1$, то есть радиус сходимости ряда 
+$\sum_{n=0}^\infty{c}_n$ равен 1.
+
+<br><br>
+
+<p id="Theorem7.5.4"><b>Теорема 7.5.4: Формула Коши - Адамара (Жак Адамар 1856 - 1963). </b><br>
+Если $R$ радиус сходимости ряда $\sum_{n=0}^\infty(a_nz^n)$, то
+<ol>
+<li>$\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=0\Rightarrow{R}=+\infty$</li>
+<li>$\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=+\infty\Rightarrow{R}=0$</li>
+<li>$\displaystyle0&lt\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}&lt+\infty\Rightarrow{R}=\frac1{\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}}$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Пусть $\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=0$ покажем, что в этом случае ряд $\sum_{n=0}^\infty(a_nz^n)$ сходится абсолютно для любого
+$z\in\mathbb{C}$. Фиксируем $z\neq0$ и $\varepsilon\in(0,1)$, тогда по 
+<a href="./math_analysis4.4.html#Definition4.4.3">свойствам верхнего и нижнего пределов числовой последовательности</a> 
+$$\forall{n\in\mathbb{N}}\left(\sqrt[n]{|a_n|}\geq0\right)\Rightarrow
+0=\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}\geq\varliminf_{n\to\infty}\sqrt[n]{|a_n|}\geq0\Rightarrow
+\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\varliminf_{n\to\infty}\sqrt[n]{|a_n|}=0\Rightarrow\exists\lim_{n\to\infty}\sqrt[n]{|a_n|}=0\Rightarrow$$
+$$\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\sqrt[n]{|a_n|}&lt\frac{\varepsilon}{|z|}\right)\Rightarrow
+\forall{n}&gtn_0\left(|a_nz^n|&lt\varepsilon^n\right)$$
+Так как $\varepsilon&lt1$, <a href="./math_analysis7.1.html#Example7.1.1">то</a> ряд $\sum_{n=1}^\infty\varepsilon^n$ сходится, 
+<a href="./math_analysis7.3.1.html#Statement7.3.1">следовательно</a>, ряд $\sum_{n=0}^\infty(a_nz^n)$ сходится абсолютно.   
+</li>
+<li>
+Пусть $\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=+\infty$, <a href="./math_analysis4.4.html#Definition4.4.4">тогда</a> последовательность
+$\sqrt[n]{|a_n|}$ нe ограничена сверху, <a href="./math_analysis4.4.html#Statement4.4.2">следовательно</a> для любого $z\neq0$, существует 
+последовательность $\{n_k\}$ из $\mathbb{N}$ такая, что 
+$$\lim_{k\to\infty}\sqrt[n_k]{|a_{n_k}|}=+\infty\Rightarrow
+\exists{k}_0\in\mathbb{N}:\forall{k}&gtk_0\left(\sqrt[n_k]{|a_{n_k}|}&gt\frac1{|z|}\right)\Rightarrow
+\forall{k}&gtk_0\left(\left|z^{n_k}a_{n_k}\right|&gt1\right)$$
+То есть общий член ряда $\sum_{n=0}^\infty(a_nz^n)$ не стремится к нулю, <a href="./math_analysis7.1.html#Theorem7.1.1">следовательно</a>, ряд расходится
+для любого $z\neq0$. 
+</li>
+<li>
+Пусть существует $\displaystyle\rho:=\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}\in(0,+\infty)$.
+<ul type="a">
+<li>
+Если $|z|&lt\frac1{\rho}$, то $\rho&lt\frac1{|z|}$, следовательно, существует $\varepsilon&gt0$ такое, что $\rho+\varepsilon&lt\frac1{|z|}$,
+то есть $|z|&lt\frac1{\rho+\varepsilon}$. Обозначим $q:=|z|(\rho+\varepsilon)&lt1$, тогда
+$$\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\rho&lt\rho+\varepsilon\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\sqrt[n]{|a_n|}&lt\rho+\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(|z|\sqrt[n]{|a_n|}&lt|z|(\rho+\varepsilon)=q\right)\Rightarrow\forall{n}&gtn_0(|a_nz^n|&ltq^n)$$
+Так как $q&lt1$, <a href="./math_analysis7.1.html#Example7.1.1">то</a> ряд $\sum_{n=0}^\infty{q}^n$ сходится, 
+<a href="./math_analysis7.3.1.html#Statement7.3.1">следовательно</a>, ряд $\sum_{n=0}^\infty(a_nz^n)$ сходится абсолютно.
+</li>
+<li>
+Если $|z|&gt\frac1{\rho}$, то аналогично подпункту (a) существует $\varepsilon&gt0$ такое, что $|z|&gt\frac1{\rho-\varepsilon}$. 
+Обозначим $q:=|z|(\rho-\varepsilon)&gt1$. Так верхний предел последовательности $\{\sqrt[n]{|a_n|}\}$ конечен, 
+<a href="./math_analysis4.4.html#Definition4.4.4">то</a> она ограничена сверху, <a href="./math_analysis4.4.html#Theorem4.4.1">тогда</a> существует
+последовательность $\{n_k\}$ из $\mathbb{N}$ такая, что 
+$$\lim_{k\to\infty}\sqrt[n_k]{|a_{n_k}|}=\rho&gt\rho-\varepsilon\Rightarrow
+\exists{k}_0\in\mathbb{N}:\forall{k}&gtk_0\left(\sqrt[n_k]{|a_{n_k}|}&lt\rho-\varepsilon\right)\Rightarrow
+\forall{k}&gtk_0\left(|z|\sqrt[n_k]{|a_{n_k}|}&gt|z|(\rho-\varepsilon)=q\right)\Rightarrow\forall{k}&gtk_0(|a_{n_k}z^{n_k}|&gtq^{n_k}&gt1)$$
+То есть общий член ряда $\sum_{n=0}^\infty(a_nz^n)$ не стремится к нулю, <a href="./math_analysis7.1.html#Theorem7.1.1">следовательно</a>, ряд расходится.
+</li>
+</ul>
+Таким образом из подпунктов (a) и (b) следует, что <a href="#Definition7.5.10">радиус сходимости</a> ряда $\sum_{n=0}^\infty(a_nz^n)$ равен 
+$\displaystyle\frac1{\rho}=\frac1{\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}}$.
+</li>
+</ol>
+
+<br><br>
+
+<p>Полученная в теореме формула $\displaystyle{R}=\frac1{\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}}$ универсальна, но часто трудно проверяема.
+
+<br><br>
+
+<p id="Corollary7.5.3"><b>Следствие 7.5.3: </b> Если $R$ радиус сходимости ряда $\sum_{n=0}^\infty(a_nz^n)$ и существует предел 
+$\displaystyle\rho:=\lim_{n\to\infty}\sqrt[n]{|a_n|}\in\overline{\mathbb{R}}$, то
+<ol>
+<li>$\displaystyle(\rho=0\Rightarrow{R}=+\infty)\wedge(\rho=+\infty\Rightarrow{R}=0)\wedge\left(\rho\in(0,+\infty)\Rightarrow{R}=\frac1{\rho}\right)$,</li>
+<li>$\displaystyle\left(\forall{n}\in\mathbb{N}(a_n\neq0)\wedge\exists{K}:=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|\in[0,+\infty]\right)\Rightarrow
+{R}=K$,</li>
+<li>радиус сходимости рядов $\sum_{n=1}^\infty(na_nz^{n-1})$, $\sum_{n=1}^\infty\left(a_n\frac{z^{n+1}}{n+1}\right)$ равен $R$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как существует предел $\displaystyle\lim_{n\to\infty}\sqrt[n]{|a_n|}$, <a href="./math_analysis4.4.html#Corollary4.4.4">то</a> 
+$\displaystyle\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}$. Таким образом, утверждение следует из теоремы 7.5.4.
+</li>
+<li>
+<ol type="a">
+<li> Пусть $\displaystyle\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=K\in(0,+\infty)$.<br>
+После доказательства <a href="./math_analysis7.2.2.html#Statement7.2.2">признака Даламбера сходимости знакопостоянных рядов</a> было показано,
+что если для любого $n\in\mathbb{N}$ $a_n&gt0$, то из существования конечного предела $\displaystyle{q}=\lim_{n\to\infty}\frac{a_{n+1}}{a_n}$ 
+следует существование предела $\displaystyle\lim_{n\to\infty}\sqrt[n]{|a_n|}=q$. <a href="./math_analysis4.1.html#Theorem4.2.2">Следовательно</a>
+$$K=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|\in(0,+\infty)\Rightarrow
+\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\lim_{n\to\infty}\sqrt[n]{|a_n|}=\frac1{K}\Rightarrow{R}=K$$
+</li>
+<li>Пусть $\displaystyle\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=+\infty$.<br>
+Фиксируем $\varepsilon&gt0$, тогда существует $M&gt0$ такое, что $\frac1{M}&lt\varepsilon$.
+$$\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=+\infty\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_n}{a_{n+1}}\right|&gtM\right)\Rightarrow
+\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}\right|&lt\frac1{M}&lt\varepsilon\right)\Rightarrow
+\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=0\Rightarrow\lim_{n\to\infty}\sqrt[n]{|a_n|}=0\Rightarrow{R}=+\infty.$$
+</li>
+<li>Пусть $\displaystyle\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=0$.<br>
+<i>
+Докажем, что в этом случае последовательность $\{\sqrt[n]{|a_n|}\}$ не ограничена. Фиксируем $M&gt1$.
+$$\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=0\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\left(\left|\frac{a_n}{a_{n+1}}\right|&lt\frac1{M^2}\right)\Rightarrow
+\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}\right|&gtM^2\right)\Rightarrow
+\forall{n}&gtn_0\left(\left|\frac{a_{n+1}}{a_n}\frac{a_n}{a_{n-1}}\dots\frac{a_{n_0+1}}{a_{n_0}}\right|=\left|\frac{a_{n+1}}{a_{n_0}}\right|&gt
+M^{2(n-n_0)}\right)\Rightarrow$$ $$\Rightarrow\forall{n}&gtn_0\left(|a_{n+1}|&gt|a_{n_0}|M^{2(n-n_0)}\right)\Rightarrow
+\forall{n}&gtn_0\left(\sqrt[n]{|a_{n+1}|}&gt\sqrt[n]{\frac{|a_{n_0}|}{M^{2n_0}}}M^2\right)$$
+$$\left(\lim_{n\to\infty}\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}=1\wedge{M}&gt1\right)\Rightarrow
+\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1\left(\left|\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}-1\right|&lt\frac{M-1}{M}\right)\Rightarrow
+\forall{n}&gtn_1\left(\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}-1&gt-\frac{M-1}{M}\right)\Rightarrow$$
+$$\Rightarrow\forall{n}&gtn_1\left(\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}M-M&gt-M+1\right)\Rightarrow
+\forall{n}&gtn_1\left(\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}M&gt1\right)\Rightarrow
+\forall{n}&gt\max\{n_0,n_1\}\left(\sqrt[n]{|a_{n+1}|}&gt\sqrt[n]\frac{|a_{n_0}|}{M^{2n_0}}M^2&gtM\right)\Rightarrow
+\lim_{n\to\infty}\sqrt[n]{|a_n|}=+\infty\Rightarrow{R}=0$$
+</i>
+</li>
+</ol>
+</li>
+<li>
+Докажем что, если $\{x_n\}$, $\{y_n\}$ последовательности из $\mathbb{R}$ и существует конечный предел предел $\displaystyle{X}:=\lim_{n\to\infty}x_n&gt0$, 
+то $\displaystyle\varlimsup_{n\to\infty}(x_ny_n)=\lim_{n\to\infty}x_n\varlimsup_{n\to\infty}y_n$.<br>
+<i>
+Пусть $\displaystyle\varlimsup_{n\to\infty}y_n=\infty$, так как существует конечный предел $\displaystyle\lim_{n\to\infty}x_n&gt0$, то последовательность 
+$\{x_ny_n\}$ не ограничена в том же смысле, что и последовательность $\{y_n\}$, то есть 
+$\displaystyle\varlimsup_{n\to\infty}(x_ny_n)=\infty=\lim_{n\to\infty}x_n\varlimsup_{n\to\infty}y_n$.<br>
+Пусть $\displaystyle\varlimsup_{n\to\infty}y_n\in\mathbb{R}$, <a href="./math_analysis4.4.html#Definition4.4.4">значит</a> последовательность $\{y_n\}$
+ограничена, то есть существует $M\in\mathbb{R}$ такое, что для любого $n\in\mathbb{N}$ $|y_n|&ltM$. Фиксируем $\varepsilon&gt0$.
+$$\lim_{n\to\infty}x_n=X\Rightarrow\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1\left(|x_n-X|&lt\frac{X\varepsilon}{2M}\right)\Rightarrow
+\forall{n}&gtn_0\left(\left|\frac{x_n}{X}-1\right|&lt\frac{\varepsilon}{2M}\right)\Rightarrow
+\forall{n}&gtn_0\left(\left|\frac{x_n}{X}\right|&lt1+\frac{\varepsilon}{2M}\right)$$
+Так как верхние пределы $\displaystyle\varlimsup_{n\to\infty}x_n$ и $\displaystyle\varlimsup_{n\to\infty}y_n$ конечны, то конечен и верхний предел
+$A:=\displaystyle\varlimsup_{n\to\infty}(x_ny_n)$, тогда существует последовательность $\{n_k\}$ из $\mathbb{N}$ такая, что 
+$$\lim_{k\to\infty}(x_{n_k}y_{n_k})=A\Rightarrow
+\exists{k}_0\in\mathbb{N}:\left(n_{k_0}&gtn_1\wedge\forall{k}&gtk_0\left(|x_{n_k}y_{n_k}-A|&ltX\frac{\varepsilon}{2}\right)\right)\Rightarrow
+\forall{k}&gtk_0\left(\left|\frac{x_{n_k}y_{n_k}}{X}-\frac{A}{X}\right|&lt\frac{\varepsilon}{2}\right)\Rightarrow$$
+$$\Rightarrow\forall{k}&gtk_0\left(\left|\left(1+\frac{\varepsilon}{2M}\right)y_{n_k}-\frac{A}{X}\right|=
+\left|y_{n_k}+\frac{y_{n_k}\varepsilon}{2M}-\frac{A}{X}\right|&lt\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{k}&gtk_0\left(\left|y_{n_k}-\frac{A}{X}\right|-\left|\frac{y_{n_k}\varepsilon}{2M}\right|&lt\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{k}&gtk_0\left(\left|y_{n_k}-\frac{A}{X}\right|&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)\Rightarrow
+\lim_{k\to\infty}y_{n_k}=\frac{A}{X}$$
+Тогда $\displaystyle\varlimsup_{n\to\infty}y_{n_k}=\frac{A}{X}$, так как если бы существовала подпоследовательность $\{y_{n_s}\}$ имеющая предел больший
+чем $\frac{A}{X}$, то это означало бы, что $A$ не является верхним пределом последовательности $\{x_{n_k}y_{n_k}\}$.
+</i><br>
+При любом фиксированном $z\neq0$ ряды $\sum_{n=1}^\infty(na_nz^{n-1})$ и $\sum_{n=1}^\infty(na_nz^n)$ сходятся и расходятся одновременно, то есть имеют 
+одинаковые радиус сходимости, так как один получается из другого умножением на ненулевую константу $z$ и $\frac1{z}$ соответственно.<br>
+Вычислим радиус сходимости ряда $\sum_{n=1}^\infty(na_nz^n)$. По доказанному выше имеем
+$$\varlimsup_{n\to\infty}\sqrt[n]{n|a_n|}=\varlimsup_{n\to\infty}\left(\sqrt[n]{n}\sqrt[n]{|a_n|}\right)=
+\lim_{n\to\infty}\sqrt[n]{n}\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\frac1{R},$$ 
+<a href="./math_analysis4.3.html#Example4.3.4">так как</a> $\displaystyle\lim_{n\to\infty}\sqrt[n]{n}=1$. Следовательно, радиус сходимости ряда
+$\sum_{n=1}^\infty(na_nz^n)$ равен $R$.<br>
+Вычислим аналогично радиус сходимости ряда $\sum_{n=1}^\infty\left(a_n\frac{z^n}{n+1}\right)$.
+$$\varlimsup_{n\to\infty}\sqrt[n]{\frac1{n+1}|a_n|}=\lim_{n\to\infty}\sqrt[n]\frac1{n+1}\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=
+\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\frac1{R}$$
+Следовательно, радиус сходимости ряда $\sum_{n=1}^\infty\left(a_n\frac{z^n}{n+1}\right)$ равен $R$.
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example7.5.2"><b>Пример 7.5.2:</b> Исследуем на сходимость ряд $\sum_{n=0}^\infty\frac{z^n}{n!}$.<br>
+Применим пункт 2 следствия 7.5.3
+$$\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=\lim_{n\to\infty}\frac{(n+1)!}{n!}=\lim_{n\to\infty}(n+1)=+\infty$$
+Таким образом радиус сходимости ряда равен $+\infty$, ряд сходится абсолютно при любом $z\in\mathbb{C}$.
+
+<br><br>
+
+<p id="Example7.5.3"><b>Пример 7.5.3:</b> Исследуем на сходимость ряд $\sum_{n=1}^\infty(n^nz^n)$.<br>
+Применим пункт 1 следствия 7.5.3
+$$\lim_{n\to\infty}\sqrt[n]{|a_n|}=\lim_{n\to\infty}\sqrt[n]{n^n}=\lim_{n\to\infty}n=+\infty$$
+Таким образом радиус сходимости ряда равен 0, ряд сходится абсолютно только при $z=0$ при остальных $z$ расходится.
+
+<br><br>
+
+<p id="Example7.5.4"><b>Пример 7.5.4:</b> Исследуем на сходимость ряд $\sum_{n=1}^\infty\frac{z^n}{n^p}$.<br>
+Применим пункт 2 следствия 7.5.3
+$$\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|=\lim_{n\to\infty}\frac{(n+1)^p}{n^p}=\lim_{n\to\infty}\left(1+\frac1{n}\right)^p=1$$
+Таким образом радиус сходимости ряда равен 1, ряд сходится абсолютно при $|z|&lt1$ и расходится при $|z|&gt1$. Поведение на границе круга сходимости
+зависит от значения $p$.<br>
+Например, в точке $z=(1,0)=1$ $\sum_{n=1}^\infty\frac{z^n}{n^p}=\sum_{n=1}^\infty\frac1{n^p}$, 
+<a href="./math_analysis7.2.2.html#Corollary7.2.5">следовательно</a>, ряд сходится абсолютно, при $p&gt1$ и расходится при $p\leq1$.<br>
+В точке $z=(-1,0)=-1$ $\sum_{n=1}^\infty\frac{z^n}{n^p}=\sum_{n=1}^\infty\frac{(-1)^n}{n^p}$, следовательно ряд сходится абсолютно при $p&lt1$,
+<a href="./math_analysis7.4.1.html#Theorem7.4.2">сходится не абсолютно</a> при $0&ltp\leq1$ и расходится при $p&lt0$. 
+
+<br><br>
+
+<p id="Task7.5.1"><b>Задача 7.5.1:</b> Доказать, что при любом значении $p\in\mathbb{R}$ если ряд $\sum_{n=1}^\infty\frac{x^n}{n^p}$
+сходится абсолютно на одном конце интервала сходимости, то он сходится абсолютно и на другом конце.<br>
+<p><b>Решение:</b> 
+<i>
+Интервал сходимости степенного ряда $\sum_{n=1}^\infty(a_nx^n)$ с радиусом сходимости $R$ имеет вид $(-R,R)$. Так как $|R|=|-R|$,
+то ряд $\sum_{n=1}^\infty|a_nR^n|$ сходится тогда и только тогда, когда сходится ряд $\sum_{n=1}^\infty|a_n(-R)^n|$.
+</i>
+
+<br><br>
+
+<p>Для ряда из вещественных чисел обязательным является исследование сходимости ряда на концах интервала сходимости.
+<br><br>
+
+<p>Обобщенным степенным рядом называется ряд вида $\sum_{n=1}^\infty(a_n\varphi(x)^n)$. Если положить $y:=\varphi(x)$, тогда исследование
+сходимости обобщенного степенного ряда сводится к исследованию сходимости степенного ряда $\sum_{n=1}^\infty(a_ny^n)$ с последующей интерпретацией
+полученного результата на языке исходной переменной $x=\varphi^{-1}(y)$.<br>
+<i>
+То есть если в результате исследования ряда $\sum_{n=1}^\infty(a_ny^n)$ выяснится, что его радиус сходимости равен $R$, то множеством сходимости ряда
+$\sum_{n=1}^\infty(a_n\varphi(x)^n)$ будет множество $\varphi^{-1}(\{Y\in\mathbb{C}\:|\:|y|&ltR\})$, которое не обязательно будет кругом.
+</i>
+
+<br><br>
+<a href="./math_analysis7.5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.5.4.html">next</a>
+</body>
+</html>

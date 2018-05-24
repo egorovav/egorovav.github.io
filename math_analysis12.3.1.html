@@ -1,0 +1,266 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.2.html">next</a>
+
+<h4 id=12.3>12.3 Дифференциальное исчисление функций многих вещественных переменных.</h4>
+
+<i>
+В данном разделе используется ряд понятий таких как "векторное пространство", "базис векторного пространства", "матрица", "определитель матрицы", и т. д.,
+которые вводятся в курсе алгебры.
+</i>
+
+<h5 id=12.3.1>12.3.1 Линейные операторы над $\mathbb{R}^n$.</h5>
+
+<p id=Definition12.3.1><b>Определение 12.3.1:</b> Пусть $X$, $Y$ <a href="https://en.wikipedia.org/wiki/Vector_space">векторные пространства</a> 
+над полем $P$, тогда отображение $L\colon{X}\to{Y}$ называется линейным оператором, если
+$$\forall{x},y\in{X}\,\forall\alpha,\beta\in{P}(L(\alpha{x}+\beta{y})=\alpha{L}(x)+\beta{L}(y))$$
+Множество линейных операторов из векторного пространства $X$ в векторное пространство $Y$ обозначают как $\mathcal{L}(X,Y)$.
+
+<br><br>
+<p id=Statement12.3.1><b>Утверждение 12.3.1:</b> Если $X$, $Y$ векторные пространства над полем $P$, то множество $\mathcal{L}(X,Y)$ является векторным
+пространством на полем $P$.
+<p><b>Доказательство:</b>
+\begin{multline}
+\forall{L}_1,L_2\in\mathcal(X,Y)\,\forall\alpha_1,\alpha_2,\alpha,\beta\in{P}\,\forall{x},y\in{X}((\alpha_1L_1+\alpha_2L_2)(\alpha{x}+\beta{y})=\\
+=\alpha_1L_1(\alpha{x}+\beta{y})+\alpha_2L_2(\alpha{x}+\beta{y})=\alpha_1\alpha{L}_1(x)+\alpha_1\beta{L}_1(y)+\alpha_2\alpha{L}_2(x)+\alpha_2\beta{L}_2(y)=
+\alpha(\alpha_1L_1(x)+\alpha_2L_2(x))+\beta(\alpha_1L_1(y)+\alpha_2L_2(y))=\\=\alpha(\alpha_1L_1+\alpha_2L_2)(x)+\beta(\alpha_1L_1+\alpha_2L_2)(y)).
+\end{multline}
+Таким образом множество $\mathcal{L}(X,Y)$ замкнуто относительно, операций сложения и умножения на скаляр. Свойства этих операций характерные для 
+векторного пространства следуют из свойств операций элементов множества $\mathcal{L}(X,Y)$.
+
+<br><br>
+<p>Далее будем рассматривать случай: $X=\mathbb{R}^n$, $Y=\mathbb{R}^m$, $P=\mathbb{R}$.
+
+<p id=Statement12.3.2><b>Утверждение 12.3.2:</b> При фиксации <a href="https://en.wikipedia.org/wiki/Vector_space#Basis_and_dimension">базисов</a> в
+$\mathbb{R}^n$ и $\mathbb{R}^m$ существует биективное отображение между множеством $\mathcal{L}(X,Y)$ и множеством матриц размера $m\times{n}$.
+<p><b>Доказательство:</b> См. курс алгебры или Зорич т. 1, стр. 499.
+
+<br><br>
+
+<p>В дальнейшем в качестве базиса пространства $\mathbb{R}^n$ будем выбирать множество единичных векторов 
+$\{e_i=(x_1,\ldots,x_n)\in\mathbb{R}^n\mid{i}\in\overline{1,n}\,x_i=1\,\forall{k}\neq{i}(x_k=0)\}$ и с учетом утверждения 12.3.2 будем отождествлять 
+линейный оператор $L$ с матрицей $(L(e_1),\ldots\,L(e_n))_{m\times{n}}$.<br>
+
+<p><i>
+Таким образом, если $L\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$, $h\in\mathbb{R}^n$, то записи $L(h)$, $Lh$ эквивалентны. В первом случае символ $L$
+рассматривается, как символ обозначающий отображение из $\mathbb{R}^n$ в $\mathbb{R}^m$, во втором случае как символ обозначающий матрицу размера 
+$m\times{n}$. В дальнейшем используются обе формы записи. 
+</i>
+
+<br><br>
+
+<p id=Statement12.3.3><b>Утверждение 12.3.3:</b> Пусть линейным отображениям $L_1\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$, 
+$L_2\in\mathcal{L}(\mathbb{R}^m,\mathbb{R}^k)$ соответствуют матрицы $A_{m\times{n}}$ и $B_{k\times{m}}$ соответственно, тогда отображение 
+$L_3:=L_2\circ{L}_1\colon\mathbb{R}^n\to\mathbb{R}^k$ является линейным оператором из $\mathbb{R}^n$ в $\mathbb{R}^k$, которому соответствует матрица $BA$.
+<p><b>Доказательство:</b> См. Зорич т. 1, стр. 500.
+
+<br><br>
+
+<p id=Definition12.3.2><b>Определение 12.3.2:</b> Пусть $E\subset\mathbb{R}^n$; $f(x),g(x)\colon{E}\to\mathbb{R}^m$, $a\in\mathring{E}$, тогда будем
+считать, что 
+$$(f=o(g),x\to{a})\Leftrightarrow(\|f\|=o(\|g\|),x\to{a}),$$
+$$(f=O(g),x\to{a})\Leftrightarrow(\|f\|=O(\|g\|),x\to{a}),$$
+$$(f=O^*(g),x\to{a})\Leftrightarrow(\|f\|=O^*(\|g\|),x\to{a}).$$
+
+<br><br>
+
+<p id=Statement12.3.4><b>Утверждение 12.3.2:</b> Пусть $L\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$, тогда при $h\to0$ по $\mathbb{R}^n$
+<ol>
+<li>$L(h)=O(h)$,</li>
+<li>$L(o(h))=o(h)$,</li>
+<li>$o(O(h))=o(h)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как для любого $h\in\mathbb{R}^n$ $h=(h^{(1)},\ldots,h^{(n)})=\sum_{k=1}^n(h^{(k)}e_k)$, то
+$$\|L(h)\|=\left\|\sum_{k=1}^n(h^{(k)}L(e_k))\right\|\leq\sum_{k=1}^n\left(|h^{(k)}|\|L(e_k)\|\right)\leq\|h\|\sum_{k=1}^n\|L(e_k)\|.$$
+В последнем выражении второй множитель не зависит от $h$, следовательно, $\|L(h)\|=O(\|h\|)$ при $\|h\|\to0$ по $\mathbb{R}$, что эквивалентно 
+$L(h)=O(h)$ при $h\to0$ по $\mathbb{R}^n$.
+</li>
+<i>
+<li>Аналогично пункту 1 показывается, что $L(o(h))=O(o(h))=o(h)$ при $h\to0$ по $\mathbb{R}^n$</li>
+<li>$f(h)=o(O(h))\Leftrightarrow\|f(h)\|=o(O(\|h\|))\Leftrightarrow\|f(h)\|=o(\|h\|)\Leftrightarrow{f}(h)=o(h)$, $\mathbb{R}^n\ni{h}\to0$</li>
+</i>
+</ol>
+
+<br><br>
+
+<h5 id=12.3.2>12.3.2 Дифференциал функции в точке.</h5>
+
+<p id=Definition12.3.3><b>Определение 12.3.3:</b> Пусть $E\subset\mathbb{R}^n$, $x\in{E}\cap\mathring{E}$, тогда функция $f(x)\colon{E}\to\mathbb{R}^m$
+дифференцируема в точке $x$ по множеству $E$, если существуют $L(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R^m})$ и $\alpha(h)\colon{E}\to\mathbb{R}^m$
+такие, что $\alpha(h)=o(h)$ при $h\to0$ по всем $h$ таким, что $x+h\in{E}$ и
+$$\forall{h}\in\mathbb{R}^n(x+h\in{E}\Rightarrow{f}(x+h)-f(x)=L(x)(h)+\alpha(h))$$
+Линейное отображение $L(x)\sim{d}f(x)\sim{D}f(x)\sim{f}'(x)$ называют в этом случае дифференциалом функции $f(x)$ в точке $x$ или производной функции
+$f(x)$ в точке $x$.
+
+<br><br>
+
+<p>Определить производную так же как в случае функции одной переменной $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$ нельзя, так как в случае многих
+переменных $h$ это вектор и делить на него нельзя.
+
+<br><br>
+<p id=Statement12.3.5><b>Утверждение 12.3.5: Единственность производной.</b><br>
+Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}^m$, $x\in{i}ntE$ и существуют $L_1,L_2\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$;
+$\alpha_1(h),\alpha_2(h)\colon{E}\to\mathbb{R}^m$ такие, что $\alpha_1(h)=o(h)$, $\alpha_2(h)=o(h)$ при $h\to0$ по $x+h\in{E}$ и
+$$\forall{h}\in\mathbb{R}^m(x+h\in{E}\Rightarrow{f}(x+h)-f(x)=L_1(h)+\alpha_1(h)=L_2(h)+\alpha_2(h))$$
+тогда для любого $h\in\mathbb{R}^n$ $L_1(h)=L_2(h)$.
+<p><b>Доказательство:</b> При $h=0$ равенство, очевидно, так как в силу линейности отображений $L_1$, $L_2$ $L_1(0)=L_2(0)=0$.<br>
+Фиксируем $h\in\mathbb{R}^n\backslash\{0\}$, тогда 
+$$x\in{i}ntE\Rightarrow\exists\delta>0\colon\forall{t}\in[0,\delta](x+th\in{E})\Rightarrow(f(x+th)-f(x)=L_1(th)+o(th)=L_2(th)+o(th),th\to0)$$
+Так как если $t\to0$, то $th\to0$, следовательно,
+$$tL_1(h)-tL_2(h)=o(th),t\to0\Rightarrow{L}_1(h)-L_2(h)=\frac{o(th)}{t},t\to0$$
+$$\frac{o(th)}{t}=\frac{o(th)}{t\|h\|}\|h\|=\frac{o(\|th\|)}{\|th\|}\|h\|=o(1)\|h\|,t\to0\Rightarrow{L}_1(h)-L_2(h)=o(1)\|h\|,t\to0$$
+Так как $L_1(h)$ и $L_2(h)$ не завися от $t$, то последнее возможно, только при $L_1(h)=L_2(h)$.
+
+<br><br>
+
+<p id=Statement12.3.6><b>Утверждение 12.3.6:</b> Пусть $E\subset\mathbb{R}^n$, $f(y)=(f^{(1)}(y),\ldots,f^{(m)}(y))\colon{E}\to\mathbb{R}^m$,
+$x\in{E}\cap\mathring{E}$, тогда функция $f(y)$ дифференцируема в точке $x$ по множеству $E$ тогда и только тогда, когда для любого $k\in\overline{1,m}$
+функция $f^{(k)}(y)\colon{E}\to\mathbb{R}$ дифференцируема в точке $x$ по $E$.<br>
+В случае существования, производная функции $f(y)$ в точке $x$ равна $df(x)=(df^{(1)}(x),\ldots,df^{(m)}(x))$, где 
+$df(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$ и для любого $k\in\overline{1,m}$ $df^{(k)}(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})$.
+<p><b>Доказательство:</b> Функция $f(x)$ дифференцируема в точке $x$ тогда и только тогда, когда существуют 
+$L=(L^{(1)},\ldots,L^{(m)})\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$ и $\alpha(h)=(\alpha^{(1)}(h),\ldots,\alpha^{(m)}(h))\colon{E}\to\mathbb{R}^{m}$
+такие, что 
+$$\forall{h}\in\mathbb{R}^n(x+h\in{E}\Rightarrow{f}(x+h)-f(x)=L(h)+\alpha(h)=(L^{(1)}(h)+\alpha^{(1)}(h),\ldots,L^{(m)}(h)+\alpha^{(m)}(h))),
+\alpha(h)=o(h),h\to0.\qquad(1)$$
+Так как 
+$$L\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)\Leftrightarrow\forall{k}\in\overline{1,m}(L^{(k)}\in\mathcal(\mathbb{R}^n,\mathbb{R}))$$
+и
+$$\forall{k}\in\overline{1,m}\left(|\alpha^{(k)}(h)|\leq\|\alpha(h)\|\leq\sum_{k=1}^n|\alpha^{(k)}(h)|\right)\Rightarrow
+(\alpha(h)=o(h)\Leftrightarrow\forall{k}\in\overline{1,m}(\alpha^{(k)}(h)=o(h)),h\to0)$$
+то условие (1) выполнено тогда и только тогда, когда 
+$$\forall{k}\in\overline{1,m}(f^{(k)}(x+h)-f^{(k)}(x)=L^{(k)}(h)+\alpha^{(k)}(h)\wedge{L}^{(k)}\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})\wedge
+\alpha^{(k)}(h)=o(h),h\to0)$$
+То есть тогда и только тогда, когда для любого $k\in\overline{1,m}$ функция $f^{(k)}(y)$ дифференцируема в точке $x$ и 
+$df(x)=(df^{(1)}(x),\ldots,df^{(m)}(x))$
+
+<br><br>
+
+<p>Из утверждения 12.3.6 следует, что при рассмотрении дифференцируемости функций многих переменных $f(x)\colon\mathbb{R}^n\to\mathbb{R}^m$ можно 
+ограничится случаем $m=1$.
+<br><br>
+<p id=Statement12.3.7><b>Утверждение 12.3.7:</b> Пусть $E\subset\mathbb{R}^n$, $x\in{i}ntE$, функция $f(x)\colon{E}\to\mathbb{R}$
+дифференцируема в точке $x=(x_1,\ldots,x_n)$, тогда для любого $k\in\overline{1,n}$ существует конечный предел 
+$\displaystyle{a}_k(x):=\lim_{\substack{\mathbb{R}\ni{t}\to0\\x+te_k\in{E}}}\frac{f(x_1,\ldots,x_{k-1},x_k,x_{k+1},\ldots,x_n)}{t}$.<br>
+При этом $f'(x)=L(x)=(L^{(1)}(x),\ldots,L^{(n)}(x))=(a_1(x),\ldots,a_n(x))$.
+<p><b>Доказательство:</b>Из дифференцируемости функции $f(x)$ в точке $x$ следует существование отображения $L(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})$
+такого, что 
+$$\forall{h}\in\mathbb{R}(x+h\in{E}\Rightarrow{f}(x+h)-f(x)=L(x)(h)+o(h)), h\to0.$$
+Фиксируем $k\in\overline{1,n}$, обозначим $a_k(x):=L(x)(e_k)$, тогда
+$$x\in{i}ntE\Rightarrow\exists\delta=\delta(k)\colon\forall{t}\in[0,\delta](x+te_k\in{E})\Rightarrow
+\forall{t}\in[0,\delta](f(x+te_k)-f(x)=L(x)(te_k)+o(te_k)=ta_k(x)+o(te_k)),t\to0\Rightarrow\frac{f(x+te_k)-f(x)}{t}=a_k(x)+\frac{o(te_k)}{t}$$
+Аналогично <a href="#Statement12.3.5">утверждению 12.3.5</a> можно показать, что $\displaystyle\frac{o(te_k)}{t}=o(1),t\to0$ поэтому существует предел
+$\displaystyle\lim_{t\to0}\frac{f(x+te_k)-f(x)}{t}=a_k(x)$.
+<br><br>
+<p>Таким образом удалось вычислить компоненты вектора $L(x)$. Для любого $k\in\overline{1,n}$ 
+$\displaystyle{L}^{(k)}(x)=L(x)(e_k)=\lim_{t\to0}\frac{f(x+te_k)-f(x)}{t}$
+
+<br><br>
+ 
+<p id=Definition12.3.4><b>Определение 12.3.4:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x\in{i}ntE$, тогда значение предела 
+$$\frac{\partial{f}(x)}{\partial{x}_k}(x):=\lim_{t\to0}\frac{f(x+te_k)-f(x)}{t}$$
+называется значением частной производной первого порядка по $k$-той переменной от фукнкции $f(x)$ в точке $x$.
+<br><br>
+
+<p id=Statement12.3.8><b>Утверждение 12.3.8:</b> Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}$ дифференцируема в точке $x\in{i}ntE$,
+тогда 
+<ol>
+<li>$\displaystyle\forall{k}\in\overline{1,n}\,\exists\frac{\partial{f}(x)}{\partial{x}_k}(x)$,</li>
+<li>$\displaystyle{L}(x)=\left(\frac{\partial{f}(x)}{\partial{x}_1},\ldots,\frac{\partial{f}(x)}{\partial{x}_n}\right)$,</li>
+<li>$\displaystyle\Delta{f}(x,h)=f(x+h)-f(x)=L(x)(h)+o(h)=\sum_{k=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_k}dx_k\right)+o(h),h\to0$.</li>
+</ol>
+<p><b>Доказательство:</b> 
+<ol>
+<li>Следует из <a href="#Statement12.3.7">утверждения 12.3.7</a>.</li>
+<li>Следует из <a href="#Statement12.3.7">утверждения 12.3.7</a>.</li>
+<li>Следует из пункта 2 и того что для любого $i\in\overline{1,n}$ $dx_i=dx_i(h_i)=x_i+h_i-x_i=h_i$.</li>
+</ol>
+
+<br><br>
+
+<p id=Statement12.3.9><b>Утверждение 12.3.9: Матрица Якоби.</b>
+Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}^m$ дифференцируема в точке $x\in{i}ntE$, тогда 
+$$df(x)=df(x,h)=df(x)(h)=f'(x)(h)=\begin{pmatrix}df_1(x,h)\\df_2(x,h)\\\vdots\\df_m(x,h)\end{pmatrix}=
+\begin{pmatrix}\sum_{k=1}^n\left(\frac{\partial{f}_1(x)}{\partial{x}_1}h_1\right)\\\sum_{k=1}^n\left(\frac{\partial{f}_2(x)}{\partial{x}_2}h_2\right)\\
+\vdots\\\sum_{k=1}^n\left(\frac{\partial{f}_m(x)}{\partial{x}_m}h_m\right)\end{pmatrix}=
+\begin{pmatrix}
+\frac{\partial{f}_1(x)}{\partial{x}_1} & \frac{\partial{f}_1(x)}{\partial{x}_2} & \cdots & \frac{\partial{f}_1(x)}{\partial{x}_n}\\
+\frac{\partial{f}_2(x)}{\partial{x}_1} & \frac{\partial{f}_2(x)}{\partial{x}_2} & \cdots & \frac{\partial{f}_2(x)}{\partial{x}_n}\\
+\vdots & \vdots & \ddots & \vdots\\
+\frac{\partial{f}_m(x)}{\partial{x}_1} & \frac{\partial{f}_m(x)}{\partial{x}_2} & \cdots & \frac{\partial{f}_m(x)}{\partial{x}_n}
+\end{pmatrix}\begin{pmatrix}h_1\\h_2\\\vdots\\h_n\end{pmatrix} = J(x)h
+$$
+<p><b>Доказательство:</b> Следует из утверждений <a href="#Statement12.3.6">12.3.6</a> и 12.3.8.
+
+<br><br>
+<p>Матрица $J(x)$ имеет размер $m\times{n}$ и называется матрицей Якоби. Если $m=n$, то матрица Якоби квадратная и можно вычислить ее 
+<a href="https://en.wikipedia.org/wiki/Determinant">определитель</a> $|J(x)|$ который называют якобианом функции $f(x)$.<br>
+Итак значение частной производной $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ в точке $(x_1,\ldots,x_{i-1},x,x_{i+1},\ldots,x_n)$ равно значению 
+производной $\frac{dg}{dt}$ в точке $x$, где $g(t)$ функция одной переменной такая, что для любого $t\in\mathbb{R}$ 
+$g(t)=f(x_1,\ldots,x_{i-1},t,x_{i+1},\ldots,x_n)$.
+
+<br><br>
+
+<p id=Statement12.3.10><b>Утверждение 12.3.10:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\mathbb{R}$, $x\in{i}ntE$, тогда
+<ol>
+<li>из дифференцируемости функции $f(x)$ в точке $x$ следует непрерывность функции $f(x)$ в точке $x$,</li>
+<li>из непрерывности функции $f(x)$ в точке $x$ не следует дифференцируемость функции $f(x)$ в точке $x$,</li>
+<li>
+из дифференцируемости функции $f(x)$ в точке $x$ следует существование для любого $i\in\overline{1,n}$ частной производной 
+$\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ в точке $x$,</li>
+<li>
+из существования для любого $i\in\overline{1,n}$ частной производной $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ в точке $x$ не следует
+непрерывность функции $f(x)$ в точке $x$.
+</li>
+<li>
+из существования для любого $i\in\overline{1,n}$ частной производной $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ в точке $x$ не следует
+дифференцируемость функции $f(x)$ в точке $x$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Если функция $f(x)$ дифференцируема в точке $x$, то $f(x+h)=f(x)+f'(x)(h)+o(h)$ при $h\to0$, следовательно, существует предел $\lim_{h\to0}f(x+h)=f(x)$.
+То есть функция $f(x)$ <a href="./math_analysis12.2.html#Definition12.2.1">непрерывна</a> в точке $x$. 
+</li>
+<li>
+<a href="./math_analysis6.1.html#Task6.1.1">Ранее</a> был приведен пример функции непрерывной, но не дифференцируемой в точке при $n=1$. Приведем пример
+для случая $n=2$. Функция $\displaystyle{f}(x,y)=\sqrt[3]{xy}$ непрерывна в точке $(0,0)$ как композиция непрерывных, однако, частная производная по
+первой переменной $\displaystyle\frac{\partial{f}(x,y)}{\partial{x}}=\frac{y}{3x^{2/3}}$ в точке $x=0$ не существует. Следовательно, по 
+<a href="#Statement12.3.8">утверждению 12.3.8</a> функция $f(x)$ не дифференцируема в точке $(0,0)$.
+</li>
+<li>Следует из <a href="#Statement12.3.8">утверждения 12.3.8</a>.</li>
+<li>
+Рассмотрим функцию $\displaystyle{f}(x,y)=\begin{cases}1,xy=0\\0,xy\neq0\end{cases}:\mathbb{R}^2\to\mathbb{R}$ в точке $a=(0,0)$.<br>
+Обе частные производные в точке $a$ существуют 
+$$(x=0\wedge{y}=0)\Rightarrow\frac{\partial{f}(x,y)}{\partial{x}}\equiv\frac{\partial{f}(x,y)}{\partial{y}}\equiv0$$
+Но
+$$\exists\varepsilon:=\frac12\colon\forall\delta>0\,\exists(x_1,y_1)=(0,0),(x_2,y_2)=\left(\frac{\delta}{2},\frac{\delta}{2}\right)\colon
+\left(\|(x_1,y_1)-(x_2,y_2)\|=\sqrt{\frac{\delta^2}{2}+\frac{\delta^2}{2}}=\frac{\delta}{\sqrt{2}}<\delta\wedge\|f(x_1,y_1)-f(x_2,y_2)\|=1\geq\varepsilon
+\right)$$
+Следовательно, функция $f(x,y)$ имеет точку разрыва в точке $a$.
+</li>
+<li>Следует из пункта 4.</li>
+</ol>
+
+<br><br>
+<a href="./math_analysis12.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.2.html">next</a>
+</body>
+</html>

@@ -1,0 +1,334 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 14.1.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.1.html">next</a>
+
+<h5 id="14.1.3">14.1.3 Предел последовательности множеств по Борелю.</h5>
+
+<p id=Definition14.1.9><b>Определение 14.1.9:</b> Пусть $\{A_n\}$ последовательность множеств, тогда нижним пределом последовательности $\{A_n\}$
+называют множество 
+$$\varliminf{A}_n:=\{x\mid\exists{n}_0=n_0(x)\in\mathbb{N}\colon\forall{n}>n_0(x\in{A}_n)\}.$$
+Верхним пределом последовательности $\{A_n\}$ называют множество 
+$$\varlimsup{A}_n:=\{x\mid\exists{M}=M(x)\subset\mathbb{N}\colon(card{M}=card\mathbb{N}\wedge\forall{k}\in{M}(x\in{A}_k))\}.$$
+То есть множество $\varlimsup{A}_n$ состоит из элементов, каждый из которых содержится в каждом из множеств некоторого бесконечного подкласса $\{A_n\}$.<br>
+Если $\varliminf{A}_n=\varlimsup{A}_n$, то говорят, что предел последовательности $\{A_n\}$ существует и равен 
+$\lim{A}_n:=\varliminf{A}_n=\varlimsup{A}_n$.
+<br><br>
+<p>
+<i>
+Так как бесконечное множество натуральных чисел не ограничено сверху, то определение верхнего предела можно переписать в виде 
+$$\varlimsup{A}_n:=\{x\mid\forall{n}\in\mathbb{N}\,\exists{k}>n\colon{x}\in{A}_k\}.$$
+</i>
+<br><br>
+<p id=Statement14.1.6><b>Утверждение 14.1.6:</b> Пусть $\{A_n\}$ последовательность множеств, тогда
+<ol>
+<li>$\varliminf{A}_n\subset\varlimsup{A}_n$,</li>
+<li>$\varliminf{A}_n=\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_k\right)$,</li>
+<li>$\varlimsup{A}_n=\bigcap_{n=1}^{\infty}\left(\bigcup_{k=n}^{\infty}A_k\right)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$x\in\varliminf{A}_n\Rightarrow\exists{n}_0\in\mathbb{N}\colon\forall{n}\geq{n}_0(x\in{A}_n)\Rightarrow
+\exists{M}:=\{n\in\mathbb{N}\mid{n}\geq{n}_0\}\colon(cardM=card\mathbb{N}\wedge\forall{n}\in{M}(x\in{A}_n))\Rightarrow{x}\in\varlimsup{A}_n.$$
+</li>
+<li>
+$$x\in\varliminf{A}_n\Leftrightarrow\exists{n}\in\mathbb{N}\colon\forall{k}\geq{n}(x\in{A}_k)\Leftrightarrow
+\exists{n}\in\mathbb{N}\colon{x}\in\bigcap_{k=n}^{\infty}A_k\Leftrightarrow{x}\in\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_k\right).$$
+</li>
+<li>
+$$x\in\varlimsup{A}_n\Leftrightarrow
+\exists{M}\subset\mathbb{N}\colon\left(cardM=card\mathbb{N}\wedge{x}\in\bigcap_{\alpha\in{M}}A_{\alpha}\right)\Leftrightarrow
+\forall{n}\in\mathbb{N}\,\exists{k}\geq{n}\colon{x}\in{A}_k\Leftrightarrow\forall{n}\in\mathbb{N}\left(x\in\bigcup_{k=n}^{\infty}A_k\right)\Leftrightarrow
+x\in\bigcap_{n=1}^{\infty}\left(\bigcup_{k=n}^{\infty}A_k\right).$$
+</li>
+</ol>
+<br><br>
+<p id=Definition14.1.10><b>Определение 14.1.10:</b> Последовательность множеств $\{A_n\}$ называется монотонной, если для любого $n\in\mathbb{N}$ 
+$A_n\subset{A}_{n+1}$ тогда говорят, что последовательность возрастающая, или для любого $n\in\mathbb{N}$ $A_{n+1}\subset{A}_n$ тогда говорят, что 
+последовательность убывающая.
+
+<br><br>
+<p id=Statement14.1.7><b>Утверждение 14.1.7:</b> Если последовательность $\{A_n\}$ монотонна, то она имеет предел, при этом 
+<ol>
+<li>если $\{A_n\}$ возрастает, то $\lim{A}_n=\bigcup_{n=1}^{\infty}A_n$,</li>
+<li>если $\{A_n\}$ убывает, то $\lim{A}_n=\bigcap_{n=1}^{\infty}A_n$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$\left(x\in\varlimsup{A}_n\Rightarrow\exists{k}\in\mathbb{N}\colon{x}\in{A}_k\Rightarrow\forall{n}\geq{k}(x\in{A}_n)\Rightarrow
+({x}\in\bigcup_{n=1}^{\infty}\wedge{x}\in\varliminf{A}_n)\right)\Rightarrow
+\left(\varlimsup{A}_n\subset\bigcup_{n=1}^{\infty}A_n\wedge\varlimsup{A}_n\subset\varliminf{A}_n\right).$$
+Так как по <a href="#Statement14.1.6">утверждению 14.1.6</a> $\varliminf{A}_n\subset\varlimsup{A}_n$, то $\varliminf{A}_n=\varlimsup{A}_n$. И так как 
+последовательность $\{A_n\}$ возрастает, то 
+$$\left(x\in\bigcup_{n=1}^{\infty}A_n\Rightarrow\exists{k}\in\mathbb{N}\colon{x}\in{A}_k\Rightarrow\forall{n}\geq{k}(x\in{A}_n)\Rightarrow
+x\in\varlimsup{A}_n\right)\Rightarrow\bigcup_{n=1}^{\infty}A_n\subset\varlimsup{A}_n\Rightarrow\lim{A}_n=\varlimsup{A}_n=\bigcup_{n=1}^{\infty}A_n.$$
+</li>
+<li>
+Докажем от противного, что $\varlimsup{A}_n\subset\bigcap_{n=1}^{\infty}A_n$. Действительно, если $x\notin\bigcap_{n=1}^{\infty}A_n$, то сущесвует
+$k\in\mathbb{N}$ такое, что $x\notin{A}_k$, тогда в силу убывания последовательности $\{A_n\}$ для любого $n\geq{k}$ $x\notin{A}_n$. Таким образом 
+$x$ содержится не более чем в $k$ множествах последовательности $\{A_n\}$, то есть $x\notin\varlimsup{A}_n$. Обратное включение 
+$\bigcap_{n=1}^{\infty}A_n\subset\varlimsup{A}_n$ очевидно. Таким образом $\varlimsup{A}_n=\bigcap_{n=1}^{\infty}A_n$.<br>
+С другой стороны, по пункту 2 <a href="#Statement14.1.6">утверждения 14.1.6</a> и в силу убывания последовательности $\{A_n\}$
+$$\varliminf{A}_n=\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_k\right)=\bigcup_{n=1}^{\infty}\left(\bigcap_{n=1}^{\infty}A_k\right)=
+\bigcap_{n=1}^{\infty}A_n.$$
+</li>
+</ol>
+<br><br>
+<p>Таким образом любая монотонная последовательность множеств имеет предел. Однако, монотонность не является обязательным условием существования предела.
+Среди не монотонных последовательностей множеств есть последовательности как имеющие, так и не имеющие предел.
+<br><br>
+<p id=Example14.1.6><b>Пример 14.1.6:</b>
+<ol>
+<li>
+Рассмотрим последовательность $\displaystyle{A}_n=\left\{\left[0,1+\frac{(-1)^n}{n}\right]\right\}$.<br>
+$\varliminf{A}_n=\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_k\right)=\bigcup_{n=1}^{\infty}[0,1)=[0,1)$.<br>
+$$\bigcup_{k=n}^{\infty}A_k=\begin{cases}\left[0,1+\frac1{n}\right]&,n-четно\\\left[0,1+\frac1{n+1}\right]&,n-нечетно\end{cases}\Rightarrow
+\varlimsup{A}_n=\bigcap_{n=1}^{\infty}\left(\bigcup_{k=n}^{\infty}A_n\right)=\bigcap_{n=1}^{\infty}\left[1,1+\frac1{2n}\right]=[0,1].$$
+Таким образом предела немонотонной последовательности $\{A_n\}$ не существует так как $[0,1)=\varliminf{A}_n\neq\varlimsup{A}_n=[0,1]$.
+</li>
+<li>
+Рассмотрим последовательность $A_n=\begin{cases}\left[0,\frac{n+1}{n}\right]&,n-четно\\{[0,1]}&,n-нечетно\end{cases}$. Последовательность $\{A_n\}$ не 
+монотонна, но она имеет предел так как $\varliminf{A}_n=\varlimsup{A}_n=[0,1]$.
+</li>
+</ol>
+<br><br>
+<p>Если класс множеств $K$ является $\sigma$-кольцом, то в силу замкнутости $\sigma$-кольца относительно счетных объединений и пересечений по 
+<a href="#Statement14.1.6">утверждению 14.1.6</a> для любой последовательности $\{A_n\}$ из $K$ $\varliminf{A}_n\in{K}$ и $\varlimsup{A}_n\in{K}$.
+<br><br>
+<p id=Task14.1.4><b>Задача 14.1.4:</b> Пусть $X$ произвольное множество $\{A_n\}$, $\{B_n\}$ последовательности множеств из $\mathcal{P}(X)$.
+Доказать, что 
+<ol>
+<li>исключение из последовательности $\{A_n\}$ конечного числа членов не меняет ни нижнего, ни верхнего предела;</li>
+<li>
+для любой возрастающей последовательности $\{n_k\}$ из $\mathbb{N}$ из существования предела последовательности $\{A_n\}$ следует существование предела
+последовательности $\{A_{n_k}\}$. Обратное не верно. 
+</li>
+<li>$X\backslash\varlimsup{A}_n=\varliminf(X\backslash{A}_n)$, $X\backslash\varliminf{A}_n=\varlimsup(X\backslash{A}_n)$,</li>
+<li>$\varlimsup(A_n\cup{B}_n)=\varlimsup{A}_n\cup\varlimsup{B}_n$,</li>
+<li>$\varlimsup(A_n\cap{B}_n)\subset\varlimsup{A}_n\cup\varlimsup{B}_n$,</li>
+<li>$\varliminf(A_n\cup{B}_n)\supset\varliminf{A}_n\cup\varliminf{B}_n$,</li>
+<li>$\varliminf(A_n\cap{B}_n)=\varliminf{A}_n\cap\varliminf{B}_n$,</li>
+<li>$\varlimsup(A_n\times{B}_n)\subset\varlimsup{A}_n\times\varlimsup{B}_n$,</li>
+<li>$\varliminf(A_n\times{B}_n)=\varliminf{A}_n\times\varliminf{B}_n$.</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>Следует из пункта 2.</li>
+<li>
+Пусть $x\in\varliminf{A}_n$, тогда существует $t\in\mathbb{N}$ такое, что для любого $n\geq{t}$ $x\in{A}_n$. Так как последовательность $\{n_k\}$
+возрастает, то 
+$$\exists{s}\in\mathbb{N}\colon\forall{k}\geq{s}(n_k\geq{t})\Rightarrow\forall{k}\geq{s}(x\in{A}_{n_k})\Rightarrow
+{x}\in\bigcap_{k=s}^{\infty}A_{n_k}\Rightarrow{x}\in\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_{n_k}\right)\Rightarrow
+x\in\varliminf{A}_{n_k}.$$
+То есть $\varliminf{A}_n\subset\varliminf{A}_{n_k}$. С другой стороны
+$$x\in\varliminf{A}_{n_k}\Rightarrow\exists{s}\in\mathbb{N}\colon\forall{k}\geq{s}(x\in{A}_{n_k})\Rightarrow{x}\in\varlimsup{A}_n.$$
+Таким образом $\varliminf{A}_n\subset\varliminf{A}_{n_k}\subset\varlimsup{A}_n$.
+С другой стороны включение $\varlimsup{A}_{n_k}\subset\varlimsup{A}_n$ очевидно, тогда
+$\varliminf{A}_n\subset\varliminf{A}_{n_k}\subset\varlimsup{A}_{n_k}\subset\varlimsup{A}_n$. Так как $\varliminf{A}_n=\varlimsup{A}_n=\lim{A}_n$, то
+существует предел $\lim{A}_{n_k}:=\varliminf{A}_{n_k}=\varlimsup{A}_{n_k}=\lim{A}_n$.
+</li>
+<li>
+$$x\in{X}\backslash\varliminf{A}_n\Leftrightarrow(x\in{X}\wedge\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon{x}\notin{A}_n)\Leftrightarrow
+\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon{x}\in{X}\backslash{A}_n\Leftrightarrow{x}\in\varlimsup(X\backslash{A}_n).$$
+$$x\in{X}\backslash\varlimsup{A}_n\Leftrightarrow(x\in{X}\wedge\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}({x}\notin{A}_n))\Leftrightarrow
+\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(x\in{X}\backslash{A}_n)\Leftrightarrow{x}\in\varliminf(X\backslash{A}_n).$$
+</li>
+<li>
+Учитывая, что объединение двух конечных множеств всегда конечно, можем записать
+$$x\in\varlimsup(A_n\cup{B}_n)\Leftrightarrow\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon{x}\in{A}_n\cup{B}_n\Leftrightarrow
+((\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon{x}\in{A}_n)\vee(\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon{x}\in{B}_n))\Leftrightarrow
+{x}\in\varlimsup{A}_n\vee{x}\in\varlimsup{B}_n\Leftrightarrow{x}\in\varlimsup{A}_n\cup\varlimsup{B}_n.$$
+</li>
+<li>
+Доказывается аналогично пункту 4. При этом обратное включение не верно. Например, пусть $A_n=[0,1)$, $B_n=[1,2]$ при четных $n$ и $A_n=[1,2]$, $B_n=[0,1)$
+при нечетных $n$. Тогда $\varlimsup{A}_n=\varlimsup{B}_n=\varlimsup{A}_n\cap\varlimsup{B}_n=[0,2]$, но при этом для любого $n\in\mathbb{N}$ 
+$A_n\cap{B}_n=\varnothing$, следовательно, $\varlimsup(A_n\cap{B}_n)=\varnothing$.
+</li>
+<li>
+$$(x\in\varliminf{A}_n\Rightarrow\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(x\in{A}_n\subset{A}_n\cup{B}_n)\Rightarrow
+{x}\in\varliminf(A_n\cup{B}_n)\Rightarrow\varliminf{A}_n\subset\varliminf(A_n\cup{B}_n)$$
+Аналогично, доказывается, что $\varliminf{B}_n\subset\varliminf(A_n\cup{B}_n)$.<br>
+Обратное включение не верно, это подтверждает пример из пункта 5 для него $\varliminf{A}_n=\varliminf{B}_n=\varliminf{A}_n\cup\varliminf{B}_n=\varnothing$,
+но при этом для любого $n\in\mathbb{N}$ $A_n\cup{B}_n=[0,2]$, то есть $\varliminf(A_n\cup{B}_n)=[0,2]$.
+</li>
+<li>
+$$x\in\varliminf(A_n\cap{B}_n)\Leftrightarrow\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(x\in{A}_n\cap{B}_n)\Leftrightarrow
+\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(x\in{A}_n\wedge{x}\in{B}_n)\Leftrightarrow{x}\in\varliminf{A}_n\cap\varliminf{B}_n.$$
+</li>
+<li>
+$$(a,b)\in\varlimsup(A_n\times{B}_n)\Rightarrow\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon(a,b)\in{A}_n\times{B}_n\Rightarrow
+\forall{k}\in\mathbb{N}\,\exists{n}\geq{k}\colon(a\in{A}_n\wedge{b}\in{B}_n)\Rightarrow(a,b)\in\varlimsup{A}_n\times\varlimsup{B}_n.$$
+Обратное включение не верно, это подтверждает пример из пункта 5 для него $\varlimsup{A}_n\times\varlimsup{B}_n=[0,2]\times[0,2]$, а 
+$A_n\times{B}_n=[0,1)\times[1,2]$ для четных $n$ и $A_n\times{B}_n=[1,2]\times[0,1)$ для нечетных $n$, то есть 
+$\varlimsup(A_n\times{B}_n)=[0,1)\times[1,2]\cup[1,2]\times[0,1)$.
+</li>
+<li>
+$$(a,b)\in\varliminf(A_n\times{B}_n)\Leftrightarrow\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}((a,b)\in{A}_n\times{B}_n)\Leftrightarrow
+\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(a\in{A}_n\wedge{b}\in{B}_n)\Leftrightarrow(a,b)\in\varliminf{A}_n\times\varliminf{B}_n.$$
+</li>
+</ol>
+</i>
+<br><br>
+<h5 id=14.1.4>14.1.4 Функции множеств. Конечная и счетная аддитивность.</h5>
+
+<p id=Definition14.1.11><b>Определение 14.1.11:</b> Пусть $S$ произвольный класс множеств, тогда числовой функцией множеств называется функция вида
+$F:S\to\overline{\mathbb{R}}$.
+<br><br>
+<p id=Example14.1.7><b>Пример 14.1.7:</b>
+<ol>
+<li>
+Пусть $S:=\{\Delta(a,b)\mid{a},b\in\mathbb{R}\}$ класс всевозможных конечных числовых промежутков, $f(x)\colon\mathbb{R}\to\mathbb{R}$. Тогда функция 
+вида $F(\Delta(a,b))=f(b)-f(a)$ является числовой функцией множеств. Если при этом $f(x)\equiv{x}$, то функция $F(\Delta(a,b))$ задает длину промежутка 
+$\Delta(a,b)$.
+</li>
+<li>
+Функция площади и объема на множестве двумерных и трехмерных промежутков из $\mathbb{R}^2$ и $\mathbb{R}^3$ так же являются числовыми функциями множеств.
+</li>
+<li>
+Числовой функцией множеств является функция $diam\colon\mathcal{P}(\mathbb{R}^n)\to\mathbb{R}$ такая, что для любого $A\in\mathcal{P}(\mathbb{R}^n)$
+$diam(A):=\max_{a,b\in{A}}\|a-b\|$.
+</li>
+</ol>
+<br><br>
+<p id=Definition14.1.12><b>Определение 14.1.12:</b> Числовая функция множеств $F\colon{S}\to\mathbb{R}$ называется аддитивной, если для любого 
+$n\in\mathbb{N}$ и для любых $A_1,\ldots,A_n\in{S}$ выполняется 
+$$A=\bigsqcup_{i=1}^nA_i\Rightarrow{F}(A)=\sum_{i=1}^nF(A_i).$$
+<br><br>
+<p>Если класс множеств замкнут относительно конечного дизъюнктивного объединения (например является кольцом), то для аддитивности функции $F$ достаточно
+потребовать для любых $A_1,A_2\in{S}$ условия $F(A_1\sqcup{A}_2)=F(A_1)+F(A_2)$.<br>
+В приведенном выше <a href="#Example14.1.7">примере 14.1.7</a> первые две функции являются аддитивными, а третья нет.
+<br><br>
+<p id=Statement14.1.8><b>Утверждение 14.1.8: Простейшие свойства аддитивных функций.</b><br>
+Пусть $F$,$F_1$,$F_2$ аддитивные функции множеств на классе $S$, тогда
+<ol>
+<li>Семейство аддитивных функций заданных на $S$ есть векторное пространство относительно операций сложения и умножения на скаляр определенных как<br>
+$\forall\alpha\in\mathbb{R}\,\forall{A}\in{S}((\alpha{F})(A):=\alpha{F}(A)\wedge(F_1+F_2)(A):=F_1(A)+F_2(A)).$
+</li>
+<li>$\varnothing\in{S}\Rightarrow{F}(\varnothing)=0$.</li>
+<li>$(A,B,B\backslash{A}\in{S}\wedge{A}\subset{B})\Rightarrow{F}(B\backslash{A})=F(B)-F(A)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+<i>
+Функция $Z(A)\equiv0$ является аддитивной и для любой аддитивной функции $F$ $F+Z=Z+F=F$.<br>
+Для любой аддитивной функции $F$ и для любого $\alpha\in\mathbb{R}$ функция $\alpha{F}$ является аддитивной так как 
+$(\alpha{F})(A_1\sqcup{A}_2)=\alpha{F}(A_1\sqcup{A}_2)=\alpha(F(A_1)+F(A_2))=\alpha{F}(A_1)+\alpha{F}(A_2)=(\alpha{F})(A_1)+(\alpha{F})(A_2)$.<br>
+Для любых двух аддитивных функций $F_1$, $F_2$ функция $F_1+F_2$ является аддитивной, так как 
+$(F_1+F_2)(A_1\sqcup{A}_2)=F_1(A_1\sqcup{A}_2)+F_2(A_1\sqcup{A}_2)=F_1(A_1)+F_1(A_2)+F_2(A_1)+F_2(A_2)=(F_1+F_2)(A_1)+(F_1+F_2)(A_2)$.<br>
+То есть класс аддитивных функций замкнут относительно введенных операций сложения и умножения на скаляр и содержит нейтральный по сложению элемент - нуль - 
+$Z(A)$. Доказательство свойств операций векторного пространства очевидно.
+</i>
+</li>
+<li>$\varnothing=\varnothing\sqcup\varnothing\Rightarrow{F}(\varnothing)=F(\varnothing)+F(\varnothing)\Rightarrow{F}(\varnothing)=0$.</li>
+<li>$B=(B\backslash{A})\sqcup{A}\Rightarrow{F}(B)=F(B\backslash{A})+F(A)\Rightarrow{F}(B\backslash{A})=F(B)-F(A)$.</li>
+</ol>
+<br><br>
+<p id=Corollary14.1.1><b>Следствие 14.1.1:</b> Если $S$ - кольцо множеств и функция $F\colon{S}\to\mathbb{R}$ аддитивна, то для любых $A,B\in{S}$
+<ol>
+<li>$F(A\cup{B})=F(A)+F(B)-F(A\cap{B})$,</li>
+<li>$F(A\backslash{B})=F(A)-F(B)+F(B\backslash{A})$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$B=(B\backslash{A})\sqcup(A\cap{B})\Rightarrow{F}(B)=F(B\backslash{A})+F(A\cap{B})\Rightarrow{F}(B\backslash{A})=F(B)-F(A\cap{B})\qquad(*)$<br>
+$A\cup{B}=(B\backslash{A})\sqcup{A}\Rightarrow{F}(A\cup{B})=F(B\backslash{A})+F(A)=^{(*)}F(A)+F(B)-F(A\cap{B})$.
+</li>
+<li>$(B\backslash{A})\sqcup{A}=(A\backslash{B})\sqcup{B}=A\cup{B}\Rightarrow{F}(A\backslash{B})+F(B)=F(A\cup{B})=F(B\backslash{A})+F(A)$.</li>
+</ol>
+<br><br>
+<p id=Definition14.1.13><b>Определение 14.1.13:</b> Числовая функция $F\colon{S}\to\mathbb{R}$ называется $\sigma$-аддитивной или счетноаддитивной, если
+для любой последовательности множеств $\{A_n\}$ из $S$ такой, что для любых различных $m,n\in\mathbb{N}$ $A_m\cap{A}_n=\varnothing$ и
+$A:=\bigsqcup_{i=1}^{\infty}A_i\in{S}$ выполняется:
+<ol>
+<li>ряд $\sum_{n=1}^{\infty}F(A_n)$ сходится абсолютно,</li>
+<li>$\sum_{n=1}^{\infty}F(A_n)=F(A)$.</li>
+</ol> 
+<br><br>
+<p>Любая $\sigma$-аддитивная функция аддитивна, но не всякая аддитивная функция $\sigma$-аддитивна.
+<br><br>
+<p id=Example14.1.8><b>Пример 14.1.8:</b> Рассмотрим на классе множеств $S:=\{\Delta(a,b)\cap\mathbb{Q}\mid\Delta(a,b)\subset[0,1]\}$ числовую функцию 
+множеств $F(\Delta(a,b)\cap\mathbb{Q})=b-a$.<br>
+Если $\Delta(a,b)\cap\mathbb{Q}=\bigsqcup_{k=1}^n(\Delta(a_k,b_k)\cap\mathbb{Q})$, то для любых различных $k,s\in\overline{1,n}$ множество 
+$\Delta(a_k,b_k)\cap\Delta(a_s,b_s)$ либо пусто, либо содержит одну иррациональную точку, иначе множества $\Delta(a_k,b_k)\cap\mathbb{Q}$ и
+$\Delta(a_s,b_s)\cap\mathbb{Q}$ пересекались бы. Следовательно, 
+$F(\Delta(a,b)\cap\mathbb{Q})=b-a=\sum_{k=1}^n(b_i-a_i)=\sum_{k=1}^nF(\Delta(a_k,b_k)\cap\mathbb{Q})$. Таким образом функция $F$ аддитивна.<br>
+С другой стороны для любого $a\in[0,1]$ $F([a,a]\cap\mathbb{Q})=0$ и объединение $\bigsqcup_{r\in[0,1]\cap\mathbb{Q}}[r,r]=[0,1]\cap\mathbb{Q}$ счетно,
+однако, $F([0,1]\cap\mathbb{Q})=1\neq0=\sum_{r\in[0,1]\cap\mathbb{Q}}F([r,r])$. То есть функция $F$ аддитивна, но не счетноаддитивна.
+<br><br>
+<p id=Statement14.1.9><b>Утверждение 14.1.9: Непрерывность $\sigma$-аддитивных функций на монотонных классах.</b><br>
+Пусть $K$ - кольцо множеств, $F\colon{K}\to\mathbb{R}$ - $\sigma$-аддитивная функция, $\{A_n\}$ последовательность множеств из $K$, тогда
+<ol>
+<li>
+$$\left(A:=\bigcup_{n=1}^{\infty}A_n\in{K}\wedge\forall{n}\in\mathbb{N}(A_n\subset{A}_{n+1})\right)\Rightarrow
+\exists\lim_{n\to\infty}F(A_n)=F(A)=F(\lim{A}_n);$$
+</li>
+<li>
+$$\left(A:=\bigcap_{n=1}^{\infty}A_n\in{K}\wedge\forall{n}\in\mathbb{N}(A_{n+1}\subset{A}_n)\right)\Rightarrow
+\exists\lim_{n\to\infty}F(A_n)=F(A)=F(\lim{A}_n).$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Пусть $\{A_n\}$ не убывающая последовательность множеств из $K$, тогда 
+$$\forall{n}\in\mathbb{N}\left(A_n=(A_n\backslash{A}_{n-1})\sqcup(A_{n-1}\backslash{A}_{n-2})\sqcup\ldots\sqcup(A_2\backslash{A}_1)\sqcup{A}_1\right)=
+\bigsqcup_{k=1}^n(A_k\backslash{A}_{k-1}),$$
+где $A_0:=\varnothing$.<br>
+Обозначим $A:=\lim{A}_n=\bigcup_{n=1}^{\infty}A_n=\bigsqcup_{n=1}^{\infty}(A_n\backslash{A}_{n-1})$. Тогда по $\sigma$-аддитивности функции $F$ ряд
+$\sum_{n=1}^{\infty}F(A_n\backslash{A}_{n-1})$ сходится и имеет своей суммой $F(A)$. Следовательно, существует предел частичных сумм этого ряда 
+$\lim_{n\to\infty}\sum_{k=1}^nF(A_k\backslash{A}_{k-1})=\lim_{n\to\infty}F(A_n)=F(A)$.
+</li>
+<li>
+Пусть $\{A_n\}$ не возрастающая последовательность множеств из $K$. Обозначим $A:=\lim{A}_n=\bigcap_{n=1}^{\infty}A_n$, тогда 
+$$\forall{n}\in\mathbb{N}\left(A_n=(A_n\backslash{A}_{n+1})\sqcup(A_{n+1}\A_{n+2})\sqcup\ldots\sqcup{A}=
+\left(\bigsqcup_{k=n}^{\infty}(A_n\backslash{A}_{n+1})\right)\sqcup{A}\right)\Rightarrow{A}_1=\bigsqcup_{n=1}^{\infty}(A_n\backslash{A}_{n+1})\sqcup{A}.$$
+Тогда по $\sigma$-аддитивности функции $F$ ряд $\sum_{n=1}^{\infty}F(A_n\backslash{A}_{n+1})$ сходится. Следовательно, сумма $n$-того остатка этого ряда
+стремится к нулю при $n\to\infty$, то есть существует предел 
+$\lim_{n\to\infty}F(A_n)=\lim_{n\to\infty}\sum_{k=n}^{\infty}F(A_k\backslash{A}_{k+1})+F(A)=F(A)$.
+</li>
+</ol>
+<br><br>
+<p id=Task14.1.5><b>Задача 14.1.5:</b> Доказать, что если $\{A_n\}$ последовательность множеств из кольца $K$, функция $F\colon{K}\to\mathbb{R}$ 
+$\sigma$-аддитивна, $\bigcup_{n=1}^{\infty}A_n\in{K}$, то
+<ol>
+<li>$\displaystyle\lim_{n\to\infty}F\left(\bigcup_{k=1}^nA_k\right)=F\left(\bigcup_{n=1}^{\infty}A_n\right)$,</li>
+<li>$\displaystyle\lim_{n\to\infty}F\left(\bigcap_{k=1}^nA_k\right)=F\left(\bigcap_{n=1}^{\infty}A_n\right)$.</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>
+Так как последовательность множеств $A'_n:=\bigcup_{k=1}^nA_k$ является не убывающей, то для нее можно применить утверждение 14.1.9, тогда
+$\lim_{n\to\infty}F\left(\bigcup_{k=1}^nA_n\right)=\lim_{n\to\infty}F(A'_n)=F\left(\bigcup_{n=1}^{\infty}A'_n\right)=
+F\left(\bigcup_{n=1}^{\infty}A_n\right)$
+</li>
+<li>
+Так как последовательность множеств $A''_n:=\bigcap_{k=1}^nA_n$ является не возрастающей, то дял нее можно применить утверждение 14.1.9, тогда
+$\lim_{n\to\infty}F\left(\bigcap_{k=1}^nA_k\right)=\lim_{n\to\infty}F(A''_n)=F\left(\bigcap_{n=1}^{\infty}A''_n\right)=
+F\left(\bigcap_{n=1}^{\infty}A_n\right)$.
+</li>
+</ol>
+</i>
+
+ 
+<br><br>
+<a href="./math_analysis14.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.1.html">next</a>
+</body>
+</html>

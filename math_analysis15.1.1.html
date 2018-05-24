@@ -1,0 +1,188 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 15.1.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.3.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.1.2.html">next</a>
+
+<h3 id=15>15. ОБЩАЯ ТЕОРИЯ РЯДОВ ФУРЬЕ В <a href="https://en.wikipedia.org/wiki/Euclidean_space">ЕВКЛИДОВЫХ ПРОСТРАНСТВАХ.</a></h3>
+
+<h4 id=15.1>15.1 Абстрактный ряд Фурье.</h4>
+
+<h5 id=15.1.1>15.1.1 Ортогональные системы в евклидовых пространствах.</h5>
+
+<p>Далее везде под обозначением $\mathbb{P}$ будет имется ввиде как поле вещественных чисел $\mathbb{R}$, так и поле комплексных чисел $\mathbb{C}$. 
+
+<p id=Definition15.1.1><b>Определение 15.1.1:</b> Система векторов $S=\{x_{\alpha}\mid\alpha\in{I}\}$ из евклидова пространства $H$ называется ортогональной,
+если для любых различных $\alpha,\beta\in{I}$ вектора $x_{\alpha}$, $x_{\beta}$ ортогональны, то есть $(x_{\alpha},x_{\beta})=0$.
+<br><br>
+<i>
+<p id=Definition15.1.1.1><b>Определение 15.1.1.1:</b> Множество $A$ является всюду плотным в евклидовом пространстве $X$, если 
+$\overline{A}:=A\cup\partial{A}=X$.
+<br><br>
+<p id=Definition15.1.1.2><b>Определение 15.1.1.2:</b> Евклидово пространство называют сепарабельным, если оно содержит хотя бы одно счетное всюду плотное
+множество.
+<br><br>
+<p>Для любого $n\in\mathbb{R}^n$ пространство $\mathbb{R}^n$ над $\mathbb{R}$ является сепарабельным, так как всюду плотным счетным множеством в нем
+является множество $\mathbb{Q}^n$.<br>
+Пространство непрерывных функций заданных на отрезке сепарабельно, так как всюду плотным счетным множеством в нем является множество многочленов с
+рациональными коэффициентами. 
+</i>
+<br><br>
+<p id=Theorem15.1.1><b>Теорема 15.1.1:</b> В любом сепарабельном евклидовом пространстве любая ортогональная система векторов не более чем счетна.
+<p><b>Доказательство:</b> Без доказательства.
+<br><br>
+<p id=Example15.1.1><b>Пример 15.1.1:</b> Рассмотрим евклидово пространство $\mathcal{R}_2[a,b]$ функций $f(x)\colon[a,b]\to\mathbb{R}$ таких, что функция 
+$|f(x)|^2$ интегрируема по Риману на отрезке $[a,b]$ хотя бы в несобственном смысле.<br>
+Скалярное произведение на этом пространстве задается функцией $(f,g):=\int_a^bf(x)g(x)\,dx$.<br> 
+Поскольку для любого $x\in[a,b]$ $f(x)g(x)\leq|f(x)|^2+|g(x)|^2$, то данное определение скалярного произведения корректно.<br>
+<i>
+Пространство $\mathcal{R}_2[a,b]$ является евклидовым только если функции имееющие различные значения лишь на множестве меры 0 считаются равными. Иначе
+не выполняется условие $(x,x)=0\Rightarrow{x}=0$.
+</i><br>
+Если положить $a=-\pi$, $b=\pi$, то множество функций $\{1,\sin{x},\cos{x},\sin{2x},\cos{2x},\ldots,\sin{nx},\cos{nx},\ldots\}=
+\{1,\sin{nx},\cos{nx}\mid{x}\in\mathbb{N}\}$ будет ортогональной системой пространства $\mathcal{R}_2[-\pi,\pi]$, так как для любых различных 
+$m,n\in\mathbb{N}$
+$$\int_{-\pi}^{\pi}\sin{mx}\sin{nx}\,dx=0,\int_{-\pi}^{\pi}\cos{mx}\cos{nx}\,dx=0,\int_{-\pi}^{\pi}\sin{mx}\cos{nx}\,dx=0$$
+<i>
+При доказательстве этих равенств используются формулы сложения:
+$\sin(\alpha\pm\beta)=\sin{\alpha}\cos{\beta}\pm\cos{\alpha}\sin{\beta}$,
+$\cos(\alpha\pm\beta)=\cos{\alpha}\cos{\beta}\mp\sin{\alpha}\sin{\beta}$. См., например, Кудрявцев т. 2, стр. 245.
+<br><br>
+<p id=Definition15.1.2.1><b>Определение 15.1.2.1:</b> Конечная система векторов $x_1,\ldots,x_n$ евклидова пространства $H$ над $\mathbb{R}$ или 
+$\mathbb{C}$ называется линейно зависимой (ЛЗ), если существуют $\lambda_1,\ldots,\lambda_n\in\mathbb{R}(\mathbb{C})$ не все равные нулю такие, что 
+$\lambda_1x_1+\cdots+\lambda_nx_n=0$.<br>
+В противном случае система векторов называется  линейно не зависимой (ЛНЗ).
+</i>
+<br><br>
+<p id=Definition15.1.2><b>Определение 15.1.2:</b> Бесконечная система векторов евклидова пространства называется линейно не зависимой, если любая ее
+конечная подсистема линейно не зависима.
+<br><br>
+<p>Если система векторов $\{x_{\alpha}\mid\alpha\in{I}\}$ евклидова пространства является ортогональной и для любого $\alpha\in{I}$ $x_{\alpha}\neq0$, 
+то она является линейно не зависимой. <i>(Кудрявцев т. 2, стр. 331)</i> <br>
+Если $H$ евклидово пространство над полем $P\in\{\mathbb{R},\mathbb{C}\}$, то функция $\|x\|:=\sqrt{(x,x)}$ является 
+<a href="https://en.wikipedia.org/wiki/Norm_(mathematics)">нормой</a>. При этом для любых $x,y\in{H}$ $(x,y)\leq\|x\|\|y\|=\sqrt{(x,x)(y,y)}$ 
+<i>(неравенство Коши - Шварца, Кудрявцев т. 2, стр. 317).</i><br>
+Если вектора $x,y\in{H}$ ортогональны, то $\|x+y\|^2=(x+y,x+y)=(x,x)+(x,y)+(y,x)+(y,y)=(x,x)+(y,y)=\|x\|^2+\|y\|^2$ (теорема Пифагора).<br>
+В случае евклидова пространства $\mathcal{R}_2[a,b]$ из неравенства $(f,g)\leq\|f\|\|g\|$ следует 
+<a href="./math_analysis9.html#Statement9.1">неравенство Коши - Буняковского</a>.
+$$\left|\int_a^bf(x)g(x)\,dx\right|\leq\int_a^b|f(x)g(x)|\,dx=(f,g)\leq\|f\|\|g\|=
+\left(\int_a^bf^2(x)\,dx\right)^{1/2}\left(\int_a^bg^2(x)\,dx\right)^{1/2}.$$
+<br><br>
+<p id=Definition15.1.4><b>Определение 15.1.4:</b> Ортогональная система векторов евклидова пространства называется ортонормированной, если норма любого ее
+элемента равна единице.
+<br><br>
+<p>Из определения 15.1.4 следует, что если система векторов $\{x_{\alpha}\mid\alpha\in{I}\}$ ортогональна и для любого $\alpha\in{I}$ $x_{\alpha}\neq0$,
+то система векторов $\displaystyle\left\{\left.\frac{x_{\alpha}}{\|x_{\alpha}\|}\right|\alpha\in{I}\right\}$ ортонормирована.
+<br><br>
+<p id=Definition15.1.5><b>Определение 15.1.5:</b> Пусть $S=\{e_{\alpha}\mid\alpha\in{I}\}$ система векторов евклидова пространства $H$. Тогда 
+совокупность всех конечных линейных комбинаций векторов системы $S$ называется линейной оболочкой системы $S$ и обозначается $\mathcal{Lin}\{S\}$.
+<br>
+<h5 id=15.1.5>15.1.5 Коэффициенты Фурье и их свойства.</h5>
+
+<p id=Definition15.1.6><b>Определение 15.1.6:</b> Пусть $S=\{e_n\}$ не более чем счетная ортогональная система векторов из евклидова пространства $H$,
+тогда для любого $x\in{H}$ число $\displaystyle{x}_n:=\frac{(x,e_n)}{(e_n,e_n)}=\frac{(x,e_n)}{\|e\|^2}$ называется $n$-тым коэффициентом Фурье вектора
+$x$ по системе $S$.<br>
+Ряд $\sum_{n=1}^{\infty}(x_ne_n)$ называется рядом Фурье элемента $x$ по системе $S$.<br>
+<br>
+<p>Из определений <a href="#Definition15.1.4">15.1.4</a>, 15.1.6 следует, что если система $S$ ортонормирована, то $x_n=(x,e_n)$.<br>
+Произведение $x_ne_n$ называют проекцией вектора $x$ на прямую $L:=\{te_n\mid{t}\in{P}\}$.<br>
+В данном разделе будут изучаться бесконечномерные ортогональные системы векторов, так как конечномерные пространства изучаются в курсе алгебры.
+<br><br>
+<p id=Example15.1.2><b>Пример 15.1.2:</b> Пусть $H\in\mathcal{R}_2[-\pi,\pi]$, $S=\{1,\sin{nx},\cos{nx}\mid{n}\in\mathbb{N}\}$, тогда
+$\|1\|=\left(\int_{-\pi}^{\pi}dx\right)^{1/2}=\sqrt{2\pi}$ и
+$$\forall{n}\in\mathbb{N}\left(\|\sin{nx}\|=\|\cos{nx}\|=\left(\int_{-\pi}^{\pi}\sin^2{nx}\,dx\right)^{1/2}=
+\left(\int_{-\pi}^{\pi}\cos^2{nx}\,dx\right)^{1/2}=\left(\frac1{n}\int_{-n\pi}^{n\pi}\sin^2y\,dy\right)^{1/2}=\sqrt{\pi}\right)$$
+см. <a href="./math_analysis8.4.2.html#Example8.4.1">пример 8.4.1</a>.<br>
+Таким образом <a href="#Definition15.1.6">коэффициенты Фурье</a>. для функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ равны
+$$\begin{cases}
+a_n=\frac{(f(x),\cos{mx})}{\|\cos{nx}\|^2}=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\cos{nx}\,dx&,n\in\mathbb{N}_0\\
+b_n=\frac{(f(x),\sin{nx})}{\|\sin{nx}\|^2}=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\sin{nx}\,dx&,n\in\mathbb{N}
+\end{cases},\qquad(1)$$
+где $a_0$ равен первому коэффициенту Фурье умноженному на 2.<br>
+<a href="#Definition15.1.6">Ряд Фурье</a> для функции $f(x)$ по системе $S$ имеет вид:
+$\displaystyle\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx}).$
+<br><br> 
+<p>В целях общности будем использовать формулы (1) не только для функций из $\mathcal{R}_2[-\pi,\pi]$, но и для функций из $\mathcal{R}_1[-\pi,\pi]$
+(для которых интегрируем на $[-\pi,\pi]$ только $|f(x)|$), поскольку все интегралы из (1) сходятся по мажорантному 
+<a href="./math_analysis8.5.3.html#Theorem8.5.2">признаку Вейерштрасса</a>.
+<br><br>
+<p id=Task15.1.1><b>Задача 15.1.1:</b> Вычислить коэффициенты Фурье в пространстве $\mathcal{R}_2[-\pi,\pi]$ над $\mathbb{C}$ по системе 
+$S=\{e^{inx}\mid{n\in\mathbb{Z}}\}$.
+<p><b>Решение:</b>
+<i>
+В пространстве $\mathcal{R}_2[a,b]$ над $\mathbb{C}$ для любых $f,g\in\mathcal{R}_2[a,b]$ скалярное произведение определяется как 
+$(f,g)=\int_a^bf(z)\overline{g(z)}\,dz$, где $\overline{g(z)}=(Re(g(z)),-Im(g(z)))$ функция сопряженная с $g(z)$, тогда
+$$\|e^{inx}\|^2=(e^{inx},\overline{e^{inx}})=\int_{-\pi}^{\pi}(\cos{nx}+i\sin{nx})(\cos{nx}-i\sin{nx})\,dx=
+\int_{-\pi}^{\pi}\cos^2{nx}\,dx+\int_{-\pi}^{\pi}\sin^2{nx}\,dx=2\pi.$$
+Так как $\overline{e^{ix}}=\cos{x}-i\sin{x}=e^{-ix}$, то <a href="#Definition15.1.6">коэффициенты Фурье</a> по системе $S$ для функции 
+$f(x)\in\mathcal{R}_2[-\pi,\pi]$ при любом $z\in\mathbb{Z}$ будут равны
+$$c_n=\frac{(f(x),e^{-inx})}{\|e^{inx}\|^2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx.$$
+Соответственно ряд Фурье для функции $f(x)$ по системе $S$ будет иметь вид
+$$\frac1{2\pi}\sum_{n=-\infty}^{+\infty}c_ne^{inx}=\frac1{2\pi}\sum_{n=-\infty}^{+\infty}\left(e^{inx}\int_{-\pi}^{\pi}f(t)e^{-int}\,dt\right).$$
+</i>
+<br><br>
+<p id=Theorem15.1.2><b>Теорема 15.1.2: Характеристические свойства коэффициентов Фурье.</b><br>
+Пусть $S=\{e_n\}$ ортогональная система векторов в евклидовом пространстве $H$ над полем $\mathbb{P}$, $n\in\mathbb{N}$, $x\in{H}$, тогда
+<ol>
+<li>$x-S_n=x-\sum_{k=1}^n(x_ke_k)\perp\mathcal{Lin}\{e_k\mid{k}\in\overline{1,n}\}$,</li>
+<li>$\forall\{\alpha_1,\ldots,\alpha_n\}\in\mathbb{P}\left(\left\|\sum_{k=1}^n(\alpha_ke_k)\right\|^2=\sum_{k=1}^n(|\alpha_k|^2(e_k,e_k))\right)$,</li>
+<li>$\forall\{\alpha_1,\ldots,\alpha_n\}\in\mathbb{P}\left(\|x-S_n\|=\|x-\sum_{k=1}^n(x_k,e_k)\|\leq\|x-\sum_{k=1}^n(\alpha_ke_k)\|\right)$,</li>
+<li>неравенство Бесселя для конечных сумм:$\sum_{k=1}^n(|x_k|^2(e_k,e_k))\leq\|x\|^2,$
+</li>
+<li>неравенство Бесселя в общем случае: $\sum_{n=1}^{\infty}(|x_n|^2(e_n,e_n))\leq\|x\|^2$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$\forall{i}\in\overline{1,n}((x-S_n,e_i)=(x,e_i)-(S_n,e_i)=(x,e_i)-\sum_{k=1}^n(x_ke_k,e_i)=(x,e_i)-\sum_{k=1}^n(x_k(e_k,e_i))).$$
+Так как система векторов $S=\{e_n\}$ ортогональна, то для любых $k\neq{i}$ $(e_k,e_i)=0$, следовательно, второе слагаемое равно $x_i(e_i,e_i)$, тогда
+$$\forall{i}\in\overline{1,n}((x-S_n,e_i)=(x,e_i)-x_i(e_i,e_i)=(x,e_i)-\frac{(x,e_i)}{(e_i,e_i)}(e_i,e_i)=(x,e_i)-(x,e_i)=0).$$
+Тогда
+$$\forall\alpha\in\mathcal{Lin}\{e_1,\ldots,e_n\}(\exists\alpha_1,\ldots,\alpha_t\in\mathbb{P}\,\exists{k}_1,\ldots,k_t\in\overline{1,n}\colon
+\alpha=e_{k_1}\alpha_1+\cdots{e}_{k_t}\alpha_t\Rightarrow$$ $$\Rightarrow(x-S_n,\alpha)=(x-S_n,\alpha_1e_{k_1})+\cdots+(x-S_n,\alpha_ne_{k_t})=
+\overline{\alpha}_1(x-S_n,e_{k_1})+\cdots+\overline{\alpha}_t(x-S_n,e_{k_t})=0)$$
+</li>
+<li>
+$$\left\|\sum_{k=1}^n(\alpha_ke_k)\right\|^2=\left(\sum_{k=1}^n(\alpha_ke_k),\sum_{k=1}^n(\alpha_ke_k)\right)=\sum_{k=1,m=1}^n(\alpha_ke_k,\alpha_me_m)=
+\sum_{k=1,m=1}^n(\alpha_k\overline{\alpha}_m(e_k,e_m))=\sum_{k=1}^n(|\alpha_k|^2(e_k,e_k)).$$
+</li>
+<li>
+Положим $y:=\sum_{k=1}^n(\alpha_k,e_k)$, тогда
+$$y,S_n\in\mathcal{Lin}\{e_1,\ldots,e_n\}\Rightarrow{y}-S_n\in\mathcal{Lin}\{e_1,\ldots,e_n\}\Rightarrow^{(1)}x-S_n\perp{y}-S_n$$
+$$x-y=(x-S_n)-(y-S_n)\Rightarrow\|x-y\|^2=\|x-S_n\|^2+\|y-S_n\|^2\geq\|x-S_n\|^2\Rightarrow\|x-S_n\|=\left\|x-\sum_{k=1}^n(x_k,e_k)\right\|\leq
+\|x-y\|=\left\|x-\sum_{k=1}^n(\alpha_ke_k)\right\|.$$
+При этом неравенство обращается в равенство тогда и только тогда, когда
+$$\|y-S_n\|^2=0\Leftrightarrow\|y-S_n\|=0\Leftrightarrow{y}-S_n=0\Leftrightarrow\sum_{k=1}^n((\alpha_k-x)e_k)=0\Leftrightarrow
+\forall{k}\in\overline{1,n}(\alpha_k=x_k).$$
+</li>
+<li>
+Так как $S_n\in\mathcal{Lin}\{e_1,\ldots,e_n\}$, то по пункту 1 $(x-S_n)\perp{S}_n$, тогда 
+$$x=(x-S_n)+S_n\Rightarrow\|x\|^2=\|x-S_n\|^2+\|S_n\|^2\geq\|S_n\|^2=(S_n,S_n)=\left(\sum_{k=1}^n(x_ke_k),\sum_{k=1}^n(x_ke_k)\right)=
+\sum_{k=1}^n(|x_k|^2(e_k,e_k)).$$
+</li>
+<li>
+Из пункта 4 следует, что все частичные суммы ряда $\sum_{n=1}^{\infty}(|x_n|^2(e_k,e_k))$ ограничены, следовательно, ряд сходится. Таким образом из 
+пункта 4 следует $\sum_{k=1}^n(|x_n|^2(e_n,e_n))\leq\|x\|^2$.
+</li>
+</ol>
+<br><br>
+<p>Пункт 3 имеет геометрическую интерпретацию. Среди всех векторов из $\mathcal{Lin}\{e_1,\ldots,e_n\}$ $n$-тая частичная сумма ряда 
+$\sum_{n=1}^{\infty}(x_ke_k)$ наилучшим (среди всех линейных комбинаций из $n$ слагаемых) образом аппроксимирует вектор $x$.
+<br>
+
+<br><br>
+<a href="./math_analysis14.3.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.1.2.html">next</a>
+</body>
+</html>

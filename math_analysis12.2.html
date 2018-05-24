@@ -1,0 +1,220 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-textvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathJax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.1.html">next</a>
+
+<h4 12.2>12.2 Непрерывность функций многих вещественных переменных.</h4>
+
+<h5 id=12.2.1> 12.2.1 Определение и локальные свойства.</h5>
+
+<p id=Definition12.2.1><b>Определение 12.2.1: Непрерывность функции в точке.</b><br>
+Пусть $E\subset\mathbb{R}^m$, говорят, что функция $f(x)\colon{E}\to\mathbb{R}^m$ непрерывна в точке $a\in{E}$ если,
+$$\forall{V}(f(a))\,\exists{U}(a)\colon(f(U(a))\subset{V}f(a)).$$
+<br>
+Из определения следует, что в любой изолированной точке любая функция непрерывна, если $a\in{E}\cap\mathring{E}$, то функция $f(x)$ непрерывна 
+в точке $a$ тогда и только тогда, когда $\displaystyle\lim_{E\ni{x}\to{a}}f(x)=f(a)$.
+
+<br><br>
+
+<p id=Statement12.2.1><b>Утверждение 12.2.1: Основные локальные свойства непрерывных функций.</b><br>
+Пусть $E\subset\mathbb{R}^n$ и функции $f(x),g(x)\colon{E}\to\mathbb{R}^m$ непрерывны в точке $a\in{E}$, тогда
+<ol>
+<li>функция $f(x)$ локально ограничена при $x\to{a}$ по $E$;</li>
+<li>композиция функций непрерывных в точке непрерывна в этой точке;</li>
+<li>для любых $\alpha,\beta\in\mathbb{R}$ функция $\alpha{f}(x)+\beta{g}(x)$ непрерывна в точке $a$;</li>
+<li>при $m=1$
+<ol type="a">
+<li>если $f(a)\neq0$, то функция $f(x)$ локально сохраняет знак при $x\to{a}$ по $E$;</li>
+<li>функция $f(x)g(x)$ непрерывна в точке $a$;</li>
+<li>если существует окрестность $U(a)$ такая, что для любого $x\in{U}(a)$ $g(x)\neq0$, то функция $\frac{f(x)}{g(x)}$ непрерывна в точке $a$
+по множеству $U_E(a)$.</li>
+</ol>
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<i>
+<ol>
+<li>Доказано в более общем виде в <a href="./math_analysis11.2.html#Statement11.2.1">утверждении 11.2.1</a></li>
+<li>Доказано в более общем виде в <a href="./math_analysis11.2.html#Statement11.2.1">утверждении 11.2.1</a></li>
+<li>
+Если $a\notin\mathring{E}$, то любая функция заданная на множестве $E$ непрерывна в точке $a$.<br>
+Если $a\in\mathring{E}$, то утверждение следует из пункта 3 <a href="./math_analysis12.1.html#Statement12.1.2">утверждения 12.1.2</a>.
+</li>
+<li>
+<ol type="a">
+<li>
+Если $a\notin\mathring{E}$, то существует окрестность $U(a)$ такая, что $U_E(a)=\{a\}$, в этой окрестности функция сохраняет знак.<br>
+Если $a\in\mathring{E}$, то утверждение следует из пункта 2 <a href="./math_analysis12.1.html#Statement12.1.3">утверждения 12.1.3</a>.
+</li>
+<li>
+Если $a\notin\mathring{E}$, то любая функция заданная на множестве $E$ непрерывна в точке $a$.<br>
+Если $a\in\mathring{E}$, то утверждение следует из пункта 1 <a href="./math_analysis12.1.html#Statement12.1.3">утверждения 12.1.3</a>.
+</li>
+<li>
+Если $a\notin\mathring{E}$, то она изолирована в множестве $U_E(a)$ для любой окрестности $U(a)$, следовательно, любая функция заданная на $U_E(a)$ 
+непрерывна в точке $a$.<br>
+Если $a\in\mathring{E}$, то утверждение следует из пункта 1 <a href="./math_analysis12.1.html#Statement12.1.2">утверждения 12.1.3</a>. 
+</li>
+</ol>
+</li>
+</ol>
+</i>
+<br>
+
+<p id=Definition12.2.2><b>Определение 12.2.2:</b> Пусть $E\subset\mathbb{R}$ и функция $f(x)\colon{E}\to\mathbb{R}$ непрерывна в точке 
+$a\in{E}\cap\mathring{E}$. Для любого $i\in\overline{1,n}$ обозначим 
+$E_i(a):=\{x=(x_1,\ldots,x_n)\in{E}\mid\forall{k}\in\overline{1,n}\backslash\{i\}(x_k=a_k)\}$. Тогда будем говорить, что функция $f(x)$ непрерывна
+в точке $a$ по $i$-той переменной, если точка $a$ изолирована в $E_i(a)$ или если предел функции $f(x)$ при $x\to{a}$ по $E_i(a)$ существует и равен 
+$f(a)$.
+
+<br><br>
+
+<p>Из непрерывности по совокупности переменных следует непрерывность по каждой координате. Так как из существования предела по множеству следует 
+существование предела по любому его подмножеству. Обратное не верно. 
+<br>
+<p id=Example12.2.1><b>Пример 12.2.1:</b> Рассмотрим функцию 
+$\displaystyle{f}(x)=\begin{cases}\frac{xy}{x^2+y^2}&,x^2+y^2\neq0\\ \quad0&,x=y=0\end{cases}\colon\mathbb{R}^2\to\mathbb{R}$ и точку $a=(0,0)$.<br>
+Легко видеть, что функция $f(x,y)$ непрерывна по множествам $E_1(a)$, $E_2(a)$ в точке $a$:
+
+$$E_1(a)=\{(x,0)\mid{x}\in\mathbb{R}\}\Rightarrow\forall(x,y)\in{E}_1(a)(f(x,y)=0)\Rightarrow\exists\lim_{E_1(a)\ni(x,y)\to{a}}f(x,y)=0;$$
+$$E_2(a)=\{(0,y)\mid{y}\in\mathbb{R}\}\Rightarrow\forall(x,y)\in{E}_2(a)(f(x,y)=0)\Rightarrow\exists\lim_{E_2(a)\ni(x,y)\to{a}}f(x,y)=0$$   
+Однако, как было показано в <a href="./math_analysis12.1.html#Example12.1.2">примере 12.1.2</a> функция $f(x,y)$ не имеет предела при $(x,y)\to{a}$
+по $\mathbb{R}$.
+
+<br><br>
+
+<p id=Definition12.2.3><b>Определение 12.2.3</b> Пусть $E\subset\mathbb{R}^n$, будем говорить, что функция $f(x)\colon{E}\to\mathbb{R}^m$ 
+непрерывна на множестве $E$, если она непрерывна в каждой точке множества $E$.<br>
+Класс функций непрерывных на множестве $E$ со значениями в $\mathbb{R}^m$ будем обозначать $C(E;\mathbb{R}^m)$.
+
+<h5 id=12.2.2>12.2.2 Глобальные свойства непрерывных функций.</h5>  
+
+<p id=Statement12.2.2><b>Утверждение 12.2.2:</b> Пусть $E\subset\mathbb{R}^n$, $E$ - компакт в $\mathbb{R}^n$ и функция $f(x)\colon{E}\to\mathbb{R}^m$
+непрерывна на $E$, тогда
+<ol>
+<li>множество $f(E)$ компактно в $\mathbb{R}^m$;</li>
+<li>функция $f(x)$ равномерно непрерывна на $E$;</li>
+<li>при $m=1$ функция $f(x)$ ограничена на множестве $E$ и достигает на нем своего минимума и максимума.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Доказано в более общем виде в <a href="./math_analysis11.2.html#Statement11.2.2">утверждении 11.2.2</a>.</li>
+<li>Доказано в более общем виде в <a href="./math_analysis11.2.html#Statement11.2.3">утверждении 11.2.3</a>.</li>
+<li>Доказано в более общем виде в <a href="./math_analysis11.2.html#Corollary11.2.2">следствии 11.2.2</a></li>
+</ol>
+
+<br><br>
+
+<p id=Definition12.2.4><b>Определение 12.2.4:</b> Множество $E\subset\mathbb{R}^n$ линейносвязно (связно), если для любых $a,b\in{E}$ существует
+непрерывное отображение $\varphi(t)\colon[\alpha,\beta]\to{E}$ такое, что $\varphi(\alpha)=a$, $\varphi(\beta)=b$.
+<br>
+То есть любые две точки множества $E$ можно соединить непрерывной кривой, носитель которой лежит в $E$.
+
+<br><br>
+
+<p id=Example12.2.2><b>Пример 12.2.2:</b> При $n=1$ множество $E\subset\mathbb{R}$ связно тогда и только тогда, когда для любых  $a,b\in{E}$ 
+$[a,b]\subset{E}$, то есть $E$ является числовым промежутком. Это следует из <a href="./math_analysis5.5.3.html#Corollary5.5.2">теоремы Больцано - Коши</a> 
+о промежуточном значении.
+
+<br><br>
+
+<p id=Example12.2.3><b>Пример 12.2.3:</b> Докажем, что для любого $a\in\mathbb{R}^2$ и для любого $r>0$ круг радиуса $r$ с центром в точке $a$ 
+$B(a,r)=\{x\in\mathbb{R}^2\mid\|x-a\|<{r}\}$ является связным множеством.<br>
+Для любых $x,y\in{B}(a,r)\subset\mathbb{R}^2$ рассмотрим отображение $\varphi(t)\colon[0,1]\to\mathbb{R}^2$ такое, что для любого $t\in[0,1]$
+$\varphi(t)=tx+(1-t)y$. Легко видеть, что $\varphi(0)=y$, $\varphi(1)=x$ и отображение $\varphi(t)$ непрерывно 
+(<a href="#Statement12.2.1">утверждение 12.2.1</a> п. 3) по $\mathbb{R}^2$. Докажем, что область значений отображения $\varphi(t)$ лежит в $B(a,r)$.
+$$
+\forall{t}\in[a,b](\|\varphi(t)-a\|=\|tx+(1-t)y-a\|=\|tx+(1-t)y-ta-(1-t)a\|=\|t(x-a)+(1-t)(y-a)\|\leq{t}\|x-a\|+(1-t)\|y-a\|<{t}r+(1-t)r=r)
+$$
+Таким образом для любого $t\in[0,1]$ $\varphi(t)\in{B}(a,r)$.
+
+
+<br><br>
+
+<p id=Definition12.2.4><b>Определение 12.2.4:</b> Множество $D\subset\mathbb{R}^n$ называется областью, если оно 
+<a href="./math_analysis11.1.html#Definition11.1.3">открыто</a> и <a href="#Definition12.2.4">связно</a>.<br>
+Область $D$ называют выпуклой, если 
+$$\forall{d}_1,d_2\in{D}([d_1,d_2]:=\{td_1+(1-t)d_2\mid{t}\in[0,1]\}\subset{D})$$
+
+<br><br>
+
+<p id=Statement12.2.3><b>Утверждение 12.2.3:</b> Пусть $E\subset\mathbb{R}^n$ связное множество, $f(x)\in{C}(E;\mathbb{R}^m)$, тогда
+<ol>
+<li>если $m=1$, $a,b\in{E}$ такие, что $A:=f(a)<{B}:=f(b)$, тогда для любого $C\in(A,B)$ существуе $c\in{E}$ такое, что $f(c)=C$;</li>
+<li>для любого $m\in\mathbb{N}$ множество $f(E)$ связное.</li>
+</ol> 
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Согласно определению связного множества существует функция $\varphi(t)\in{C}([\alpha,\beta];E)$ такая, что $\varphi(\alpha)=a$, $\varphi(\beta)=b$.
+Тогда числовая функция $\psi(t):=f(\varphi(t))\colon[\alpha,\beta]\to\mathbb{R}$ непрерывна как <a href="#Statement12.2.1">композиция непрерывных</a> 
+и $\psi(\alpha)=A$, $\psi(\beta)=B$. Следовательно, по <a href="./math_analysis5.5.3.html#Corollary5.5.2">теореме Больцано - Коши</a> о промежуточном 
+значении
+$$\forall{C}\in(A,B)\exists\xi\in(\alpha,\beta)\colon\psi(\xi)=f(\varphi(\xi))=C\Rightarrow\exists{c}:=\varphi(\xi)\colon{f}(c)=C$$
+</li>
+<li>
+Фиксируем $A,B\in{f}(E)$, тогда существуют $a,b\in{E}$ такие, что $f(a)=A$, $f(b)=B$ и из связности множества $E$ следует, что 
+$$\exists\varphi(t)\colon[\alpha,\beta]\to{E}\colon(\varphi(\alpha)=a\wedge\varphi(\beta)=b\wedge\varphi(t)\in{C}([\alpha,\beta];E))\Rightarrow
+\exists\psi(t):=f(\varphi(t))\colon[\alpha,\beta]\to{f}(E)\colon(\psi(\alpha)=f(\varphi(\alpha))=A\wedge\psi(\beta)=B\wedge
+\psi(t)\in{C}([\alpha,\beta;f(E)]))$$
+Таким образом реализовано определение связности для множества $f(E)$.
+</li>
+</ol>
+
+<br><br>
+
+<p id=Example12.2.4><b>Пример 12.2.4:</b> Контрпример к условию связности множества $E$.<br>
+Пусть $E=E_1\cup{E}_2$, где $E_1\cap{E}_2=\varnothing$, функция $f(x)\colon{E}\to\mathbb{R}$ такая, что для любого $x\in{E}_1$ $f(x)=k_1$, для любого
+$x\in{E}_2$ $f(x)=k_2$ и $k_1\neq{k}_2$.<br>
+Функция $f(x)$ непрерывна на $E$, но любая точка между $k_1$ и $k_2$ не имеет прообраза в $E$, то есть утверждение 12.2.3 не работает. Это происходит
+потому, что множество $E$, очевидно, не связно.
+
+<br><br>
+
+<p id=Task12.2.1><b>Задача 12.2.1:</b> Пусть функция $f(x)\colon\mathbb{R}^n\to\mathbb{R}$ такая, что $f(x)\in{C}(\mathbb{R}^n;\mathbb{R})$ и существует
+предел $\displaystyle\lim_{x\to\infty}f(x)=+\infty$. Для любого $c\in\mathbb{R}$ обозначим $E'_c:=\{x\in\mathbb{R}^n\mid{f}(x)<{c}\}$,
+$E''_c:=\{x\in\mathbb{R}^n\mid{f}(x)\leq{c}\}$. Доказать, что для любого $c\in\mathbb{R}$ множество $E'_c$ открыто, а $E''_c$ компактно.
+<p><b>Решение</b>
+<i>
+По <a href="./math_analysis11.2.html#Theorem11.2.1">теореме 11.2.1</a> и следствию из нее при непрерывном отображении прообразом открытого множества 
+является открытое множество, а прообразом замкнутого замкнутое. Тогда образ множества $E'_c$ это открытое множество $(-\infty,c)$, следовательно,
+$E'_c$ открыто, а образ множества $E''_c$ замкнутое множество $(-\infty,c]$, следовательно, $E''_c$ замкнуто.<br>
+Из существования предела $\lim_{x\to\infty}f(x)=+\infty$ в свою очередь следует, что
+$$\exists{M}>0\colon\forall{x}\in\mathbb{R}^m(\|x\|>M\Rightarrow|f(x)|>c)\Rightarrow
+\forall{x}\in\mathbb{R}^m(|f(x)|\leq{c}\Rightarrow\|x\|\leq{M})\Rightarrow\forall{x}\in\mathbb{R}^m(x\in{E}''_c\Rightarrow\|x\|\leq{M})$$
+то есть множество $E''_c$ ограничено. Замкнутость и ограниченность множества в $\mathbb{R}^m$ равносильна его компактности в $\mathbb{R}^m$.
+Доказательство этого факта можно найти, например, в Зорич т. 1, стр. 484.
+</i>
+
+<br><br>
+<p id=Task12.2.2><b>Задача 12.2.2:</b> Пусть для любого $\alpha\in{I}$ множество $E_{\alpha}$ связно и $\bigcap_{\alpha\in{I}}E_{\alpha}\neq\varnothing$.
+Доказать, что множество $E:=\bigcup_{\alpha\in{I}}E_{\alpha}$ связно.<br>
+<p><b>Решение</b>
+<i>
+Так как $\bigcap_{\alpha\in{I}}E_{\alpha}\neq\varnothing$, то существует $z$ такой, что для любого $\alpha\in{I}$ $z\in{E}_{\alpha}$. Тогда для любого
+$x\in{E}$ существует непрерывное отображение $\varphi(t)\colon[a,b]\to{E}$ такое, что $\varphi(a)=x$, $\varphi(b)=z$. Следовательно, для любых $x,y\in{E}$ 
+существует непрерывное отображение $\varphi_x(t)\colon[a_x,b_x]\to{E}$ такое, что $\varphi_x(a_x)=x$, $\varphi_x(b_x)=z$ и существует непрерывное отображение
+$\varphi_y(t)\colon[a_y,b_y]\to{E}$ такое, что $\varphi_y(a_y)=z$, $\varphi_y(b_y)=y$. Тогда существует непрерывное отображение 
+$\varphi(t)\colon[a_x,b_x+(b_y-a_y)]\to{E}$ такое, что 
+$\varphi(t)=\begin{cases}\qquad\varphi_x(t)&,t\in[a_x,b_x]\\ \varphi_y(t-(b_x-a_y))&,t>{b}_x\end{cases}$.
+Так как $\displaystyle\lim_{t\to{b}_x-0}\varphi_y(t-b_x+a_y)=\varphi_y(a_y)=z$, то отображение $\varphi(t)$ непрерывно, и $\varphi(a_x)=\varphi_x(a_x)=x$,
+$\varphi(b_x+(b_y-a_y))=\varphi_y(b_x+b_y-a_y-b_x+a_y)=\varphi_y(b_y)=y$.
+</i>
+
+<br><br>
+<a href="./math_analysis12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.1.html">next</a>
+</body>
+</html>

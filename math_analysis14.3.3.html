@@ -1,0 +1,182 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.3.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGenral,'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.4.html">next</a>
+
+<h5 id=14.3.4>14.3.4 Теорема Фубини (1870 - 1943).</h5>
+
+<p>Введем некоторые обозначения:<br>
+$m,n\in\mathbb{N}$, $x=(x_1,\ldots,x_m)\in\mathbb{R}^m$, $y=(x_1,\ldots,x_n)\in\mathbb{R}^n$<br>
+$X=[a_1,b_1]\times\cdots\times[a_m,b_m]\subset\mathbb{R}^m$, $Y=[c_1,d_1]\times\cdots\times[c_n,d_n]\subset\mathbb{R}^n$, $X\times{Y}\in\mathbb{R}^{m+n}$<br>
+$P_X:=\{X_i\}$ - разбиение множества $X$, $P_Y:=\{Y_i\}$ - разбиение множества $Y$, $P:=\{X_i\times{Y_j}\}$ - разбиение множества $X\times{Y}$<br>
+где $X_i$, $Y_j$ - ячейки разбиений являющиеся соответственно $m$- и $n$-мерными параллелепипедами.<br>
+Так же обратно, любое разбиение $P$ параллелепипеда $X\times{Y}$ однозначно порождает разбиения $\{P_X\}$, $\{P_Y\}$ параллелепипедов $X$ и $Y$
+соответственно.<br>
+Так как $\mu([a_1,b_1]\times\cdots\times[a_n,b_n])=\prod_{k=1}^n(b_k-a_k)$, то для любых ячеек $X_i$, $x_j$ из разбиений $P_X$, $P_Y$
+$\mu(X_i\times{Y}_j)=\mu(X_i)\mu(Y_j)$.<br>
+Далее будем рассматривать функцию $f(x,y)=f(x_1,\ldots,x_m,y_1,\ldots,y_n)\colon{X}\times{Y}\to\mathbb{R}$.<br>
+Характерные формы записи сумм для разбиений $P=\{X_i\times{Y}_j\}$ множества $\{X\times{Y}\}$:<br>
+Для любых $i\in\overline{1,m}$, $j\in\overline{1,n}$ фиксируем (помечаем) $x_i\in{X}_i$, $y_j\in{Y}_j$, тогда
+$$\sum_{i,j}(f(x_i,y_j)\mu(X_i,Y_i))=\sum_i\left(\sum_j(f(x_i,y_j)\mu(X_i)\mu(Y_j))\right)=\sum_i\left(\mu(X_i)\sum_j(f(x_i,y_j)\mu(Y_j))\right)$$
+$\displaystyle{m}_{i,j}:=\inf_{(x,y)\in{X}_i\times{Y}_j}f(x,y)$, $\displaystyle{M}_{i,j}:=\sup_{(x,y)\in{X}_i\times{Y}_j}f(x,y)$.
+$$s(f,P):=\sum_{i,j}(m_{i,j}\mu(X_i\times{Y}_j))=\sum_i\mu(X_i)\left(\sum_j(m_{i,j}\mu(Y_j))\right),\quad
+S(f,P):=\sum_{i,j}(M_{i,j}\mu(X_i\times{Y}_j))=\sum_i\mu(X_i)\left(\sum_j(M_{i,j}\mu(Y_j))\right).$$
+Для любого фиксированного $y\in{Y}$ положим $f_y(x)\colon{X}\to\mathbb{R}$ такая, что для любого $x\in{X}$ $f_y(x)=f(x,y)$.<br>
+$$G_*(y):=\sup_{(P_X)}{s(f_y,P_X)}:=\int_{*X}f(x,y)\,dx\colon{Y}\to\mathbb{R},\quad
+G^*(y):=\inf_{(P_X)}{S(f_y,P_X)}:=\int_X^*f(x,y)\colon{Y}\to\mathbb{R},$$
+тогда для любого $y\in{Y}$ $G_*(y)\leq{G}^*(y)$.<br>
+Для любого фиксированного $x\in{X}$ положим $f_x(y)\colon{Y}\to\mathbb{R}$ такая, что для любого $y\in{Y}$ $f_x(y):=f(x,y)$.
+$$J_*(x):=\sup_{(P_Y)}{s(f_x,P_Y)}:=\int_{*Y}f(x,y)\,dx\colon{X}\to\mathbb{R},\quad
+J^*(x):=\inf_{(P_Y)}{S(f_x,P_Y)}:=\int_Y^*f(x,y)\,dx\colon{X}\to\mathbb{R},$$
+тогда для любого $x\in{X}$ $J_*(x)\leq{J}^*(x).$<br>
+Если $A\subset\mathbb{R}^n$, то символ "$A\in{G}(m,H)$" следует понимать как фразу "множество $A$ измеримо по Жордану на полукольце промежутков из 
+$\mathbb{R}^n$". При этом в рамках одного доказательства символ $H$ может применяться для обозначения полуколец числовых промежутков разной размерности.<br>
+Далее понадобятся следующие вспомогательные факты.<br>
+Если $A\in{G}(m,H)$; функции $g_1(z),g_2(z)\colon{A}\to\mathbb{R}$ такие, что для любого $z\in{A}$ $g_1(z)\leq{g}_2(z)$, то 
+$\int_{*A}g_1(z)\,dz\leq\int_{*A}g_2(z)\,dz$ и $\int_A^*g_1(z)\,dz\leq\int_A^*g_2(z)\,dz$.<br>
+Если $s\in\mathbb{N}$ и для любого $k\in\overline{1,s}$ $\alpha_k\geq0$, функции $g_k(z)\colon\mathbb{Z}\to\mathbb{R}$ ограничены, то
+$$\inf_{z\in\mathbb{Z}}\sum_{k=1}^s(\alpha_kg_k(z))=\sum_{k=1}^s\left(\alpha_k\inf_{z\in\mathbb{Z}}g_k(z)\right),\quad
+\sup_{z\in\mathbb{Z}}\sum_{k=1}^s(\alpha_kg_k(z))=\int_{k=1}^s\left(\alpha_k\sup_{z\in\mathbb{Z}}g_k(z)\right).$$
+Если функция $g(x,y)\colon{A}\times{B}\to\mathbb{R}$ ограничена, то
+$$\inf_{(x,y)\in{A}\times{B}}g(x,y)=\inf_{x\in{A}}\left(\inf_{y\in{B}}g(x,y)\right),\quad
+\sup_{(x,y)\in{A}\times{B}}g(x,y)=\sup_{x\in{A}}\left(\sup_{y\in{Y}}g(x,y)\right)$$
+<br><br>
+<p id=Lemma14.3.2><b>Лемма 14.3.2:</b> Пусть $X$, $Y$ параллелепипеды из $\mathbb{R}^m$, $\mathbb{R}^n$ соответственно, функция 
+$f(x,y)\colon{X}\times{Y}\to\mathbb{R}$ такая, что $f(x,y)\in\mathcal{R}(X\times{Y})$, тогда
+<ol>
+<li>$J_*(x)\in\mathcal{R}(X)$,</li>
+<li>$J^*(x)\in\mathcal{R}(X)$,</li>
+<li>$\int_XJ_*(x)\,dx=\int_XJ^*(x)\,dx=\iint_{X\times{Y}}f(x,y)\,dxdy$,</li>
+<li>пункты 1-3 для функций $G_*(y)$, $G^*(y)$.</li>
+</ol> 
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Фиксируем разбиение $P=\{X_i\times{Y}_j\}$ множества $X\times{Y}$, тогда $P_X:=\{X_i\}$, $P_Y:=\{y_j\}$ разбиение множеств $X$ и $Y$ соответственно.
+$$s(f,P)=\sum_{i,j}\left(\inf_{(x,y)\in{X}_i\times{Y}_j}f(x,y)\mu(X)i\times{Y}_j)\right)=
+\sum\left(\mu(X_i)\sum_j\left(\inf_{x\in{X}_i}\left(\inf_{y\in{Y}_j}f_x(y)\right)\mu(Y_j)\right)\right)=
+\sum_i\left(\mu(X_i)\inf_{x\in{X}_i}\sum_j\left(\inf_{y\in{Y}_j}f_x(y)\mu(Y_j)\right)\right)=$$ 
+$$=\sum_i\left(\mu(X_i)\inf_{x\in{X}_i}{s(f_x,P_Y)}\right)\leq
+\sum_i\left(\mu(X_i)\inf_{x\in{X}_i}J_*(x)\right)=s(J_*,P_x)\qquad(1)$$
+Здесь последнее равенство в силу того, что 
+$$J_*(x):=\sup_{(P_Y)}{s(f_x,P_Y)}\Rightarrow\forall{x}\in{X}\,\forall{P}_Y(s(f_x,P_Y)\leq{J}_*(x)).$$
+Аналогично 
+$$S(f,P)=\sum_{i,j}\left(\sup_{(x,y)\in{X}_i\times{Y}_j}f(x,y)\mu(X_i\times{Y}_j)\right)=
+\sum_i\left(\mu(X_i)\sup_{x\in{X}_i}\sum_j\left(\sup_{y\in{Y}_j}f_x(y)\mu(Y_j)\right)\right)=
+\sum_i\left(\mu(X_i)\sup_{y\in{Y}_j}{S(f_x,P_Y)}\right)\geq\sum_i\left(\mu(X_i)\sup_{y\in{Y}_j}J^*(x)\right)=S(J^*,P_X)\quad(2)$$
+Таким образом имеем 
+$$\iint_{X\times{Y}}f(x,y)\,dxdy=\sup_{(P)}{s(f,P)}\leq\sup_{(P_X)}{s(J_*,P_X)}=\int_{*X}J_*(x)\,dx,$$
+$$\iint_{X\times{Y}}f(x,y)\,dxdy=\inf_{(P)}{S(f,P)}\geq\inf_{(P_X)}{S(J^*,P_Y)}=\int_{X}^*J^*(x)\,dx,$$
+то есть $\int_X^*J^*(x)\,dx\leq\int_{*X}J_*(x)\,dx\quad(3)$ и в силу того, что для любого $x\in{X}$ $J_*(x)\leq{J}^*(x)$ имеем 
+$$\left(\int_X^*J_*(x)\,dx\leq\int_X^*J^*(x)\,dx\leq^{(3)}\int_{*X}J_*(x)\,dx\wedge\int_{*X}J_*(x)\,dx\leq\int_X^*J_*(x)\,dx\right)\Rightarrow
+\int_{*X}J_*(x)\,dx=\int_X^*J_*(x)\,dx\Rightarrow{J}_*(x)\in\mathcal{R}(X).$$
+</li>
+<li>
+$$\left(\int_X^*J^*(x)\,dx\leq^{(3)}\int_{*X}J^*(x)\,dx\leq\int_{*X}J^*(x)\,dx\wedge\int_X^*J^*(x)\,dx\geq\int_{*X}J^*(x)\,dx\right)\Rightarrow
+\int_X^*J^*(x)\,dx=\int_{*X}J^*(x)\,dx\Rightarrow{J}^*(x)\in\mathcal{R}(X).$$
+</li>
+<li>
+$$\iint_{X\times{Y}}f(x,y)\,dxdy=\sup_{(P)}{s(f,P)}\leq^{(1)}\sup_{(P_X)}(J_*,P_X)=\int_XJ_*(x)\,dx=\inf_{(P_X)}{S(J_*,P_X)}\leq\int_XJ^*(x)\,dx=
+\inf_{(P_X)}{S(J^*,P_X)}\leq^{(2)}\inf_{(P)}{S(f,P)}=\iint_{X\times{Y}}f(x,y)\,dxdy\Rightarrow$$ 
+$$\Rightarrow\iint_{X\times{Y}}f(x,y)\,dxdy=\int_XJ_*(x)\,dx=\int_XJ^*(x)\,dx.$$
+</li>
+<li>Доказательство пунктов 1-3 для функций $G_*(y)$, $G^*(y)$ аналогично.</li>
+</ol>
+<br><br>
+<p id=Corollary14.3.3><b>Следствие 14.3.3:</b> Пусть $X$, $Y$ параллелепипеды из $\mathbb{R}^m$, $\mathbb{R}^n$ соответственно, функция 
+$f(x,y)\colon{X}\times{Y}\to\mathbb{R}$ такая, что $f(x,y)\in\mathcal{R}(X\times{Y})$, тогда
+<ol>
+<li>$\mathring{\forall}x\in{X}(J_*(x)=J^*(x))$, $\mathring{\forall}y\in{Y}(G_*(y)=G*(y))$,</li>
+<li>$\mathring{\forall}x\in{X}(f_x(y)\in\mathcal{R}(Y))$, $\mathring{\forall}y\in{Y}(f_y(x)\in\mathcal{R}(X))$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+По лемме 14.3.2 $J_*(x),J^*(x)\in\mathcal{R}(X)$ и $\int_XJ_*(x)\,dx=\int_XJ^*(x)\,dx$, следовательно, 
+$$\int_X(J^*(x)-J_*(x))\,dx=\int_XJ^*(x)\,dx-\int_XJ_*(x)\,dx=0.$$
+Тогда по <a href="./math_analysis14.3.2.html#Lemma14.3.1">лемме 14.3.1</a>
+$$\forall{x}\in{X}(J_*(x)\leq{J}^*(x))\Rightarrow\forall{x}\in{X}(J^*(x)-J_*(x))\geq0\Rightarrow\mathring{\forall}x\in{X}(J^*(x)-J_*(x))=0\Rightarrow
+\mathring{\forall}x\in{X}(J^*(x)=J_*(x)).$$
+Аналогично для $G_*(y)$, $G^*(y)$.
+</li>
+<li>
+По пункту 1
+$$\mathring{\forall}x\in{X}(J^*(x)=J_*(x))\Rightarrow\mathring{\forall}x\in{X}\left(\int_Y^*f(x,y)\,dy=\int_{*Y}f(x,y)\,dy\right)\Rightarrow
+\mathring{\forall}x\in{X}(f_x(y)\in\mathcal{R}(Y))$$
+Аналогично для $f_y(x)$.
+</li>
+</ol>
+<br><br>
+<p id=Definition14.3.5><b>Определение 14.3.5:</b> Пусть $f(x,y)\in\mathcal{R}(X\times{Y})$. Обозначим 
+$X_0:=\{x\in{X}\mid{f}_x(y)\in\mathcal{R}(Y)\}$, $Y_0:=\{y\in{Y}\mid{f}_y(x)\in\mathcal{R}(X)\}$,
+$$\mathcal{F}(x):=\begin{cases}\int_Yf(x,y)\,dy&,x\in{X_0}\\k=k(x)\in[J_*(x),J^*(x)]&,x\in{X}\backslash{X}_0\end{cases},\quad
+\Phi(y):=\begin{cases}\int_Xf(x,y)\,dx&,y\in{Y}_0\\d=d(y)\in[G_*(y),G^*(Y)]&,y\in{Y}\backslash{Y}_0\end{cases}$$
+
+<br><br>
+<p>По следствию 14.3.3 $\mu(X\backslash{X}_0)=\mu(Y\backslash{Y}_0)=0$.
+<br><br>
+<p id=Corollary14.3.4><b>Следствие 14.3.4:</b> Пусть $X$, $Y$ параллелепипеды из $\mathbb{R}^m$, $\mathbb{R}^n$ соответственно, функция 
+$f(x,y)\colon{X}\times{Y}\to\mathbb{R}$ такая, что $f(x,y)\in\mathcal{R}(X\times{Y})$ тогда,
+<ol>
+<li>$\mathcal{F}(x)\in\mathcal{R}(X)\wedge\int_X\mathcal{F}(x)\,dx=\iint_{X\times{Y}}f(x,y)\,dxdy$,</li>
+<li>$\Phi(y)\in\mathcal{R}(Y)\wedge\int_Y\Phi(y)\,dy=\iint_{X\times{Y}}f(x,y)\,dxdy$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Обозначим $A:=\int_XJ_*(x)\,dx=\int_XJ^*(x)\,dx=\iint_{X\times{Y}}f(x,y)\,dxdy$.<br>
+Так как по определению функции $\mathcal{F}(x)$ для любого $x\in{X}$ $J_*(x)\leq\mathcal{F}(x)\leq{J}^*(x)$, то для любого разбиения с помеченными точками
+$(P_X,\xi)$ $\sigma(J_*,P_X,\xi)\leq\sigma(\mathcal{F},P_X,\xi)\leq\sigma(J^*,P_X,\xi)$.<br>
+Фиксируем $\varepsilon>0$, тогда так как $J_*,J^*\in\mathcal{R}(X)$, то 
+$$\exists\delta_1>0\colon\forall(P_X,\xi)(\lambda(P_X)<\delta_1\Rightarrow|\sigma(J_*,P_X,\xi)-A|<\varepsilon\Rightarrow
+{A}-\varepsilon<\sigma(J_*,P_X,\xi)<{A}+\varepsilon),$$
+$$\exists\delta_2>0\colon\forall(P_X,\xi)(\lambda(P_X)<\delta_2\Rightarrow|\sigma(J^*,P_X,\xi)-A|<\varepsilon\Rightarrow
+{A}-\varepsilon<\sigma(J^*,P_X,\xi)<{A}+\varepsilon).$$
+Положим $\delta:=\min\{\delta_1,\delta_2\}$, тогда
+$$\forall(P_X,\xi)(\lambda(P_X)<\delta\Rightarrow
+{A}-\varepsilon<\sigma(J_*,P_X,\xi)\leq\sigma(\mathcal{F},P_X,\xi)\leq\sigma(J^*,P_X,\xi)<{A}+\varepsilon\Rightarrow
+\forall(P_X,\xi)(\lambda(P_X)<\delta\Rightarrow|\sigma(\mathcal{F},P_X,\xi)-A|<\varepsilon)\Rightarrow$$
+$$\Rightarrow\mathcal{F}(x)\in\mathcal{R}(X)\wedge\int_X\mathcal{F}(x)\,dx=A.$$
+</li>
+<li>Доказывается аналогично пункту 1.</li>
+</ol>
+<br><br>
+<p id=Theorem14.3.4><b>Теорема 14.3.4: Теорема Фубини.</b><br>
+Пусть $X$, $Y$ параллелепипеды из $\mathbb{R}^m$, $\mathbb{R}^n$ соответственно, функция $f(x,y)\colon{X}\times{Y}\to\mathbb{R}$ такая, что
+$f(x,y)\in\mathcal{R}({X}\times{Y})$, тогда
+<ol>
+<li>существует интеграл $\int_X\left(\int_Yf(x,y)\,dy\right)\,dx$,</li>
+<li>существует интеграл $\int_Y\left(\int_Xf(x,y)\,dx\right)\,dy$,</li>
+<li>$\int_X\left(\int_Yf(x,y)\,dy\right)\,dx=\int_Y\left(\int_Xf(x,y)\,dx\right)\,dy=\iint_{X\times{Y}}f(x,y)\,dxdy$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Согласно <a href="#Corollary14.3.3">следствию 14.3.3</a> внутренние интегралы в повторных существуют почти всюду на $X$ и $Y$ соответственно.
+Для того чтобы иметь право выписывать повторные интегралы ввели функции $\mathcal{F}(x)$ и $\Phi(y)$ доопределив их на множествах нулевой меры
+$X\backslash{X}_0$, $Y\backslash{Y}_0$. Таким образом при выписывании повторных интегралов, предполагаем, что внешние берутся от $\mathcal{F}(x)$ и 
+$\Phi(y)$. 
+</li>
+<li>Доказывается аналогично пункту 1.</li>
+<li>Следует из следствия 14.3.4
+$$\int_Y\left(\int_Xf(x,y)\,dx\right)\,dy=\int_Y\Phi(y)\,dy=\iint_{X\times{Y}}f(x,y)\,dxdy$$
+$$\int_X\left(\int_Yf(x,y)\,dy\right)\,dx=\int_X\mathcal{F}(x)\,dx=\iint_{X\times{Y}}f(x,y)\,dxdy.$$
+</li>
+</ol>
+
+<br><br>
+<a href="./math_analysis14.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.4.html">next</a>
+</body>
+</html>

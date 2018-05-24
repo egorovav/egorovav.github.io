@@ -1,0 +1,266 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 5.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extension: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_analysis4.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis5.2.html">next</a>
+<br><br>
+
+<h3 id="5">5. ПРЕДЕЛ ФУНКЦИИ ОДНОЙ ВЕЩЕСТВЕННОЙ ПЕРЕМЕННОЙ.</h3>
+
+<h4 id="5.1">5.1 Определение и общие свойства предела функции.</h4>
+
+<h5 id="5.1.1">5.1.1 Определение предела функции.</h5>
+
+<p id="Definition5.1.1"><b>Определение 5.1.1: Общее определение предела функции на расширенной прямой $\overline{\mathbb{R}}$.</b><br>
+Пусть $E$ бесконечное подмножество $\mathbb{R}$, $a\in\overline{\mathbb{R}}$ - предельная точка множества $E$, $A\in\overline{\mathbb{R}}$.<br>
+Предел функции $f(x):E\to\mathbb{R}$ при $x$ стремящемся к $a$ по множеству $E$ существует и равен $A$ тогда и только тогда, 
+когда для любой окрестности $V(A)$ точки $A$ существует такая окрестность точки $a$, что образы всех точек этой окрестности принадлежащих
+множеству $E\backslash\{a\}$ лежат в $V(A)$. То есть:
+$$(\lim_{E\ni{x}\to{a}}f(x)=A):=(\forall{V}(A)(\exists{U}(a):\forall{x}\in{E}(x\in\mathring{U}(a)\Rightarrow{f}(x)\in{V}(A)))),$$
+или
+$$(\lim_{E\ni{x}\to{a}}f(a)=A):=(\forall{V}(A)(\exists{U}(a):f(\mathring{U}_E(a))\subset{V}(a))).$$
+<br><br>
+
+<p id="Definition5.1.2"><b>Определение 5.1.2: Определение предела функции по Коши.</b><br>
+Пусть $E$ бесконечное подмножество $\mathbb{R}$, $a\in\mathbb{R}$ - предельная точка множества $E$, $A\in\mathbb{R}$, тогда
+$$(\lim_{E\ni{x}\to{a}}f(x)):=(\forall\varepsilon&gt0(\exists\delta&gt0:\forall{x}\in{E}(0&lt|x-a|&lt\delta\Rightarrow|f(x)-A|&lt\varepsilon))).$$
+
+<br><br>
+
+<p>Если $a\in\mathbb{R},A\in\overline{\mathbb{R}}$, то можно сформулировать комбинированное определение
+$$(\lim_{E\ni{x}\to{a}}f(x)):=(\forall{V}(a)(\exists\delta&gt0:\forall{x}\in{E}(0&lt|x-a|&lt\delta\Rightarrow{f}(x)\in{V}(A)))),$$
+аналогично если $a\in\overline{\mathbb{R}},A\in\mathbb{R}$
+$$(\lim_{E\ni{x}\to{a}}f(x)):=(\forall\varepsilon&gt0(\exists{U}(a):\forall{x}\in{E}(x\in\mathring{U}(a)\Rightarrow|f(x)-A|&lt\varepsilon))).$$
+
+<br><br>
+
+<p id="Statement5.1.1"><b>Утверждение 5.1.1:</b> Если $a\in\mathbb{R}$ и $A\in\mathbb{R}$ то 
+<a href="#Definition5.1.1">общее определение предела функции</a> эквивалентно
+<a href="#Definition5.1.2">определению предела функции по Коши</a>.
+<p><b>Доказательство:</b> 
+<ul>
+<li>$\Rightarrow)$<br>
+Фиксируем $\varepsilon&gt0$. Тогда из <a href="#Definition5.1.1">общего определения предела функции</a> следует, что существует окрестность $U(a)$ такая,
+что $f(\mathring{U}_E(a))\subset{V}^\varepsilon(A)$, следовательно
+$$\exists\delta&gt0:U^\delta(a)\subset{U}(a)\Rightarrow{f}(\mathring{U}{}^\delta_E)\subset{V}^\varepsilon(A)\Rightarrow
+\forall{x}\in{E}(0&lt|x-a|&lt\delta\Rightarrow|f(a)-A|&lt\varepsilon).$$
+</li>
+<li>$\Leftarrow)$<br>
+Фиксируем окрестность $V(A)$. Существует $\varepsilon&gt0$ такое, что $V^\varepsilon(A)\subset{V}(A)$, тогда из 
+<a href="#Difinition5.1.2">определения предела функции по Коши</a> следует
+$$\exists\delta&gt0:\forall{x}\in{E}(0&lt|x-a|&lt\delta\Rightarrow|f(x)-A|&lt\varepsilon)\Rightarrow
+f(\mathring{U}{}^\delta_E)\subset{V}^\varepsilon(A)\subset{V}(A).$$
+</li>
+</ul>
+<br><br>
+<p>Логическое отрицание общего определения предела функции:
+$$\exists{V}(A):\forall{U}(a)(\exists{x}\in\mathring{U}_E(a):f(x)\notin{V}(A)).$$
+<p>Логическое отрицание определения предела функции по Коши:
+$$\exists\varepsilon&gt0:\forall\delta&gt0(\exists{x}\in{E}:(0&lt|x-a|&lt\delta\wedge|f(x)-A|\geq\varepsilon)).$$
+
+<br><br>
+
+<p id="Example5.1.1"><b>Пример 5.1.1:</b> Пусть $E:=\mathbb{R}\backslash\{0\}$, тогда $0\in\mathring{E}$ докажем, что 
+$\displaystyle\lim_{E\ni{x}\to{0}}(x\sin\frac1{x})=0$, действительно<br>
+$$\forall\varepsilon&gt0(\exists\delta:=\varepsilon:0&lt|x-0|&lt\delta\Rightarrow
+\left|x\sin\frac1{x}-0\right|=|x|\left|\sin\frac1{x}\right|\leq|x|&lt\delta=\varepsilon)$$
+<br><br>
+
+<p>Покажем, что множество $E$ играет активную роль в определении предела функции.
+<p id="Example5.1.2"><b>Пример 5.1.2:</b> <br> 
+$\newcommand{\sgn}{\operatorname{sgn}}$
+$f(x)=\sgn{x}=\begin{cases}-1,\:x&lt0\\0,\quad x=0\\1,\quad x&gt0\end{cases}$<br>
+Пусть $E_1:=\{x\in\mathbb{R}\:|\:x&gt0\},E_2:=\{x\in\mathbb{R}\:|\:x&lt0\},E_3:=\mathbb{R}$, тогда 
+$0\in\mathring{E}_1\cap\mathring{E}_2\cap\mathring{E}_3$
+<ol>
+<li>$\displaystyle\lim_{E_1\ni{x}\to0}\sgn{x}=\lim_{E_1\ni{x}\to0}1=1$,</li>
+<li>$\displaystyle\lim_{E_2\ni{x}\to0}\sgn{x}=\lim_{E_2\ni{x}\to0}-1=-1$,</li>
+<li>предела функции $sgn{x}$ при $x$ стремящемся к $0$ по множеству $E_3$ не существует. <br>
+<i>
+Действительно, если предел существует, то он принадлежит множеству $f(E_3)=\{-1,0,1\}$ так как
+$$A\notin{f}(E_3)\Rightarrow\exists{V}(A):V(A)\cap{f}(E_3)=\varnothing\Rightarrow\forall{U}(0)(f(U(0))\nsubseteq{V}(A))$$ 
+<ul>
+<li>Покажем, что $\displaystyle\lim_{E_3\ni{x}\to0}\sgn{x}\neq1$. Действительно
+$$\exists\varepsilon:=1:\forall\delta&gt0(\exists{x}:=\frac\delta{2}\in{E}_3:(|x-0|=\left|\frac\delta{2}\right|&lt\delta\wedge|f(x)+1|=2\geq\varepsilon))$$
+</li>
+<li>Покажем, что $\displaystyle\lim_{E_3\ni{x}\to0}\sgn{x}\neq-1$. Действительно
+$$\exists\varepsilon:=1:\forall\delta&gt0(\exists{x}:=-\frac\delta{2}\in{E}_3:(|x-0|=\left|-\frac\delta{2}\right|&lt\delta\wedge|f(x)-1|=2\geq\varepsilon))$$
+</li>
+<li>Покажем, что $\displaystyle\lim_{E_3\ni{x}\to0}\sgn{x}\neq0$. Действительно
+$$\exists\varepsilon:=1:\forall\delta&gt0(\exists{x}:=\frac\delta{2}\in{E}_3:(|x-0|=\left|\frac\delta{2}\right|&lt\delta\wedge|f(x)-0|=1\geq\varepsilon))$$
+</li>
+</ul>
+</i>
+</li>
+</ol>
+
+<br><br>
+
+<p>Если дополнительно известно, что существует окрестность предельной точки такая что $U(a)\subset{E}$, то при описании предела функции 
+$f(x)$ при $x$ стремящимся к $a$ указание на множество $E$ можно опустить. То есть для любого множества $E$ такого, что $a\in\mathring{E}$
+предел $\displaystyle\lim_{E\ni{x}\to{a}}f(x)$ будет существовать тогда и только тогда, когда будет существовать предел 
+$\displaystyle\lim_{U(a)\ni{x}\to{a}}f(x)$, и в случае существования численные значения пределов будут равны. 
+
+<br><br>
+
+<p id="Statement5.1.2"><b>Утверждение 5.1.2: Критерий существования предела функции по Гейне.</b><br>
+Пусть $f(x):E\to\mathbb{R},a\in\mathring{E},A\in\mathbb{R}$, тогда предел $\displaystyle\lim_{E\ni{x}\to{a}}f(x)$ сущеcтвует и равен $A$
+тогда и только тогда, когда для любой последовательности $\{x_n\}$ из множества $E\backslash\{a\}$ 
+<a href="./math_analysis4.1.html#Definition4.1.1">сходящейся</a> к $a$ последовательность
+$\{f(x_n)\}$ <a href="./math_analysis4.1.html#Definition4.1.1">сходится</a> к $A$.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Фиксируем $V(A)$.
+$$\lim_{E\ni{x}\to{a}}f(x)=A\Rightarrow\exists{U}(a):\forall{x}\in\mathring{U}_E(a)(f(x)\in{V}(A))$$
+$$(\forall{n}\in\mathbb{N}(x_n\in{E}\backslash\{a\})\wedge\lim_{n\to\infty}x_n=a)\Rightarrow
+\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0(x_n\in\mathring{U}_E(a))\Rightarrow\forall{n}&gtn_0(f(x_n)\in{V}(A))\Rightarrow\lim_{n\to\infty}f(x_n)=A$$
+</li>
+<li>$\Leftarrow)$<br>
+Докажем от противного. Пусть для любой последовательности $\{x_n\}$ из $E\backslash\{a\}$ сходящейся к $a$ последовательность $\{f(x_n)\}$ сходится к $A$
+и при этом $\displaystyle\lim_{E\ni{x}\to{a}}f(x)\neq{A}$.<br>
+Для опровержения этого утверждения, построим последовательность $\{x_n\}$ такую, что 
+$\displaystyle\lim_{n\to\infty}x_n=a$ и $\displaystyle\lim_{n\to\infty}f(x_n)\neq{A}$.<br>
+Так как
+$$\lim_{E\ni{x}\to{a}}f(x)\neq{A}\Rightarrow\exists{V}(A):\forall{U}(a)(\exists{x}\in\mathring{U}_E(a):f(x)\notin{V}(A))\quad(*)$$
+то
+<ol>
+<li>Пусть $a\in\mathbb{R}$
+$$\forall{n}\in\mathbb{N}\left(U_n(a):=\left\{x\:|\:|x-a|&lt\frac1{n}\right\}\right)\Rightarrow^{(*)}
+\forall{n}\in\mathbb{N}(\exists{x}_n\in\mathring{U}_n\cap{E}:f(x_n)\notin{V}(A))$$
+То есть найдена последовательность $\{x_n\}$ из $E\backslash\{a\}$ такая, что $0&lt|x_n-a|&lt\frac1{n}$. По 
+<a href="./math_analysis4.1.html#Theorem4.2.3">теореме о двух милиционерах</a> $\displaystyle\lim_{n\to\infty}x_n=a$, с другой стороны
+$$\forall{n}\in\mathbb{N}(f(x_n)\notin{V}(A))\Rightarrow\lim_{n\to\infty}f(x_n)\neq{A}$$
+</li>
+<li>Пусть $a=+\infty$
+$$\forall{n}\in\mathbb{N}(U_n(a):=(n,+\infty))\Rightarrow^{(*)}\forall{n}\in\mathbb{N}(\exists{x}_n\in(n,+\infty)\cap{E}:f(x_n)\notin{V}(A))$$
+$$\forall{n}\in\mathbb{N}(n&ltx_n&lt+\infty)\Rightarrow\lim_{n\to\infty}x_n=+\infty$$
+$$\forall{n}\in\mathbb{N}(f(x_n)\notin{V}(A)\Rightarrow\lim_{n\to\infty}f(x_n)\neq{A})$$
+</li>
+<li>Пусть $a=-\infty$<br>
+Доказывается аналогично пункту 2 при $U_n(a):=(-\infty,-n)$.
+</li>
+</ol>
+</li>
+</ul>
+<br><br>
+
+<p>При желании результат доказанного утверждения можно взять за определение предела функции. Такой подход к определению предела функции называется 
+секвенциальным подходом.
+
+<h5 id="5.1.2">5.1.2 Общие свойства предела функции.</h5>
+
+<p>Схема получения результатов для предела функции будет напоминать аналогичную схему для предела последовательности. 
+Критерий существования предела функции по Гейне перекидывает мостик между понятиями предела последовательности и предела функции.
+Поэтому можно сэкономить на доказательстве свойств предела функции.
+
+<br><br>
+
+<p id="Definition5.1.3"><b>Определение 5.1.3:</b> Функция $f(x):E\to\mathbb{R}$ ограничена сверху (снизу) или ограничена,
+если ограничено сверху (снизу) или ограничено множество значений функции $f(E):=\{f(x)\:|\:x\in{E}\}$.
+
+<br><br>
+
+<p id="Definition5.1.4"><b>Определение 5.1.4:</b> Функция $f(x):E\to\mathbb{R}$ локально ограничена сверху (снизу) или ограничена при 
+$x$ стремящемся к $a\in\mathring{E}$ по множеству $E$ (т. е. при $E\ni{x}\to{a}$), если существует окрестность $U(a)$ такая, 
+что множество $f(\mathring{U}_E(a)):=\{f(x)\:|\:x\in\mathring{U}_E(a)\}$ ограничено сверху (снизу) или ограничено.
+
+<br><br>
+
+<p>Из просто ограниченности следует локальная ограниченность. Обратное не верно, например, функция $f(x)=x\cos\frac1{x}$ не ограничена на 
+$\mathbb{R}\backslash\{0\}$, но локально ограничена при $\mathbb{R}\ni{x}\to0$.<br>
+Приставка локально будет часто употребляться в дальнейшем. Некоторое свойство выполняется локально, если оно выполняется в некоторой 
+достаточно малой окрестности.
+
+<br><br> 
+
+<p id="Statement5.1.3"><b>Утверждение 5.1.3:</b> Пусть $f(x):E\to\mathbb{R},a\in\mathring{E},A\in\overline{\mathbb{R}}$, тогда
+<ol>
+<li>Если существует конечный предел $\displaystyle\lim_{E\ni{x}\to{a}}f(x)$, то функция $f(x)$ локально ограничена при $E\ni{x}\to{a}$.</li>
+<li>$$(\lim_{E\ni{x}\to{a}}f(x)=A_1\wedge\lim_{E\ni{x}\to{a}}f(x)=A_2)\Rightarrow{A}_1=A_2.$$</li>
+<li>$$(E_1\subset{E}\wedge{a}\in\mathring{E}_1\wedge\lim_{E\ni{x}\to{a}}f(x)=A)\Rightarrow\lim_{E_1\ni{x}\to{a}}=A.$$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Воспользуемся одним из <a href="#Definition5.1.2">комбинированных определений предела фукции</a>
+$$\exists{A}\in\mathbb{R}:\lim_{E\ni{x}\to{a}}f(x)=A\Rightarrow\forall\varepsilon&gt0\:\exists{U}(a):(x\in\mathring{U}_E(a)\Rightarrow|f(x)-A|&lt\varepsilon)$$
+Тогда при $\varepsilon:=1$
+$$\exists{U}_0(a):\forall{x}\in{E}(x\in\mathring{U}(a)\Rightarrow|f(x)|-|A|&lt|f(x)-A|&lt1\Rightarrow|f(x)|&lt|A|+1).$$
+Таким образом множество $f(\mathring{U}_0\cap{E})$ ограничено, следовательно функция $f(x)$ локально ограничена при $E\ni{x}\to{a}$.
+</li>
+<li>
+Докажем от противного. Пусть $\displaystyle\lim_{E\ni{x}\to{a}}f(x)=A_1$, $\displaystyle\lim_{E\ni{x}\to{a}}f(x)=A_2$, $A_1\neq{A}_2$.
+$$A_1\neq{A}_2\Rightarrow\exists{V}(A_1),\exists{V}(A_2):(V(A_1)\cap{V}(A_2)=\varnothing\wedge\exists{U}'(a):f(\mathring{U}{}'_E(a))\subset{V}(A_1)
+\wedge\exists{U}''(a):f(\mathring{U}{}''_E(a))\subset{V}(A_2)))$$
+По <a href="./math_analysis3.3.html#Statement3.4.1">свойству 3 окрестностей точки</a> существует окрестность 
+$U(a)\subset{U'}(a)\cap{U''(a)}\neq\varnothing$ тогда
+$$a\in\mathring{E}\Rightarrow\exists{x_0}\in\mathring{U}_E(a)\Rightarrow{x_0}\in\mathring{U}{}'_E(a)\cap\mathring{U}{}''_E(a)\Rightarrow
+f(x_0)\in{V}(A_1)\cap{V}(A_2)=\varnothing.$$
+Получено противоречие.
+</li>
+<li>Так как $$E_1\subset{E}\Rightarrow\forall{U}(a)(\mathring{U}_{E_1}(a)\subset\mathring{U}_E(a))\Rightarrow
+\forall{U}(a)({f}(\mathring{U}_{E_1}(a))\subset{f}(\mathring{U}_E(a))).$$
+то
+$$\lim_{E\ni{x}\to{a}}f(x)=A\Rightarrow\forall{V}(A)\:\exists{U}(a):f(\mathring{U}_{E_1}(a))\subset{f}(\mathring{U}_E(a))\subset{V}(A)\Rightarrow
+\lim_{E_1\ni{x}\to{a}}f(x)=A.$$
+</li>
+</ol>
+
+<br><br>
+
+<p>Рассмотрим один важный частный случай предела функции по множеству.
+
+<br><br>
+
+<p id="Definition5.1.5"><b>Определение 5.1.5:</b> Пусть $f(x):E\to\mathbb{R},a\in\mathring{E}$.<br>
+Обозначим: $E^+_a:=E\cap\{x\in\mathbb{R}\:|\:x&gta\}$, $E^-_a:=\{x\in\mathbb{R}\:|\:x&lta\}$, тогда<br>
+если $a\in\mathring{E}{}^+_a$, то предел $\displaystyle{f}(a+0):=\lim_{E^+_a\ni{x}\to{a}}f(x)$ называется
+пределом функции $f(x)$ при $x$ стремящимся к $a$ по множеству $E$ справа, или правосторонним пределом;<br>
+если $a\in\mathring{E}{}^-_a$, то предел $\displaystyle{f}(a-0):=\lim_{E^-_a\ni{x}\to{a}}f(x)$ называется 
+пределом функции $f(x)$ при $x$ стремящимся к $a$ по множеству $E$ слева, или левосторонним пределом.
+
+<br><br>
+
+<p>Если существует $\displaystyle{A}:=\lim_{E\ni{x}\to{a}}f(x)$ и $a\in{E}{}^+_a\cap{E}{}^-_a$, то $f(a+0)=f(a-0)=A$.
+
+<br><br>
+
+<p id="Task5.1.1"><b>Задача 5.1.1:</b> Доказать, что
+<ol>
+<li>$\displaystyle{f}(a+0)=f(a-0)=A\Rightarrow\lim_{E\ni{x}\to{a}}f(x)=A$,</li>
+<li>$\displaystyle(a\in\mathring{E}{}^+_a\cap\mathring{E}{}^-_a\wedge\lim_{E\ni{x}\to{a}}f(x)=A)\Rightarrow{f}(a+0)=f(a-0)=A$.</li>
+</ol>
+<b>Решение:</b>
+<ol>
+<li>
+$$E^+_a\cup{E}^-_a=E\backslash\{a\}\Rightarrow\forall{U}(a)(\mathring{U}_E(a)=(\mathring{U}(a)\cap{U}^+_a)\cup(\mathring{U}(a)\cap{E}^-_a))\quad(*)$$
+Фиксируем окрестность $V(A)$. Так как
+$$\lim_{E^+_a\ni{x}\to{a}}f(x)=A\Rightarrow\exists{U}_+(a):f(\mathring{U}(a)\cap{E}^+_a)\subset{V}(A)$$
+$$\lim_{E^-_a\ni{x}\to{a}}f(x)=A\Rightarrow\exists{U}_-(a):f(\mathring{U}(a)\cap{E}^-_a)\subset{V}(A))$$
+то
+$$\exists{U}(a):=U_+(a)\cup{U}_-(a):f(\mathring{U}_E(a))=^{(*)}f((\mathring{U}(a)\cap{E}^+_a)\cup(\mathring{U}(a)\cap{E}^-_a))=
+f(\mathring{U}(a)\cap{E}^+_a)\cup{f}(\mathring{U}(a)\cap{E}^-_a)\subset{V}(A)
+\Rightarrow\lim_{E\ni{x}\to{a}}f(x)=A.$$
+
+</li>
+<li>Утверждение следует из пункта 3 <a href="#Statement5.1.3">утверждения 5.1.3</a>.</li>
+</ol>
+
+
+
+<br><br>
+<a href="./math_analysis4.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis5.2.html">next</a>
+</body>
+</html>

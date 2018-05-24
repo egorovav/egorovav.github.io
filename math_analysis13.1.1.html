@@ -1,0 +1,293 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.1.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.1.2.html">next</a>
+
+
+$\newcommand{\UniformConv}{\substack{\xrightarrow[]{}\\ \xrightarrow[]{}\\n\to\infty}}$
+$\newcommand{\FUniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\Y\ni{y}\to{y}_0}}$
+$\newcommand{\arctg}{\operatorname{arctg}}$
+
+<h3 id=13>13 ИНТЕГРАЛЫ ЗАВИСЯЩИЕ ОТ ПАРАМЕТРА.</h3>
+
+<p>Объект изучения в рамках данного раздела $F(t):=\int_{E_t}f(x,t)\,dx\colon{T}\to\mathbb{R}$. Где $T$ может быть подмножеством одного из множеств 
+$\mathbb{R}$, $\mathbb{R}^n$, $\mathbb{C}$, $\mathbb{C}^n$. Основное внимание будет уделено случаю $T\subset\mathbb{R}$. Для любого $t\in{T}$ $E_t$ - 
+числовой промежуток. При любом фиксированном $t\in{T}$ функция $f(x)$ интегрируема на на $E_t$. Цель - изучить свойства функции $F(t)$: существование
+предела в точке, непрерывность, дифференцируемость, интегрируемость.<br>
+Теория интеграла зависящего от параметра делится на две части. 
+<ol>
+<li>Если $E_t$ - отрезок и функция $f(x)$ интегрируема по Риману по переменной $x$ на $E_t$ в собственном смысле.</li>
+<li>Если $f(x)$ интегрируема по $x$ на $E_t$ в несобственном смысле.</li>
+</ol>
+<h4 id=13.1>13.1 Собственные интегралы зависящие от параметра.</h4>
+
+<h5 id=13.1.1>13.1.1 Предельный переход и непрерывность.</h5>
+
+<p> Рассмотрим случай, когда числовой промежуток $E_t$ не зависит от выбора параметра $t$, то есть является постоянным.
+
+<br><br>
+<p id=Statement13.1.1><b>Утверждение 13.1.1:</b> Пусть $Y\subset\mathbb{R}$, $f(x,y)\colon[a,b]\times{Y}\to\mathbb{R}$, $y\in\mathring{Y}$ такие, что
+<ol>
+<li>$\forall{y}\in{Y}(f(x,y)\in\mathcal{R}[a,b])$,</li>
+<li>
+для любого $x\in[a,b]$ существует предел $\displaystyle\varphi(x):=\lim_{Y\ni{y}\to{y}_0}f(x,y)$ и функция $\varphi(x)\colon[a,b]\to\mathbb{R}$ такая, что 
+$$\forall\varepsilon>0\,\exists{V}(y_0)\colon\forall{y}\in\mathring{V}_Y(y_0)\forall{x}\in[a,b](|f(x,y)-\varphi(x)|<\varepsilon),$$
+</li>
+</ol>
+тогда
+<ol>
+<li>$\varphi\in\mathcal{R}[a,b]$</li>
+<li>существует предел 
+$$\lim_{Y\ni{y}\to{y}_0}\left(\int_a^bf(x,y)\,dx\right)=\int_a^b\varphi(x)dx:=\int_a^b\lim_{Y\ni{y}\to{y}_0}f(x,y)\,dx$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Так как $y_0\in\mathring{Y}$, то существует последовательность $\{y_n\}$ из $Y$ такая, что $\lim_{n\to\infty}y_n=y_0$. Для любого $n\in\mathbb{N}$ 
+обозначим $g_n(x):=f(x,y_n)$, тогда из условия 2 следует, что $g_n(x)\UniformConv\varphi(x)$, $x\in[a,b]$. Так как для любого $y\in{Y}$ 
+$f(x,y)\in\mathcal{R}[a,b]$, то для любого $n\in\mathbb{N}$ $f(x,y_n)\in\mathcal{R}$, тогда по 
+<a href="./math_analysis10.2.3.html#Statement10.2.8">утверждению 10.2.8</a> $\varphi(x)\in\mathcal{R}[a,b]$.
+</li>
+<li>
+Фиксируем $\varepsilon>0$, тогда из условия 2 следует, что 
+$$\exists{V}(y_0)\colon\forall{y}\in\mathring{V}(y_0)\forall{x}\in[a,b]\left(|f(x,y)-\varphi(x)|<\frac{\varepsilon}{2(b-a)}\right)\Rightarrow
+\forall{y}\in\mathring{V}(y_0)\left(\left|\int_a^bf(x,y)\,dx-\int_a^b\varphi(x)\,dx\right|\leq\int_a^b|f(x,y)-\varphi(x)|\,dx\leq
+\int_a^b\frac{\varepsilon}{2(b-a)}\,dx=\frac{\varepsilon}{2}<\varepsilon\right)$$
+Таким образом существует предел
+$$\lim_{Y\ni{y}\to{y}_0}\int_a^bf(x,y)\,dx=\int_a^b\varphi(x)\,dx=\int_a^b\lim_{Y\ni{y}\to{y}_0}f(x,y)\,dx$$
+</li>
+</ol>
+<br>
+<p>
+<i>
+Условие 2 утверждения 13.1.1 аналогично <a href="./math_analysis10.2.1.html#Definition10.2.1">определению</a> равномерной сходимости функциональной 
+последовательности, только предел берется не при $n\to\infty$, а при $Y\ni{y}\to{y}_0$. Поэтому будем обозначать выполнение условия 2 для функций
+$f(x,y)$ и $\varphi(x)$ в точке $x_0$ как $f(x,y)\FUniformConv\varphi(x)$, $x\in[a,b]$. 
+</i>
+<br><br>
+
+<p id=Statement13.1.2><b>Утверждение 13.1.2: Непрерывность по параметру.</b><br>
+Пусть $Q:=[a,b]\times[c,d]$, $f(x,y)\colon{Q}\to\mathbb{R}$, $f(x,y)\in{C}(Q)$, тогда функция $F(y)\colon[c,d]\to\mathbb{R}$ такая, что для любого 
+$y\in[c,d]$ $f(y):=\int_a^bf(x,y)\,dx$ непрерывна на $[c,d]$.
+<p><b>Доказательство:</b> Так как $Q$ - компакт в $\mathbb{R}^2$, то функция $f(x,y)$ равномерно непрерывна на $Q$, то есть
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon)\colon\forall(x',y'),(x'',y'')\in{Q}\left(\sqrt{(x'-x'')^2+(y'-y'')^2}<\delta\Rightarrow
+|f(x',y')-f(x'',y'')|<\varepsilon\right)$$
+Фиксируем $y_0\in[c,d]$, тогда из последнего утверждения при $x=x'=x''$, $y'=y$, $y''=y_0$ следует, что 
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon)\colon\forall{y}\in[c,b]\forall{x}\in[a,b](|y-y_0|<\delta\Rightarrow|f(x,y)-f(x,y_0)|<\varepsilon)$$
+Так как из непрерывности функции по совокупности переменных следует непрерывность по каждой из них, то для любого фиксированного $x\in[a,b]$ 
+функция $f(x,y)\colon[c,d]\to\mathbb{R}$ непрерывна в точке $y_0$, следовательно, для любого $x\in[a,b]$  существует предел 
+$\displaystyle\lim_{y\to{y}_0}f(x,y)=f(x,y_0)$.Тогда положив $Y:=[c,d]$ можем применить к функции $f(x,y)$ в точке $y_0$ 
+утверждение 13.1.1, следовательно существует предел 
+$$\displaystyle\lim_{y_0\to{y}}F(y):=\lim_{y\to{y}_0}\left(\int_a^bf(x,y)\,dx\right)=\int_a^b\lim_{t\to{y}_0}f(x,y)\,dx=\int_a^bf(x,y_0)\,dx=F(y_0).$$
+То есть функция $F(y)$ непрерывна в точке $y_0\in[c,d]$, и в силу произвольности выбора точки $y_0$, функция $F(y)$ непрерывна на $[c,d]$.
+
+<br><br>
+<p>Обсудим обобщения результата утверждения 13.1.2 на случае, когда множество $Q$ не является прямоугольником
+<ol>
+<li>
+В роли множества $Y$ (вместо отрезка $[c,d]$) можно выбрать любой компакт из $\mathbb{R}^n$, $\mathbb{C}^n$. Тогда множество $[a,b]\times{Y}$
+будет компактом в $\mathbb{R}^{n+1}$, $\mathbb{C}^{n+1}$ и утверждение доказывается аналогично.
+</li>
+<li>
+Можно отказаться и от компактности $Y$.<br>
+Пусть $Y\subset\mathbb{R}^n$ открыто в $\mathbb{R}^n$. Тогда для любого $y_0\in{Y}$ существует $r>0$ такое, что $\overline{B}(y_0,r)\subset{Y}$. Так как 
+$\overline{B}(y_0,r)$ компакт в $Y$, то аналогичным образом можно показать, что $F(y)$ непрерывна в точке $y_0$.
+</li>
+</ol>
+<br>   
+<p>До сих пор отрезок, по которому производилось интегрирование, был зафиксирован и не зависел от значения параметра $y$. Рассмотрим более общий случай,
+пусть функции $\varphi(y),\psi(y)\colon[c,d]\to\mathbb{R}$ такие, что 
+<ol>
+<li>$\forall{y}\in[c,d](\varphi(y)\leq\psi(y))$;</li>
+<li>$\varphi(y),\psi(y)\in{C}[c,d]$;</li>
+<li>$f(x,y)\in{C}(\hat{Q})$, где $\hat{Q}:=\{(x,y)\mid{y}\in[c,d],\varphi(y)\leq{x}\leq\psi(y)\}$</li>
+</ol>
+Обозначим $\displaystyle{F}(y):=\int_{\varphi(y)}^{\psi(y)}f(x,y)\,dx$, тогда для функции $F(y)$ будут справедливы 
+<a href="#Statement13.1.1">утверждения 13.1.1</a>, <a href="#Statement13.1.2">13.1.2</a>. Для доказательства этого факта можно сделать замену
+$x=x(t)+t(\psi(y)-\varphi(y))$, тогда для функции $g(t,y):=f(x(t),y)\colon[0,1]\times[c,d]\to\mathbb{R}$ можно применить 
+<a href="#Statement13.1.1">утверждение 13.1.1</a>, <a href="#Statement13.1.2">13.1.2</a>.<br>
+<i>Точное доказательство можно найти в Фихтенгольц т. 2, стр. 666.</i>
+
+<h5 id="13.1.2">13.1.2 Дифференцирование собственного интеграла по параметру.</h5>
+
+<p id=Statement13.1.3><b>Утверждение 13.1.3: Правило Лейбница.</b><br>
+Пусть $Q:=[a,b]\times[c,d]$, $f(x,y)\colon{Q}\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x,y)\in{C}(Q)$</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$</li>
+</ol>
+тогда если $F(y):=\int_a^bf(x,y)\,dx$, то
+<ol>
+<li>$F(y)\in{C}'[c,d]$</li>
+<li>$\forall{y}\in[c,d]\left(\frac{dF}{dy}=\int_a^b\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right)$.</li>
+</ol>
+<p><b>Доказательство:</b> Фиксируем $y_0\in[c,d]$ и $\varepsilon>0$. Так как $\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$, то функция 
+$\frac{\partial{f}}{\partial{y}}(x,y)$ равномерно непрерывна на $Q$. Тогда
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon)\colon\forall{y}\in[c,d]\forall{x}\in[a,b]
+\left(|y-y_0|<\delta\Rightarrow\left|\frac{\partial{f}}{\partial{y}}(x,y)-\frac{\partial{f}}{\partial{y}}(x,y_0)\right|<\frac{\varepsilon}{2(b-a)}\right)
+\quad(9)$$
+Тогда для любого $h\in\mathbb{R}$ такого, что $0<|h|<\delta$ и $y_0+h\in[c,d]$
+$$\frac{F(y_0+h)-F(y_0)}{h}=\frac1{h}\left(\int_a^bf(x,y_0+h)\,dx-\int_a^bf(x,y_0)\,dx\right)=\frac1{h}\int_a^b(f(x,y_0+h)-f(x,y_0)\,dx)$$
+По <a href="./math_analysis6.4.html#Theorem6.4.3">теореме Лагранжа</a> для любого $x\in[a,b]$ существует $\theta=\theta(x)\in(0,1)$ такое, что 
+$f(x,y_0+h)-f(x,y_0)=h\frac{\partial{f}}{\partial{y}}(x,y_0+\theta{h})$, тогда
+$$\frac{F(x,y_0+h)-F(y_0)}{h}=\frac1{h}\int_a^bh\frac{\partial{f}}{\partial{y}}(x,y_0+\theta{h})\,dx=
+\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0+\theta{h})\,dx\Rightarrow$$
+$$\Rightarrow\left|\frac{F(y_0+h)-F(y_0)}{h}-\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0)\,dx\right|\leq
+\left|\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0+\theta{h})\,dx-\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0)\,dx\right|\leq
+\int_a^b\left|\frac{\partial{f}}{\partial{y}}(x,y_0+\theta{h})-\frac{\partial{f}}{\partial{y}}(x,y_0)\right|\,dx\leq^{(9)}
+\int_a^b\frac{\varepsilon}{2(b-a)}\,dx=\frac{\varepsilon}{2}<\varepsilon$$
+где предпоследнее неравенство следует из оценки (9), так как для любого $x\in[a,b]$ $\theta=\theta(x)\in(0,1)$, то есть 
+$|(y_0+\theta{h})-y_0|=|\theta{h}|<|h|<\delta$.
+Таким образом в силу произвольности выбора значения $\varepsilon$
+$$\forall\varepsilon>0\,\exists\delta>0\colon\left(0<|h|<\delta\Rightarrow
+\left|\frac{F(y_0+h)-F(y_0)}{h}-\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0)\,dx\right|<\varepsilon\right)\Rightarrow
+\exists\frac{dF}{dy}(y_0)=\lim_{h\to0}\frac{F(y_0+h)-F(y_0)}{h}=\int_a^b\frac{\partial{f}}{\partial{y}}(x,y_0)\,dx.$$
+Так как $\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$, то по <a href="#Statement13.1.2">утверждению 13.1.2</a> 
+$F'(y)=\int_a^b\frac{\partial{f}}{\partial{y}}(x,y)\,dx\in[c,d]$, значит $F(y)\in{C}'[c,d]$.
+<br><br>
+<p>Слабость утверждения 13.1.3 в том, что промежуток интегрирования не зависит от параметра $y$.
+<br><br>
+<p id=Statement13.1.4><b>Утверждение 13.1.4: Общая версия правила Лейбница.</b><br>
+Пусть $Q:=[a,b]\times[c,d]$; $\varphi(y),\psi(y)\colon[c,d]\to[a,b]$, $f(x,y)\colon{Q}\to\mathbb{R}$ такие, что 
+<ol>
+<li>$\varphi(y),\psi(y)\in{C}'[c,d]$,</li>
+<li>$f(x,y)\in{C}(Q)$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$,</li>
+</ol>
+тогда если $F(y):=\displaystyle\int_{\varphi(y)}^{\psi(y)}f(x,y)\,dx$, то
+<ol>
+<li>$F(y)\in{C}'[c,d]$</li>
+<li>$\displaystyle\forall{y}\in[c,d]\left(\frac{dF}{dy}(y)=
+\int_{\varphi(y)}^{\psi(y)}\frac{\partial{f}}{\partial{y}}(x,y)dx+f(\psi(y),y)\psi'(y)-f(\varphi(y),y)\varphi'(y)\right)$</li>
+</ol>
+<p><b>Доказательство:</b> Обозначим $\Pi:=[c,d]\times[a,b]\times[a,b]$, $\Phi(y,u,v):=\int_u^vf(x,y)\,dx\colon\Pi\to\mathbb{R}$.
+<ol>
+<li>
+Докажем, что $\frac{\partial{\Phi}}{\partial{y}}$, $\frac{\partial{\Phi}}{\partial{u}}$, $\frac{\partial{\Phi}}{\partial{v}}\in{C}(\Pi)$.<br>
+Из определения функции $\Phi(y,u,v)$ и <a href="./math_analysis8.4.html#Statement8.4.3">формулы Ньютона - Лейбница</a> следует, что 
+$\frac{\partial{\Phi}}{\partial{u}}(y,u,v)=-f(u,y)$, $\frac{\partial{\Phi}}{\partial{v}}(y,u,v)=f(v,u)$. Тогда в силу условия 2 
+$\frac{\partial{\Phi}}{\partial{u},}\frac{\partial{\Phi}}{\partial{v}}\in{C}(\Pi)$. С другой стороны из условия 2 и 3 следует, что к функции $f(x,y)$
+применимо <a href="#Statement13.1.3">утверждение 13.1.3</a>, то есть при любых фиксированных $u,v\in[a,b]$ существует производная 
+$\frac{\partial{\Phi}}{\partial{y}}(y,u,v)=\int_u^v\frac{\partial{f}}{\partial{y}}(x,y)\,dx$.<br>
+Докажем непрерывность функции $\frac{\partial{\Phi}}{\partial{y}}(y,u,v)$.<br>
+Доказательство необходимо, так как из утверждения 13.1.3 следует только непрерывность по переменной $y$. Итак, оценим разность 
+$\frac{\partial{\Phi}}{\partial{y}}(y+\Delta{y},u+\Delta{u},v+\Delta{v})-\frac{\partial{\Phi}}{\partial{y}}(y,u,v)$ при 
+$\sqrt{(\Delta{y})^2+(\Delta{u})^2+(\Delta{v})^2}\to0$.
+$\begin{multline}
+\left|\frac{\partial{\Phi}}{\partial{y}}(y+\Delta{y},u+\Delta{u},v+\Delta{v})-\frac{\partial{\Phi}}{\partial{y}}(y,u,v)\right|=
+\left|\int_{u+\Delta{u}}^{v+\Delta{v}}\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})\,dx-\int_u^v\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|=\\
+=\left|\int_{u+\Delta{u}}^u\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})\,dx+\int_u^v\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})\,dx+
+\int_v^{v+\Delta{v}}\frac{\partial{f}}{\partial}(x,y+\Delta{y})\,dx-\int_u^v\frac{\partial{f}}{\partial{y}}(x,y)\,dx\right|\leq\\
+\leq\left|\int_{u+\Delta{u}}^u\left|\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})\right|\,dx\right|+
+\left|\int_u^v\left|\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})-\frac{\partial{f}}{\partial{y}}(x,y)\right|\,dx\right|+
+\left|\int_v^{v+\Delta{v}}\left|\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})\right|\,dx\right|
+\end{multline}.$
+Обозначим слагаемые в последнем выражении как $I_1$, $I_2$, $I_3$ соответственно. Фиксируем $\varepsilon>0$, тогда из равномерной непрерывности функции
+$\frac{\partial{f}}{\partial{y}}(x,y)$ на $Q$, следует
+$\begin{multline}
+\exists\delta=\delta(\varepsilon)>0\colon\forall{y}\in[c,d]\forall{x}\in[a,b]\left((|\Delta{y}|<\delta\wedge{y}+\Delta{y}\in[c,d])\Rightarrow
+\left|\frac{\partial{f}}{\partial{y}}(x,y+\Delta{y})-\frac{\partial{f}}{\partial{y}}(x,y)\right|<\frac{\varepsilon}{3(b-a)}\Rightarrow\right.\\
+\left.\Rightarrow{I}_2\leq\left|\int_u^v\frac{\varepsilon}{3(b-a)}\,dx\right|\leq\frac{\varepsilon}{3(b-a)}|v-u|\leq\frac{\varepsilon}{3}\right)\qquad(15)
+\end{multline}$
+Так как $\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$ и $Q$ - компакт, то функция $\frac{\partial{f}}{\partial{y}}(x,y)$ ограничена на $Q$, следовательно
+$$\exists{M}>0\colon\forall(x,y)\in{Q}\left(\left|\frac{\partial{f}}{\partial{y}}(x,y)\right|\leq{M}\right)\Rightarrow
+\left(I_1\leq\int_u^{u+\Delta{u}}M\,dx=M|\Delta{u}|\wedge{I}_3\leq{M}|\Delta{v}|\right)\Rightarrow$$
+$$\Rightarrow\exists\delta_1=\delta_1(\varepsilon):=\min{\left\{\delta(\varepsilon),\frac{\varepsilon}{3M}\right\}}\colon
+\left(\sqrt{(\Delta{y})^2+(\Delta{u})^2+(\Delta{v})^2}<\delta_1\Rightarrow
+\left(|\Delta{y}|<\delta\wedge|\Delta{u}|<\frac{\varepsilon}{3M}\wedge|\Delta{v}|<\frac{\varepsilon}{3M}\right)\Rightarrow^{(15)}
+I_1+I_2+I_3<{M}\frac{\varepsilon}{3M}+\frac{\varepsilon}{3}+M\frac{\varepsilon}{3M}=\varepsilon\right).$$
+Таким образом удалось доказать, что для любого $(y,u,v)\in\Pi$ существует предел 
+$\displaystyle\lim_{(\Delta{y},\Delta{u},\Delta{v})\to0}\frac{\partial{\Phi}}{\partial{y}}(y+\Delta{y},u+\Delta{u},v+\Delta{v})=
+\frac{\partial{\Phi}}{\partial{y}}(y,u,v)$, то есть $\frac{\partial{\Phi}}{\partial{y}}(y,u,v)\in{C}(\Pi)$.<br>
+Так как $F(y)=\Phi(y,\varphi(y),\psi(y))$, то 
+$F'(y)=\frac{\partial{\Phi}}{\partial{y}}(y,\varphi(y),\psi(y))+\frac{\partial{\Phi}}{\partial{u}}(y,\varphi(y),\psi(y))\varphi'(y)+
+\frac{\partial{\Phi}}{\partial{v}}(y,\varphi(y),\psi(y))\psi'(y)$, тогда из пункта 1 условия и непрерывности функций $\frac{\partial{\Phi}}{\partial{y}}$,
+$\frac{\partial{\Phi}}{\partial{u}}$, $\frac{\partial{\Phi}}{\partial{v}}$ следует непрерывность функции $F'(y)$, то есть $F(y)\in{C}'[c,d]$.
+</li>
+<li>
+Следует из определения функции $\Phi(y,u,v)$ и формулы 
+$$F'(y)=\frac{\partial{\Phi}}{\partial{y}}(y,\varphi(y),\psi(y))+\frac{\partial{\Phi}}{\partial{u}}(y,\varphi(y),\psi(y))\varphi'(y)+
+\frac{\partial{\Phi}}{\partial{v}}(y,\varphi(y),\psi(y))\psi'(y).$$
+</li>
+</ol>
+
+<br><br>
+<p id=Example13.1.1><b>Пример 13.1.1:</b> Вычислим интеграл $\displaystyle{F}(\alpha)=\int_0^{\pi/2}\ln{(\alpha^2-\sin^2\varphi)}\,d\varphi$, 
+для любого $\alpha>1$.<br>
+На множестве $Y:=(1,+\infty)$ произведем дифференцирование по параметру $\alpha$.<br>
+<i>
+Так как 
+$$\int\frac{2\alpha}{\alpha^2-\sin^2{\varphi}}\,d\varphi=\int\frac{2\alpha}{\alpha^2-\sin^2(\arctg{t})}\,d(\arctg{t})=
+\int\frac{2\alpha}{\alpha^2-\frac{t^2}{1+t^2}}\frac1{1+t^2}\,dt=\int\frac{2\alpha}{\alpha^2+\alpha^2t^2-t^2}\,dt=
+\int\frac{2\alpha}{\alpha^2+(\alpha^2-1)t^2}\,dt=\frac1{\alpha^2-1}\int\frac{2\alpha}{\frac{\alpha^2}{\alpha^2-1}+t^2}\,dt=$$
+$$=2\alpha\frac1{\alpha^2-1}\sqrt{\frac{\alpha^2-1}{\alpha^2}}\arctg{\left(t\sqrt{\frac{\alpha^2-1}{\alpha^2}}\right)}=
+\frac{2}{\sqrt{\alpha^2-1}}\arctg{\left(t\frac{\sqrt{\alpha^2-1}}{\alpha}\right)},$$
+то
+</i>
+$$\frac{dF}{d\alpha}(\alpha)=\int_0^{\pi/2}\frac{2\alpha}{\alpha^2-\sin^2{\varphi}}\,d\varphi=
+\frac{2}{\sqrt{\alpha^2-1}}\left.\arctg{\left(t\frac{\sqrt{\alpha^2-1}}{\alpha}\right)}\right|_0^{\infty}=\frac{\pi}{\sqrt{\alpha^2-1}}$$ 
+Таким образом функция $F(\alpha)$ представима в виде 
+$$F(\alpha)=\int\frac{dF}{d\alpha}\,d\alpha=\pi\int\frac{d\alpha}{\sqrt{\alpha^2-1}}=\pi\ln{(\alpha+\sqrt{\alpha^2-1})}+C,$$
+где $C$ некоторая константа. Для определения значения $C$ исследуем повдение функции $F(\alpha)$ при $\alpha\to\infty$.
+$$F(\alpha)=\int_0^{\pi/2}\ln{(\alpha^2-\sin^2{\varphi})}\,d\varphi=
+\int_0^{\pi/2}\left(\ln{\alpha^2}+\ln{\left(1-\frac{\sin^2{\varphi}}{\alpha^2}\right)}\right)\,d\varphi=
+\pi\ln{\alpha}+\int_0^{\pi/2}\ln\left(1-\frac{\sin^2{\varphi}}{\alpha^2}\right)\,d\varphi$$
+Так как по <a href="./math_analysis10.2.1.html#Statement10.2.1">критерию равномерной сходимости</a> 
+$\displaystyle{f}_n(\varphi)=\ln{\left(1-\frac{\sin^2{\varphi}}{n^2}\right)}\UniformConv0$, $\varphi\in\left[0,\frac{\pi}{2}\right]$, то для интеграла 
+$\displaystyle\int_0^{\pi/2}\ln{\left(1-\frac{\sin^2\varphi}{\alpha^2}\right)}\,d\varphi$ можно применить <a href="#Statement13.1.1">утверждение 13.1.1</a>,
+то есть
+$$\lim_{\alpha\to\infty}\int_0^{\pi/2}\ln{\left(1-\frac{\sin^2{\varphi}}{\alpha^2}\right)}\,d\varphi=
+\int_0^{\pi/2}\lim_{\alpha\to\infty}\left(\ln{\left(1-\frac{\sin^2{\varphi}}{\alpha^2}\right)}\right)\,d\varphi=0$$
+Таким образом $F(\alpha)=\pi\ln{\alpha}+o(1)$ при $\alpha\to\infty$. С другой стороны,
+$\begin{multline}
+F(\alpha)=\pi\ln{(\alpha+\sqrt{\alpha^2-1})}+C=\pi\ln{\alpha}+\pi\ln{\left(1+\sqrt{1-\frac1{\alpha^2}}\right)}+C=
+\pi\ln{\alpha}+\pi\ln2+C+o(1),\alpha\to\infty\Rightarrow\\
+\Rightarrow\lim_{\alpha\to\infty}{(F(\alpha)-\pi\ln{\alpha}-\pi\ln2-C)}=
+\lim_{\alpha\to\infty}{(F(\alpha)-\pi\ln{\alpha})}-\pi\ln2-C=-\pi\ln2-C=0\Rightarrow{C}=-\pi\ln2.
+\end{multline}$
+Таким образом для любого $\alpha>0$ 
+$\displaystyle{F}(\alpha)=\int_0^{\pi/2}\ln{(\alpha^2-\sin^2\varphi)}\,d\varphi=\pi\ln\frac{\alpha+\sqrt{\alpha^2-1}}{2}$.
+
+<br><br>  
+<p>В формулировках <a href="#Statement13.1.3">утверждений 13.1.3</a>, <a href="#Statement13.1.4">13.1.4</a> можно отказаться от того, 
+чтобы множество значений параметра $y$ было отрезком.<br>
+Пусть множество $Y$ открытое в $\mathbb{R}$, $f(x,y)\colon{Y}\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x,y)\in{C}([a,b]\times{Y})$,</li>
+<li>$\exists\frac{\partial{f}}{\partial{y}}(x,y)\in{C}([a,b]\times{Y})$.</li>
+</ol>
+Так как $Y$ открытое в $\mathbb{R}$, то для любого $y_0\in{Y}$ существует отрезок $[c,d]$ такой, что $x\in[c,d]\subset{Y}$. Тогда функция $f(x,y)$ на 
+множестве $[a,b]\times[c,d]$ будет удовлетворять условиям <a href="#Statement13.1.3">утверждений 13.1.3</a>, <a href="#Statement13.1.4">13.1.4</a>.
+Тогда для любого $y_0\in{Y}$ результаты утверждений будут справедливы.
+
+<br><br>
+<p id=Task13.1.1><b>Задача 13.1.1:</b> Пусть $n\in\mathbb{N}$, $\Delta$ - числовой промежуток из $\overline{\mathbb{R}}$, $f(x)\in{C}(\Delta)$,
+$$\mathcal{F}_n(x)=\frac1{(n-1)!}\int_0^x(x-t)^{n-1}f(t)\,dt.$$
+Доказать, что для любых $n\in\mathbb{N}$, $x\in\Delta$ существует производная $\mathcal{F}_n^{(n)}=f(x)$.
+<p><b>Решение:</b>
+<i>
+Докажем индукцией по $n$.<br>
+При $n=1$ $\mathcal{F}_1(x)=\int_0^xf(t)\,dt$, следовательно, $\mathcal{F}'_1(x)=f(x)$.<br>
+Пусть утверждение верно при $n=k$, то есть $\mathcal{F}_k^{(k)}(x)=f(x)$, тогда
+$$\mathcal{F}_{k+1}(x)=\frac1{k!}\int_0^x(x-t)^kf(t)\,dt\Rightarrow\mathcal{F}'_{k+1}(x)=\frac1{k!}\int_0^x\frac{d}{dx}((x-t)^kf(t))\,dt=
+\frac1{k!}\int_0^xk(x-t)^{k-1}f(t)\,dt=\mathcal{F}_k(x)\Rightarrow\mathcal{F}_{k+1}^{(k+1)}(x)=(\mathcal{F}'_{k+1})^{(k)}=\mathcal{F}_k^{(k)}=f(x).$$
+</i>
+
+<br><br>
+<a href="./math_analysis12.4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.1.2.html">next</a>
+</body>
+</html>

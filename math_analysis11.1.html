@@ -1,0 +1,365 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 11.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-textvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis10.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis11.2.html">next</a>
+<h3><i>2 курс. 1 семестр.</i></h3>
+
+<h3 id=11>11. НЕПРЕРЫВНЫЕ ОТОБРАЖЕНИЯ В МЕТРИЧЕСКИХ ПРОСТРАНСТВАХ.</h3>
+
+<h4 id=11.1>11.1 Метрическое пространство.</h4>
+
+<p id=Definition11.1.1><b>Определение 11.1.1:</b> Говорят, что не пустое множество $X$ наделено метрикой или структурой метрического пространства, 
+если задана функция $\rho\colon{X}\times{X}\to\mathbb{R}$ удовлетворяющая условиям
+<ol>
+<li>$\rho(x,y)=0\Leftrightarrow{x}=y$ (не вырожденность),</li>
+<li>$\rho(x,y)=\rho(y,x)$ (симметричность),</li>
+<li>$\rho(x,z)\leq\rho(x,y)+\rho(y,z)$ (неравенство треугольников)</li>
+</ol>
+для любых $x,y,z\in{X}$.<br>
+При этом функцию $\rho$ называют метрикой, а ее значение $\rho(x,y)$ расстоянием между элементами $x$ и $y$.<br>
+Пару $(X, \rho)$ называют метрическим пространством.
+
+<p id=Corollary11.1.1><b>Следствие 11.1.1:</b> Если $(X,\rho)$ метрическое пространство, то для любых $x\neq{y}$ из $X$ $\rho(x,y)>0$.
+<p><b>Доказательство:</b> По аксиоме 3, 2, 1.
+$$\forall{x_1},x_2\in{X}(\rho(x_1,x_1)\leq\rho(x_1,x_2)+\rho(x_2,x_1)=2\rho(x_1,x_2)\Rightarrow0\leq2\rho(x_1,x_2)\Rightarrow\rho(x_1,x_2)\geq0)$$
+Тогда так как по условию $x\neq{y}$, то по аксиоме 1 $\rho(x,y)\neq0$, следовательно, $\rho(x,y)>0$
+
+<br><br>
+
+<p id=Example11.1.1><b>Пример 11.1.1:</b>
+<ol>
+<li> Способы метризации множества $\mathbb{R}$.
+<ol type="a">
+<li>Функция <a href="./math_analysis3.3.html#Definition3.4.5">расстояния</a> $\rho(x,y):=|x-y|$ является метрикой на $\mathbb{R}$.</li>
+<li>
+Пусть <a herf="./math_analysis6.6.2.html#Definition6.6.1">строго выпуклая вниз</a> функция $f(x)\colon\mathbb{R}^+\to\mathbb{R}^+$ такая, 
+что $f(0)=0$, для любого $x>0$ $f(x)>0$, тогда функция $\rho_f(x,y):=f(|x-y|)\colon\mathbb{R}^+\to\mathbb{R}^+$ является метрикой на $\mathbb{R}$.<br>
+Например, положим $f(x):=\frac{x}{1+x}\colon\mathbb{R}^+\to\mathbb{R}^+$, тогда функция $\rho(x,y):=\frac{|x-y|}{1+|x-y|}$ будет метрикой на 
+$\mathbb{R}$ такой, что для любых $x,y\in\mathbb{R}$ $0\leq\rho(x,y)<1$.
+</li>
+</ol>
+</li>
+<li>Функция <a href="./math_analysis7.5.1.html#Definition7.5.2">расстояния</a> на множестве комплексных чисел $\rho(z_1,z_2)=|z_1-z_2|$
+является метрикой на $\mathbb{C}$.</li>
+<li> Способы метризации множества $\mathbb{R}^n$.
+<ol type="a">
+<li>Функция <a href="./math_analysis9.html#Definition9.1">расстояния</a> $\displaystyle\rho(x,y):=\|x-y\|:=\left(\sum_{i=1}^n(x_i-y_i)^2\right)^\frac12$ 
+на множестве $\mathbb{R}^n$ является метрикой.<br>
+<i>Доказательство неравенства треугольников для случая $n=2$ аналогично <a href="./math_analysis7.5.1.html#Statement7.5.1">доказательству</a> неравенства 
+треугольников для модуля комплексных чисел. Индукцией по $n$ данное доказательство можно распространить на случай произвольного $n\in\mathbb{N}$.</i>
+</li>
+<li>
+Предыдущий пример может быть обобщен. Для любого $p\geq1$ функция $\displaystyle\rho_p(x,y):=\left(\sum_{i=1}^n(x_i-y_i)^p\right)^\frac1{p}$ является 
+метрикой на $\mathbb{R}^n$.<br>
+Аксиома 3 в данном случае следует из неравенства Минковского 
+$$\left(\sum_{i=1}^n|x_i+y_i|^p\right)^\frac1{p}\leq\left(\sum_{i=1}^n|x_i|^p\right)^\frac1{p}+\left(\sum_{i=1}^n|y_i|^p\right)^\frac1{p},$$
+которое в свою очередь доказывается с использованием неравенства Гёльдера
+$$\forall{p}>1\,\forall{q}>1\left(\frac1{p}+\frac1{q}=1\Rightarrow
+\sum_{i=1}^n|x_iy_i|=\left(\sum_{i=1}^n|x_i|^p\right)^\frac1{p}\left(\sum_{i=1}^n|y_i|^q\right)^\frac1{q}\right)$$
+являющимся обобщением <a href="./math_analysis9.html#Statement9.1">неравенства Коши-Буняковского</a>.
+</li>
+<li>Функция $\displaystyle\rho(x,y):=\max_{i\in\overline{1,n}}|x_i-y_i|$ является метрикой на $\mathbb{R}^n$.<br>
+Проверим неравенство треугольников. Действительно, для любых $x,y,z\in\mathbb{R}^n$ из свойства расстояния на $\mathbb{R}$ следует
+$$\forall{i}\in\overline{1,n}(|x_i-z_i|\leq|x_i-y_i|+|y_i-z_i|\leq\max_{i\in\overline{1,n}}|x_i-y_i|+\max_{i\in\overline{1,n}}|y_i-z_i|)\Rightarrow
+\max_{i\in\overline{1,n}}|x_i-z_i|\leq\max_{i\in\overline{1,n}}|x_i-y_i|+\max_{i\in\overline{1,n}}|y_i-z_i|$$
+</li>
+<li>Для любых положительных $c_1,\ldots,c_n\in\mathbb{R}$ функция $\rho(x,y):=\sum_{i=1}^n(c_i|x_i-y_i|)$ является метрикой на $\mathbb{R}^n$.
+</li>
+</ol>
+</li>
+</ol>
+
+<br><br>
+
+<p id=Example11.1.2><b>Пример 11.1.2:</b>
+<ol>
+<li>Способы метризации пространства непрерывных функций $C[a,b]$
+<ol type="a">
+<li>Функция $\displaystyle\rho(x(t),y(t)):=\max_{t\in[a,b]}|x(t)-y(t)|$ является метрикой на множестве функций $C[a,b]$.</li>
+<li>
+Для любого $p\geq1$ функция $\displaystyle\rho(x(t),y(t)):=\left(\int_a^b|x(t)-y(t)|^p\,dt\right)^\frac1{p}$ является метрикой на множестве функций 
+$C[a,b]$.<br>
+При $p=1$ эта метрика называется расстоянием между функциями $x(t)$, $y(t)$ в среднем.<br>
+При $p=2$ эта метрика называется расстоянием между функциями $x(t)$, $y(t)$ в среднем квадратичном.<br>
+Расстояние в среднем квадратичном будет использоваться при рассмотрении <a href="./math_analysis15.1.1.html#15">главы 15</a> 
+"ОБЩАЯ ТЕОРИЯ РЯДОВ ФУРЬЕ В ЕВКЛИДОВЫХ ПРОСТРАНСТВАХ".
+</li>
+</ol>
+<i>См. Зорич т. 2, стр. 3</i>
+</li>
+<li> Способы метризации пространства непрерывных функций $C^n[a,b]$
+<ol type="a">
+<li>Для любых положительных $c_0,\ldots,c_n\in\mathbb{R}$ функция $\rho(x(t),y(t)):=\sum_{i=0}^n(c_i\max_{t\in[a,b]}|x^{(i)}(t)-y^{(i)}(t)|)$
+является метрикой на множестве функций $С^n[a,b]$.</li>
+<li>
+Функция $\displaystyle\rho(x(t),y(t)):=\max_{i\in\overline{0,n}}\left(\max_{t\in[a,b]}|x^{(i)}(t)-y^{(i)}(t)|\right)$ является метрикой на множестве
+функций $C^n[a,b]$.<br>
+<i>См. Зорич т. 2, стр. 5</i>
+</li>
+</ol>
+</li>
+</ol>
+
+<br><br>
+
+<p id=Definition11.1.2><b>Определение 11.1.2:</b> Пусть $(X,\rho)$ метрическое пространство, $\delta>0$, $a\in{X}$, тогда множество 
+$B(a,\delta):=\{x\in{X}\mid\rho(a,x)<\delta\}$ называется шаром с центром в точке $a$ радиуса $\delta$ или $\delta$-окрестностью точки $a$.
+
+<br><br>
+
+<p id=Example11.1.3><b>Пример 11.1.3:</b> 
+<ol>
+<li>
+Для любой из метрик пространства $C[a,b]$ приведенных в <a href="#Example11.1.2">примере 11.1.2</a>
+$B(0,1)=\{x(t)\in{C}[a,b]\mid\forall{t}\in[a,b](|x(t)|<1)\}$.
+</li>
+<li>
+Пусть $X:=[0,1]\times[0,1]$, $\rho(x,y):=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$, тогда
+$$\forall\delta\geq\frac{\sqrt2}{2}(B(0,\delta)=X)$$
+</li>
+</ol>
+
+<br><br>
+
+<p id=Definition11.1.3><b>Определение 11.1.3:</b> Пусть $(X,\rho)$ метрическое пространство, тогда множество $G\subset{X}$ называется открытым в
+метрическом пространстве $(X,\rho)$, если для любой точки $x\in{G}$ найдется шар $B(x,\delta)$ такой, что $B(x,\delta)\subset{G}$.
+
+<br><br>
+
+<p id=Example11.1.4><b>Пример 11.1.4:</b> Пусть $(X,\rho)$ метрическое пространство, $a\in{X}$, ${r}>{0}$, тогда множество $B(a,r)$ открыто в
+пространстве $(X,\rho)$. Действительно, для любого $x_0\in{B}(a,r)$ $\rho(a,x_0)<{r}$, фиксируем $\delta\in(0,r-\rho(a,x_0))$, тогда
+$$(\xi\in{B}(x_0,\delta)\Rightarrow\rho(\xi,x_0)<\delta\Rightarrow\rho(a,\xi)\leq\rho(a,x_0)+\rho(\xi,x_0)<\rho(a,x_0)+r-\rho(a,x_0)=r\Rightarrow
+\xi\in{B}(a,r))\Rightarrow{B}(x_0,\delta)\subset{B}(a,r).$$
+
+<br><br>
+
+<p id=Task11.1.1><b>Задача 11.1.1:</b> 
+<ol>
+<li>
+Пусть $(X,\rho)$ метрическое пространство, $a\in{X}$, $r>0$. Доказать, что множество $Y:=\{x\in{X}\mid\rho(a,x)>r\}$
+открыто в $(X,\rho)$.
+</li>
+<li>
+Пусть $X:=\mathbb{R}^n$, $\rho(x,y):=\|x-y\|$, $a_i,\ldots{a}_n,b_1,\ldots,b_n\in\mathbb{R}$ такие, что для любого $i\in\overline{1,n}$ $a_i<{b}_i$ 
+доказать, что множество $G:=(a_i,b_i)\times\cdots\times(a_n,b_n):=\{x\in\mathbb{R}^n\mid\forall{i}\in\overline{1,n}(a_i<{x}_i<{b}_i)\}$ открыто в $(X,\rho)$.
+</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>
+Для любого $x_0\in{Y}$ $\rho(a,x_0)>r$, фиксируем $\delta\in(0,\rho(a,x_0)-r)$, тогда
+$$(\xi\in{B}(x_0,\delta)\Rightarrow\rho(x_0,\xi)<\delta\Rightarrow\rho(a,x_0)\leq\rho(a,\xi)+\rho(x_0,\xi)\Rightarrow
+\rho(a,\xi)\geq\rho(a,x_0)-\rho(x_0,\xi)>\rho(a,x_0)-\rho(a,x_0)+r=r\Rightarrow\xi\in{Y})\Rightarrow{B}(x_0,\delta)\subset{Y}.$$
+</li>
+<li>Фиксируем $x=(x_1,\ldots,x_n)\in{G}$.
+Для любого $i\in\overline{1,n}$ существует $\delta_i$ такое, что $a_i<{x}_i-\delta_i<{x}_i<{x}_i+\delta_i<{b}_i$. Обозначим 
+$\delta:=\min_{i\in\overline{1,n}}\delta_i$, тогда $B(x,\delta)\subset{G}$.
+$$\xi=(\xi_1,\dots,\xi_n)\in{B}(x,\delta)\Rightarrow\|x-\xi\|=\sqrt{\sum_{i=1}^n(x_i-\xi_i)^2}<\delta\Rightarrow\sum_{i=1}^n(x_i-\xi_i)^2<\delta^2\Rightarrow
+\forall{i}\in\overline{1,n}(|x_i-\xi_i|<\delta)\Rightarrow\forall{i}\in\overline{1,n}(\xi_i\in(a_i,b_i))\Rightarrow\xi\in{G}.$$
+</li>
+</ol>
+</i>
+
+<br><br>
+
+<p id=Definition11.1.4><b>Определение 11.1.4:</b> Пусть $(X,\rho)$ метрическое пространство, тогда множество $F\subset{X}$ называется замкнутым в 
+метрическом пространстве $(X,\rho)$, если множество $X\backslash{F}$ открыто в метрическом пространстве $(X,\rho)$.
+
+<br><br>
+
+<p>Из определений <a href="#Definition11.1.3">11.1.3</a> и 11.1.4 следует, что если $(X,\rho)$ метрическое пространство, то множества $X$ и 
+$\varnothing$ являются и открытыми, и замкнутыми в $(X,\rho)$.<br>
+Так же существуют множества, которые не являются ни открытыми, ни замкнутыми, на пример, это любой полуинтервал $[a,b)$ в пространстве вещественных
+чисел $\mathbb{R}$ с метрикой $\rho(x,y)=|x-y|$.<br>
+<br>
+
+<p id=Example11.1.5><b>Пример 11.1.5:</b> Если $(X,\rho)$ метрическое пространство, $a\in{X}$, $r>0$, то множество 
+$\overline{B}(a,r):=\{x\in{X}\mid\rho(a,x)\leq{r}\}$, называемое замкнутым шаром с центром в точке $a$ радиуса $r$, является замкнутым в $(X,\rho)$,
+так как в <a href="#Task11.1.1">задаче 11.1.1</a> было показано, что множество $X\backslash\overline{B}(a,r)=\{x\in{X}\mid\rho(a,x)>r\}$ открыто.
+
+<br><br>
+
+$\newcommand{\card}{\operatorname{card}}$
+
+<p id=Statement11.1.1><b>Утверждение 11.1.1: Свойства открытых и замкнутых множеств.</b>
+Пусть $(X,\rho)$ метрическое пространство, тогда
+<ol>
+<li>для любого множества $I$, если для любого $\alpha\in{I}$ множество $G_{\alpha}\subset{X}$ открыто в $(X,\rho)$, то множество 
+$\bigcup_{\alpha\in{I}}G_{\alpha}$ открыто в $(X,\rho)$;
+</li>
+<li>для любого конечного множества $I$, если для любого $\alpha\in{I}$ множество $G_{\alpha}\subset{X}$ открыто в $(X,\rho)$, то множество
+$\bigcap_{\alpha\in{I}}G_{\alpha}$ открыто в $(X,\rho)$;</li>
+<li>для любого множества $I$, если для любого $\alpha\in{I}$ множество $F_{\alpha}\subset{X}$ замкнуто в $(X,\rho)$, то множество
+$\bigcap_{\alpha\in{I}}F_{\alpha}$ замкнуто в $(X,\rho)$;
+</li>
+<li>для любого конечного множества $I$, если для любого $\alpha\in{I}$ множество $F_{\alpha}\subset{X}$ замкнуто в $(X,\rho)$, то множество
+$\bigcup_{\alpha\in{I}}F_{\alpha}$ замкнуто в $(X,\rho)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$
+x\in\bigcup_{\alpha\in{I}}G_{\alpha}\Rightarrow\exists{\alpha}_0\in{I}\colon{x}\in{G}_{{\alpha}_0}\Rightarrow
+\exists\delta>0\colon{B}(x,\delta)\subset{G}_{{\alpha}_0}\Rightarrow{B}(x,\delta)\subset\bigcup_{\alpha\in{I}}G_{\alpha}.
+$$
+</li>
+<li>Пусть $\card{I}=n\in\mathbb{N}$, тогда можно считать, что $I=\overline{1,n}$
+$$x\in\bigcap_{i=1}^nG_i\Rightarrow\forall{i}\in\overline{1,n}(\exists{\delta}_i>0\colon{B}(x,\delta_i)\subset{G}_i)\Rightarrow
+\exists\delta:=\min_{i\in\overline{1,n}}\delta_i\colon\forall{i}\in\overline{1,n}(B(x,\delta)\subset{G}_i)\Rightarrow
+B(x,\delta)\subset\bigcap_{i=1}^nG_i$$
+</li>
+<li>
+Для любого $\alpha\in{I}$ множество $X\backslash{F_{\alpha}}$ открыто, следовательно, по пункту 1 множество 
+$X\backslash\bigcap_{\alpha\in{I}}F_{\alpha}=\bigcap_{\alpha\in{I}}(X\backslash{F}_\alpha)$ открыто, следовательно, множество 
+$\bigcap_{\alpha\in{I}}F_{\alpha}$ замкнуто.
+</li>
+<li>
+Аналогично пункту 3 утверждение следует из равенства $X\backslash\bigcup_{i=1}^nF_i=\bigcap_{i=1}^n(X\backslash{F}_i)$ и пункта 2.
+</li>
+</ol>
+
+<br><br>
+
+<p id=Definition11.1.5><b>Определение 11.1.5:</b> Если $(X,\rho)$ метрическое пространство, $x\in{X}$, то любое открытое множество $U\subset{X}$ 
+содержащее точку $x$ называется окрестностью точки $x$.
+
+<br><br> 
+
+<p id=Example11.1.6><b>Пример 11.1.6:</b>Если в пункте 2 утверждения 11.1.1 множество $I$ бесконечно, то утверждение не верно. Например,
+пусть $X=\mathbb{R}$, $\rho(x,y)=|x-y|$, $I=\mathbb{N}$, для любого $n\in\mathbb{N}$ $G_n:=\left(-\frac1{n},\frac1{n}\right)$, тогда
+для любого $n\in\mathbb{N}$ множество $G_n$ открыто в $(X,\rho)$, но множество $\bigcap_{i=1}^{\infty}G_i=\{0\}$ замкнуто.
+
+<br><br>
+
+<p id=Task11.1.2><b>Задача 11.1.2:</b> Пусть $(X,\rho)$ метрическое пространство, множество $G\subset{X}$ открыто в $(X,\rho)$, множество $F\subset{X}$
+замкнуто в $(X,\rho)$. Доказать, что 
+<ol>
+<li>множество $G\backslash{F}$ открыто в $(X,\rho)$,</li>
+<li>множество $F\backslash{G}$ замкнуто в $(X,\rho)$.</li>
+</ol>
+<p><b>Решение:</b>
+<i>
+<ol>
+<li>Так как $G\backslash{F}=G\cap(X\backslash{F})$ и множества $G$, $X\backslash{F}$ открыты в $(X,\rho)$, то утверждение следует из пункта 2 
+<a href="#Statement11.1.1">утверждения 11.1.1</a>.</li>
+<li>Так как $X\backslash(F\backslash{G})=(X\backslash{F})\cup{G}$ и множества $G$, $X\backslash{F}$ открыты в $(X,\rho)$, то из пункта 1
+<a href="#Statement11.1.1">утверждения 11.1.1</a> следует, что множество $X\backslash(F\backslash{G})$ открыто, то есть множество $F\backslash{G}$
+замкнуто.
+</li>
+</ol>
+</i>
+
+<p>Из задачи например следует, что сфера с центром в точке $a$ радиуса $r$ $S(a,r):=\{x\in{X}\mid\rho(a,x)=r\}$ есть множество замкнутое как разность
+замкнутого и открытого $S(a,r)=\overline{B}(a,r)\backslash{B}(a,r)$.
+
+<br><br> 
+
+<p>В силу определения окрестности и <a href="#Statement11.1.1">утверждения 11.1.1</a> легко видеть, что окрестность точки в абстрактном метрическом 
+пространстве обладает теми же свойствами, что и <a href="./math_analysis3.3.html#Definition3.4.3">окрестность точки</a> в $\mathbb{R}$. Это позволяет
+переносить доказательства, сделанные для случай вещественнозначных функций одного аргумента, на случай функций в абстрактных метрических пространствах.<br>
+Для окрестности точки $x$ в абстрактном метрическом пространстве вводятся аналогичные обозначения:
+<ul>
+<li>$U(x)$ - окрестность точки $x$ - произвольное открытое множество содержащее $x$,</li>
+<li>$U^{\delta}(x):=B(x,\delta)$ - $\delta$-окрестность точки $x$,</li>
+<li>$\mathring{U}(x):=U(x)\backslash{x}$ - проколотая окрестность точки $x$ (по задаче 11.1.2 является открытым множеством).</li>
+</ul> 
+
+<br>
+
+<p id=Definition11.1.6><b>Определение 11.1.6:</b> Если $(X,\rho)$ метрическое пространство, $E\subset{X}$, $x\in{X}$, то говорят, что точка $x$
+является по отношению к множеству $E$:
+<ol>
+<li>внутренней, если существует окрестность $U(x)$ такая, что $U(x)\subset{E}$;</li>
+<li>внешней, если существует окрестность $U(x)$ такая, что $U(x)\subset{X}\backslash{E}$;</li>
+<li>граничной, если для любой окрестности $U(x)$ $U(x)\cap{E}\neq\varnothing$ и $U(x)\cap{X}\backslash{E}\neq\varnothing$;</li>
+<li>предельной, если для любой окрестности $U(x)$ множество $U(x)\cap{E}$ бесконечно.</li>
+</ol>
+
+<p>Множество внутренних точек множества $E$ обозначают $int{E}$, это множество открыто.<br>
+Множество граничных точек множества $E$ обозначают $\partial{E}$, это множество точек, которые не являются для множества $E$ ни внешними, ни внутренними. 
+В качестве примера множества граничных точек можно рассмотреть множество $S(a,r)=\partial{B}(a,r)=\partial\overline{B}(a,r)$.<br>
+Множество предельных точек множества $E$, так же как и для случая множества действительных чисел, обозначают как $\mathring{E}$.<br>
+
+<br><br>
+
+<i>
+<p id=Statement11.1.2><b>Утверждение 11.1.2: Критерий замкнутости множеств.</b><br>
+Если $(X,\rho)$ метрическое пространство, то множество $F\subset{X}$ замкнуто в $X$ тогда и только тогда, когда $F$ содержит все свои предельные
+точки, то есть $F=F\cup\mathring{F}$.
+<p><b>Доказательство:</b> Зорич т.2, стр. 8.
+
+<br><br>
+
+<p id=Definition11.1.7><b>Определение 11.1.7:</b> Множество $K$ называется компактным в метрическом пространстве $(X,\rho)$, если из любого покрытия
+этого множества открытыми множествами можно выделить конечное подпокрытие.
+
+<br><br>
+
+<p id=Statement11.1.3><b>Утверждение 11.1.3:</b> Если множество $K$ - компакт в метрическом пространстве $(X,\rho)$, то $K$ замкнуто в $(X,\rho)$.
+<p><b>Доказательство:</b> Доказательство в более общем виде дано в Зорич т. 2, стр. 20.
+
+<br><br>
+
+<p id=Example11.1.7><b>Пример 11.1.7:</b> Как было показано <a href="./math_analysis3.6.html#Lemma3.6.2">ранее</a> из любого покрытия отрезка интервалами 
+можно выделить конечное подпокрытие, следовательно, отрезок - компакт в $(\mathbb{R},\rho)$.
+<br><br>
+
+<p id=Definition11.1.8><b>Определение 11.1.8:</b> Пусть $(X, \rho_x)$, $(Y, \rho_y)$ метрические пространства, тогда говорят, что функция 
+$f(x)\colon{X}\to{Y}$ имеет предел в точке $a\in\mathring{X}$ равный $A\in{Y}$, если для любой окрестности $V(A)\subset{Y}$ точки $A$ найдется 
+окрестность $U(a)\subset{X}$ точки $a$ такая, что $f(\mathring{U}(a))\subset{V}(A)$, то есть 
+$$\exists\lim_{x\to{a}}f(x)=A\Leftrightarrow\forall{V}(A)\,\exists{U}(a)\colon{f}(\mathring{U}(a))\subset{V}(A)$$
+или
+$$\exists\lim_{x\to{a}}f(x)=A\Leftrightarrow\forall\varepsilon>0\,\exists\delta>0\colon(0<\rho_x(x,a)<\delta\Rightarrow\rho_y(f(x),A)<\varepsilon).$$
+
+<br>
+<p>Эквивалентность формулировок следует из того, что шар является окрестностью и, с другой стороны, в любую окрестность можно "вписать" шар.
+<br><br>
+<p id=Definition11.1.9><b>Определение 11.1.9:</b> Пусть $(X,\rho)$ метрическое пространство. Тогда будем говорить, что множество $E\subset{X}$
+ограничено в метрическом пространстве $(X,\rho)$, если существует $x\in{X}$ и $\delta>0$ такие, что $E\subset{B}(x,\delta)$.
+
+<br><br>
+
+<p id=Definition11.1.10><b>Определение 11.1.10:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства. Отображение $f(x)\colon{X}\to{Y}$ 
+называется ограниченным, если множество $f(X)$ ограничено в метрическом пространстве $Y$.
+
+<br><br>
+
+<p id=Definition11.1.11><b>Определение 11.1.11:</b> Пусть $(X,\rho_x)$, $(Y,\rho_y)$ метрические пространства, $a\in{X}$. Отображение $f(x)\colon{X}\to{Y}$ 
+называется локально ограниченным при $x\to{a}$, если существует окрестность $U(a)\subset{X}$ такая, что множество $f(U(a))$ ограничено в метрическом
+пространстве $Y$.
+
+<br><br>
+
+<p id=Definition11.1.12><b>Определение 11.1.12:</b> Последовательность $\{x_n\}$ точек метрического пространства $(X,\rho)$ называется фундаментальной
+последовательностью или последовательностью Коши, если для любого $\varepsilon>0$ найдется номер $n_0\in\mathbb{N}$ такой, что при любых $m,n\in\mathbb{N}$
+больших $n_0$ выполняется соотношение $\rho(x_m,x_n)<\varepsilon$.
+
+<br><br>
+
+<p id=Definition11.1.13><b>Определение 11.1.13:</b> Будем говорить, что последовательность $\{x_n\}$ точек метрического пространства $(X,\rho)$
+сходится к точке $a\in{X}$, и что точка $a$ есть предел этой последовательности если существует предел $\displaystyle\lim_{n\to\infty}\rho(a,x_n)=0$.
+
+<br><br>
+
+<p id=Definition11.1.14><b>Определение 11.1.14:</b> Метрическое пространство $(X,\rho)$ называется полным, если каждая фундаментальная последовательность
+его точек является сходящейся.
+</i>
+
+<br><br>
+<a href="./math_analysis10.2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis11.2.html">next</a>
+</body>
+</html>

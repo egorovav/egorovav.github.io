@@ -1,0 +1,225 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 14.2.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.2.html">next</a>
+
+<h4 id=14.2>14.2 Абстрактная мера: начальные сведения.</h4>
+
+<h5 id=14.2.1>14.2.1 Абстрактная мера и ее общие свойства.</h5>
+
+<p id=Definition14.2.1><b>Определение 14.2.1:</b> Пусть $M$ не пустой класс множеств, тогда числовая функция множеств $\mu\colon{M}\to\mathbb{R}$ 
+называется мерой на классе $M$, если 
+<table>
+<tr><td>1.</td><td>$\forall{A}\in{M}(\mu(A)\geq0)$</td><td>(аксиома не отрицательности),</td></tr>
+<tr><td>2.</td><td>функция $\mu$ аддитивна на $M$</td><td>(аксиома аддитивности),</td></li>
+<tr><td>3.</td><td>$\forall{A},B\in{M}(A\subset{B}\Rightarrow\mu{A}\leq\mu{B})$</td><td>(аксиома монотонности).</td></li>
+</table>
+Говорят, что мера $\mu$ $\sigma$-аддитивна, если функция $\mu(A)$ $\sigma$-аддитивна.
+<br><br>
+<p>Если класс $M$ является полукольцом, то аксиома 3 следует из аксиом 1, 2. Действительно
+$$\forall{A},B\in{M}\left(A\subset{B}\Rightarrow\exists{s}\in\mathbb{N}\,\exists{A}_1,\ldots,A_s\in{M}\colon{B}=(B\backslash{A})\sqcup{A}=
+\left(\bigsqcup_{k=1}^sA_k\right)\sqcup{A}\right).$$
+Тогда по неотрицательности и аддитивности функции $\mu(A)$ $\mu(A)=\mu(B)+\sum_{k=1}^s\mu(A_k)\geq\mu(B)$.
+<br><br>
+<p id=Example14.2.1><b>Пример 14.2.1:</b>
+<ol>
+<li>
+Если $M=\{[\alpha,\beta)\mid-\infty<\alpha\leq\beta<+\infty\}$ и фукнкция $f(x)\colon\mathbb{R}\to\mathbb{R}$ не убывает на $\mathbb{R}$, то числовая
+функция множеств вида $\mu([\alpha,\beta)):=f(\beta)-f(\alpha)$ является мерой на $M$.
+</li>
+<li>Индикаторная мера.<br>
+Если $E\neq\varnothing$, тогда $M:=\mathcal{P}(E)$ является <a href="./math_analysis14.1.1.html#Definition14.1.3">алгеброй множеств</a> и для любого 
+$x_0\in{E}$ функция вида $\mu(A)=\begin{cases}1,x_0\in{A}\\0,x_0\notin{A}\end{cases}$ является мерой на $M$.
+</li>
+<li>Мера счета.<br>
+Если $E$ не пустое бесконечное множество, $\{x_n\}$ последовательность из $E$, $\{p_n\}$ последовательность из $\mathbb{R}$ такая, что для любого 
+$n\in\mathbb{N}$ $p_n>0$ и ряд $\sum_{n=1}^{\infty}p_n$ сходится, то функция вида 
+$$\mu(A)=\begin{cases}\sum_{n:x_n\in{A}}p_n&,\exists{n}\in\mathbb{N}\colon{x}_n\in{A}\\0&,\forall{n}\in\mathbb{N}(x_n\notin{A})\end{cases}$$ 
+является мерой на $\mathcal{P}(E)$.<br>
+Поскольку последовательность $\{p_n\}$ положительна, то для любой подпоследовательности $\{p_{n_k}\}$ ряд $\displaystyle\sum_{k=1}^{\infty}p_{n_k}$
+сходится, следовательно, мера $\mu$ - $\sigma$-аддитивна.
+</li>
+</ol>
+<br><br>
+<p id=Theorem14.2.1><b>Теорема 14.2.1: Основные свойства меры на кольце множеств.</b><br>
+Если $K$ - кольцо множеств, $\mu$ - мера на $K$, тогда
+<ol>
+<li>$\mu(\varnothing)=0$,</li>
+<li>$\forall{A},B\in{K}(A\subset{B}\Rightarrow\mu(B\backslash{A})=\mu(B)-\mu(A))$,</li>
+<li>$\forall{A},B\in{K}(\mu(A\cup{B})=\mu(A)+\mu(B)-\mu(A\cap{B})\wedge\mu(A\backslash{B})=\mu(A)-\mu(B)+\mu(B\backslash{A}))$,</li>
+<li>$A,A_1,\ldots,A_n\in{K}\wedge{A}\subset\bigcup_{k=1}^nA_k\Rightarrow\mu(A)\leq\sum_{k=1}^nA_k$,</li>
+<li>если $\{A_n\}$ последовательность попарно не пересекающихся множеств из $K$ и $A\in{K}$ такие, что $\bigsqcup_{k=1}^{\infty}A_k\subset{A}$, то
+$\sum_{k=1}^{\infty}\mu(A_k)\leq\mu(A)$</li>
+<li>Свойство счетной полуаддитивности.<br>
+Если мера $\mu$ $\sigma$-аддитивна, $\{A_n\}$ последовательность из $K$ и $A\in{K}$ такие, что $A\subset\bigcup_{k=1}^nA_k$, то 
+$\mu(A)\leq\sum_{k=1}^{\infty}A_k$. При этом ряд может иметь суммой $+\infty$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Следует из пункта 2 <a href="./math_analysis14.1.2.html#Statement14.1.8">утверждения 14.1.8</a>.</li>
+<li>Следует из пункта 3 <a href="./math_analysis14.1.2.html#Statement14.1.8">утверждения 14.1.8</a>.</li>
+<li>Следует из <a href="./math_analysis14.1.2.html#Corollary14.1.1">следствия 14.1.1</a>.</li>
+<li>
+Используя пункт 3 и неотрицательность меры, индукцией по $n$ можно показать, что 
+$$\forall{n}\in\mathbb{N}\,\forall{A}_1,\ldots,{A}_n\in{K}\left(\mu\left(\bigcup_{k=1}^nA_k\right)\leq\sum_{k=1}^n\mu(A_k)\right),$$
+тогда по монотонности меры
+$$A\subset\bigcup_{k=1}^nA_k\Rightarrow\mu(A)\leq\mu\left(\bigcup_{k=1}^nA_k\right)\leq\sum_{k=1}^n\mu(A_k).$$
+</li>
+<li>
+По аддитивности и монотонности меры имеем
+$$\forall{n}\in\mathbb{N}\left(\left(\bigsqcup_{k=1}^nA_k\subset\bigsqcup_{n=1}^{\infty}A_n\subset{A}\wedge\mu\left(\bigsqcup_{k=1}^nA_k\right)=
+\sum_{k=1}^n\mu(A_k)\right)\Rightarrow\sum_{k=1}^n\mu(A_k)\leq\mu(A)\right)$$
+Так как мера не отрицательна и частичные суммы ограничены сверху, то ряд $\sum_{n=1}^{\infty}\mu(A_n)$ сходится. Тогда переходя к пределу при $n\to\infty$
+в последнем равенстве получим $\sum_{n=1}^{\infty}\mu(A_n)\leq\mu(A)$.
+</li>
+<li>
+Обозначим $A':=\bigcup_{n=1}^{\infty}A_n$, $A'_n:=A_n\backslash\bigcup_{k=1}^{n-1}A_k$, тогда для любых $i\neq{j}$ $A'_i\cap{A}'_j=\varnothing$ и
+$\bigsqcup_{n=1}^{\infty}A'_n=A'$, следовательно
+$$\mu(A)=\mu(A\cap{A}')=\mu\left(A\cap\bigsqcup_{n=1}^{\infty}A'_n\right)=\mu\left(\bigsqcup_{n=1}^{\infty}(A\cap{A}'_n)\right)=
+\sum_{n=1}^{\infty}\mu(A\cap{A}'_n)\leq\sum_{n=1}^{\infty}\mu(A'_n)\leq\sum_{n=1}^{\infty}\mu(A_n),$$
+где последнее равенство по $\sigma$-аддитивности меры $\mu$, а предпоследнее и последнее неравенство по монотонности, так как $A\cup{A}'_n\subset{A}'_n$ и
+$A'_n\subset{A}_n$.
+</li>
+</ol>
+<br><br>
+<p id=Definition14.2.2><b>Определение 14.2.2:</b> Вероятностной мерой будем называть всякую $\sigma$-аддитивную меру $\mu$ заданную на 
+$\sigma$-<a href="./math_analysis14.1.1.html#Definition14.1.6">алгебре множеств</a> $M$ такую, что $\mu(E):=\mu(\bigcup_{A\in{M}}A)=1$.<br>
+При этом множество $E$ называют пространством элементарных событий, любое множество $A\in{M}$ называют событием, а значение $\mu(A)$ вероятностью события $A$.
+
+<h5 id=14.2.2>14.2.2 Продолжение меры.</h5>
+
+<p id=Definition14.2.3><b>Определение 14.2.3:</b> Пусть мера $\mu_1$ задана на классе множеств $M_1$, мера $\mu_2$ задана на классе множеств $M_2$, тогда
+будем говорить, что мера $\mu_2$ является продолжением меры $\mu_1$, если
+<ol>
+<li>$M_1\subset{M}_2$,</li>
+<li>$\forall{A}\in{M}_1(\mu_1(A)=\mu_2(A))$.</li>
+</ol>
+<br><br>
+<p>При изучении возможности продолжения меры $\mu$ с класса множеств $M_1$ на класс множеств $M_2$ обычно рассматривают два вопроса
+<ol>
+<li>существует ли хотя бы одно продолжение меры $\mu$ с класса $M_1$ на класс $M_2$,</li>
+<li>если продолжение меры существует, то при каких условиях оно единственно.</li>
+</ol>
+<p>Если классы $M_1$ и $M_2$ произвольны, то ответ на оба вопроса может быть отрицательным. В данном разделе в основном рассматривается вопрос продолжения
+меры с полукольца $H$ на минимальное над $H$ кольцо $R(H)$. В этом случае продолжение меры существует и оно единственно. При этом если мера заданная на
+полукольце $\sigma$-аддитивна, то и ее продолжение тоже будет $\sigma$-аддитивно.
+<br><br>
+<p id=Example14.2.2><b>Пример 14.2.2:</b> Пусть $M_1=\{A,B,C\}$ класс множеств такой, что $A\subset{C}$, $B\subset{C}$, $A\cap{B}=\varnothing$. Положим
+$\mu_1\colon{M}_1\to\mathbb{R}:\mu_1(A)=\mu_1(B)=\mu_1(C)=1$. Тогда функция $\mu_1$ является мерой на $M_1$.<br>
+Минимальное кольцо множеств над $M_1$ имеет следующий вид $M_2=R(M_1)=\{A,B,C,\varnothing,A\cup{B},C\backslash{A},C\backslash{B},C\backslash(A\cup{B})\}$.
+Предположим, что функция $\mu_2\colon{M}_2\to\mathbb{R}$ продолжение меры $\mu_1$ с класса $M_1$ на класс $M_2$, тогда в силу аддитивности меры 
+$\mu_2(A\cup{B})=\mu_2(A\sqcup{B})=\mu_2(A)+\mu_2(B)=\mu_1(A)+\mu_1(B)=1+1=2$. Но с другой стороны по монотонности меры 
+$\mu_2(A\cup{B})\leq\mu_2(C)=\mu_1(C)=1.$ Получено противоречие, то есть мера $\mu_1$ определенная на классе $M_1$ не может быть ни каким образом продолжена
+на класс $M_2=R(M_1)$.
+<br><br>
+<p id=Example14.2.3><b>Пример 14.2.3:</b> Пусть $M_1=\{A,B\}$ класс множеств такой, что $A\cap{B}\neq\varnothing$, $A\backslash{B}\neq\varnothing$,
+$B\backslash{A}\neq\varnothing$. Положим $M_2:=R(M_1)=\{\varnothing,A,B,A\cup{B},A\cap{B},A\backslash{B},B\backslash{A},A\Delta{B}\}$, 
+$\mu\colon{M}_1\to\mathbb{R}\colon\mu(A)=\mu(B)=1$. Тогда функция $\mu$ является мерой на $M_1$ и для любого $\alpha\in[0,1]$ функция 
+$$\mu_{\alpha}(C)=
+\begin{cases}
+0&,C=\varnothing\\
+1&,C\in{M}_1\\
+\alpha&,C=A\cap{B}\\
+2-\alpha&,C=A\cup{B}\\
+1-\alpha&,C\in\{A\backslash{B},B\backslash{A}\}\\
+2-2\alpha&,C=A\Delta{B}\\
+\end{cases}$$
+является мерой на $M_2$.
+Действительно
+<ol>
+<li>не отрицательность<br>
+$\alpha\in[0,1]\Rightarrow\forall{C}\in{M}_2(\mu_2(C)\geq0)$,
+</li>
+<li>аддитивность<br>
+<table class="solid">
+<tr><td>$\sqcup$</td><td>$\varnothing$</td><td>$A$</td><td>$B$</td><td>$A\cup{B}$</td><td>$A\cap{B}$</td><td>$A\backslash{B}$</td><td>$B\backslash{A}$</td><td>$A\Delta{B}$</td></tr>
+<tr><td>$\varnothing$</td><td>$0+0=0$</td><td>$1+0=1$</td><td>$1+0=1$</td><td>$2-\alpha+0=2-\alpha$</td><td>$\alpha+0=\alpha$</td><td>$1-\alpha+0=1-\alpha$</td><td>$1-\alpha+0=1-\alpha$</td><td>$2-2\alpha+0=2-2\alpha$</td></tr>
+<tr><td>$A$</td><td>$0+1=1$</td><td></td><td></td><td></td><td></td><td></td><td>$1-\alpha+1=2-\alpha$</td><td></td></tr>
+<tr><td>$B$</td><td>$0+1=1$</td><td></td><td></td><td></td><td></td><td>$1-\alpha+1=2-\alpha$</td><td></td><td></td></tr>
+<tr><td>$A\cup{B}$</td><td>$0+2-\alpha=2-\alpha$</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>$A\cap{B}$</td><td>$0+\alpha=\alpha$</td><td></td><td></td><td></td><td></td><td>$1-\alpha+\alpha=1$</td><td>$1-\alpha+\alpha=1$</td><td>$2-2\alpha+\alpha=2-\alpha$</td></tr>
+<tr><td>$A\backslash{B}$</td><td>$0+1-\alpha=1-\alpha$</td><td></td><td>$1+1-\alpha=2-\alpha$</td><td></td><td>$\alpha+1-\alpha=1$</td><td></td><td>$1-\alpha+1-\alpha=2-2\alpha$</td><td></td></tr>
+<tr><td>$B\backslash{A}$</td><td>$0+1-\alpha=1-\alpha$</td><td>$1+1-\alpha=2-\alpha$</td><td></td><td></td><td>$\alpha+1-\alpha=1$</td><td>$1-\alpha+1-\alpha=2-2\alpha$</td><td></td><td></td></tr>
+<tr><td>$A\Delta{B}$</td><td>$0+2-2\alpha=2-2\alpha$</td><td></td><td></td><td></td><td>$\alpha+2-2\alpha=2-\alpha$</td><td></td><td></td><td></td></tr>
+</table>
+</li>
+<li>монотонность<br>
+Так как $M_2$ кольцо, то монотонность следует из неотрицательности и аддитивности.
+</li>
+</ol>
+<br><br>
+<p id=Theorem14.2.2><b>Теорема 14.2.2:</b> Если $m$ - мера определенная на <a href="./math_analysis14.1.1.html#Definition14.1.3">полукольце</a> $H$, 
+то существует единственная мера $\mu$, которая является продолжением меры $m$ на минимальное над $H$ кольцо $R(H)$.<br>
+При этом, если мера $m$ $\sigma$-аддитивна, то мера $\mu$ также $\sigma$-аддитивна.
+<p><b>Доказательство:</b> <a href="./math_analysis14.1.1.html#Statement14.1.3">Так как</a> 
+$R(H)=\left\{\bigsqcup_{k=1}^nA_k\mid{n}\in\mathbb{N}\,\forall{i}\in\overline{1,n}(A_i\in{H})\right\}$, то 
+$$\forall{X}\in{R}(H)\,\exists{n}\in\mathbb{N}\,\exists{A}_1,\ldots,A_n\in{H}\colon{X}=\bigsqcup_{k=1}^nA_k.$$
+Следовательно, можем определить функцию $\mu(X)\colon{R}(H)\to\mathbb{R}\colon\mu(X)=\sum_{k=1}^nm(A_k)$. Покажем, что значение суммы $\sum_{k=1}^nm(A_k)$
+не зависит от выбора разбиения $A_1,\ldots,A_n$.<br>
+Пусть $n,s\in\mathbb{N}$, $A_1,\ldots,A_n,B_1,\ldots,B_s\in{H}$, $X=\bigsqcup_{k=1}^nA_k=\bigsqcup_{i=1}^sB_i$. Обозначим $C_{k,i}=A_k\cap{B}_i$, тогда
+так как $H$ полукольцо, то для любых $k\in\overline{1,n}$, $i\in\overline{1,s}$ $C_{k,i}\in{H}$, причем
+$$(\forall{p},q\in\overline{1,n}(p\neq{q})\Rightarrow{A}_p\cap{A}_q=\varnothing\wedge
+\forall{i},j\in\overline{1,s}(i\neq{j}\Rightarrow{B}_i\cap{B}_j=\varnothing))\Rightarrow
+\forall(p,i),(q,j)\in\overline{1,n}\times\overline{1,s}((p,i)\neq(q,j)\Rightarrow{C}_{p,i}\cap{C}_{q,j}=\varnothing).$$
+Так как
+$$\forall{k}\in\overline{1,n}\left(A_k=A_k\cap{X}=A_k\cap\bigsqcup_{i=1}^sB_i=\bigsqcup_{i=1}^s(A_k\cap{B}_i)=\bigsqcup_{i=1}^sC_{k,i}\right),$$
+$$\forall{i}\in\overline{1,s}\left(B_i=B_i\cap{X}=B_i\cap\bigsqcup_{k=1}^nA_k=\bigsqcup_{k=1}^n(B_i\cap{A}_k)=\bigsqcup_{k=1}^nC_{k,i}\right),$$
+то 
+$$\sum_{k=1}^nm(A_k)=\sum_{k=1}^nm\left(\bigsqcup_{i=1}^sC_{k,i}\right)=\sum_{k=1}^n\sum_{i=1}^sC_{k,i}=\sum_{i=1}^s\sum_{k=1}^nC_{k,i}=
+\sum_{i=1}^sm\left(\bigsqcup_{k=1}^nC_{k,i}\right)=\sum_{i=1}^sm(B_i).$$
+Функция $\mu(X)$, очевидно, не отрицательна.<br>
+Покажем аддитивность функции $\mu(X)$.<br>
+Пусть $n\in\mathbb{N}$ $A_1,\ldots,A_n\in{R}(H)$, $A:=\bigsqcup_{k=1}^nA_k\in{R}(H)$, тогда 
+$\begin{multline}
+\forall{k}\in\overline{1,n}
+\left(\exists{N}(k)\in\mathbb{N}\,\exists{C}_{k,1},\ldots,C_{k,N(k)}\in{H}\colon{A}_k=\bigsqcup_{i=1}^{N(k)}C_{k,i}\right)\Rightarrow\\
+\Rightarrow\left(\forall{k}\in\overline{1,n}\left(\mu(A_k)=\sum_{i=1}^{N(k)}m(C_{k,i})\right)\wedge
+{A}=\bigsqcup_{k=1}^nA_k=\bigsqcup_{k=1}^n\left(\bigsqcup_{i=1}^{N(k)}C_{k,i}\right)\right)\Rightarrow\\
+\Rightarrow\mu(A)=\sum_{k=1}^n\sum_{i=1}^{N(k)}m(C_{k,i})=\sum_{k=1}^n\mu(A_k).
+\end{multline}$
+Так как $R(H)$ кольцо, то монотонность функции $\mu(X)$ следует из неотрицательности и аддитивности, то есть функция $\mu(X)$ - мера на $R(H)$. Причем для 
+любого $X\in{H}$ $\mu(X)=m(X)$, то есть $\mu$ есть продолжение меры $m$ с класса $H$ на класс $R(H)$. Докажем, что такое продолжение единственно.<br>
+Пусть $\mu'$ продолжение меры $m$ на $R(H)$, тогда 
+$$\forall{X}\in{R}(H)\left(\exists{n}\in\mathbb{N}\,\exists{C}_1,\ldots,C_n\in{H}\colon\bigsqcup_{k=1}^nC_k=X\right)\Rightarrow
+\forall{X}\in{R}(H)\left(\mu'(X)=\sum_{k=1}^n\mu'(C_k)\wedge\forall{k}\in\overline{1,n}(\mu'(C_k)=m(C_k)=\mu(C_k)))\right)\Rightarrow
+\mu'(X)=\sum_{k=1}^n\mu(C_k)=\mu(X).$$
+Пусть теперь мера $m$ $\sigma$-аддитивна на $H$, покажем, что мера $\mu$ $\sigma$-аддитивна на $R(H)$.<br>
+Пусть для любого $k\in\mathbb{N}$ $A_k\in{R}(H)$, $A:=\bigsqcup_{k=1}^{\infty}A_k\in{R}(H)$, тогда существует $n\in\mathbb{N}$ и $B_i,\ldots,B_n\in{H}$
+такие, что $A=\bigsqcup_{i=1}^nB_i$ и
+$$\forall{k}\in\overline{1,k}\left(A_k\in{R}(H)\Rightarrow
+\exists{N}(k)\,\exists{B}_{k,1},\ldots,B_{k,N(k)}\in{H}\colon{A}_k=\bigsqcup_{s=1}^{N(k)}B_{k,s}\right)$$
+Для любых $i\in\overline{1,n}$, $k\in\mathbb{N}$, $s\in\overline{1,N(k)}$ обозначим $C_{i,k,s}:=B_i\cup{B}_{k,s}\in{H}$, тогда 
+$A=\bigsqcup_{k=1}^{\infty}\left(\bigsqcup_{s=1}^{N(k)}B_{k,s}\right)$ и 
+$$\forall{i}\in\overline{1,n}\left(B_i=B_i\cap{A}=\bigsqcup_{k=1}^{\infty}\left(\bigsqcup_{s=1}^{N(k)}(B_i\cap{B}_{k,s})\right)=
+\bigsqcup_{k=1}^{\infty}\left(\bigsqcup_{s=1}^{N(k)}C_{i,k,s}\right)\right)$$
+$$\forall{k}\in\mathbb{N}\left(A_k=\bigsqcup_{i=1}^n\left(\bigsqcup_{s=1}^{N(k)}C_{i,k,s}\right)\right)\Rightarrow
+\forall{k}\in\mathbb{N}\left(\mu(A_k)=\sum_{i=1}^n\sum_{s=1}^{N(k)}\mu(C_{i,k,s})=\sum_{i=1}^n\sum_{s=1}^{N(k)}m(C_{i,k,s})\right)\quad(9)$$
+По $\sigma$-аддитивности меры $m$ имеем 
+$$\forall{i}\in\overline{1,n}\left(m(B_i)=\sum_{k=1}^{\infty}\sum_{s=1}^{N(k)}m(C_{i,k,s})\right),$$
+тогда 
+$$\mu(A)=\sum_{i=1}^n\mu(B_i)=\sum_{i=1}^nm(B_i)=\sum_{i=1}^n\sum_{k=1}^{\infty}\sum_{s=1}^{N(k)}m(C_{i,k,s}).$$
+Последнее выражение есть знакопостоянный сходящийся ряд, так что по <a href="./math_analysis7.3.1.html#Theorem7.3.1">теореме 7.3.1</a> можно поменять
+порядок суммирования членов ряда и полученный при этом ряд будет сходится к той же сумме. Поменяв таким образом порядок суммирования по переменным
+$i$ и $k$, по равенству (9) получим
+$$\mu(A)=\sum_{k=1}^{\infty}\sum_{i=1}^n\sum_{s=1}^{N(k)}m(C_{i,k,s})=\sum_{k=1}^{\infty}\mu(A_k).$$
+<br><br>
+<p>Таким образом все свойства меры заданной на кольце доказанные в <a href="#Theorem14.2.1">теореме 14.2.1</a> справедливы и для меры заданной на 
+полукольце (так как мера заданная на полукольце является "ограничением" своего продолжения заданного на минимальном кольце).
+
+<br><br>
+<a href="./math_analysis14.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.2.2.html">next</a>
+</body>
+</html>

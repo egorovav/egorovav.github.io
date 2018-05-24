@@ -1,0 +1,271 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.2.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.1.html">next</a>
+
+$\newcommand{\graf}{\operatorname{graf}}$
+$\newcommand{\diam}{\operatorname{diam}}$
+
+<h5 id=14.2.5>14.2.5 Продолжение меры по схеме Жордана. Класс $G(m,H)$.</h5>
+
+<p id=Definition14.2.12><b>Определение 14.2.12:</b> Пусть $H$ полукольцо, $E$ - единица $H$, $m$ $\sigma$-аддитивная мера на $H$, $\mu$ - продолжение
+$m$ с $H$ на $R(H)$. Тогда говорят, что множество $A\subset{E}$ измеримо по Жордану относительно меры $\mu$, если для любого $\varepsilon>0$ существуют
+множества $B'_{\varepsilon}$, $B''_{\varepsilon}$ такие, что
+<ol>
+<li>$B'_{\varepsilon},B''_{\varepsilon}\in{R}(H)$,</li>
+<li>$B'_{\varepsilon}\subset{A}\subset{B}''_{\varepsilon}$,</li>
+<li>$\mu(B''_{\varepsilon}\backslash{B}''_{\varepsilon})<\varepsilon$.</li>
+</ol>
+<br><br>
+<p id=Definition14.2.13><b>Определение 14.2.13:</b> Пусть $H$ полукольцо, $E$ - единица $H$, $m$ $\sigma$-аддитивная мера на $H$, $\mu$ - продолжение 
+$m$ с $H$ на $R(H)$. Тогда внутренней мерой Жордана называется функция $\overline{\mu}_*(A)\colon\mathcal{P}(E)\to\mathbb{R}$ такая, что для любого 
+множества $A\subset{E}$ $\displaystyle\overline{\mu}_*(A)=\sup_{B\in{R}(H)\colon{B}\subset{A}}{\mu(A)}$.<br>
+Внешний мерой Жордана называется функция $\overline{\mu}^*(A)\colon\mathcal{P}(E)\to\mathbb{R}$ такая, что для любого множества $A\subset{E}$
+$\displaystyle\overline{\mu}^*(A)=\inf_{B\in{R}(H)\colon{A}\subset{B}}{\mu(B)}$.
+<br><br>
+<p>Внутренняя мера Жордана всегда определена, так как $\varnothing\in{R}(H)$, а внешняя мера может быть не определена так как $R(H)$ может не содержать $E$.
+<br><br>
+<p id=Theorem14.2.5><b>Теорема 14.2.5:</b> Пусть $H$ полукольцо, $E$ - единица $H$, тогда множество $A\subset{E}$ измеримо по Жордну тогда и только тогда,
+когда $\overline{\mu}_*(A)=\overline{\mu}^*(A)$.
+<p><b>Доказательство:</b> Без доказательства.
+
+<br><br>
+<p>Класс множеств измеримых по Жордану обозначают как $G(m,H)$.
+<br><br>
+
+<p id=Theorem14.2.6><b>Теорема 14.2.6:</b> Если $m$ $\sigma$-аддитивная мера заданная  на полукольце $H$, то
+<ol>
+<li>класс $G(m,H)$ является $\delta$-<a href="./math_analysis14.1.1.html#Definition14.1.7">кольцом</a>,</li>
+<li>функция $\mu(A):=\overline{\mu}_*(A)=\overline{\mu}^*(A)\colon{G}(m,H)\to\mathbb{R}$ является мерой,</li>
+<li>$R(H)\subset{G}(m,H)$.</li>
+</ol>
+<p><b>Доказательство:</b> Без доказательства.
+<br><br>
+<p id=Theorem14.2.7><b>Теорема 14.2.7:</b> Если $n\in\mathbb{N}$, 
+$H:=\{[a,b)=[a_1,b_1)\times\cdots\times[a_n,b_n)\mid\forall{i}\in\overline{1,n}(a_i,b_i\in\mathbb{R}\wedge{a}_i<{b}_i)\}$, функция 
+$m([a,b))\colon{H}\to\mathbb{R}$ такая, что для любого $[a,b)$ из $H$ $m([a,b))=\prod_{i=1}^n(b_i-a_i)$, тогда $A\in{G}(m,H)$ тогда и только тогда, когда
+<ol>
+<li>множество $A$ ограничено,</li>
+<li>$\mu^*(\partial{A})=0$</li>
+</ol>
+где $\partial{A}$ - это <a href="./math_analysis11.1.html#Definition11.1.6">граница</a> множества $A$.
+<p><b>Доказательство:</b> Без доказательства.
+<br><br>
+<p id=Theorem14.2.8><b>Теорема 14.2.8:</b> Если $m$ $\sigma$-аддитивная мера на полукольце $H$, то $G(m,H)\subset{L}(m,H)$.
+<p><b>Доказательство:</b> Без доказательства.
+
+<br><br>
+<p id=Example14.2.7><b>Пример 14.2.7:</b> Пусть $H=\{[a,b)\mid{a},b\in\mathbb{R}\colon{a}<{b}\}$, $m$ - длина в $\mathbb{R}$, тогда $m$ $\sigma$-аддитивная
+мера на $H$. Обозначим $A:=[0,1]\cap\mathbb{Q}$, тогда $A\in{L}(m,H)$, но $\overline{\mu}_*(A)=0\neq\overline{\mu}^*(A)=1$, следовательно, 
+$A\notin{G}(m,H)$.
+<br><br>
+<p id=Definition14.2.14><b>Определение 14.2.14:</b> Пусть $m$ $\sigma$-аддитивная мера на полукольце $H$, $E$ - единица $H$, тогда говорят, что множество 
+$A\subset{E}$ имеет $\sigma$-конечную меру Жордана, если существует последовательность множеств $\{A_n\}$ из $G(m,H)$ такая, что 
+$A=\bigsqcup_{n=1}^{\infty}A_n$.<br>
+При этом значение меры определяемое выражением $\displaystyle\mu(A):=\lim_{n\to\infty}\sum_{k=1}^n\mu(A_k)$ может равняться $+\infty$.
+<br><br>
+<p>Класс множеств имеющих $\sigma$-конечную меру Жордана обозначают как $\overline{G}(m,H)$. Таким образом 
+$\overline{G}(m,H):=\{A\in\mathcal{P}(A)\mid{A}=\bigcup_{n=1}^{\infty}{A}_n\colon\forall{n}\in\mathbb{N}(A_n\in{G}(m,H))\}$.<br>
+Основная цель расширения класса $G$ до $\overline{G}$ ввести в класс измеримых множества бесконечной меры.
+<br><br>
+<p id=Statement14.2.2><b>Утверждение 14.2.2:</b> Если $m$ $\sigma$-аддитивная мера на полукольце $H$, $E$ - единица на $H$, тогда
+<ol>
+<li>класс $\overline{G}(m,H)$ - $\sigma$-алгебра с единицей $E$;</li>
+<li>$G(m,H)\subset\overline{G}(m,H)$;</li>
+<li>определение 14.2.14 корректно, то есть значение предела $\displaystyle\mu(A)=\lim_{n\to\infty}\sum_{k=1}^n\mu(A_k)$ на зависит от выбора 
+последовательности $\{A_n\}$;</li>
+<li>$\mu$ - обобщенная, $\sigma$-аддитивная, $\sigma$-конечная мера на $\overline{G}(m,H)$;</li>
+<li>$\mu$ - продолжение меры Жордана с класса $G$ на класс $\overline{G}$;</li>
+<li>$\overline{G}(m,H)\subset\overline{L}(m,H)$.</li>
+</ol>
+<p><b>Доказательство:</b> Без доказательства.
+
+<h5 id=14.2.6>14.2.6 Мера Стилтьеса на полукольце числовых промежутков.</h5>
+
+<p id=Definition14.2.15><b>Определение 14.2.15:</b> Пусть $H=\{[a,b)\mid\alpha,\beta\in\mathbb{R}\colon\alpha<\beta\}\cup\varnothing$ - поукольцо
+всех числовых полуинтервалов, $\varphi(x)\colon\mathbb{R}\to\mathbb{R}$ неубывающая функция, тогда функцию множеств $\mu(A)\colon{H}\to\mathbb{R}$ такую,
+что для любого $A:=[\alpha,\beta)\in{H}$ $\mu([\alpha,\beta)):=\varphi(\beta)-\varphi(\alpha)$ называют мерой Стилтьеса порожденной функцией $\varphi$.
+
+<br><br>
+<p id=Statement14.2.3><b>Утверждение 14.2.3:</b> Мера Стилтьеса является мерой.
+<p><b>Доказательство:</b>
+<ol>
+<li>Неотрицательность следует из неубывания порождающей функции.</li>
+<li>
+Пусть $A:=[\gamma_0,\gamma_n)=\bigsqcup_{k=1}^nA_k=\bigsqcup_{k=1}^n[\gamma_{k-1},\gamma_k)\in{H}$, тогда 
+$$\mu(A)=\varphi(\gamma_n)-\varphi(\gamma_0)=\sum_{k=1}^n\varphi(\gamma_k)-\sum_{k=0}^{n-1}\varphi(\gamma_k)=
+\sum_{k=1}^n\varphi(\gamma_k)-\sum_{k=1}^n\varphi(\gamma_{k-1})=\sum_{k=1}^n(\varphi(\gamma_k)-\varphi(\gamma_{k-1}))=\sum_{k=1}^n\mu(A_k)$$.
+</li>
+<li>Монотонность следует из пунктов 1, 2 и определения полукольца.</li>
+</ol> 
+<br><br>
+<p id=Statement14.2.4><b>Утверждение 14.2.4:</b> Для любой меры $\mu$ заданной на полукольце интервалов $H$ существует единственная с точностью до 
+константы функция $\varphi(x)$ такая, что мера $\mu$ является мерой Силтьеса порожденной функцией $\varphi(x)$.
+<p><b>Доказательство:</b> Пусть $\mu(A)\colon{H}\to\mathbb{R}$ мера на $H$. Фиксируем $x_0\in\mathbb{R}$ и положим 
+$\varphi(x):=\begin{cases}\mu([x_0,x)),x_0\leq{x}\\-\mu([x,x_0)),x<{x}_0\end{cases}$.
+<ol>
+<li>
+Пусть $x_1<{x}_2<{x}_0$, тогда по аддитивности меры 
+$$\mu([x_1,x_0))=\mu([x_1,x_2))+\mu([x_2,x_1))\Rightarrow\mu([x_1,x_2))=\mu([x_1,x_0))-\mu([x_2,x_0))=\varphi(x_2)-\varphi(x_1).$$
+</li>
+<li>Пусть $x_1<{x}_0<{x}_2$, тогда по аддитивности меры $\mu([x_1,x_2))=\mu([x_1,x_0))+\mu([x_0,x_2))=\varphi(x_2)-\varphi(x_1)$</li>
+<li>Если $x_0<{x}_1<{x}_2$, то аналогично пункту 1 $\mu([x_1,x_2))=\varphi(x_2)-\varphi(x_1)$.</li>
+</ol>  
+Таким образом для любых $x_1,x_2\in\mathbb{R}$ таких, что $x_1<{x}_2$ $\mu([x_1,x_2))=\varphi(x_2)-\varphi(x_1)$, то есть функция $\varphi(x)$ порождает
+меру $\mu$.<br>
+Пусть теперь некоторая функция $\psi(x)$ порождает меру $\mu$, тогда
+$$(\forall{x}\geq{x}_0(\mu([x_0,x))=\psi(x)-\psi(x_0)=\varphi(x))\wedge\forall{x}<{x}_0(\mu([x,x_0))=\psi(x_0)-\psi(x)=-\varphi(x)))\Rightarrow
+\forall{x}\in\mathbb{R}(\psi(x)=\varphi(x)+\psi(x_0)).$$
+<br><br>
+<p id=Statement14.2.5><b>Утверждение 14.2.5: Критерий $\sigma$-аддитивности меры Стилтьеса.</b><br>
+Мера Стилтьеса порожденная функцией $\varphi(x)$ $\sigma$-аддитивна, тогда и только тогда, когда $\varphi(x)\in{C}(\mathbb{R})$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+Пусть мера Стилтьеса $\mu$ порожденная функцией $\varphi(x)$ $\sigma$-аддитивна. Фиксируем точку $x\in\mathbb{R}$. Так как функция $\varphi(x)$ 
+монотонна, то для того чтобы доказать ее непрерывность в точке $x$ достаточно доказать, что существует предел 
+$\displaystyle\lim_{y\to{x}-0}\varphi(y)=\varphi(x)$. Фиксируем последовательность $\{x_n\}$ из $(-\infty,x)$ такую, что $\lim_{n\to\infty}x_n=x$.
+Положим $A:=[x_1,x)$, $A_1:=[x_1,x_2),\ldots,A_n:=[x_1,x_{n+1}),\ldots$, тогда $A=\bigcup_{n=1}^{\infty}A_n$ и по 
+<a href="./math_analysis14.1.2.html#Task14.1.5">задаче 14.1.5</a> имеем $\lim_{n\to\infty}\mu(A_n)=\mu(A)$. То есть существует предел 
+$\lim_{n\to\infty}(\varphi(x_{n+1})-\varphi(x_1))=\varphi(x)-\varphi(x_1)$, следовательно, существует предел $\lim_{n\to\infty}\varphi(x_n)=\varphi(x)$.
+Таким образом в соответствии с <a href="./math_analysis5.1.html#Statement5.1.2">критерием</a> существования предела функции по Гейне существует предел
+$\displaystyle\lim_{y\to{x}-0}\varphi(y)=\varphi(x)$.<br>
+$\Leftarrow)$<br>
+Пусть $A=\bigsqcup_{n=1}^{\infty}A_n$, где $A:=[\alpha,\beta)$ и для любого $n\in\mathbb{N}$ $A_n:=[\alpha_n,\beta_n)$, тогда для любого $n\in\mathbb{N}$
+$\bigsqcup_{k=1}^nA_k\subset{A}$, следовательно, $\sum_{k=1}^n\mu(A_k)\leq\mu(A)$, то есть знакопостоянный ряд $\sum_{n=1}^{\infty}\mu(A_n)$ сходится 
+и $\sum_{n=1}^{\infty}\mu(A_n)\leq\mu(A)$. Покажем, что обратное неравенство так же выполняется.<br>
+Фиксируем $\varepsilon>0$ и $\beta'\in[\alpha,\beta)$. Для любого $n\in\mathbb{N}$ функция $\varphi$ непрерывна слева в точке $\alpha_n$, следовательно,
+$$\forall{n}\in\mathbb{N}\left(\exists\alpha'_n<\alpha_n\colon\varphi(\alpha_n)-\varphi(\alpha'_n)<\frac{\varepsilon}{2^n}\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(\varphi(\beta_n)-\varphi(\alpha'_n)<\varphi(\beta_n)-\varphi(\alpha_n)+\frac{\varepsilon}{2^n}\right)\quad(7)$$
+Так как 
+$$\forall{n}\in\mathbb{N}([\alpha_n,\beta_n)\subset[\alpha'_n,\beta_n))\Rightarrow[\alpha,\beta']\subset[\alpha,\beta)=
+\bigsqcup_{n=1}^{\infty}[\alpha_n,\beta_n)\subset\bigsqcup_{n=1}^{\infty}[\alpha'_n,\beta_n)$$
+то по <a href="./math_analysis3.6.html#Lemma3.6.2">лемме Бореля - Лебега</a> о конечном подпокрытии
+$$\exists{m}\in\mathbb{N}\,\exists{n}_1,\ldots,n_m\colon[\alpha,\beta']\subset\bigcup_{k=1}^m(\alpha'_{n_k},\beta_{n_k})\Rightarrow
+\varphi(\beta')-\varphi(\alpha)\leq\sum_{k=1}^m(\varphi(\beta_{n_k})-\varphi(\alpha'_{n_k}))\leq
+\sum_{n=1}^{\infty}(\varphi(\beta_n)-\varphi(\alpha'_n))<^{(7)}\sum_{n=1}^{\infty}\left(\varphi(\beta_n)-\varphi(\alpha_n)+\frac{\varepsilon}{2^n}\right)=
+\sum_{n=1}^{\infty}(\varphi(\beta_n)-\varphi(\alpha_n))+\varepsilon.$$
+Таким образом 
+$$\forall\varepsilon>0\,\forall\beta'\in(\alpha,\beta)(\varphi(\beta')-\varphi(\alpha)<
+\sum_{n=1}^{\infty}(\varphi(\beta_n)-\varphi(\alpha_n))+\varepsilon).$$
+Переходя к пределу при $\varepsilon\to0$ получим
+$$\forall\beta'\in(\alpha,\beta)\left(\varphi(\beta')-\varphi(\alpha)\leq\sum_{n=1}^{\infty}(\varphi(\beta_n)-\varphi(\alpha_n))\right).$$
+Так как функция $\varphi(x)$ непрерывна по условию, то можем перейти к пределу при $\beta'\to\beta$, тогда 
+$$\mu(A)=\varphi(\beta)-\varphi(\alpha)\leq\sum_{n=1}^{\infty}(\varphi(\beta_n)-\varphi(\alpha_n))=\sum_{n=1}^{\infty}\mu(A_n).$$
+<br><br>
+<p id=Example14.2.8><b>Пример 14.2.8:</b>
+<ol>
+<li>Мера Стилтьеса, порожденная функцией $\varphi(x)=x$, является длиной.</li>
+<li>Мера Стилтьеса, порожденная функцией $\varphi(x)=-[-x]$, равна количеству целых чисел в соответствующем полуинтервале.</li>
+<li>
+Мера Стилтьеса $\mu$, порожденная функцией $\varphi(x)=\begin{cases}1&,x\geq0\\-1&,x<0\end{cases}$, равна 2 для любого полуинтервала $[\alpha,\beta)$ 
+такого, что $0\in(\alpha,\beta]$ и равна 0 в противном случае. Так как функция $\varphi(x)$ имеет разрыв в точке 0, то мера $\mu$ не является 
+$\sigma$-аддитивной. Действительно, положим $A=[-1,0)$, для любого $n\in\mathbb{N}$ $\displaystyle{A}_n:=\left[-\frac1{2^{n-1}},-\frac1{2^n}\right)$, 
+тогда $A=\bigsqcup_{n=1}^{\infty}A_n$, но для любого $n\in\mathbb{N}$ $\mu(A_n)=0$, следовательно, $\sum_{n=1}^{\infty}\mu(A_n)=0\neq\mu(A)=2$.
+</li> 
+</ol>
+<br><br>
+<p id=Theorem14.2.9><b>Теорема 14.2.9: Некоторые дополнительные свойства числовых множеств измеримых по Жордану.</b><br>
+Пусть $H=\{[\alpha,\beta)=[\alpha_1,\beta_1)\times\cdots\times[\alpha_n,\beta_n)\mid
+\forall{i}\in\overline{1,n}(\alpha_i,\beta_i\in\mathbb{R}\wedge\alpha_i<\beta_i)\}$ - полукольцо $n$-мерных полуоткрытых параллелепипедов, 
+$m([\alpha,\beta))\colon{H}\to\mathbb{R}\colon{m}([\alpha,\beta))=\prod_{k=1}^n(\beta_k-\alpha_k)$, $\mu$ - продолжение меры $m$ с $H$ на $R(H)$,
+$\overline{\mu}$ - мера Жордана, тогда  
+<ol>
+<li>
+$\forall{A}=[\alpha_1,\beta_1)\times\cdots\times[\alpha_n,\beta_n)\in{H},\overline{A}:=[\alpha_1,\beta_1]\times\cdots\times[\alpha_n,\beta_n]\in{G}(m,H)
+(\overline{\mu}(\overline{A})=\mu(A))$.
+</li>
+<li>
+Если $A\subset\mathbb{R}^n$, $\mu^*(A)=0$, то для любого $\varepsilon>0$ существует последовательность открытых параллелепипедов $\{\tilde{B}_n\}$, где
+$(\tilde{B}_k:=(\alpha^{(k)}_1,\beta^{(k)}_k),\ldots,(\alpha^{(k)}_n,\beta^{(k)}_n))$ такая, что $A\subset\bigcup_{k=1}^{\infty}\tilde{B}_k$ и
+$\sum_{k=1}^{\infty}\mu(\tilde{B}_k)<\varepsilon$.
+</li>
+<li>
+Если $B$ компакт в $\mathbb{R}^n$ и $\mu^*(B)=0$, то для любого $\varepsilon>0$ существует конечное покрытие $I_i,\ldots,I_s$ такое, что 
+$B\subset\bigcup_{k=1}^sI_k$ и $\sum_{k=1}^s\mu(I_k)<\varepsilon$, где $I_k$ - открытые, замкнутые или полуоткрытые параллелепипеды.
+</li>
+<li>Если $B$ компакт в $\mathbb{R}^n$ и $\mu^*(B)=0$, то $B\in{G}(m,H)$ и $\overline{\mu}(B)=0$.</li>
+<li>Если $A\in{G}(m,H)$, $B$ компакт в $\mathbb{R}^n$ $\mu^*(B)=0$, то $A\cup{B}\in{G}(m,H)$ и $\overline{\mu}(A\cup{B})=\overline{\mu}(A)$.</li>
+<li>
+Если $M$ - компакт в $\mathbb{R}^{n-1}$ и $f(x)\in{C}(M,\mathbb{R})$, то $\graf{f}:=\{(x,f(x))\mid{x}\in{M}\}$ - компакт в $\mathbb{R}^n$ и 
+$\mu^*(\graf{f})=0$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Мера $m$ $\sigma$-аддитивна на $H$, следовательно, мера Жордана $\overline\mu$ тоже $\sigma$-аддитивна, а 
+<a href="./math_analysis14.1.2.html#Statement14.1.9">следовательно</a>, непрерывна на монотонных классах. Так как последовательность множеств 
+$A_n=\left[\alpha,\beta+\frac1{n}\right)\in{H}$ сходится к $\overline{A}=[\alpha,\beta]$, то по непрерывности меры $\overline{\mu}$
+$$\overline{\mu}(\overline{A})=\lim_{n\to\infty}\mu(A_n)=\lim_{n\to\infty}\left(\beta+\frac1{n}-\alpha\right)=\beta-\alpha=\mu(A).$$
+</li>
+<li>Следует из определения внешней меры индуцированной мерой $m$ и пункта 1.</li>
+<li>
+Фиксируем $\varepsilon>0$ тогда, согласно пункту 2 существует последовательность $\{I'_k\}$ открытых параллелепипедов такая, что 
+$B\subset\bigcup_{k=1}^{\infty}I'_k$ и $\sum_{k=1}^{\infty}\mu(I'_k)<\varepsilon$. Так как множество $B$ компакт в $\mathbb{R}^n$, то можно выделить
+конечное подпокрытие $I'_{n_1},I'_{n_2}\ldots,I'_{n_m}$. Если к некоторым параллелепипедам из $I'_{n_1},\ldots,I'_{n_m}$ добавить какие-либо границы, то 
+получим некоторое покрытие множества $B$ $n$-мерными числовыми промежутками $I_{n_1},\ldots,I_{n_m}$ и при этом по пункту 1 для любого $i\in\overline{1,m}$
+$\mu(I'_{n_i})=\mu(I_{n_i})$. Следовательно, $B\subset\bigcup_{i=1}^mI_{n_i}$ и $\sum_{i=1}^m\mu(I_{n_i})=\sum_{i=1}^mI'_{n_i}\leq
+\sum_{k=1}^{\infty}\mu(I'_k)<\varepsilon$.
+</li>
+<li>
+Так как $B$ компакт в $\mathbb{R}^n$ и $\mu^*(B)=0$, то по пункту 3 
+$$\forall\varepsilon>0\,\exists{B}_{\varepsilon}\in{R}(H)\colon(B\subset{B}_{\varepsilon}\wedge\mu(B_{\varepsilon})<\varepsilon)\Rightarrow
+\overline{\mu}^*(B)=\inf_{A\in{R}(H)\colon{B}\subset{A}}\mu(A)=0\Rightarrow0\leq\overline{\mu}_*(b)\leq\overline{\mu}^*(B)=0\Rightarrow\overline\mu(B)=0.$$
+</li>
+<li>
+По пункту 4 $B\in{G}(m,H)$ и $\overline{\mu}(B)=0$, следовательно, по аддитивности и монотонности меры 
+$\overline{\mu}(A)\leq\overline{\mu}(A\cup{B})\leq\overline{\mu}(A)+\overline{\mu}(B)=\overline{\mu}(A)$, то есть 
+$\overline{\mu}(A\cup{B})=\overline{\mu}(A)$.
+</li>
+<li>
+Множество $M$ компактно в $\mathbb{R}^{n-1}$, следовательно, оно ограничено, то есть существует замкнутое множество $I_0\subset\mathbb{R}^{n-1}$ такое, что
+$M\subset{I}_0$. Так как функция $f(x)$ непрерывна на компакте $M$, то по <a href="./math_analysis11.2.html#Statement11.2.3">теореме Кантора</a>, она
+равномерно непрерывна на $M$.<br>
+Фиксируем $\varepsilon>0$, тогда по равномерной непрерывности $f(x)$
+$$\exists\delta>0\colon\forall{x}',x''\in{M}\left(\rho(x',x'')<\delta\Rightarrow|f(x')-f(x'')|<\frac{\varepsilon}{2\mu(I_0)}\right).$$
+Покроем множество $M$ открытыми параллелепипедами с диаметром не превышающим $\frac{\delta}{2}$. Так как множество $M$ компакт, то из этого покрытия можно
+выделить конечное подпокрытие $C'_1,\ldots,C'_m$, где $m$ натуральное число зависящее от $\varepsilon$. Если к открытым параллелепипедам добавить некоторые 
+границы, так чтобы они принадлежали $H$, то получим набор множеств $C_1,\ldots,C_m$ таких, что для любого $k\in\overline{1,m}$ $C_k\in{H}$, 
+$\diam{C}_k<\delta$ и $M\subset\bigcup_{k=1}^mC_k$. Следовательно, 
+$$\forall{x}',x''\in{M}\left(\exists{k}\in\overline{1,m}\colon{x}',x''\in{C}_k\Rightarrow|f(x')-f(x'')|<\frac{\varepsilon}{2\mu(I_0)}\right).$$
+Без ограничения общности будем считать, что для любого $k\in\overline{1,m}$ $C_k\subset{I}_0$. Положим $F_1:=C_1$ и для любого $k\in\overline{2,m}$
+$F_k:=C_k\backslash\bigcup_{i=1}^{k-1}C_i$, тогда для любого $k\in\overline{1,m}$ $F_k\in{R}(H)$ и 
+$M\subset\bigcup_{k=1}^mC_k=\bigsqcup_{k=1}^mF_k\subset{I}_0$. С учетом структуры кольца $R(H)$ для любого $k\in\overline{1,m}$ множество $F_k$ можно 
+представить в виде конечного дизъюнктивного объединения элементов $H$. Следовательно, существует $N(\varepsilon)\in\mathbb{N}$ и 
+$G_1,\ldots,G_{N(\varepsilon)}\in{H}$ такие, что $\bigsqcup_{k=1}^mF_k=\bigsqcup_{s=1}^{N(\varepsilon)}G_s$ и для любого $s\in\overline{1,N(\varepsilon)}$
+существует $k\in\overline{1,m}$ такое, что $G_s\subset{F}_k$. Таким образом 
+$$\forall{x}',x''\in{M}\left(\exists{s}\in\overline{1,N(\varepsilon)}\colon{x}',x''\in{G}_s
+\Rightarrow\exists{k}\in\overline{1,m}\colon{x}',x''\in{F}_k\subset{C}_k\Rightarrow|f(x')-f(x'')|<\frac{\varepsilon}{2\mu(I_0)}\right).$$
+Для любого $x\in\overline{1,N(\varepsilon)}$ зафиксируем точку $\xi_s\in{G}_s$ и положим 
+$$D_s:=G_s\times\left[f(\xi_s)-\frac{\varepsilon}{2\mu(I_0)},f(\xi_s)+\frac{\varepsilon}{2\mu(I_0)}\right),$$
+тогда
+$$\forall{s}\in\overline{1,N(\varepsilon)}\left(x\in{G}_s\Rightarrow|f(x)-f(\xi_s)|<\frac{\varepsilon}{2\mu(I_0)}\Rightarrow(x,f(x))\in{D_s}\right).$$
+Следовательно
+$$M\subset\bigsqcup_{s=1}^{N(\varepsilon)}G_s\Rightarrow\graf{f}=\{(x,f(x))\mid{x}\in{M}\}\subset\bigsqcup_{s=1}^{N(\varepsilon)}D_s\Rightarrow
+\mu^*(\graf{f})\leq\sum_{s=1}^{N(\varepsilon)}\mu(D_s)=\frac{\varepsilon}{\mu(I_0)}\sum_{s=1}^{N(\varepsilon)}\mu(G_s)\leq
+\frac{\varepsilon}{\mu(I_0)}\mu(I_0)=\varepsilon.$$
+<i>
+Переход от набора множеств $C_1,\ldots,C_m\in{H}$ к набору множеств $G_1,\ldots,G_{N(\varepsilon)}\in{H}$ необходим для того, чтобы от просто покрытия
+множества $M$ перейти к дизъюнктивному покрытию. Это позволяет в предпоследнем равенстве вынести множитель $\frac{\varepsilon}{\mu(I_0)}$ за знак суммы.<br>
+Компактность множества $\graf{f}$ заявленная в формулировке в явном виде не доказана.
+</i>
+</li>
+</ol> 
+
+
+<br><br>
+<a href="./math_analysis14.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis14.3.1.html">next</a>
+</body>
+</html>

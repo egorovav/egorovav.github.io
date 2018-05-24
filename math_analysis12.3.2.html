@@ -1,0 +1,262 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.3.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.3.html">next</a>
+<h5 id=12.3.3>12.3.3 Основные законы дифференцирования.</h5>
+
+<p id=Утверждение 12.3.11><b>Утверждение 12.3.11: Линейность производной.</b><br> 
+Пусть $E\subset\mathbb{R}^n$, функции $f(x),g(x)\colon{E}\to\mathbb{R}^m$ дифференцируемы в точке 
+$x\in{E}\cap\mathring{E}$, тогда для любых $\lambda,\mu\in\mathbb{R}$ функция $\lambda{f}+\mu{g}\colon{E}\to\mathbb{R}$ дифференцируема в точке $x$ и
+$(\lambda{f}+\mu{g})'(x)=\lambda{f}'(x)+\mu{g}'(x)$.
+<p><b>Доказательство:</b> <a href="./math_analysis12.3.1.html#Statement12.3.1">Так как</a> множество линейных операторов $\mathcal{L}(\mathbb{R})$ 
+является векторным пространством над $\mathbb{R}$, то $\lambda{f}'+\mu{g}'\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^n)$ и
+$$
+(\lambda{f}+\mu{g})(x+h)-(\lambda{f}+\mu{g})(x)=\lambda{f}(x+h)+\mu{g}(x+h)-\lambda{f}(x)-\mu{g}(x)=\lambda(f(x+h)-f(x))+\mu(g(x+h)-g(x))=
+\lambda{f}'(x)(h)+o(h)+\mu{g}'(x)(h)+o(h)
+$$ 
+Следовательно, $(\lambda{f}+\mu{g})'(x)=\lambda{f}'(x)+\mu{g}'(x)$
+<br><br>
+
+<p id=Statement12.3.12><b>Утверждение 12.3.12:</b> Пусть $E\subset\mathbb{R}^n$, функции $f(x),g(x)\colon{E}\to\mathbb{R}$ дифференцируемы в точке 
+$x\in{E}\cap\mathring{E}$, тогда
+<ol>
+<li>$\exists(fg)'(x)=f'(x)g(x)+f(x)g'(x)$,</li>
+<li>если для любого $x\in{E}$ $g(x)\neq0$, то существует производная $\displaystyle\left(\frac{f}{g}\right)'=\frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$f(x+h)g(x+h)-f(x)g(x)=(f(x)+f'(x)(h)+o(h))(g(x)+g'(x)(h)+o(h))-f(x)g(x)=$$
+$$=f'(x)(h)g(x)+o(h)g(x)+f(x)g'(x)(h)+f'(x)(h)g'(x)(h)+o(h)g'(x)(h)+(f(x)+f'(x)(h)+o(h))o(h)=$$
+$$=f'(x)(h)g(x)+o(h)+f(x)g'(x)(h)+(f'(x)\circ{g}'(x))(h^2)+o(h)+o(h)=f'(x)(h)g(x)+f(x)g'(x)(h)+o(h),h\to0$$
+</li>
+<li>Доказывается аналогично пункту 3 <a href="./math_analysis6.2.html#Theorem6.2.1">теоремы 6.2.1</a>.</li>
+</ol>
+
+<br><br>
+
+<p id=Statement12.3.13><b>Утверждение 12.3.13: Производная композиции.</b><br>
+Пусть $X\subset\mathbb{R}^n$, $Y\subset\mathbb{R}^m$, функция $f(x)\colon{X}\to{Y}$ дифференцируема в точке $x\in{X}\cap\mathring{X}$, 
+функция $g(y)\colon{Y}\to\mathbb{R}^k$ дифференцируема в точке $y:=f(x)\in{Y}\cap\mathbb{Y}$, тогда существует производная 
+$(g\circ{f})'(x)=g'(y)\circ{f}'(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^k)$.
+<p><b>Доказательство:</b> Так как функции $f(x)$, $g(x)$ дифференцируемы в точках $x$ и $y=f(x)$ соответственно, то 
+$$f(x+h)-f(x)=f'(x)(h)+o(h),h\to0,x+h\in{X}\Rightarrow\exists\lim_{\substack{h\to0\\x+h\in{X}}}(f(x+h)-f(x))=0$$
+$$g(y+t)-g(t)=g'(y)(t)+o(t),t\to0,y+t\in{Y}$$
+Применим теорему о пределе композиции положив $t=t(h):=f(x+h)-f(x)$, тогда 
+$$\Delta(g\circ{f})(x,h)=g(f(x+h))-g(f(x))=g(y+t)-g(y)=g'(y)t+o(t)=g'(f(x))(f(x+h)-f(x))+o(f(x+h)-f(x))=$$
+$$=g'(f(x))(f'(x)(h)+o(h))+o(f'(x)(h)+o(h))=(g'(f(x))\circ{f}'(x))(h)+g'(f(x))(o(h))+o(O(h)+o(h))=(g'(y)\circ{f}'(x))(h)+o(h),h\to0,x+h\in{X}.$$
+
+<br><br>
+<i>В формулировке теоремы в выражении $(g\circ{f})'(x)=g'(y)\circ{f}'(x)$ символ $'\circ'$ в первом случае обозначает композицию функций $f$ и $g$,
+а во втором композицию линейных операторов $g'(y)\in\mathcal{L}(\mathbb{R}^m,\mathbb{R}^k)$ и $f'(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$.
+Так как линейный оператор, это тоже функция (только линейная), то применение данного символа в обоих случаях допустимо.</i>
+
+<br><br>
+
+<p id=Corollary12.3.1><b>Следствие 12.3.1: Покоординатная форма записи результата для случая внутренней точки.</b><br>
+Пусть $X\subset\mathbb{R}^n$, $Y\subset\mathbb{R}^m$, функции $f(x)\colon{X}\to{Y}$, $g(y)\colon{Y}\to\mathbb{R}^k$ непрерывны в точках $x\in{i}ntX$
+и $y:=f(x)\in{i}nt{Y}$ соответственно, тогда 
+$$(g\circ{f})'(x)=
+\begin{pmatrix}
+\frac{\partial{g}_1(y)}{\partial{y}_1} & \ldots & \frac{\partial{g}_1(y)}{\partial{y}_m}\\
+\vdots & \ddots & \vdots\\
+\frac{\partial{g}_k(y)}{\partial{y}_1} & \ldots & \frac{\partial{g}_k(y)}{\partial{y}_m}
+\end{pmatrix}
+\begin{pmatrix}
+\frac{\partial{f}_1(x)}{\partial{x}_1} & \ldots & \frac{\partial{f}_1(x)}{\partial{x}_n}\\
+\ldots & \ddots & \ldots\\
+\frac{\partial{f}_m(x)}{\partial{x}_1} & \ldots & \frac{\partial{f}_m(x)}{\partial{x}_n}
+\end{pmatrix}
+$$
+<p><b>Доказательство:</b> Результат следует из утверждений <a href=".\math_analysis12.3.1.html#Statement12.3.9">12.3.9</a> и 12.3.13 так как матрица
+композиции линейных операторов есть произведение матриц этих операторов.
+
+<br><br>
+<p>Из следствия 12.3.1 можно получить формулу для вычисления частной производной композиции функций. Так как для любой функции 
+$f(x)\colon\mathbb{R}^n\to\mathbb{R}^m$ 
+$\displaystyle{d}f(x)=\left(\frac{\partial{f}(x)}{\partial{x}_1},\ldots,\frac{\partial{f}(x)}{\partial{x}_n}\right)$, то частной производной композиции
+функций по $j$-той переменной является $j$-тый столбец матрицы $(g\circ{f})'(x)$, то есть
+$$\frac{\partial{g}(x)}{\partial{x}_j}(f(x))=
+\left(\frac{\partial{g}_1(x)}{\partial{x}_j}(f(x)),\ldots,\frac{\partial{g}_k(x)}{\partial{x}_j}(f(x))\right)\colon
+\forall{i}\in\overline{1,k}\left(\frac{\partial{g}_i(x)}{\partial{x}_j}(f(x))=
+\sum_{s=1}^m\left(\frac{\partial{g}_i(y)}{\partial{y}_s}\frac{\partial{f}_s(x)}{\partial{x}_j}\right)\right)$$
+Заметим так же, что при выполнении предпосылок <a href="#Statement12.3.13">утверждения 12.3.13</a>
+$$dg(x)dx=dg(f(x))dx=dg(y)\circ{d}f(x)dx=dg(y)(df(x)dx)=dg(y)dy$$
+Таким образом форма записи дифференциала первого порядка сложной функции ничем не отличается от формы записи дифференциала функции $g$, когда $y$ - 
+независимая переменная. Это позволяет говорить об инвариантности формы записи дифференциала первого порядка относительно замены переменной.
+<br>
+<p>Замечание о приближенных вычислениях.<br>
+При условии, что в некоторой точке $x_0$ удается эффективно рассчитать значение $f(x_0)$, а так же значения частных производных в точке $x_0$, то 
+возникает возможность прикладного использования приближенного равенства 
+$\displaystyle{f}(x_0+h)\approx{f}(x_0)+\sum_{i=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_i}(x_0)h_i\right)$
+при малых значениях $h$.<br>
+
+<p id=Example12.3.1:><b>Пример 12.3.1:</b> Вычислим приближенно значение функции $f(x,y)=x^y$ в точке $(0.97,1.05)$.<br>
+Положим $x_0=1$, $y_0=1$, $h_1=\Delta{x}=-0.03$, $h_2=\Delta{y}=0.05$.<br>
+$\frac{\partial{f}(x,y)}{\partial{x}}(1,1)=yx^{y-1}=1$, $\frac{\partial{f}(x,y)}{\partial{y}}=x^y\ln{x}=0$<br>
+$f(0.97,1.05)=f(1+(-0.03),1+0.05)=f(1,1)+\frac{\partial{f}(x,y)}{\partial{x}}(1,1)(-0.03)+\frac{\partial{f}(x,y)}{\partial{y}}(1,1)0.05=1-0.03=0.97$.
+
+<br><br>
+<p id=Theorem12.3.1><b>Теорема 12.3.1: Дифференциал обратного отображения.</b><br>
+Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}^n$, $x\in{i}ntE$, $y:=f(x)$ такие, что 
+<ol>
+<li>существуют окрестности $U(x)\subset{E}$, $V(y)\subset\mathbb{R}^n$ такие, что функция $f(x)$ биективна на $U(x)$ и $f(U(x))=V(y)$;</li>
+<li>
+функция $f(x)$ дифференцируема в точке $x$, и отображение $f'(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^n)$ обратимо, то есть существует отображение 
+$(f'(x))^{-1}$ такое, что $(f'(x))^{-1}\circ{f}'(x)=f'(x)\circ(f'(x))^{-1}=e$
+</li>
+<li>отображение $f^{-1}(y)\colon{V}(y)\to{U}(x)$ непрерывно в точке $y$;</li>
+</ol>
+тогда $(f^{-1})'(y)=(f'(x))^{-1}$.
+<p><b>Доказательство:</b> Пусть $h$ - приращение по $x$, $t$ - приращение по $y$, $t:=f(x+h)-f(x)$. Тогда по непрерывности функции $f(x)$ в точке $x$
+существует предел $\displaystyle\lim_{n\to0}t(h)=0$ и по непрерывности функции $f^{-1}(y)$ существует предел 
+$\displaystyle\lim_{t\to0}h(t)=\lim_{t\to0}(f^{-1}(t+y)-f^{-1}(y))=0$. То есть $h=o(1)$, при $t\to0$ и $t=o(1)$, при $h\to0$, тогда 
+$t=f(x+h)-f(x)=f'(x)(h)+o(h)=O(h)$ при $h\to0$. Докажем, что $h=O(t)$, при $t\to0$.
+$$(f'(x))^{-1}(t)=(f'(x))^{-1}(f(x+h)-f(x))=(f'(x))^{-1}(f'(x)(h)+o(h))=((f'(x))^{-1}\circ{f}'(x))(h)+(f'(x))^{-1}(o(h))=h+o(h),h\to0\qquad(4)$$
+$$\frac{\|o(h)\|}{\|h\|}=o(1),h\to0\Rightarrow\lim_{h\to0}\frac{\|o(h)\|}{\|h\|}=0\Rightarrow
+\exists\delta>0\colon\left(\|h\|<\delta\Rightarrow\left(x+h\in{U}(x)\wedge\frac{\|o(h)\|}{\|h\|}<\frac12\right)\right)\Rightarrow$$
+$$\Rightarrow\left(\|h\|<\delta\Rightarrow\|(f'(x))^{-1}(t)\|=^{(4)}\|h+o(h)\|\geq\|h\|-\|o(h)\|\geq\frac{\|h\|}{2}\Rightarrow\
+\|h\|\leq2\|(f'(x))^{-1}(t)\|=O(t),t\to0\right)\Rightarrow{h}=O(t),t\to0$$
+Тогда по равенству (4)
+$$f^{-1}(y+t)-f^{-1}(y)=h=(f'(x))^{-1}(t)+o(h)=(f'(x))^{-1}(t)+o(O(t))=(f'(x))^{-1}(t)+o(t),t\to0\Rightarrow(f^{-1}(y))'=(f'(x))^{-1}$$.
+<br><br>
+
+<p id=Theorem12.3.2><b>Теорема 12.3.2: Теорема о среднем.</b><br>
+Пусть $G$ <a href="./math_analysis12.2.html#Definition12.2.4">область</a> в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$; $x,h\in\mathbb{R}^n$ такие, что 
+<ol>
+<li>$[x,x+h]=\{x+th\mid{t}\in[0,1]\}\subset{G}$,</li>
+<li>$f(x)\in{C}[x,x+h]$,</li>
+<li>$\forall{y}\in(x,x+h)\,\exists{f}'(y)$,</li>
+тогда существует $\xi\in(x,x+h)$ такое, что $f(x+h)-f(x)=f'(\xi)(h)$
+</ol>
+<p><b>Доказательство:</b> Сведем утверждение к <a href="./math_analysis6.4.html#Theorem6.4.3">теореме Лагранжа</a>. Так как множество $G$ область, то
+все его точки внутренние. Обозначим $F(t):=f(x+th)\colon[0,1]\to\mathbb{R}$, тогда функция $F(t)$ непрерывна, как композиция непрерывных и согласно
+<a href="#Statement12.3.13">утверждению 12.3.13</a>
+$$\forall{t}\in(0,1)\,\exists{F}'(t)=f'(x+th)\circ(x+th)'=f'(x+th)(h)$$
+Тогда по теореме Лагранжа 
+$$\exists\theta\in(0,1)\colon{f}(x+h)-f(x)=F(1)-F(0)=F'(\theta)=f'(x+\theta{h})(h)=f'(\xi)(h)$$
+где $\xi:=x+\theta{h}$
+
+<br><br>
+<p id=Corollary12.3.2><b>Следствие 12.3.2:</b> Пусть $G$ область в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$; 
+$x=(x_1,\ldots,x_n),h=(h_1,\ldots,h_n)\in\mathbb{R}^n$ такие, что 
+<ol>
+<li>$[x,x+h]=\{x+th\mid{t}\in[0,1]\}$,</li>
+<li>$f(x)\in{C}[x,x+h]$,</li>
+<li>$\forall{y}\in(x,x+h)\,\exists{f}'(y)$,</li>
+</ol>
+тогда
+$$\exists\theta\in[0,1]\colon{f}(x_1+h_1,\ldots,x_n+h_n)-f(x_1,\ldots,x_n)=
+\sum_{i=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_i}(x_1+\theta{h}_1,\ldots,x_n+\theta{h}_n)h_i\right)$$
+<p><b>Доказательство:</b>Так как $G$ область, то по <a href="./math_analysis12.3.1.html#Statement12.3.8">утверждению 12.3.8</a> для любого $y\in(x,x+h)$ 
+$\displaystyle{f}'(y)=\left(\frac{\partial{f}(x)}{\partial{x}_1}(y),\ldots,\frac{\partial{f}(x)}{\partial{x}_n}(y)\right)$ и утверждение следует из 
+теоремы 12.3.2.
+
+<br><br>
+
+<p id=Corollary12.3.3><b>Следствие 12.3.3:</b> Пусть $G$ выпуклая область в $\mathbb{R}^n$, функция $f(x)\colon{G}\to\mathbb{R}$ такая, что для любого 
+$y\in{G}$ существует производная $f'(y)=0$, тогда существует $k\in\mathbb{R}$ такое, что $f(x)\equiv{k}$.
+<p><b>Доказательство:</b> По определению выпуклости для любых $y_1,y_2\in{G}$ $[y_1,y_2]\subset{G}$. Тогда по теореме о среднем
+$$\forall{y}_1,y_2\in{G}(\exists\xi\in(y_1,y_2)\colon{f}(y_1)-f(y_2)=f'(\xi)(y_2-y_1)=0)\Rightarrow\forall{y}_1,y_2\in{G}(f(y_1)=f(y_2))$$
+
+<br><br>
+<i>
+В условии следствия 12.3.3 можно отказаться от требования выпуклости области. Так как область связна, то любые две точки можно соединить кривой, а так как
+область открыта, то любые две точки можно соединить ломаной. Применяя последовательно <a href="#Theorem12.3.2">теорему о среднем</a> на каждом из звеньев
+ломаной получим равенство значений функции на концах ломаной. Точное доказательство можно найти в Зорич т. 2, стр. 529. 
+</i>
+
+<h5 id=12.3.4>12.3.4 Достаточные условия дифференцируемости.</h5>
+
+<p id=Theorem 12.3.3><b>Теорема 12.3.3:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x\in{E}$ такие, что 
+<ol>
+<li>$\displaystyle\exists{U}(x)\subset{E}\colon\forall{y}\in{U}(x)\,\forall{i}\in\overline{1,n}\,\exists\frac{\partial{f}(x)}{\partial{x}_i}(y)$,</li>
+<li>
+для любого $i\in\overline{1,n}$ функция $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}(y)\colon{U}(x)\to\mathbb{R}$ непрерывна в точке $x$, 
+тогда функция $f(x)$ дифференцируема в точке $x$.
+</li>
+</ol>
+<p><b>Доказательство:</b> Так как окрестность точки - это открытое множество, то существует $\delta>0$ такое, что $B(x,\delta)\subset{U}(x)$. Тогда для
+любого $h\in\mathbb{R}^n$ такого, что $\|h\|<\delta$
+$
+\begin{multline}
+f(x_1+h_1,\ldots,x_n+h_n)-f(x_1,\ldots,x_n)=\\=[f(x_1+h_1,\ldots,x_n+h_n)-f(x_1,x_2+h_2,\ldots,x_n+h_n)]+
+[f(x_1,x_2+h_2,\ldots,x_n+h_n)-f(x_1,x_2,x_3+h_3,\ldots,x_n+h_n)]+\cdots\\\cdots+[f(x_1,\ldots,x_{n-1},x_n+h_n)-f(x_1,\ldots,x_n)]
+\end{multline}
+$
+В каждой из квадратных скобок значения всех переменных кроме одной совпадают, следовательно, для каждой из разностей можно применить 
+<a href="./math_analysis6.4.html#Theorem6.4.3">теорему Лагранжа</a> для функции от одной переменной по несовпадающей переменной. Тогда существуют 
+$\theta_1,\ldots,\theta_n\in(0,1)$ такие, что 
+$$f(x+h)-f(x)=\frac{\partial{f}(x)}{\partial{x}_1}(x_1+\theta_1{h}_1,x_2+h_2,\ldots,x_n+h_n)h_1+
+\frac{\partial{f}(x)}{\partial{x}_2}(x_1,x_2+\theta_2h_2,x_3+h_3,\ldots,x_n+h_n)h_2+\cdots+\
+\frac{\partial{f}(x)}{\partial{x}_n}(x_1,\ldots,x_{n-1},x_n+\theta_nh_n)h_n$$
+Из непрерывности частных производных следует, что 
+$\begin{multline}
+\forall{i}\in\overline{1,n}\left(
+\exists\lim_{h\to0}\frac{\partial{f}(x)}{\partial{x}_i}(x_1,\ldots,x_{i-1},x_i+\theta_ih_i,x_{i+1}+h_{i+1},\ldots,x_n+h_n)=
+\frac{\partial{f}(x)}{\partial{x}_i}(x_1,\ldots,x_n)\right)\Rightarrow\\
+\Rightarrow\forall{i}\in\overline{1,n}\,\exists\alpha_i(x,h,\theta_i)\colon\left(\alpha_i(x,h,\theta_i)=o(1),n\to0\wedge
+\frac{\partial{f}(x)}{\partial{x}_i}(x_1,\ldots,x_{i-1},x_i+\theta_ih_i,x_{i+1}+h_{i+1},\ldots,x_n+h_n)=
+\frac{\partial{f}(x)}{\partial{x}_i}(x_1,\ldots,x_n)+\alpha_i(x,h,\theta_i)\right)\Rightarrow\\
+\Rightarrow{f}(x+h)-f(x)=\sum_{i=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_i}(x)h_i\right)+\sum_{i=1}^n(\alpha_i(x,h,\theta_i)h_i)
+\end{multline}$
+Оценим второе слагаемое 
+$$\forall{i}\in\overline{1,n}\left(\frac{|h_i|}{\|h\|}\leq1\right)\Rightarrow\forall{i}\in\overline{1,n}\left(\frac{|\alpha_i(x,h,\theta_i)||h_i|}{\|h\|}\leq
+|\alpha_i(x,h,\theta_i)|=o(1),h\to0\right)\Rightarrow\forall{i}\in\overline{1,n}(\alpha_i(h,x,\theta_i)=o(1),h\to0)\Rightarrow
+\sum_{i=1}^n(\alpha_i(x,h,\theta_i)h_i)=o(h),h\to0$$
+Тогда 
+$$f(x+h)-f(x)=\sum_{n=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_i}(x)h_i\right)+o(h),h\to0\Rightarrow
+\exists{f}'(x)=\left(\frac{\partial{f}(x)}{\partial{x}_1}(x),\ldots,\frac{\partial{f}(x)}{\partial{x}_n}(x)\right)$$
+
+<br><br>
+<p id=Corollary12.3.4><b>Следствие 12.3.4: Достаточные условия дифференцируемости функции в области.</b><br>
+Пусть $G$ область в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$ такакя, что 
+$$\forall{i}\in\overline{1,n}\left(\forall{y}\in{G}\,\exists\frac{\partial{f}(x)}{\partial{x}_i}(y)\wedge
+\frac{\partial{f}(x)}{\partial{x}_i}\in{C}(G)\right)$$
+тогда функция $f(x)$ дифференцируема на $G$.
+<p><b>Доказательство:</b> Так как любая точка области внутренняя и в любой точке области $G$ существуют и непрерывны все частные производные функции $f(x)$, 
+то каждая точка области $G$ удовлетворяет условиям теоремы 12.3.4.
+
+<br><br>
+<p id=Definition12.3.5><b>Определение 12.3.5:</b> Пусть $G$ открытое множество в $\mathbb{R}^n$, тогда класс функций 
+$$C^1(G):=\left\{f(x)\colon{G}\to\mathbb{R}\mid\forall{i}\in\overline{1,n}\left(\forall{y}\in{G}\,\exists\frac{\partial{f}(x)}{\partial{x}_i}(y)\wedge
+\frac{\partial{f}(x)}{\partial{x}_i}\in{C}(G)\right)\right\}$$
+называется классом функций один раз непрерывно дифференцируемых на множестве $G$.
+
+<br><br>
+<p>Таким образом если $f(x)\in{C}^1(G)$, то функция $f(x)$ дифференцируема на $G$. Обратное не верно.
+<p id=Task12.3.1><b>Задача 12.3.1:</b> Доказать, что функция 
+$\displaystyle{f}(x,y)=\begin{cases}(x^2+y^2)\sin{\frac1{x^2+y^2}}&,x^2+y^2=0\\\qquad0&,x=y=0\end{cases}\colon\mathbb{R}^2\to\mathbb{R}$ дифференцируема 
+в точке $(0,0)$, но имеет как минимум одну частную производную для которой точка $(0,0)$ является точкой разрыва.
+<p><b>Решение:</b>
+<i>
+Поскольку $\|(x,y)\|^2=x^2+y^2$, то для любых $\displaystyle(x,y)\neq(0,0)$ $f(x,y)=\|(x,y)\|^2\sin\frac1{\|(x,y)\|^2}$. Следовательно, дифференцируемость 
+функции $f(x,y)$ в точке $(0,0)$ следует из дифференцируемости функции 
+$\displaystyle{g}(t)=\begin{cases}t^2\sin\frac1{t^2}&,t\neq0\\\quad0&,t=0\end{cases}$ в точке 0. 
+Дифференцируемость функции $g(t)$ в точке 0 обосновывается аналогично дифференцируемости функции $t^2\sin\frac1{t}$ в точке 0, которая была доказана
+в <a href="./math_analysis6.1.html#Task6.1.1">задаче 6.1.1</a>.<br>
+Итак, функция $f(x,y)$ дифференцируема в точке $(0,0)$, однако
+$$\frac{\partial{f}(x,y)}{\partial{x}}=\left((x^2+y^2\sin\frac1{x^2+y^2})\right)'_x=
+2x\sin\frac1{x^2+y^2}-(x^2+y^2)\cos\frac1{x^2+y^2}\frac{2x}{(x^2+y^2)^2}=2x\sin\frac1{x^2+y^2}-\frac{2x}{x^2+y^2}\cos\frac1{x^2+y^2}.$$
+Следовательно, предела функции $\frac{\partial{f}(x,y)}{\partial{x}}$ при $(x,y)\to(0,0)$ не существует, так как не существует, например,
+предела функции $\displaystyle2x\sin\frac1{x^2}-\frac1{x}\cos\frac2{x^2}$ при $x\to0$, то есть предела функции $\frac{\partial{f}(x,y)}{\partial{x}}$ 
+при $(x,y)\to(0,0)$ по множеству $\{(x,0)\mid{x}\in\mathbb{R}\}$.  
+</i>
+
+<br><br>
+<a href="./math_analysis12.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.3.3.html">next</a>
+</body>
+</html>

@@ -1,0 +1,159 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 7.3.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis7.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.4.1.html">next</a>
+
+<h5 id="7.3.2">7.3.2 Арифметические операции над абсолютно сходящимися рядами. Произведение рядов.</h5>
+
+<p id="Statement7.3.3"><b>Утверждение 7.3.3:</b> Если ряды $\sum_{n=1}^\infty{a}_k$, $\sum_{n=1}^\infty{b}_k$ сходятся абсолютно,
+то для любых $\alpha,\beta\in\mathbb{R}$ ряд $\sum_{k=1}^\infty(\alpha{a}_k+\beta{b}_k)$ сходится абсолютно и имеет своей суммой
+$\alpha\sum_{k=1}^\infty{a}_k+\beta\sum_{k=1}^\infty{b}_k$.
+<p><b>Доказательство:</b> <a href="./math_analysis7.1.html#Theorem7.1.2">Ранее было доказано</a>, что из сходимости рядов $\sum_{n=1}^\infty{a}_n$, 
+$\sum_{n=1}^\infty{b}_n$ следует сходимость ряда $\sum_{n=1}^\infty(\alpha{a}_n+\beta{b}_n)$ и 
+$\sum_{n=1}^\infty(\alpha{a}_n+\beta{b}_n)=\alpha\sum_{n=1}^\infty{a}_n+\beta\sum_{n=1}^\infty{b}_n$.<br>
+Докажем, что ряд $\sum_{n=1}^\infty(\alpha{a}_n+\beta{b}_n)$ сходится абсолютно. Обозначим $M:=\max\{|\alpha|,|\beta|\}$<br>
+Если $M=0$, то
+$$M=0\Rightarrow\alpha=\beta=0\Rightarrow\forall{n}\in\mathbb{N}(|\alpha{a}_n+\beta{b}_n|=0)\Rightarrow\sum_{n=1}^\infty|\alpha{a}_n+\beta{b}_n|=0$$
+Если $M\neq0$, тогда фиксируем $\varepsilon&gt0$. Так как ряды $\sum_{n=1}^\infty|a_n|$, $\sum_{n=1}^\infty|b_n|$ сходятся, то по 
+<a href="./math_analysis7.1.html#Theorem7.1.1">критерию Коши</a>
+$$\left(\exists{n}_1\in\mathbb{N}:\forall{m}\geq{n}&gtn_1\left(\sum_{k=n}^m|a_k|&lt\frac{\varepsilon}{2M}\right)\wedge
+\exists{n}_2\in\mathbb{N}:\forall{m}\geq{n}&gtn_1\left(\sum_{k=n}^m|b_k|&lt\frac{\varepsilon}{2M}\right)\right)\Rightarrow$$
+$$\Rightarrow\forall{m}\geq{n}&gt\max\{n_1,n_2\}\left(\sum_{k=m}^m|\alpha{a}_k+\beta{b}_k|\leq\sum_{k=n}^m(|\alpha{a}_k|+|\beta{b}_k|)=
+|\alpha|\sum_{k=n}^m|a_k|+|\beta|\sum_{k=n}^m|b_k|\leq{M}\left(\sum_{k=n}^m|a_k|+\sum_{k=n}^m|b_k|\right)&ltM
+\left(\frac{\varepsilon}{2M}+\frac{\varepsilon}{2M}\right)=\varepsilon\right)$$
+Таким образом ряд $\sum_{n=1}^\infty|\alpha{a}_n+\beta{b}_n|$ сходится по критерию Коши сходимости рядов.
+
+<br><br>
+
+<p id="Theorem7.3.2"><b>Теорема 7.3.2:</b> Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ сходятся абсолютно, то ряд $\sum_{n=1}^\infty{c}_n$ 
+составленный из всевозможных произведений вида $a_mb_n$ сходится абсолютно и имеет своей суммой $\sum_{n=1}^\infty{a}_n\sum_{n=1}^\infty{b}_n$.
+<p><b>Доказательство:</b> Члены ряда $\sum_{n=1}^\infty{c}_n$ можно выписать в виде матрицы
+$$\begin{pmatrix}
+a_1b_1 & a_1b_2 & a_1b_3 & \cdots \\
+a_2b_1 & a_2b_2 & a_2b_3 & \cdots \\
+a_3b_1 & a_3b_2 & a_3b_3 & \cdots \\
+\vdots & \vdots & \vdots & \ddots 
+\end{pmatrix}$$ 
+Докажем, что некоторая перестановка элементов матрицы дает абсолютно сходящийся ряд. Используем нумерацию "уголком", то есть
+$$\sum_{n=1}^\infty{c}_n:=a_1b_1+(a_1b_2+a_2b_2+a_2b_1)+(a_1b_3+a_2b_3+a_3b_3+a_2b_3+a_1b_3)+\dots+
+\left(b_k\sum_{i=1}^{k-1}a_i+a_k\sum_{i=1}^kb_i\right)+\dots$$
+<br><i>
+Такая нумерация задается следующим отображением: 
+$$\psi(a,b):\mathbb{N}^2\to\mathbb{N}:\forall(a,b)\in\mathbb{N}^2\:\psi(a,b)=\begin{cases}(b-1)^2+a, & a&ltb\\a^2-b+1, & a\geq{b}\end{cases}$$
+Докажем сюръективность отображения $\psi$. Действительно для любого $n\in\mathbb{N}$ существует $c\in\mathbb{N}$ такое, что $(c-1)^2&ltn\leq{c}^2$,
+тогда
+$$n-(c-1)^2\leq{c}^2-n\Rightarrow(\exists{a}:=n-(c-1)^2\in\mathbb{N}\wedge\exists{b}:=c:(n=(b-1)^2+a\wedge{a}&ltb))$$
+$$n-(c-1)^2\&gtc^2-n\Rightarrow(\exists{a}:=c\wedge\exists{b}:=c^2-n+1\in\mathbb{N}:(n=a^2-b+1\wedge{a}\geq{b}))$$
+Для доказательства инъективности отображения $\psi$ надо показать, что 
+$$\forall(a,b),(c,d)\in\mathbb{N}^2(\psi(a,b)=\psi(c,d)\Rightarrow(a,b)=(c,d))$$
+Докажем, например, для случая $a&ltb$, $c&ltd$.
+$$\psi(a,b)=\psi(c,d)\Rightarrow(b-1)^2+a=(d-1)^2+c\Rightarrow(b-d)(b+d+2)+(a-c)=0$$
+тогда 
+$$a\neq{c}\Rightarrow{b}\neq{d}\Rightarrow|b-d|\geq1\Rightarrow{b}+d+2\leq|a-c|\leq{a}+c$$
+а это противоречит предпосылке $a&ltb$, $c&ltd$. Из биективности отображения $\psi$ в частности следует существование обратного отображения
+$\psi^{-1}(x):\mathbb{N}\to\mathbb{N}^2$. Таким образом последовательность $\{c_n\}$ задана корректно и множество элементов последовательности $\{c_n\}$ 
+содержит все пары из декартова произведения множеств элементов последовательностей $\{a_n\}$ и $\{b_n\}$.
+</i><br>
+Для доказательства сходимости знакопостоянного ряда $\sum_{n=1}^\infty|c_n|$ <a href="./math_analysis4.4.html#Statement4.4.4">достаточно доказать</a>, 
+что некоторая подпоследовательность $\{S_{n_k}^{|c|}\}$ <a href="./math_analysis.4.3.html#Theorem4.3.2">возрастающей</a> последовательности $\{S_n^{|c|}\}$ 
+частичных сумм этого ряда ограничена сверху.<br>
+Пусть $\{n_k\}$ последовательность из $\mathbb{N}$ такая, что для любого $k\in\mathbb{N}$ $n_k=k^2$, покажем, что подпоследовательность $\{S_{n_k}^{|c|}\}$
+ограничена сверху. Докажем по индукции, что для любого $k\in\mathbb{N}$ $S_{n_k}^{|c|}=S_k^{|a|}S_k^{|b|}$, где $S_k^{|a|}:=\sum_{i=1}^k|a_i|$, 
+$S_k^{|b|}:=\sum_{i=1}^k|b_i|$.
+$$S_{n_1}^{|c|}=S_1^{|c|}=|a_1b_1|=|a_1||a_2|=S_1^{|a|}S_1^{|b|}\leq{S}^{|a|}S^{|b|}$$
+где $S^{|a|}:=\sum_{n=1}^\infty|a_n|$, $S^{|b|}:=\sum_{n=1}^\infty|b_n|$
+Докажем шаг индукции. Пусть
+$$S_{n_{k-1}}^{|c|}=S_{n_{k-1}}^{|a|}S_{n_{k-1}}^{|b|}$$
+тогда
+$$S_{n_k}^{|c|}=S_{n_{k-1}}^{|c|}+\sum_{i=(k-1)^2+1}^{k^2}|c_i|=
+\sum_{i=1}^{k-1}|a_i|\sum_{i=1}^{k-1}|b_i|+|b_k|\sum_{i=1}^{k-1}|a_i|+|a_k|\sum_{i=1}^k|b_i|=
+\sum_{i=1}^{k-1}|a_i|\left(\sum_{i=1}^{k-1}|b_i|+|b_k|\right)+|a_k|\sum_{i=1}^k|b_i|=$$ $$=\sum_{i=1}^{k-1}|a_i|\sum_{i=1}^k|b_i|+|a_k|\sum_{i=1}^k|b_i|=
+\sum_{i=1}^k|b_i|\left(\sum_{i=1}^{k-1}|a_i|+|a_k|\right)=\sum_{i=1}^k|b_i|\sum_{i=1}^k|a_i|=S_k^{|a|}S_k^{|b|}\leq{S}^{|a|}S^{|b|}$$
+Таким образом подпоследовательность $\{S_{n_k}^{|c|}\}$ последовательности $\{S_n^{|c|}\}$ частичных сумм ряда $\sum_{n=1}^\infty|c_n|$ 
+ограничена сверху. Так как ряд знакопостоянный, то последовательность $\{S_n^{|c|}\}$ возрастает и из ограниченности ее подпоследовательности
+следует ограниченность всей последовательности, а следовательно, ее сходимость. То есть ряд $\sum_{n=1}^\infty{c}_n$ сходится абсолютно.
+Тогда по <a href="./math_analysis7.3.1.html#Theorem7.3.1">теореме 7.3.1</a> сходится к той же сумме любая его перестановка.<br>
+Покажем, что $S^c:=\sum_{n=1}^\infty{c}_n=S^aS^b$, где $S^a:=\sum_{n=1}^\infty{a}_n$, $S^b:=\sum_{n=1}^\infty{b}_n$.<br>
+Аналогично равенству $S_{n_k}^{|c|}=S_k^{|a|}S_k^{|b|}$ можно показать, что для любого $k\in\mathbb{N}$ $S_{n_k}^c=S_k^aS_k^b$. Так как ряд 
+$\sum_{n=1}^\infty{c}_n$ сходится, то любая подпоследовательность последовательности $\{S_n^c\}$ его частичных сумм сходится к тому же пределу.
+Следовательно, в равенстве $S_{n_k}^c=S_k^aS_k^b$ можно перейти к пределу, тогда
+$$\lim_{n\to\infty}S_n^c=\lim_{k\to\infty}S_{n_k}^c=\lim_{k\to\infty}(S_k^aS_k^b)=\lim_{k\to\infty}S_k^a\lim_{k\to\infty}S_k^b=S^aS^b$$
+
+<br><br>
+
+<p id="Definition7.3.4"><b>Определение 7.3.4: Произведение рядов по Коши.</b><br>
+Произведением по Коши рядов $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ называется ряд $\sum_{n=1}^\infty{c}_n$ вида:<br>
+$c_1:=a_1b_1$<br>
+$c_2:=a_1b_2+a_2b_1$<br>
+$c_3:=a_1b_3+a_2b_2+a_3b_1$<br>
+$\dots$<br>
+$c_n:=\sum_{k=1}^n(a_kb_{n-k+1})$<br>
+
+<br><br>
+
+<p id="Theorem7.3.3"><b>Теорема 7.3.3: Теорема Коши.</b><br>
+Если ряды $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ сходятся абсолютно, то их произведение по Коши сходится абсолютно и имеет своей суммой
+$\sum_{n=1}^\infty{a}_n\sum_{n=1}^\infty{b}_n$.
+<p><b>Доказательство:</b> Утверждение следует из теоремы 7.3.2.
+
+<br><br>
+
+<p>Более слабые теоремы приведем без доказательства.
+
+<br><br>
+
+<p id="Theorem7.3.4"><b>Теорема 7.3.4: Теорема Мертенса.</b><br>
+Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ сходятся причем один из них абсолютно, то их произведение по Коши сходится 
+и имеет своей суммой $\sum_{n=1}^\infty{a}_n\sum_{n=1}^\infty{b}_n$.
+
+<br><br>
+
+<p id="Theorem7.3.5"><b>Теорема 7.3.5: Теорема Абеля.</b><br>
+Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ и их произведение по Коши $\sum_{n=1}^\infty{c}_n$ сходятся, то 
+$\sum_{n=1}^\infty{c}_n=\sum_{n=1}^\infty{b}_n\sum_{n=1}^\infty{b}_n$.
+
+<br><br>
+
+<p id="Example7.3.4"><b>Пример 7.3.4:</b> Рассмотрим ряды $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n=b_n=\frac{(-1)^n}{\sqrt{n}}$.<br>
+<i>
+Так как
+$$\frac1{\sqrt{2k}}-\frac1{\sqrt{2k-1}}=\frac{\sqrt{2k-1}-\sqrt{2k}}{\sqrt{2k(2k-1)}}=
+\frac{(\sqrt{2k-1}-\sqrt{2k})(\sqrt{2k-1}+\sqrt{2}k)}{\sqrt{2k(2k-1)}(\sqrt{2k-1}+\sqrt{2k})}=
+\frac{2k-1-2k}{(2k-1)\sqrt{2k}+2k\sqrt{2k-1}}=-\frac1{(2k-1)\sqrt{2k}+2k\sqrt{2k-1}}=O\left(\frac1{k^{\frac{3}{2}}}\right)$$
+то все слагаемые в сумме
+$$S_{2n}=\sum_{k=1}^n\left(\frac1{\sqrt{2k}}-\frac1{\sqrt{2k-1}}\right)=\sum_{k=1}^n-\frac1{(2k-1)\sqrt{2k}+2k\sqrt{2k-1}}$$
+одного знака, так что можем применять результаты для знакопостоянных рядов, следовательно, по 
+<a href="./math_analysis7.2.2.html#Corollary7.2.5">шкале Дирихле</a> существует предел $S:=\lim_{n\to\infty}S_{2n}$, тогда
+$$\exists\lim_{n\to\infty}S_{2n+1}=\lim_{n\to\infty}\left(S_{2n}-\frac1{\sqrt{2n+1}}\right)=\lim_{n\to\infty}S_{2n}=S\Rightarrow
+\exists\lim_{n\to\infty}S_n=S$$
+Таким образом ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty{b}_n$ сходится, но не абсолютно, так как
+$$\forall{n}\in\mathbb{N}\left(|a_n|=|b_n|=\frac1{\sqrt{n}}\right)\Rightarrow|a_n|=|b_n|=O\left(\frac1{n^{\frac1{2}}}\right)$$
+Так как оба ряда сходятся не абсолютно, то нельзя гарантировать сходимости произведения по Коши. Действительно
+$$\forall{n}\in\mathbb{N}\left(c_n=\sum_{k=1}^n(a_kb_{n-k+1})=(-1)^{n+1}\sum_{k=1}^n\frac1{\sqrt{k(n-k+1)}}\right)$$
+$$\forall{n}&gt1\left(\forall{k}\in\overline{1,n}(k(n-k+1)&ltn^2)\Rightarrow\frac1{\sqrt{k(n-k+1)}}&gt\frac1{n}\right)\Rightarrow
+|c_n|=\sum_{k=1}^n\frac1{\sqrt{k(n-k+1)}}&gtn\frac1{n}=1$$
+Таким образом общий член произведения по Коши не стремится к нулю, следовательно, произведение по Коши расходится.<br>
+Однако, если в качестве ряда $\sum_{n=1}^\infty{b}_n$ взять другой сходящийся не абсолютно ряд - $\sum_{n=1}^\infty\frac{(-1)^n}{n}$, то 
+произведения по Коши рядов $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ будет сходится (см. Фихтенгольц т.2, стр. 328)!
+То есть теория (по крайней мере та ее часть, что приведена в этом курсе) ничего не может сказать о сходимости произведения Коши, если оба множителя
+сходятся не абсолютно.
+</i>
+
+<br><br>
+<a href="./math_analysis7.3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.4.1.html">next</a>
+</body>
+</html>
+

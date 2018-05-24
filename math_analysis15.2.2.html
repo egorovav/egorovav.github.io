@@ -1,0 +1,169 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 15.2.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis15.2.1.html">previous</a> <a href="./math_contents.html">contents</a>
+
+<h5 id=15.2.3>15.2.3 Достаточные условия сходимости ТРФ в точке.</h5>
+
+<p id=Definition15.2.4><b>Определение 15.2.4:</b> Пусть $x\in\mathbb{R}$, $f(x)\colon\mathring{U}(x)\to\mathbb{R}$, тогда будем говорить, что функция $f(x)$
+удовлетворяет в точке $x$ условиям Дини, если
+<ol>
+<li>$\exists{f}(x\pm0):=\lim_{t\to{x}\pm0}f(t)$,</li>
+<li>
+существует $\delta>0$ такое, что интегралы $\displaystyle\int_0^{\delta}\frac{f(x+t)-f(x+0)}{t}\,dt$, 
+$\displaystyle\int_0^{\delta}\frac{f(x-t)-f(x-0)}{t}\,dt$ сходятся абсолютно.
+</li>
+</ol>
+<br><br>
+<p id=Theorem15.2.2><b>Теорема 15.2.2: Признак Дини поточечной сходимости ТРФ.</b><br>
+Пусть функция $f(t)\colon\mathbb{R}\to\mathbb{R}$, $x\in[-\pi,\pi]$ такие, что
+<ol>
+<li>функция $f(t)$ - $2\pi$-периодическая,</li>
+<li>$f(t)\in\mathcal{R}_1[-\pi,\pi]$,</li>
+<li>
+функция $f(t)$ удовлетворяет в точке $x$ условиям Дини,
+</li>
+</ol> 
+тогда <a href="./math_analysis15.2.1.html#Definition15.2.1">ТРФ</a> функции $f(t)$ сходится в точке $x$ и его сумма равна $\frac{f(x+0)+f(x-0)}{2}$.
+<p><b>Доказательство:</b> 
+$$2\pi{S}_n(x)=\int_{-\pi}^{\pi}f(x-t)D_n(t)\,dt=\int_{-\pi}^0f(x-t)D_n(t)\,dt+\int_0^{\pi}f(x-t)D_n(t)\,dt=
+\int_0^{\pi}f(x+t)D_n(t)\,dt+\int_0^{\pi}f(x-t)D_n(t)\,dt=$$
+$$=\int_0^{\pi}(f(x+t)-f(x+0))D_n(t)\,dt+f(x+0)\int_0^{\pi}D_n(t)\,dt+\int_0^{\pi}(f(x-t)-f(x-0))D_n(t)\,dt+f(x-0)\int_0^{\pi}D_n(t)\,dt.$$
+По пунктам 4, 5 <a href="./math_analysis15.2.1.html#Statement15.2.1">утверждения 15.2.1</a> имеем $\frac1{2\pi}\int_0^{\pi}D_n(t)\,dt=\frac12$, 
+следовательно, 
+$$S_n(x)=\frac1{\pi}\int_0^{\pi}\left(\frac{f(x+t)-f(x+0)}{2\sin{\frac{t}{2}}}+\frac{f(x-t)-f(x-0)}{2\sin{\frac{t}{2}}}\right)
+\sin\left(\left(n+\frac12\right)t\right)\,dt+\frac{f(x+0)+f(x-0)}{2}.$$
+По пункту 2 условий Дини существует $\delta\in(0,\pi)$ такое, что интеграл $\displaystyle\int_0^{\pi}\frac{f(x+t)-f(x+0)}{2}\,dt$ сходится абсолютно, 
+тогда с силу того, что $2\sin{\frac{t}{2}}\sim{t}$, при $t\to0$ по <a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a> сходится абсолютно 
+и интеграл $\displaystyle\int_0^{\delta}\frac{f(x+t)-f(x+0)}{2\sin{\frac{t}{2}}}\,dt$. В свою очередь собственный интеграл 
+$\displaystyle\int_{\delta}^{\pi}\left|\frac{f(x+t)-f(x+0)}{2\sin{\frac{t}{2}}}\right|\,dt$ существует в силу ограниченности 
+$\displaystyle\frac1{\sin{\frac{t}{2}}}$ на $[\delta,\pi]$ и интегрируемости $f(t)$. Таким образом 
+$\displaystyle\frac{f(x+t)-f(x+0)}{2\sin{\frac{t}{2}}}\in\mathcal{R}_1[0,\pi]$, следовательно, для интеграла 
+$\displaystyle{I}_1:=\int_0^{\pi}\frac{f(x+t)-f(x+0)}{2\sin{\frac{t}{2}}}\sin\left(\left(n+\frac12\right)t\right)\,dt$ можно применить 
+<a href="./math_analysis15.2.1.html#Lemma15.2.1">лемму Римана</a>, то есть $I_1\to0$, при $n\to\infty$.<br>
+Аналогично показывается, что $\displaystyle{I}_2:=\int_0^{\pi}\frac{f(x-t)-f(x-0)}{2\sin{\frac{t}{2}}}\sin\left(\left(n+\frac12\right)t\right)\,dt)\to0$, 
+при $n\to\infty$. Следовательно,
+$$S_n(x)=\frac1{\pi}(I_1+I_2)+\frac{f(x+0)+f(x-0)}{2}\to\frac{f(x+0)+f(x-0)}{2},n\to\infty.$$
+<br><br>
+<p>Условие 1 теоремы не обременительно, так как любую функцию заданную на отрезке $[-\pi,\pi]$ можно продолжить с периодом $2\pi$ на $\mathbb{R}$.<br>
+Результат применим и для $H=\mathcal{R}[-\pi,\pi]$.<br>
+Результат в частности позволяет сказать, что значение функции $f(t)$ в точке $x$ не влияют ни на сходимость ТРФ, ни на его сумму.<br>
+
+<br><br>
+<p id=Definition15.2.5><b>Определение 15.2.5:</b> Пусть $x\in\mathbb{R}$; $a,b>0$, $U(x):=(x-a,x+b)$, $f(x)\colon{U}(x)\to\mathbb{R}$, тогда будем
+говорить, что функция $f(x)$ удовлетворяет в точке $x$ условиям Гёльдера, если
+<ol>
+<li>функция $f(x)$ кусочно-непрерывна (имеет конечное число точек разрыва 1 рода) на $U(x)$,</li>
+<li>$\exists{M}>0\,\exists\alpha\in(0,1]\colon\forall{t}\in{U}(0):=(-a,b)(|f(x+t)-f(x)|\leq{M}|t|^{\alpha})$.</li>
+</ol>
+<br><br>
+<p id=Statement15.2.3><b>Утверждение 15.2.3:</b> Если функция $f(x)\colon{U}(x)\to\mathbb{R}$ удовлетворяет условиям Гёльдера, то она удовлетворяет 
+условиям Дини в точке $x$.
+<p><b>Доказательство:</b> Из пункта 1 условий Гёльдера следует, существование пределов $f(x\pm0)$. Из пункта 2 условий Гёльдера по 
+<a href="./math_analysis5.2.html#Theorem5.2.2">теореме о двух милиционерах</a> следует
+$$\exists\lim_{t\to0}|f(x+t)-f(x)|=0\Rightarrow\lim_{t\to{x}}f(t)=f(x)\Rightarrow{f}(x+0)=f(x-0)=f(x).$$
+Тогда по пункту 2 условий Гёльдера
+$$\frac{f(x\pm{t})-f(x\pm0)}{t}=\frac{f(x\pm{t})-f(x)}{t}\leq\frac{Mt^{\alpha}}{t}=O^*\left(\frac1{t^{1-\alpha}}\right),$$
+где $\alpha\in(0,1]$. Следовательно, интегралы $\int_0^{\pi}\frac{f(x\pm{t})-f(x\pm0)}{t}\,dt$ сходятся по 
+<a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a>.
+<br><br>
+<p id=Statement15.2.4><b>Утверждение 15.2.4: Признак Липшица.</b><br> 
+Пусть функция $f(t)\colon\mathbb{R}\to\mathbb{R}$ такая, что 
+<ol>
+<li>функция $f(t)$ - $2\pi$-периодична,</li>
+<li>функция $f(t)$ - кусочно-непрерывна на $[-\pi,\pi]$,</li>
+<li>$\forall{t}\in[-\pi,\pi](\exists{f}'_+(t)\wedge\exists{f}'_-(t))$,</li>
+</ol>
+тогда функция $f(t)$ удовлетворяет условиям признака Дини на $[-\pi,\pi]$.
+<p><b>Доказательство:</b> Проверим пункт 2 условий Гёльдера. Действительно, пусть в точке $x\in[-\pi,\pi]$ существует левая производная $f'_-(x)$, тогда
+$$\exists\lim_{t\to0+}\frac{f(x-t)-f(x)}{t}\in\mathbb{R}\Rightarrow
+\exists{M}>0\,\exists\delta>0\colon\forall{t}\in(0,\delta)\left(\frac{|f(x-t)-f(x)|}{t}\leq{M}\right)\Rightarrow
+\forall{t}\in(0,\delta)(|f(x-t)-f(x)|\leq{M}t).$$
+Аналогично, из существования производной $f'_+(x)$ следует существование $M'>0$, $\delta'>0$ таких, что для любого $t\in(0,\delta')$ 
+$|f(x+t)-f(x)|\leq{M}'t$. Таким образом для функции $f(t)$ в точке $x$ выполнен пункт 2 условий Гёльдера для окрестности $(-\delta,\delta)$,
+$M:=\max\{M,M'\}$ и $\alpha=1$. <br>
+Таким образом для функции $f(t)$ выполнены условия Гёльдера, а следовательно и Дини, в любой точке $x\in[-\pi,\pi]$. И так как из кусочной непрерывности 
+функции $f(t)$ следует, что $f(t)\in\mathbb{R}_1[-\pi,\pi]$, то функция $f(t)$ удовлетворяет условиям признака Дини на $[-\pi,\pi]$.
+<br><br>
+<p>Сформулируем еще один результат, который описывает некоторые достаточные условия сходимости ТРФ.
+<br><br>
+<p id=Lemma15.2.2><b>Лемма 15.2.2:</b> Пусть $h>0$, монотонная функция $f(x)\colon[0,h]\to\mathbb{R}$ такая, что для любого $\lambda\in\mathbb{R}$
+существует интеграл $\displaystyle{I}(\lambda):=\int_0^h(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt$, тогда существует предел 
+$\displaystyle\lim_{\lambda\to\infty}I(\lambda)=f(0+)\frac{\pi}{2}$.
+<p><b>Доказательство:</b> 
+$$I(\lambda)=\int_0^h(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt+f(0+)\int_0^h\frac{\sin{\lambda{t}}}{t}\,dt.$$
+$$I_2(\lambda):=f(0+)\int_0^h\frac{\sin{\lambda{t}}}{t}\,dt=f(0+)\int_0^{h\lambda}\frac{\sin{z}}{z}\,dz\Rightarrow
+\lim_{\lambda\to\infty}I_2=f(0+)\int_0^{\infty}\frac{\sin{z}}{z}\,dz=f(0+)\frac{\pi}{2}.$$
+Покажем, что $\displaystyle{I}_1(\lambda):=\int_0^h(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt\to0$, при $\lambda\to0$.<br>
+Фиксируем $\varepsilon>0$, обозначим $g(x):=\int_0^x\frac{\sin{t}}{t}\,dt\colon[0,\infty)\to\mathbb{R}$. Так как $g(x)\in{C}[0,\infty)$ и существует 
+предел $\lim_{x\to\infty}g(x)=\frac{\pi}{2}$, то функция $g(x)$ ограничена на $[0,\infty)$, следовательно, существует $K\in\mathbb{R}$ такое, что
+для любого $x\in[0,\infty)$ $|g(x)|\leq{K}$.
+$$\exists{f}(0+):=\lim_{t\to0+}f(t)\Rightarrow
+\exists\delta\in(0,h)\colon\forall{t}\in\mathbb{R}\left(0<{t}\leq\delta\Rightarrow|f(t)-f(0+)|<\frac{\varepsilon}{4K}\right).$$
+$$I_1(\lambda)=\int_0^{\delta}(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt+\int_{\delta}^{\pi}(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt.$$
+Так как функция $f(t)$ монотонна, то для оценки первого слагаемого $\displaystyle{I}'_1:=\int_0^{\delta}(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt$
+можно воспользоваться <a href="./math_analysis8.3.html#Theorem8.3.3">формулой Бонне</a>, тогда
+$$\exists\xi\in(0,\delta)\colon|I'_1(\lambda)|=|f(\delta)-f(0+)|\int_{\xi}^{\delta}\frac{\sin{\lambda{t}}}{t}\,dt<
+\frac{\varepsilon}{4K}\int_{\lambda\xi}^{\lambda\delta}\frac{\sin{z}}{z}\,dz\leq\frac{\varepsilon}{4K}|g(\lambda\delta)-g(\lambda\xi)|\leq
+\frac{\varepsilon}{4K}|g(\lambda\delta)|+|g(\lambda\xi)|<\frac{\varepsilon}{4K}(K+K)=\frac{\varepsilon}{2}.$$
+Так как функция $f(t)-f(0+)$ интегрируема на $[\delta,h]$ и знакопостоянна, то $f(t)-f(0+)\in\mathcal{R}_1[\delta,h]$, следовательно, 
+$\frac{f(t)-f(0+)}{t}\in\mathcal{R}_1[\delta,h]$. Тогда по <a href="./math_analysis15.2.1.html#Lemma15.2.1">лемме Римана</a>
+$$I''_1(\lambda):=\int_{\delta}^{\pi}(f(t)-f(0+))\frac{\sin{\lambda{t}}}{t}\,dt\to0,\lambda\to0\Rightarrow
+\exists\lambda_0\in\mathbb{R}\colon\forall\lambda>\lambda_0\left(|I''_1|<\frac{\varepsilon}{2}\right)\Rightarrow
+\forall\lambda>\lambda_0\left(I_1(\lambda)=I'_1(\lambda)+I''_1(\lambda)<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)\Rightarrow$$
+$$\Rightarrow\exists\lim_{\lambda\to\infty}I_1(\lambda)=0\Rightarrow\exists\lim_{\lambda\to\infty}I(\lambda)=
+\lim_{\lambda\to\infty}(I_1(\lambda)+I_2(\lambda))=f(0+)\frac{\pi}{2}.$$ 
+<br><br>
+<p id=Corollary15.2.6><b>Следствие 15.2.6:</b> Результат леммы 15.2.2 сохраняется, если в условии вместо монотонной функции  $f(x)$ взять функцию
+$f(x)=f_1(x)-f_2(x)$, где $f_1(x)$, $f_2(x)$ монотонны.
+<p><b>Доказательство:</b> <i>Следует из арифметических свойств предела.</i>
+<br><br>
+<p id=Definition15.2.6><b>Определение 15.2.6:</b> Функцию $f(x)\colon[a,b]\to\mathbb{R}$ будем называть функцией ограниченной вариации, если существуют
+неубывающие функции $f_1(x),f_2(x)\colon[a,b]\to\mathbb{R}$ такие, что $f(x)=f_1(x)-f_2(x)$.<br>
+Класс функций ограниченной вариации заданных на отрезке $[a,b]$ обозначают $V[a,b]$.
+<br><br>
+<p id=Statement15.2.5><b>Утверждение 15.2.5: Признак Дирихле - Жордана сходимости ТРФ.</b><br>
+Пусть $x\in[-\pi,\pi]$, функция $f(t)\colon\mathbb{R}\to\mathbb{R}$ такая, что
+<ol>
+<li>функция $f(t)$ $2\pi$-периодическая,</li>
+<li>$f(t)\in\mathcal{R}_1[-\pi,\pi]$,</li>
+<li>$\exists{h}>0\colon([x-h,x+h]\subset[-\pi,\pi]\wedge{f}(t)\in{V}[x-h,x+h])$,</li>
+</ol>
+тогда ТРФ функции $f(t)$ сходится в точке $x$ к значению $\frac{f(x+0)+f(x-0)}{2}$.
+<p><b>Доказательство:</b> Так как функция $f(t)$ представима на отрезке $[x-h,x+h]$ как разность монотонных функций, то пределы $f(x+0)$, $f(x-0)$
+существуют. Это следует из <a href="./math_analysis5.3.html#Corollary5.3.3">следствия 5.3.3</a> и арифметических свойств предела.<br>
+Аналогично тому, как это делалось при доказательстве <a href="./math_analysis15.2.1.html#Statement15.2.2">принципа локализации</a> можно показать, что
+$$S_n(x):=\frac1{2\pi}\int_{-\pi}^{\pi}f(t)D_n(x-t)\,dt=\frac1{2\pi}\int_{x-h}^{x+h}f(t)D_n(x-t)\,dt+o(1),n\to\infty.$$
+$$\int_{x-h}^{x+h}f(t)D_n(x-t)\,dt=\int_{x-h}^xf(t)D_n(x-t)\,dt+\int_x^{x+h}f(t)D_n(x-t)\,dt$$
+Сделав в первом слагаемом замену $t=x-y$, а во втором $t=x+y$ и учитывая четность функции $D_n(u)$ получим
+$$\int_{x-h}^{x+h}f(t)D_n(x-t)\,dt=\int_0^hf(x-y)D_n(y)\,dy+\int_0^{h}f(x+y)D_n(y)\,dy=
+\int_0^h(f(x+y)-f(x-y))\frac{\sin\left(\left(n+\frac12\right)y\right)}{\sin{\frac{y}{2}}}\,dy=$$
+$$=2\int_0^h(f(x+y)-f(x-y))\frac{\frac{y}{2}}{\sin{\frac{y}{2}}}\frac{\sin\left(\left(n+\frac12\right)y\right)}{y}\,dy.$$
+Первый множитель в подынтегральном выражении есть разность двух монотонных функций, второй множитель - неубывающая функция на $[0,h]\subset[0,\pi]$,
+следовательно, произведение двух первых множителей есть разность двух монотонных функций. Тогда по <a href="#Corollary15.2.6">следствию 15.2.6</a>
+$\displaystyle\lim_{n\to\infty}S_n(x)=\frac1{2\pi}2(f(x+0)+f(x-0))\frac{\pi}{2}=\frac{f(x+0)+f(x-0)}{2}$.
+<br><br>
+<p id=Example15.2.2><b>Пример 15.2.2:</b> Класс функций удовлетворяющих признаку Дини включает в себя классы функций удовлетворяющие признакам Гёльдера и
+Липшица. В отличии от них признак Дирихле - Жордана расширяет класс функций для которых ТРФ сходится к $\frac{f(x+0)+f(x-0)}{2}$.<br>
+Например, функция $\displaystyle{f}(x)=\begin{cases}\frac1{\ln{\frac{|x|}{2\pi}}}&,x\neq0\\0&,x=0\end{cases}\colon[-\pi,\pi]\to\mathbb{R}$ в точке $x=0$ не
+удовлетворяет условиям признака Дини, но удовлетворяет условиям признака Дирихле - Жордана.<br>
+Действительно, $f(0+)=f(0-)=f(0)=0$, тогда интеграл $\displaystyle\int_0^{\delta}\frac{f(x+t)-f(x+0)}{t}\,dt=\int_0^{\delta}\frac{f(t)}{t}\,dt=
+\int_0^{\delta}\frac{dt}{t\ln{\frac{t}{2\pi}}}$ расходится при любом $\delta>0$ по <a href="./math_analysis8.5.3.html#Theorem8.5.2">теореме 8.5.2</a>.
+
+
+<br><br>
+<a href="./math_analysis15.2.1.html">previous</a> <a href="./math_contents.html">contents</a>
+</body>
+</html>

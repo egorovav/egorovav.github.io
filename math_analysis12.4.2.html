@@ -1,0 +1,278 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.4.2</title>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.3.html">next</a>
+
+<h5 id=12.4.2>12.4.2 Теорема о неявной функции.</h5>
+
+<p>Постановка задачи.
+До сих пор объектом изучения являлись функции задаваемые в явном виде, но на практике часто встречаются не явные. Например, $x^3+xy^2+x^2-1=0$, $x^2+y^2-1$.
+Условию $x^2+y^2=1$ может удовлетворять гиперконтинуум функций вида $y=f(x)\colon[-1,1]\to[0,1]$, действительно для любого $X\subset[-1,1]$ можно положить
+$\displaystyle{f}(x):=\begin{cases}\sqrt{1-x^2}&,x\in{X}\\-\sqrt{1-x^2}&,x\in[-1,1]\backslash{X}\end{cases}$. Таким образом возникает задача: если задано
+соотношение вида $F(x,y)=0$, то можно ли хотя бы локально однозначно выразить $y$ относительно $x$ или наоборот. В данном конкретном случае если 
+$x_0\in(-1,1)$,то в достаточно малой окрестности $x_0$ можно выразить $y$ через $x$, если $x_0\in\{-1,1\}$, то нельзя.<br>
+В общем случае - это зависит от значения частной производной $\frac{\partial{F}}{\partial{y}}(x_0,y_0)$, если она равна нулю, то выразить локально $y$
+через $x$ нельзя, если не равно, то можно.<br>
+Таким образом, если задано соотношение $F(x,y)=0$, то
+<ol>
+<li>нет гарантий, что есть алгоритм разрешения относительно $x$ или $y$ на всей области определения;</li>
+<li>может быть много способов такого определения;</li>
+<li>следовательно, будем разрешать данное условие локально.</li>
+</ol> 
+Введем следующие обозначения:<br>
+$m,n\in\mathbb{N}$, $x=(x_1,\ldots,x_m)\in\mathbb{R}^m$, $y=(y_1,\ldots,y_n)\in\mathbb{R}^n$; $(x_0,y_0),(x,y)\in\mathbb{R}^{m+n}$.<br>
+Если $x_0=(x_1^0,x_2^0,\ldots,x_m^0)$, $\alpha=(\alpha_1,\ldots,\alpha_m)$, то множество 
+$I_x^m(x_0):=\{x\in\mathbb{R}^m\mid\forall{i}\in\overline{1,m}|x_i-x_i^0|<\alpha\}$ называется окрестностью типа параллелепипед. При доказательстве теорем
+окрестность типа параллелепипед будем обозначать просто как $I_x^m=\{x\mid|x-x_0|<\alpha\}$.<br>
+$I:=I_x^m\times{I}_y^n$.<br>
+$\displaystyle{f}'(x)=\left(\frac{\partial{f}}{\partial{x}_1}(x),\ldots,\frac{\partial{f}}{\partial{x}_m}(x)\right)$.<br>
+$F(x,y)\colon\mathbb{R}^{m+n}\to\mathbb{R}$, 
+$\displaystyle{F}'_x(x,y):=\left(\frac{\partial{F}}{\partial{x}_1}(x,y),\ldots,\frac{\partial{F}}{\partial{x}_m}(x,y)\right)$
+
+<br><br>
+<p id=Theorem12.4.3><b>Теорема 12.4.3: Вариант теоремы при $n=1$.</b><br>
+Пусть $U:=U(x_0,y_0)\subset\mathbb{R}^{m+1}$, функция $F(x,y)=F(x_1,\ldots,x_m,y)\colon{U}(x_0,y_0)\to\mathbb{R}$ такая, что 
+<ol>
+<li>$\exists{p}\in\mathbb{N}\colon{F}(x,y)\in{C}^p(U,\mathbb{R})$,</li>
+<li>$f(x_0,y_0)=0$,</li>
+<li>$\frac{\partial{F}}{\partial{y}}(x_0,y_0)\neq0$,</li>
+</ol>
+тогда существует промежуток $I=I(x_0,y_0)=I_x^m\times{I}_y^1$, $I_x^m:=\{x\mid|x-x_0|<\alpha\}$, $I_y^1:=\{y\mid|y-y_0|<\beta\}$ такой, что существует
+единственная функция $f(x)\in{C}^p(I_x^m;I_y^1)$ такая, что 
+<ol>
+<li>$\forall(x,y)\in{I}:=I(x_0,y_0)(F(x,y)=0\Leftrightarrow{y}=f(x))$,</li>
+<li>$\displaystyle\forall{i}\in\overline{1,m}\,\forall{x}\in{I}_x^m\left(
+\frac{\partial{f}}{\partial{x}_i}(x)=-\frac{\frac{\partial{F}}{\partial{x}_i}(x,f(x))}{\frac{\partial{F}}{\partial{y}}(x,f(x))}\right)\qquad(3)$.</li>
+</ol> 
+<p><b>Комментарии к формулировке:</b>
+<ol>
+<li>
+Теорема содержит два активных результата:
+<ol type="i">
+<li>$f(x)\in{C}^p(I_x^m;I_y^1)$</li>
+<li>уравнение $F(x,y)=0$ единственным образом разрешимо относительно $y$.</li>
+</ol>
+</li>
+<li>
+Суть утверждений теоремы в том, что при сделанных предпосылках, в какой-то достаточно малой окрестности $I_x^m$ точки $x_0$ можно построить график функции
+$f(x)\colon{I}_x^m\to{I}_y^1$ такой, что $f(x)\in{C}^p(I_x^m;I_y^1)$.
+</li>
+<li>При этом эта функция однозначно определена на $I_x^m$.</li>
+<li>
+Откуда в частности следует, что если функция $\tilde{f}(x)\colon{I}_x^m\to\mathbb{R}$ такая, что 
+<ol type="i">
+<li>$\tilde{f}(x_0)=y_0=f(x_0)$,</li>
+<li>$\tilde{f}(x)$ непрерывна в точке $x_0$,</li>
+</ol>
+тогда по непрерывности $\tilde{f}(x)$ в точке $x_0$
+$$\exists\tilde{I}_x^m=\{x\mid|x-x_0|<\tilde\alpha\}\subset{I}_x^m\colon\forall{x}\in\tilde{I}_x^m(\tilde{f}(x)\in{I}_y^1)\Rightarrow
+\forall{x}\in\tilde{I}_x^m((x,\tilde{f}(x))\in{I}).$$
+Но по условию теоремы существует единственная такая функция, следовательно для любого $x\in\tilde{I}_x^m$ $\tilde{f}(x)=f(x)$,
+Таким образом из условия теоремы следует, что любая непрерывная функция равная функции $f(x)$ в точке $x_0$ будет тождественна функции $f(x)$ в некоторой
+окрестности точки $x_0$.
+</li>
+</ol>
+<p><b>Доказательство:</b> 
+<ol type="I">
+<li>Построение окрестности $I$.
+Без ограничения общности будем считать, что $\frac{\partial{F}}{\partial{y}}(x_0,y_0)>0$, тогда
+$$f(x,y)\in{C}^p(U)\Rightarrow{f}(x,y)\in{C}^1(U)\Rightarrow\frac{\partial{F}}{\partial{y}}\in{C}(U)\Rightarrow
+\exists{U}'(x_0,y_0)\subset{U}\colon\forall(x,y)\in{U}'(x_0,y_0)\left(\frac{\partial{F}}{\partial{y}}(x,y)>0\right)$$
+Так как $U'$ открыто, то 
+$$\exists\beta\colon{B}((x_0,y_0),2\beta)\subset{U}'(x_0,y_0)\Rightarrow
+\forall(x,y)\in{B}((x_0,y_0),2\beta)\left(\frac{\partial{F}}{\partial{y}}(x,y)>0\right)\Rightarrow
+\forall(x,y)\in\{(x_0,y)\mid{y}\in[y_0-\beta,y_0+\beta]\}\subset{B}((x_0,y_0),2\beta)\left(\frac{\partial{F}}{\partial{y}}(x,y)>0\right).$$
+Таким образом функция $F(x_0,y)\colon[y_0-\beta,y_0+\beta]\to\mathbb{R}$ возрастает на $[y_0-\beta,y_0+\beta]$ и равна нулю в точке 
+$x_0\in(y_0-\beta,y_0+\beta)$. Так как функция $F(x,y)$ непрерывна в точке $(x_0,y_0)$, то она непрерывна в ней по переменной $x$ при фиксированном
+значении $y$, тогда существуют две окрестности типа параллелепипед точки $x_0$ содержащиеся в $B(x_0,2\beta)$ такие, что в одной из них $F(x,y_0-\beta)<0$,
+а в другой $F(x,y_0+\beta)>0$, тогда пересечение этих окрестностей будет окрестностью типа параллелепипед $I_x^m=\{x\mid|x-x_0|<\alpha\}$ такой, что 
+<ol>
+<li>$I_x^m\times{I}_y^1\subset{B}((x_0,y_0),2\beta)$ где $I_y^1:=\{y\mid|y-y_0|<\beta\}$,</li>
+<li>$\forall{x}\in{I}_x^m(F(x,y_0-\beta)<0<{F}(x,y_0+\beta))$.</li>
+</ol>
+</li>
+<li>Построение функции $f(x)$.<br>
+Фиксируем $x\in{I}_x^m$, тогда
+<ol>
+<li>$\forall{t}\in[y_0-\beta,y_0+\beta]((x,t)\in{B}((x_0,y_0),2\beta))\Rightarrow\frac{\partial{F}}{\partial{y}}(x,t)>0$,</li>
+<li>$F(x,y_0-\beta)<0<f(x,y_0+\beta)$</li>
+</ol>
+Функция $F(x,t)\colon[y_0-\beta,y_0+\beta]\to\mathbb{R}$ по переменной $t$ непрерывна, строго возрастает и принимает на концах отрезка значения разных 
+знаков. Тогда по <a href="./math_analysis5.5.3.html#Theorem5.5.2">теореме о промежуточном значении</a> существует единственное $y\in[y_0-\beta,y_0+\beta]$
+такое, что $F(x,y)=0$. Единственность следует из строгой монотонности функции $F(x,y)$ по $y$. Таким образом можно определить функцию 
+$f(x)\colon{I}_x^m\to{I}_y^1$ для которой $f(x)$ равно найденному $y$, тогда 
+$$\forall(x,y)\in{I}_x^m\times{I}_y^1(F(x,y)=0\Leftrightarrow{f}(x)=y)$$
+</li>
+<li>Обоснование свойств функции $f(x)$.
+<ol type="i">
+<li>Докажем, что функция $f(x)$ непрерывна в точке $x_0$.<br>
+Так как $F(x_0,y_0)=0$, то $f(x_0)=y_0$. Фиксируем $\varepsilon>0$, обозначим $\tilde{I}_y^1:=[y_0-\beta,y_0+\beta]\subset{B}((x_0,y_0),2\beta)$, тогда
+аналогично этапу II можно показать, что существует окрестность $\tilde{I}_x^m\subset{I}_x^m$ такая, что 
+$$\exists\tilde{f}(x)\colon\tilde{I}_x^m\to\tilde{I}_y^1\colon\forall(x,y)\in{I}_x^m\times{I}_y^1\subset{I}(F(x,y)=0\Leftrightarrow\tilde{f}(x)=y)$$
+Так как в окрестности I уравнение $F(x,y)=0$ разрешимо относительно $y$ единственным образом, то 
+$$\forall{x}\in{I}_x^m(\tilde{f}(x)=f(x))\Rightarrow
+\exists{V}(x_0):=\tilde{I}_x^m\colon\forall{x}\in{V}(x_0)(\tilde{f}(x)=f(x))\wedge\tilde{f}(x)\in{I}_y^1\Rightarrow|f(x)-y_0|=|f(x)-f(x_0)|<\varepsilon$$
+Таким образом реализовано комбинированное определение непрерывности функции $f(x)$ в точке $x_0$. 
+<li>Докажем, что функция $f(x)$ непрерывна на $I_x^m$.<br>
+Фиксируем точку $x^*\in{I}_x^m$, тогда по построению окрестности $I_x^m$ $\frac{\partial{F}}{\partial{y}}(x^*,f(x^*))>0$ по построению функции $f(x)$
+$F(x^*,f(x^*))=0$. Следовательно, функция $F(x,y)$ и точка $(x^*,f(x^*))$ удовлетворяют предпосылкам теоремы. Так что все приведенные выше рассуждения 
+примененные к точке $(x_0,y_0)$ применимы и к точке $(x^*,f(x^*))$, следовательно, функция $f(x)$ непрерывна в точке $x^*$.
+</li>
+<li>Докажем пункт 2 теоремы (равенство (3)).<br>
+Фиксируем $x\in{I}_x^m$ и $i\in\overline{1,m}$. Обозначим $\Delta{x}:=te_i$, где $t\in\mathbb{R}$ такое, что $x+\Delta{x}\in{I}_x^m$, 
+$\Delta{y}:=f(x+\Delta{x})-f(x)$.<br>
+Применим для функции $F(x,y)$ <a href="./math_analysis12.3.2.html#Theorem12.3.2">теорему о среднем</a> на отрезке $[(x,y),(x+\Delta{x},y+\Delta{y})]$,
+тогда существует $\theta\in(0,1)$ такое, что 
+$$F(x+\Delta{x},y+\Delta{y})-F(x,y)=\sum_{j=1}^m\left(\frac{\partial{F}}{\partial{x}_j}(x+\theta\Delta{x},y+\theta\Delta{y})\Delta{x}_i\right)+
+\frac{\partial{F}}{\partial{y}}(x+\theta\Delta{x},y+\theta\Delta{y})\Delta{y}.$$
+Под знаком суммы все слагаемые кроме $i$-того равны нулю, по определению $\Delta{x}$, следовательно
+$$F(x+\Delta{x},y+\Delta{y})-F(x,y)=\frac{\partial{F}}{\partial{x}_i}(x+\theta\Delta{x},y+\theta\Delta{y})t+
+\frac{\partial{F}}{\partial{y}}(x+\theta\Delta{x},y+\theta\Delta{y})\Delta{y}\Rightarrow\frac{f(x+\Delta{x})-f(x)}{t}=\frac{\Delta{y}}{t}=
+-\frac{\frac{\partial{F}}{\partial{x}_i}(x+\theta\Delta{x},y+\theta\Delta{y})}
+{\frac{\partial{F}}{\partial{y}}(x+\theta\Delta{x},y+\theta\Delta{y})}\qquad(*)$$
+Так как $F(x,y)\in{C}^1(U)$, то $\displaystyle\frac{\partial{F}}{\partial{x}_i}(x,y),\frac{\partial{F}}{\partial{y}}(x,y)\in{C}(U)$.<br>
+Так как $f(x)\in{C}(I_x^m)$, то существует предел $\displaystyle\lim_{\Delta{x}\to0}\Delta{y}=\lim_{\Delta{x}\to0}f(x+\Delta{x})-f(x)=0$, следовательно,
+применив достаточное количество раз теорему о пределе композиции функций можно заключить, что правая часть равенства (*) имеет предел при $t\to0$
+значит имеет предел и левая часть, то есть 
+$$\frac{\partial{f}}{\partial{x}_i}(x)=\lim_{t\to0}\frac{f(x+te_i)-f(x)}{t}=-\lim_{t\to0}
+\frac{\frac{\partial{F}}{\partial{x}_i}(x+\theta\Delta{x},y+\theta\Delta{y})}{\frac{\partial{F}}{\partial{y}}(x+\theta\Delta{x},y+\theta\Delta{y})}=
+-\frac{\frac{\partial{F}}{\partial{x}_i}(x,f(x))}{\frac{\partial{F}}{\partial{y}}(x,f(x))}$$
+</li>
+<li>Докажем индукцией по $p$, что $f(x)\in{C}^p(I_x^m;I_y^1)$.<br>
+При $p=1$.<br>
+В пункте III-ii было показано, что $f(x)\in{C}(I_x^m;I_y^1)$ и по пункту III-iii, для любого $i\in\overline{1,m}$ и $x\in{I}_x^m$ существуют частные 
+производные $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x)$. Покажем, что они непрерывны, действительно
+$$F(x,y)\in{C}^1(U)\Rightarrow
+\forall{i}\in\overline{1,m}\left(\frac{\partial{F}}{\partial{x}_i}(x,y)\in{C}(U)\wedge\frac{\partial{F}}{\partial{y}}(x,y)\in{C}(U)\right)\Rightarrow
+\frac{\partial{F}}{\partial{x}_i}(x)=-\frac{\frac{\partial{F}}{\partial{x}_i}(x,f(x))}{\frac{\partial{F}}{\partial{y}}(x,f(x))}\in{C}(I_x^m).$$
+Функция в последнем выражении непрерывна, как частное композиций непрерывных функций.<br>
+При $p=2$.<br>
+Так как $F(x,y)\in{C}^2(U)$, то числитель и знаменатель выражения для часной производной функции $f(x)$ один раз непрерывно дифференцируемы,
+тогда
+$$\frac{\partial^2f}{\partial{x}_i\partial{x}_j}=
+-\frac{\left(F_{x_jx_i}+F_{x_iy}\frac{\partial{f}}{\partial{x}_j}\right)F_y-F_{x_i}\left(F_{x_iy}+F_{yy}\frac{\partial{f}}{\partial{x}_j}\right)}
+{\left(\frac{\partial{F}}{\partial{y}}\right)^2}$$
+где все производные взяты в точке $(x,f(x))$. Числитель и знаменатель полученного выражения непрерывны, следовательно, для любых $i,j\in\overline{1,m}$
+$\displaystyle\frac{\partial^2f}{\partial{x}_i\partial{x}_j}\in{C}(I_x^m\times{I}_y^1)$, тогда $f(x)\in{C}^2(I_x^m;I_y^1)$.<br>
+Так как порядок производной функции $f(x)$ в правой части на единицу меньше, чем в левой. И порядок производных функции $F(x,y)$ равен порядку 
+производных функции $f(x)$ в левой части, то по индукции получим $F(x,y)\in{C}^p(U)$, $f(x)\in{C}^p(I_x^m;I_y^1)$.
+</li>
+</ol>
+</li>
+</ol>
+<br><br>
+<p id=Example12.4.4><b>Пример 12.4.4:</b> Пусть $m=1$, $n=1$, $F(x,y)=x^2+y^2-1\colon\mathbb{R}^2\to\mathbb{R}$, $U:=\mathbb{R}^2$, фиксируем $(x_0,y_0)$
+такую, что $y_0\neq0$ и $F(x_0,y_0)=0$, тогда для любого $p\in\mathbb{N}$ $F(x,y)\in{C}^p(U)$, $\frac{\partial{F}}{\partial{y}}(x_0,y_0)=2y_0\neq0$.
+Следовательно, функция $F(x,y)$ в точке $(x_0,y_0)$ удовлетворяет условиям теоремы о неявной функции, тогда в некоторой окрестности точки $(x_0,y_0)$
+существует функция $y=f(x)$ удовлетворяющая результату теоремы в том числе 
+$\displaystyle{f}'(x_0)=-\frac{F'_x(x_0,y_0)}{F'_y(x_0,y_0)}=-\frac{2x_0}{2y_0}=-\frac{x_0}{y_0}$. Таким образом при выполнении предпосылок теоремы для 
+вычисления производной в точке не обязательно знать вид функции $f(x)$, достаточно координат точки.
+<br><br>
+
+<p id=Theorem12.4.4><b>Теорема 12.4.4: Общий случай теоремы о неявной функции.</b><br>
+Пусть $m,n\in\mathbb{N}$, $(x_0,y_0)\in\mathbb{R}^{m+n}$, $U:=U(x_0,y_0)\subset\mathbb{R}^{m+n}$, $F\colon{U}\to\mathbb{R}^n$ такие, что 
+<ol>
+<li>$\exists{p}\in\mathbb{N}\colon{F}\in{C}^p(U;\mathbb{R}^n)$,</li>
+<li>$F(x_0,y_0)=0$,</li>
+<li>матрица $\displaystyle{F}'_y(x_0,y_0)=
+\begin{pmatrix}
+\frac{\partial{F}_1}{\partial{y}_1}(x_0,y_0) & \cdots & \frac{\partial{F}_1}{\partial{y}_n}(x_0,y_0)\\
+\vdots & \ddots & \vdots\\
+\frac{\partial{F}_n}{\partial{y}_1}(x_0,y_0) & \cdots & \frac{\partial{F}_n}{\partial{y}_n}(x_0,y_0)
+\end{pmatrix}$
+обратима,
+</li>
+</ol>
+тогда существует интервал $I:=I_x^m\times{I}_y^1\subset{U}$ и $f(x)\in{C}^p(I_x^m;I_y^n)$ такие, что 
+<ol>
+<li>$\forall{x}\in{I}_x^m\,\forall{y}\in{I}_y^n(F(x,y)=0\Leftrightarrow{y}=f(x))$;</li>
+<li>$\displaystyle\forall{x}\in{I}_x^m,y:=f(x)\left(f'(x)=-(F'_y(x,f(x)))^{-1}\circ{F}'_x(x,f(x))\right).$</li>
+</ol> 
+<p><b>Доказательство:</b> При доказательстве методом математической индукции по $n$ имеет место определенная техническая возня.<br>
+<i>См. Зорич т. 1, стр. 568.</i>
+<br><br>
+
+<h5 id=12.4.3>12.4.3 Теорема об обратной функции.</h5>
+
+<p id=Definition12.4.7><b>Определение 12.4.7:</b> Пусть $m\in\mathbb{N}$, $U$ и $V$ открытые множества в $\mathbb{R}^m$, $f(x)\colon{U}\to{V}$,
+$p\in\mathbb{N}_0$, тогда говорят, что функция $f(x)$ задает $C^p$-диффеоморфизм множеств $U$ и $V$, или является диффеоморфизмом гладкости $p$, если
+<ol>
+<li>функция $f(x)$ биективна,</li>
+<li>$f(x)\in{C}^p(U;V)$,</li>
+<li>$f^{-1}(x)\in{C}^p(V;U)$.</li>
+</ol> 
+Диффеоморфизм гладкости 0 называют гомоморфизмом.
+<br><br>
+
+<p id=Theorem12.4.5><b>Теорема 12.4.5: Теорема об обратной функции.</b><br>
+Пусть $m\in\mathbb{N}$, $G$ открыто в $\mathbb{R}$, $f(x)\colon{G}\to\mathbb{R}^m$, $x_0\in{G}$, $y_0:=f(x_0)$ такие, что 
+<ol>
+<li>$f(x)\in{C}^p(G;\mathbb{R}^m)$,</li>
+<li>матрица $f'(x_0)$ обратима,</li>
+</ol>
+тогда существуют окрестности $U:=U(x_0)\subset{G}$, $V:=V(y_0)\subset\mathbb{R}^m$ такие, что 
+<ol>
+<li>функция $f(x)$ задает $C^p$-диффеоморфизм множеств $U(x_0)$ и $V(x_0)$;</li>
+<li>$\forall{x}\in{U}\,\forall{y}\in{V}\left(y=f(x)\Rightarrow(f^{-1}(y))'=(f'(x))^{-1}\right)$.</li>
+</ol>
+<p><b>Доказательство:</b> Рассмотрим функцию $F(x,y):=f(x)-y\colon{G}\times\mathbb{R}^m\to\mathbb{R}^m$. Так как $y_0:=f(x_0)$, то $F(x_0,y_0)=0$.
+Так как $f(x)\in{C}^p(U;V)$, то $F(x,y)\in{C}^p(G\times\mathbb{R}^m;\mathbb{R}^m)$. Множество $G$ окрестность точки $(x_0,y_0)$. Матрица 
+$F'_x(x_0,y_0)=f'(x_0)$ обратима по условию. Таким образом функция $F(x,y)$ удовлетворяет условиям <a href="#Theorem12.4.3">теоремы о неявной функции</a>, 
+если считать $y$ независимой переменной. Следовательно, существует окрестность $I:=I_y^m\times{I}_x^m:=I_y\times{I}_x$ и функция $g(y)\colon{I}_y\to{I}_x$ 
+такие, что
+$$g(y)\in{C}^p(I_y,I_x)\wedge(\forall(x,y)\in{I}_x\times{I}_y(y=f(x)\Leftrightarrow{F}(x,y)=0\Leftrightarrow{x}=g(y)))\qquad(*)$$
+при этом 
+$\forall{y}\in{I}_y(g'(y)=-(F'_x(x,y))^{-1}\circ{F}'_y(x,y)=-(f'(x))^{-1}\circ(-E)=(f'(x))^{-1})$.<br>
+Если бы отображение $g(y)$ было сюръективным, то доказательство было бы завершено, в качестве функции $f^{-1}(y)$ можно было бы рассматривать функцию
+$g(y)$. Однако, пока можно говорить только об инъективности $g(y)$ в силу непрерывности и ненулевой производной на $I_y$.<br>
+Положим $V(y_0):=I_y$, $U(y_0):=g(I_y)=g(V(x_0))$, тогда на $U$ и $V$ функция $g(y)$ биективна. Осталось доказать, что множество $U$ открыто в $G$.<br>
+Множество $V$ является окрестностью точки $y_0=f(x_0)$ и при выполнении условий теоремы $V\subset{f}(G)$, следовательно, точка $y_0=f(x_0)$ 
+внутренняя для $f(G)$. В силу доказанного выше соотношения (*) матрица $g'(y_0)$ обратима, следовательно, функция $g(y)\colon{V}\to{U}$
+удовлетворяет условиям теоремы в точке $y_0$, тогда аналогично доказанному выше, точка $x_0=g(y_0)$ является внутренней для $g(V)=U$. Поскольку условия 
+теоремы выполняются для функции $g(y)$ в любой точке $y\in{V}$ и для любых $x\in{U}$ найдется $y\in{V}$ такое, что $x=g(y)$, то любая точка $x\in{U}$
+является внутренней. Таким образом $U$ - открыто в $G$.
+<br><br>
+<p id=Example12.4.5><b>Пример 12.4.5: Полярные координаты.</b><br>
+Формулы преобразования полярных координат $(\rho,\varphi)$, $\rho>0$ в декартовы $(x,y)$ имеют вид: 
+$\begin{cases}x=\rho\cos{\varphi}\colon\mathbb{R}_+^2\to\mathbb{R}\\y=\rho\sin{\varphi}\colon\mathbb{R}_+^2\to\mathbb{R}\end{cases}$. Проверим обратимость 
+этого преобразования.<br>
+По теореме о неявной функции производная от обратного преобразования равна $f'(x,y)=-(F'_{\rho,\varphi})^{-1}\circ{F}'_{x,y}$, где
+$F(\rho,\varphi,x,y)=(x-\rho\cos{\varphi},y-\rho\sin{\varphi})$. То есть
+$$f'(x,y)=-\begin{pmatrix}-\cos{\varphi} & \rho\sin{\varphi}\\-\sin{\varphi} & \rho\cos{\varphi}\end{pmatrix}^{-1}\circ
+\begin{pmatrix}1 & 0\\0 & 1\end{pmatrix}=\begin{pmatrix}\cos{\varphi} & -\rho\sin{\varphi}\\\sin{\varphi} & \rho\cos{\varphi}\end{pmatrix}^{-1}$$
+И так как $\begin{vmatrix}\cos{\varphi} & -\rho\sin{\varphi}\\\sin{\varphi} & \rho\cos{\varphi}\end{vmatrix}=\rho\cos^2\varphi+\rho\sin^2\varphi=\rho>0$,
+то таким образом отображение $f(x,y)$ диффеоморфно на $\mathbb{R}\backslash\{0\}$, что позволяет в окрестности любой не нулевой точки перейти от 
+декартовых координат к полярным.<br>
+Аналогично в трехмерном случае: 
+$\begin{cases}
+x=r\cos{\varphi}\cos{\varphi}\\
+y=r\sin{\varphi}\cos{\varphi}\\
+z=r\sin{\psi}
+\end{cases}$ 
+$$|f'(x,y,z)|=\begin{vmatrix}
+\cos{\varphi}\cos{\psi} & \sin{\varphi}\cos{\psi} & \sin{\psi}\\
+-r\sin{\varphi}\cos{\psi} & r\cos{\varphi}\cos{\psi} & 0\\
+-r\cos{\varphi}\sin{\psi} & -r\sin{\varphi}\sin{\psi} & r\cos{\psi}
+\end{vmatrix}=$$ $$=r^2\cos^2\varphi\cos^3\psi+r^2\sin^\varphi\cos^3\psi+r^2\sin^2\varphi\cos\psi\sin^2\psi+r^2\cos^2\varphi\cos{\psi}\sin^2\psi=
+r^2(\cos^3\psi+\cos{\psi}\sin^2\psi)=r^2\cos{\psi}$$
+Таким образом, для любой точки, не лежащей на оси Oz ($r\neq0$ и $\cos{\psi}\neq0$), можно перейти от декартовых координат к полярным.
+
+<br><br>
+
+<br><br>
+<a href="./math_analysis12.4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.3.html">next</a>
+</body>
+</html>

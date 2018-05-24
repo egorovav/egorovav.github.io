@@ -1,0 +1,96 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.1.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis13.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.1.html">next</a>
+
+$\newcommand{\arctg}{\operatorname{arctg}}$
+$\newcommand{\FUniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\Y\ni{y}\to{y}_0}}$
+
+<h5 id=13.1.3>13.1.3 Интегрирование собственного интеграла по параметру.</h5>
+
+<p id=Statement13.1.5><b>Утверждение 13.1.5:</b> Пусть $P:=[a,b]\times[c,d]$, $f(x,y)\colon{P}\to\mathbb{R}$, $f(x,y)\in{C}(P)$,
+$F(y):=\int_a^bf(x,y)\,dx\colon[c,d]\to\mathbb{R}$, тогда существует интеграл
+$$\int_c^dF(y)\,dy:=\int_c^d\left(\int_a^bf(x,y)\,dx\right)\,dy=\int_a^b\left(\int_c^df(x,y)\,dy\right)\,dx.$$
+<p><b>Доказательство:</b> Так как $F(y)\in{C}[c,d]$, то $F(y)\in\mathcal{R}[c,d]$. Обозначим 
+$\displaystyle\varphi(u):=\int_c^uF(y)\,dy=\int_c^u\left(\int_a^bf(x,y)\,dx\right)\,dy$, $\displaystyle\psi(u):=\int_a^b\left(\int_c^uf(x,y)\,dy\right)\,dx$.
+Тогда $$\varphi'(u)=\frac{d}{du}\left(\int_c^uF(y)\,dy\right)=F(u)=\int_a^bf(x,u)\,dx\qquad(20)$$
+Обозначим $g(x,u):=\int_x^uf(x,y)\,dy\colon[a,b]\times[c,d]\to\mathbb{R}$. Аналогично тому, как доказывалась непрерывность функции $\Phi(y,u,v)$ при
+обосновании <a href="./math_analysis13.1.1.html#Statement13.1.4">утверждения 13.1.4</a> можно доказать и непрерывность функции $g(x,u)$ на $P$. 
+С другой стороны существует производная $\frac{\partial{g}}{\partial{u}}(x,u)=f(x,u)\in{C}(P)$, то есть к функции $g(x,u)$ применимо 
+<a href="./math_analysis13.1.1.html#Statement13.1.3">утверждение 13.1.3</a>. Тогда существует производная 
+$$\psi'(u)=\frac{d}{du}\int_a^bg(x,u)\,dx=\int_a^b\frac{\partial{g}}{\partial{u}}(x,u)\,dx=\int_a^bf(x,y)\,dx.$$
+Тогда из равенства (20) следует, что для любого $u\in[c,d]$ $\varphi'(u)=\psi'(u)$, <a href="./math_analysis6.4.html#Corollary6.4.5">тогда</a> 
+существует $k\in\mathbb{R}$ такое, что $\varphi(u)-\psi(u)\equiv{k}$. Так как $\varphi(c)-\psi(c)=0$, то $k=0$, то есть для любого $u\in[c,d]$ 
+$\varphi(u)=\psi(u)$. Следовательно, $\varphi(d)=\psi(d)$, что и требовалось доказать.
+<br><br>
+
+<p id=Example13.1.2><b>Пример 13.1.2:</b> Пусть $[a,b]:=[0,1]$, $[c,d]\subset\mathbb{R}^+$, $f(x,y)=x^y\in{C}\{[a,b]\times[c,d]\}$. Попробуем вычислить
+повторный интеграл от функции $f(x,y)$.<br>
+$$\int_0^1\left(\int_c^dx^y\,dy\right)\,dx=\int_0^1\left.\frac{x^y}{\ln{x}}\right|_c^d\,dx=\int_0^1\frac{x^d-x^c}{\ln{x}}\,dx$$
+Вычисление последнего интеграла связано, с определенными сложностями, но он легко вычисляется, если поменять порядок интегрирования 
+$$\int_c^d\left(\int_0^1x^y\,dx\right)\,dy=\int_c^d\left.\frac{x^{y+1}}{y+1}\right|_0^1\,dy=\int_c^d\frac{dy}{y+1}=\ln{(y+1)}|_c^d=\ln{\frac{d+1}{c+1}}.$$
+Таким образом $\displaystyle\int_0^1\frac{x^d-c^c}{\ln{x}}\,dx=\ln{\frac{d+1}{c+1}}$.
+<br><br>
+
+<p id=Task13.1.2><b>Задача 13.1.2: Контрпример к условию $f(x,y)\in{C}(P)$ <a href="#Statement13.1.5">утверждения 13.1.5</a>.</b><br> 
+Пусть $P=[0,1]\times[0,1]$, $\displaystyle{f}(x,y)=\begin{cases}\frac{y^2-x^2}{(x^2+y^2)^2}&,(x,y)\neq(0,0)\\\quad0&,(x,y)=(0,0)\end{cases}$. Показать,
+что $\displaystyle\int_0^1\left(\int_0^1f(x,y)\,dx\right)\,dy\neq\int_0^1\left(\int_0^1f(x,y)\,dy\right)\,dx$ и объяснить почему.
+<p><b>Решение:</b>
+<i>
+Вычислим повторные интегралы от функции  $f(x,y)$.
+$$\int\left(\int\frac{y^2-x^2}{(x^2+y^2)^2}\,dx\right)\,dy=\int\left(\int\frac{2y^2}{(x^2+y^2)^2}-\frac1{x^2+y^2}\,dx\right)\,dy=
+\int\left(\int\frac{2y^2}{(x^2+y^2)^2}\,dx-\int\frac1{x^2+y^2}\,dx\right)\,dy=\int2y^2\frac1{2y^2}\left(\frac{x}{x^2+y^2}+J_1\right)-J_1\,dy=
+\int\frac{x}{x^2+y^2}\,dy\Rightarrow$$ $$\Rightarrow\int_0^1\left(\int_0^1f(x,y)\,dx\right)\,dy=\int_0^1\left.\frac{x}{x^2+y^2}\right|_0^1\,dy=
+\int_0^1\frac1{1+y^2}\,dy=\arctg{y}|_0^1=\frac{\pi}{4}$$
+Аналогично
+$$\int\left(\int\frac{y^2-x^2}{(x^2+y^2)^2}\,dy\right)\,dx=\int\left(\int\frac{-2x^2}{(x^2+y^2)^2}+\frac1{x^2+y^2}\,dy\right)\,dx=
+-\int\frac{y}{x^2+y^2}\,dx\Rightarrow\int_0^1\left(\int_0^1f(x,y)\,dy\right)\,dx=-\frac{\pi}{4}$$
+Таким образом $$\int_0^1\left(\int_0^1f(x,y)\,dx\right)\,dy=\frac{\pi}{4}\neq-\frac{\pi}{4}=\int_0^1\left(\int_0^1f(x,y)\,dy\right)\,dx$$
+Это связано с тем, что $f(x,y)\notin{C}(P)$, так как функция $f(x,y)$ иммет точку разрыва в $(0,0)$.
+</i>
+
+<br><br>
+<p>Легко получить некоторое обобщение установленного выше <a href="./math_analysis13.1.1.html#Statement13.1.1">результата</a>. А именно, вместо интеграла 
+$\int_a^bf(x,y)\,dx$ можно рассмотреть интеграл $F(y)=\int_a^bf(x,y)\varphi(x)\,dx$, где $f(x,y)\in{C}(P)$, $\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(P)$ 
+и функция $\varphi(x)$ интегрируема абсолютно на промежутке $\Delta(a,b)$ в несобственном смысле, то есть существует интеграл $\int_a^b|\varphi(x)|\,dx$. 
+Таким путем удается частично распространить изложенную теорию и на несобственные интегралы.
+<br><br>
+
+<p id=Statement13.1.6><b>Утверждение 13.1.6:</b> Пусть $f(x,y)\colon[a,b]\times{Y}\to\mathbb{R}$, для любого $y\in{Y}$ $f(x,y)\in\mathcal{R}[a,b]$ 
+функция $\varphi(x)$ интегрируема абсолютно а несобственном смысле на промежутке $\Delta(a,b)$, $y_0\in\mathring{Y}$, $f(x,y)\FUniformConv{g}(x),x\in[a,b]$
+тогда функция $g(x)\varphi(x)$ абсолютно интегрируема на промежутке $\Delta(a,b)$ и 
+$\displaystyle\lim_{Y\ni{y}\to{y}_0}\int_a^bf(x,y)\varphi(x)\,dx=\int_a^bg(x)\varphi(x)\,dx$.
+<p><b>Доказательство:</b> <i>Доказательство приведено в Фихтенгольц т. 2, стр. 668.</i>
+
+<br><br>
+<p>Опираясь на приведенное утверждение можно сформулировать результаты аналогичные утверждениям 
+<a href="./math_analysis13.1.1.html#Statement13.1.2">13.1.2</a>, <a href="./math_analysis13.1.1.html#Statement13.1.3">13.1.3</a>, 
+<a href="#Statement13.1.5">13.1.5</a>, а именно, если $Q=[a,b]\times[c,d]$ функция $f(x,y)\colon{Q}\to\mathbb{R}$ такая, что $f(x,y)\in{C}(Q)$, функция
+$\varphi(x)$ интегрируема абсолютно на $\Delta(a,b)$, $F(y):=\int_a^bf(x,y)\varphi(x)\,dx\colon[c,d]\to\mathbb{R}$, тогда
+<ol>
+<li>функция $F(y)$ непрерывна на $[c,d]$;</li>
+<li>
+если существует производная $\frac{\partial{f}}{\partial{y}}(x,y)\in{C}(Q)$, то существует производная 
+$F'(y)=\int_a^b\frac{\partial{f}}{\partial{y}}(x,y)\varphi(x)\,dx$;</li>
+<li>
+функция $F(y)\in\mathcal{R}[c,d]$ и $\int_c^dF(y)\,dy:=\int_c^d\left(\int_a^bf(x,y)\varphi(x)\,dx\right)\,dy=
+\int_a^b\left(\int_c^df(x,y)\varphi(x)\,dy\right)\,dx$ 
+</li>
+</ol>
+
+<br><br>
+<a href="./math_analysis13.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.2.1.html">next</a>
+</body>
+</html>

@@ -1,0 +1,260 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 15.2.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis15.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.2.2.html">next</a>
+
+<h4 id=15.2>15.2 Тригонометрические ряды Фурье.</h4>
+
+<h5 id=15.2.1>15.2.1 Определение тригонометрического ряд Фурье (ТРФ).</h5>
+
+<p id=Definition15.2.1><b>Определение 15.2.1:</b> Тригонометрическим рядом Фурье функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ называется 
+<a href="./math_analysis15.1.1.html#Definition15.1.6">ряд Фурье</a> этой функции в пространстве $H:=\mathcal{R}_2[-\pi,\pi]$ по системе 
+$\{e_n\}:=\{1,\sin{x},\cos{x},\ldots,\sin{nx},\cos{nx},\ldots\}=\{\cos{nx},\sin{kx}\mid{n}\in\mathbb{N}_0,k\in\mathbb{N}\}$.
+<br><br>
+
+<p>Согласно примеру <a href="./math_analysis15.1.1.html#Example15.1.2">примеру 15.1.2</a> коэффициенты ТРФ функции $f(x)$ равны
+$$\begin{cases}
+a_n=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\cos{nx}\,dx&,n\in\mathbb{N}_0\\
+b_n=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\sin{nx}\,dx&,n\in\mathbb{N}
+\end{cases}$$
+и сам ТРФ выглядит следующим образом 
+$$f(x)\sim\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})\qquad(1)$$
+<i>
+Здесь первый коэффициент делится пополам, потому что для любого $n\in\mathbb{N}$ $\|e_n\|^2=\pi$ и только при $n=0$ 
+$\|e_0\|=\|1\|=\int_{-\pi}^{\pi}\,dx=2\pi$.
+</i>
+<br>
+<p>В случае если коэффициенты $a_n$, $b_n$ являются коэффициентами Фурье для некоторой функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$, то сходимость ряда (1)
+гарантируется <a href="./math_analysis15.1.1.html#Theorem15.1.2">неравенством Бесселя</a>
+$$\sum_{n=1}^{\infty}|x_n|^2\leq\|x\|^2\Rightarrow\frac{a_0^2}{2}+\sum_{n=1}^{\infty}(|a_n|^2+|b_n|^2)\leq\frac1{\pi}\int_{-\pi}^{\pi}|f(x)|^2\,dx.$$
+<br><br>
+<p id=Definition15.2.2><b>Определение 15.2.2:</b> Просто тригонометрическим рядом (ТР) называют ряд вида 
+$$\frac{\alpha_0}{2}+\sum_{n=1}^{\infty}(\alpha_n\cos{nx}+\beta_n\sin{nx}),$$
+где для любого $n\in\mathbb{N}$ $\alpha_n,\beta_n\in\mathbb{P}$ суть произвольные элементы поля $\mathbb{P}$.<br>
+Частичная сумма тригонометрического ряда называется тригонометрическим многочленом
+$$T_n(x):=\frac{\alpha_0}{2}+\sum_{k=1}^n(\alpha_k\cos{kx}+\beta_k\sin{kx}).$$
+Таким образом, очевидно, что всякий ТРФ является ТР, но не всякий ТР является ТРФ даже если он сходится.<br>
+<br>
+<p id=Example15.2.1><b>Пример 15.2.1:</b> Пусть для любого $n\in\mathbb{N}_0$ $\alpha_n:=0$ и для любого $n\in\mathbb{N}$ $\beta_n:=\frac1{\sqrt{n}}$,
+тогда <a href="./math_analysis7.4.1.html#Example7.4.1">сходящийся ряд</a> $\sum_{n=1}^{\infty}\frac{\sin{nx}}{\sqrt{n}}$ будет ТР, но не будет ТРФ, так 
+как для его коэффициентов не выполняется <a href="./math_analysis15.1.1.html#Theorem15.1.2">неравенство Бесселя</a> так как ряд 
+$\sum_{n=1}^{\infty}|\beta_n|^2=\sum_{n=1}^{\infty}\frac1{n}$ расходится.<br><br>
+Определение коэффициентов $a_n$, $b_n$ позволяет рассматривать ряд вида (1) в том числе и для функций из $\mathcal{R}_1[-\pi,\pi]$ (абсолютно интегрируемых),
+но такие ряды уже не будут рядами Фурье и для них нельзя применять в полной мере теорию изложенную в разделе 
+<a href="./math_analysis15.1.1.html#15.1">15.1</a>.<br>
+Задача исследования сходимости ТРФ включает в себя следующее.<br>
+Пусть дана функция $f(x)\in\mathcal{R}_2[-\pi,\pi]$ и ряд $\displaystyle{S}(x):=\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})$, где
+$\displaystyle{a}_n:=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\cos{nx}\,dx$, $\displaystyle{b}_n:=\frac1{\pi}\int_{-\pi}^{\pi}f(x)\sin{nx}\,dx$.
+<ol>
+<li>
+Исследуется поточечная сходимость ряда, при этом в силу $2\pi$-периодичности тригонометрических функций достаточно ограничится промежутком 
+$[a_0,a_0+2\pi]$. Обычно принимают $a_0:=-\pi$, тогда $x\in[-\pi,\pi]$. Далее необходимо выяснить для каких точек сходимости выполняется равенство 
+$S(x_0)=f(x_0)$.
+</li>
+<li>Исследуется равномерная сходимость ряда.</li>
+<li>Исследуется сходимость в среднеквадратичном или норме $H:=\mathcal{R}_2[-\pi,\pi]$.</li>
+</ol> 
+<br><br>
+<p id=Theorem15.2.1><b>Теорема 15.2.1: О полноте тригонометрической системы.</b><br>
+Тригонометрическая система функций $S:=\{\cos{nx},\sin{kx}\mid{n}\in\mathbb{N}_0,k\in\mathbb{N}\}$ 
+<a href="./math_analysis15.1.2.html#Definition15.1.7">полна</a> в евклидовом пространстве 
+$H:=\mathcal{R}_2[-\pi,\pi]$.<br>
+То есть
+$$\forall{f}(x)\in{H}\,\forall\varepsilon>0\,\exists
+{T}_{\varepsilon}(x):=\frac{\alpha_0}{2}+\sum_{k=1}^{n(\varepsilon)}(\alpha_k\cos{kx}+\beta_k\sin{kx})\in\mathcal{Lin}\{S\}\colon
+\|f-T_{\varepsilon}\|=\left|\int_{-\pi}^{\pi}|f(x)-T_{\varepsilon}(x)|^2\,dx\right|^{1/2}<\varepsilon.$$
+<p><b>Доказательство:</b> <i>Кудрявцев т. 2, стр. 352.</i>
+
+<br><br>
+<p id=Corollary15.2.1><b>Следствие 15.2.1: Теорема Ляпунова.</b><br> 
+Тригонометрическая система функций является базисом в $\mathcal{R}_2[-\pi,\pi]$. То есть для любой функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$
+$$S_n(x)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos{kx}+b_k\sin{kx})\to{f}(x),n\to\infty$$
+в метрике $H$, или
+$$\lim_{n\to\infty}\|f-S_n\|=\lim_{n\to\infty}\left(\int_{-\pi}^{\pi}(f(x)-S_n(x))^2\,dx\right)^{1/2}=0,$$
+или
+$$f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx}).$$
+<p><b>Доказательство:</b><i>Кудрявцев т.2, стр. 354.</i>
+
+<br><br>
+<p id=Corollary15.2.2><b>Следствие 15.2.2:</b> Тригонометрическая система функций является замкнутой в $\mathcal{R}_2[-\pi,\pi]$. То есть для любой 
+функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ выполняется <a href="./math_analysis15.1.2.html#Definition15.1.10">равенство Парсеваля</a>
+$\displaystyle\|f\|^2=\frac1{\pi}\int_{-\pi}^{\pi}f^2(x)\,dx=\frac{a_0^2}{2}+\sum_{n=1}^{\infty}(a_n^2+b_n^2)$.
+<p><b>Доказательство:</b> <i>Кудрявцев т. 2, стр. 354.</i>
+<br><br>
+<p id=Corollary15.2.3><b>Следствие 15.2.3:</b> Если $f(x)\in\mathcal{R}_2[-\pi,\pi]$ и для любого $n\in\mathbb{N}_0$ $f\perp\cos{nx}$, $f\perp\sin{nx}$ 
+(или что тоже самое $\int_{-\pi}^{\pi}f(x)\cos{nx}\,dx=0$, $\int_{-\pi}^{\pi}f(x)\sin{nx}\,dx=0$), тогда $\|f\|=0$ (или что тоже самое
+$\int_{-\pi}^{\pi}f^2(x)\,dx=0$, то есть $f(x)=0$ почти для всех $x\in[-\pi,\pi]$).
+<p><b>Доказательство:</b> <i>Кудрявцев т. 2, стр. 354.</i>
+<br><br>
+<p>Используя <a href="./math_analysis7.5.4.html#Definition7.5.14">комплексное представление</a> тригонометрических функций 
+$\displaystyle\cos{z}=\frac{e^{iz}+e^{-iz}}{2}$, $\displaystyle\sin{z}=\frac{e^{iz}-e^{-iz}}{2i}$ получим комплексную форму записи ТРФ функции
+$f(x)\in\mathcal{R}_2[-\pi,\pi]$.
+$$\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})=
+\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(a_n\frac{e^{ix}+e^{-ix}}{2}+b_n\frac{e^{ix}-e^{-ix}}{2i}\right)=
+\frac{a_0}{2}+\sum_{n=1}^{\infty}\left(\frac{a_n-ib_n}{2}e^{inx}\right)+\sum_{n=1}^{\infty}\left(\frac{a_n+ib_n}{2}e^{-inx}\right).$$
+Для любого $n\in\mathbb{N}$ положим 
+$$c_n:=\frac{a_n-ib_n}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)(\cos{nx}-i\sin{nx})\,dx=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx,$$
+$$c_{-n}:=\frac{a_n+ib_n}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)(\cos{nx}+i\sin{nx})\,dx=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{inx}\,dx.$$
+Положим $\displaystyle{c}_0:=\frac{a_0}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)\,dx=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{i0x}\,dx$, тогда для любого 
+$n\in\mathbb{Z}$ $\displaystyle{c}_n=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx$, следовательно ТРФ можно записать в виде
+$$\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})=c_0+\sum_{n=1}^{\infty}c_n+\sum_{n=-1}^{-\infty}c_n=\sum_{n\in\mathbb{Z}}c_n=
+\frac1{2\pi}\sum_{n\in\mathbb{Z}}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx$$ 
+
+<br>
+<h5 id=15.2.2>15.2.2 Принцип локализации.</h5>
+
+<p id=Lemma15.2.1><b>Лемма 15.2.1: Лемма Римана.</b><br>
+Пусть $\omega_1,\omega_2\in\overline{\mathbb{R}}$ такие, что $\omega_1<\omega_2$, $f(x)\in\mathcal{R}_1(\omega_1,\omega_2)$, тогда существует предел
+$\displaystyle\lim_{|\lambda|\to\infty}\int_{\omega_1}^{\omega_2}f(x)e^{i\lambda{x}}\,dx=0$.
+<p><b>Доказательство:</b> В ходе доказательства будем использовать следующий факт
+$$\forall[a,b]\subset\mathbb{R}\,\forall{f}(x)\in\mathcal{R}_1[a,b]\,\forall\varepsilon>0\,\exists{g}_{\varepsilon}(x)\in{C}[a,b]\colon
+\|f-g_{\varepsilon}\|:=\int_a^b|f(x)-g_{\varepsilon}(x)|\,dx<\varepsilon.$$
+Фиксируем $\varepsilon>0$.
+$$f(x)\in\mathcal{R}_1(\omega_1,\omega_2)\Rightarrow\exists\int_{\omega_1}^{\omega_2}|f(x)|\,dx\Rightarrow
+\exists{a},b\in\mathbb{R}\colon
+\left(\omega_1<{a}<{b}<\omega_2\wedge\int_{\omega_1}^a|f(x)|\,dx<\frac{\varepsilon}{4}\wedge\int_b^{\omega_2}|f(x)|\,dx<\frac{\varepsilon}{4}\right).$$
+Так как 
+$$\forall\alpha\in\mathbb{R}(|e^{i\alpha}|=|\cos{\alpha}+i\sin{\alpha}|=1)\Rightarrow
+\forall\lambda\in\mathbb{R}\,\forall{x}\in(\omega_1,\omega_2)(|f(x)e^{i\lambda{x}}|\leq|f(x)|),$$
+то по мажорантному признаку Вейерштрасса интеграл $\displaystyle\int_{\omega_1}^{\omega_2}f(x)e^{i\lambda{x}}\,dx$ сходится абсолютно и
+$$\left|\int_{\omega_1}^{\omega_2}f(x)e^{i\lambda{x}}\,dx\right|=
+\left|\int_{\omega_1}^af(x)e^{i\lambda{x}}\,dx+\int_a^bf(x)e^{i\lambda{x}}\,dx+\int_b^{\omega_2}f(x)e^{i\lambda{x}}\,dx\right|\leq
+\int_{\omega_1}^a|f(x)e^{i\lambda{x}}|\,dx+\left|\int_a^bf(x)e^{i\lambda{x}}\,dx\right|+\int_b^{\omega_2}|f(x)e^{i\lambda{x}}|\,dx<
+\frac{\varepsilon}{2}+\left|\int_a^bf(x)e^{i\lambda{x}}\,dx\right|\quad(5)$$
+Существует $g_{\varepsilon}(x)\in{C}[a,b]$ такая, что $\int_a^b|f(x)-g_{\varepsilon}|\,dx<\frac{\varepsilon}{8}$. Применим к функции $g_{\varepsilon}(x)$
+<a href="./math_analysis10.2.3.html#Theorem10.2.4">теорему Вейерштрасса - Стоуна</a> для функции $g_{\varepsilon}(x)$. Тогда существует многочлен
+$f_{\varepsilon}(x)\in{C}^{\infty}[a,b]$ такой, что для любого $x\in[a,b]$ $|g_{\varepsilon}(x)-f_{\varepsilon}(x)|<\frac{\varepsilon}{8(b-a)}$,
+следовательно, 
+$$\int_a^b|f(x)-f_{\varepsilon}(x)|\,dx\leq\int_a^b|f(x)-g_{\varepsilon}(x)|\,dx+\int_a^b|g_{\varepsilon}(x)-f_{\varepsilon}(x)|\,dx<
+\frac{\varepsilon}{8}+\frac{\varepsilon}{8(b-a)}(b-a)=\varepsilon.$$
+Тогда для любого $\lambda\in\mathbb{R}$
+$$\left|\int_a^bf(x)e^{i\lambda{x}}\,dx\right|=
+\left|\int_a^b(f(x)-f_{\varepsilon}(x))e^{i\lambda{x}}\,dx+\int_a^bf_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|\leq
+\int_a^b|f(x)-f_{\varepsilon(x)}|\,dx+\left|\int_a^bf_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|<
+\frac{\varepsilon}{4}+\left|\int_a^bf_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|\quad(7)$$
+Применим к интегралу в последнем выражении <a href="./math_analysis8.4.html#Corollary8.4.3">правило интегрирования по частям</a>
+$$\left|\int_a^bf_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|=\left|\left.\left(\frac1{i\lambda}e^{i\lambda{x}}f_{\varepsilon}(x)\right)\right|_a^b
++\frac1{i\lambda}\int_a^bf'(x)e^{i\lambda{x}}\,dx\right|\leq
+\frac1{|\lambda|}\left(|f_{\varepsilon}(a)|+|f_{\varepsilon}(b)|+\int_a^bf'_{\varepsilon}(x)\,dx\right)\to0,|\lambda|\to\infty\Rightarrow$$
+$$\Rightarrow\exists\lambda_0>0\colon\forall\lambda\in\mathbb{R}\left(|\lambda|<\lambda_0\Rightarrow
+\left|\int_a^bf_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|<\frac{\varepsilon}{4}\right).$$
+Подставляя полученную оценку в (7) и получающееся выражение в оценку (5) получим
+$$\forall\lambda\in\mathbb{R}\left(|\lambda|>\lambda_0\Rightarrow\left|\int_{\omega_1}^{\omega_2}f_{\varepsilon}(x)e^{i\lambda{x}}\,dx\right|<
+\frac{\varepsilon}{2}+\frac{\varepsilon}{4}+\frac{\varepsilon}{4}=\varepsilon\right).$$
+
+<br><br>
+<p id=Corollary15.2.4><b>Следствие 15.2.4:</b> Пусть $\omega_1,\omega_2\in\overline{\mathbb{R}}$ такие, что $\omega_1<\omega_2$, 
+$f(x)\in\mathcal{R}_1(\omega_1,\omega_2)$, тогда существуют пределы 
+$\displaystyle\lim_{\lambda\to\infty}\int_{\omega_1}^{\omega_2}f(x)\cos{\lambda{x}}\,dx=
+\lim_{\lambda\to\infty}\int_{\omega_1}^{\omega_2}f(x)\sin{\lambda{x}}\,dx=0$.
+<p><b>Доказательство:</b> Следует из леммы Римана и равенства $e^{i\alpha}=\cos{\alpha}+i\sin{\alpha}$.
+<br><br>
+
+<p id=Corollary15.2.5><b>Следствие 15.2.5:</b> Пусть $a,b\in\mathbb{R}$ такие, что $a<{b}$, $f(x)\in\mathcal{R}_2[a,b]$, тогда существует предел 
+$\displaystyle\lim_{|\lambda|\to\infty}\int_a^bf(x)e^{i\lambda{x}}\,dx=0$.
+<p><b>Доказательство:</b> Следует из леммы Римана, так как $\mathcal{R}_2[a,b]\subset\mathcal{R}_1[a,b]$.
+
+<br><br>
+<p id=Definition15.2.3><b>Определение 15.2.3:</b> Пусть $n\in\mathbb{N}$, тогда функция $D_n(u)\colon\mathbb{R}\to\mathbb{C}$ такая, что для любого 
+$u\in\mathbb{R}$ $D_n(u):=\sum_{k=-n}^ne^{iku}$ называется ядром Дирихле порядка $n$ или $n$-тым ядром Дирихле.
+<br><br>
+
+<p id=Statement15.2.1><b>Утверждение 15.2.1: Свойства ядер Дирихле.</b><br>
+Для любого $n\in\mathbb{N}$
+<ol>
+<li>$D_n(u)\in{C}(\mathbb{R})$,</li>
+<li>функция $D_n(u)$ $2\pi$-периодична,</li>
+<li>
+если $u\notin2\pi\mathbb{Z}:=\{2\pi{s}\mid{s}\in\mathbb{Z}\}$, то $\displaystyle{D}_n(u)=\frac{\sin\left(u+\frac12\right)}{\sin{\frac{u}{2}}}$,<br>
+для любого $s\in\mathbb{Z}$ $D_n(2\pi{s})=2n+1$,
+</li>
+<li>функция $D_n(u)$ четная, то есть для любого  $u\in\mathbb{R}$ $D_n(u)=D_n(-u)$,</li>
+<li>$\displaystyle\frac1{2\pi}\int_{-\pi}^{\pi}D_n(u)\,du=1$,</li>
+<li>$\displaystyle\forall\delta\in(0,\pi)\left(\exists\lim_{n\to\infty}\int_{\delta}^{\pi}D_n(u)\,du=0\right)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Функция $D_n(u)$ непрерывна, как сумма непрерывных.</li>
+<li>Функция $D_n(u)$ $2\pi$-периодична, как сумма $2\pi$-периодичных.</li>
+<li>
+В <a href="./math_analysis7.1.html#Example7.1.1">примере 7.1.1</a> было показано, что для любого $q\neq1$ 
+$\displaystyle\sum_{k=0}^nq^k=\frac{1-q^{n+1}}{1-q}$, тогда, так как при $u\notin2\pi\mathbb{Z}$ $e^{iu}\neq1$, то
+$$D_n(u)=\sum_{k=-n}^ne^{iku}=\frac{1-e^{iu(n+1)}}{1-e^{iu}}+\frac{1-e^{-eu(n+1)}}{1-e^{-iu}}-1=
+\frac{e^{iu(n+1)}-1}{e^{iu}-1}+\frac{e^{iu}(1-e^{-iu(n+1)})}{e^{iu}-1}-\frac{e^{iu}-1}{e^{iu}-1}=\frac{e^{iu(n+1)}-e^{-iu(n+1)}}{e^{iu}-1}=$$
+$$=\frac{e^{iu(n+1/2)}-e^{-iu(n+1/2)}}{e^{iu/2}-e^{-iu/2}}=\frac{\sin\left(\left(n+\frac12\right)u\right)}{\sin{\frac{u}{2}}}.$$
+$$\forall{s}\in\mathbb{Z}\left(D_n(2\pi{s})=\sum_{k=-n}^n1=2n+1\right).$$ 
+</li>
+<li>
+При $u\notin2\pi\mathbb{Z}$
+$$D_n(-u)=\frac{\sin\left(\left(n+\frac12\right)(-u)\right)}{\sin\left(-\frac{u}{2}\right)}=
+\frac{-\sin\left(\left(n+\frac12\right)u\right)}{-\sin{\frac{u}{2}}}=\frac{\sin\left(\left(n+\frac12\right)u\right)}{\sin{\frac{u}{2}}}=D_n(u).$$
+Если $u\in2\pi\mathbb{Z}$, то $-u\in2\pi\mathbb{Z}$, следовательно, $D_n(u)=D_n(-u)=2n+1$.
+</li>
+<li>
+$$\forall{k}\neq0\left(\int_{-\pi}^{\pi}e^{iku}\,du=0\right)\Rightarrow\frac1{2\pi}\int_{-\pi}^{\pi}D_n(u)\,du=
+\frac1{2\pi}\left(\sum_{k=-n}^n\int_{-\pi}^{\pi}e^{iku}\,du\right)=\frac1{2\pi}\int_{-\pi}^{\pi}e^{i0u}\,du=\frac1{2\pi}\int_{-\pi}^{\pi}du=1.$$
+</li>
+<li>
+Фиксируем $\delta\in(0,\pi)$
+$$\int_{\delta}^{\pi}D_n(u)\,du=\int_{\delta}^{\pi}\frac1{\sin{\frac{u}{2}}}\sin\left(\left(n+\frac12\right)u\right)\,du.$$
+Так как $\left|i\left(n+\frac12\right)\right|\to\infty$, при $n\to\infty$, то утверждение следует из леммы Римана и равенства 
+$\displaystyle\sin{x}=\frac{e^{ix}-e^{-ix}}{2i}.$
+</li>
+</ol>
+<br><br>
+<p>Использую понятие ядер Дирихле можно записать частичную сумму ТРФ функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ в интегральном виде
+$$S_n(x)=\sum_{k=-n}^n(c_ke^{ikx})=\sum_{k=-n}^n\left(e^{ikx}\frac1{2\pi}\int_{-\pi}^{\pi}f(t)e^{-ikt}\,dt\right)=
+\frac1{2\pi}\int_{-\pi}^{\pi}f(t)\sum_{k=-n}^ne^{ik(x-t)}\,dt=\frac1{2\pi}\int_{-\pi}^{\pi}f(t)D_n(x-t)\,dt.$$
+<br><br>
+<p id=Statement15.2.2><b>Утверждение 15.2.2: Принцип локализации.</b><br>
+Пусть функции $f(t),g(t)\colon[-\pi,\pi]\to\mathbb{R}$, $x\in(-\pi,\pi)$ такие, что
+<ol>
+<li>$\exists{U}(x)\subset(-\pi,\pi)\colon\forall{t}\in{U}(x)(f(t)=g(t))$,</li>
+<li>$f(t),g(t)\in\mathcal{R}_1[-\pi,\pi]$,</li>
+</ol>
+тогда ряды $\sum_{n=-\infty}^{\infty}(c_n(f)e^{inx})$, $\sum_{n=-\infty}^{\infty}(c_n(g)e^{inx})$ сходятся или расходятся одновременно и в случае 
+сходимости имеют одинаковую сумму.
+<p><b>Доказательство:</b> Продолжим функции $f(t)$, $g(t)$ на $\mathbb{R}$ с периодом $2\pi$, тогда 
+$$S_n(t)=\frac1{2\pi}\int_{-\pi}^{\pi}f(t)D_n(x-t)\,dt=-\frac1{2\pi}\int_{x+\pi}^{x-\pi}f(x-s)D_n(s)\,ds=\frac1{2\pi}\int_{x-\pi}^{x+\pi}f(x-t)D_n(t)\,dt=
+\frac1{2\pi}\int_{-\pi}^{\pi}f(x-t)D_n(t)\,dt,$$
+где последнее равенство в силу $2\pi$-периодичности функций $f(x)$, $D_n(u)$.<br>
+Зафиксируем $\delta>0$ такое, что $(x-\delta,x+\delta)\subset{U}(x)\subset(-\pi,\pi)$, тогда 
+$$S_n(x)=\frac1{2\pi}\left(\int_{-\pi}^{-\delta}f(x-t)D_n(t)\,dt+\int_{-\delta}^{\delta}f(x-t)D_n(t)\,dt+\int_{\delta}^{\pi}f(x-t)D_n(t)\,dt\right).$$
+Делая в первом слагаемом замену $t:=-t$ и учитывая четность функции $D_n(u)$ получим
+$$S_n(x)=\frac1{2\pi}\left(\int_{\delta}^{\pi}f(x+t)D_n(t)\,dt+\int_{\delta}^{\pi}f(x-t)D_n(t)\,dt+\int_{-\delta}^{\delta}f(x-t)D_n(t)\,dt\right)=
+\frac1{2\pi}\left(\int_{\delta}^{\pi}(f(x+t)+f(x-t))D_n(t)\,dt+\int_{-\delta}^{\delta}f(x-t)D_n(t)\,dt\right).$$
+Так как по пункту 3 <a href="#Statement15.2.1">утверждения 15.2.1</a> для любого $t\in(\delta,\pi)$ 
+$\displaystyle{D}_n(t)=\frac{\sin\left(\left(n+\frac12\right)t\right)}{\sin{\frac{t}{2}}}$, то первое слагаемое равно 
+$\displaystyle\int_{\delta}^{\pi}\frac{f(x+t)+f(x-t)}{\sin{\frac{t}{2}}}\sin\left(\left(n+\frac12\right)t\right)\,dt.$
+Так как $f(x)\in\mathcal{R}_1[-\pi,\pi]$ и $f(x)$ $2\pi$-периодична и функция $\frac1{\sin{\frac{t}{2}}}$ непрерывна на $[\delta,\pi]$, следовательно,
+функция $\displaystyle\frac{f(x+t)-f(x-t)}{\sin{\frac{t}{2}}}$ абсолютно интегрируема на $[\delta,\pi]$ и $2\pi$-периодична. Тогда, так как 
+$\displaystyle\sin{x}=\frac{e^{ix}-e^{-ix}}{2i}$ и $\left|i\left(n+\frac12\right)\right|\to\infty$ при $n\to\infty$, то по 
+<a href="#Lemma15.2.1">лемме Римана</a> 
+$\displaystyle\int_{\delta}^{\pi}\frac{f(x+t)-f(x-t)}{\sin{\frac{t}{2}}}\sin\left(\left(n+\frac12\right)t\right)\,dt\to0$, при $n\to\infty$. 
+Следовательно, $\displaystyle{S}_n(x)=\frac1{2\pi}\int_{-\delta}^{\delta}f(x-t)D_n(t)\,dt+o(1)$ при $n\to\infty$.
+<br>
+Аналогично доказывается, что для любого $n\in\mathbb{N}$ $n$-тая частичная сумма $S'_n(x)$ ТРФ функции $g(t)$ равна
+$\displaystyle{S}'_n(x)=\frac1{2\pi}\int_{-\delta}^{\delta}g(x-t)D_n(t)\,dt+o(1)$ при $n\to\infty$.<br>
+Так как в силу выбора $\delta$ для любого $t\in(-\delta,\delta)$ $x-t\in{U}(x)$ и для любого $u\in{U}(x)$ $f(u)=g(u)$, то существует предел 
+$\lim_{n\to\infty}(S_n(x)-S'_n(x))=0$ откуда непосредственно следует доказываемое утверждение. 
+<br><br>
+<p>Утверждение так же верно и для $x=\pm\pi$ в этом случае нужно рассматривать функции $f(t)$, $g(t)$ на промежутках $[-\pi,\pi+\delta)$, 
+$(-\pi-\delta,\pi]$.
+
+
+<br><br>
+<a href="./math_analysis15.1.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.2.2.html">next</a>
+</body>
+</html>

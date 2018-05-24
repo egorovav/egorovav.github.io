@@ -1,0 +1,277 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 12.3.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis12.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.1.html">next</a>
+
+<h5 id=12.3.5>12.3.5 Частные производные высших порядков.</h5>
+
+<p id=Definition12.3.6><b>Определение 12.3.6:</b> Пусть $G$ открытое множество в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$, $i,j\in\overline{1,n}$,
+тогда частная производная по переменной $x_j$ от функции $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ называется частной производной второго порядка 
+по переменным $x_i$, $x_j$ от функции $f(x)$.<br>
+Частную производную второго порядка по переменным $x_i$, $x_j$ в точке $x_0$ обозначают как: 
+$\displaystyle\frac{\partial}{\partial{x}_j}\left(\frac{\partial{f}(x)}{\partial{x}_i}(x_0)\right)$ или 
+$\displaystyle\frac{\partial^2f(x)}{\partial{x}_j\partial{x}_i}(x_0)$ или $\displaystyle{f}''_{x_jx_i}(x_0)\sim\partial_{ji}f(x_0)$.<br>
+Исходя из введенного определения и подключая метод математической индукции введем понятие частной производной $k$-того порядка по переменным 
+$\displaystyle{x}_{i_1},x_{i_2},\ldots,x_{i_k}$ как частную производную по переменной $x_{i_k}$ функции 
+$\displaystyle\frac{\partial^{k-1}f(x)}{\partial{x}_{i_{k-1}},\ldots,\partial{x}_{i_1}}$. То есть 
+$\displaystyle\frac{\partial^k{f}(x)}{\partial{x}_{i_k},\partial{x}_{i_{k-1}},\ldots,\partial{x}_{i_1}}=
+\frac{\partial}{\partial{x}_{i_k}}\left(\frac{\partial^{k-1}f(x)}{\partial{x}_{i_{k-1}},\ldots,\partial{x}_{i_1}}\right)$
+
+<br><br>
+<p>Определение 12.3.6 имеет локальный характер. Множество $G$ выполняет роль окрестности, поэтому оно открыто.
+
+<br><br>
+<p id=Theorem12.3.4><b>Теорема 12.3.4: Теорема Шварца.</b><br>
+Пусть $G$ открытое множество в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$; $i,j\in\overline{1,n}$, $a\in{G}$ такие, что 
+<ol>
+<li>$\displaystyle\forall{y}\in{G}\left(\exists\frac{\partial^2{f}(x)}{\partial{x}_j\partial{x}_i}(y)\wedge\,
+\exists\frac{\partial^2{f}(x)}{\partial{x}_i\partial{x}_j}(y)\right)$,</li>
+<li>функции $\displaystyle\frac{\partial^2f(x)}{\partial{x}_j\partial{x}_i}$, $\displaystyle\frac{\partial^2{f}(x)}{\partial{x}_i\partial{x}_j}$
+непрерывны в точке $a$ по $G$,</li>
+</ol>
+тогда
+$\displaystyle\frac{\partial^2f(x)}{\partial{x}_j\partial{x}_i}(a)=\frac{\partial^2f(x)}{\partial{x}_i\partial{x}_j}(a)$
+<p><b>Доказательство:</b> Так как все переменные кроме $x_i$, $x_j$ будут зафиксированы, то без ограничения общности можно доказать теорему при $n=2$.
+То есть при $G\subset\mathbb{R}^2$, $f(x_1,x_2)\colon{G}\to\mathbb{R}$, $a=(a_1,a_2)$.<br>
+Так как множество $G$ открытое, то существует $r>0$ такое, что $B(a,r)\subset{G}$, тогда фиксируем $h=(h_1,h_2)$ такое, что $\|h\|<{r}$. Обозначим
+$\varphi(t):=f(a_1+th_1,a_2+h_2)-f(a_1+th_1,a_2):[0,1]\to\mathbb{R}$, $\tilde\varphi(t):=f(a_1+h_1,a_2+th_2)-f(a_1,a_2+th_2)[0,1]\to\mathbb{R}$.
+Тогда при сделанных предпосылках для любого $t\in[0,1]$
+$$\exists\varphi'(t)=f'(x_1(t),a_2+h_2)-f'(x_1(t),a_2)=
+\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}(a_1+th_1,a_2+h_2)h_1-\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}(a_1+th_1,a_2)h_1$$
+Применим теорему Лагранжа для функции $\varphi(t)$ на отрезке $[0,1]$, тогда
+$$\exists\theta_1\in(0,1)\colon\varphi(1)-\varphi(0)=\varphi'(\theta_1)=
+\left(\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}(a_1+\theta_1h_1,a_2+h_2)-\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}(a_1+\theta_1h_1,a_2)\right)h_1$$
+Так как для любого $x\in{G}$ существует частная производная 
+$\displaystyle\frac{\partial}{\partial{x}_2}\left(\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}(x)\right)$, то для функции 
+$\displaystyle\frac{\partial{f}(x_1,x_2)}{\partial{x}_1}$ можно применить теорему Лагранжа по второй переменной на отрезке $[a_2,a_2+h_2]$ при 
+фиксированном значении первой переменной $x_1=a_1+\theta_1h_1$, тогда существует $\theta_2\in(0,1)$ такое, что 
+$$\varphi(1)-\varphi(0)=\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(a_1+\theta_1h_1,a_2+\theta_2h_2)h_1h_2$$
+Поменяв местами $x_1$ и $x_2$ аналогичным образом получим для функции $\tilde\varphi(t)$
+$$\tilde\varphi(1)-\tilde\varphi(0)=\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}(a_1+\theta_3h_1,a_2+\theta_4h_2)h_1h_2$$
+где $\theta_3,\theta_4\in(0,1)$.<br>
+Так как $\varphi(1)-\varphi(0)=\tilde\varphi(1)-\tilde\varphi(0)$, то
+$$\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(a_1+\theta_1h_1,a_2+\theta_2h_2)=
+\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}(a_1+\theta_3h_1,a_2+\theta_4h_2)$$
+Обозначим $M_1(h):=(a_1+\theta_1h_1,a_2+\theta_2h_2)$, $M_2(h):=(a_1+\theta_3h_3,a_2+\theta_3h_2)$, тогда $\rho(M_1(h),a)\leq\|h\|$, 
+$\rho(M_2(h),a)\leq\|h\|$. Следовательно, существуют пределы $\displaystyle\lim_{h\to0}M_2(h)=\lim_{h\to0}M_1(h)=a$. Так как по условию 2 функции 
+$\displaystyle\frac{\partial^2{f}(x_1,x_2)}{\partial{x}_2\partial{x}_1}$, $\displaystyle\frac{\partial^2{f}(x_1,x_2)}{\partial{x}_1\partial{x}_2}$
+непрерывны в точке $a$, то 
+$$\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(M_1(h))=\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(a)+o(1),h\to0$$
+$$\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}(M_2(h))=\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}(a)+o(1),h\to0$$
+Таким образом в равенстве 
+$\displaystyle\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(M_1(h))=\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}(M_2(h))$
+можем перейти к пределу при $h\to0$, тогда получим 
+$\displaystyle\frac{\partial^2f(x_1,x_2)}{\partial{x}_2\partial{x}_1}(a)=\frac{\partial^2f(x_1,x_2)}{\partial{x}_1\partial{x}_2}$.
+<br><br>
+<i>В дальнейшем для упрощения обозначений имя переменной в выражении частной производной опускается, то есть выражение "значение частной производной 
+по i-той переменной от функции $f(x)$ в точке $x_0$" может быть записано в виде $\frac{\partial{f}}{\partial{x}_i}(x_0)$ вместо 
+$\frac{\partial{f}(x)}{\partial{x}_i}(x_0)$.</i>
+<br><br>
+<p id=Example12.3.2><b>Пример 12.3.2:</b> Рассмотрим функцию 
+$\displaystyle{f}(x,y)=\begin{cases}xy\frac{x^2-y^2}{x^2+y^2}&,x^2+y^2\neq0\\\qquad0&,x=y=0\end{cases}$ в точке $a=(0,0)$.<br>
+<i>
+Для любых $(x,y)\neq(0,0)$
+$$\frac{\partial{f}}{\partial{x}}(x,y)=y\frac{x^2-y^2}{x^2+y^2}+xy\frac{2x(x^2+y^2)-2x(x^2-y^2)}{(x^2+y^2)^2}=
+y\left(\frac{x^2-y^2}{x^2+y^2}+\frac{4x^2y^2}{(x^2+y2)^2}\right)=y\frac{x^4-y^4+4x^2y^2}{(x^2+y^2)^2}$$
+$$\frac{\partial^2f}{\partial{y}\partial{x}}(x,y)=
+\frac{x^4-y^4+4x^2y^2}{(x^2+y^2)^2}+y\frac{8(yx^2-4y^3)(x^2+y^2)^2-4y(x^2+y^2)(x^4-y^4+4x^2y^2)}{(x^2+y^2)^4}=
+\frac{x^4-y^4+4x^2y^2}{(x^2+y^2)^2}+4y^2\frac{(2x^2-y^2)(x^2+y^2)-(x^4-y^4+4x^2y^2)}{(x^2+y^2)^3}=$$
+$$=\frac{x^4-y^4+4x^2y^2}{(x^2+y^2)^2}+4y^2\frac{x^4-3x^2y^2}{(x^2+y^2)^3}=\frac{x^6-x^2y^4+x^4y^2-y^6+4x^4y^2+4x^2y^4+4x^2y^4-12x^2y^4}{(x^2+y^2)^3}=
+\frac{x^6-y^6+9x^4y^2-9x^2y^4}{(x^2+y^2)^3}=$$ $$=\frac{(x^2-y^2)(x^4+x^2y^2+y^4)+9x^2y^2(x^2-y^2)}{(x^2+y^2)^3}=
+\frac{x^2-y^2}{x^2+y^2}\frac{x^4+y^4+2x^2y^2+8x^2y^2}{(x^2+y^2)^2}=\frac{x^2-y^2}{x^2+y^2}\left(1+\frac{8x^2y^2}{(x^2+y^2)^2}\right)$$
+$$\frac{\partial{f}}{\partial{y}}(x,y)=x\frac{x^2-y^2}{x^2+y^2}+xy\frac{-2y(x^2+y^2)-2y(x^2-y^2)}{(x^2+y^2)^2}=
+x\left(\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}\right)$$
+$$\frac{\partial^2f}{\partial{x}\partial{y}}=\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}+x\left(\frac{2x(x^2+y^2)-2x(x^2-y^2)}{(x^2+y^2)^2}-
+\frac{8xy^2(x^2+y^2)^2-4x^2y^24x(x^2+y^2)}{(x^2+y^2)^4}\right)=$$
+$$=\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}+x\left(\frac{4xy^2}{(x^2+y^2)^2}-\frac{8xy^2(x^2+y^2)-4x^2y^22x}{(x^2+y^2)^3}\right)=
+\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}+\frac{4x^2y^2}{(x^2+y^2)^2}-\frac{8x^2y^2(x^2+y^2)-16x^4y^2}{(x^2+y^2)^3}=$$
+$$=\frac{x^2-y^2}{x^2+y^2}-\frac{8x^2y^2(y^2-x^2)}{(x^2+y^2)^3}=\frac{x^2-y^2}{x^2+y^2}\left(1+\frac{8x^2y^2}{(x^2+y^2)^2}\right)$$
+Таким образом для любых $(x,y)\neq(0,0)$ $\displaystyle\frac{\partial^2f}{\partial{y}\partial{x}}(x,y)=\frac{\partial^2f}{\partial{x}\partial{y}}(x,y)=
+\frac{x^2-y^2}{x^2+y^2}\left(1+\frac{8x^2y^2}{(x^2+y^2)^2}\right)$.<br>
+Вычислим частные производные второго порядка в точке $(0,0)$ по определению производной
+$$\frac{\partial^2f}{\partial{y}\partial{x}}(0,0)=\lim_{y\to0}\frac{y\frac{x^4-y^4+4x^2y}{(x^2+y^2)^2}-0}{y-0}=
+\lim_{y\to0}\frac{x^4-y^4+4x^2y^2}{(x^2+y^2)^2}=1$$
+$$\frac{\partial^2f}{\partial{x}\partial{y}}(0,0)=\lim_{x\to0}\frac{x\left(\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}\right)-0}{x-0}=
+\lim_{x\to0}\left(\frac{x^2-y^2}{x^2+y^2}-\frac{4x^2y^2}{(x^2+y^2)^2}\right)=-1$$
+То есть $\displaystyle\frac{\partial^2f}{\partial{y}\partial{x}}(0,0)\neq\frac{\partial^2f}{\partial{x}\partial{y}}(0,0)$. 
+<a href="#Theorem12.3.4">Теорема Шварца</a> в данном случае не применима, так как функциия $\displaystyle\frac{\partial^2f}{\partial{y}\partial{x}}=
+\frac{\partial^2f}{\partial{x}\partial{y}}=\frac{x^2-y^2}{x^2+y^2}\left(1+\frac{8x^2y^2}{(x^2+y^2)^2}\right)$ не является непрерывной в точке $(0,0)$.
+Действительно 
+$$\frac{\partial^2f}{\partial{y}\partial{x}}(x,kx)=\frac{x^2-k^2x^2}{x^2+k^2x^2}\left(1=\frac{8x^2x^2k^2}{(x^2+x^2k^2)^2}\right)=
+\frac{1-k^2}{1+k^2}\left(1+\frac{8k^2}{(1+k^2)^2}\right)$$
+То есть значения пределов по прямым $\{(x,kx)\mid{x}\in\mathbb{R}\}$ зависят от $k$, так что предела при $(x,y)\to(0,0)$ не существует.
+</i>
+
+<br><br>
+<p id=Definition12.3.7><b>Определение 12.3.7:</b> Пусть $G$ открытое множество в $\mathbb{R}^n$, $k\in\mathbb{N}$, тогда класс функций $C^k(G)$ такой,
+что для любой функции из него существуют и непрерывны на $G$ все частные производные порядка $k$ называется классом $k$ раз непрерывно дифференцируемых
+функций.
+
+<br><br>
+<p id=Corollary12.3.5><b>Следствие 12.3.5:</b> Пусть $G$ открытое множество в $\mathbb{R}^n$, $k\in\mathbb{N}$, $f(x)\colon{G}\to\mathbb{R}$,
+$f(x)\in{C}^k(G)$, $x\in{G}$, $i_1,\ldots,i_k\in\overline{1,n}$, тогда значение частной производной от функции $f(x)$ по переменным 
+$\displaystyle{x}_{i_1},x_{i_2},\ldots,x_{i_k}$ в точке $x$ не зависит от порядка переменных.
+<p><b>Доказательство:</b> Докажем индукцией по $k$.<br>
+При $k=2$ результат следует из <a href="#Theorem12.3.4">теоремы Шварца</a>.<br>
+Пусть утверждение верно при $k=s$, докажем, что оно верно при $k=s+1$.<br>
+Для оправдания результата достаточно доказать, что можно поменять местами переменные $x_{i_1}$, $x_{i_2}$.
+$$\partial_{i_1,i_2,i_3\ldots,i_k}f(x)=\partial_{i_1}(\partial_{i_2,i_3\ldots,i_k}f(x))=\partial_{i_1}\partial_{i_2}(\partial_{i_3,\ldots,i_k}f(x))=
+\partial_{i_2}\partial_{i_1}(\partial_{i_3,\ldots,i_k}f(x))=\partial_{i_2,i_1,i_3,\ldots,i_k}f(x).$$ 
+
+<br><br>
+<p id=Example12.3.3><b>Пример 12.3.3:</b> Пусть $G$ область в $\mathbb{R}^2$, $f(x)\colon{G}\to\mathbb{R}$, $f(x)\in{C}^k(G)$, 
+$x_0:=(x_1,x_2)\in{G}$, $h:=(h_1,h_2)\in\mathbb{R}^n$ такие, что $[x_0,x_0+h]\subset{G}$, $\varphi(t):=f(x+th)\colon[0,1]\to\mathbb{R}$.<br>
+Докажем, что $\varphi(t)\in{C}^k[0,1]$ и найдем производные функции $\varphi(t)$ до $k$-того порядка включительно.<br>
+Так как $\varphi'(t)=f(x_1+th_1,x_2+th_2)=f(x_1(t),x_2(t))$, то по теореме о <a href="./math_analysis12.3.2.html#Statement12.3.13">производной композиции</a>
+$$\varphi'(t)=f'(x(t))=f'(x)\circ{x}'(t)=\left(\frac{\partial{f}}{\partial{x}_1}(x),\frac{\partial{f}}{\partial{x}_2}(x)\right)
+\begin{pmatrix}x'_1(t)\\x'_2(t)\end{pmatrix}=\frac{\partial{f}}{\partial{x}_1}(x(t))x'_1(t)+\frac{\partial{f}}{\partial{x}_2}(x(t))x'_2(t)=
+\frac{\partial{f}}{\partial{x}_1}(x_0+th)h_1+\frac{\partial{f}}{\partial{x}_2}(x_0+th)h_2$$
+Аналогично 
+$$\varphi''(t)=\frac{\partial^2f}{\partial{x}_1^2}(x_0+th)h_1^2=\frac{\partial^2f}{\partial{x}_2\partial{x}_1}(x_0+th)h_1h_2+
+\frac{\partial^2f}{\partial{x}_1\partial{x}_2}(x_0+th)h_2h_1+\frac{\partial^2f}{\partial{x}_2^2}(x_0+th)h_2^2=
+\frac{\partial^2f}{\partial{x}_1^2}(x_0+th)h_1^2+2\frac{\partial^2f}{\partial{x}_2\partial{x}_1}(x_0+th)h_1h_2+
+\frac{\partial^2f}{\partial{x}_2^2}(x_0+th)h_2^2.$$
+Последнее выражение принято обозначать, как $\displaystyle\left(h_1\frac{\partial}{\partial{x}_1}+h_2\frac{\partial}{\partial{x}_2}\right)^2f(x_0+th)$.
+Индукцией по $s$ можно показать, что 
+$$\forall{t}\in[0,1]\left(\varphi^{(s)}(t)=\left(h_1\frac{\partial}{\partial{x}_1}+h_2\frac{\partial}{\partial{x}_2}\right)^sf(x+th):=
+\sum_{i_1,\ldots,i_s\in\overline{1,2}}\left(\frac{\partial^sf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_s}}(x+th)h_{i_1}\cdots{h}_{i_s}\right)\right)$$
+где в последнем выражении суммирование ведется по всем наборам некоторые из которых совпадают с точностью до перестановки переменных (следовательно
+совпадают численно), то есть в сумме есть одинаковые слагаемые, поэтому биномиальные коэффициенты опущены.
+
+<br><br>
+<p id=Example12.3.4><b>Пример 12.3.4:</b> Пусть $G$ область в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$, $f(x)\in{C}^k(G)$; $x,h\in\mathbb{R}^n$ такие,
+что $[x,x+h]\subset{G}$, $\varphi(t):=f(x+th)\colon[0,1]\to\mathbb{R}$, тогда аналогично примеру 12.3.3 показывается, что 
+$$\forall{s}\in\overline{0,k}\,\forall{t}\in[0,1]\left(\varphi^{(s)}(t)=
+\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+\frac{\partial}{\partial{x}_n}\right)^sf(x+th):=
+\sum_{i_1,\ldots,i_2\in\overline{1,n}}\left(\frac{\partial^sf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_s}}(x+th)h_{i_1}\cdots{h}_{i_s}\right)\right)$$
+
+<h5 id=12.3.6>12.3.6 Дифференциалы высших порядков.</h5>
+
+<p id=Definition12.3.8><b>Определение 12.3.8: Второй дифференциал в точке.</b><br>
+Пусть $G$ открыто в $\mathbb{R}^n$, функция $f(x)\colon{G}\to\mathbb{R}^m$ дифференцируема на $G$, тогда дифференциалом второго порядка функции $f(x)$
+в точке $x_0\in{G}$ называется линейный оператор $\displaystyle{d}^2f(x_0):=d(df(x))|_{x=x_0}$.
+
+<br><br>
+<p id=Statement12.3.14><b>Утверждение 12.3.4:</b> Пусть множество $G$ открыто в $\mathbb{R}^n$, фукнкция $f(x)\colon{G}\to\mathbb{R}$ такая, что 
+$f(x)\in{C}^2(G)$, тогда
+$$\forall{x}\in{G}\left(d^2f(x)(h)=\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^2f(x):=
+\sum_{i,j=1}^n\left(\frac{\partial^2f}{\partial{x}_i\partial{x}_j}(x)h_ih_j\right)\right)$$
+<p><b>Доказательство:</b>
+$$f(x)\in{C}^2(G)\Rightarrow{f}(x)\in{C}^1(G)\Rightarrow\forall{x}\in{G}\,\forall{h}\in{G}\,\exists{d}f(x)(h)=
+\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x)h_i\right)$$
+$$f(x)\in{C}^2(G)\Rightarrow\forall{i}\in\overline{1,n}\left(\frac{\partial{f}}{\partial{x}_i}\in{C}^1(G)\right)\Rightarrow
+\forall{i}\in\overline{1,n}\,\forall{x}\in{G}\,\forall{h}\in{G}\,\exists{d}\left(\frac{\partial{f}}{\partial{x}_i}(x)\right)(h)=
+\sum_{j=1}^n\left(\frac{\partial^2f}{\partial{x}_j\partial{x}_i}(x)h\right)$$
+Так как дифференциал $\displaystyle{d}\left(\frac{\partial{f}}{\partial{x}_i}(x)\right)$ принадлежит к множеству линейных операторов 
+$\mathcal{L}(\mathbb{R}^n,\mathbb{R})$, которое <a href="./math_analysis12.3.1.html#Statement12.3.1">является</a> векторным пространством над $\mathbb{R}$,
+то можем вносить знак дифференциала под знак суммы и умножения на константу, тогда для любого $x\in{G}$ и $h\in{G}$
+$$\exists{d}^2f(x)(h)=d\left(\sum_{i=1}^n\left(\frac{\partial{f}}{\partial{x}_i}(x)h_i\right)\right)=
+\sum_{i=1}^n\left(d\left(\frac{\partial{f}}{\partial{x}_i}(x)\right)h_i\right)=
+\sum_{i=1}^n\left(h_i\sum_{j=1}^n\left(\frac{\partial^2f}{\partial{x}_j\partial{x}_i}(x)h_j\right)\right)=
+\sum_{i,j=1}^n\left(\frac{\partial^2f}{\partial{x}_j\partial{x}_i}(x)h_ih_j\right)=
+\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^2f(x)$$
+
+<br><br>
+<p id=Definition12.3.9><b>Определение 12.3.9: Дифференциал $k$-того порядка в точке.</b><br>
+Пусть $G$ открыто в $\mathbb{R}^n$, функция $f(x)\colon{G}\to\mathbb{R}^m$ такая, что для любого $x\in{G}$ существует дифференциал порядка $k-1>0$, 
+тогда дифференциалом $k$-того порядка функции $f(x)$ в точке $x_0\in{G}$ называют линейный оператор $d^kf(x_0):=d(d^{k-1}(x))|_{x=x_0}$.
+
+<br><br>
+<p id=Statement12.3.15><b>Утверждение 12.3.15:</b> Пусть множество $G$ открыто в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}^n$, $f(x)\in{C}^k(G)$, тогда
+$$\forall{s}\in\overline{1,k}\,\forall{x}\in{G}\,\exists{d}^sf(x)(h)=
+\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^sf(x):=
+\sum_{i_1,\ldots,i_s\in\overline{1,n}}\left(\frac{\partial^sf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_s}}(x)h_{i_1},\ldots,h_{i_s}\right)$$
+<p><b>Доказательство:</b> Доказывается аналогично <a href="#Statement12.3.14">утверждению 12.3.14</a>.
+
+<br><br>
+<p>Замечание о нарушении свойства инвариантности формы записи для дифференциалов высших порядков относительно замены переменной.<br>
+Пусть множество $G$ - область в $\mathbb{R}^2$, $f(x,y)\colon{G}\to\mathbb{R}$ такая, что $f(x)\in{C}^2(G)$, тогда по 
+<a href="#Statement12.3.14">утверждению 12.3.14</a>
+$$\forall{(x,y)}\in{G}\,\exists{d}^2f(x,y)(dx,dy)=
+\frac{\partial^2f}{\partial{x}^2}(dx)^2+2\frac{\partial^2f}{\partial{x}\partial{y}}dxdy+\frac{\partial^2f}{\partial{y}^2}(dy)^2$$
+Вычислим теперь дифференциал второго порядка от сложной функции положив $x:=\varphi(u,v)$, $y:=\psi(u,v)\colon\Delta\to{G}$, где $\Delta$ область в 
+$f(G)$ и $\varphi(u,v),\psi(u,v)\in{C}^2(\Delta)$.
+$$z:=(u,v)=f(\varphi(u,v),\psi(u,v))\in{C}^2(\Delta)\Rightarrow\exists{d}^2z(x,y)=d(dz(x,y))=
+d\left(\frac{\partial{f}}{\partial{x}}dx+\frac{\partial{f}}{\partial{y}}dy\right)=d\left(\frac{\partial{f}}{\partial{x}}\right)dx+
+\frac{\partial{f}}{\partial{x}}d^2x+d\left(\frac{\partial{f}}{\partial{y}}\right)dy+\frac{\partial{f}}{\partial{y}}d^2y=$$
+$$=\left(\frac{\partial^2f}{\partial{x}^2}dx+\frac{\partial^f}{\partial{y}\partial{x}}dy\right)dx+
+\left(\frac{\partial^2f}{\partial{x}\partial{y}}dx+\frac{\partial^f}{\partial{y}^2}dy\right)dy+
+\frac{\partial{f}}{\partial{x}}d^2x+\frac{\partial{f}}{\partial{y}}d^2y=
+\left(\frac{\partial^2f}{\partial{x}^2}(dx)^2+2\frac{\partial^2f}{\partial{y}\partial{x}}dxdy+\frac{\partial^2f}{\partial{y^2}}(dy)^2\right)+
+\frac{\partial{f}}{\partial{x}}d^2x+\frac{\partial{f}}{\partial{y}}d^2y=$$ $$=\left(\frac{\partial}{\partial{x}}dx+\frac{\partial}{\partial{y}}dy\right)^2f+
+\frac{\partial{f}}{\partial{x}}d^2x+\frac{\partial{f}}{\partial{y}}d^2y$$
+где $\displaystyle{d}^2x=\left(\frac{\partial}{\partial{u}}du+\frac{\partial}{\partial{v}}dv\right)^2\varphi$,
+$\displaystyle{d}^2y=\left(\frac{\partial}{\partial{u}}du+\frac{\partial}{\partial{v}}dv\right)^2\psi$.<br>
+Таким образом инвариантность формы записи второго дифференциала сохраняется тогда и только тогда, когда последние два слагаемых равны нулю, то есть если
+$x$ и $y$ зависят от $u$ и $v$ линейно.
+
+<br><br>
+<p id=Theorem12.3.5><b>Теорема 12.3.5: Формула Тэйлора для функции многих переменных.</b><br>
+Пусть $E\subset\mathbb{R}$, функция $f(x)\colon{E}\to\mathbb{R}$ такая, что существует окрестность $U(x)\subset{E}$ такая, что $f(x)\in{C}^k(U(x))$,
+тогда для любого $h\in{U}(x)$ тогда, для любого $h\in\mathbb{R}^n$ такого, что $[x,x+h]\subset{U}(x)$
+$$\Delta{f}(x,h)=f(x+h)-f(x)=\sum_{x=1}^{k-1}\left(\frac1{s!}d^sf(x)(h)\right)+r_k(x,h)$$
+где $r_k(x,h)$ представимо в виде
+<ol>
+<li>$\displaystyle{r}_k(x,h)=\frac1{k!}\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)f(x+\theta{h}),
+\theta=\theta(x,h)\in(0,1)$</li>
+<li>
+$\displaystyle{r}_k(x,h)=
+\frac1{(k-1)!}\int_0^1(1-t)^{k-1}\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^kf(x+th)\,dt$
+</li>
+</ol>
+<p><b>Доказательство:</b> Фиксируем $h\in\mathbb{R}^n$ такое, что $[x,x+h]\subset{U}(x)$. Обозначим $\varphi(t):=f(x+th)\colon[0,1]\to\mathbb{R}$, тогда
+согласно <a href="#Example12.3.4">примеру 12.3.4</a>
+$$\forall{s}\in\overline{0,k}\,\forall{t}\in[0,1]\,\exists\varphi^{(s)}(t)=
+\left(h_1\frac{\partial}{\partial{x+1}}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^sf(x+th)\qquad(*)$$
+Так как $f(x)=C^{k}(U(x))$, то $\varphi(t)\in{C}^k[0,1]$, следовательно, можем применить для функции $\varphi(t)$ классическую 
+<a href="./math_analysis6.5.html#Definition6.5.1">формулу Тэйлора</a> степени $k-1$ с центром в точке 0, тогда
+$$\forall\tau\in[0,1]\left(\varphi(\tau)-\varphi(0)=\sum_{s=1}^{k-1}\left(\frac1{s!}\varphi^{(s)}(0)\tau^s\right)+r_k(\tau)\right)$$
+<ol>
+<li>
+Запишем остаточный член формулы Тэйлора в <a href="./math_analysis6.5.html#Corollary6.5.2">форме Лагранжа</a>.<br>
+Так как $r_k(\tau)=\varphi^{(k)}(\theta\tau)\frac1{k}\tau^k$, то при $\tau=1$ получаем
+$$f(x+h)-f(x)=\varphi(1)-\varphi(0)=\sum_{s=1}^{k-1}\left(\frac1{s!}\varphi^{(s)}(0)\right)+r_k(1)$$
+$$r_k(1)=\frac1{k!}\varphi^{(k)}(\theta)=^{(*)}\frac1{k!}\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^kf(x+\theta{h})$$
+</li>
+<li>
+Запишем остаточный член формулы Тэйлора в <a href="./math_analysis8.4.html#Corollary8.4.4">интегральной форме</a>
+$$r_k(\tau)=\frac1{(k-1)!}\int_0^{\tau}(\tau-t)^{k-1}\varphi^{(k)}(t)dt$$
+При $\tau=1$ получаем доказываемое равенство
+$$r_k(1)=\frac1{(k-1)!}\int_0^1(1-t)^{k-1}\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^kf(x+th)\,dt$$
+</li>
+</ol>
+<br><br>
+
+<p id=Corollary12.3.6><b>Следствие 12.3.6: Локальный вариант формулы Тэйлора (остаточный член в форме Пеано).</b><br>
+Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}$ такая, что существует окрестность $U(x)\subset{E}$ такая, что $f(x)\in{C}^k(U(x))$,
+тогда для любого $h\in\mathbb{R}^n$ такого, что $[x,x+h]\subset{U}(x)$
+$$\Delta{f}(x,h)=f(x+h)-f(x)=\sum_{s=1}^k\left(\frac1{s!}d^sf(x)(h)\right)+o(h^k),h\to0$$
+<p><b>Доказательство:</b> По пункту 1 <a href="#Theorem12.3.5">теоремы 12.3.5</a> 
+$$r_k(x,h)=\frac1{k!}\left(h_1\frac{\partial}{\partial{x}_1}+\cdots+h_n\frac{\partial}{\partial{x}_n}\right)^kf(x+\theta{h})=
+\frac1{k!}\sum_{i_1,\ldots,i_k\in\overline{1,n}}
+\left(\frac{\partial^kf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_k}}(x+\theta{h})h_{i_1}\cdots{h}_{i_k}\right)$$
+Так как $f(x)\in{C}^{k}(U(x))$, то ее частные производные порядка $k$ непрерывны, значит можем перейти к пределу при $h\to0$, тогда
+$$r_k(x,h)=\frac1{k!}\sum_{i_1,\ldots,i_k\in\overline{1,n}}
+\left(\left(\frac{\partial^kf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_k}}(x)+o(1)\right)h_{i_1}\cdots{h}_{i_k}\right)=
+\frac1{k!}\sum_{i_1,\ldots,i_k\in\overline{1,n}}\left(\frac{\partial^kf}{\partial{x}_{i_1},\ldots,\partial{x}_{i_k}}(x)h_{i_1}\cdots{h}_{i_k}\right)+
+\frac1{k!}o(1)h_{i_1}\cdots{h}_{i_k}=\frac1{k!}d^k(x)(h)+o(h^k),h\to0.$$
+Тогда по теореме 12.3.5
+$$\Delta{f}(x,h)=\sum_{s=1}^{k-1}\left(\frac1{s!}d^s(x)(h)\right)+\frac1{k!}d^k(x)(h)+o(h^k)=\sum_{s=1}^k\left(\frac1{s!}d^s(x)(h)\right)+o(h^k),h\to0.$$
+
+<br><br>
+<a href="./math_analysis12.3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis12.4.1.html">next</a>
+</body>
+</html>

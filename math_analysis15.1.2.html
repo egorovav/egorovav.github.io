@@ -1,0 +1,184 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 15.1.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis15.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.2.1.html">next</a>
+
+<h5 id=15.1.3>15.1.3 Полные ортогональные системы.</h5>
+
+<p id=Definition15.1.7><b>Определение 15.1.7:</b> Система векторов $S=\{y_{\alpha}\mid\alpha\in{I}\}$ из векторного пространства $H$ называется полной
+в множестве $X\subset{H}$, если
+$$\forall{x}\in{X}\,\forall\varepsilon>0\left(\exists{y}:=\sum_{j=1}^n(\beta_jy_{\alpha_j})\in\mathcal{Lin}\{S\}\colon\|x-y\|<\varepsilon\right).$$
+Другими словами, система $S$ полна в множестве $X$, если $\mathcal{Lin}\{S\}$ всюду плотное множество в $X$, то есть 
+$X\subset\overline{\mathcal{Lin}\{S\}}$.
+<br><br>
+
+<p id=Definition15.1.8><b>Определение 15.1.8:</b> Пусть $\{a_n\}$ последовательность векторов из евклидова пространства $H$, $S\in{H}$, тогда будем 
+говорить, что ряд $\sum_{n=1}^{\infty}a_n$ сходится к $S$ в $H$, если существует предел 
+$$\lim_{n\to\infty}\sum_{k=1}^na_k=S\sim\forall\varepsilon>0\,\exists{n}_0=n_0(\varepsilon)\in\mathbb{N}\colon\forall{n}>{n}_0
+\left(\left\|\sum_{k=1}^na_k-S\right\|<\varepsilon\right).$$
+<br><br>
+
+<p id=Definition15.1.9><b>Определение 15.1.9:</b> Система векторов $\{y_n\}$ из евклидова пространства $H$ над $P$ называется базисом $H$, если
+<ol>
+<li>система $\{y_n\}$ линейно не зависима,</li>
+<li>$\forall{x}\in{H}\,\exists\alpha_1,\ldots,\alpha_n\in{P}\colon{x}=\sum_{n=1}^{\infty}(\alpha_ny_n)$</li>
+</ol>
+<br><br>
+
+<p id=Definition15.1.10><b>Определение 15.1.10:</b> Система векторов $\{e_n\}$ из евклидова пространства $H$ называется замкнутой, если для нее 
+выполняется равенство Парсеваля
+$$\forall{x}\in{H}\left(\|x\|^2=\sum_{n=1}^{\infty}(|x_n|^2(e_n,e_n))\right)$$
+где $x_n$ - $n$-тый коэффициент Фурье для вектора $x$ по системе $\{e_n\}$.
+<br><br>
+<p>В конечномерном евклидовом пространстве система является полной тогда и только тогда, когда она является базисом. В бесконечномерном пространстве это
+утверждение не выполняется.
+<br><br>
+<p id=Example15.1.3><b>Пример 15.1.3:</b> Пусть $H:=C[-1,1]$ евклидово пространство вещественных функций непрерывных на отрезке $[-1,1]$. Скалярное
+произведение определено как 
+$(f,g):=\int_{-1}^1f(x)g(x)\,dx$, тогда $\|f\|=\left(\int_{-1}^1f^2(x)\,dx\right)^{1/2}$.<br>
+Рассмотрим систему $S=\{1,x,x^2,\ldots,x^n\ldots\}$ из $H$.<br>
+Фиксируем $\varepsilon>0$, тогда по <a href="./math_analysis10.2.3.html#Theorem10.2.4">теореме Вейерштрасса - Стоуна</a>
+$$\exists{P}_{\varepsilon}(x)=\sum_{k=0}^n(a_kx^k)\in\mathcal{Lin}\{S\}\colon
+\forall{x}\in[a,b]\left(|f(x)-P_{\varepsilon}|<\frac{\varepsilon}{\sqrt2}\right)\Rightarrow
+\|f-P_{\varepsilon}\|=\left(\int_{-1}^1(f(x)-P_{\varepsilon}(x))^2\right)^{1/2}<\left(\int_{-1}^1\frac{\varepsilon^2}{2}\,dx\right)^{1/2}=\varepsilon$$
+Таким образом система векторов $S$ полна в $H$.<br>
+Докажем от противного, что не смотря на то, что $S$ полна в $H$ она не является базисом $H$. Предположим, что $S$ базис, то есть для любой функции 
+$f(x)\in{C}[-1,1]$ существует последовательность $\{\alpha_n\}$ из $\mathbb{R}$ такая, что ряд $\sum_{n=1}^{\infty}(\alpha_nx^n)$ сходится к $f(x)$ в
+$H$, то есть существует предел $\lim_{n\to\infty}\|f(x)-\sum_{k=1}^n(\alpha_kx^k)\|=0$.<br>
+Необходимым условием сходимости ряда является стремление к нулю его общего члена, значит должен существовать предел $\lim_{n\to\infty}\|\alpha_nx^n\|=0$,
+где $\displaystyle\|\alpha_nx^n\|=\alpha_n^2\int_{-1}^1x^{2n}\,dx=\frac{2\alpha_n^2}{2n+1}$, следовательно,
+$$\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\left(\frac{2\alpha_n^2}{2n+1}<{2}\right)\Rightarrow\forall{n}>n_0(|\alpha_n|<\sqrt{2n+1})\Rightarrow
+\forall{n}>n_0\forall{x}\in[-1,1](|\alpha_nx^n|<\sqrt{2n+1}|x^n|).$$
+Так как радиус сходимости ряда $\sum_{n=1}^{\infty}(\sqrt{2n+1}|x^n|)$ равен 1, то радиус сходимости ряда $S(x)=\sum_{n=1}^{\infty}(\alpha_nx^n)$ так же
+равен 1. Таким образом функция $S(x)\in{C}^{\infty}(-1,1)$ (см., например, Фихтенгольц т. 2, стр. 447-449). С другой стороны
+$$\|f-S\|=0\Rightarrow\|f-S\|^2=0\Rightarrow\int_{-1}^1(f(x)-S(x))^2\,dx=0\Rightarrow{f}(x)-S(x)\equiv0\Rightarrow{f}(x)=S(x).$$
+Получено противоречие, так как в отличии от функции $S(x)$ функция $f(x)$ может и не быть бесконечное число раз дифференцируема.<br>
+Таким образом система векторов $S$ полна но не является базисом.<br>
+Заметим, что система $S$ не ортогональна. Если же система полна и ортогональна, то она необходимо является базисом 
+(<a href="#Corollary15.1.1">следствие 15.1.1</a>). Ортогонализация системы $S$ даст в результате систему многочленов Лежандра (Кудрявцев т. 2, стр. 333).
+<br><br>
+<p id=Lemma15.1.1><b>Лемма 15.1.1: Непрерывность скалярного произведения.</b><br>
+Пусть $H$ евклидово пространство над полем $\mathbb{P}$, $f(x,y):=(x,y)\colon{H}^2\to\mathbb{P}$ скалярное произведение $H$, тогда 
+<ol>
+<li>функция $f(x,y)$ непрерывна по совокупности переменных,</li>
+<li>если $\{z_n\}$ последовательность из $H$, $x=\sum_{n=1}^{\infty}z_n$, $y\in{H}$, то $=(x,y)=\sum_{n=1}^{\infty}(z_n,y)$,</li>
+<li>если $\{e_n\}$ ортонормированная система в $H$; $\{x_n\}$, $\{y_n\}$ - последовательности из $\mathbb{P}$; $x:=\sum_{n=1}^{\infty}(x_ne_n)$,
+$y:=\sum_{n=1}^{\infty}(y_ne_n)$, то $(x,y)=\sum_{n=1}^{\infty}(x_n\overline{y}_n)$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$|f(x+\Delta{x},y+\Delta{y})-f(x,y)|=|(x+\Delta{x},y+\Delta{y})-(x,y)|=|(x,\Delta{y})+(\Delta{x},\Delta{y})+(\Delta{x},y)|\leq
+|(x,\Delta{y})|+|(\Delta{x},\Delta{y})|+|(\Delta{x},y)|\leq$$ $$\leq\|x\|\|\Delta{y}\|+\|\Delta{x}\|\|\Delta{y}\|+\|\Delta{x}\|\|y\|=
+o(1),\Delta{x}\to0,\Delta{y}\to0\Rightarrow\lim_{\substack{\Delta{x}\to0\\\Delta{y}\to0}}f(x+\Delta{x},y+\Delta{y})=f(x,y).$$
+</li>
+<li>
+Фиксируем $\varepsilon>0$, тогда
+$\begin{multline}
+\exists{n}_0\in\mathbb{N}\colon\forall{n}>{n}_0\left(\left\|\sum_{k=n+1}^{\infty}z_k\right\|<\frac{\varepsilon}{\|y\|}\right)\Rightarrow\\
+\Rightarrow\forall{n}>n_0\left(\left|\sum_{k=1}^n(z_k,y)-(x,y)\right|=\left|\sum_{k=1}^n(z_k,y)-\left(\sum_{n=1}^{\infty}z_n,y\right)\right|=
+\left|\sum_{k=1}^n(z_k,y)-\left(\sum_{k=1}^nz_k,y\right)-\left(\sum_{k=n+1}^{\infty}z_k,y\right)\right|=
+\left\|\left(\sum_{k=n+1}^{\infty}z_k,y\right)\right\|\leq\left\|\sum_{k=n+1}^{\infty}z_k\right\|\|y\|<\frac{\varepsilon\|y\|}{\|y\|}=
+\varepsilon\right)\Rightarrow\\\Rightarrow\sum_{n=1}^{\infty}(z_n,y)=\lim_{n\to\infty}(z_n,y)=\lim_{n\to\infty}\sum_{k=1}^n(z_k,y)=(x,y).
+\end{multline}$
+</li>
+<li>
+Для доказательства данного пункта достаточно применить два раза пункт 2.
+$$(x,y)=\left(\sum_{n=1}^{\infty}(x_ne_n),\sum_{m=1}^{\infty}(y_me_m)\right)=\sum_{n=1}^{\infty}\left(x_ne_n,\sum_{m=1}^{\infty}(y_me_m)\right)=
+\sum_{n=1}^{\infty}\left(x_n\overline{\left(\sum_{m=1}^{\infty}(y_me_m),e_n\right)}\right)=
+\sum_{n=1}^{\infty}\left(x_n\sum_{m=1}^{\infty}\overline{(y_m(e_m,e_n))}\right).$$
+В силу ортогональности системы $\{e_n\}$ для любых $m\neq{n}$ из $\mathbb{N}$ $(e_m,e_n)=0$. В силу ортонормированности системы $\{e_n\}$ для любого
+$n\in\mathbb{N}$ $(e_n,e_n)=\|e_n\|^2=1$, следовательно, $(x,y)=\sum_{n=1}^{\infty}(x_n,\overline{y}_n)$.
+</li>
+</ol>
+<br><br>
+<p id=Theorem15.1.3><b>Теорема 15.1.3: Условия <a href="#Definition15.1.7">полноты</a> ортонормированной системы.</b><br>
+Пусть $H$ евклидово пространство над $\mathbb{P}$, $\{e_n\}$ не более чем счетная ортонормированная система векторов из $H$, тогда следующие утверждения
+эквивалентны
+<ol>
+<li>система $\{e_n\}$ полна в $H$,</li>
+<li>$\forall{x}\in{H}\left(x=\sum_{n=1}^{\infty}((x,e_n)e_n):=\sum_{n=1}^{\infty}(x_ne_n)\right)$,</li>
+<li>система $\{e_n\}$ замкнута в $H$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ul>
+<li>$1)\Rightarrow2)$<br>
+Фиксируем $\varepsilon>0$. Система $\{e_n\}$ полна, следовательно
+$$\forall{x}\in{H}\,\exists{T}_{\varepsilon}(x):=\sum_{k=1}^{n(\varepsilon)}(\alpha_ke_k)\colon\|T_{\varepsilon}(x)-x\|<\varepsilon.$$
+Тогда по пункту 3 <a href="./math_analysis15.1.1.html#Theorem15.1.2">теоремы 15.1.2</a> 
+$\left\|\sum_{k=1}^{n(\varepsilon)}(x_ke_k)-x\right\|\leq\|T_{\varepsilon}(x)-x\|<\varepsilon$.<br>
+Для любого $n>n(\varepsilon)$ $T_{\varepsilon}(x)$ является линейной комбинацией системы $\{e_1,\ldots,e_n\}$, где все коэффициенты $\alpha_k$ при 
+$k>n(\varepsilon)$ можно положить равными 0. Следовательно, по пункту 3 <a href="./math_analysis15.1.1.html#Theorem15.1.2">теоремы 15.1.2</a>
+$$\forall{n}>n(\varepsilon)\left(\left\|\sum_{k=1}^n(x_ke_k)-x\right\|\leq\|T_{\varepsilon}(x)-x\|<\varepsilon\right)\Rightarrow
+\sum_{n=1}^{\infty}(x_ne_n)=\lim_{n\to\infty}\sum_{k=1}^n(x_ke_k)=x.$$
+Так как для любого $n\in\mathbb{N}$ $n$-тый коэффициент Фурье $x_n$ вектора $x$ по ортонормированной системе $\{e_n\}$ равен $(x,e_n)$, то 
+утверждение доказано.
+</li>
+<li>$2)\Rightarrow3)$<br>
+Фиксируем $x\in{H}$, тогда по пункту 2 условий $x=\sum_{n=1}^{\infty}(x_ne_n)$. По пункту 3 <a href="#Lemma15.1.1">леммы 15.1.1</a>
+$$\|x\|^2=(x,x)=\left(\sum_{n=1}^{\infty}(x_ne_n),\sum_{n=1}^{\infty}(x_ne_n)\right)=\sum_{n=1}^{\infty}(x_n\overline{x}_n)=\sum_{n=1}^{\infty}|x_n|^2.$$
+Таким образом для любой ортонормированной системы из $H$ выполняется равенство Парсеваля, то есть любая ортонормированная система из $H$ 
+<a href="#Definition15.1.10">замкнута</a>.
+</li>
+<li>$3)\Rightarrow1)$<br>
+Поскольку по пункту 1 <a href="./math_analysis15.1.1.html#Theorem15.1.2">теоремы 15.1.2</a> $(x-S_n)\perp{S}_n$, то 
+$$\|x\|^2=\|x-S_n\|^2+\|S_n\|^2\Rightarrow\|x-S_n\|^2=\left\|x-\sum_{k=1}^n(x_ke_k)\right\|^2=\|x\|^2-\left\|\sum_{k=1}^n(x_ke_k)\right\|^2=
+\|x\|^2-\sum_{k=1}^n|x_k|^2=o(1),n\to\infty,$$
+где последнее равенство в силу пункта 3 условия. Таким образом существует предел $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n(x_ke_k)=x$, то есть
+$$\forall{\varepsilon}>0\,\exists{n}_0\in\mathbb{N}\colon\forall{n}>{n}_0\left(\left\|x-\sum_{k=1}^n(x_ke_k)\right\|<\varepsilon\right).$$
+</li>
+</ul>
+<br><br>
+<p id=Corollary15.1.1><b>Следствие 15.1.1: </b>Не более чем счетная ортонормированная система векторов полна тогда и только тогда, когда она является
+базисом.
+<p><b>Доказательство:</b> Следует из пунктов 1, 2 теоремы 15.1.3.
+
+<br><br>
+<p id=Lemma15.1.2><b>Лемма 15.1.2:</b> Пусть $H$ <a href="./math_analysis11.1.html#Definition11.1.14">полное</a> евклидово пространство, $\{e_n\}$
+не более чем счетная ортонормированная система векторов из $H$, тогда для любого $x\in{H}$ такого, что ряд $\sum_{n=1}^{\infty}(x_ne_n)$ сходится
+$h:=\left(x-\sum_{n=1}^{\infty}(x_ne_n)\right)\perp{e}_k$ для любого $k\in\mathbb{N}$.
+<p><b>Доказательство:</b> Фиксируем $x\in{H}$, тогда по пункту 5 <a href="./math_analysis15.1.1.html#Theorem15.1.2">теоремы 15.1.2</a> 
+$\sum_{n=1}^{\infty}|x_n|^2\leq\|x\|^2$. Следовательно, ряд $\sum_{n=1}^{\infty}|x_n|^2$ сходится, следовательно, по 
+<a href="./math_analysis7.1.html#Theorem7.1.1">критерию Коши</a>
+$$\forall\varepsilon>0\,\exists{n}_0\in\mathbb{N}\colon\forall{m}\geq{n}>n_0\left(\sum_{k=n}^m|x_k|^2<\varepsilon\right)\Rightarrow
+\forall{m}\geq{n}>n_0\left(\|S_m-S_{n-1}\|^2=\left\|\sum_{k=n}^m(x_ke_k)\right\|^2=\sum_{k=n}^m|x_k|^2<\varepsilon\right).$$
+Таким образом последовательность $\{S_n\}$ частичных сумм ряда $\sum_{n=1}^{\infty}(x_ne_n)$ 
+<a href="./math_analysis11.1.html#Definition11.1.12">фундаментальна</a>. Так как пространство $H$ 
+<a href="./math_analysis11.1.html#Definition11.1.14">полное</a>, то последовательность $\{S_n\}$ сходится, то есть существует предел 
+$x_0:=\sum_{n=1}^{\infty}(x_ne_n)=\lim_{n\to\infty}S_n\in{H}$. Тогда
+$$\forall{k}\in\mathbb{N}(((x-x_0),e_k)=(x,e_k)-(x_0,e_k)=x_k-\sum_{n=1}^{\infty}(x_n(e_n,e_k))=x_k-x_k=0)$$
+где множитель $e_k$ можно занести под знак суммы в силу пункта 2 <a href="#Lemma15.1.1">леммы 15.1.1</a> и предпоследнее неравенство в силу того, что для 
+любых $n\neq{k}$ $(e_n,e_k)=0$ и $(e_k,e_k)=1$.
+
+<br><br>
+<p id=Theorem15.1.4><b>Теорема 15.1.4: Критерий полноты ортонормированной системы в <a href="./math_analysis11.1.html#Definition11.1.14">полном</a> 
+евклидовом пространстве.</b><br>
+Пусть $\{e_n\}$ ортонормированная система векторов в <a href="./math_analysis11.1.html#Definition11.1.14">полном</a> евклидовом пространстве $H$,
+тогда $\{e_n\}$ <a href="#Definition15.1.7">полна</a> в $H$ тогда и только тогда, когда для любого ненулевого $x\in{H}$ существует $n\in\mathbb{N}$
+такое, что $(x,e_n)\neq0$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$<br>
+Докажем от противного, пусть $x\in{H}$ $x\neq0$ такой, что для любого $n\in\mathbb{N}$ $x_n=(x,e_n)=0$. Но по <a href="#Theorem15.1.3">теореме 15.1.3</a>
+в силу полноты системы $\{e_n\}$ имеем $x=\sum_{n=1}^{\infty}(x_ne_n)=0$.<br>
+$\Leftarrow)$<br>
+Фиксируем $x\in{H}$, тогда по лемме 15.1.2 ряд $\sum_{n=1}^{\infty}(x_ne_n)$ сходится. Обозначим $x_0:=\sum_{n=1}^{\infty}(x_ne_n)$, $h:=x-x_0$. Тогда по
+лемме 15.1.2 и по условию теоремы 
+$$\forall{n}\in\mathbb{N}(h\perp{e}_n)\Rightarrow{h}=0\Rightarrow{x}=x_0\Rightarrow{x}=\sum_{n=1}^{\infty}(x_ne_n).$$
+Таким образом $\{e_n\}$ базис и, следовательно, полна по <a href="#Corollary15.1.1">следствию 15.1.1</a>.
+
+<br><br>
+<a href="./math_analysis15.1.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.2.1.html">next</a>
+</body>
+</html>

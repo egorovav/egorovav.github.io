@@ -1,0 +1,112 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 13.2.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a href="./math_analysis13.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.3.1.html">next</a>
+
+
+$\newcommand{\FUniformConv}{\substack{\xrightarrow[]{}\\\xrightarrow[]{}\\y\to-\omega}}$
+$\newcommand{\arctg}{\operatorname{arctg}}$
+
+<h5 id=13.2.5>13.2.5 Интегрируемость несобственного интеграла по параметру.</h5>
+
+<p id=Theorem13.2.4><b>Теорема 13.2.4:</b> Пусть $Y=[c,d]$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$ такие, что
+<ol>
+<li>$f(x,y)\in{C}\{[a,\omega)\times{Y}\}$,</li>
+<li>несобственный интеграл $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{Y}$,</li>
+</ol>
+тогда 
+<ol>
+<li>$F(y):=\int_a^{\omega}f(x,y)\,dx\in\mathcal{R}[c,d]$,</li>
+<li>$\int_c^dF(y)\,dy=\int_c^d\left(\int_a^{\omega}f(x,y)\,dx\right)\,dy=\int_a^{\omega}\left(\int_c^df(x,y)\,dy\right)\,dx$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Из <a href="./math_analysis13.2.2.html#Theorem13.2.2">теоремы 13.2.2</a> следует, что $F(y)\in{C}[c,d]$, следовательно, $F(y)\in\mathcal{R}[c,d]$.</li>
+<li>
+Обозначим $\Phi(y,b):=\int_a^bf(x,y)\,dx\colon{Y}\times[a,\omega)\to\mathbb{R}$, тогда из условия 2 следует, что $\Phi(y,b)\FUniformConv{F}(y),y\in{Y}$.<br>
+По <a href="./math_analysis13.1.2.html#Statement13.1.5">утверждению 13.1.5</a> для любого $b\in[a,\omega)$ 
+$\int_c^d\left(\int_a^bf(x,y)\,dx\right)\,dy=\int_a^b\left(\int_c^df(x,y)\,dy\right)\,dx$. Переходя к пределу при $b\to-\omega$ получим
+$$\lim_{b\to-\omega}\int_c^d\Phi(y,b)\,dy=\lim_{b\to-\omega}\int_c^d\left(\int_a^bf(x,y)\,dx\right)\,dy=
+\lim_{b\to-\omega}\int_a^b\left(\int_c^df(x,y)\,dy\right)\,dx=\int_a^{\omega}\left(\int_c^df(x,y)\,dy\right)\,dx\qquad(*)$$
+В силу $\Phi(y,b)\FUniformConv{F}(y),y\in{Y}$ по <a href="./math_analysis13.1.1.html#Statement13.1.1">утверждению 13.1.1</a> в левой части равенства 
+можно внести знак предела под знак интеграла, тогда
+$$\int_c^d\left(\int_a^{\omega}f(x,y)\,dx\right)\,dy=\int_c^d\lim_{b\to-\omega}\Phi(y,b)\,dy=\lim_{b\to-\omega}\int_c^d\Phi(y,b)\,dy=^{(*)}
+\int_a^{\omega}\left(\int_c^df(x,y)\,dy\right)\,dx.$$ 
+</li>
+</ol>
+<br><br>
+<p id=Example13.2.9><b>Пример 13.2.9: Контрпример ко второму условию теоремы 13.2.4.</b><br>
+Пусть $Y=[0,1]$, $f(x,y)=(2-xy)xye^{-xy}\colon[0,+\infty)\times{Y}\to\mathbb{R}$.<br>
+
+<i>
+Вычислим повторные интегралы от функции $f(x,y)$. Для этого заметим, что $(x^2ye^{-xy})'_x=y(2xe^{-xy}-x^2ye^{-xy})=(2-xy)xye^{-xy}=f(x,y)$. Аналогично 
+$(xy^2e^{-xy})'_y=f(x,y)$, тогда
+$$\int_0^1\left(\int_0^{+\infty}f(x,y)\,dx\right)\,dy=\int_0^1(x^2ye^{-xy})|_0^{+\infty}\,dy=\int_0^10\,dy=0.$$
+$$\int_0^{+\infty}\left(\int_0^1f(x,y)\,dy\right)\,dx=\int_0^{+\infty}(xy^2e^{-xy})|_0^1\,dx=\int_0^{+\infty}xe^{-x}\,dx=1!=1$$
+где предпоследнее равенство следует из <a href="./math_analysis13.2.2.html#Example13.2.7">примера 13.2.7</a>.<br>
+</i>
+Таким образом $\int_0^1\left(\int_0^{+\infty}f(x,y)\,dx\right)\,dy=0\neq1=\int_0^{+\infty}\left(\int_0^1f(x,y)\,dy\right)\,dx$. То есть теорема 13.2.4
+не применима так как интеграл $\int_0^{+\infty}(2-xy)xye^{-xy}\,dx$ не сходится равномерно по $y\in{Y}$.<br>
+<i>Пример из Зорич т. 2, стр. 505, доказательства отсутствия равномерной сходимости интеграла $\int_0^{+\infty}f(x,y)\,dx$ нет.</i>
+
+<br><br>
+<p id=Theorem13.2.5><b>Теорема 13.2.5:</b> Пусть $X=[a,\omega)$, $Y=[c,\tilde\omega)$, $f(x,y)\colon{X}\times{Y}\to\mathbb{R}$ такие, что 
+<ol>
+<li>$f(x,y)\in{C}\{X\times{Y}\}$,</li>
+<li>
+для любого $d\in{Y}$ несобственный интеграл $\displaystyle\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in[c,d]$,<br>
+для любого $b\in{X}$ несобственный интеграл $\displaystyle\int_c^{\tilde\omega}f(x,y)\,dy$ сходится равномерно по $x\in[a,b]$;
+</li>
+<li>
+хотя бы один из двух повторных несобственных интегралов $\displaystyle\int_a^{\omega}\left(\int_c^{\tilde\omega}|f(x,y)|\,dy\right)\,dx$,
+$\displaystyle\int_c^{\tilde\omega}\left(\int_a^{\omega}|f(x,y)|\,dx\right)\,dy$ сходится.
+</li>
+</ol>
+тогда 
+<ol>
+<li>оба интеграла $\displaystyle\int_a^{\omega}\left(\int_c^{\tilde\omega}f(x,y)\,dy\right)\,dx$ сходятся, 
+$\displaystyle\int_c^{\tilde\omega}\left(\int_a^{\omega}f(x,y)\,dx\right)\,dy$,</li>
+<li>$\displaystyle\int_a^{\omega}\left(\int_c^{\tilde\omega}f(x,y)\,dy\right)\,dx=\int_c^{\tilde\omega}\left(\int_a^{\omega}f(x,y)\,dx\right)\,dy$.</li>
+</ol>
+<p><b>Доказательство:</b><i>Зорич т. 2, стр. 506.</i>
+<br><br>
+<p id=Example13.2.10><b>Пример 13.2.10: Контрпример к условию 3 теоремы 13.2.5.</b><br>
+Для любого $a>0$ рассмотрим функцию $\displaystyle{f}(x,y)=\frac{x^2-y^2}{(x^2+y^2)^2}\colon[a,+\infty)\times[a,+\infty)\to\mathbb{R}$.<br>
+В <a href="./math_analysis13.1.2.html#Task13.1.2">задаче 13.1.2</a> было показано, что $\displaystyle\int\frac{x^2-y^2}{(x^2+y^2)^2}\,dx=-\frac{x}{x^2+y^2}$,
+$\displaystyle\int\frac{x^2-y^2}{(x^2+y^2)^2}\,dy=\frac{y}{x^2+y^2}$, следовательно
+$$\int_a^{+\infty}\left(\int_a^{+\infty}\frac{x^2-y^2}{(x^2+y^2)^2}\,dx\right)\,dy=\int_a^{+\infty}\left.-\frac{x}{x^2+y^2}\right|_{x=a}^{x=+\infty}dy=
+\int_a^{+\infty}\frac{a}{a^2+y^2}\,dy=\left.\arctg\frac{y}{a}\right|_a^{+\infty}=\frac{\pi}{2}-\frac{\pi}{4}=\frac{\pi}{4}.$$
+Аналогично $\displaystyle\int_a^{+\infty}\left(\int_a^{+\infty}\frac{x^2-y^2}{(x^2+y^2)^2}\,dy\right)\,dx=-\frac{\pi}{4}$.
+Таким образом оба повторных несобственных интеграла сходятся, но их значения не равны. Это происходит потому, что условие 3 теоремы 13.2.5 не выполнено.
+Действительно, попытаемся вычислить интеграл $\int_a^{+\infty}\left(\int_a^{+\infty}|f(x,y)|\,dy\right)\,dx$. Так как 
+$|f(x,y)|=\frac{|x^2-y^2|}{(x^2+y^2)^2}=\begin{cases}\frac{x^2-y^2}{(x^2+y^2)^2},x>y\\\frac{y^2-x^2}{(x^2+y^2)^2},x\leq{y}\end{cases}$, то
+$\begin{multline}
+\int_a^{+\infty}\left(|f(x,y)|\,dy\right)\,dx=\\
+=\int_a^{+\infty}\left(\frac{|x^2-y^2|}{(x^2+y^2)^2}\,dy\right)\,dx=
+\int_a^{+\infty}\left(\int_a^x\frac{y^2-x^2}{(x^2+y^2)^2}\,dy+\int_x^{+\infty}\frac{x^2-y^2}{(x^2+y^2)^2}\,dy\right)\,dx=
+\int_a^{+\infty}\left(\left.-\frac{y}{x^2+y^2}\right|_{y=a}^{y=x}+\left.\frac{y}{x^2+y^2}\right|_{y=x}^{y=+\infty}\right)\,dx=
+\int_a^{+\infty}\left(\frac{a}{x^2+a^2}-\frac1{x}\right)\,dx=\\
+=\left.\arctg\frac{x}{a}\right|_a^{+\infty}-\ln{x}|_a^{+\infty}
+\end{multline}$
+Так первое слагаемое равно $\frac{\pi}{4}$, а $\lim_{x\to\infty}{\ln{x}}=+\infty$, то интеграл 
+$\displaystyle\int_a^{+\infty}\left(\int_a^{+\infty}\frac{|x^2-y^2|}{(x^2+y^2)^2}\,dy\right)\,dx$ не сходится. Аналогично показывается, что не сходится 
+интеграл $\displaystyle\int_a^{+\infty}\left(\int_a^{+\infty}\frac{|x^2-y^2|}{(x^2+y^2)^2}\,dx\right)\,dy$
+
+
+<br><br>
+<a href="./math_analysis13.2.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis13.3.1.html">next</a>
+</body>
+</html>

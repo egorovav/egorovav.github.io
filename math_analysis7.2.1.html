@@ -1,0 +1,198 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis 7.2.1.</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.2.2.html">next</a>
+
+<h4 id="7.2">7.2 Сходимость знакопостоянных рядов.</h5>
+
+<h5 id="7.2.1">7.2.1 Знакопостоянные ряды.</h5>
+
+<p id="Definition7.2.1"><b>Определение 7.2.1:</b> Числовой ряд $\sum_{n=1}^\infty{a}_n$ называется занкопостоянным, если 
+для любого $n\in\mathbb{N}$ $a_n\geq0$ либо для любого $n\in\mathbb{N}$ $n\leq0$.<br>
+
+<br><br>
+<p>Без ограничения общности везде далее будем рассматривать случай $a_n\geq0$.<br>
+Так как по пункту 3 <a href="./math_analysis7.1.html#Theorem7.1.1">теоремы 7.1.1</a> изменение конечного числа членов ряда
+не влияет на факт его сходимости, то при исследовании сходимости рядов знакопостоянными можно также считать ряды, у которых  
+слагаемые положительны только начиная с некоторого индекса $n_0\in\mathbb{N}$.
+
+<br><br>
+
+<p id="Theorem7.2.1"><b>Теорема 7.2.1: Критерий сходимости знакопостоянного ряда.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n&gtn_0\in\mathbb{N}$ $a_n\geq0$, тогда ряд $\sum_{n=1}^\infty{a}_n$ сходится 
+тогда и только тогда, когда последовательность его частичных сумм $\{S_n\}$ ограничена сверху.
+<p><b>Доказательство:</b> Для любого $n&gtn_0$ $S_n-S_{n-1}=a_n\geq0$, следовательно, последовательность $\{S_n\}$ не убывает
+(по крайней мере с индекса $n_0$). Тогда, по <a href="./math_analysis4.3.html#Theorem4.3.2">теореме Вейерштрасса о пределе монотонной последовательности</a>,
+ограниченность сверху последовательности $\{S_n\}$ равносильна ее сходимости, что <a href="./math_analysis7.1.html#Definition7.1.2">означает</a> 
+сходимость ряда $\sum_{n=1}^\infty{a}_n$.
+
+<br><br>
+
+<p id="Theorem7.2.2"><b>Теорема 7.2.2: Основная теорема сравнения для знакопостоянных рядов.</b><br>
+Если ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n&gtn_0$ $0\leq{a}_n\leq{b_n}$, тогда
+<ol>
+<li>из сходимости ряда $\sum_{n=1}^\infty{b}_n$ следует сходимость ряда $\sum_{n=1}^\infty{a}_n$,</li>
+<br>
+<li>из расходимости ряда $\sum_{n=1}^\infty{a}_n$ следует расходимость ряда $\sum_{n=1}^\infty{b}_n$.</li>
+</ol>
+<p><b>Доказательство:</b> Обозначим $n$-тые частичные суммы $n_0$-ого остатка рядов $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$, 
+как $S_n^{(a)}$ и $S_n^{(b)}$ соответственно.
+<ol>
+<li>
+Если ряд $\sum_{n=1}^\infty{b}_n$ сходится, то пункту 4 <a href="./math_analysis7.1.html#Theorem7.1.1">теоремы 7.1.1</a> 
+сходится его $n_0$-ой остаток. Тогда по теореме 7.2.1 последовательность частичных сумм $\{S_n^{(b)}\}$ $n_0$-ого остатка ряда $\sum_{n=1}^\infty{b}_n$
+ограничена, то есть 
+$$(\exists{M}&gt0:\forall{n}\in\mathbb{N}(S_n^{(b)}&ltM)\wedge\forall{n}&gtn_0(a_n\leq{b_n}))\Rightarrow
+\forall{n}\in\mathbb{N}(S_n^{(a)}\leq{S}_n^{(b)}&lt{M})$$
+То есть последовательность частичных сумм $\{S_n^{(a)}\}$ $n_0$-ого остатка ряда $\sum_{n=1}^\infty{a}_n$ ограничена. 
+И так как все слагаемые $n_0$-го остатка ряда $\sum_{n=1}^\infty{a}_n$ положительны, то по теореме 7.2.1 $n_0$-ой остаток ряда
+$\sum_{n=1}^\infty{a}_n$ сходится, следовательно, по пункту 4 <a href="./math_analysis7.1.html#Theorem7.1.1">теоремы 7.1.1</a>
+сходится и сам ряд $\sum_{n=1}^\infty{a}_n$.      
+</li>
+<li>
+Аналогично пункту 1 из расходимости ряда $\sum_{n=1}^\infty{a}_n$ следует расходимость его $n_0$-го остатка и, следовательно, 
+последовательности $\{S_n^{(a)}\}$. Из расходимости последовательности $\{S_n^{(a)}\}$ следует расходимость последовательности $\{S_n^{(b)}\}$. 
+Так как последовательность $\{S_n^{(b)}\}$ не убывает, то по <a href="./math_analysis4.3.html#Theorem4.3.2">теореме Вейерштрасса</a> 
+она не ограничена сверху, следовательно, не ограничена сверху и последовательность частичных сумм ряда $\sum_{n=1}^\infty{b}_n$. Тогда по пункту 1 
+<a href="./math_analysis4.1.html#Theorem4.1.1">теоремы 4.1.1</a> последовательности частичных сумм ряда $\sum_{n=1}^\infty{b}_n$ расходится. 
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example7.2.1"><b>Пример 7.2.1:</b> Рассмотрим ряды $\sum_{n=1}^\infty{a}_n$, $\sum_{n=1}^\infty{b}_n$ такие, что для любого $n\in\mathbb{N}$
+$a_n=\frac1{n^2}$; $b_1=0$, для любого $n&gt1$ $b_n=\frac1{n(n-1)}$<br>
+Покажем, что ряд $\sum_{n=1}^\infty{b}_n$ сходится
+$$\forall{n}&gt1\left(S_n^{(b)}=\sum_{k=2}^n{b}_k=\sum_{k=2}^n\frac1{k(k-1)}=\sum_{k=1}^n\left(\frac1{k-1}-\frac1{k}\right)=
+\sum_{k=2}^{n-1}\frac1{k}-\sum_{k=2}^n\frac1{k}=1-\frac1{n}\right)\Rightarrow\exists\lim_{n\to\infty}S_n^{(b)}=1$$
+Так как для любого $n\in\mathbb{N}$ $n^2&gtn(n-1)$, то для любого $n&gt1$ $0\leq{a}_n\leq{b}_n$, тогда по теореме 7.2.2 ряд $\sum_{n=1}^\infty$
+тоже сходится и $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty{b}_n=1$.
+
+<br><br>
+
+<p id="Example7.2.2"><b>Пример 7.2.2:</b> Рассмотрим ряд $\sum_{n=1}^\infty\frac1{n^p}$ при $p\leq1$.<br>
+<a href="./math_analysis7.1.html#Example7.1.4">Как было показано</a> гармонический ряд $\sum_{n=1}^\infty\frac1{n}$ расходится и по 
+<a href="./math_analysis5.4.1.html#Definition5.4.2">свойствам показательной функции</a> для любого $n\in\mathbb{N}$ и $p\leq1$ $\frac1{n}\leq\frac1{n^p}$, 
+следовательно, по теореме 7.2.2 расходится и ряд $\sum_{n=1}^\infty\frac1{n^p}$. 
+
+<br><br>
+
+<p id="Corollary7.2.1"><b>Следствие 7.2.1:</b> Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n\geq0$,
+$\{n_k\}$ строго возрастающая последовательность из $\mathbb{N}$, ряд $\sum_{n=1}^\infty{b}_n$ группировка членов ряда $\sum_{n=1}^\infty{a}_n$
+порожденная последовательностью $\{n_k\}$, то есть $b_1=\sum_{k=1}^{n_1}{a}_n$ и для любого $k&gt1$ $b_k=\sum_{i=n_{k-1}+1}^{n_k}a_i$,
+тогда ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда сходится ряд $\sum_{n=1}^\infty{b}_n$, и в случае сходимости
+их суммы равны.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Следует из <a href="./math_analysis7.1.html#Theorem7.1.3">теоремы 7.1.3</a>.
+</li>
+<li>$\Leftarrow)$<br>
+Обозначим последовательности частичных сумм рядов $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty{b}_n$ как $\{S_n^{(a)}\}$ и $\{S_n^{(b)}\}$ соответственно.
+Тогда последовательность $\{S_n^{(b)}\}$ является подпоследовательностью $\{S_{n_k}^{(a)}\}$ монотонной последовательности $\{S_n^{(a)}\}$.
+Тогда, по <a href="./math_analysis4.4.html#Statement4.4.4">утверждению 4.4.4</a> из сходимости последовательности $\{S_n^{(b)}\}$ следует 
+сходимость последовательности $\{S_n^{(a)}\}$.
+</li>
+</ul>
+
+<br><br>
+
+<p id="Corollary7.2.2"><b>Следствие 7.2.2:</b> Знакопостоянный ряд сходится, тогда и только тогда, когда некоторая подпоследовательность
+последовательности его частичных сумм сходится.
+<p><b>Доказательство:</b>
+<ul>
+<li>$\Rightarrow)$<br>
+Следует из утверждения <a href="./math_analysis4.4.html#Statement4.4.3">утверждения 4.4.3</a>.
+</li>
+<li>$\Leftarrow)$<br>
+Следует из утверждения <a href="./math_analysis4.4.html#Statement4.4.4">утверждения 4.4.4</a>.
+</li>
+</ul> 
+
+<br><br>
+
+<p id="Theorem7.2.3"><b>Теорема 7.2.3: Критерий сходимости знакопостоянного ряда с монотонно убывающим общим членом.</b><br>
+Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n\geq0$ и $a_{n+1}\leq{a}_n$, а ряд $\sum_{n=1}^\infty{b}_n$ такой, 
+что для любого $n\in\mathbb{N}$ $b_n=2^{n-1}a_{2^{n-1}}$, тогда ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда сходится ряд 
+$\sum_{n=1}^\infty{b}_n$.
+<p><b>Доказательство:</b>
+<table>
+<tr><td>$a_2$</td><td>$\leq$</td><td>$a_2$</td><td>$\leq$</td><td>$a_1$</td></tr>
+<tr><td>$2a_4$</td><td>$\leq$</td><td>$a_3+a_4$</td><td>$\leq$</td><td>$2a_2$</td></tr>
+<tr><td>$4a_8$</td><td>$\leq$</td><td>$a_5+a_6+a_7+a_8$</td><td>$\leq$</td><td>$4a_4$</td></tr>
+<tr><td></td><td></td><td>$\dots$</td><td></td><td></td></tr>
+<tr><td>$2^na_{2^{n+1}}$</td><td>$\leq$</td><td>$\sum_{k=2^n+1}^{2^{n+1}}a_k$</td><td>$\leq$</td><td>$2^na_{2^n}$</td></tr>
+</table> 
+Сложим первые $n+1$ неравенство полученной цепочки, тогда
+$$\forall{n}\in\mathbb{N}\left(\sum_{k=1}^{n+1}(2^{k-1}a_{2^k})\leq\sum_{k=2}^{2^{n+1}}a_k\leq\sum_{k=1}^{n+1}(2^{k-1}a_{2^{k-1}})\right)
+\Leftrightarrow\forall{n}\in\mathbb{N}\left(\frac1{2}(S_{n+2}^{(b)}-a_1)\leq{S}_{2^{n+1}}^{(a)}-a_1\leq{S}_{n+1}^{(b)}\right)$$
+Из полученных неравенств следует, что последовательность $\{S_n^{(a)}\}$ частичных сумм ряда $\sum_{n=1}^\infty{a}_n$ ограничена тогда и только тогда,
+когда ограничена последовательность $\{S_n^{(b)}\}$ частичных сумм ряда $\sum_{n=1}^\infty{b}_n$. И так как оба ряда знакопостоянны, то по
+<a href="#Theorem7.2.1">теореме 7.2.1</a> ряд $\sum_{n=1}^\infty{a}_n$ сходится тогда и только тогда, когда сходится ряд $\sum_{n=1}^\infty{b}_n$.
+
+<br><br>
+
+<p id="Example7.2.3"><b>Пример 7.2.3:</b> Рассмотрим ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}^\infty\frac1{n^p}$ при любом $p\in\mathbb{R}$.<br>
+<ol>
+<li><a href="#Example7.2.2">Ранее было показано</a>, что при $p\leq1$ ряд $\sum_{n=1}^\infty\frac1{n^p}$ расходится.</li>
+<li>
+Пусть $p&gt1$. <br>
+Рассмотрим ряд 
+$$\sum_{n=1}^\infty{b}_n=\sum_{n=1}^\infty\left(2^{n-1}a_{2^{n-1}}\right)=\sum_{n=1}^\infty\left(2^{n-1}\frac1{2^{(n-1)p}}\right)=
+\sum_{n=1}^\infty\frac1{2^{(n-1)(p-1)}}=\sum_{n=1}^\infty\left(\frac1{2^{p-1}}\right)^{n-1}\Rightarrow
+\sum_{n=2}^\infty{b}_n=\sum_{n=1}^\infty\left(\frac1{2^{p-1}}\right)^n$$
+Таким образом ряд $\sum_{n=1}^\infty(\frac1{2^{p-1}})^n$ является <a href="./math_analysis7.1.html#Definition7.1.3">1-вым остатком</a> 
+ряда $\sum_{n=1}^\infty{b}_n$. <a href="./math_analysis7.1.html#Theorem7.1.1">Так как</a> сходимость ряда эквивалентна сходимости любого его остатка, 
+то далее в качестве ряда $\sum_{n=1}^\infty{b}_n$ можно рассматривать ряд $\sum_{n=1}^\infty(\frac1{2^{p-1}})^n$.<br>
+Положим $q:=\frac1{2^{p-1}}$, тогда $\sum_{n=1}^\infty{b}_n=\sum_{n=1}^\infty{q}^n$. Так как $p&gt1$, то $q=\frac1{2^{p-1}}&lt1$ и по 
+<a href="./math_analysis7.1.html#Example7.1.1">примеру 7.1.1</a> ряд $\sum_{n=1}^\infty{b}_n=\sum_{n=1}^\infty{q}^n$ сходится.
+Тогда по теореме 7.2.3 сходится и ряд $\sum_{n=1}^\infty{a}_n=\sum_{n=1}\frac1{n^p}$. 
+</li>
+</ol>
+
+<br><br>
+
+<p id="Example7.2.4"><b>Пример 7.2.4: Характер расходимости гармонического ряда. Постоянная Эйлера.</b><br>
+Рассмотрим последовательность $a_n=(1+\frac1{n})^n$. Докажем, что последовательность $\{a_n\}$ возрастает. Действительно, 
+$a_1=2&lta_2=(1+\frac1{2})^2=\frac9{4}$ и 
+$$\forall{n}&gt1\left(\frac{a_n}{a_{n-1}}=\frac{\left(\frac{n+1}{n}\right)^n}{\left(\frac{n}{n-1}\right)^{n-1}}=
+\frac{(n+1)^n(n-1)^{n-1}}{n^nn^{n-1}}=\frac{(n^2-1)^{n-1}}{(n^2)^{n-1}}\frac{n+1}{n}=\left(1-\frac1{n^2}\right)^{n-1}\frac{n+1}{n}\right)$$
+Оценив первый множитель последнего выражения по <a href="./math_analysis4.3.html#Lemma4.3.1">неравенству Бернулли</a> при $\alpha=-\frac1{n^2}$ получим
+$$\forall{n}&gt1\left(\frac{a_n}{a_{n-1}}\geq\left(1-\frac{n-1}{n^2}\right)\frac{n+1}{n}=\frac{n^2-n+1}{n^2}\frac{n+1}{n}=
+\frac{n^3-n^2+n+n^2-n+1}{n^3}=\frac{n^3+1}{n^3}&gt1\right).$$
+Из доказательства <a href="./math_analysis4.3.html#Theorem4.3.2">теоремы Вейерштрасса о пределе монотонной последовательности</a> следует, 
+что неубывающая последовательность сходится к супремуму множества своих значений, значит
+$$\forall{n}\in\mathbb{N}\left(\left(1+\frac1{n}\right)^n\leq\lim_{n\to\infty}\left(1+\frac1{n}\right)^n=e\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(1+\frac1{n}\leq{e}^{\frac1{n}}\right)\Rightarrow\forall{n}\in\mathbb{N}\left(\ln\left(1+\frac1{n}\right)\leq\frac1{n}\right)$$
+Как было показано в <a href="./math_analysis4.3.html#Statement4.3.1">утверждении 4.3.1</a> последовательность $y_n=(1+\frac1{n})^{n+1}$
+убывает и сходится к числу $e$, следовательно, число $e$ является инфинумом множества значений последовательности $\{y_n\}$, тогда
+$$\forall{n}\in\mathbb{N}\left(\left(1+\frac1{n}\right)^{n+1}\geq{e}\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(1+\frac1{n}\geq{e}^{\frac1{n+1}}\right)\Rightarrow
+\forall{n}\in\mathbb{N}\left(\ln\left(1+\frac1{n}\right)\geq\frac1{n+1}\right)$$
+Таким образом доказано, что 
+$$n\in\mathbb{N}\left(\frac1{n+1}\leq\ln\frac{n+1}{n}\leq\frac1{n}\right)\Leftrightarrow
+\forall{n}\in\mathbb{N}\left(0\leq\frac1{n}-\ln\frac{n+1}{n}\leq\frac1{n}-\frac1{n+1}=\frac1{n(n+1)}\right)$$
+В <a href="#Example7.2.1">примере 7.2.1</a> было показано, что ряд $\sum_{n=1}^\infty\frac1{n(n+1)}$ сходится, следовательно, по 
+<a href="#Theorem7.2.2">теореме сравнения для знакопостонянных рядов</a> сходится и ряд $\sum_{n=1}^\infty(\frac1{n}-\ln\frac{n+1}{n})$, 
+то есть существует $c\in\mathbb{R}$ такое, что $\lim_{n\to\infty}\sum_{k=1}^n(\frac1{k}-\ln\frac{k+1}{k})=c\approx0.57721566490$, тогда
+$$\sum_{k=1}^n\left(\frac1{k}-\ln\frac{k+1}{k}\right)=\sum_{k=1}^n\frac1{k}-\sum_{k=1}^n\ln\frac{k+1}{k}=
+\sum_{k=1}^n\frac1{k}-\sum_{k=1}^n(\ln(k+1)-\ln{k})=\sum_{k=1}^n\frac1{k}-\ln(n+1)+\ln1=\sum_{k=1}^n\frac1{k}-\ln(n+1)=c+o(1),\:n\to\infty\Rightarrow$$
+$$\Rightarrow\sum_{k=1}^n\frac1{k}=\ln(n+1)+c+o(1),\:n\to\infty$$
+
+<br><br>
+<a href="./math_analysis7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis7.2.2.html">next</a>
+
+</body>
+</html>

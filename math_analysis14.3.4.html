@@ -1,0 +1,201 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Mathematical analysis 14.3.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis14.3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.1.1.html">next</a>
+
+$\newcommand{\graf}{\operatorname{graf}}$
+
+<h5 id=14.3.5>14.3.5 Следствия из теоремы Фубини.</h5>
+
+<p id=Statement14.3.9><b>Утверждение 14.3.9:</b> Пусть $m=n=1$ $X:=[a,b]$, $Y:=[c,d]$, $\Pi:=X\times{Y}$, $f(x,y)\in{X}(\Pi)$, тогда
+<ol>
+<li>существуют интегралы $\iint_{\Pi}f(x,y)\,dxdy$, $\int_a^bdx\int_c^df(x,y)\,dy$, $\int_c^ddy\int_a^bf(x,y)\,dx$,</li>
+<li>$\iint_{\Pi}f(x,y)\,dxdy=\int_a^bdx\int_c^df(x,y)\,dy=\int_c^ddy\int_a^bf(x,y)\,dx$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+Из непрерывности функции на компакте следует ее ограниченность, следовательно, по <a href="./math_analysis14.3.1.html#Theorem14.3.2">критерию Лебега</a> 
+$f(x,y)\in\mathcal{R}(\Pi)$.<br> 
+Так как из непрерывности по совокупности переменных следует непрерывность по каждой из них, то существование внутренних интегралов гарантировано на всей 
+области определения. Повторные интегралы существуют по <a href="./math_analysis14.3.3.html#Theorem14.3.4">теореме Фубини</a>.
+</li>
+<li>Равенство интегралов следует из <a href="./math_analysis14.3.3.html#Theorem14.3.4">теоремы Фубини</a>.</li>
+</ol>
+<br><br>
+<p id=Statement14.3.10><b>Утверждение 14.3.10:</b> Пусть $n\in\mathbb{N}$ $I:=[a_1,b_1]\times\cdots\times[a_n,b_n]$, $f(x)=f(x_1,\ldots,x_n)\in{C}(I)$,
+тогда $f(x)\in\mathcal{R}(I)$ и для любой перестановки $p(k)\colon\overline{1,n}\to\overline{1,n}$ существует интеграл
+$$\int_{a_{p(1)}}^{b_{p(1)}}dx_{p(1)}\cdots\int_{a_{p(n-1)}}^{b_{p(n-1)}}dx_{p(n-1)}\int_{a_{p(n)}}^{b_{p(n)}}f(x_1,\ldots,x_n)dx_{p(n)}=
+\iint\cdots\int_If(x_1,\ldots,x_n)dx_1\cdots{d}x_n.$$
+<p><b>Доказательство:</b> Выводится из утверждения 14.3.9 индукцией по $n$.
+
+<br><br>
+<p id=Statement14.3.11><b>Утверждение 14.3.11:</b> Пусть $n\in\mathbb{N}$ $I:=[a_1,b_1]\times\cdots\times[a_n,b_n]$, 
+$f(x)=f(x_1,\ldots,x_n)\in\mathcal{R}(I)$, тогда для любой перестановки $p(k)\colon\overline{1,n}\to\overline{1,n}$ существует интеграл
+$$\int_{a_{p(1)}}^{b_{p(1)}}dx_{p(1)}\ldots\int_{a_{p(n-1)}}^{b_{p(n-1)}}dx_{p(n-1)}\int_{a_{p(n)}}^{b_{p(n)}}f(x_1,\ldots,x_n)dx_{p(n)}=
+\iint\cdots\int_If(x_1,\ldots,x_n)dx_1\cdots{d}x_n,$$
+если допустить существование повторных интегралов при условии существования внутренних почти всюду.
+<p><b>Доказательство:</b> Выводится из <a href="./math_analysis14.3.3.html#Theorem14.3.4">теоремы Фубини</a> индукцией по $n$.
+<br><br>
+<p>Введем некоторые обозначения:<br>
+$m,n\in\mathbb{N}$, $E\subset\mathbb{R}^{m+n}$,<br>
+$\overline{\mu}$ - мера Жордана в $\mathbb{R}^{m+n}$, $\overline{\mu}_x$ - мера Жордана в $\mathbb{R}^m$, 
+$\overline{\mu}_y$ - мера Жордана в $\mathbb{R}^n$.<br>
+Для любого $x\in\mathbb{R}^m$ будем называть множество $E_x:=\{y\in\mathbb{R}^n\mid(x,y)\in{E}\}$ сечением множества $E\subset{R}^{m+n}$ при фиксированном
+$y\in\mathbb{R}^n$.<br>
+Положим 
+$$\mu_y(E_x)\colon\mathbb{R}^m\to\mathbb{R}\colon\mu_y(E_x):=
+\begin{cases}
+\overline{\mu}_y(E_x)&,E_x\in{G}(m,H)\\
+k=k(x)\in[\overline{\mu}_{y*}(E_x),\overline{\mu}_y^*(E_x)]&,E_x\in{G}(m,H)
+\end{cases}$$
+<br><br>
+<p id=Statement14.3.12><b>Утверждение 14.3.12: Связь измеримости множества и измеримости его сечений.</b><br>
+Если множество $E$ измеримо по Жордану в $\mathbb{R}^{m+n}$, то
+<ol>
+<li>почти для всех $x\in\mathbb{R}^m$ сечение $E_x$ измеримо по Жордану в $\mathbb{R}^n$,</li>
+<li>почти для всех $y\in\mathbb{R}^n$ сечение $E_y$ измеримо по Жордану в $\mathbb{R}^m$.</li>
+</ol>
+При этом, если $I=I_x\times{I}_y$ параллелепипед такой, что $E\subset{I}\subset{R}^{m+n}$, $I_x\subset{R}^m$, то $\mu(E)=\int_{I_x}\mu_y(E_x)\,dx$.
+<p><b>Доказательство:</b> Если множество $A\subset\mathbb{R}^n$ ограничено и для некоторого промежутка $I_A$ содержащего $A$ 
+$\chi_A(x)\in\mathcal{R}(I_A)$, то $A\in{G}(m,H)$.<br>
+<p><i>
+Действительно, по <a href="./math_analysis14.3.1.html#Theorem14.3.2">критерию Лебега</a> $\chi_A(x)$ непрерывна почти всюду на $I_A$. С другой стороны,
+очевидно, что любая $x_0\in\partial{A}$ является точкой разрыва функции $\chi_A(x)$, следовательно, $\mu^*(\partial{A})=0$. Тогда по
+<a href="./math_analysis14.2.3.html#Theorem14.2.7">теореме 14.2.7</a> $A\in{G}(m,H)$.
+</i></p>
+Так как для любого $(x,y)\in{E}$ $\chi_{I_x}=1$ и $\chi_{E_x}(y)=1$, а для любого $(x,y)\notin{E}$ $\chi_{E_x}(y)=0$, то
+$\chi_E(x,y)=\chi_{I_x}(x)\chi_{E_x}(y)$. Тогда так как $E\in{G}(m,H)$, то
+$$\mu(E)=\int_Edxdy=\int_I\chi_E(x,y)\,dxdy=\int_{I_x\times{I}_y}\chi_{I_x}(x)\chi_{E_x}(y)\,dxdy.$$
+Тогда по <a href="./math_analysis14.3.3.html#Theorem14.3.4">теореме Фубини</a>
+$$\mathring{\forall}x\in\mathbb{R}^m\left(\chi_{E_x}(y)\in\mathcal{R}(I_y)\right)\Rightarrow
+\mathring{\forall}x\in\mathbb{R}^m(E_x\in{G}(m,H))$$
+и
+$$\mu(E)=\int_{I_x\times{I}_y}\chi_{I_x}(x)\chi_{E_x}(y)dxdy=\int_{I_x}\chi_{I_x}(x)\,dx\int_{I_y}\chi_{E_x}(y)\,dy=\int_{I_x}\chi_{I_x}(x)\mu_y(E_x)\,dx=
+\int_{I_x}\mu_y(E_x)\,dx.$$
+<br><br>
+<p id=Statement14.3.13><b>Утверждение 14.3.13:</b> Пусть $n\in\mathbb{N}$, $D$ - компакт в $\mathbb{R}^n$, $D\in{G}(m,H)$; функции 
+$\varphi(x),\psi(x)\colon{D}\to\mathbb{R}$ такие, что $\varphi(x),\psi(x)\in{C}(D)$ и для любого $x\in{D}$ $\varphi(x)\leq\psi(x)$, тогда множество 
+$E:=\{(x,y)\in\mathbb{R^{n+1}}\mid{x}\in{D},\varphi(x)\leq{y}\leq\psi(x)\}$ измеримо по Жордану в $\mathbb{R}^{n+1}$ и 
+$\overline{\mu}(E)=\int_D(\psi(x)-\varphi(x))\,dx$
+<p><b>Доказательство:</b> Множество $D$ - компакт, следовательно, ограничено. Функции $\varphi(x)$, $\psi(x)$ непрерывны на компакте, следовательно,
+ограничены, то есть множество $E$ ограничено, тогда
+$$\exists{s}>0\colon((x,y)\in{E}\Rightarrow{y}\in[-s,s])\Rightarrow\partial{E}\subset(\graf{\varphi(x)}\cup\graf{\psi(x)}\cup(\partial{D}\times[-s,s])).$$
+По пункту 6 <a href="./math_analysis14.2.3.html#Theorem14.2.9">теоремы 14.2.9</a> $\mu^*(\graf{\varphi(x)})=\mu^*(\graf{\psi(x)})=0$. Так как $D\in{G}(m,H)$, 
+то по <a href="./math_analysis14.2.3.html#Theorem14.2.7">теореме 14.2.7</a> $\mu^*(\partial{D})=0$, следовательно, $\mu^*(\partial{D}\times[-s,s])=0$ и
+$\mu^*(E)=0$. Таким образом по <a href="./math_analysis14.2.3.html#Theorem14.2.7">теореме 14.2.7</a> $E\in{G}(m,H)$. Тогда по 
+<a href="#Statement14.3.12">утверждению 14.3.12</a> $E_x=\begin{cases}[\varphi(x),\psi(x)]&,x\in{D}\\\varnothing&,x\notin{D}\end{cases}$ и
+$$\overline{\mu}(E)=\int_{I_x}\mu_y(E_x)\,dx=\int_{I_x}\chi_D(x)(\psi(x)-\varphi(x))\,dx=\int_D(\psi(x)-\varphi(x))\,dx.$$
+<br><br>
+<p id=Statement14.3.14><b>Утверждение 14.3.14:</b> Пусть $n\in\mathbb{N}$, $D$ - компакт в $\mathbb{R}^n$, $D\in{G}(m,H)$; функции 
+$\varphi(x),\psi(x)\colon{D}\to\mathbb{R}$ такие, что $\varphi(x),\psi(x)\in{C}(D)$, для любого $x\in{D}$ $\varphi(x)\leq\psi(x)$,
+$E:=\{(x,y)\in\mathbb{R}^{n+1}\mid{x}\in{D},\varphi(x)\leq{y}\leq\psi(x)\}$, функция $f(x,y)\colon{E}\to\mathbb{R}$ такая, что $f(x,y)\in\mathcal{R}(E)$,
+тогда $\displaystyle\iint_Ef(x,y)\,dxdy=\int_D\left(\int_{\varphi(x)}^{\psi(x)}f(x,y)\,dy\right)\,dx.$ 
+<p><b>Доказательство:</b> Существует промежуток $I_x\subset\mathbb{R}^n$ и отрезок $I\subset\mathbb{R}$ такие, что $E\subset{I}_x\times{I}$, 
+следовательно, так как для любого $x\in{D}$ $E_x=[\varphi(x),\psi(x)]$, то
+$$\iint_Ef(x,y)\,dxdy=\iint_{I_x\times{I}}\chi_E(x,y)f(x,y)\,dxdy=\int_{I_x}\int_I\chi_D(x)\chi_{E_x}(y)f(x,y)\,dxdy=
+\int_{I_x}dx\int_I\chi_{E_x}(y)f(x,y)\,dy=\int_Ddx\int_{E_x}f(x,y)\,dy=\int_D\left(\int_{\varphi(x)}^{\psi(x)}f(x,y)\,dy\right)\,dx.$$
+<br>
+
+<h5 id=14.3.6>14.3.6 Замена переменной в кратном интеграле Римана.</h5>
+
+<p id=Theorem14.3.5><b>Теорема 14.3.5:</b> Пусть $n\in\mathbb{N}$, $x=(x_1,\ldots,x_n)\in\mathbb{R}^n$, $t=(t_1,\ldots,t_n)\in\mathbb{R}^n$,
+$D_x,D_t\subset\mathbb{R}^n$; $D_x,D_t\in{G}(m,H)$; $x=\varphi(t)\colon{D}_t\to{D}_x\sim
+\begin{cases}x_1=\varphi_1(t_1,\ldots,t_n)\\\qquad\cdots\\x_n=\varphi(t_1,\ldots,t_n)\end{cases}$; $S_x\subset{D}_x$, $S_t\subset{D}_t$ такие, что
+$\mu^*(S_x)=\mu^*(S_t)=0$; $D_x\backslash{S}_x$, $D_t\backslash{S}_t$ открыты в $\mathbb{R}^n$; 
+$\varphi(t)\colon{D}_x\backslash{S}_x\to{D}_x\backslash{S}_t$ - <a href="./math_analysis12.4.2.html#Definition12.4.7">диффеоморфизм гладкости 1</a>.
+$$\det{\varphi'(t)}=J(t)=\frac{\partial(x_1,\ldots,x_n)}{\partial(t_1,\ldots,t_n)}=
+\begin{vmatrix}
+\frac{\partial{x}_1}{\partial{t}_1} & \cdots & \frac{\partial{x}_1}{\partial{t}_n}\\
+\vdots & \ddots & \vdots\\
+\frac{\partial{x}_n}{\partial{t}_1} & \cdots & \frac{\partial{x}_n}{\partial{t}_n}
+\end{vmatrix}\colon{D}_t\backslash{S}_t\to\mathbb{R};
+$$
+функция $f(x)\colon{D}_x\to\mathbb{R}$ такая, что $f(x)\in\mathcal{R}(D_x)$, тогда
+<ol>
+<li>$f(\varphi(t))|J(t)|\in\mathcal{R}(D_t\backslash{S}_t)$,</li>
+<li>$\displaystyle\int_{D_x}f(x)\,dx=\int_{D_t\backslash{S}_t}f(\varphi(t))|J(t)|\,dt$.</li>
+</ol>
+<p><b>Доказательство:</b><i>Зорич т. 2, стр. 164 - 177.</i>
+<br><br>
+<p>Как правило в множество $S_t$ входят точки удовлетворяющие одному из следующих условий:
+<ol>
+<li>$t\in\partial{D}_t$,</li>
+<li>$\varphi(t)$ не дифференцируема в $t$,</li>
+<li>$\det{\varphi'(t)}=0$,</li>
+<li>$t$ - точка разрыва функции $\varphi(t)$.</li>
+</ol>
+<p>Как правило в множество $S_x$ входят точки удовлетворяющие одному из следующих условий:
+<ol>
+<li>$x\in\partial{D}_x$,</li>
+<li>$\varphi(t)$ необратима в $x=\varphi(t)$,</li>
+<li>$\varphi(t)$ не биективна в $x=\varphi(t)$,</li>
+<li>$\varphi^{-1}(x)$ не дифференцируема в $x$.</li>
+</ol>
+<p>Если дополнительно известно, что функция $\varphi(t)$ является локальным <a href="./math_analysis12.4.2.html#Definition12.4.7">диффеоморфизмом</a>, 
+в частности, если $\varphi(t)$ хотя бы непрерывно дифференцируема на $S_t$, то $\displaystyle\int_{D_x}f(x)\,dx=\int_{D_t}f(\varphi(t))|J(t)|\,dt$.
+<br><br>
+<p id=Example14.3.1><b>Пример 14.3.1: Замена декартовых координат на полярные.</b><br>
+$n=2$<br>
+$D_t:=\{(r,\varphi)\in\mathbb{R}^2\mid0\leq{r}\leq{R}\wedge0\leq\varphi\leq2\pi\}$<br>
+$D_x:=\{(x,y)\in\mathbb{R}^2\mid{x}^2+y^2\leq{R}^2\}$<br>
+$\begin{cases}x(r,\varphi)=r\cos{\varphi}\in{C}^{\infty}(\mathbb{R}^2)\\y(r,\varphi)=r\sin{\varphi}\in{C}^{\infty}(\mathbb{R}^2)\end{cases}$<br>
+$$
+\left|\frac{\partial(x,y)}{\partial(r,\varphi)}\right|=
+\begin{vmatrix}
+\frac{\partial{x}}{\partial{r}} & \frac{\partial{x}}{\partial{\varphi}}\\
+\frac{\partial{y}}{\partial{r}} & \frac{\partial{y}}{\partial{\varphi}}
+\end{vmatrix}=
+\begin{vmatrix}\cos{\varphi} & -r\sin{\varphi} \\ \sin{\varphi} & r\cos{\varphi}\end{vmatrix}=r\cos^2{\varphi}+r\sin^2{\varphi}=r.
+$$
+Однако, отображение $(r,\varphi)\to(x,y)$ не инъективно, например при $r=0$ для любого $\varphi$ $(x,y)=(0,0)$. Для того чтобы отображение 
+$(r,\varphi)\to(x,y)$ стало <a href="./math_analysis12.4.2.html#Definition12.4.7">диффеоморфизмом</a> надо исключить из множества $D_t$ его границу,
+то есть $S_t:=\partial{D_t}$, а из множества $D_x$ исключить его границу и радиус $[(0,0),(0,R)]$, то есть $S_x:=\partial{D}_x\cup[(0,0),(0,R))$,
+тогда множества $D_t\backslash{S}_t$, $D_x\backslash{S}_x$ будут открытыми и отображение $(x,y)\colon{D}_t\backslash{S}_t\to{D}_x\backslash{S}_x$
+будет диффеоморфизмом гладкости 1. Следовательно, по <a href="#Theorem14.3.5">теореме 14.3.5</a> для любой интегрируемой на $D_x$ функции $f(x,y)$
+справедливо равенство 
+$$\iint_{D_x}f(x,y)\,dxdy=\iint_{D_t\backslash{S}_t}rf(r\cos{\varphi},r\sin{\varphi})\,drd\varphi=
+\int_0^{2\pi}d\varphi\int_0^Rrf(r\cos{\varphi},r\sin{\varphi})\,dr,$$
+где последнее равенство следует из <a href="./math_analysis14.3.3.html#Theorem14.3.4">теоремы Фубини</a>.
+<br><br>
+<p id=Example14.3.2><b>Пример 14.3.2: Замена сферических координат на декартовы.</b><br>
+$n=3$<br>
+$D_t:=\left\{(r,\varphi,\psi)\mid0\leq{r}\leq{R},0\leq\varphi\leq2\pi,-\frac{\pi}{2}\leq\psi\leq\frac{\pi}{2}\right\}$<br>
+$D_x:=\{(x,y,z)\mid{x}^2+y^2+z^2\leq{R}^2\}$<br>
+$\begin{cases}x=r\cos{\varphi}\cos{\psi} \\ y=r\sin{\varphi}\cos{\psi} \\ z=r\sin{\psi} \end{cases}$
+$$\left|\frac{\partial(x,y,z)}{\partial(r,\varphi,\psi)}\right|=
+\begin{vmatrix}
+\frac{\partial{x}}{\partial{r}} & \frac{\partial{x}}{\partial{\varphi}} & \frac{\partial{x}}{\partial{\psi}} \\
+\frac{\partial{y}}{\partial{r}} & \frac{\partial{y}}{\partial{\varphi}} & \frac{\partial{y}}{\partial{\psi}} \\
+\frac{\partial{z}}{\partial{r}} & \frac{\partial{z}}{\partial{\varphi}} & \frac{\partial{z}}{\partial{\psi}}
+\end{vmatrix}=
+\begin{vmatrix}
+\cos{\varphi}\cos{\psi} & -r\sin{\varphi}\cos{\psi} & -r\cos{\varphi}\sin{\psi} \\
+\sin{\varphi}\cos{\psi} & r\cos{\varphi}\cos{\psi} & -r\sin{\varphi}\sin{\psi} \\
+\sin{\psi} & 0 & r\cos{\psi}
+\end{vmatrix}=
+r^2\cos^2{\varphi}\cos^3{\psi}+r^2\sin^2{\varphi}\cos^3{\psi}+r^2\sin^2{\varphi}\cos{\psi}\sin^2{\psi}+r^2\cos^2{\varphi}\cos{\psi}\sin^2{\psi}=$$
+$$=r^2\cos^3{\psi}(\cos^2{\varphi}+\sin^2{\varphi})+r^2\cos{\psi}\sin^2{\psi}(\sin^2{\varphi}+\cos^2{\varphi})=r^2\cos^3{\psi}+r^2\cos{\psi}\sin^2{\psi}=
+r^2\cos{\psi}(\cos^2{\psi}+\sin^2{\psi})=r^2\cos{\psi}.
+$$
+$S_t:=\partial{D}_t$<br>
+$S_x:=\partial{D}_x\cup\{(x,y,z)\in{D}_x\mid{x}^2+y^2=0\}$
+$$\iiint_{D_x}f(x,y,z)\,dxdydz=
+\iiint_{D_t\backslash{D}_t}r^2\cos{\psi}f(r\cos{\varphi}\cos{\psi},r\sin{\varphi}\cos{\psi},r\sin{\psi})\,drd\varphi{d}\psi.$$
+
+<br><br>
+<a href="./math_analysis14.3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./math_analysis15.1.1.html">next</a>
+</body>
+</html>
