@@ -82,30 +82,31 @@ $\int\limits_c^df(x)dx:=\sum_{i=1}^s\left(\int\limits_{\omega_{i-1}}^{c_i}f(x)dx
 <br><br>
 
 <p id="Task8.5.1"><b>Задача 8.5.1:</b> Исследовать сходимость несобственного интеграла 
-$\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+$\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.<br>
 <i>
-<b>Решение:</b> Особенностями интеграла являются точки, в которых подынтегральная функция не стремится к бесконечности: $\omega_0=0$, $\omega_1=1$,
-$\omega_2=2$, $\omega_3=+\infty$. Положим
-$$g(x):=x^2\ln{x}\sqrt[3]{x-2},\:f(x):=\frac1{g(x)}=\frac1{x^2\ln{x}\sqrt[3]{x-2}}$$
+<b>Решение:</b> Особенностями интеграла являются точки, в которых <a href="https://www.desmos.com/calculator/xwhzsnqok5">подынтегральная функция</a> 
+стремится к бесконечности: $\omega_0=0$, $\omega_1=1$, $\omega_2=2$, $\omega_3=+\infty$. Положим
+$$g(x):=x^2\ln{x}\sqrt[3]{x-2},\:f(x):=\frac1{g(x)}=\frac1{x^2\sqrt[3]{x-2}\ln{x}}$$
 тогда
-$$f'(x)=\left(\frac1{x^2\ln{x}\sqrt[3]{x-2}}\right)'=-\frac{g'(x)}{(g(x))^2}-\frac{(x^2\ln{x}\sqrt[3]{x-2})'}{(x^2\ln{x}\sqrt[3]{x-2})^2}$$
+$$f'(x)=\left(\frac1{x^2\sqrt[3]{x-2}\ln{x}}\right)'=-\frac{g'(x)}{(g(x))^2}-\frac{(x^2\sqrt[3]{x-2}\ln{x})'}{(x^2\sqrt[3]{x-2}\ln{x})^2}$$
 где
 $$(x^2\ln{x})'=2x\ln{x}+x^2\frac1{x}=x(2\ln{x}+1)\Rightarrow{g}'(x)=x(2\ln{x}+1)\sqrt[3]{x-2}+x^2\ln{x}\frac1{3}\frac1{(\sqrt[3]{x-2})^2}=
 \frac{3x(2\ln{x}+1)(x-2)+x^2\ln{x}}{3(\sqrt[3]{x-2})^2}$$
-Как не сложно видеть функция в числителе $3(2\ln{x}+1)(x-2)+x\ln{x}$ обращается в ноль один раз на интервале $(0,1)$ и еще один на интервале $(1,2)$.
+Как не сложно видеть <a href="https://www.desmos.com/calculator/cvjvcgfcuw">функция в числителе</a> $3x(2\ln{x}+1)(x-2)+x^2\ln{x}$ обращается в ноль 
+один раз на интервале $(0,1)$ и еще один на интервале $(1,2)$.
 Обозначим эти точки $a$ и $b$. В точках $a$ и $b$ функция имеет локальные экстремумы. На интервале $(a,b)$ производная $f'(x)$ положительна,
 следовательно, функция $f(x)$ возрастает на интервале $(a,b)$, во всех прочих положительных точках функция $f(x)$ убывает. В рамках 
 <a href="#Definition8.5.7">определения 8.5.7</a> положим $c_1:=a$, $c_2:=b$, $c_3:=3$, тогда
-$$\int\limits_0^{+\infty}f(x)dx=\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}=
+$$\int\limits_0^{+\infty}f(x)dx=\int\limits_0^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}=
 \int\limits_0^af(x)dx+\int\limits_a^1f(x)dx+\int\limits_1^bf(x)dx+\int\limits_b^2f(x)dx+\int\limits_2^3f(x)dx+\int\limits_3^{+\infty}f(x)dx$$
 Исследуем сходимость каждого из шести интегралов.
 <ol>
 <li>
-Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac1{n+1}}^{\frac1{n+1}}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac1{n+1}}^{\frac1{n+1}}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.<br>
 Так как функция $f(x)$ непрерывна, убывает и положительна на интервале $(0,a)$, <a href="./math_analysis8.3.html#Corollary8.3.2">то</a>
 $$\int\limits_{\frac1{n+1}}^{\frac1{n}}f(x)dx\geq\left(\frac1{n}-\frac1{n+1}\right)f\left(\frac1{n}\right)=
-\frac1{n(n+1)}\frac1{\left(\frac1{n}\right)^2\ln\frac1{n}\sqrt[3]{\frac1{n}-2}}=\frac1{n(n+1)}\frac{n^{7/3}}{-\ln{n}\sqrt[3]{1-2n}}=
-\frac1{n+1}\frac{n^{4/3}}{\ln{n}\sqrt[3]{2n-1}}\sim\frac1{\ln{n}},n\to\infty$$
+\frac1{n(n+1)}\frac1{\left(\frac1{n}\right)^2\sqrt[3]{\frac1{n}-2}\ln\frac1{n}}=\frac1{n(n+1)}\frac{n^{7/3}}{-\sqrt[3]{1-2n}\ln{n}}=
+\frac1{n+1}\frac{n^{4/3}}{\sqrt[3]{2n-1}\ln{n}}\sim\frac1{\ln{n}},n\to\infty$$
 Так как ряды $\sum_{n=1}^\infty{a}_n$ и $\sum_{n=1}^\infty\frac1{\ln{n}}$ положительны, и ряд $\sum_{n=1}^\infty\frac1{\ln{n}}$ расходится, 
 <a href="./math_analysis7.2.1.html#Theorem7.2.2">то</a> ряд $\sum_{n=1}^\infty{a}_n$ тоже расходится. Так как последовательность $\left\{\frac1{n}\right\}$
 стремится к нулю, <a href="./math_analysis8.5.html#Statement8.5.2">следовательно</a>, несобственный интеграл $\int\limits_0^af(x)dx$ заданный на промежутке
@@ -113,7 +114,7 @@ $(0,a]$ расходится. Из чего можно сразу сделать
 $\int\limits_0^{+\infty}f(x)dx$.
 </li>
 <li>
-Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac{n+1}{n+1}}^{\frac{n}{n+1}}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.<br>
+Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac{n+1}{n+1}}^{\frac{n}{n+1}}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.<br>
 Так как функция $f(x)$ непрерывна, возрастает и положительна на интервале $(a,1)$, <a href="./math_analysis8.3.html#Corollary8.3.2">то</a>
 $$a_n=\int\limits_{\frac{n}{n+1}}^{\frac{n+1}{n+2}}f(x)dx\geq\left(\frac{n+1}{n+2}-\frac{n}{n+1}\right)f\left(\frac{n}{n+1}\right)=
 \frac1{(n+1)(n+2)}\frac1{\left(\frac{n}{n+1}\right)^2\ln\frac{n}{n+1}}\sqrt[3]{\frac{n}{n+1}-2}\sim\frac1{(n+1)(n+1)}\frac1{\ln\frac{n}{n+1}},n\to\infty$$
@@ -122,36 +123,36 @@ $$\ln\frac{n}{n+1}=\ln\left(1-\frac1{n+1}\right)\sim\frac1{n},n\to\infty\Rightar
 $[a,1)$.
 </li>
 <li>
-Аналогично пункту 2 доказывается, что несобственный интеграл $\displaystyle\int\limits_1^b\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ расходится. Функция $f(x)$ на
+Аналогично пункту 2 доказывается, что несобственный интеграл $\displaystyle\int\limits_1^b\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$ расходится. Функция $f(x)$ на
 промежутке $(1,b)$ не положительна, а отрицательна, но это не влияет на характер стремления ее к бесконечности при $x\to1$.
 </li>
 <li>
 Попробуем воспользоваться приемом примененным в предыдущих трех пунктах. Зафиксируем последовательность сходящуюся к двум, например, 
 $\left\{\frac{2n}{n+1}\right\}$, тогда получим 
 $$\left(\frac{2(n+1)}{n+2}-\frac{2n}{n+1}\right)f\left(\frac{2n}{n+1}\right)=
-\frac{2}{(n+2)(n+1)}\frac1{\left(\frac{2n}{n+1}\right)^2\ln\frac{2n}{n+1}\sqrt[3]{\frac{2n}{n+1}-2}}\sim\frac1{(n+2)(n+1)}\frac1{\sqrt[3]\frac{-2}{n+1}}\sim
+\frac{2}{(n+2)(n+1)}\frac1{\left(\frac{2n}{n+1}\right)^2\sqrt[3]{\frac{2n}{n+1}-2}\ln\frac{2n}{n+1}}\sim\frac1{(n+2)(n+1)}\frac1{\sqrt[3]\frac{-2}{n+1}}\sim
 \frac1{n^{5/3}},n\to\infty$$
 Так как $\frac{5}{3}&gt1$, <a href="./math_analysis7.2.2.html#Corollary7.2.5">то</a> ряд $\sum_{n=1}^\infty\frac1{n^{5/3}}$ сходится. Таким образом
 доказать расходимость несобственного интеграла $\int\limits_b^2f(x)dx$ с помощью <a href="./math_analysis8.5.html#Statement8.5.2">утверждения 8.5.2</a> 
 не удалось. Попробуем доказать его сходимость. Действительно, по пункту 3 <a href="./math_analysis8.5.3.html#Theorem8.5.2">теоремы 8.5.2</a>
 несобственный интеграл $\displaystyle\int\limits_b^2\frac{dx}{\sqrt[3]{x-2}}$ сходится, а функция $\displaystyle\frac1{x^2\ln{x}}$ убывает и ограничена на
-интервале $(b,2)$, следовательно, по признаку Абеля несобственный интеграл $\displaystyle\int\limits_b^2\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ сходится
+интервале $(b,2)$, следовательно, по признаку Абеля несобственный интеграл $\displaystyle\int\limits_b^2\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$ сходится
 по промежутку $[b,2)$. 
 </li>
 <li>
-Аналогично пункту 4 доказывается, что несобственный интеграл $\displaystyle\int\limits_2^3\frac{dx}{x^3\ln{x}\sqrt[3]{x-2}}$ сходится по промежутку $(2,3]$.
+Аналогично пункту 4 доказывается, что несобственный интеграл $\displaystyle\int\limits_2^3\frac{dx}{x^3\sqrt[3]{x-2}\ln{x}}$ сходится по промежутку $(2,3]$.
 </li>
 <li>
-Несобственный интеграл $\displaystyle\int\limits_3^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ сходится по пункту 3 
+Несобственный интеграл $\displaystyle\int\limits_3^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$ сходится по пункту 3 
 <a href="./math_analysis8.5.3.html#Theorem8.5.2">теоремы 8.5.2</a>.
 </li>
 </ol>
 Таким образом в сумме 
-$$\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}=\int\limits_0^af(x)dx+\int\limits_a^1f(x)dx+\int\limits_1^bf(x)dx+\int\limits_b^2f(x)dx+
+$$\int\limits_0^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}=\int\limits_0^af(x)dx+\int\limits_a^1f(x)dx+\int\limits_1^bf(x)dx+\int\limits_b^2f(x)dx+
 \int\limits_2^3f(x)dx+\int\limits_3^{+\infty}f(x)dx$$
-сходятся только три последних интеграла так что несобственный интеграл $\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$ 
+сходятся только три последних интеграла так что несобственный интеграл $\displaystyle\int\limits_0^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$ 
 расходится в смысле <a href="#Definition8.5.7">определения 8.5.7</a>. Сходящимся можно считать только интеграл 
-$\displaystyle\int\limits_b^{+\infty}\frac{dx}{x^2\ln{x}\sqrt[3]{x-2}}$.
+$\displaystyle\int\limits_b^{+\infty}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.
 </i>
 </li>
 <p>

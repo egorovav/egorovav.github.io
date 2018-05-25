@@ -62,7 +62,7 @@ $E\ni{x}\to{a}$ и $f=o(g)$ при $E\ni{x}\to{a}$.
 
 <br><br>
 
-<p id="Example 5.4.12"><b>Пример 5.4.12:</b> При $a&gt1,\alpha\in\mathbb{R}$ функция $g(x)=a^x$ является бесконечно большой более высокого порядка
+<p id="Example5.4.12"><b>Пример 5.4.12:</b> При $a&gt1,\alpha\in\mathbb{R}$ функция $g(x)=a^x$ является бесконечно большой более высокого порядка
 чем функция $f(x)=x^\alpha$ при $\mathbb{R}^+\ni{x}\to\infty$, так как $f(x),g(x)$ <a href="#Definition5.4.7">бесконечно большие</a> 
 при $\mathbb{R}^+\ni{x}\to\infty$ и $\displaystyle{f}(x)=\frac{x^\alpha}{a^x}g(x)$, причем, как было показано в <a href="#Example5.4.6">примере 5.4.6</a>,
 $\displaystyle\frac{x^\alpha}{a^x}=o(1),x\to\infty$.
@@ -112,13 +112,13 @@ $$\exists\lim_{E\ni{x}\to{a}}\frac{f(x)}{g(x)}\in\mathbb{R}\Rightarrow{f}=O(g),E
 
 <br><br>
 
-<p id="Example5.4.12"><b>Пример 5.4.12:</b>
+<p id="Example5.4.12.1"><b>Пример 5.4.12.1:</b>
 <ol>
-<li>
+<li>рассмотрим <a href="https://www.desmos.com/calculator/hk0r4zpq0s">функции</a>
 $f(x)=(2+\sin{x})x,g(x)=x$<br>
 $$\forall{x}\in\mathbb{R}(|f(x)|\leq3|g(x)|\wedge|g(x)|\leq|f(x)|)\Rightarrow(f=O(g),g=O(f),x\to\infty)\Rightarrow{f}=O^*(g),x\to\infty$$
 </li>
-<li>
+<li>рассмотрим <a href="https://www.desmos.com/calculator/5e8dpxvfnm">функции</a> 
 $f(x)=(1+\sin{x})x,g(x)=x$<br>
 $$\forall{a}&gt0(\exists{b}=(2[a]+1)\pi&gt{a}:f(b)=(1+\sin{b})b=(1-1)b=0)\Rightarrow
 \forall{k}\in\mathbb{R},\forall{a}&gt0(\exists{b}&gta:k|f(b)|=0&lt|g(b)|=b)\Rightarrow{g}\neq{O}(f),x\to\infty\Rightarrow{f}\neq{O}^*(g),x\to\infty$$
@@ -402,7 +402,8 @@ $$f\sim{h},E\ni{x}\to{a}\Rightarrow\exists\gamma(x):(f(x)=\gamma(x)h(x)\wedge\li
 <p>Из утверждения следует, что при вычислении предела произведения функций можно заменять множители на эквивалентные им при условии, что 
 предел произведения существует. 
 
-<p id="Example5.4.23"><b>Пример 5.4.23:</b> Найдем предел функции $\displaystyle\lim_{x\to0}\frac{\ln{\cos{x}}}{\sin^2x}$<br>
+<p id="Example5.4.23"><b>Пример 5.4.23:</b> Найдем предел <a href="https://www.desmos.com/calculator/uoj2ouzoyi">функции</a> 
+$\displaystyle\lim_{x\to0}\frac{\ln{\cos{x}}}{\sin^2x}$<br>
 $$\lim_{x\to0}\frac{\ln(\cos{x})}{\sin^2{x}}=\frac1{2}\lim_{x\to0}\frac{\ln\cos^2x}{\sin^2x}=\frac1{2}\lim_{x\to0}\frac{\ln(1-\sin{x})}{\sin^2x}$$
 Так как по <a href="#Example5.4.13">примеру 5.4.13</a> $\ln(1+x)\sim{x}$ при $E\ni{x}\to{a}$, то можно заменить множитель $\ln(1-\sin^2x)$
 на $-\sin^2x$, получим 
@@ -410,7 +411,8 @@ $$\lim_{x\to0}\frac{\ln\cos{x}}{\sin^2x}=\frac1{2}\lim_{x\to0}\frac{\ln(1-\sin^2
 
 <br><br>
 <p>В отличии от множителей заменять слагаемые на эквивалентные при вычислении предела суммы нельзя.
-<p id="Example5.4.24"><b>Пример 5.4.24:</b> $\displaystyle\lim_{x\to\infty}\left(\sqrt{x^2+x}-x\right)=\frac1{2}$
+<p id="Example5.4.24"><b>Пример 5.4.24:</b> Рассмотим <a href="https://www.desmos.com/calculator/z5xkm3hbcp">предел</a> 
+$\displaystyle\lim_{x\to\infty}\left(\sqrt{x^2+x}-x\right)=\frac1{2}$
 $$\lim_{x\to\infty}\frac{\sqrt{x^2+x}}{x}=\lim_{x\to\infty}\sqrt{1+\frac1{x}}=1\Rightarrow\sqrt{x^2+x}\sim{x}$$
 Однако, если заменить в рассматриваемом пределе слагаемое $\sqrt{x^2+x}$ на $x$, то предел будет равен нулю, a он, как несложно видеть, нулю не равен
 $$\lim_{x\to\infty}\left(\sqrt{x^2+x}-x\right)=\lim_{x\to\infty}\frac{\left(\sqrt{x^2+x}-x\right)\left(\sqrt{x^2+x}+x\right)}{\sqrt{x^2+x}+x}=

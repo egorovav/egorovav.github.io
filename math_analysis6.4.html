@@ -343,8 +343,9 @@ $$f'(x_0)=\lim_{x\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}=\lim_{x\to{x}_0}f'(\xi(x))=\
 <i>
 Таким образом производная не может иметь <a href="./math_analysis5.5.1.html#Definition5.5.7">точек разрыва первого рода</a>. 
 Однако, может иметь точки <a href="./math_analysis5.5.1.html#Definition5.5.8">разрыва второго рода</a>.
-Например, функция $f(x)=\begin{cases}x^2\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$ дифференцируема на $\mathbb{R}$.
-При $x\neq0$ $f'(x)=2x\sin\frac1{x}-\cos\frac1{x}$, а $f'(0)=\lim_{x\to0}\frac{x^2\sin\frac1{x}}{x}=\lim_{x\to0}(x\sin\frac1{x})=0$.
+Например, <a href="https://www.desmos.com/calculator/js2c4qrbd0">функция</a> $f(x)=\begin{cases}x^2\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$ 
+дифференцируема на $\mathbb{R}$. При $x\neq0$ $f'(x)=2x\sin\frac1{x}-\cos\frac1{x}$, а 
+$f'(0)=\lim_{x\to0}\frac{x^2\sin\frac1{x}}{x}=\lim_{x\to0}(x\sin\frac1{x})=0$.
 Таким образом предела функции $f'(x)$ при $x\to0$ не существует. То есть 0 точка разрыва второго рода для функции $f'(x)$.
 </i>
 
@@ -480,7 +481,8 @@ $$A=+\infty\Rightarrow{A}&gt-\infty\Rightarrow^{(9)}
 </ol>
 
 <br><br>
-<p id="Example6.4.4"><b>Пример 6.4.4:</b> Рассмотрим предел функции $\frac{\sin{x}}{x}$ при $x\to0$.<br>
+<p id="Example6.4.4"><b>Пример 6.4.4:</b> Рассмотрим предел <a href="https://www.desmos.com/calculator/dgom9zcgym">функции</a> $\frac{\sin{x}}{x}$ при 
+$x\to0$.<br>
 Можно применить правило Лопиталя, так как $\displaystyle\lim_{x\to0}\sin{x}=\lim_{x\to0}x=0$. Таким образом
 $$\lim_{x\to0}\frac{\sin{x}}{x}=\lim_{x\to0}\frac{\sin'x}{x'}=\lim_{x\to0}\frac{\cos{x}}{1}=\lim_{x\to0}\cos{x}=1.$$
 
@@ -491,18 +493,22 @@ $$\lim_{x\to0}\frac{\sin{x}}{x}=\lim_{x\to0}\frac{\sin'x}{x'}=\lim_{x\to0}\frac{
 
 <br><br>
 
-<p id="Example6.4.6"><b>Пример 6.4.6:</b> Рассмотрим предел функции $\frac{x-\sin{x}}{x+\sin{x}}$ при $x\to\infty$.<br>
+<p id="Example6.4.6"><b>Пример 6.4.6:</b> Рассмотрим предел <a href="https://www.desmos.com/calculator/jgb4n3x8oc">функции</a> 
+$\frac{x-\sin{x}}{x+\sin{x}}$ при $x\to\infty$.<br>
 Правило Лопиталя применять нельзя, так как 
 $$\forall{x}&gt0(\exists{x}_0:=(2[x]+1)\pi&gtx:(x+\sin{x})'|_{x=x_0}=1+\cos{x}_0=0)$$
-а это противоречит второму условию теоремы. Производная функции стоящей в числителе должна быть отлична от нуля в некоторой окрестности предельной точки.<br>
+а это противоречит второму условию теоремы. Производная функции стоящей в знаменателе должна быть отлична от нуля в некоторой окрестности предельной точки.
+<br>
 Вместо применения правила Лопиталя предел можно вычислить так
 $$\lim_{x\to\infty}\frac{x-\sin{x}}{x+\sin{x}}=\lim_{x\to\infty}\frac{1-\frac{\sin{x}}{x}}{1+\frac{\sin{x}}{x}}=1$$
 
 <br><br>
 
-<p id="Example6.4.7"><b>Пример 6.4.7:</b> Рассмотрим предел отношения функций $f(x)=x^2\sin{\frac1{x}}$, и $f(x)=\sin{x}$ при $x\to0$.<br>
+<p id="Example6.4.7"><b>Пример 6.4.7:</b> Рассмотрим предел <a href="https://www.desmos.com/calculator/4geqrhaa08">отношения функций</a> 
+$f(x)=x^2\sin{\frac1{x}}$, и $g(x)=\sin{x}$ при $x\to0$.<br>
 <i>
-Правило Лопиталя применять нельзя так как отношение производных $\displaystyle\frac{f'(x)}{g'(x)}=\frac{2x\sin{\frac1{x}}-\cos{\frac1{x}}}{\cos{x}}$ 
+Правило Лопиталя применять нельзя так как <a href="https://www.desmos.com/calculator/bt5xtp0f5l">отношение производных</a> 
+$\displaystyle\frac{f'(x)}{g'(x)}=\frac{2x\sin{\frac1{x}}-\cos{\frac1{x}}}{\cos{x}}$ 
 не имеет предела при $x\to0$. Так как существуют последовательности $x'_n=\frac2{\pi(2n-1)}$ и $x''_n=\frac1{2\pi{n}}$ такие, что 
 $\lim_{x\to\infty}x'_n=\lim_{n\to\infty}x''_n=0$, в то время как 
 $$\lim_{n\to\infty}f(x'_n)=\lim_{n\to\infty}\frac4{\pi(2n-1)\cos{\frac2{\pi(2n-1)}}}=0\neq\lim_{n\to\infty}\frac{-1}{\cos{\frac1{2\pi{n}}}}=-1$$
