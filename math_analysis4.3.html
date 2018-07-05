@@ -40,9 +40,9 @@ $$\lim_{n\to\infty}x_n=A\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0\le
 </li>
 <li>$\Leftarrow)$
 Пусть последовательность $\{x_n\}$ фундаментальна. Покажем, что она ограничена. Фиксируем $\varepsilon&gt0$, тогда по фундаментальности $\{x_n\}$
-$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0,\forall{m}&gtn_0\left(|x_m-x_n|&lt\frac\varepsilon{3}\right)\Rightarrow
-\forall{n}&gtn_0\left(|x_n-x_{n_0+1}|&lt\frac\varepsilon{3}\right)$$
-Если в последнем неравенстве положить, например, $\varepsilon:=3$, то для любого $n&gtn_0$ $|x_n|-|x_{n_0+1}|\leq|x_n-x_{n_0+1}|&lt1$, 
+$$\exists{n}_0\in\mathbb{N}:\forall{n}&gtn_0,\forall{m}&gtn_0\left(|x_m-x_n|&lt\varepsilon\right)\Rightarrow
+\forall{n}&gtn_0\left(|x_n-x_{n_0+1}|&lt\varepsilon\right)$$
+Если в последнем неравенстве положить, например, $\varepsilon:=1$, то для любого $n&gtn_0$ $|x_n|-|x_{n_0+1}|\leq|x_n-x_{n_0+1}|&lt1$, 
 то есть $|x_n|&lt|x_{n_0+1}|+1$. Следовательно, последовательность $\{x_n\}$ ограничена, в качестве мажоранты выступает число
 $\max\{|x_1|,|x_2|,\dots,|x_{n_0}|,|x_{n_0+1}|+1\}$.<br><br>
 Рассмотрим семейство множеств $E=\{E_n\:|\:n\in\mathbb{N}\}$, где для любого $n\in\mathbb{N}$ $E_n:=\{x_k\:|\:k\geq{n}\}$.
@@ -69,7 +69,7 @@ $$\exists{k}\in\mathbb{N}:\forall{n}&gtk,\forall{m}&gtk\left(|x_m-x_n|&lt\frac\v
 \Rightarrow$$ $$\Rightarrow\left(a_k=\inf{E}_{k+1}\geq{x}_{k+1}-\frac\varepsilon{3}\wedge{b_k}=\sup{E}_{k+1}\leq{x}_{k+1}+\frac\varepsilon{3}\right)
 \Rightarrow{b}_k-a_k\leq{x}_{k+1}+\frac\varepsilon{3}-x_{k+1}+\frac\varepsilon{3}=\frac{2\varepsilon}{3}$$
 Таким образом
-$$\exists{k}\in\mathbb{N}:\forall{n}&gtk\left(x_n\in{E}_k\Rightarrow|x_n-A|\leq{b}_k-a_k=\frac{2\varepsilon}{3}&lt\varepsilon\right)$$
+$$\exists{k}\in\mathbb{N}:\forall{n}&gtk\left(|x_n-A|\leq{b}_k-a_k=\frac{2\varepsilon}{3}&lt\varepsilon\right)$$
 </li>
 </ul>
 <br><br>
