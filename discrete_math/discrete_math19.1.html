@@ -1,0 +1,291 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 19.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math18.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.3.html">next</a>
+<br>
+
+<h3 id="19">19 Конечные поля.</h3>
+<h4 id="19.1">19.1 Основные свойства конечных полей.</h4>
+Пусть $P$ - поле, $a\in{P}$. Будем обозначать через $\Ord{a}$ порядок элемента $a$ в группе $P^*$.
+<p id="Theorem19.1"><b>Теорема 19.1:</b><br>
+Пусть $P$ - поле, $p$ - простое число, $t\in\mathbb{N}$, $|P|=p^t$, тогда
+<ol>
+<li>$\Char{P}=p$,</li>
+<li>если $P_0$ - простое подполе поля $P$, то $[P:P_0]=t$,</li>
+<li>поле $P$ является минимальным полем разложения для многочлена $x^{p^t}-x\in{P}_0[x]$ над своим простым подполем $P_0$ и 
+совпадает с множеством его корней.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+По <a href="./discrete_math18.1.html#Theorem18.1">теореме 18.1</a> каждое поле содержит единственное простое подполе. Так как поле $P$ конечно, 
+то поле $P_0$ тоже конечно, следовательно, так как $|P_0|\bigl||P|$, то по <a href="./discrete_math18.2.html#Theorem18.5">теореме 18.5</a> 
+$P_0\cong\mathbb{Z}/p$. Тогда по <a href="./discrete_math17.1.html#Corollary17.4">следствию 17.4</a> и 
+<a href="./discrete_math17.1.html#Statement17.6">утверждению 17.6</a>
+$$\Char{P}=\Char{P_0}=|\mathbb{Z}/p|=p.$$
+</li><li>
+По п. 1 <a href="./discrete_math11.5.html#Theorem11.12">теоремы 11.12</a>
+$$|P|=|P_{P_0}|=|P_0|^{[P:P_0]}=p^t\Rightarrow[P:P_0]=t.$$
+</li>
+<li>Так как порядок любого элемента мультипликативной группы $P^*$ делит ее мощность $|P^*|$, то
+$$
+|P^*|=p^t-1\Rightarrow\forall{a}\in{P}^*(\Ord{a}|(p^t-1))\Rightarrow\forall{a}\in{P}^*(a^{p^t-1}=1)\Rightarrow\forall{a}\in{P}(a^{p^t}=a).
+$$
+Таким образом, все элементы поля $P$ являются корнями многочлена $x^{p^t}-x\in{P}_0[x]$ и так как число корней не превосходит $p^t$, 
+то $P$ - множество корней многочлена $x^{p^t}-x$. То есть $P$ -- поле разложения многочлена $x^{p^t}-x$ над $P_0$. Так как, очевидно, 
+что $P=P_0(P)$, то $P$ - МПР многочлена $x^{p^t}-x$ над $P_0$.
+</li>
+</ol>
+<p id="Task19.1"><b>Задача 19.1:</b><br>
+Пусть $P$ - поле, $p$ - простое число, $|P|=p^t$. Доказать, что для любых $a\in{P}$ $s\in\mathbb{N}$ $a^{p^{ts}}=a$.<br>
+Решение.<br>
+Докажем индукцией по $s$.
+<ol type="I">
+<li>Из доказательства теоремы 19.1 следует, что $a^{p^t}=a$.</li>
+<li>Предположим, что для любого $a\in{P}$ $a^{p^{ts}}=a$, тогда из пункта I следует 
+$$\forall{a}\in{P}\left(a^{p^{t(s+1)}}=a^{p^{ts}p^t}=(a^{p^{ts}})^{p^t}=a^{p^t}=a\right).$$
+</li>
+</ol>
+<p id="Statement19.1"><b>Утверждение 19.1:</b><br>
+Пусть $p$ - простое число, $P$ - поле, $|P|=p^t$, $n\in\mathbb{N}$, $F(x)=x^{p^{tn}}-x\in{P}[x]$, $P'$ - 
+минимальное поле разложения многочлена $F(x)$ над $P$, тогда $|P'|=p^{tn}$ и $P'$ - множетсво всех корней многочлена $F(x)$.
+<p><b>Доказательство:</b><br>
+По <a href="./discrete_math17.1.html#Corollary17.4">следствию 17.4</a> и п. 1 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a>
+$$
+\Char{P}'=\Char{P}=p\Rightarrow\forall{k}\in\mathbb{N}\,\forall{a}\in{P}(ka=0)\Rightarrow{F}'(x)=p^{tn}x^{p^{tn}}-e=-e'\Rightarrow(F(x),F'(x))=e,
+$$
+тогда по <a href="./discrete_math7.6.html#Corollary7.9">следствию 7.9</a> многочлен $F(x)$ не имеет кратных корней. 
+Обозначим $M:=\{\alpha_1,\ldots,\alpha_{p^{tn}}\}$ - множество корней многочлена $F(x)$, тогда по доказанному $|M|=p^{tn}$. Покажем, что $M$ - поле.
+Так как
+$$\alpha\in{M}\Leftrightarrow{F}(\alpha)=0\Leftrightarrow\alpha^{p^{tn}}=\alpha,$$
+то для любых $\alpha,\beta\in{M}$
+$$
+(\alpha\beta)^{p^{tn}}=\alpha^{p^{tn}}\beta^{p^{tn}}=\alpha\beta\Rightarrow\alpha\beta\in{M}
+$$
+и по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a>
+$$
+(\alpha+\beta)^{p^{tn}}=\alpha^{p^{tn}}+\beta^{p^{tn}}=\alpha+\beta\Rightarrow\alpha+\beta\in{M}
+$$
+таким образом, по п. 3 <a href="./discrete_math18.1.html#Corollary18.1">следствия 18.1</a> $M$ - поле. 
+Так как по задаче 19.1 $P\subset{M}$, то $M$ - поле  разложения многочлена $F(x)$ и $P'=P(M)=M$
+<p id="Theorem19.2"><b>Теорема 19.2:</b><br>
+Для любого простого числа $p$ и $n\in\mathbb{N}$ существует единственное с точностью до изоморфизма поле из $p^n$ элементов.
+<p><b>Доказательство:</b><br>
+Пусть $F(x)=x^{p^n}-x\in\mathbb{Z}/p[x]$, тогда, так как $|\mathbb{Z}/p|=p$, то по утверждению 19.1 МПР многочлена $F(x)$ содержит $p^n$ элементов.<br>
+Пусть $P_1,P_2$ - поля такие, что $|P_1|=|P_2|=p^n$. Обозначим $e_1,e_2$ - единицы полей $P_1$ и $P_2$ соответственно, $P_1^{(0)},P_2^{(0)}$ - 
+простые подполя полей $P_1,P_2$, тогда по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a>
+<ol>
+<li>$P_1$ МПР многочлена $f_1(x):=e_1x^{p^n}-e_1x\in{P}_1^{0}[x]$ над $P_1^{(0)}$,</li>
+<li>$P_2$ МПР многочлена $f_2(x):=e_2x^{p^n}-e_2x\in{P}_2^{(0)}[x]$ над $P_2^{(0)}$</li>
+</ol>
+и по п. 1 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $\Char{P}_1=\Char{P}_2=p$. Так как поля $P_1^{(0)}$, $P_2^{(0)}$ простые и 
+$\left|P_1^{(0)}\right|=\left|P_2^{(0)}\right|=p$, то по <a href="./discrete_math18.2.html#Theorem18.5">теореме 18.5</a>
+$$P_1^{(0)}\cong\mathbb{Z}/p\cong{P}_2^{(0)}.$$
+Следовательно, существует изоморфизм полей $\sigma:P_1^{(0)}\to{P}_2^{(0)}$. Определим отображение $\sigma':P_1^{(0)}[x]\to{P}_2^{(0)}[x]$ такое, что 
+$$\forall{t}(x):=\sum_{i=1}^na_ix^i\in{P}_1^{(0)}[x]\left(\sigma'(t(x)):=\sum_{i=1}^n\sigma(a_i)x^i\right),$$
+тогда так как $\sigma(e_1)=e_2$, то $\sigma'(f_1(x))=f_2(x)$ и по теореме 18.12 $P_1\cong{P}_2$. 
+<p id="Note19.1"><b>Замечание 19.1:</b></br>
+Пусть $P$ - поле, $r,s\in\mathbb{N}$, $x^{rs}-e\in{P}[x]$, тогда 
+$$x^{rs}-e=(x^r-e)(x^{r(s-1)+x^{r(s-2)}}+\cdots+x^r+e).$$
+Следовательно, для любых $m,n\in\mathbb{N}$
+$$
+m|n\Rightarrow(x^m-e)|(x^n-e)\Rightarrow\forall{a}\in{P}((a^m-e)|(a^n-e))
+$$
+<p id="Theorem19.3"><b>Теорема 19.3:</b><br>
+Пусть $P_1,P_2$ конечные поля, тогда $P_1$ содержит подполе изоморфное полю $P_2$ тогда и только тогда, когда существует $l\in\mathbb{N}$ такое, 
+что $|P_2|^l=|P_1|$.<br>
+Поле $P_1$ содержит не более одного подполя изоморфного $P_2$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Пусть $P'_2$ подполе поля $P_1$ такое, что $P'_2\cong{P}_2$, тогда
+$$[P_1:P'_2]=\dim{P_1}_{P'_2}\Rightarrow|P_1|=|P'_2|^{[P_1:P'_2]}=|P_2|^{[P_1:P'_2]},$$
+то есть $l:=[P_1:P'_2]$.<br>
+$\Leftarrow)$ Пусть $p_1,p_2$ - простые числа и $m,n\in\mathbb{N}$ такие, что $|P_1|=p_1^m$, $|P_2|=p_2^n$. Тогда по замечанию 19.1
+$$
+|P_1|=|P_2|^l\Rightarrow{p}_1^m=p_2^{nl}\Rightarrow(p:=p_1=p_2\,\wedge\,m=nl)\Rightarrow{n}|m\Rightarrow
+(p^n-1)|(p^m-1)\Rightarrow\left(x^{p^n-1}-e\right)\bigl|\left(x^{p^m-1}-e\right)\Rightarrow\left(x^{p^n}-x\right)\bigl|\left(x^{p^m}-x\right).
+$$
+Обозначим $P_0$ - простое подполе поля $P_1$, $g(x):=x^{p^n}-x$, $f(x):=x^{p^m}-x$, $g(x),f(x)\in{P}_0[x]$. Так как $|P_1|=p^m$, 
+то из доказательства <a href="./discrete_math19.1.html#Theorem19.2">теоремы 19.2</a> следует, что $P_1$ МПР многочлена $f(x)$ над $P_0$. Следовательно, 
+$f(x)$ раскладывается над $P_1$ на линейные множители, тогда $g(x)$ тоже раскладывается над $P_1$ на линейные множители, 
+то есть $P_1$ ПР многочлена $g(x)$ над $P_0$. Обозначим $T$ - МПР многочлена $g(x)$ над $P_0$, тогда $T$ подполе поля $P_1$ и так как $|P_0|=p$, 
+то по <a href="./discrete_math19.1.html#Statement19.1">утверждению 19.1</a> $|T|=p^n$, следовательно, 
+по <a href="./discrete_math19.1.html#Theorem19.2">теореме 19.2</a> $T\cong{P}_n$.<br>
+Пусть сущетсвуют подполя $T,T_1$ поля $P_1$ такие, что $T\cong{P}_2$, $T_1\cong{P}_2$, тогда $|T|=|T_1|=p^n$. 
+Тогда по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $T$ и $T_1$ МПР многочлена $g(x)$ над $P_0$ и 
+по <a href="./discrete_math19.1.html#Statement19.1">утверждению 19.1</a> поля $T$ и $T_1$ совпадают с множеством всех корней многочлена $g(x)$, 
+то есть они равны. 
+<p id="Corollary19.1"><b>Следствие 19.1:</b><br>
+Для любого $d$ делящего $n$ существует единственное подполе поля $GF(p^n)$ порядка $p^d$. Этими подполями исчерпываются все подполя поля $GF(p^n)$. 
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math19.1.html#Theorem19.2">теореме 19.2</a> существует единственное с точностью до изоморфизма поле $P$ порядка $p^d$. 
+Так как $d|n$, то существует $l:=n/d$ такое, что $|P|^l=|GF(p^n)|$, следовательно, $P\cong{G}F(p^d)$. Таким образом, 
+$GF(p^d)$ единственное с точностью до изоморфизма подполе поля $GF(p^n)$ порядка $p^d$.<br>
+Так как любое конечное поле имеет примарный порядок и порядок подполя делит порядок поля, 
+то все подполя поля $GF(p^n)$ исчерпывются (с точностью до изоморфизма) полями $\{GF(p^d)\mid{d}|n\}$.
+<p id="Task19.2"><b>Задача 19.2:</b><br>
+Пусть $P$ - поле, $G&lt;P^*$, $|G|&lt;\infty$. Доказать, что группа $G$ циклическая.<br>
+Решение.<br>
+Так как $G$ конечная абелева группа, то по п. 2 <a href="./discrete_math9.6.html#Theorem9.17">теоремы 9.17</a> существует $a\in{G}$ такой, 
+что $\ord{a}=\exp{G}$. Если поле $P$ конечно, то из этого факта следует доказываемое утверждение (ГЕН т. 2 стр. 221, теорема 4), однако,
+в мультипликативной группе бесконечного поля может быть конечная подгруппа, например $\{1,-1\}<\mathbb{Q}^*$. 
+Так что из условий задачи вообще говоря не следует, что поле $P$ конечно.
+<p id="Definition19.1"><b>Определение 19.1:</b><br>
+Элемент $a\in{G}F(q)$ называется примитивным, если $GF(q)^*=\langle{a}\rangle$.
+<p id="Note19.2"><b>Замечание 19.2:</b><br>
+<ol>
+<li>Если $a$ примитивный элемент поля $GF(q)$, то $\Ord{a}=|GF(q)^*|=q-1$.</li>
+<li>Из задачи 19. 2 следует, что в любом конечном поле есть примитивный элемент.</li>
+<li>Обозначим $P:=GF(p^t)$, тогда $P$ простое алгебраическое расширение поля $P_0:=GF(p)$, при этом $P=P_0(a)$, где $a$ - примитивный элемент поля $P$.</li>
+</ol>
+
+<h4 id="19.2">19.2 Неприводимые многочлены над конечными полями.</h4>
+
+<p id="Theorem19.4"><b>Теорема 19.4:</b><br>
+Для любого конечного поля $P$ и любого $n\in\mathbb{N}$ существует неприводимый многочлен $f(x)\in{P}[x]$ такой, что $\deg{f(x)}=n$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $F(x):=x^{q^n}-x\in{P}[x]$, $P'$ - МПР многочлена $F(x)$ над $P$, тогда по <a href="./discrete_math19.1.html#Statement19.1">утверждению 19.1</a> 
+$|P'|=q^n$. Пусть $\alpha$ примитивный элемент поля $P'$, тогда $P'=P(\alpha)$ и по <a href="./discrete_math18.4.html#Statement18.6">утверждению 18.6</a>
+$[P':P]=\deg{m_{\alpha,P}}(x)$, где $[P':P]=\dim{P'}_P=\lg_{|P|}{|P'|}=n$. Так как $m_{\alpha,P}(x)$ непрводим над $P$, то он является искомым многочленом.
+<p id="Theorem19.5"><b>Теорема 19.5:</b><br>
+Пусть $P:=GF(q)$, многочлен $f(x)\in{P}[x]$ неприводим над $P$, $n:=\deg{f(x)}$, $F:=P(\alpha)$, где $\alpha$ такой, что $f(\alpha)=0$, тогда
+<ol>
+<li>поле $F$ является МПР многочлена $f(x)$ над $P$, причем все корни многочлена $f(x)$ над полем $F$ попарноразличны и имееют вид 
+$$\alpha,\alpha^q,\alpha^{q^2},\ldots,\alpha^{q^{n-1}},$$
+</li>
+<li>$f(x)|\left(x^{q^n}-x\right)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Обозначим $f(x):=\sum_{i=0}^nf_ix^i$, где для любого $i\in\overline{0,n}$ $f_i\in{P}$. Из <a href="./discrete_math19.1.html#Task19.1">задачи 19.1</a> 
+следует, что для любого $a\in{P}$ $a^q=a$, тогда по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a> для любого $s\in\mathbb{N}$
+$$
+f(\alpha^{q^s})=\sum_{i=0}^nf_i\bigl(\alpha^{q^s}\bigr)^i=\sum_{i=0}^nf_i^{q^s}(\alpha^i)^{q^s}=\sum_{i=0}^n(f_i\alpha^i)^{q^s}=
+\biggl(\sum_{i=0}^nf_i\alpha^i\biggr)^{q^s}=(f(\alpha))^{q^s}=0^{q^s}=0.
+$$
+Таким образом, все элементы поля $F$ вида
+$$\alpha,\alpha^q,\alpha^{q^2},\ldots,\alpha^{q^{n-1}}$$
+являются корнями многочлена $f(x)$. Докажем от противного, что они попарноразличны. Предположим, что существуют $s,r\in\mathbb{N}$ такие, 
+что $n-1\geq{s}+r>s\geq{0}$ и $\alpha^{q^s}=\alpha^{q^{s+r}}$, тогда
+$$
+0=\alpha^{q^{s+r}}-\alpha^{q^s}=\bigl(\alpha^{q^r}\bigr)^{q^s}-\alpha^{q^s}=\bigl(\alpha^{q^r}-\alpha\bigr)^{q^s}\Rightarrow\alpha^{q^r}=\alpha.
+$$
+Так как $f(\alpha)=0$ и $f(\alpha)$ неприводим, то <a href="./discrete_math18.1.html#Corollary18.3">следствию 18.3</a>, 
+<a href="./discrete_math18.4.html#Statement18.6">утверждению 18.6</a>, п. 2 <a href="./discrete_math18.4.html#Corollary18.6">следствия 18.6</a>
+$$
+\exists{c}\in{P}^*:m_{\alpha,P}(x)=cf(x)\Rightarrow[F:P]=\deg{m_{\alpha,P}(x)}=n\Rightarrow
+\forall\beta\in{F}\,\exists{h}(x)\in{P}[x]:(\deg{h(x)}&lt;n\,\wedge\,\beta=h(\alpha)).
+$$
+Фиксируем $\beta\in{F}$, тогда по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a>
+$$
+\exists{b}_0,\ldots,b_{n-1}\in{P}:\beta=\sum_{i=0}^{n-1}b_i\alpha^i\Rightarrow
+\beta^{q^r}=\sum_{i=0}^{n-1}(b_i\alpha^i)^{q^r}=\sum_{i=0}^{n-1}b_i^{q^r}\bigl(\alpha^{q^r}\bigr)^i=\sum_{i=0}^{n-1}b_i\alpha^i=\beta.
+$$
+В силу произвола выбора $\beta\in{F}$ все элементы поля $F$ являются решениями уравнения $x^{q^r}-x$. 
+Данное уравнение имеет не более $q^r$ различных решений, в то время как по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> 
+$|F|=|P|^{[F:P]}=p^n$. Получено противоречие с условием $0&lt;r&lt;n$. Таким образом, поле $F$ содержит все корни многочлена $f(x)$, 
+следовательно, $F$ МПР многочлена $f(x)$ над $P$.
+</li>
+</li>Обозначим $G(x):=x^{q^n}-x$
+Так как по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $\alpha$ корень многочлена $G(x)$, то $(x-\alpha)|G(x)$. 
+Так как $f(\alpha)=0$, то $(x-\alpha)|f(x)$, следовательно, многочлены $f(x)$ и $G(x)$ не взаимнопросты в кольце $F[x]$. 
+Следовательно, они не взаимнопросты и в кольце $P[x]$, иначе нашлись бы многочлены $u(x),v(x)\in{P}[x]$ такие, что $u(x)f(x)+v(x)G(x)=e$, 
+и это означало бы что многочлены $f(x)$ и $G(x)$ взаимнопросты в кольце $F[x]$. Таким образом, $(f(x),G(x))\neq{e}$ и $f(x)$ неприводим, 
+следовательно, по п. 1 <a href="./discrete_math7.5.html#Statement7.7">утверждения 7.7</a> $f(x)|G(x)$.
+</li>
+</ol>
+<p id="Corollary19.2"><b>Следствие 19.2:</b><br>
+Пусть $P:=GF(q)$, $f(x)$ унитарный неприводимый над $P$ многочлен, $n:=\deg{f(x)}$, $f(x)\neq{x}$; $\alpha$,$\beta$ - 
+корни многочлена $f(x)$ в поле разложения, тогда
+<ol>
+<li>$\Ord{\alpha}|(q^n-1)$,</li>
+<li>$\forall{r}\in\overline{1,n-1}(\Ord{\alpha}\nmid(q^r-1))$,</li>
+<li>$\Ord{\alpha}=\Ord{\beta}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По п. 2 теоремы 19.5 
+$$
+\bigl(f(x)|\bigl(x^{q^n}-x\bigr)\,\wedge\,f(x)\neq{x}\bigr)\Rightarrow{f}(x)|\bigl(x^{q^n-1}-e\bigr)\Rightarrow
+\alpha^{q^n-1}-e=0\Rightarrow\Ord{\alpha}|(q^n-1).
+$$
+</li>
+<li>Докажем от противного. Предположим, что существует $r\in\overline{1,n-1}$ такое, что $\Ord{\alpha}|(q^r-1)$, тогда $\alpha^{q^r-1}=e$, 
+то есть $\alpha^{q^r}=\alpha$, что противоречит п. 1 теоремы 19.5.
+</li>
+<li>По п. 1 теоремы 19.5 существует $t\in\overline{0,n-1}$ такое, что $\beta=\alpha^{q^t}$, тогда
+$$\Ord{\beta}=\Ord{\alpha^{q^t}}=\frac{\Ord{\alpha}}{(\Ord{\alpha},q^t)}.$$
+Предположим, что $\Ord{\alpha}\neq\Ord{\beta}$, тогда по пункту 1
+$$(\Ord{\alpha},q^t)\neq1\Rightarrow(q\,|\Ord{\alpha}\,\wedge\,\Ord{\alpha}|(q^n-1))\Rightarrow{q}|(q^n-1)$$
+получено противоречие с условием $q>1$.
+</li>
+</ol>
+<p id="Corollary19.3"><b>Следствие 19.3:</b><br>
+Пусть $P:=GF(q)$, многочлен $f(x)\in{P}[x]$ неприводим над $P$, тогда $(f(x),f'(x))=e$.
+<p><b>Доказательство:</b><br><br>
+По п. 1 <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a> многочлен $f(x)$ раскладывается на линейные множители и 
+не иммет кратных корней над полем разложения, тогда по <a href="./discrete_math7.6.html#Corollary7.9">следствию 7.9</a> $(f(x),f'(x))=e$.
+<p id="Corollary19.4"><b>Следствие 19.4:</b><br>
+Пусть $P=GF(q)$, многочлены $f(x),g(x)\in{P}[x]$ неприводимы над $P$, $n:=\deg{f(x)}$, $m:=\deg{f(x)}$, $F:=P(\alpha)$, где $f(\alpha)=0$, тогда
+<ol>
+<li>если $m|n$, то поле $F$ является полем разложения многочлена $g(x)$ над $P$,</li>
+<li>если $m\nmid{n}$, то поле $F$ не содержит корней многочлена $g(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Аналогично доказательству п. 2 <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a> можно показать, что $g(x)|\bigl(x^{q^m}-x\bigr)$. 
+Тогда по <a href="./discrete_math19.1.html#Note19.1">замечанию 19.1</a>
+$$
+m|n\Rightarrow{q}^m-1|q^n-1\Rightarrow\bigl(x^{q^m-1}-1\bigr)\bigl|\bigl(q^{q^n-1}-1\bigr)\Rightarrow
+\bigl(x^{q^m}-x\bigr)\bigl|\bigl(x^{q^n}-x\bigr)\Rightarrow{g}(x)\bigl|\bigl(x^{q^n}-x\bigr).
+$$
+При доказательстве <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a> было показано, что $|F|=q^n$, 
+тогда по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $F$ ПР многочлена $x^{q^n}-x$, тогда $F$ ПР многочлена $g(x)$.
+</li>
+<li>Докажем от противного. Предположим, что существует $\gamma\in{F}$ такое, что $g(\gamma)=0$. 
+Тогда по <a href="./discrete_math18.4.html#Statement18.6">утверждению 18.6</a> $[P(\gamma):P]=m$, $P$ подполе $P(\gamma)$, а $P(\gamma)$ подполе $F$, 
+тогда по <a href="./discrete_math18.1.html#Theorem18.2">теореме 18.2</a>
+$$[F:P]=[F:P(\gamma)][P(\gamma):P]=[F:P(\gamma)]m\Rightarrow{m}|n.$$
+Таким образом, получено противоречие.
+</li>
+</ol>
+<p id="Example19.1"><b>Пример 19.1:</b>(непонятный пример)<br>
+$GF(2)(y)[x]$<br>
+$f(x)=x^2-y$ - неприводим над $GF(2)(y)$.<br>
+$f'(x)=0\Rightarrow(f(x),f'(x))=f(x)\neq{e}$.<br>
+$T$ - ПР $f(x)$ $\alpha\in{T}$, $f(\alpha)=0$.<br>
+$f(x)=(x-\alpha)^2$ над $T$.
+
+<br><br>
+<a href="discrete_math18.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.3.html">next</a>
+</body>
+</html>

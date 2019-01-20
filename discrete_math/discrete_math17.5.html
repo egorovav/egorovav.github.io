@@ -1,0 +1,276 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 17.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math17.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.1.html">next</a>
+<br>
+
+<h4 id="17.5">17.5 Гомоморфизмы колец.</h4>
+
+<p id="Statement17.13"><b>Утверждение 17.13:</b><br>
+Пусть $\varphi:R\to{L}$ эпиморфизм колец, 
+$$\ker{\varphi}:=\varphi^{-1}(0_L)=\{r\in{R}\mid\varphi(r)=0_L\},$$ 
+тогда $\ker{\varphi}\vartriangleleft{R}$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math9.8.html#Statement9.8">утверждению 9.8</a> $(\ker{\varphi};+)&lt;(R;+)$, следовательно, 
+$\ker{\varphi}$ замкнуто относительно разности. При этом для любых $a\in\ker{\varphi}$, $r\in{R}$
+$$\varphi(ar)=\varphi(a)\varphi(r)=0\varphi(r)=0\Rightarrow{a}r\in\ker{\varphi},$$
+аналогично показывается, что $ra\in\ker{\varphi}$. Таким образом, $\ker{\varphi}\vartriangleleft{R}$.
+<p id="Theorem17.3"><b>Теорема 17.3:</b><br><br>
+Пусть $\varphi:R\to{L}$ - эпиморфизм колец, тогда
+<ol>
+<li>$R/\ker{\varphi}\cong{L}$.</li>
+<li>Существует единственный изоморфизм $\tau:R/\ker{\varphi}\to{L}$ такой, что $\varphi=\tau\circ\varphi_0$, где $\varphi_0:R\to{R}/\ker{\varphi}$ - 
+естественный эпиморфизм, т. е. $\varphi_0(r)=r+\ker{\varphi}$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Так как $\varphi:(R;+)\to(L;+)$ - эпиморфизм групп, то по <a href="./discrete_math9.8.html#Theorem9.24">теореме 9.24</a> $(R/\ker{\varphi};+)\cong(L;+)$, 
+и существует единственный изоморфизм $\tau:R/\ker{\varphi}\to{L}$ такой, что $\varphi=\tau\circ\varphi_0$. 
+Докажем, что $\tau$ является изоморфизмом колец, для этого достаточно доказать, что $\tau$ согласовано с операцией умножения. 
+Так как для любого $a\in{R}$ $\varphi(a)=\tau\circ\varphi_0(a)$, то для любого $a\in{R}$ 
+$\varphi(a)=\tau(\varphi_0(a))=\tau(a+\ker{\varphi})$, следовательно,
+$$
+\tau((a+\ker{\varphi})(b+\ker{\varphi}))=\tau(ab+\ker{\varphi})=\varphi(ab)=\varphi(a)\varphi(b)=\tau(a+\ker{\varphi})\tau(b+\ker{\varphi}).
+$$
+<p id="Theorem17.4"><b>Теорема 17.4:</b><br>
+Пусть $\varphi:R\to{L}$ гомоморфизм колец, тогда
+<ol>
+<li>$A&lt;R\Rightarrow(\varphi(A)&lt;L\,\wedge\,\varphi^{-1}(\varphi(A))=A+\ker{\varphi})$,
+<li>$B&lt;L\Rightarrow(\varphi^{-1}(B)&lt;R\,\wedge\,\varphi(\varphi^{-1}(B))=B\cap\varphi(R))$,
+<li>$A\vartriangleleft{R}\Rightarrow\varphi(A)\vartriangleleft\varphi(R)$,
+<li>$B\vartriangleleft{L}\Rightarrow\varphi^{-1}(B)\vartriangleleft{R}$.
+</ol>
+<p><b>Доказательство:</b><br><br>
+Так как $\varphi:(R;+)\to(L;+)$ гомоморфизм групп, то можем применять <a href="./discrete_math9.8.html#Theorem9.25">теорему 9.25.</a>
+<ol>
+<li>По п. 1 <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25</a>
+$$
+A&lt;R\Rightarrow(A;+)&lt;(R;+)\Rightarrow((\varphi(A);+)&lt;(L;+)\,\wedge\,\varphi^{-1}(\varphi(A))=A+\ker{\varphi}).
+$$
+По <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.1</a> для того чтобы доказать, 
+что $\varphi(A)&lt;L$ осталось доказать замунутость $\varphi(A)$ относительно умножения
+$$
+\alpha,\beta\in\varphi(A)\Rightarrow\exists{a},b\in{A}:(\varphi(a)=\alpha\,\wedge\,\varphi(b)=\beta)\Rightarrow
+\alpha\beta=\varphi(a)\varphi(b)=\varphi(ab)\in\varphi(A).
+$$
+</li>
+<li>По п. 2 <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25</a>
+$$B&lt;L\Rightarrow(B;+)&lt;(L;+)\Rightarrow(\varphi^{-1}(B);+)&lt;(R;+).$$
+По <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.1</a> для того чтобы доказать, 
+что $\varphi^{-1}(B)&lt;R$ осталось доказать замкнутость $\varphi^{-1}(B)$ относительно умножения
+$$
+\alpha,\beta\in\varphi^{-1}(B)\Rightarrow\exists{a},b\in{B}:(\varphi(\alpha)=a\,\wedge\,\varphi(\beta)=b)\Rightarrow
+\varphi(\alpha\beta)=\varphi(\alpha)\varphi(\beta)=ab\in{B}\Rightarrow\alpha\beta\in\varphi^{-1}(B).
+$$
+Так как
+$$a\in\varphi(\varphi^{-1}(B))\Rightarrow\exists{b}\in\varphi^{-1}(B):\varphi(b)=a\Rightarrow{a}\in{B}$$
+и
+$$a\in{B}\cap\varphi(R)\Rightarrow\exists{b}\in\varphi^{-1}(B):\varphi(b)=a\Rightarrow{a}\in\varphi(\varphi^{-1}(B)),$$
+то $\varphi(\varphi^{-1}(B))=B\cap\varphi(R)$.
+</li>
+<li>По пункту 1 
+$$A\vartriangleleft{R}\Rightarrow{A}&lt;R\Rightarrow\varphi(A)&lt;\varphi(R)&lt;L.$$
+Пусть $a\in\varphi(A)$, $r\in\varphi(R)$, тогда
+$$\exists\alpha\in{A},\rho\in{R}:(\varphi(\alpha)=a\,\wedge\varphi(\rho)=r)\Rightarrow{a}r=\varphi(\alpha)\varphi(\rho)=\varphi(\alpha\rho)\in\varphi(A),$$
+аналогично показывается, что $ra\in\varphi(A)$, следовательно, $\varphi(A)\vartriangleleft\varphi(R)$.
+</li>
+<li>По пункту 2
+$$B\vartriangleleft{L}\Rightarrow{B}&lt;L\Rightarrow\varphi^{-1}(B)&lt;R.$$
+Пусть $a\in\varphi^{-1}(B)$, $r\in{R}$, тогда
+$$(\varphi(a)\in{B}\,\wedge\varphi(r)\in{L})\Rightarrow\varphi(ar)=\varphi(a)\varphi(r)\in{B}\Rightarrow{a}r\in\varphi^{-1}(B),$$
+аналогично показыватеся, что $ra\in\varphi^{-1}(B)$ и тогда $\varphi^{-1}(B)\vartriangleleft{R}$.
+</li>
+</ol>
+
+<h4 id="17.6">17.6 Разложение кольца в прямую сумму подколец.</h4>
+
+<p id="Definition17.10"><b>Определение 17.10:</b><br>
+Кольцо $(R;+,\cdot)$ разложимо, если существуют собственные идеалы $I_1,\ldots,I_t$, $t\geq2$ кольца $R$ такие, 
+что $R=I_1+\cdots+I_t$ и $(R;+)=(I_1;+)\dotplus\cdots\dotplus(I_t,+)$. При этом обозначают 
+$R=I_1\dotplus\cdots\dotplus{I}_t$.<br>
+В противном случае кольцо $R$ называют неразложимым.
+<p id="Example17.3"><b>Пример 17.3:</b><br>
+Кольцо $\mathbb{Z}$ не разложимо, так как по <a href="./discrete_math17.3.html#Theorem17.1">теореме 17.1</a> любой идеал кольца $\mathbb{Z}$ имеет вид 
+$n\mathbb{Z}$. Тогда для любых двух идеалов $n\mathbb{Z}$, $m\mathbb{Z}$ 
+$$n\mathbb{Z}\cap{m}\mathbb{Z}=[m,n]\mathbb{Z}\neq\{0\},$$ 
+следовательно, по п. 3 <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12</a> кольцо $\mathbb{Z}$ не разложимо.
+<p id="Note17.7"><b>Замечание 17.7:</b><br>
+Пусть $R$ - кольцо и $R=I_1\dotplus\cdots\dotplus{I}_t$, $r,r'\in{R}$, тогда
+$$
+\exists{i}_1,i'_1\in{I}_1,\ldots,i_t,i'_t\in{I}_t:(r=i_1+\cdots+i_t\,\wedge\,r'=i'_1+\cdots+i'_t)\Rightarrow
+\begin{cases}r+r'=(i_1+i'_1)+\cdots(i_t+i'_t) \\ rr'=\left(\sum_{k=1}^ti_k\right)\left(\sum_{s=1}^ti'_s\right)=\sum_{k,s=1}^ti_ki'_s=
+\sum_{k=1}^ti_ki'_k\end{cases}
+$$
+где последнее равенство в силу того что для любых $k,s\in\overline{1,t}$ $i_ki'_s\in{I}_k\cap{I}_s$, 
+а по п. 3 <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12</a> для любых различных $k,s\in\overline{1,t}$ $I_k\cap{I}_s=\{0\}$  
+<p id="Statement17.14"><b>Утверждение 17.14:</b><br>
+Пусть $R$ - кольцо, $t\geq2$, $R=I_1\dotplus\cdots\dotplus{I}_t$, для любого $I_j\neq\{0\}$, тогда
+<ol>
+<li>кольцо $R$ содержит делители нуля,</li>
+<li>кольцо $R$ коммутативно тогда и только тогда, когда для любого $j\in\overline{1,t}$ $I_j$ - коммутатаивно,</li>
+<li>кольцо $R$ с единицей тогда и только тогда, когда для любого $j\in\overline{1,t}$ $I_j$ - с единицей,</li>
+<li>если $(i_1,\ldots,i_t)\in{I}_1\times\cdots\times{I}_t$, $r:=i_1+\cdots+i_t$, то $r$ - 
+обратим в $R$ тогда и только тогда, когда для любого $i_j\in\overline{1,t}$ $i_j\in{I}_j$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+Так как $t\geq2$ и для любого $j\in\overline{1,t}$ $I_j\neq\{0\}$, то существуют два различных числа $k,s\in\overline{1,t}$ и 
+существуют $i_k\in{I}_k\backslash\{0\}$, $i_s\in{I}_s\backslash\{0\}$, тогда по замечанию 17.7 $i_ki_s=0$, то есть $i_k$ - делитель нуля.
+</li>
+<li>
+$\Rightarrow)$ Очевидно.<br>
+$\Leftarrow)$ Следует из замечания 17.7.
+</li>
+<li>
+$\Rightarrow)$ Пусть $e=e_1+\cdots+e_t$ разложение единицы кольца $R$ в сумму элементов $I_1,\ldots,I_t$. 
+Фиксируем $j\in\overline{1,t}$ и $b_j\in{I}_j$, тогда
+$$
+\forall{i}\in\overline{1,t}(i\neq{j}\Rightarrow{b}_je_i=0)\Rightarrow{b}_j=b_je=b_j(e_1+\cdots+e_t)=b_je_j.
+$$
+Аналогично $e_jb_j=b_j$, следовательно, $e_j$ единица кольца $I_j$.<br>
+$\Leftarrow)$ Пусть $r=i_1+\cdots+i_t\in{R}$, где для любого $j\in\overline{1,t}$ $i_j\in{I}_j$, тогда 
+$$r=i_1+\cdots+i_t=i_1e_1+\cdots+i_te_t=(i_1+\cdots+i_t)(e_1+\cdots+e_t)=r(e_1+\cdots+e_t).$$
+Аналогично $(e_1+\cdots+e_t)r=r$, то есть $e_1+\cdots+e_t$ -- единица кольца $R$.
+</li>
+<li>
+Пусть $e=e_1+\cdots+e_t$ разложение единицы кольца $R$ в элементы $I_1,\ldots,I_t$.<br>
+$\Rightarrow)$ Пусть $r=i_1+\cdots+i_t\in{R}$, $r^{-1}=i'_1+\cdots+i'_t$, где для любого $j\in\overline{1,t}$ $i_j,i'_j\in{I}_j$, тогда
+$$rr^{-1}=(i_1+\cdots{i}_t)(i'_1+\cdots+i'_t)=i_1i'_1+\cdots+i_ti'_t=e=e_1+\cdots+e_t.$$
+Тогда из единственности разложения $e$ в элементы $I_1,\ldots,I_t$ для любого $j\in\overline{1,t}$ $i_ji'_j=e_j$. Аналогично показывается, 
+то для любого $j\in\overline{1,t}$ $i'_ji_j=e_j$, то есть $i_j\in{I}_j^*$.<br>
+$\Leftarrow)$ Из замечания 17.7 следует, что элемент $i_1^{-1}+\cdots+i_t^{-1}$ является обратным для элемента $r=i_1+\cdots+i_t$.
+</li>
+</ol>
+<p id="Statement17.15"><b>Утверждение 17.15:</b><br>
+Пусть $R$ - кольцо, $|R|=p_1^{k_1}\cdots{p}_t^{k_t}$, тогда для любого $j\in\overline{1,t}$ существует единственный идеал $I_j\vartriangleleft{R}$ такой, 
+что $|I_j|=p_j^{k_j}$, при этом $R=I_1\dotplus\cdots\dotplus{I}_t$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math10.1.html#Theorem10.4">теореме 10.4</a> группа $(R;+)$ едиственным образом раскладывается в прямую сумму своих силовских подгрупп,
+$$(R;+)=(R_{p_1};+)\dotplus\cdots\dotplus(R_{p_t};+),$$
+где для любого $j\in\overline{1,t}$ $|R_{p_j}|=p_j^{k_j}$. Докажем, что для любого $j\in\overline{1,t}$ подгруппа 
+$$R_{p_j}:=\left\{h\in{R}\,\bigl|\,\ord{h}|p_j^{k_j}\right\}=\left\{h\in{R}\,\bigl|\,{p}_j^{k_j}h=0\right\}$$
+является идеалом кольца $R$.<br>
+Фиксируем $j\in\overline{1,t}$, $h\in{R}_{p_j}$, $r\in{R}$, тогда
+$$p_j^{k_j}(rh)=r(p_j^{k_j}h)=r0=0\Rightarrow{r}h\in{R}_{p_j},$$
+аналогично показывается, что $hr\in{R}_{p_j}$, следовательно, $R_{p_j}\vartriangleleft{R}$.
+<p id="Definition17.11"><b>Определение 17.11:</b><br>
+Пусть $R_1,\ldots,R_t$ кольца, определим на множестве $R:=R_1\times\cdots\times{R}_t$ операции $+$ и $\cdot$ такие, 
+что для любых $a:=(a_1,\ldots,a_t)\in{R}$, $b:=(b_1,\ldots,b_t)\in{R}$
+$$a+b:=(a_1+b_1,\cdots,a_t+b_t),ab=(a_1b_2,\ldots,a_tb_t).$$
+Алгебра $(R;+,\cdot):=R_1\oplus\cdots\oplus{R}_t$ называется внешней прямой суммой колец $R_1,\ldots,R_t$.
+<p id="Statement17.16"><b>Определение 17.16:</b><br> 
+Пусть $R_1,\ldots,R_t$ кольца, тогда $R:=R_1\oplus\cdots\oplus{R}_t$ - разложимое кольцо. 
+<p><b>Доказательство:</b><br><br>
+Для любого $j\in\overline{1,t}$ обозначим 
+$$\overline{R}_j:=\{(\underbrace{0,\ldots,0}_{j-1},b_j,0,\ldots,0)\in{R}\mid{b}_j\in{R}_j\}.$$
+Тогда для любого $j\in\overline{1,t}$ $\overline{R}_j\vartriangleleft{R}$ и при этом $R=\overline{R}_1\dotplus\cdots\dotplus\overline{R}_t$.
+<p id="Note17.8"><b>Замечание 17.8:</b><br>
+<ol>
+<li>Если $R$ - разложимое кольцо и $R=I_1\dotplus\cdots\dotplus{I}_t$, то $R\cong{I}_1\oplus\cdots\oplus{I}_t$.</li>
+<li>Пусть $R_1,\ldots,R_t$ кольца, $R:=R_1\oplus\cdots\oplus{R}_t$, для любого $j\in\overline{1,t}$ ${R_j\cong{R}'_j}$, $\varphi_j:R_j\to{R}'_j$ - 
+изоморфизм, $R':=R'_1\oplus\cdots\oplus{R}'_t$. Определим отображение $\varphi:R\to{R}'$ такое, 
+что для любого $r:=(r_1,\ldots,r_t)\in{R}$ $\varphi(r):=(\varphi_1(r_1),\ldots,\varphi_t(r_t))$. Несложно видеть, что отображение $\varphi$ - 
+изоморфизм, то есть $R\cong{R}'$.
+</li>
+</ol>
+<p id="Statement17.17"><b>Утверждение 17.17:</b><br>
+Если $n=p_1^{k_1}\cdots{p}_t^{k_t}$ каноническое разложение числа $n\in\mathbb{N}$, 
+то $\mathbb{Z}/n\cong\mathbb{Z}/p_1^{k_1}\oplus\cdots\oplus\mathbb{Z}/p_t^{k_t}$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math17.5.html#Statement17.15">утверждению 17.15</a> $\mathbb{Z}/n=I_1\dotplus\cdots\dotplus{I}_t$, 
+где для любого $i\in\overline{1,t}$ при $n_j:=n/p_j^{k_j}$
+$$I_j=n_j\mathbb{Z}/n:=\{n_j[k]_n\mid{k}\in\mathbb{Z}\}=\left\{[n_jk]_n\mid{k}\in\overline{0,p_j^{k_j}-1}\right\}.$$
+Для любого $j\in\overline{1,t}$ определим отображение 
+$$\varphi_j:I_j\to\mathbb{Z}/p_j^{k_j}:\forall{k}\in\overline{0,p_j^{k_j}-1}\left(\varphi_j([n_jk]_n)=[n_jk]_{p_j^{k_j}}\right).$$
+Фиксируем $j\in\overline{1,t}$ и докажем, что $\varphi_j$ изоморфизм.
+<ol>
+<li>Фиксируем $k,m\in\overline{0,p_j^{k_j}-1}$, так как $(p_j^{k_j},n_j)=1$, то 
+$$
+[n_jk]_n=[n_jm]_n\Leftrightarrow{n}|n_j(k-m)\Leftrightarrow{p}_j^{k_j}|(k-m)\Leftrightarrow
+{p}_j^{k_j}|n_j(k-m)\Leftrightarrow[n_jk]_{p_j^{k_j}}=[n_jm]_{p_j^{k_j}}.
+$$
+Таким образом, отображение $\varphi_j$ корректно и инъективно.
+<li>Так как $|I_j|=p_j^{k_j}=|\mathbb{Z}/p_j^{k_j}|$, то из пункта 1 следует, что отображение $\varphi_j$ биективно.</li>
+<li>Пусть $*\in\{+,\cdot\}$, тогда 
+$$
+\varphi([n_jk]_n*[n_jm]_n)=\varphi([n_jk*n_jm]_n)=[n_jk*n_jm]_{p_j^{k_j}}=[n_jk]_{p_j^{k_j}}*[n_jm]_{p_j^{k_j}}=\varphi([n_jk]_n)*\varphi([n_jm]_n)
+$$
+</li>
+</ol>
+Таким образом, отображение является изоморфизмом, то есть $I_j\cong\mathbb{Z}/p_j^{k_j}$. 
+Тогда по п. 1 замечания 17.8 $\mathbb{Z}/n\cong{I}_1\oplus\cdots\oplus{I}_t$ и по п. 2 замечания 17.8 
+$\mathbb{Z}/n\cong\mathbb{Z}/p_1^{k_1}\oplus\cdots\oplus\mathbb{Z}/p_t^{k_t}$.
+<p id="Corollary17.7"><b>Следствие 17.7:</b><br>
+Кольцо $\mathbb{Z}/n$ не разложимо тогда и только тогда, когда существует простое $p$ и $k\in\mathbb{N}$ такие, что $n=p^k$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Противное противоречит утверждению 17.17.<br>
+$\Leftarrow)$ Докажем от противного. Предположим, что $\mathbb{Z}=I_1\dotplus{I}_2$, тогда 
+$$
+(\mathbb{Z}/n;+)=(I_1;+)\dotplus(I_2;+)\Rightarrow|I_1||I_2|=n\Rightarrow(p\bigl||I_1|\,\wedge\,p\bigl||I_2|).
+$$
+Тогда по <a href="./discrete_math9.10.html#Lemma9.3">лемме 9.3</a> существуют подгруппы $G_1&lt;(I_1;+)$, $G_2&lt;(I_2;+)$ такие, что $|G_1|=|G_2|=p$. 
+Но тогда $G_1,G_2$ подгруппы циклической группы $(\mathbb{Z}/n;+)$, которая по <a href="./discrete_math10.1.html#Theorem10.3">теореме 10.3</a>
+может иметь только одну подгруппу порядка $p$. Следовательно, $G_1=G_2\subset{I}_1\cap{I}_2$, следовательно, 
+по <a href="./discrete_math9.4.html#Theorem9.12">теореме 9.12</a> сумма $I_1+I_2$ не может быть прямой.
+<p id="Note17.9"><b>Замечание 17.9:</b><br>
+В соответствии с п. 2 замечания 17.8 при $n=p_1^{k_1}\cdots{p}_t^{k_t}$ изоморфизм 
+$\varphi:\mathbb{Z}/n\to\mathbb{Z}/p_1^{k_1}\oplus\cdots\oplus\mathbb{Z}/p_t^{k_t}$ определяется как 
+$$\forall{a}\in\mathbb{Z}/n\left(\varphi([a]_n):=\left([a]_{p_1^{k_1}},\ldots,[a]_{p_t^{k_t}}\right)\right).$$
+<p id="Theorem17.5"><b>Теорема 17.5:</b><br>
+Пусть $\varphi:A\to{B}$ мономорфизм колец, $A\cap{B}=\varnothing$, тогда существует кольцо $C$ такое, что $A&lt;C$ и 
+существует изоморфизм ${\psi:C\to{B}}$ такой, что для любого $a\in{A}$ $\psi(a)=\varphi(a)$.
+<p><b>Доказательство:</b><br><br>
+Положим $C:=(B\backslash\varphi(A))\cup{A}$ и
+$$\psi:C\to{B}:\forall{c}\in{C}\left(\varphi(c)=\begin{cases}\varphi(c),&c\in{A} \\ c,&c\notin{A}\end{cases}\right).$$
+Поскольку $\varphi$ мономорфизм, то отображение $\psi$ инъективно. При этом
+$$(A\cap{B}=\varnothing\wedge|\varphi(A)|=|A|\wedge\varphi(A)\subset{B})\Rightarrow|C|=|B|-|\varphi(A)|+|A|=|B|.$$
+Таким образом, отображение $\psi$ биективно.<br>
+Определим на множестве $C$ операции $\overline{+}$, $\overline{\cdot}$, так что 
+$$
+*\in\{+,\cdot\}\Rightarrow\forall{c}_1,c_2\in{C}(c_1\overline{*}c_2=\psi^{-1}(\psi(c_1)*\psi(c_2))
+$$
+Следовательно,
+$$*\in\{+,\cdot\}\Rightarrow\forall{c}_1,c_2\in{C}(\psi(c_1\overline{*}c_2)=\psi(c_1)*\psi(c_2)).$$
+Таким образом, $\psi:(C;\overline{+},\overline{\cdot})\to(B;+,\cdot)$ - изоморфизм, следовательно, $(C;\overline{+},\overline{\cdot})$ - кольцо.<br>
+Так как $A\subset{C}$ и для любых $a_1,a_2\in{A}$
+$$
+*\in\{+,\cdot\}\Rightarrow{a}_1\overline{a}_2=\psi^{-1}(\psi(a_1)*\psi(a_2))=
+\psi^{-1}(\varphi(a_1)*\varphi(a_2))=\psi^{-1}(\varphi(a_1*a_2))=\psi^{-1}(\psi(a_1*a_2))=a_1*a_2
+$$
+Таким образом, $A&lt;C$.
+
+<br><br>
+<a href="discrete_math17.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.1.html">next</a>
+</body>
+</html>

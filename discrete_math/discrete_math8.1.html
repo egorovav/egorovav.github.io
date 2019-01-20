@@ -1,0 +1,370 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 8.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math7.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math8.3.html">next</a>
+<br>
+
+<h3 id="8">8. Кольца вычетов.</h3>
+<h4 id="8.1">8.1 Сравнение по модулю.</h4>
+Далее везде в данном разделе используются следующие обозначения: $P$ - поле, $R\in\{\mathbb{Z},P[x]\}$, 
+элемент $m\in{R}\backslash\{0\}$ называют модулем, для любого $a\in{R}$ остаток от деления $a$ на $m$ обозначают $r_m(a)$.
+<p id="Definition8.1"><b>Опредление 8.1:</b><br>
+Говорят, что элементы $a,b\in{R}$ сравнимы по модулю $m$, если $r_m(a)=r_m(b)$. При этом пишут $a\equiv{b}\pmod{m}$, или $a\equiv{b}\pod{m}$, 
+или $a\underset{{}^m}{\equiv}b$.
+<p id="Theorem8.1"><b>Теорема 8.1:</b><br>
+$$\forall{a},b\in{R}(a\equiv{b}(m)\Leftrightarrow{m}|(a-b)).$$
+<p><b>Доказательство:</b><br><br>
+Разделим с остатком элементы $a$ и $b$ на $m$, тогда существуют $q_1,q_2\in{R}$ такие, что 
+$$
+a=mq_1+r_m(a),\\ b=mq_2+r_m(b).
+$$
+$\Rightarrow)$ 
+$$
+a\equiv{b}(m)\Rightarrow{r}_m(a)=r_m(b)\Rightarrow{a}-b=m(q_1-q_2)\Rightarrow{m}|(a-b)
+$$
+$\Leftarrow)$
+$$
+a-b=m(q_1-q_2)+r_m(a)-r_m(b)\Rightarrow(m|(a-b)\Rightarrow{m}|(r_m(a)-r_m(b)))
+$$
+<ol>
+<li>Пусть $R=\mathbb{Z}$, тогда 
+$$m|(r_m(a)-r_m(b))\Rightarrow(|m|\leq|r_m(a)-r_m(b)|\,\vee\,r_m(a)-r_m(b)=0).$$
+Первая альтернатива не возможна, так как по определению остатка 
+$$
+(0\leq{r}_m(a)<|m|\,\wedge\,0\leq{r}_m(b)<|m|)\Rightarrow|r_m(a)-r_m(b)|\leq\max{\{r_m(a),r_m(b)\}}<|m|,
+$$
+следовательно, верно второе $r_m(a)-r_m(b)=0$, то есть $r_m(a)=r_m(b)$.
+</li>
+<li>Пусть $R=p[x]$. Так как по определению остатка $\deg{r_m(a)}<\deg{m}$, $\deg{r_m(b)}<\deg{m}$, то $\deg{(r_m(a)-r_m(b))}<\deg{m}$, следовательно,
+$$
+m|(r_m(a)-r_m(b))\Rightarrow\exists{g}\in{P}[x]:r_m(a)-r_m(b)=gm\Rightarrow\deg{m}+\deg{g}=\deg{(r_m(a)-r_m(b))}<\deg{m}\Rightarrow
+\deg{g}=-\infty\Rightarrow{g}=0\Rightarrow{r}_m(a)=r_m(b).
+$$
+</ol>
+<p id="Note8.1"><b>Замечание 8.1:</b><br>
+Если элементы $m_1,m_2\in{R}\backslash\{0\}$ ассоциированы, то
+$$
+\exists{u}\in{R}^*:m_1=um_2\Rightarrow(a\equiv{b}\pod{m_1}\Leftrightarrow{m}_1|(a-b)\Leftrightarrow{m}_2|(a-b)\Leftrightarrow{a}\equiv{b}\pod{m_2}).
+$$
+<ol>
+<li>Если $R=\mathbb{Z}$, то $R^*=\{-1,1\}$, то есть если модуль $m$ отрицателен, 
+то существует положительный модуль $(-m)$ эквивалентный ему с точки зрения отношения сравнимости. 
+Так что далее без ограничения общности будем считать, что если $m\in\mathbb{Z}$, то $m&gt;0$.
+</li>
+<li>Если $R=P[x]$, то по <a href="./discrete_math7.4.html#Statement7.3">утверждению 7.3</a> для любого $m\in{P}[x]\backslash\{0\}$ 
+существует ассоциированный с ним унитарный многочлен $m^*$ эквивалентный многочлену $m$ с точки зрения отношения сравнимости. 
+Так что далее без ограничения общности будем считать, что если $m\in{P}[x]$, то $m$ - унитарен.
+</li>
+</ol>
+<p id="Note8.2"><b>Замечание 8.2:</b><br>
+Отношение сравнимости по модулю $m$ является отношением эквивалентности.<br>
+Рефлексивность.
+$$\forall{a}\in{R}(a-a=0\Rightarrow{m}|(a-a)\Rightarrow{a}\equiv{a}\pod{m}).$$
+Симметричность. 
+$$\forall{a},b\in{R}(a\equiv{b}\pod{m}\Rightarrow{m}|(a-b)\Rightarrow{m}|(b-a)\Rightarrow{b}\equiv{a}\pod{m}).$$
+Транзитивность.
+$$
+\forall{a},b,c\in{R}(a\equiv{b}\pod{m}\,\wedge\,b\equiv{c}\pod{m}\Rightarrow{m}|(a-b)\,\wedge\,m|(b-c)\Rightarrow
+{m}|((a-b)+(b-c))\Rightarrow{m}|(a-c)\Rightarrow{a}\equiv{c}\pod{m}).
+$$
+<p id="Theorem8.2"><b>Теорема 8.2:</b><br>
+Пусть $a,b,c,d\in{R}$, тогда
+<ol>
+<li>$(a\equiv{b}\pod{m}\,\wedge\,c\equiv{d}\pod{m})\Rightarrow{a}c\equiv{b}d\pod{m}$,</li>
+<li>$(a\equiv{b}\pod{m}\,\wedge\,c\equiv{d}\pod{m})\Rightarrow{a}+c\equiv{b}+d\pod{m}$,</li>
+<li>Если $d\neq0$, $d|a$, $d|b$, $d|m$, то 
+$$a\equiv{b}\pod{m}\Leftrightarrow\frac{a}{d}\equiv\frac{b}{d}\;\left(\frac{m}{d}\right).$$
+</li>
+<li>Если $d|a$, $d|b$, $(d,m)=e$, то
+$$a\equiv{b}\pod{m}\Leftrightarrow\frac{a}{d}\equiv\frac{b}{d}\pod{m}.$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math8.1.html#Theorem8.1">теореме 8.1</a>
+$$
+\begin{cases}a\equiv{b}\pod{m} \\ c\equiv{d}\pod{m}\end{cases}\Rightarrow\begin{cases}m|(a-b) \\ m|(c-d)\end{cases}\Rightarrow\begin{cases}m|(ac-bc) \\ 
+m|(bc-bd)\end{cases}\Rightarrow{m}|((ac-bc)+(bc-bd))\Rightarrow{m}|(ac-bd)\Rightarrow
+ac\equiv{b}d\pod{m}
+$$
+<li>По <a href="./discrete_math8.1.html#Theorem8.1">теореме 8.1</a></li>
+$$
+\begin{cases}a\equiv{b}\pod{m} \\ c\equiv{d}\pod{m}\end{cases}\Rightarrow\begin{cases}m|(a-b) \\ 
+m|(c-d)\end{cases}\Rightarrow{m}|((a-b)+(c-d))\Rightarrow{m}|((a+c)-(b+d))\Rightarrow{a}+c\equiv{b}+d\pod{m}
+$$
+<li>По <a href="./discrete_math8.1.html#Theorem8.1">теореме 8.1</a></li>
+$$
+a\equiv{b}\pod{m}\Leftrightarrow{m}|(a-b)\Leftrightarrow\exists{q}\in{R}:a-b=mq\Leftrightarrow{d}\left(\frac{a}{d}-\frac{b}{d}\right)=
+d\left(\frac{m}{d}q\right),
+$$
+так как $d\neq0$ и в кольце $R\in\{\mathbb{Z},{P}[x]\}$ нет делителей нуля, то последнее выражение эквивалентно
+$$
+\frac{a}{d}-\frac{b}{d}=\frac{m}{d}q\Leftrightarrow\left.\frac{m}{d}\right|\left(\frac{a}{d}-\frac{b}{d}\right)\Leftrightarrow
+\frac{a}{d}\equiv\frac{b}{d}\;\left(\frac{m}{d}\right)
+$$
+</li>
+<li>По <a href="./discrete_math8.1.html#Theorem8.1">теореме 8.1</a>,  п. 2 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a> и п. 2 
+<a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a>
+$$
+a\equiv{b}\pod{m}\Leftrightarrow{m}|(a-b)\Leftrightarrow{m}\left|\left(d\left(\frac{a}{d}-\frac{b}{d}\right)\right)\right.\Leftrightarrow
+{m}\left|\left(\frac{a}{d}-\frac{b}{d}\right)\right.\Leftrightarrow\frac{a}{d}\equiv\frac{b}{d}\pod{m}
+$$
+</li>
+</ol>
+<p id="Corollary8.1"><b>Следствие 8.1:</b><br>
+Пусть $a,b,c\in{R}$, $a\equiv{b}\pod{m}$ тогда
+<ol>
+<li>$ac\equiv{b}c\pod{m}$,</li>
+<li>$a+c\equiv{b}+c\pod{m}$,</li>
+<li>$\forall{k}\in\mathbb{N}(a^k\equiv{b}^k\pod{m})$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Следует из п. 1 теоремы 8.2, так как $c\equiv{c}\pod{m}$.</li>
+<li>Следует из п. 2 теоремы 8.2, так как $c\equiv{c}\pod{m}$.</li>
+<li>Докажем индукцией по $k$. 
+<ol type="I">
+<li>При $k=1$ утверждение следует из условия.</li>
+<li>Пусть для любого $n\geq1$ утверждение верно при $k\in\overline{1,n}$, докажем, что оно верно при $k=n+1$.<br>
+Так как $a\equiv{b}\pod{m}$ по условию, а $a^n\equiv{b}^n\pod{m}$ по предположению индукции, то по п. 1 теоремы 8.2
+$$aa^n\equiv{b}b^n\pod{m}\Rightarrow{a}^{n+1}\equiv{b}^{n+1}\pod{m}.$$
+</li>
+</ol>
+</li>
+</ol>
+<p id="Corollary8.2"><b>Следствие 8.2:</b><br>
+Пусть $a,b\in{R}$, тогда
+<ol>
+<li>$a\equiv{r}_m(a)\pod{m}$,</li>
+<li>$r_m(ab)=r_m(r_m(a)r_m(b))$,</li>
+<li>$r_m(a+b)=r_m(r_m(a)+r_m(b))$,</li>
+<li>$r_m(a^k)=r_m(r_m(a)^k)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По определению делимости и <a href="./discrete_math8.1.html#Theorem8.1">теореме 8.1</a>
+$$
+\exists{q}\in{R}:a=mq+r_m(a)\Rightarrow{a}-r_m(a)=mq\Rightarrow{m}|(a-r_m(a))\Rightarrow{a}\equiv{r}_m(a)\pod{m}.
+$$
+</li>
+<li>По пункту 1 $a\equiv{r}_m(a)\pod{m}$, $b\equiv{r}_m(b)\pod{m}$, тогда по п. 1 теоремы 8.2 $ab\equiv{r}_m(a)r_m(b)\pod{m}$, 
+что эквивалентно доказываемому по опредлению сравнимости.
+</li>
+<li>По пункту 1 $a\equiv{r}_m(a)\pod{m}$, $b\equiv{r}_m(b)\pod{m}$, тогда по п. 2 теоремы 8.2 $a+b\equiv{r}_m(a)+r_m(b)\pod{m}$, 
+что эквивалентно доказываемому по определению сравнимости.
+</li>
+<li>По пункту 1 $a\equiv{r}_m(a)\pod{m}$, тогда по п. 3 следствия 8.1 ${a^k\equiv{r}_m(a)^k\pod{m}}$, 
+что эквивалентно доказываемому по определению сравнимости.
+</li>
+</ol>
+
+<h4 id="8.2">8.2 Классы вычетов.</h4>
+Пусть $R\in\{\mathbb{Z},P[x]\}$, $m\in{R}\backslash\{0\}$. Как было показано в <a href="./discrete_math8.1.html#Note8.2">замечании 8.2</a> 
+отношение $\equiv\pmod{m}$ сравнимости по модулю $m$ является отношением эквивалентности на $R$. 
+Тогда по <a href="./discrete_math2.3.html#Theorem2.2">теореме 2.2</a> 
+можно разбить множество элементов кольца $R$ на непересекающиеся подмножества (классы) такие, что $a,b\in{R}$ принадлежат одному классу тогда и только тогда, 
+когда $a\equiv{b}\pod{m}$. Для любого $a\in{R}$ обозначим $[a]_m\subset{R}$ класс которому принадлежит элемент $a$, тогда 
+$$
+[a]_m=\{b\in{R}\mid{a}\equiv{b}\pod{m}\}=\{b\in{R}\mid{m}|(b-a)\}=\{b\in{R}\mid\exists{q}\in{R}:b-a=mq\}=\{a+mt\mid{t}\in{R}\}.
+$$
+Обозначим $R/m:=\{[a]_m\mid{a}\in{R}\}$. По п. 1 <a href="./discrete_math8.1.html#Corollary8.1">следствия 8.1</a>
+$$a\equiv{r}_m(a)\pod{m}\Rightarrow{r}_m(a)\in[a]_m\Rightarrow[a]_m=[r_m(a)]_m.$$
+Так как в случае $R=\mathbb{Z}$ $0\leq{r}_m(a)&lt;m$, то $\mathbb{Z}/m=\{[0]_m,[1]_m,\ldots,[m-1]_m\}$, 
+а при $R=P[x]$ и $\deg{(f(x))}=n$ $P[x]/f(x)=\{[g(x)]\mid\deg{(g(x))}&lt;n\}$. Таким образом $|\mathbb{Z}/m|=m$, $|P[x]/f(x)|=|P|^n$.<br>
+Введем на множетсве $R/m$ бинарные операции $+$ и $\cdot$ такие, что для любых $[a],[b]\in{R}/m$ $[a]+[b]=[a+b]$, $[a]\cdot[b]=[ab]$. 
+Введенные операции корректны так как для любых $a_1,b_1,a_2,b_2\in{R}$ таких, что 
+$[a_1]_m=[a_2]_m$, $[b_1]_m=[b_2]_m$ по п. 1 <a href="./discrete_math8.1.html#Theorem8.2">теоремы 8.2</a>
+$$
+\begin{cases}[a_1]_m=[a_2]_m\\{[b_1]}_m=[b_2]_m\end{cases}\Rightarrow\begin{cases}a_1\equiv{a}_2\pod{m} \\ b_1\equiv{b}_2\pod{m}\end{cases}\Rightarrow
+{a}_1b_1\equiv{a}_2b_2\pod{m}\Rightarrow[a_1b_1]_m=[a_2b_2]_m.
+$$
+Аналогично показывается, что $[a_1]_m+[b_1]_m=[a_2]_m+[b_2]_m$.
+<p id="Theorem8.3"><b>Теорема 8.3:</b><br>
+Алгебра $(R/m;+,\cdot)$ является коммутативным кольцом в единицей.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Ассоциативность и коммутативнось операций $+$ и $\cdot$ в алгебре $(R/m;+,\cdot)$ следует из ассоциативности и коммутативности 
+одноименных операций в кольце $R$.
+</li>
+<li>Докажем для примера свойство дистрибутивности операции $\cdot$ относительно операции $+$. Пусть $[a],[b],[c]\in{R}/m$, тогда
+$$[a]([b]+[c])=[a][b+c]=[a(b+c)]=[ab+ac]=[ab][ac]=[a][b]+[a][c]$$
+</li>
+<li>Нулем и единицей в $(R/m;+,\cdot)$ являются классы [0], [e], где $0,e\in{R}$ нуль и единица кольца $R$.</li>
+<li>Так как для любого $[a]\in{R}/m$ $[a]+[-a]=[a-a]=[0]$, то класс $[-a]$ является противоположным к $[a]$.</li>
+</ol>
+<br>
+Кольцо $(R/m;+,\cdot)$ называют кольцом классов вычетов по модулю $m$.
+<br>
+<p id="Theorem8.4"><b>Теоерма 8.4:</b><br>
+<ol>
+<li>$[a]_m\in(R/m)^*\Leftrightarrow(a,m)=e$.</li>
+<li>Класс $[a]\in{R}/m$ является делителем нуля тогда и только тогда, когда $(a,m)\neq{e}$ и $m\nmid{a}$.</li>
+<ol>
+<p><b>Доказательство:</b><br>
+</ol>
+<li>По теоремам <a href="./discrete_math8.1.html#Theorem8.1">8.1</a>, <a href="./discrete_math6.1.html#Theorem6.6">6.6</a> и 
+<a href="./discrete_math7.4.html#Theorem7.7">7.7</a> 
+$$
+[a]\in({R}/m)^*\Leftrightarrow\exists{b}\in{R}:[a][b]=[ab]=[e]\Leftrightarrow{a}b\equiv{e}\pod{m}\Leftrightarrow
+{m}|(e-ab)\Leftrightarrow\exists{c}\in{R}:e-ab=mc\Leftrightarrow{a}b+mc=e\Leftrightarrow(a,m)=e
+$$
+</li>
+<li>
+$\Rightarrow)$ Докажем от противного.<br>
+Предположим, что $(a,b)\neq{e}$, тогда по пункту 1 $[a]\in(R/m)^*$, следовательно, $[a]$ не делитель нуля.<br>
+Предположим, что $m|a$, тогда $r_m(a)=0$ и $[a]=[r_m(a)]=[0]$, следовательно, $[a]$ не делитель нуля.<br>
+$\Leftarrow)$ Положим $d:=(a,m)$, тогда $d|a$, $d|m$ и
+$$[a]\left[\frac{m}{d}\right]=\left[\frac{am}{d}\right]=\left[m\frac{a}{d}\right]=[0].$$
+Если $m\nmid{a}$, то $r_m(a)\neq0$ и $[a]\neq[0]$.<br>
+Если $d\neq{e}$, предположим, что $\frac{m}{d}\equiv0\pod{m}$, тогда
+$$\exists{q}\in{R}:\frac{m}{d}=mq=\frac{m}{d}dq\Rightarrow{d}q=1$$
+<ul>
+<li>Если $R=\mathbb{Z}$, то такое возможно только если $d=q=1$, так как $d&gt;0$.</li>
+<li>Если $R=P[x]$, то $\deg{d}+\deg{q}=0$, следовательно, $d=e$, так как $d$ примарный многочлен.</li>
+</ul>
+Таким образом пришли к противоречию с предпосылкой, что $d\neq{e}$, следовательно, $\left[\frac{m}{d}\right]\neq[0]$. В итоге получили
+<ol type="a">
+<li>$[a]\left[\frac{m}{d}\right]=[0]$,</li>
+<li>$m\nmid{a}\Rightarrow[a]\neq[0]$,</li>
+<li>$(a,m)\neq{e}\Rightarrow\left[\frac{m}{d}\right]\neq[0]$,</li>
+</ol>
+следовательно, $[a]$ делитель нуля.
+</li>
+</ol>
+<p id="Corollary8.3"><b>Следствие 8.3:</b><br>
+<ol>
+<li>Кольцо $\mathbb{Z}/m$ является полем тогда и только тогда, когда $m$ - простое число.</li>
+<li>Кольцо $P[x]/f(x)$ является полем тогда и только тогда, когда многочлен $f(x)$ - не приводим.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $\mathbb{Z}/m$ коммутативное кольцо с единицей, то оно будет полем тогда и только тогда, 
+когда $(\mathbb{Z}/m)^*=(\mathbb{Z}/m)\backslash\{0\}$. По теореме 8.4 это эквивалентно 
+$$
+\forall{a}\in\overline{1,m-1}((a,m)=1)\Leftrightarrow\forall{a}\in\overline{2,m-1}(a\nmid{m})\Leftrightarrow\forall{a}\notin\{1,m\}(a\nmid{m})
+$$ 
+последнее выражение означает, что $m$ - простое.
+</li>
+<li>Так как $P[x]/f(x)$ коммутативное кольцо с единицей, то оно будет полем тогда и только тогда, когда $(P[x]/f(x))^*=(P[x]/f(x))\backslash\{0\}$. 
+По теореме 8.4 это эквивалентно 
+$$
+\forall{g}(x)\in{P}[x]\backslash\{0\}(\deg{(g(x))}<\deg{(f(x))}\Rightarrow(g(x),f(x))=e))\Leftrightarrow
+\forall{g}(x)\in{P}[x]\backslash\{0\}(0<\deg{(g(x))}<\deg{(f(x))}\Rightarrow{g}(x)\nmid{f}(x))
+$$
+последнее выражение означает, что $f(x)$ - не приводим.
+</li>
+</ol>
+<p id="Example8.1"><b>Пример 8.1:</b><br>
+Если $p\in\mathbb{Z}$ простое число, то кольцо вычетов $\mathbb{Z}/p$ является полем мощности $|\mathbb{Z}/p|=p$. 
+Если при этом многочлен $f(x)\in(\mathbb{Z}/p)[x]$ такой, что $\deg{(f(x))}=k>0$ и $f(x)$ - не приводим, 
+то кольцо вычетов $(\mathbb{Z}/p)[x]/f(x)$ является полем содержащим классы вычетов образованные многочленами степени не больше $k-1$, 
+следовательно, $|(\mathbb{Z}/p)[x]/f(x)|=|\mathbb{Z}/p|^k=p^k$.<br>
+Например, пусть $p=2$, $f(x)=x^2+x+[1]_2\in(\mathbb{Z}/2)[x]$. Следовательно, так как $f([0]_2)=[0]_2+[0]_2+[1]_2=[1]_2$, 
+$f([1]_2)=[1]_2+[1]_2+[1]_2=[1]_2$, то по <a href="./discrete_math7.2.html#Theorem7.3">теореме 7.3</a> многочлен $f(x)$ степени 2 
+не имеет делителей степени 1, тогда многочлен $f(x)$ не приводим над $\mathbb{Z}/2$. Тогда кольцо вычетов 
+$$(\mathbb{Z}/2)[x]/f(x)=\{[0]_{f(x)}, [1]_{f(x)}, [x]_{f(x)}, [x+1]_{f(x)}\}$$ 
+является полем мощности $p^2=2^2=4$.<br>
+Пусть $p=3$, $f(x)=x^2+[1]_3\in(\mathbb{Z}/3)[x]$. Тогда, так как $f([0]_3)=[1]_3$, $f([1]_3)=[1]_3+[1]_3=[2]_3$, 
+$f([2]_3)=[2]_3[2]_3+[1]_3=[1]_3+[1]_3=[2]_3$, то многочлен $f(x)$ не приводим над $\mathbb{Z}/3$. 
+Тогда кольцо вычетов $(\mathbb{Z}/3)[x]/f(x)$ является полем мощности $p^2=3^2=9$.
+<p id="Definition8.2"><b>Следствие 8.2:</b><br>
+Функцией Эйлера называется функция $\varphi(m):\mathbb{N}\to\mathbb{N}$ такая, 
+что для любого $m\in\mathbb{N}$ $\varphi(m)=|\{a\in\overline{1,m}\mid(a,m)=1\}|$.<br>
+То есть $\varphi(m)$ равно количеству чисел меньших $m$ и взаимнопростых с $m$.
+<p id="Corollary8.4"><b>Следствие 8.4:</b><br>
+$$\forall{m}\in\mathbb{N}(|(\mathbb{Z}/m)^*|=\varphi(m))$$
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 8.4
+<p id="Theorem8.5"><b>Теорема 8.5: Свойства функции Эйлера.</b><br>
+<ol>
+<li>Если $p\in\mathbb{N}$ - простое, то $\varphi(p)=p-1$.</li>
+<li>Если $p\in\mathbb{N}$ - простое, то $\varphi(p^k)=p^k-p^{k-1}=p^{k-1}(p-1)$.</li>
+<li>$\forall{m}_1,m_2\in\mathbb{N}((m_1,m_2)=1\Rightarrow\varphi(m_1m_2)=\varphi(m_1)\varphi(m_2))$.</li>
+<li>Если $m\in\mathbb{N}$ и $m=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение числа $m$, то </li>
+$$\varphi(m)=m\prod_{i=1}^s\left(1-\frac1{p_i}\right).$$
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем от противного, что для любого $a\in\overline{2,p-1}$ $(a,p)=1$. Предположим, что существует $a\in\overline{2,p-1}$ такое, 
+что $(a,p)=d&gt;1$, тогда $d|a$, следовательно, $1<d\leq{a}<p$. Следовательно, найдено $d$ такое, что $d|p$ и $d\notin\{1,p\}$, то есть $p$ не простое. 
+Получено противоречие. Таким образом для любого $a\in\overline{1,p-1}$ $(a,p)=1$, то есть $\varphi(p)=p-1$, так как по понятным причинам, 
+для любого $m\in\mathbb{N}$ $\varphi(m)\leq{m}-1$.
+</li>
+<li>Пусть $a\in\overline{1,p^k}$, тогда по <a href="./discrete_math6.5.html#Theorem6.11">теореме 6.11</a> $(a,p)>1$ тогда и только тогда, 
+когда число $a$ содержит в своем каноническом разложении число $p$. То есть существует натуральное число $q$ такое, что $a=pq$. 
+С другой стороны, $a=pq\leq{p}^k$ тогда и только тогда, когда $q\in\overline{1,p^{k-1}}$. 
+Следовательно, $\varphi(p^k)=|\overline{1,p^k}|-|\overline{1,p^{k-1}}|=p^k-p^{k-1}$.
+</li>
+<li>Будет доказано позже при изучении теории групп (<a href="some where over the rainbow">следствие 10.4</a>).</li>
+<li>По пунктам 3 и 2
+$$
+\varphi(m)=\varphi(p_1^{k_1}\cdots{p}_s^{k_s})=\varphi(p_1^{k_1})\cdots\varphi(p_s^{k_s})=p_1^{k_1-1}(p_1-1)\cdots{p}_s^{k_s-1}(p_s-1)=
+p_1^{k_1}\cdots{p_s}^{k_s}\left(1-\frac1{p_1}\right)\cdots\left(1-\frac1{p_s}\right)=m\prod_{i=1}^s\left(1-\frac1{p_i}\right)
+$$
+</li>
+</ol>
+<p id=""><b>Теорема 8.6: Теорема Эйлера-Ферма.</b><br>
+$$\forall{a}\in\mathbb{Z}\,\forall{m}\in\mathbb{N}((a,m)=1\Rightarrow{a}^{\varphi(m)}\equiv1\pmod{m}).$$
+<p><b>Доказательство:</b><br><br>
+Так как по <a href="./discrete_math8.1.html#Corollary8.4">следствию 8.4</a> $|(\mathbb{Z}/m)^*|=\varphi(m)$, 
+можем положить $(\mathbb{Z}/m)^*=\{[a_1],\ldots,[a_{\varphi(m)}]\}$. Так как $(a,m)=1$, то по 
+<a href="./discrete_math8.1.html#Theorem8.4">теореме 8.4</a> $a\in(\mathbb{Z}/m)^*$, тогда
+$$
+\forall{i}\in\overline{1,\varphi(m)}([a][a_i]=[aa_i]\in(\mathbb{Z}/m)^*)\Rightarrow{A}:=\{[aa_i]\mid{i}\in\overline{1,\varphi(m)}\}\subset(\mathbb{Z}/m).
+$$
+С другой стороны, так как $[a]\in(\mathbb{Z}/m)^*$, то
+$$
+\forall{i},j\in\overline{1,\varphi(m)}([aa_i]=[aa_j]\Rightarrow[a][a_i]=[a][a_j]\Rightarrow[a_i]=[a_j])\Rightarrow|A|=\varphi(m)=|(\mathbb{Z}/m)^*|
+$$
+Таким образом $A=(\mathbb{Z}/m)^*$, тогда
+$$
+\prod_{i=1}^{\varphi(m)}[a_i]=\prod_{i=1}^{\varphi(m)}[aa_i]=[a^{\varphi(m)}]\prod_{i=1}^{\varphi(m)}[a_i]
+$$
+Так как произведение обратимых элементов обратимо, то можно домножить полученное равенство на элемент обратный к $\prod_{i=1}^{\varphi(m)}[a_i]$. 
+Тогда получим $[a^{\varphi(m)}]=[1]$, то есть ${a}^{\varphi(m)}\equiv1\pod{m}$.
+<p id="Corollary8.5"><b>Следствие 8.5: Малая теорема Ферма.</b><br>
+Если $p$ - простое, $a\in\mathbb{Z}$, $(a,p)=1$, то $a^{p-1}\equiv1\pmod{p}$. 
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 8.6 и п. 1 <a href="./discrete_math8.1.html#Theorem8.5">теоремы 8.5.</a>
+<p id="Corollary8.6"><b>Следствие 8.6:</b><br>
+Если $p$ - простое, $a\in\mathbb{Z}$, то $a^p\equiv{a}\pmod{m}$. 
+<p><b>Доказательство:</b><br>
+Если $(a,p)=1$, то утверждение следутет из следствия 8.5.<br>
+Если $(a,p)\neq1$, то $p|a$, тогда $a\equiv0\pod{p}$, и $a^p\equiv0\pod{p}$
+<p id="Exapmle8.2"><b>Пример 8.2:</b><br>
+Используя полученные результаты вычислим $A:=r_{35}(128^{956})$ - остаток от деления числа $128^{956}$ на $35$.<br>
+Так как $r_{35}(128)=23$, то по п. 4 <a href="./discrete_math8.1.html#Corollary8.2">следствия 8.2</a> $A=r_{35}(23^{956})$.<br>
+Так как $(35,23)=1$, можем применить <a href="./discrete_math8.1.html#Theorem8.6">теорему 8.6</a>, тогда $23^{\varphi(35)}\equiv1\pod{35}$, 
+где $\varphi(35)=\varphi(5\cdot7)=\varphi(5)\varphi(7)=4\cdot6=24$, то есть $23^{24}\equiv1\pod{35}$.<br>
+Поделив $956$ на $24$ получим $956=24\cdot39+20$, то есть $23^{956}=(23^{24})^{39}\cdot23^{20}$. По п. 1 
+<a href="./discrete_math8.1.html#Theorem8.2">теоремы 8.2</a> можем возвести сравнение $23^{24}\equiv1\pod{35}$ в $39$ степень, 
+а потом домножить на $23^{20}$, тогда получим $23^{956}=(23^{24})^{39}\cdot23^{20}\equiv23^{20}\pod{35}$. Таким образом $A=r_{35}(23^{20})$.<br>
+Далее $23^{20}=(23^2)^{10}$, $23^2=529=35\cdot15+4$, то есть $23^2\equiv4\pod{35}$, возводя это сравнение в $10$ степень получим 
+$23^{20}\equiv4^{10}\pod{35}$. Таким образом 
+$$A=r_{35}(4^{10})=r_{35}(1024^2)=r_{35}((r_{35}(1024))^2)=r_{35}(9^2)=r_{35}(81)=11.$$
+
+<br><br>
+<a href="discrete_math7.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math8.3.html">next</a>
+</body>
+</html>

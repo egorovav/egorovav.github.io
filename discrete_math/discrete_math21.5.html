@@ -1,0 +1,290 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}",
+	rank: "{\\operatorname{rank}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.7.html">next</a>
+<br>
+
+<h4 id="21.5">21.5 Биномиальное представление ЛРП.</h4>
+Линейно рекуррентные последовательности представимы как линейная комбинация более простых (биномималных) последовательностей. 
+Это позволяет получить явную формулу для вычисления $u(i)$.  
+<p id="Example21.11"><b>Пример 21.11:</b><br>
+Если $u\in{L}_{\mathbb{Z}}(x^2-x-1)$ и $u(\overline{0,1})=(1,1)$ (т. е. $u$ - последовательность Фибоначчи). То для любого $i\in\mathbb{N}_0$
+$$u(i)=\frac1{\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^{i+1}-\frac1{\sqrt{5}}\left(\frac{1-\sqrt{5}}{2}\right)^{i+1}.$$
+<p id="Definition21.17"><b>Определение 21.17:</b><br>
+Биномиальной последовательностью над кольцом $R$ с корнем $R$ порядка $l\in\mathbb{N}_0$ называется последовательность $a^{[l]}\in{R}^{\infty}$ такая, 
+что $a^{[l]}(\overline{1,l})=(0,\ldots,0,1)$ и для любого $i>l$ 
+$a^{[l]}(i)=\binom{i}{l}a^{i-l}$.<br>
+Будем считать, что $\binom{i}{l}a^{i-l}=0$, если $\binom{i}{l}=0$ или значение $a^{i-l}$ неопредлено, тогда можно считать, 
+что для любого $i\in\mathbb{N}_0$ $a^{[l]}(i)=\binom{i}{l}a^{i-l}$.
+<p id="Statement21.9"><b>Утверждение 21.9:</b><br>
+Последовательность $a^{[l]}\in{R}^{\infty}$ является импульсной последовательностью семейства $L_R((x-a)^{l+1})$.
+<p><b>Доказательство:</b><br><br>
+Так как $a^{[l]}(\overline{1,l})=(0,\ldots,0,1)$, то достаточно доказать, что $a^{[l]}\in{L}((x-a)^{l+1})$. Для любого $i\in\mathbb{N}_0$
+$$
+(x-a)a^{[l]}(i)=a^{[l]}(i+1)-aa^{[l]}(i)=\binom{i+1}{l}a^{i+1-l}-a\binom{i}{l}a^{i-l}.
+$$
+Тогда, если $l=0$, то 
+$$(x-a)a^{[l]}(i)=\binom{i+1}{0}a^{i+1}-a\binom{i}{0}a^{i}=a^{i+1}-a^{i+1}=0.$$
+Если $l&gt;0$, то 
+$$
+(x-a)a^{[l]}(i)=\left(\binom{i}{l}+\binom{i}{l-1}\right)a^{i+1-l}-\binom{i}{l}a^{i+1-l}=\binom{i}{l-1}a^{i-(l-1)}=a^{[l-1]}(i).
+$$
+Таким образом,
+$$(x-a)a^{[l]}=\begin{cases}a^{[l-1]},&l&gt;0 \\ 0,&l=0\end{cases}\Rightarrow(x-a)^{l+1}a^{[l]}=0.$$
+<p id="Statement21.10"><b>Утверждение 21.10:</b><br>
+Биномиальные последовательности $a^{[0]},a^{[1]},\ldots,a^{[l-1]}$ образуют базис модуля $L_R((x-a)^l)$.  
+<p><b>Доказательство:</b><br><br>
+По утверждению 21.9 
+$$\forall{k}\in\overline{0,l-1}(a^{[k]}\in{L}((x-a)^{k+1})),$$ 
+тогда по п. 2 <a href="./discrete_math21.3.html#Corollary21.4">следствия 21.4</a>
+$$\forall{k}\in\overline{0,l-1}(a^{[k]}\in{L}_R((x-a)^l)).$$ 
+Матрица составленная из начальных векторов импульсных последовательностей $a^{[0]},a^{[1]},\ldots,a^{[l-1]}$ имеет треугольный вид, 
+то есть обратима, тогда по п. 2 <a href="./discrete_math21.1.html#Statement21.3">утверждения 21.3</a> $a^{[0]},a^{[1]},\ldots,a^{[l-1]}$ - 
+базис модуля $L_R((x-a)^l)$
+<p id="Theorem21.7"><b>Теорема 21.7:</b><br>
+Пусть $P$ - поле, $F(x):=(x-a_1)^{l_1}\cdots(x-a_s)^{l_s}\in{P}[x]$, где для любых неравных 
+$i,j\in\overline{1,s}$ $\bigl((x-a_i)^{l_i},(x-a_j)^{l_j}\bigr)=e$, тогда множество последовательностей 
+$\left\{a_i^{[j]}\mid{i}\in\overline{1,s},j\in\overline{0,l_i-1}\right\}$ образует базис модуля $L_P(F)$.
+<p><b>Доказательство:</b><br><br>
+По п. 2 <a href="./discrete_math21.3.html#Theorem21.3">теоремы 21.3</a>
+$$L_P(F)=L_P\bigl((x-a_1)^{l_1}\bigr)\dotplus\cdots\dotplus{L}_P\bigl((x-a_s\bigr)^{l_s}).$$
+Так как по утверждению 21.10 для любого $i\in\overline{1,s}$ $a_i^{[0]},a_i^{[1]},\ldots,a_i^{[l_i-1]}$ - базис $L_P((x-a)^{l_i})$, 
+то из доказательство <a href="./discrete_math11.11.html#Theorem11.11">теоремы 11.11</a> (теорема Грассмана) следует, что множество
+$$\bigcup_{i=1}^s\left\{a_i^{[j]}\mid{j}\in\overline{0,l_i-1}\right\}=\left\{a_i^{[j]}\mid{i}\in\overline{1,s},j\in\overline{0,l_i-1}\right\}$$
+является базисом модуля $L_P(F)$.
+<p id="Note21.5"><b>Замечание 21.5:</b><br>
+Из теоремы 21.7 следует, что если $u\in{L}_P(F)$, то
+$$u=\sum_{t=1}^s\sum_{j=0}^{l_t-1}a_t^{[j]}c_{t,j},$$
+то есть для любого $i\in\mathbb{N}_0$
+$$u(i)=\sum_{t=1}^s\sum_{j=0}^{l_t-1}\binom{i}{j}a_t^{i-j}c_{t,j},$$
+где $a_t$ - корни многочлена $F(x)$, а $c_{t,j}\in{P}$ некоторые коэффициенты, которые можно найти исходя из начального вектора последовательности $u$. 
+<p id="Corollary21.6"><b>Следствие 21.6:</b><br>
+Пусть $P$ - поле, $u\in\alpha{P}^{\infty}$, тогда существует конечное алгебраическое расширение $Q$ поля $P$ такое, 
+что последовательность $u$ представима над $Q$ как линейная комбинация биномиальных последовательностей с корнями из $Q$ и коэффициентами из $Q$.
+<p><b>Доказательство:</b><br><br>
+Из <a href="./discrete_math18.5.html#Theorem18.9">теоремы 18.9</a> следует, что для любого $F(x)\in{P}[x]$ существует конечное алгебраическое расширение 
+$Q$ поля $P$ такое, что $F(x)$ раскладывается над $Q$ на линейные множители. Тогда если $u\in{L}_P(F)$, то  по теореме 21.7 ЛРП 
+$u$ представима в виде линейной комбинации биномимальных последовательностей из $Q^{\infty}$, корни которых являются корнями $F(x)$.
+<p id="Example21.12"><b>Пример 21.12:</b><br>
+Пусть $P:=\mathbb{Z}_5$, последовательность $u\in\alpha{P}^{\infty}$ такая, что для любого $i\in\mathbb{N}_0$
+$$u(i+4)=2u(i+3)+2u(i+2)+2u(i+1)+2u(i)$$
+и $u(\overline{0,3})=(0,3,0,2)$. Найдем $u(1000)$.
+<ol>
+<li>Раскладываем $F(x)$ на линейные множители. 
+$$F(x)=x^4-2x^3-2x^2-2x-2=(x-2)^3(x-1).$$
+</li>
+<li>По <a href="./discrete_math21.5.html#Theorem21.7">теореме 21.7</a> ЛРП $u$ представима в виде 
+$$u=c_12^{[0]}+c_22^{[1]}+c_32^{[2]}+c_41^{[0]}$$
+тогда для любого $i\in\mathbb{N}_0$
+$$u(i)=c_12^i+c_2i2^{i-1}+c_3\binom{i}{2}2^{i-2}+c_41^i.$$
+</li>
+<li>Так как значения $u(i)$ при $i\in\overline{0,3}$ известны, то решая СЛУ,
+$$
+\begin{cases}
+c_1+c_4			&=0	\\
+2c_1+c_2+c_4		&=3	\\
+4c_1+4c_2+c_3+c_4	&=0	\\
+8c_1+12c_2+6c_3+c_4	&=2	\\
+\end{cases}
+$$
+которая по <a href="./discrete_math21.5.html#Theorem21.7">теореме 21.7</a> имеет единственное решение, находим коэффициенты $(c_1,c_2,c_3,c_4)=(3,0,1,2)$.
+Таким образом, для любого $i\in\mathbb{N}_0$ $u(i)=3\cdot2^i+\binom{i}{2}2^{i-2}+2$.
+</li>
+<li>Найдем $u(1000)$. Так как для любого $a\in\mathbb{Z}_5$ $5\cdot{a}=0$, $a^4=1$, то
+$$
+u(1000)=3\cdot2^{1000}+\binom{1000}{2}2^{998}+2=3\cdot(2^4)^{250}+(500\cdot999)2^{998}+2=3+0+2=0.
+$$
+</li>
+</ol>
+<p id="Note21.6"><b>Замечание 21.6:</b><br>
+Над полями характеристики 0 в качестве базиса можно брать множество сбалансированных последовательностей $i^la^i$.<br>
+<ol>
+<li>Пусть $u(i)=i^la^i$ последовательность над $P$, $\Char{P}=0$, тогда
+$$
+(x-a)u(i)=u(i+1)-au(i)=(i+1)^la^{i+1}-ai^la^i=a^{i+1}((i+1)^l+i^l)=a^{i+1}(li^l+h_0(i)),
+$$
+где $\deg{h_0(i)}&lt;l-1$ и так как $Char{P}=0$, то $li^l\neq0$. Таким образом, $(x-a)u(i)=a^{i+1}h(i)$, где $\deg{h(i)}=l-1$, 
+следовательно, для любого $t&lt;l+1$ $(x-a)^tu\neq0$ и $(x-a)^{l+1}u=0$, то есть $u\in{L}_P((x-a)^{l+1})$.
+</li>
+<li>Составим матрицу из начальных векторов сбалансированных последовательностей $a^i,ia^i,\ldots,i^{l-1}a^i$
+$$
+\begin{pmatrix}
+a^i(\overline{0,l-1}) \\ ia^i(\overline{0,l-1}) \\ i^2a^i(\overline{0,l-1}) \\ \cdots \\ i^{l-1}a^i(\overline{0,l-1})
+\end{pmatrix}=
+\begin{pmatrix}
+1	& a 		& a^2		& \ldots	& a^{l-1}		\\
+0	& a 		& 2a^2		& \ldots	& (l-1)a^{l-1}		\\
+0	& a 		& 2^2a^2 	& \ldots	& (l-1)^2a^{l-1}	\\
+\ldots	& \ldots	& \ldots	& \ldots	& \ldots		\\
+0	& a 		& 2^{l-1}a^2 	& \ldots	& (l-1)^{l-1}a^{l-1}	\\
+\end{pmatrix}
+$$
+Если вынести $a,a^2,\ldots,a^{l-1}$ из $2,3,\ldots,l$-того столбца соответственно, то получем определитель Вандермонда, 
+а он не равен нулю (<a href="./discrete_math7.2.html#Theorem7.4">теорема 7.4</a>), следовательно, матрица обратима и по п. 2 
+<a href="./discrete_math21.1.html#Statement21.3">утверждения 21.3</a> $a^i,ia^i,\ldots,i^{l-1}a^i$ - базис модуля $L_P((x-a)^l)$.
+</li>
+</ol>
+<p id="Definition21.18"><b>Определение 21.18:</b><br>
+Последовательность $u\in{R}^{\infty}$ удовлетворяющая для любого $i\in\mathbb{N}_0$ условию
+$$u(i+m)=c_{m-1}u(i+m-1)+\cdots+c_0u(i)+a,$$
+называется аффинной рекуррентной последовательностью. 
+<p id="Statement21.11"><b>Утверждение 21.11:</b><br>
+Аффинная последовательность $u\in{R}^{\infty}$ удовлетворяющая условию
+$$u(i+m)=c_{m-1}u(i+m-1)+\cdots+c_0u(i)+a,$$
+принадлежит $L_P\bigl(F(x)(x-1)\bigr)$, где
+$$F(x)=x^m-c_{m-1}x^{m-1}-\cdots-c_1x-c_0.$$
+<p><b>Доказательство:</b><br><br>
+Рассмотрим последовательность $v:=F(x)u$, тогда для любого $i\in\mathbb{N}_0$
+$$
+v(i)=u(i+m)-c_{m-1}u(i+m-1)-\cdots-c_1u(i+1)-c_0u(i)=a\Rightarrow(x-1)v=0\Rightarrow{F}(x)(x-1)u=0
+$$
+<p id="Corollary21.7"><b>Следствие 21.7:</b><br>
+Любая аффинная рекуррентная последовательность над полем $P$ представима как линейная комбинация биномиальных последовательностей 
+над некоторым расширением поля $P$.
+<p><b>Доказательство:</b><br><br>
+Так как по утверждению 21.11 аффинная рекуррентная последовательность - это ЛРП, то утверждение следует из 
+<a href="./discrete_math21.5.html#Corollary21.6">следствия 21.6</a>.
+
+<h4 id="21.6">21.6 Представление ЛРП над конечным полем функцией след.</h4>
+
+<p id="Definition21.19"><b>Определение 21.19:</b><br>
+Пусть $P=GF(q)$, $Q=GF(q^m)$, тогда функцией след из $Q$ в $P$ называется отображение $tr_P^Q:Q\to{P}$ такое, что для любого $a\in{Q}$
+$$tr_P^Q(a):=a+a^q+a^{q^2}\cdots+a^{q^{m-1}}.$$
+<p id="Note21.7"><b>Замечание 21.7:</b><br>
+Определение 21.19 вообще говоря корректно, так как по п. 1 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $\Char{Q}=q$, 
+следовательно, по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a> для любых $a,b\in{Q}$ $(a+b)^q=a^q+b^q$. Тогда 
+$$
+\left(tr_P^Q(a)\right)^q=a^q+a^{q^2}+\cdots+a^{q^{m-1}}+a^{q^m}=tr_P^Q(a)\Rightarrow\Ord{tr_P^Q(a)}=q-1\Rightarrow{t}r_P^Q(a)\in{P}.
+$$
+<p id="Theorem21.9"><b>Теорема 21.9:</b><br>
+Пусть $P=GF(q)$, $Q=GF(q^m)$.
+<ol>
+<li>Функция след $tr_P^Q(a)$ является линейным отобаржением векторного пространства $Q_P$ на векторное пространство $P_P$.
+</li>
+<li>Транзитивность.<br>
+Пусть $P&lt;K=GF(q^k)&lt;Q$, тогда для любого $a\in{Q}$ 
+$$tr_P^K\left(tr_K^Q(a)\right)=tr_P^Q(a).$$
+</li>
+<li>Если $a\in{Q}$, $m_{a,P}(x)=x^k+c_{k-1}x^{k-1}+\cdots+c_1x+c_0$, тогда $k|m$ и $tr_P^Q=-\frac{m}{k}c_{k-1}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a>
+$$
+\forall{a},b\in{Q},\alpha,\beta\in{P}((a\alpha+b\beta)^q=a^q\alpha+b^q\beta)\Rightarrow{t}r_P^Q(a\alpha+b\beta)=tr_P^Q(a)\alpha+tr_P^Q(b)\beta
+$$
+Таким образом, $tr_P^Q$ - линейное отображение, докажем, что оно сюръективно. Так как отображение $tr_P^Q$ линейно, 
+то оно является гомоморфизмом векторных пространств. Тогда $tr_P^Q(Q)&lt;P$ и так как ${\dim{P_P}=1}$, то либо
+$tr_P^Q(Q)=P$ либо $tr_P^Q(Q)=\{0\}$. Если предположить, что $tr_P^Q(Q)=\{0\}$, 
+то все элементы поля $Q$ являются корнями многочлена $x^{q^{m-1}}+\cdots+x^q+x$, a это невозможно, 
+так как число корней этого многочлена не превосходит $q^{m-1}&lt;|Q|=q^m$. Таким образом, $tr_P^Q(Q)=P$.
+</li>
+<li>
+$$
+tr_P^K\left(tr_K^Q(a)\right)=\sum_{i=0}^{k-1}\left(tr_K^Q(a)\right)^{q^i}=\sum_{i=0}^{k-1}\left(\sum_{j=0}^{\frac{m}{k}-1}a^{q^{kj}}\right)^{q^i}=
+\sum_{i=0}^{k-1}\left(\sum_{j=0}^{\frac{m}{k}-1}a^{q^{kj+i}}\right)=\sum_{r=0}^{m-1}a^{q^r}=tr_P^Q(a).
+$$
+</li>
+<li>По <a href="./discrete_math18.4.html#Statement18.6">утверждению 18.6</a> $[P(a):P]=\deg{m_{a,P}(x)}=k$, следовательно, $P(a)=GF(q^k)$ и 
+по <a href="./discrete_math18.1.html#Theorem18.2">теореме 18.2</a> $k|m$.  Обозначим $K:=GF(q^k)$ и $n:=\frac{m}{k}$, 
+тогда <a href="./discrete_math19.1.html#Theorem19.5">теореме 19.5</a>
+$$
+m_{a,P}(x)=(x-a)(x-a^q)\cdots(x-a^{q^{k-1}})=x^k+c_{k-1}x^{k-1}+\cdots+c_1x+c_0\Rightarrow{a}+a^q+\cdots+a^{q^{k-1}}=-c_{k-1}\Rightarrow{t}r_P^K(a)=-c_{k-1}
+$$
+Так как для любого $a\in{K}$ $a^{q^k}=a$, то по пункту 2
+$$
+tr_K^Q=a+a^{q^k}+\cdots+a^{q^{k(n-1)}}=\underbrace{a+a+\cdots+a}_n=na\Rightarrow{t}r_P^Q(a)=tr_P^K\left(tr_K^Q(a)\right)=tr_P^K(na)=-nc_{k-1}
+$$
+</li>
+</ol>
+<p id="Theorem21.9"><b>Теорема 21.9:</b><br>
+Пусть $P:=GF(q)$, $Q:=GF(q^m)$, многочлен $F(x)\in{P}[x]$ неприводим, $F(x)\neq{x}$, $\deg{F(x)}=m$, $a\in{Q}$ - корень многочлена $F(x)$, 
+тогда любая линейная рекуррентная последовательность $u\in{L}_P\bigl(F(x)^l\bigr)$ представима в  виде
+$$u(i)=tr_P^Q(c_0a^i)+\binom{i}{1}tr_P^Q(c_1a^i)+\cdots+\binom{i}{l-1}tr_P^Q(c_{l-1}a^i)\quad{(1)}$$
+<p><b>Доказательство:</b><br><br>
+Число наборов $(c_0,c_1,\ldots,c_{l-1})\in{Q}^l$ равно $q^{ml}$. По <a href="./discrete_math21.1.html#Corollary21.2">следствию 21.2</a>
+$\bigl|L_P\bigl(F(x)^l\bigr)\bigr|=q^{ml}$, следовательно, достаточно проверить, что всякая ЛРП вида $(1)$ содержится в $L_P(F(x)^l)$ и 
+различным наборам элементов $(c_0,c_1,\ldots,c_{l-1})\in{Q}^l$ соответствуют различные ЛРП вида $(1)$.
+<ol>
+<li>Проверим, что для любого набра $(c_0,c_1,\ldots,c_{l-1})\in{Q}^l$ ЛРП вида $(1)$ содержится в $L_P\bigl(F(x)^l\bigr)$. 
+Для любого $i\in\mathbb{N}_0$
+$$
+u(i)=\sum_{r=0}^{l-1}\binom{i}{r}tr_P^Q(c_ra^i)=\sum_{r=0}^{l-1}\binom{i}{r}\sum_{s=0}^{m-1}(c_rq^i)^{q^s}=
+\sum_{r=0}^{l-1}\sum_{s=0}^{m-1}c_r^{q^s}\bigl(a^{q^s}\bigr)^r\binom{i}{r}\bigl(a^{q^s}\bigr)^{i-r},
+$$
+то есть 
+$$u=\sum_{r=0}^{l-1}\sum_{s=0}^{m-1}c_r^{q^s}\bigl(a^{q^s}\bigr)^r\bigl(a^{q^s}\bigr)^{[r]}.$$
+По <a href="./discrete_math21.5.html#Statement21.9">утверждению 21.9</a>
+$$\forall{r}\in\overline{0,l-1}\left(\bigl(a^{q^s}\bigr)^{[r]}\in{L}_Q\left(\bigl(x-a^{q^s}\bigr)^l\right)\right),$$
+тогда по п. 1 <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a> и по п. 2 <a href="./discrete_math21.3.html#Corollary21.4">следствия 21.4</a>
+$$
+\forall{s}\in\overline{0,m-1}\left(\bigl(x-a^{q^s}\bigr)|F(x)\right)\Rightarrow
+\forall{s}\in\overline{0,m-1}\left(\left.\bigl(x-a^{q^s}\bigr)^l\right|F(x)^l\right)\Rightarrow
+\forall{r}\in\overline{0,l-1}\,\forall{s}\in\overline{0,m-1}\left(\bigl(a^{q^s}\bigr)^{[r]}\in{L}_Q\bigl(F(x)^l\bigr)\right)\Rightarrow
+{u}\in{L}_Q\bigl(F(x)^l\bigr)\Rightarrow{u}\in{L}_Q\bigl(F(x)^l\bigr)\cap{P}^{\infty}=L_P\bigl(F(x)^l\bigr).
+$$
+</li>
+<li>Так как $f(x)\neq{x}$, то $a\neq0$, поэтому разным наборам элементов $(c_0,c_1,\ldots,c_{l-1})\in{Q}^l$ 
+соответствуют разные наборы коэффициентов из множетсва 
+$$M:=\left\{c_r^{q^s}a^{q^sr}\mid{r}\in\overline{0,l-1},s\in\overline{0,m-1}\right\}.$$
+По <a href="./discrete_math21.5.html#Theorem21.7">теореме 21.7</a> система биномиальных последовательностей
+$$\left\{\bigl(a^{q^s}\bigr)^{[r]}\mid{r}\in\overline{0,l-1},s\in\overline{0,m-1}\right\}$$
+является базисом модуля $L_Q\bigl(F(x)^l\bigr)$ над $Q$. Значит эти ЛРП ЛНЗ над $Q$, 
+поэтому разным раборам $l-1$ коэффициентов из множества $M$ соответствуют разные последовательности вида $(1)$. 
+</li>
+</ol>
+<p id="Corollary21.8"><b>Следствие 21.8:</b><br>
+Пусть $P:=GF(q)$, $Q=GF(q^m)$, многочлен ${F(x)\in{P}[x]}$ неприводим, $F(x)\neq{x}$, $\deg{F(x)}=m$, $a\in{Q}$ - 
+корень многочлена $F(x)$, тогда любая линейная рекуррентная последовательность из $L_P(F)$ представима в виде
+$u(i)=tr_P^Q(ca^i)$, где коэффициент $c\in{Q}$ однозначно определен начальным вектором $u(\overline{0,m-1})$.
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 21.9 при $l=1$.
+<br><br>
+<u>Практический способ нахождения коэффициентов $c_0,c_1,\ldots,c_{l-1}$ в представлении ЛРП $u\in{L}\bigl(F(x)^l\bigr)$ функцией след.</u>
+<br><br>
+<ol>
+<li>Находим корень $a\in{Q}=P[x]/F(x)$ многочлена $F(x)\in{P}[x]$ в виде $a=[x]_{F(x)}$.
+</li>
+<li>Находим биномиальное представление ЛРП $u$ как это описано в <a href="./discrete_math21.5.html#Example21.12">примере 21.12</a>
+$$u=\sum_{r=0}^{l-1}\sum_{s=0}^{m-1}d_{r,s}\bigl(a^{q^s}\bigr)^{[r]}.$$
+</li>
+<li>Тогда, в силу единственности представления ЛРП функцией след 
+$$\forall{r}\in\overline{0,l-1}\,\forall{s}\in\overline{0,m-1}\left(c_r^{q^s}a^{q^sr}=d_{r,s}\right).$$
+Положив $s=0$ для любого $r\in\overline{0,l-1}$ имеем $c_ra^r=d_{r,0}$, то есть $c_r=a^{-r}d_{r,0}$.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math21.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.7.html">next</a>
+</body>
+</html>

@@ -1,0 +1,257 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 20.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math19.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math20.3.html">next</a>
+<br>
+
+<h3 id="20">20 Группы подстановок.</h3>
+
+<p id="Note20.1"><b>Замечание 20.1:</b><br>
+Приведем некоторые факты о группах подстановок установленные в <a href="./discrete_math9.3.html#9.3">разделе 9.3</a>.
+<ol>
+<li>
+Если $\Omega$ произвольное множество, то группа $(S(\Omega);\cdot)$ всех подстановок на множестве $\Omega$ называется 
+симметрической группой подстановок на множестве $\Omega$.
+</li>
+<li>Если $\Omega=\overline{1,n}$, то группа $(S(\Omega);\cdot)\sim(S_n;\cdot)\sim{S}_n$ называется симметрической группой подстановок степени $n$.</li>
+<li>Группой подстановок на множестве $\Omega$ называется любая подгруппа $G&lt;S(\Omega;\cdot)$.</li>
+<li>По <a href="./discrete_math9.3.html#Theorem9.8">теореме 9.8</a> (теорема Кэли) любая группп определенная на множестве $G$ изоморфна 
+некоторой группе подстановок на множетсве $G$.
+</li>
+<li>Любая подстановка раскладывается в произведение транспозиций (циклов длины два).</li>
+<li>Множество $A_n$ всех четных подстановок порядка $n$ образуют знакопеременную группу подстановок порядка $n$. При этом $|S_n|=n!$, 
+$A_n=\frac{n!}{2}$, $A_n\vartriangleleft{S}_n$.
+</li>
+<li>Любая подстановка раскладывается в произведение независимых циклов. Это разложение опредлеляет цикловую структуру подстановки 
+$$[g]=\left[l_1^{k_1},\ldots,l_s^{k_s}\right].$$
+При этом $\ord{g}=[l_1,\ldots,l_s]$.
+</li>
+<li>$S_n=\langle(1,\alpha)(\alpha,\alpha+1)\rangle$.
+</li>
+<li>Уравнение Коши $x^{-1}gx=h$ разрешимо тогда и только тогда, когда $[g]=[h]$.</li>
+</ol>
+
+<h4 id="20.1">20.1 Орбиты и стабилизаторы. Лемма Бернсайда.</h4>
+<p id="Definition20.1"><b>Определение 20.1:</b><br>
+Пусть $G&lt;S(\Omega)$, $\alpha,\beta\in\Omega$, тогда будем говорить, что элементы $\alpha$ и $\beta$ $G$-эквивалентны 
+если существует подстановка $g\in{G}$ такая, что $g(\alpha)=\beta$.<br>
+Если $\alpha$ и $\beta$ $G$-эквивалентны, то  обозначают $\alpha\underset{{}^{G}}{\sim}\beta$ или просто $\alpha\sim\beta$.
+<p id="Statement20.1"><b>Утвеждение 20.1:</b><br>
+Пусть $G&lt;S(\Omega)$, тогда отношение $G$-эквивалентности являтеся отношением эквивалентности.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как для любого $\alpha\in{G}$ $\varepsilon(\alpha)=\alpha$, то $\alpha\sim\alpha$.</li>
+<li>Так как для любой $g\in{G}$ $g^{-1}\in{G}$, то для любых $\alpha,\beta\in{G}$
+$$\alpha\sim\beta\Rightarrow\exists{g}\in{G}:g(\alpha)=\beta\Rightarrow{g}^{-1}(\beta)=\alpha\Rightarrow\beta\sim\alpha.$$
+</li>
+<li>Так как для любых $g,h\in{G}$ $gh\in{G}$, то для любых $\alpha,\beta,\gamma\in{G}$
+$$
+(\alpha\sim\beta\,\wedge\,\beta\sim\gamma)\Rightarrow\exists{g},h\in{G}:(g(\alpha)=\beta\,\wedge\,h(\beta)=\gamma)\Rightarrow
+{g}h(\alpha)=\gamma\Rightarrow\alpha\sim\gamma.
+$$
+</ol>
+<p id="Definition20.2"><b>Определение 20.2:</b><br>
+Пусть $G&lt;S(\Omega)$, тогда класс $G$-эквивалентных элементов множества $\Omega$ называется областью транзитивности группы $G$. 
+<p id="Note20.2"><b>Замечание 20.2:</b><br>
+Пусть $\Delta$ область транзитивности группы $G$.
+<ol>
+<li>Для любого $\alpha\in\Delta$ 
+$$\Delta=[\alpha]_{\sim}:=\{\beta\in{G}\mid\alpha\sim\beta\}=\{g(\alpha)\mid{g}\in{G}\}.$$
+</li>
+<li>$\forall{g}\in{G}(g(\Delta)\subset\Delta)$.</li>
+<li>$\forall\alpha,\beta\in\Delta\,\exists{h}\in\Delta:h(\alpha)=\beta$.</li>
+</ol>
+<p id="Definition20.3"><b>Определение 20.3:</b><br>
+Пусть $G&lt;S(\Omega)$, тогда орбитой элемента $\alpha\in\Omega$ относительно группы $G$ называется множество $G(\alpha):=\{g(\alpha)\mid{g}\in{G}\}$.
+<p id="Note20.3"><b>Замечание 20.3:</b><br>
+Пусть $G&lt;S(\Omega)$. Так как $\underset{{}^{G}}{\sim}$ - отношение эквивалентности, 
+то любой элемент $\Omega$ лежит в некотором классе транзитивности относительно группы $G$. 
+При этом орбита элемента относительно группы $G$ совпадает с его классом транзитивности относительно группы $G$.
+<p id="Definition20.4"><b>Определение 20.4:</b><br>
+Группа подстановок $G&lt;S(\Omega)$ называется транзитивной, если $\Omega$ ее единственная область транзитивности. 
+То есть если для любых $\alpha,\beta\in\Omega$ существует $g\in{G}$ такая, что $g(\alpha)=\beta$.<br>
+В противном случае группа $G$ называется интранзитивной.
+<p id="Example20.1"><b>Пример 20.1:</b><br>
+<ol>
+<li>Группа $G:=\langle(1,2,\ldots,n)\rangle&lt;S_n$ является транзитивной, 
+так как для любых $s,t\in\overline{1,n}$ существует $g:=(1,2,\ldots,n)^{s-t}\in{G}$ такая, что ${g(s)=t}$.
+</li>
+<li>Группа $G:=\langle(1,2)(3,4,\ldots,n)\rangle&lt;S_n$ является интранзитивной, так как, например, 
+для любой $g\in{G}$ $g(1)\neq3$. Существует две области транзитивности группы $G$
+$$\Delta_1=\{1,2\},\Delta_2=\{3,4,\ldots,n\}.$$
+</li>
+</ol>
+<p id="Definition20.5"><b>Определение 20.5:</b><br>
+Стабилизатором подмножетсва $\Gamma\subset\Omega$ в подгруппе $G&lt;S(\Omega)$ называется множство
+$$G_{\Gamma}:=\{g\in{G}\mid\alpha\in\Gamma(g(\alpha)=\alpha)\}.$$
+<p id="Statement20.2"><b>Утверждение 20.2:</b><br>
+Пусть $\Gamma\subset\Omega$, $G&lt;S(\Omega)$, тогда $G_{\Gamma}&lt;G$.
+<p><b>Доказательство:</b><br>
+$$
+x,y\in{G}_{\Gamma}\Leftrightarrow\forall\alpha\in\Gamma(x(\alpha)=y(\alpha)=\alpha)\Rightarrow\forall\alpha\in\Gamma(x(\alpha)=y^{-1}(\alpha)=\alpha)\Rightarrow
+\forall\alpha\in\Gamma(xy^{-1}(\alpha)=y^{-1}(x(\alpha))=\alpha)\Rightarrow{x}y^{-1}\in{G}_{\Gamma},
+$$
+то по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $G_{\Gamma}&lt;G$
+<p id="Note20.4"><b>Замечание 20.4:</b><br>
+<ol>
+<li>Если $G&lt;S(\omega)$ и множество $\Gamma\subset\Omega$ состоит из одного элемента, то есть существует $\alpha\in{G}$ такой, 
+что $\Gamma=\{\alpha\}$, то будем обозначать $G_{\alpha}:=G_{\{\alpha\}}=G_{\Gamma}$.
+</li>
+<li>Пусть $\Gamma,\Delta\subset\Omega$, тогда 
+$$G_{\Gamma\cup\Delta}=G_{\Gamma}\cap{G}_{\Delta}=(G_{\Delta})_{\Gamma}=(G_{\Gamma})_\Delta.$$
+Действительно.
+$$
+g\in{G}_{\Gamma\cup\Delta}\Leftrightarrow\forall\alpha\in\Gamma\cup\Delta(g(\alpha)=\alpha)\Leftrightarrow
+(\forall\alpha\in\Gamma(g(\alpha)=\alpha)\,\wedge\,\forall\alpha\in\Delta(g(\alpha)=\alpha))\Leftrightarrow{g}\in{G}_{\Gamma}\cap{G}_{\Delta}.
+$$
+$$
+g\in(G_{\Delta})_{\Gamma}\Leftrightarrow(\forall\alpha\in\Gamma(g(\alpha)=\alpha)\,\wedge\,g\in{G}_{\Delta})\Leftrightarrow
+(\forall\alpha\in\Gamma(g(\alpha)=\alpha)\,\wedge\,\forall\alpha\in\Delta(g(\alpha)=\alpha))\Leftrightarrow{g}\in{G}_{\Gamma}\cap{G}_{\Delta}.
+$$
+Таким образом, $G_{\Gamma\cap\Delta}=G_{\Gamma}\cap{G}_{\Delta}=(G_{\Delta})_{\Gamma}$ и, 
+так как операции объединения и пересечения множеств коммутативны, то $(G_{\Gamma})_{\Delta}=(G_{\Delta})_{\Gamma}$.
+</li>
+<li>Из пунктов 1, 2 следует, что $G_{\Gamma}=\bigcap_{\alpha\in\Gamma}G_{\alpha}$.</li>
+</ol>
+<p id="Statement20.3"><b>Утверждение 20.3:</b><br>
+Пусть $G&lt;S(\Omega)$, $g\in{S}(\Omega)$, $\Gamma\subset\Omega$, тогда $$g^{-1}G_{\Gamma}g=G_{g(\Gamma)}.$$
+<p><b>Доказательство:</b><br>
+Пусть $h\in{G}_{\Gamma}$, $\alpha\in{g}(\Gamma)$, тогда
+$$
+\exists\beta\in\Gamma:\alpha=g(\beta)\Rightarrow(g^{-1}hg)(\alpha)=g(h(g^{-1}(\alpha)))=g(h(\beta))=g(\beta)=\alpha\Rightarrow
+{g}^{-1}hg\in{G}_{g(\Gamma)}\Rightarrow{g}^{-1}G_{\Gamma}g\subset{G}_{g(\Gamma)}.
+$$
+С другой стороны, так как подстановка $g\in{S}(\Omega)$ и подмножетсво ${\Gamma\subset\Omega}$  выбраны произвольно, 
+то положив вместо $g$ подстановку $g^{-1}\in{S}(\Omega)$ и вместо $\Gamma$ подмножество $g(\Gamma)\subset\Omega$ по доказанному получим
+$$(g^{-1})^{-1}G_{g(\Gamma)}g^{-1}\subset{G}_{g^{-1}(g(\Gamma))}\Rightarrow(g^{-1})^{-1}G_{g(\Gamma)}g^{-1}\subset{G}_{\Gamma}\Rightarrow
+{G}_{g(\Gamma)}\subset{g}^{-1}G_{\Gamma}g.$$
+Таким образом, $g^{-1}G_{\Gamma}g=G_{g(\Gamma)}$.
+<p id="Theorem20.1"><b>Теорема 20.1: Лемма Бернсайда.</b><br>
+Пусть $|\Omega|&lt;\infty$, $G&lt;S(\Omega)$, $\alpha\in\Omega$, тогда $|G|=|G_{\alpha}||G(\alpha)|$.
+<p><b>Доказательство:</b><br>
+По п. 3 <a href="./discrete_math9.6.html#Theorem9.18">теоремы 9.18</a>
+$$
+G_{\alpha}x=G_{\alpha}y\Leftrightarrow{x}y^{-1}\in{G}_{\alpha}\Leftrightarrow{x}y^{-1}(\alpha)=y^{-1}(x(\alpha))=
+\alpha\Leftrightarrow{x}(\alpha)=y(\alpha),
+$$
+следовательно, число смежных классов группы $G$ по $G_{\alpha}$ равно $|G(\alpha)|$, то есть $|G:G_{\alpha}|=|G(\alpha)|$. 
+Тогда по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> (теорема Лагранжа) 
+$$|G|=|G_{\alpha}|||G:G_{\alpha}|=|G_{\alpha}||G(\alpha)|.$$
+<p id="Corollary20.1"><b>Следствие 20.1:</b><br>
+Пусть $|\Omega|=n$, $G&lt;S(\Omega)$, группа $G$ транзитивна, тогда $n\bigl||G|$ и для любого $\alpha\in\Omega$ $G_{\alpha}=\frac{|G|}{n}$.
+<p><b>Доказательство:</b><br>
+Так как группа $G$ транзитивна, то для любого $\alpha\in\Omega$ $G(\alpha)=\Omega$, тогда по теореме 20.1 для любого $\alpha\in\Omega$ 
+$$|G|=|G_{\alpha}||G(\alpha)|=|G_{\alpha}||\Omega|=|G_{\alpha}|n\Rightarrow|G_{\alpha}|=\frac{|G|}{n}.$$ 
+<p id="Example20.2"><b>Пример 20.2:</b><br>
+Пусть $M$ - многогранник с $n$ вершинами, $\mathcal{D}(M)$ - множество движений таких, что после их применения многогранник $M$ занимает туже область. 
+Если обозначить точки в которых расположены вершины как $\{1,2,\ldots,n\}$, то любой элемент $\varphi\in\mathcal{D}(M)$ можно задать как подстановку
+$$\varphi=\begin{pmatrix}1, & 2, & \ldots, & n \\ i_1, & i_2, & \ldots, & i_n\end{pmatrix},$$
+где $i_j$ номер точки пространства, в которой оказалась после примениния движения вершина, находившаяся до этого в точке с номером $j$. 
+Если применены последовательно движения $\varphi,\psi\in\mathcal{D}(M)$, то результирующее движение задается произведеним соответствующих подстановок. 
+Таким образом, $\mathcal{D}(M)&lt;S_n$, группа $\mathcal{D}(M)$ называется группой движений многогранника $M$.<br>
+Пусть $n=3$, тогда $M$ - треугольник.<br>
+Если все стороны треугольника различны, то $\mathcal{D}(M)=\{\varepsilon\}$,<br>
+если $M$ - равнобедренный треугольник такой, что $(1,2)=(1,3)\neq(2,3)$, то $\mathcal{D}(M)=\{\varepsilon,(2,3)\}$,<br>
+если $M$ - равносторонний треугольник, то 
+$$\mathcal{D}(M)=\{\varepsilon,(1,2,3),(1,3,2),(1,2),(2,3),(1,3)\}=S_3.$$<br>
+Пусть $M$ - правильный многогранник такой, что любая вершина имеет $k$ соседних. 
+Тогда для любой вершины $\alpha$ $|\mathcal{D}(M)_{\alpha}|=k$ (ГЕН т. 1 стр. 269, следствие 2 ), следовательно, по 
+<a href="./discrete_math20.1.html#Theorem20.1">теореме 20.1</a>
+$$|\mathcal{D}(M)|=|\mathcal{D}(M)_{\alpha}||\mathcal{D}(M)(\alpha)|=kn.$$
+В частности, если $M$ - правильный тетраэдр, то $k=3$ и $|\mathcal{D}(M)|=12$ и вообще говоря в этом случае $\mathcal{D}(M)=A_4$.<br>
+Если $M$ - правильный многоугольник, то группа $\mathcal{D}(M)$ состоит из $n$ поворотов и $n$ осевых симметрий
+$$\mathcal{D}(M)=\langle(1,2,\ldots,n),(1,n-1),(2,n-2),\ldots\rangle.$$
+В этом случае групп $\mathcal{D}(M)$ называется группой диэдра и обозначается $D_n$.
+
+<h4 id="20.2">20.2 Регулярные группы подстановок.</h4>
+
+Везде в данном разделе $|\Omega|&lt;\infty$.
+<p id="Definition20.6"><b>Определение 20.6:</b><br>
+Группа подстановок $G&lt;S(\Omega)$ называется регулярной, если для любых $\alpha,\beta\in\Omega$ существует единственная подстановка $g\in{G}$ такая, 
+что $g(\alpha)=\beta$.
+<p id="Example20.3"><b>Пример 20.3:</b><br>
+Обозначим $g:=(1,2,\ldots,n)\in{S}_n$, тогда по <a href="./discrete_math9.4.html#Corollary9.10">следствию 9.10</a> 
+$G:=\langle{g}\rangle=\{g^c\mid{c}\in\mathbb{Z}\}$, следовательно, для любых $\alpha,\beta\in\overline{1,n}$ существует 
+единственная подстановка $h:=g^{\beta-\alpha}\in{G}$ такая, что $h(\alpha)=\beta$. То есть группа $G$ регулярна.
+<p id="Theorem20.2"><b>Теорема 20.2:</b><br>
+Пусть $G&lt;S(\Omega)$, тогда следующие утверждения эквивалентны
+<ol>
+<li>группа $G$ регулярная,</li>
+<li>группа $G$ транзитивная и для любого $\alpha\in\Omega$ $|G_{\alpha}|=1$,</li>
+<li>группа $G$ транзитивная и $|G|=|\Omega|$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+$1)\Rightarrow2)$ Так как группа $G$ регулярна, то 
+$$\forall\alpha\in\Omega\,\exists!\,g\in{G}:g(\alpha)=\alpha\Rightarrow|G_{\alpha}|=1.$$
+$2)\Rightarrow3)$ Фиксируем $\alpha\in\Omega$. Так как группа $G$ транзитивна, то $G(\alpha)=\Omega$, тогда по 
+<a href="./discrete_math20.1.html#Theorem20.1">теореме 20.1</a> (лемма Бернсайда) $|G|=|G_{\alpha}||G(\alpha)|=|\Omega|$.<br>
+$3)\Rightarrow1)$ Так как группа $G$ транзитивна, то для любых $\alpha,\beta\in\Omega$ существует $g\in{G}$ такая, что $g(\alpha)=\beta$. 
+Предположим, что группа $G$ нерегулярна, то есть существуют $\alpha,\beta\in\Omega$, 
+$g,h\in{G}$ такие, что $g(\alpha)=h(\alpha)=\beta$. Так как группа $G$ транзитивна, то для любого $\alpha\in\Omega$ $G(\alpha)=\Omega$, 
+тогда по <a href="./discrete_math20.1.html#Theorem20.1">теореме 20.1</a>
+$$
+g\neq{h}\Rightarrow(gh^{-1}\neq\varepsilon\,\wedge\,(gh^{-1})(\alpha)=h^{-1}(g(\alpha))=h^{-1}(\beta)=\alpha\Rightarrow
+\{\varepsilon,gh^{-1}\}\subset{G}_{\alpha}\Rightarrow|G_{\alpha}|&gt;1\Rightarrow|G|=|G_{\alpha}||G(\alpha)|&gt;\Omega.
+$$
+Последнее выражение противоречит условию пункта 3 $|G|=|\Omega|$.
+<p id="Statement20.4"><b>Утверждение 20.4:</b><br>
+Любая конечная группа изоморфна регулярной группе подстановок определенной на этой группе.
+<p><b>Доказательство:</b><br>
+Пусть $G$ конечная группа. Определим группу подстановок
+$$\hat{G}:=\{\hat{g}\mid{g}\in{G}\}&lt;S(G),$$
+где подстановка $\hat{g}\in\hat{G}$ такая, что для любого $x\in{G}$ $\hat{x}=xg$. Тогда отображение $\varphi:G\to\hat{G}$ является изоморфизмом. 
+При этом группа $\hat{G}$ транзитивна, так как для любых $g,h\in{G}$ $\widehat{g^{-1}h}(g)=g(g^{-1}h)=h$ и
+$$\hat{h}\in\hat{G}_g\Leftrightarrow{g}h=g\Leftrightarrow{h}=e\Rightarrow|\hat{G}_g|=1.$$
+Следовательно, по п. 2 <a href="./discrete_math10.1.html#Theorem10.2">теоремы 10.2</a> группа $G$ регулярна.
+<p id="Note20.5"><b>Замечание 20.5:</b><br>
+Введенная при доказательстве утверждения 20.4 группа подстановок $\hat{G}&lt;S(G)$ называется правым регулярным представлением группы $G$. 
+Аналогично можно ввести левое регулярное представление
+$$\hat{\hat{G}}:=\{\hat{\hat{g}}\mid{g}\in{G}\}&lt;S(G),$$
+где подстановка $\hat{\hat{g}}\in\hat{\hat{G}}$ такая, что для любого $x\in{G}$ $\hat{\hat{g}}(x)=g^{-1}x$. 
+Аналогично доказательству утверждения 20.4 показывается, что группа $\hat{\hat{G}}$ регулярна и $G\cong\hat{\hat{G}}$.
+<p id="Statement20.5"><b>Утверждение 20.5:</b><br>
+Пусть группа $G&lt;S(\Omega)$ абелева и транзитивна, тогда группа $G$ регулярна.
+<p><b>Доказательство:</b><br><br>
+Так как группа $G$ транзитивна, то
+$$\forall\alpha,\beta\in\Omega\,\exists{g}\in{G}:g(\alpha)=\beta.$$
+Так как группа $G$ абелева, то по <a href="./discrete_math20.1.html#Statement20.3">утверждению 20.3</a>
+$$
+G_{\alpha}=g^{-1}G_{\alpha}g=G_{g(\alpha)}=G_{\beta}.
+$$
+Следовательно, 
+$$\forall\alpha\in\Omega(G_{\alpha}=G_{\Omega}=\{\varepsilon\})\Rightarrow\forall\alpha\in\Omega(|G_{\alpha}|=1),$$
+тогда по п. 2 <a href="./discrete_math20.1.html#Theorem20.2">теоремы 20.2</a> группа $G$ регулярна.
+
+<br><br>
+<a href="discrete_math19.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math20.3.html">next</a>
+</body>
+</html>

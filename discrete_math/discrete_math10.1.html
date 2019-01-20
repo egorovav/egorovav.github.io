@@ -1,0 +1,262 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 10.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.13.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math10.3.html">next</a>
+<br>
+
+<h3 id="10">10 Абелевы группы.</h3>
+<h4 id="10.1">10.1 Циклические группы.</h4>
+<p id="Theorem10.1"><b>Теорема 10.1:</b><br>
+Пусть $(G;\cdot)=\langle{g}\rangle$, тогда
+<ol>
+<li>$\ord{g}=n<\infty\Rightarrow((G;\cdot)\cong(\mathbb{Z}/n;+)\,\wedge\,G=\{e, g, g^2,\ldots,g^{n-1}\});$</li>
+<li>$\ord{g}=\infty\Rightarrow(G;\cdot)\cong(\mathbb{Z};+)$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Рассмотрим отображение $\varphi:\mathbb{Z}\to{G}$ такое, что для любого $a\in\mathbb{Z}$ $\varphi(a)=g^a$. Так как группа $G$ циклическая, 
+то по <a href="./discrete_math9.4.html#Corollary9.10">следствию 9.10</a> отображение $\varphi$ сюръективно и 
+$$\forall{a},b\in\mathbb{Z}(\varphi(a+b)=g^{a+b}=g^ag^b=\varphi(a)\varphi(b)),$$
+следовательно, отображение $\varphi$ является эпиморфизмом. Тогда по п. 1 <a href="./discrete_math9.8.html#Theorem9.24">теоремы 9.24</a> 
+$(\mathbb{Z}/\ker{\varphi};+)\cong(G;\cdot)$, где $\ker{\varphi}=\{a\in\mathbb{Z}\mid{g}^a=e\}$.
+<ol>
+<li>Если $\ord{g}=n<\infty$, то по п. 2 <a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$\ker{\varphi}=\{a\in\mathbb{Z}\mid{n}|a\}=\{nt\mid{t}\in\mathbb{Z}\}=n\mathbb{Z}.$$
+Следовательно, $(G;\cdot)\cong(\mathbb{Z}/n\mathbb{Z};+)=(\mathbb{Z}/n;+)$ и по п. 2 <a href="./discrete_math9.8.html#Theorem9.24">теоремы 9.24</a> 
+существует изоморфизм $\tau:\mathbb{Z}/n\to{G}$ такой, что для любого $a\in\mathbb{Z}$ $\varphi(a)=\tau(\varphi_0(a))$, где 
+$\varphi_0:\mathbb{Z}\to\mathbb{Z}/n$ - естественный эпиморфизм. Таким образом, 
+$$
+G=\tau(\varphi_0(\mathbb{Z}))=\tau(\mathbb{Z}/n)=\tau\{[0],\ldots,[n-1]\}=
+=\{\tau(\varphi_0(0)),\ldots,\tau(\varphi_0(n-1))\}=\{\varphi(0),\ldots,\varphi(n-1)\}=\{e,g,g^2,\ldots,g^{n-1}\}
+$$
+</li>
+<li>Если $\ord{g}=\infty$, то $\ker{\varphi}=\{0\}$. Так как 
+$$\forall{a},b\in\mathbb{Z}(a+0=b+0\Leftrightarrow{a}=b),$$
+то $(\mathbb{Z}/\ker{\varphi};+)=(\mathbb{Z}/\{0\};+)=(\mathbb{Z};+)$. Следовательно, по п. 1 
+<a href="./discrete_math9.8.html#Theorem9.24">теоремы 9.24</a> $(G;\cdot)\cong(\mathbb{Z};+)$.
+</li>
+</ol>
+<p id="Corollary10.1"><b>Следствие 10.1:</b><br>
+Две циклические группы изоморфны тогда и только тогда, когда их порядки равны.
+<p><b>Доказательство:</b><br><br>
+Пусть $G=\langle{g}\rangle$, $|G|=\ord{g}=$, $H=\langle{h}\rangle$, $|H|=\ord{h}=m$, тогда по п. 1 теоремы 10.1<br>
+$\Rightarrow)$ Так как для любого $k\in\mathbb{N}$ $\mathbb{Z}\ncong\mathbb{Z}/k$, следовательно, если $G\cong{H}$, 
+то либо $G\cong{H}\cong\mathbb{Z}$ и $|G|=|H|=\infty$, либо $\mathbb{Z}/n\cong{G}\cong{H}\cong\mathbb{Z}/m$ и $m=n$.<br>
+$\Leftarrow)$ Если $m=n=\infty$, то $G\cong\mathbb{Z}\cong{H}$. Если $m=n&lt;\infty$, то $G\cong\mathbb{Z}/n\cong{H}$.
+<p id="Theorem10.2"><b>Теорема 10.2:</b><br>
+Если $G$ - циклическая группа и $H&lt;G$, то группа $H$ циклическая.
+<p><b>Доказательство:</b><br>
+Если $H=\{e\}$, то $H=\langle{e}\rangle$.<br>
+Если $H\neq\{e\}$, тогда для любого $h\in{H}\backslash\{e\}$ существует $c\in\mathbb{N}$ такой, что $h=g^c$. 
+Положим $c_0:=\min\{c\in\mathbb{N}\mid{g}^c\in{H}\}$ и $t:=g^{c_0}\in{H}$. Фиксируем $h\in{H}$, тогда
+$$
+\exists{k}\in\mathbb{N}:h=g^k\Rightarrow\exists{q}\in\mathbb{Z},r\in\mathbb{N}_0:(r&lt;c_0\,\wedge\,h=g^{c_0q+r})\Rightarrow
+{g}^r=g^{k-c_0q}=g^k(g^{c_0})^{-q}=ht^{-q}\in{H}.
+$$
+Так как $c_0$ минимальное натуральное такое, что $g^{c_0}\in{H}$ и $0\leq{r}&lt;c_0$, то $r=0$. Таким образом, в силу произвола выбора $h\in{H}$
+$$\forall{h}\in{H}\,\exists{q}\in\mathbb{Z}:h=g^{c_0q}=t^q,$$
+то есть $H=\langle{t}\rangle$.
+<p id="Corollary10.2"><b>Следствие 10.2:</b><br>
+Бесконечная циклическая группа изоморфна любой своей неединичной подгруппе.
+<p><b>Доказательство:</b><br><br>
+Пусть $G=\langle{g}\rangle$, $|G|=\infty$ предположим, что сущесвтует $h\in{G}$ такой, что $\ord{h}=n<\infty$, тогда
+$$\exists{k}\in\mathbb{N}:h=g^{k}\Rightarrow{h}^n=g^{nk}=e\Rightarrow\ord{g}<\infty,$$
+что противоречит <a href="./discrete_math10.1.html#Theorem10.1">теореме 10.1</a>. Следовательно, для любого $h\in{H}$ ${\ord{h}=\infty}$. 
+По <a href="./discrete_math10.1.html#Theorem10.2">теореме 10.2</a> для любой неединичной подгруппы $H&lt;G$ сущесвтует $h\in{G}$ такой, 
+что $H=\langle{h}\rangle$ при этом $|H|=\ord{h}=\infty$. Тогда утверждение следует из следствия 10.1.
+<p id="Theorem10.3"><b>Теорема 10.3:</b><br>
+Пусть $G$ циклическая группа такая, что $|G|=n<\infty$, $d|n$, тогда существует единственная подгруппа $H&lt;G$ такая, что $|H|=d$.
+<p><b>Доказательство:</b><br>
+Пусть $G=\langle{g}\rangle$, $H:=\langle{g}^{\frac{n}{d}}\rangle$, тогда по п. 3 <a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$|H|=\ord{g^{\frac{n}{d}}}=\frac{n}{\left(\frac{n}{d},n\right)}=\frac{n}{\frac{n}{d}}=d.$$
+Таким образом, $H&lt;G$ - искомая подгруппа порядка $d$, докажем от противного, что она единственна. Предположим что существует подгруппа $H_1&lt;G$ такая, 
+что $|H_1|=d$. По <a href="./discrete_math10.1.html#Theorem10.2">теореме 10.2</a> группа $H_1$ циклическая, то есть существует 
+$k\in\mathbb{N}$ такое, что $H_1=\langle{g^k}\rangle$, тогда
+$$
+d=|H_1|=\ord{g^k}=\frac{n}{(n,k)}\Rightarrow(n,k)=\frac{n}{d}\Rightarrow\left.\frac{n}{d}\right|k\Rightarrow
+{g}^k\in\langle{g}^{\frac{n}{d}}\rangle=H\Rightarrow{H}_1=\langle{g}^k\rangle\subset{H}.
+$$
+И так как $|H|=d=|H_1|=d$, то $H_1=H$.
+<p id="Example10.1"><b>Пример 10.1:</b><br>
+Так как по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> порядок любой подгруппы конечной группы делит порядок группы, 
+то с помощью теорем <a href="./discrete_math10.1.html#Theorem10.2">10.2</a>, 10.3 можно описать все подгруппы циклической группы. 
+Например, рассмотрим группу $(\mathbb{Z}/12;+)$. По <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> если $H<\mathbb{Z}/12$, 
+то $|H|\in\{1,2,3,4,6,12\}$. Тогда по теоремам <a href="./discrete_math10.1.html#Theorem10.2">10.2</a>, 10.3 
+$H\in\{\langle[0]\rangle,\langle[6]\rangle,\langle[4]\rangle,\langle[3]\rangle,\langle[2]\rangle,\langle[1]\rangle\}$ и других подгрупп у группы 
+$\mathbb{Z}/12$ нет.
+
+<h4 id="10.2">10.2 Силовские подгруппы конечных абелевых групп.</h4>
+<p id="Theorem10.4"><b>Теорема 10.4:</b><br>
+Неединичная конечная абелева группа раскладывается с прямую сумму своих силовских подгрупп. 
+Это разложение единственно с точностью до перестановки слагаемых. 
+<p><b>Доказательство:</b><br><br>
+Пусть $G$ - абелева группа, $n:=|G|$ и $n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение числа $n$. 
+По <a href="./discrete_math9.10.html#Theorem9.29">теореме 9.29</a> для любого $i\in\overline{1,s}$ существует силовская подгруппа $G_{p_i}&lt;G$ такая, 
+что $|G_{p_i}|=p_i^{k_i}$. Для каждого $i\in\overline{1,s}$ выберем по одной такой подгруппе и рассмотрим сумму $H:=G_{p_1}+\cdots+G_{p_s}&lt;G$. 
+Фиксируем $i\in\overline{1,s}$ и $h\in{G}_{p_i}\cap\sum_{j=1,j\neq{i}}^sG_{p_j}$, тогда 
+$$h\in{G}_{p_i}\Rightarrow\ord{h}|p_i^{k_i}$$
+и
+$$ 
+h\in\sum_{j=1,j\neq{i}}^sG_{p_j}\Rightarrow
+\exists(h_1,\ldots,h_{i-1},h_{i+1},\ldots,h_s)\in{G}_{p_1}\times\cdots\times{G}_{p_{i-1}}G_{p_{i+1}}\times\cdots\times{G}_{p_s}:
+h=h_1+\cdots+h_{i-1}h_{i+1}+\cdots+h_s.
+$$
+Обозначим 
+$$\forall{i}\in\overline{1,s}\left(n_i:=\frac{n}{p_i^{k_i}}=p_1^{k_1}\cdots{p}_{i-1}^{k_{i-1}}p_{i+1}^{k_{i+1}}\cdots{p}_s^{k_s}\right),$$
+тогда для любого $j\in\overline{1,s}$ такого, что $j\neq{i}$ 
+$$h_j\in{G}_{p_j}\Rightarrow\ord{h}_j|p_j^{k_j}\Rightarrow\ord{h}_j|n_i\Rightarrow{n}_ih_j=0.$$
+Тогда 
+$$
+n_ih=n_ih_1+\cdots+n_ih_{i-1}n_ih_{i+1}+\cdots+n_ih_s=0\Rightarrow\ord{h}|(n_i,p_i^{k_i})=1\Rightarrow\ord{h}=1\Rightarrow{h}=0.
+$$
+Таким образом, по п. 3 <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12</a> $H=G_{p_1}\dotplus\cdots\dotplus{G}_{p_s}&lt;G$, то есть 
+$$
+\forall{h}\in{H}\,\exists!(h_1,\dots,h_s)\in{G}_{p_1}\times\cdots\times{G}_{p_s}:h=h_1+\cdots+h_s\Rightarrow
+|H|=|G_{p_1}\times\cdots\times{G}_{p_s}|=|G_{p_1}|\cdots|G_{p_s}|=p_1^{k_1}\cdots{p}_s^{k_s}=n=|G|,
+$$
+при этом $H\subset{G}$, следовательно, $H=G=G_{p_1}\dotplus\cdots\dotplus{G}_{p_s}$.<br>
+Докажем единственность такого разложения с точностью до перестановки слагаемых.<br>
+Для любого $t\in\mathbb{Z}$ и для любой подгруппы $F&lt;G$ введем обозначение $tF:=\{tf\mid{f}\in{F}\}$. Тогда $n_1G=n_1G_{p_1}+\cdots+n_1G_{p_s}$, 
+где для любого $j\in\overline{1,s}$ такого, что $j\neq1$
+$$
+(h\in{G}_{p_j}\Rightarrow\ord{h}|p_j^{k_j}\Rightarrow\ord{h}|n_i\Rightarrow{n}_ih=0)\Rightarrow{n}_jG_{p_j}=\{0\}.
+$$
+Таким образом, $n_1G=n_1G_{p_1}$. Покажем, что $n_1G_{p_1}=G_{p_1}$. Действительно, фиксируем $g,h\in{G}_{p_1}$, тогда $n_1g=n_1h$ и с другой стороны
+$$
+n_1g=n_1h\Rightarrow{n}_1(g-h)=0\Rightarrow(\ord{(g-h)}|n_1\,\wedge\,\ord{(g-h)}\bigl||G_{p_1}|=p_1^{k_1})\Rightarrow
+\ord{(g-h)}|(p_1^{k_1},n_1)=1\Rightarrow\ord{(g-h)}=1\Rightarrow{g}-h=0\Rightarrow{g}=h.
+$$
+Таким образом, 
+$$\forall{g},h\in{G}_{p_1}(g=h\Leftrightarrow{n}_1g=n_1h)\Rightarrow|G_{p_1}|=|n_1G_{p_1}|\Rightarrow{G}_{p_1}=n_1G_{p_1},$$
+где последняя импликация в силу очевидного включения $n_1G_{p_1}\subset{G}_{p_1}$. Для любого $i\in\overline{1,s}$ аналогично показывается, 
+что $G_{p_i}=n_iG$. Таким образом, показано, что любая силовская подгруппа порядка 
+$p_i^{k_i}$ входящая в разложение $G$ в сумму силовских подгрупп будет равна $n_iG$, следовательно, в разложения входят только подгруппы разных порядков, 
+при этом число слагаемых в разложении равно $s$, потому что если их меньше, то сумма будет содержать менее чем $n=p_1^{k_1}\cdots{p}_s^{k_s}$ элементов. 
+Следовательно, разложение определено однозначно с точностью до перестановки слагаемых.
+<p id="Note10.1"><b>Замечание 10.1:</b><br>
+С помощью теоремы 10.4 можно описать строение силовских подгрупп абелевой группы.<br>
+Пусть $G$ - абелева группа, $n:=|G|$, $n=p_1^{k_1}\cdots{p}_s^{k_s}$, 
+$$\forall{i}\in\overline{1,s}\left(n_i:=\frac{n}{p_i^{k_i}}=p_1^{k_1}\cdots{p}_{i-1}^{k_{i-1}}p_{i+1}^{k_{i+1}}\dots{p}_s^{k_s}\right),$$
+тогда
+<ol>
+<li>для любого $i\in\overline{1,s}$ $G_{p_i}:=n_iG$ - единственная силовская $p_i$-подгруппа группы $G$,</li>
+<li>$G=G_{p_1}\dotplus\cdots\dotplus{G}_{p_s}$.</li>
+</ol>
+Любой элемент $h\in{G}$ представим в виде суммы $h=h_1+\cdots+h_s$, где для любого $i\in\overline{1,s}$ $h_i\in{G}_{p_i}$. 
+Так как группа $G$ абелева, то $\ord{h}=[\ord{h}_1,\ldots\ord{h}_s]$. Фиксируем $j\in\overline{1,s}$, тогда
+$$
+\forall{i}\in\overline{1,s}(\ord{h}_i|p_i^{k_i})\Rightarrow
+(\ord{h}|p_j^{k_j}\Leftrightarrow\forall{i}\in\overline{1,s}\backslash\{j\}(\ord{h}_i=1)\Leftrightarrow
+\forall{i}\in\overline{1,s}\backslash\{j\}(h_i=0)\Leftrightarrow{h}=h_j\Leftrightarrow{h}\in{G}_{p_j}).
+$$
+Таким образом, 
+$$\forall{j}\in\overline{1,s}(G_{p_j}=\{h\in{G}\mid\ord{h}|p_j^{k_j}\}).$$
+<p id="Example10.2"><b>Пример 10.2:</b><br>
+Пусть $G:=(\mathbb{Z}/n;+)$, $n=p_1^{k_1}\cdots{p}_s^{k_s}$,
+$$\forall{i}\in\overline{1,s}\left(n_i:=\frac{n}{p_i^{k_i}}=p_1^{k_1}\cdots{p}_{i-1}^{k_{i-1}}p_{i+1}^{k_{i+1}}\cdots{p}_s^{k_s}\right).$$
+Тогда по <a href="./discrete_math10.1.html#Theorem10.2">теореме 10.2</a>
+$$\forall{i}\in\overline{1,s}(G_{p_i}=n_i\mathbb{Z}/n=\mathbb{Z}/p_i^{k_i}),$$
+по <a href="./discrete_math10.1.html#Theorem10.4">теореме 10.4</a> и <a href="./discrete_math9.13.html#Statement9.9">утверждению 9.9</a> 
+$$
+\mathbb{Z}/n=n_1\mathbb{Z}/n\dotplus\cdots\dotplus{n}_s\mathbb{Z}/n\cong{n}_1\mathbb{Z}/n\oplus\cdots\oplus{n}_s\mathbb{Z}/n=
+\mathbb{Z}/p_1^{k_1}\oplus\cdots\oplus\mathbb{Z}/p_s^{k_s}.
+$$
+<p id="Corollary10.3"><b>Следствие 10.3:</b><br>
+Неединичная конечная циклическая группа либо примарная, либо раскладывается в прямую сумму примарных циклических групп. 
+Такое разложение единственно с точностью до перестановки слагаемых. 
+<p><b>Доказательство:</b><br>
+Существование разложинея следует из теорем <a href="./discrete_math10.1.html#Theorem10.2">10.2</a>, 
+<a href="./discrete_math10.1.html#Theorem10.4">10.4</a>, докажем его единсвенность.<br>
+Пусть $G$ - циклическая группа такая, что $|G|=n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение и
+$$G=H_{1,1}\dotplus{H}_{1,2}\dotplus\cdots\dotplus{H}_{1,l_1}\dotplus\cdots\dotplus{H}_{2,1}\dotplus\cdots\dotplus{H}_{s,l_s},\quad(*)$$
+где для любого $i\in\overline{1,s}$, $j\in\overline{1,l_i}$ $|H_{i,j}|=p_i^{k_{i,j}}$, 
+$k_{i,j}\in\mathbb{N}$, $k_{i,1}\geq{k}_{i,2}\geq\cdots\geq{k}_{i,l_i}$. Таким обрзом, 
+$$\forall{i}\in\overline{1,s}(k_{i,1}=\max\{k_{i,j}\mid{j}\in\overline{1,l_i}\}).$$
+Так как группа $G$ циклическая, то существует $g\in{G}$ такой, что $G=\langle{g}\rangle$ и $\ord{g}=n=p_1^{k_1}\cdots{p}_s^{k_s}$, при этом
+$$g=h_{1,1}+h_{1,2}+\cdots+h_{1,l_1}+h_{2,1}+\cdots+h_{s,l_s}\quad(**)$$
+где $h_{i,j}\in{H}_{i,j}$. Так как группа $G$ циклическая, то она абелева, следовательно, 
+$n=\ord{g}=[\ord{h}_{1,1},\ord{h}_{1,2},\ldots,\ord{h}_{1,l_1},\ord{h}_{2,1},\ldots,\ord{h}_{s,l_s}]$. 
+Так как число $p_1^{k_{1,1}}p_2^{k_{2,1}}\cdots{p}_s^{k_{s,1}}$ является общим кратным порядков элементов входящих в сумму (**), 
+то по п. 2 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a>
+$$
+\ord{g}|p_1^{k_{1,1}}\cdots{p}_s^{k_{s,1}}\Rightarrow{p}_1^{k_1}\cdots{p}_s^{k_s}|p_1^{k_{1,1}}\cdots{p}_s^{k_{s,1}}\Rightarrow
+\forall{i}\in\overline{1,s}(p_i^{k_i}|p_i^{k_{1,i}})\Rightarrow\forall{i}\in\overline{1,s}(k_i\leq{k}_{i,1}).
+$$
+С другой стороны, так как сумма (*) прямая, то 
+$$
+n=|G|=\prod_{i=1}^s\prod_{j=1}^{l_i}|H_{i,j}|=p_1^{\sum_{j=1}^{l_1}k_{1,j}}\cdots{p}_s^{\sum_{j=1}^{l_s}k_{s,j}}\Rightarrow
+\forall{i}\in\overline{1,s}\left(k_i=\sum_{j=1}^{l_i}k_{i,j}\right)\Rightarrow\forall{i}\in\overline{1,s}(k_1\geq{k_{i,1}}).
+$$
+Таким образом, для любого $i\in\overline{1,s}$ $l_i=1$ и $k_{i,1}=k_i$, то есть для любого $i\in\overline{1,s}$ $H_{i,1}=G_{p_i}$ и 
+$G=H_{1,1}\dotplus{H}_{1,2}\dotplus\cdots\dotplus{H}_{s,1}$ - разложение группы $G$ в прямую сумму ее силовских подгрупп. 
+По <a href="./discrete_math10.1.html#Theorem10.4">теореме 10.4</a> разложение группы в прямую сумму своих силовских подгрупп единственно 
+с точностью до перестановки слагаемых, так что утверждение доказано.
+<p id="Corollary10.4"><b>Следствие 10.4: Мультипликативность функции Эйлера.</b><br>
+$$\forall{n}_1,n_2\in\mathbb{N}\backslash\{1\}((n_1,n_2)=1\Rightarrow\varphi(n_1n_2)=\varphi(n_1)\varphi(n_2)).$$
+<p><b>Доказательство:</b><br>
+Пусть $n_1=p_1^{k_1}\cdots{p}_t^{k_t}$, $n_2=p_{t+1}^{k_{t+1}}\cdots{p}_{t+s}^{k_{t+s}}$ - канонические разложения, $n:=n_1n_2$, 
+$G$ - циклическая группа пордка $n$. Тогда по следствию 10.3 
+$$G=G_{p_1}\dotplus\cdots\dotplus{G}_{p_t}\dotplus{G}_{p_t}\dotplus\cdots\dotplus{G}_{t+s}.$$
+Обозначим $H_1:=G_{p_1}\dotplus\cdots\dotplus{G}_{p_t}&lt;G$, $H_2:=G_{p_{t+1}}\dotplus\cdots\dotplus{G}_{p_{t+s}}&ltG$, 
+тогда $|H_1|=|G_{p_1}|\cdots|G_{p_t}|=n_1$, 
+$|H_2|=|G_{p_{t+1}}|\cdots|G_{p_{t+s}}|=n_2$. По п. 1 <a href="./discrete_math9.13.html#Task9.8">задачи 9.8</a> операция $\dotplus$ ассоциативна, 
+следовательно, $G=H_1\dotplus{H}_2$. Так как $H_1&lt;G$, $H_2&lt;G$, то по <a href="./discrete_math10.1.html#Theorem10.2">теореме 10.2</a>, 
+группы $H_1$, $H_2$ циклические, то есть существуют $g_1\in{H}_1$, $g_2\in{H}_2$ такие, что $H_1=\langle{g_1}\rangle$, $H_2=\langle{g_2}\rangle$, 
+$\ord{g}_1=n_1$, $\ord{g}_2=n_2$. Фиксируем $h\in{G}$, тогда так как $(n_1,n_2)=1$, то
+$$
+\exists!{h}_1\in{H}_1\,h_2\in{H}_2:(h=h_1+h_2\,\wedge\,\ord{h}_1|n_1\,\wedge\,\ord{h}_2|n_2)\Rightarrow
+(\ord{h}=[\ord{h}_1,\ord{h}_2]\,\wedge\,(\ord{h}_1,\ord{h}_2)=1)\Rightarrow\ord{h}=\ord{h}_1\ord{h}_2=n_1n_2.
+$$
+Таким образом, в силу произвола выбора $h\in{G}$
+$$
+\forall{h}\in{G}(\ord{h}=n_1n_2=n\Leftrightarrow\exists{h}_1\in{H}\,h_2\in{H}_2:(h=h_1+h_2\,\wedge\,\ord{h}_1=n_1\,\wedge\,\ord{h}_2=n_2)).
+$$
+Так как для любой группы $H$ и любого $k\in\overline{1,|H|}$
+$$
+\left|\left\{g^a\in{H}\left|{a}\in\overline{1,|H|},\ord{g}^a=\frac{|H|}{(a,|H|)}=|H|\right.\right\}\right|=
+|\{a\in\overline{1,|H|-1}\mid(a,|H|)=1\}|=\varphi(|H|),
+$$
+тогда, так как сумма $G=H_1\dotplus{H}_2$ прямая, то
+$$
+\varphi(n)=|\{h\in{G}\mid\ord{h}=n\}|=\\=|\{h_1\in{H}_1\mid\ord{h}_1=n_1\}||\{h_2\in{H}_2\mid\ord{h}_2=n_2\}|=\varphi(n_1)\varphi(n_2).
+$$
+<p id="Theorem10.5"><b>Теорема 10.5:</b><br>
+Пусть $G$ абелева группа такая, что $|G|=n$, $d|n$, тогда существует подгруппа $H&lt;G$ такая, что $|H|=d$.
+<p><b>Доказательство:</b><br><br>
+Пусть $n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение, тогда
+$$
+d|n\Rightarrow\exists{m}_1,\ldots,m_s\in\mathbb{N}_0:\forall{i}\in\overline{1,s}(m_i\leq{k}_i)\,\wedge\,d=p_1^{m_1}\cdots{p}_s^{m_s}\Rightarrow
+\forall{i}\in\overline{1,s}(p_i^{m_1}|n)\Rightarrow\forall{i}\in\overline{1,s}\,\exists{H}_i&lt;G:|H_i|=p_i^{m_i},
+$$
+где последняя импликация по <a href="./discrete_math9.10.html#Theorem9.29">теореме 9.29</a>.
+Аналогично, доказательству <a href="./discrete_math10.1.html#Theorem10.4">теоремы 10.4</a> можно показать, 
+что сумма $H:=H_1+\cdots+H_s&lt;G$ прямая, тогда $|H|=|H_1|\cdots|H_s|=p_1^{m_1}\cdots{p}_s^{m_s}=d$.
+
+<br><br>
+<a href="discrete_math9.13.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math10.3.html">next</a>
+</body>
+</html>

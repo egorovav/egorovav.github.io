@@ -1,0 +1,201 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}",
+	rank: "{\\operatorname{rank}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.5.html">next</a>
+<br>
+
+<h4 id="21.4">21.4 Минимальный многочлен и аннулятор.</h4>
+
+<p id="Definition21.15"><b>Определение 21.15:</b><br>
+Характерестический многочлен минимальной степени называют минимальным многочленом лиейной рекуррентной последовательности, 
+а его степень рангом этой последовательности.<br>
+Ранг линейной рекуррентной последовательности $u$ обозначают $\rank{u}$.  
+<p id="Example21.10"><b>Пример 21.10:</b><br>
+Минимальный многочлен может быть не единственен. Например, пусть $R=\mathbb{Z}_4$, для любого $i\in\mathbb{N}_0$ $u(i)=2$, 
+тогда $x-1$ и $x-3$ являются минимальными многочленами ЛРП $u$.
+<p id="Definition21.16"><b>Определение 21.16:</b><br>
+Аннулятором линейной рекуррентной последовательности $u\in\alpha{R}^{\infty}$ называется множество многочленов $An(u)\subset{R}[x]$ 
+аннулирующих последовательность $u$, то есть
+$$An(u):=\{F(x)\in{R}[x]\mid{F}(x)u=0\}.$$
+<p id="Note21.3"><b>Замечание 21.3:</b><br>
+<ol>
+<li>Из определения следует, что в аннуляторе $An(u)$ лежат все характеристические многочлены ЛРП $u$, 
+а так же все неунитарные многочлены аннулирующие $u$.
+</li>
+<li>Из <a href="./discrete_math21.3.html#Statement21.4">утверждения 21.4</a> и <a href="./discrete_math21.3.html#Theorem21.2">теоремы 21.2</a> следует, 
+что для любой ЛРП $u\in\alpha{R}^{\infty}$ $An(u)\vartriangleleft{R}[x]$.
+</li>
+</ol>
+<p id="Theorem21.6"><b>Теорема 21.6:</b><br>
+Линейная рекуррентная последовательность над полем имеет единственный минимальный многочлен и любой характеристический многочлен делится на минимальный.
+<p><b>Доказательство:</b><br><br>
+Пусть $P$ - поле, $u\in\alpha{P}^{\infty}$. Так как $An(u)\vartriangleleft{P}[x]$, то по <a href="./discrete_math17.3.html#Corollary17.6">следствию 17.6</a>
+существует единственный унитарный многочлен $F(x)$ такой, что $An(u)=F(x)P[x]$. Следовательно, 
+$F(x)$ имеет минимальную степень в $An(u)$ и делит любой многочлен из $An(u)$.
+<p id="Note21.4"><b>Замечание 21.4:</b><br>
+Если $u$ - ЛРП над полем, то ее минимальный многочлен обозначают $m_u(x)$.
+<p id="Statement21.5"><b>Утверждение 21.5:</b><br>
+Унитарный многочлен $F(x)\in{R}[x]$ является единственным минимальным многочленом последовательности $u\in\alpha{R}^{\infty}$, 
+тогда и только тогда когда $An(u)=F(x)R[x]$.<br>
+(Последовательность $u\in\alpha{R}^{\infty}$ имеет единственный минимальный многочлен тогда и только тогда, когда $An(u)$ главный идеал кольца $R[x]$.) 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Из <a href="./discrete_math21.3.html#Statement21.4">утверждения 21.4</a> и <a href="./discrete_math21.3.html#Theorem21.2">теоремы 21.2</a> 
+следует, что $F(x)R[x]\subset{A}u(u)$. Докажем обратное включение. Пусть $G(x)\in{A}u(u)$ и $m:=\deg{F(x)}$. Разделим $G(x)$ на $F(x)$ с остатком, тогда 
+$$
+\exists{Q}(x),r(x)\in{R}[x]:(G(x)=F(x)Q(x)+r(x)\,\wedge\,\deg{r(x)}&lt;m)\Rightarrow{r}(x)=G(x)-F(x)Q(x)\in{A}u(u)\Rightarrow
+(F(x)+r(x)\in{A}u(x)\,\wedge\,\deg{(F(x)+r(x))}=m).
+$$
+Многочлен $F(x)+r(x)$ унитарен, следовательно, он минимальный для ЛРП $u$, тогда из единственности минимального следует, что $F(x)+r(x)=F(x)$, 
+то есть $r(x)=0$. Таким образом, $F(x)|G(x)$, следовательно, $G(x)\in{F}(x)P[x]$.<br>
+$\Leftarrow)$ Пусть $G(x)$ - минимальный многочлен ЛРП $u$, тогда в силу унитарности $F(x)$ и $G(x)$
+$$
+G(x)\in{F}(x)P[x]\Rightarrow{F}(x)|G(x)\Rightarrow\deg{G(x)}\geq{m}\Rightarrow\deg{G}(x)=m\Rightarrow
+(\deg{(F(x)-G(x))}&lt;m\,\wedge\,F(x)-G(x)\in{F}(x)P[x])\Rightarrow{F}(x)-G(x)=0\Rightarrow{G}(x)=F(x).
+$$
+<p id="Statement21.6"><b>Утверждение 21.6:</b><br>
+Пусть многочлен $F(x)\in{R}[x]$ унитарен, тогда последовательность $e^{F}\in\alpha{R}^{\infty}$ имеет единственный минимальный многочлен $F(x)$ и 
+$An(e^F)=F(x)R[x]$. 
+<p><b>Доказательство:</b><br><br>
+Так как $F(x)e^F=0$, то $F(x)P[x]\subset{A}n(e^F)$, докажем обратное включение. Пусть $m:=\deg{F(x)}$ и $G(x)\in{A}n(e^F)$. 
+Разделим $G(x)$ на $F(x)$, тогда
+$$
+\exists{Q}(x),r(x)\in{R}[x]:(G(x)=F(x)Q(x)+r(x)\,\wedge\,k:=\deg{r(x)}&lt;m)\Rightarrow{r}(x)e^F=(G(x)-F(x)Q(x))e^F=0
+$$
+Предположим, что $k&gt;0$ и обозначим $r(x):=r_kx^k+\cdots+r_1x+r_0$, где $r_k\neq0$ и
+$$
+(r(x)e^F)(m-k-1)=r_0e^F(m-k-1)+r_1e^F(m-k)+\cdots+r_ke^F(m-1)=r_ke^F(m-1)=r_k\neq0
+$$
+Получено противоречие с утвержденим $r(x)e^F=0$, следовательно, $k=0$, $r(x)=0$.
+<p id="Statement21.7"><b>Утверждение 21.7:</b><br>
+Пусть $P$ - поле.
+<ol>
+<li>Если $u\in\alpha{P}^{\infty}$, $H(x)\in{P}[x]$, $v:=H(x)u$, тогда 
+$$m_v(x)=\frac{m_u(x)}{(m_u(x),H(x))}.$$
+</li>
+<li>Если последовательноси $u,v\in\alpha{P}^{\infty}$ имеют взаимнопростые характеристические многочлены, то $m_{u+v}(x)=m_u(x)m_v(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Для любого $F(x)\in{P}[x]$
+$$
+F(x)v=0\Leftrightarrow{F}(x)H(x)u=0\Leftrightarrow{m}_u(x)|F(x)H(x)\Leftrightarrow\left.\frac{m_u(x)}{(m_u(x),H(x))}\right|F(x).
+$$
+</li>
+<li>Так как над полем минимальный многочлен делит любой характерестический, то $(m_u(x),m_v(x))=e$, 
+тогда по <a href="./discrete_math21.3.html#Theorem21.3">теореме 21.3</a>
+$$L_P(m_um_v)=L_P(m_u)\dotplus{L}_P(m_v).$$
+Тогда для любого $F(x)\in{P}[x]$
+$$
+F(x)(u+v)=0\Leftrightarrow{F}(x)u+F(x)v=0\Leftrightarrow(F(x)u=0\,\wedge\,F(x)v=0)\Leftrightarrow
+(m_u(x)|F(x)\,\wedge\,m_v(x)|F(x))\Rightarrow{m}_u(x)m_v(x)|F(x).
+$$
+</li>
+</ol>
+<p id="Corollary21.5"><b>Следствие 21.5:</b><br>
+Если $P$ - поле, $u\in{L}_P(F)$, $\Phi(x)$  - генератор последовательности $u$, то $m_u(x)=\frac{F(x)}{(F(x),\Phi(x))}$.
+<p><b>Доказательство:</b><br><br>
+Так как $u=\Phi(x)e^F$, то утверждение следует из п. 1 утверждения 21.7.
+<br><br>
+<u>Практические способы нахождения минимального многочлена ЛРП над полем.</u>
+<br><br>
+Если для ЛРП $u$ известен характеристический многочлен 
+$$F(x)=f_mx^m+f_{m-1}x^{m-1}+\cdots+f_1x+f_0,$$
+то 
+<ol>
+<li>по формуле $\Phi(x)=\sum_{k=0}^{m-1}(u(k)+f_{m-1}u(k-1)+\cdots+f_{m-k}u(0))x^{m-k-1}$ находим генератор последовательности $u$;</li>
+<li>по следствию 21.5 находим минимальный многочлен, как $$m_u(x)=\frac{F(x)}{(F(x),\Phi(x))}.$$</li>
+</ol>
+<p id="Statement21.8"><b>Утверждение 21.8: Метод нахождения минимального многочлена с помощью решения гангелевой СЛУ.</b><br>
+Пусть $P$ - поле, последовательность $u\in\alpha{P}^{\infty}$ имеет ранг $m$.
+<ol>
+<li>Многочлен $F(x)=x^m-c_{m-1}x^{m-1}-\cdots-f_1x-f_0\in{P}[x]$ является характеристическим многочленом последовательности $u$ тогда и только тогда, 
+когда $(c_0,c_1,\ldots,c_{m-1})^T$ является решением системы линейных уравнений
+$$
+\begin{pmatrix}
+u(0) 		& u(1) 		& \cdots 	& u(m-1) 	\\
+u(1) 		& u(2) 		& \cdots 	& u(m)		\\
+\cdots 		& \cdots 	& \cdots 	& \cdots	\\
+u(m-1) 	& u(m) 	& \cdots 	& u(2m-2)
+\end{pmatrix}x^{\downarrow}=
+\begin{pmatrix}u(m) \\ u(m+1) \\ \vdots \\ u(2m-1)\end{pmatrix}\quad{(1)}
+$$
+</li>
+<li>Если ранг $u$ равен $r$, то система линейных уравнений 
+$$
+\begin{pmatrix}
+u(0) 		& u(1) 		& \cdots 	& u(r-1) 	\\
+u(1) 		& u(2) 		& \cdots 	& u(r) 		\\
+\cdots 		& \cdots 	& \cdots 	& \cdots	\\
+u(r-1) 		& u(r) 		& \cdots 	& u(2r-2)
+\end{pmatrix}x^{\downarrow}=
+\begin{pmatrix}u(r) \\ u(r+1) \\ \vdots \\ u(2r-1)\end{pmatrix}\quad{(2)}
+$$
+имеет единственное решение и если $(a_0,a_1,\ldots,a_{r-1})^T$ решение системы $(2)$, то $m_u(x)=x^r-a_{r-1}x^{r-1}-\cdots-a_1x-a_0$.
+</li>
+<li>Если ранг $u$ равен $r$, то ранг матрицы 
+$$
+U=
+\begin{pmatrix}
+u(0) 		& u(1) 		& \cdots 	& u(r-1) 	\\
+u(1) 		& u(2) 		& \cdots 	& u(r) 		\\
+\cdots 		& \cdots 	& \cdots 	& \cdots	\\
+u(r-1) 		& u(r) 		& \cdots 	& u(2r-2)
+\end{pmatrix}
+$$
+равен $r$ и минор $M_U\binom{1,2,\ldots,r\:}{1,2,\ldots,r\:}$ является ранговым.
+</li>
+</ol>
+<p><b></b><br>
+<ol>
+<li> 
+$\Rightarrow)$ Пусть $F(x)=x^m-c_{m-1}x^{m-1}-\cdots-c_1x-c_0$ характеристический многочлен ЛРП $u$, тогда для любого $i\in\mathbb{N}_0$ 
+$$u(i+m)=c_{m-1}u(i+m-1)+\cdots+c_0u(i),$$
+ в частности это равенство выполняется для любого $i\in\overline{1,m-1}$, то есть $(c_0,c_1,\ldots,c_{m-1})^T$ является решением СЛУ $(1)$.<br>
+$\Leftarrow)$ По п.1 <a href="./discrete_math21.3.html#Corollary21.4">следствия 21.4</a> ЛРП $v:=F(x)u$ имеет тот же ранг и 
+тот же характеристический многочлен что и ЛРП $u$. 
+Если $(c_0,c_1,\ldots,c_{m-1})^T$ решение СЛУ $(1)$, тогда для любого $i\in\overline{1,m-1}$ 
+$$u(i+m)=c_{m-1}u(i+m-1)+\cdots+c_0u(i),$$ 
+то есть для любого $i\in\overline{1,m-1}$ $v(i)=0$. Тогда, так как ${\deg{v}=\deg{u}=m}$, то $v=0$, то есть $F(x)u=0$ и 
+по <a href="./discrete_math21.3.html#Statement21.4">утверждению 21.4</a> $u\in{L}_P(F)$.
+<li>Следует из пункта 1 и единственности минимального многочлена над полем.</li>
+<li>Так как $\rank{u}=r$, то $u$ имеет характеристический многочлен степени $r$. 
+Тогда все столбцы матрицы $U$ начиная с $r+1$-вого ЛВЧ первые $r$, то есть $\rang{U}\leq{r}$. 
+С другой стороны, по пункту 2 СЛУ $(2)$ имеет единственное решение, то есть ее матрица равная $M_U\binom{1,2,\ldots,r\:}{1,2,\ldots,r\:}$ обратима. 
+Значит $\rang{U}=r$ и $M_U\binom{1,2,\ldots,r\:}{1,2,\ldots,r\:}\neq0$.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math21.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.5.html">next</a>
+</body>
+</html>

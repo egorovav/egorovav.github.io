@@ -1,0 +1,453 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 12.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math12.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.4.html">next</a>
+<br>
+
+<h4 id="12.3">12.3 Многочлены аннулирующие преобразования.</h4>
+Везде далее в этом разделе будем считать, что $P$ - поле, $L_P$ - векторное пространство, $\dim{L}_P=n$, $f(x)=f_kx^k+\cdots+f_1x+f_0\in{P}[x]$, 
+$\varphi\in\mathcal{L}(L_P)$, $A\in{P}_{n,n}$.
+<p id="Definition12.7"><b>Определение 12.7:</b><br>
+По определению будем считать, что 
+$$f(\varphi):=\hat{f}_k\circ\varphi^k+\hat{f}_{k-1}\circ\varphi^{k-1}+\cdots+\hat{f}_1\circ\varphi+\hat{f}_0=\sum_{i=0}^k\hat{f}_i\circ\varphi^i,$$
+где для любого $a\in{P}$  преобразование $\hat{a}:=\varepsilon{a}\in\mathcal{L}(L_P)$ называется гомотетией и в последнем выражении считаем, 
+что $\varphi^0:=\hat{e}$.<br>
+Так же по определению будем считать, что
+$$f(A):=f_kA^k+f_{k-1}A^{k-1}+\cdots+f_1A+f_0E=\sum_{i=0}^kf_iA^i,$$
+где в последнем выражении $A^0:=E$.
+<p id="Note12.5"><b>Замечание 12.5:</b><br>
+Так как по п. 1 <a href="./discrete_math12.1.html#Theorem12.1">теоремы 12.1</a> $(\mathcal{L}(L_P);+,\circ)$ кольцо, то $f(\varphi)\in\mathcal{L}(L_P)$. 
+<p id="Task12.5"><b>Задача 12.5:</b><br>
+Пусть $\vec{\alpha}$ - базис векторного пространства $L_P$. Доказать, что $A_{\vec{\alpha}}(f(\varphi))=f(A_{\vec{\alpha}}(\varphi))$.<br>
+Решение.<br>
+Из п. 2 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a> следует, что для любого $i\in\overline{1,k}$ 
+$A_{\vec{\alpha}}(\varphi^i)=\left(A_{\vec{\alpha}}(\varphi)\right)^i$.<br>
+Из пп. 2, 3 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a> следует, что 
+$$
+\forall{i}\in\overline{1,k}\left(A_{\vec{\alpha}}(\hat{f}_i\circ\varphi^i)=A_{\vec{\alpha}}(\varepsilon{f_i})A_{\vec{\alpha}}(\varphi^i)=
+f_i\left(A_{\vec{\alpha}}(\varphi)\right)^i\right)
+$$
+Тогда из п. 1 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a> следует, что $A_{\vec{\alpha}}(f(\varphi))=f(A_{\vec{\alpha}}(\varphi))$. 
+<p id="Lemma12.1"><b>Лемма 12.1:</b><br>
+Пусть $f(x),g(x)\in{P}[x]$, $h(x)=f(x)+g(x)$, $t(x)=f(x)g(x)$, тогда
+<ol>
+<li>$h(A)=f(A)+g(A)$,</li>
+<li>$h(\varphi)=f(\varphi)+g(\varphi)$,</li>
+<li>$t(A)=f(A)g(A)=g(A)f(A)$,</li>
+<li>$t(\varphi)=f(\varphi)\circ{g}(\varphi)=g(\varphi)\circ{f}(\varphi)$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Пусть $\vec{\alpha}$ - некоторый базис $L_P$, $f(x)=\sum_{i=0}^kf_ix^i=\sum_{i\geq0}f_ix^i$, $g(x)=\sum_{i=0}^mg_ix^i=\sum_{i\geq0}g_ix^i$, тогда 
+$$h(x)=\sum_{i\geq0}(f_i+g_i)x^i,t(x)=\sum_{i=0}^{k+m}\left(\sum_{j=0}^kf_ig_{i-j}\right)x^i.$$
+<ol>
+<li>Воспользуемся <a href="./discrete_math3.1.html#Theorem3.5">теоремой 3.5</a>, тогда
+$$
+f(A)+g(A)=\sum_{i=0}^kf_iA^i+\sum_{j=0}^mg_jA^j=\sum_{i\geq0}(f_i+g_i)A^i=h(A)
+$$
+</li>
+<li>Воспользуемся п. 1 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a>, задачей 12.5, пунктом 1 и 
+<a href="./discrete_math12.1.html#Statement12.1">утверждением 12.1</a>, тогда
+$$
+A_{\vec{\alpha}}(f(\varphi)+g(\varphi))=A_{\vec{\alpha}}(f(\varphi))+A_{\vec{\alpha}}(g(\varphi))=
+f(A_{\vec{\alpha}}(\varphi))+g(A_{\vec{\alpha}}(\varphi))=h(A_{\vec{\alpha}}(\varphi))=A_{\vec{\alpha}}(h(\varphi))
+\Rightarrow{f}(\varphi)+g(\varphi)=h(\varphi)
+$$
+</li>
+<li>Воспользуемся <a href="./discrete_math3.1.html#Theorem3.5">теоремой 3.5</a>, тогда
+$$
+f(A)g(A)=\left(\sum_{i=0}^kf_iA^i\right)\left(\sum_{j=0}^mg_jA^j\right)=\sum_{i=0}^k\sum_{j=0}^mf_ig_jA^{i+j}=
+\sum_{u=0}^{k+m}\left(\sum_{v=0}^kf_vg_{u-v}\right)A^u=t(A)
+$$
+Так как $P$ - поле, то $g(x)f(x)=f(x)g(x)=t(x)$ и аналогично показывается, что $g(A)f(A)=t(A)$.
+</li>
+<li>Воспользуемся п. 2 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a>, задачей 12.5, пунктом 3 и 
+<a href="./discrete_math12.1.html#Statement12.1">утверждением 12.1</a>, тогда
+$$
+A_{\vec{\alpha}}(g(\varphi)\circ{h}(\varphi))=A_{\vec{\alpha}}(f(\varphi))A_{\vec{\alpha}}(g(\varphi))=
+f(A_{\vec{\alpha}}(\varphi))g(A_{\vec{\alpha}}(\varphi))=t(A_{\vec{\alpha}}(\varphi))\Rightarrow{t}(\varphi)=f(\varphi)\circ{g}(\varphi).
+$$
+Так как по пункту 1 $g(A)f(A)=t(A)$, то аналогично показывается, что $g(\varphi)\circ{f}(\varphi)=t(\varphi)$.
+</li>
+</ol>
+<p id="Definition12.8"><b>Определение 12.8:</b><br>
+Будем говорить, что многочлен $f(x)\in{P}[x]$ аннулирует преобразование $\varphi\in\mathcal{L}(L_P)$ (матрицу $A\in{P}_{n,n}$), 
+если $f(\varphi)=\hat{0}$ ($f(A)=\Theta$).
+<p id="Lemma12.2"><b>Лемма 12.2:</b><br>
+Пусть $P[x]_{n,n}$ - кольцо матриц над кольцом многочленов над полем $P$, $P_{n,n}[x]$ - кольцо многочленов над кольцом матриц над полем $P$, 
+тогда $P[x]_{n,n}\cong{P}_{n,n}[x]$.
+<p><b>Доказательство:</b><br><br>
+Определим отображение $\tau:P[x]_{n,n}\to{P}_{n,n}[x]$ такое, что 
+$$\forall{B}(x)\in{P[x]_{n,n}}\left(\tau(B(x))=B_my^m+B_{m-1}y^{m-1}+\cdots+B_1y+B_0\in{P}_{n,n}[x]\right),$$ 
+где для любого $k\in\overline{0,m}$ матрица $B_k\in{P}_{n,n}$ получена выписыванием коэффицентов при степени $k$ из всех многочленов составляющих матрицу 
+$B(x)$. То есть если $B(x)=\bigl(b^{(i,j)}(x)\bigr)_{n,n}\in{P}[x]_{n,n}$, где для любого 
+$i,j\in\overline{1,n}$ $b^{(i,j)}(x)=\sum_{k=0}^{m_{i,j}}b_k^{(i,j)}x^k$, то для любого $k\in\overline{0,m}$ 
+$m:=\max{\{m_{i,j}\mid{i},j\in\overline{1,n}\}}$ $B_k:=\bigl(b_k^{(i,j)}\bigr)_{n,n}$.<br>
+Докажем, что отображение $\tau$ является изоморфизмом колец $P[x]_{n,n}$ и $P_{n,n}[x]$.
+<ol>
+<li>Докажем, что отображение $\tau$ определено корректно. 
+Пусть матрицы $B(x)=\bigl(b^{(i,j)}(x)\bigr)_{n,n},C(x)=\bigl(c^{(i,j)}(x)\bigr)_{n,n}\in{P}[x]_{n,n}$ такие, что 
+$$\tau(B(x)):=B_my^m+\cdots+By+B_0=\tau(C(x)):=C_my^m+\cdots+Cy+C_0,$$ 
+что эквивалентно
+$$
+\forall{k}\in\overline{1,m}(B_k=C_k)\Leftrightarrow\forall{k}\in\overline{1,m}\,\forall{i},j\in\overline{1,n}(b_k^{(i,j)}=c_k^{(i,j)})\Leftrightarrow
+{B}(x)=C(x).
+$$
+</li>
+<li>Для любого многочлена $b(y)=\bigl(b_m^{(i,j)}\bigr)_{n,n}y^m+\cdots+\bigl(b_1^{(i,j)}\bigr)_{n,n}y+\bigl(b_0^{(i,j)}\bigr)_{n,n}$, 
+существует матрица $B(x)=\bigl(b_m^{(i,j)}x^m+\cdots+b_1^{(i,j)}x+b_0^{(i,j)}\bigr)_{n,n}\in{P}[x]_{n,n}$ такая, что $\tau(B(x))=b(y)$. 
+То есть отображение $\tau$ - сюръективно.
+</li>
+<li>Инъективность отображения $\tau$ следует из доказательства пункта 1.
+</li>
+<li>Пусть $B(x),C(x)\in{P}[x]_{n,n}$, 
+$$B(x):=\left(\sum_{k\geq0}b_k^{(i,j)}x^k\right)_{n,n}, C(x):=\left(\sum_{k\geq0}c_k^{(i,j)}x^k\right)_{n,n},$$ 
+для всех $k\geq0$ $B_k:=\bigl(b_k^{(i,j)}\bigr)_{n,n}$, $C_k:=\bigl(c_k^{(i,j)}\bigr)_{n,n}$, тогда
+$$
+\tau(B(x)+C(x))=\tau\left(\biggl(\sum_{k\geq0}(b_k^{(i,j)}+c_k^{(i,j)})x^k\biggr)_{n,n}\right)=
+\sum_{k\geq0}\bigl(b_k^{(i,j)}+c_k^{(i,j)}\bigr)_{n,n}y^k=\sum_{k\geq0}\bigl(b_k^{(i,j)}\bigr)_{n,n}y^k+\sum_{k\geq0}\bigl(c_k^{(i,j)}\bigr)_{n,n}y^k=
+\sum_{k\geq0}B_ky^k+\sum_{k\geq0}C_ky^k=\tau(B(x))+\tau(C(x)).
+$$
+Таким образом отображение $\tau$ согласовано с операцией сложения $+$.
+</li>
+<li>
+$$
+\tau(B(x)C(x))=\tau\left(\biggl(\sum_{s=1}^n\sum_{u\geq0}\sum_{v\geq0}b_v^{(i,s)}c_{u-v}^{(s,j)}x^u\biggr)_{n,n}\right)=
+\sum_{u\geq0}\left(\sum_{v\geq0}\biggl(\sum_{s=1}^nb_v^{(i,s)}c_{u-v}^{(s,j)}\biggr)_{n,n}\right)y^u=
+\sum_{u\geq0}\left(\sum_{v\geq0}B_vC_{u-v}\right)y^u=\sum_{k\geq0}B_ky^k\sum_{k\geq0}C_ky^k=\tau(B(x))\tau(C(x)).
+$$
+Таким образом отображение $\tau$ согласовано с операцией умножения $\cdot$.
+</ol>
+Из пунктов 1-5 следует, что $\tau$ изоморфизм колец $(P[x]_{n,n};+,\cdot)$ и $(P_{n,n}[x];+,\cdot)$, то есть $P[x]_{n,n}\cong{P}_{n,n}[x]$.
+<p id="Theorem12.4"><b>Теорема 12.4: Гамильтона - Кели.</b><br>
+Пусть $A\in{P}_{n,n}$, $\varphi\in\mathcal{L}(L_P)$, тогда $\chi_A(A)=\Theta$ и $\chi_\varphi(\varphi)=\hat{0}$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\chi_{A}(x)=x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\in{P}[x]$, положим $F(y):=Ey^n+(c_{n-1}E)y^{n-1}+\cdots+(c_1E)y+c_0E\in{P}_{n,n}[x]$. 
+Тогда, так как для любых $B\in{P}_{n,n}$ $c\in{P}$ $(cE)B=cB$  $\chi_{A}(B)=F(B)$, то для любой матрицы $B\in{P}_{n,n}$ $\chi_A(B)=F(B)$.
+Обозначим $Q(x):=(Ex-A)^*\in{P}[x]_{n,n}$ - матрица взаимная к матрице $Ex-A\in{P}[x]_{n,n}$, тогда из доказательства 
+<a href="./discrete_math3.3.html#Theorem3.8">теоремы 3.8</a> следует, что $(Ex-A)Q(x)=|Ex-A|E=\chi_A(x)E$. Тогда
+$$\tau((Ex-A)Q(x))=\tau(\chi_A(x)E)=F(y)\in{P}_{n,n}[y].$$
+С другой стороны, по лемме 12.2
+$$\tau((Ex-A)Q(x))=\tau(Ex-A)\tau(Q(x))=(Ey-A)\tau(Q(x))\in{P}_{n,n}[y].$$
+Таким образом, $F(y)=(Ey-A)\tau(Q(x))$ и по <a href="./discrete_math7.2.html#Theorem7.3">теореме 7.3</a> (теорема Безу) 
+в кольце $P_{n,n}[y]$ матрица $A$ является корнем многочлена $F(y)$, то есть $\chi_A(A)=F(A)=\Theta$.<br>
+Фиксируем базис $\vec{\alpha}$ векторного пространства $L_P$, тогда по <a href="./discrete_math12.3.html#Task12.5">задаче 12.5</a> и 
+<a href="./discrete_math12.1.html#Statement12.1">утверждению 12.1</a>
+$$
+A_{\vec{\alpha}}(\chi_{\varphi}(\varphi))=\chi_{\varphi}(A_{\vec{\alpha}}(\varphi))=\chi_{A_{\vec{\alpha}}(\varphi)}(A_{\vec{\alpha}}(\varphi))=
+\Theta=A_{\vec{\alpha}}(\hat{0})\Rightarrow\chi_{\varphi}(\varphi)=\hat{0}.
+$$
+<p id="Definition12.9"><b>Определение 12.9:</b><br>
+Унитарный многочлен $f(x)\in{P}[x]$ называется минимальным многочленом преобразования $\varphi\in\mathcal{L}(L_P)$ (матрицы $A\in{P}_{n,n}$), если
+<ol>
+<li>$f(\varphi)=\hat{0}$ ($f(A)=\Theta$),</li>
+<li>$\forall{g}(x)\in{P}[x]\backslash\{0\}(g(\varphi)=\hat{0}(g(A)=\Theta)\Rightarrow\deg{f(x)}\leq\deg{g(x)})$.</li>
+</ol>
+Минимальный многочлен преобразования $\varphi$ (матрицы $A$) обозначается $m_{\varphi}(x)$ ($m_A(x)$).
+<p id="Theorem12.5"><b>Теорема 12.5:</b><br>
+<ol>
+<li>если $f(x)$ минимальный многочлен преобразования $\varphi\in\mathcal{L}(L_P)$, то
+$$\forall{g}(x)\in{P}[x](g(\varphi)=\hat{0}\Leftrightarrow{f}(x)|g(x)),$$
+</li>
+<li>существует единственный минимальный многочлен преобразования $\varphi$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Из <a href="./discrete_math12.3.html#Theorem12.4">теоремы 12.4</a> следует, что для любого $\varphi\in\mathcal{L}(L_P)$ множество многочленов 
+аннулирующих преобразование $\varphi$ не пусто. Выберем среди них многочлен минимальной степени и обозначим его
+$$h(x):=h_mx^m+h_{m-1}x^{m-1}+\cdots+h_1x+h_0.$$ Тогда многочлен $\tilde{h}(x):=h_m^{-1}h(x)$ унитарен, $\deg{\tilde{h}(x)}=\deg{h(x)}$ и 
+$\tilde{h}(\varphi)=\widehat{h_m^{-1}}\circ{h}(\varphi)=\hat{0}$. Таким обрзом, многочлен 
+$\tilde{h}(x)$ является минимальным для преобразования $\varphi$. То есть множество минимальных многочленов преобразования $\varphi$ не пусто 
+выберем какой-то одни из них и обозначим $f(x)$.<br>
+$\Rightarrow)$ Пусть многочлен $g(x)\in{P}[x]$ такой, что $g(\varphi)=\hat{0}$. Разделим $g(x)$ на $f(x)$ с остатаком, тогда
+$$
+\exists{q}(x),r(x)\in{P}[x]:(g(x)=q(x)f(x)+r(x)\,\wedge\,\deg{r(x)}&lt;\deg{f(x)})\Rightarrow{g}(\varphi)=f(\varphi)\circ{q}(\varphi)+r(\varphi).
+$$
+Так как $g(\varphi)=f(\varphi)=\hat{0}$, то $r(\varphi)=\hat{0}$ и при этом $\deg{r(x)}&lt;\deg{f(x)}$. Предположим, что $r(x)\neq0$, 
+тогда домножив $r(x)$ на элемент обратный его старшему коэффициенту, получим многочлен $\tilde{r}(x)$ такой, 
+что $\deg{\tilde{r}(x)}=\deg{r(x)}&lt;\deg{f(x)}$ и $\tilde{r}(\varphi)=\hat{0}$, но это не возможно так как $f(x)$ - 
+минимальный многочлен преобразования $\varphi$. Таким образом, $r(x)=0$, то есть $f(x)|g(x)$.<br>
+$\Leftarrow)$ Пусть многочлен $g(x)\in{P}[x]$ такой, что $f(x)|g(x)$, тогда существует многочлен $q(x)\in{P}[x]$ такой, что $g(x)=f(x)q(x)$, 
+следовательно, $g(\varphi)=f(\varphi)\circ{q}(\varphi)=\hat{0}$.
+</li>
+<li>Существование минимального многочлена доказано в пункте 1 докажем его единственность. Пусть $f_1(x),f_2(x)\in{P}[x]$ минимальные многочлены преобразования $\varphi$, тогда по пункту 1 и утверждению 7.2
+$$(f_1(x)|f_2(x)\,\wedge\,f_2(x)|f_1(x))\Rightarrow\exists{u}\in{P}^*:f_1(x)=uf_2(x)\Rightarrow{f}_1(x)=f_2(x),$$
+где последняя импликация в силу того, что многочлены $f_1(x),f_2(x)$ унитарны.
+</li>
+</ol>
+<p id="Corollary12.2"><b>Следствие 12.2:</b><br>
+<ol>
+<li>если $f(x)$ минимальный многочлен матрицы $A\in{P}_{n,n}$, то 
+$$\forall{g}(x)\in{P}[x](g(A)=\Theta\Leftrightarrow{f}(x)|g(x)),$$
+</li>
+<li>существует единственный минимальный многочлен матрицы ${A\in{P}_{n,n}}$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+В силу изоморфности колец $(\mathcal{L}(L_P);+,\circ)$, $(P_{n,n};+,\cdot)$ доказывается аналогично теореме 12.5.
+<p id="Corollary12.3"><b>Следствие 12.3:</b><br>
+Пусть $A\in{P}_{n,n}$, $\varphi\in\mathcal{L}(L_P)$, тогда
+<ol>
+<li>$m_A(x)|\chi_A(x)$, $m_{\varphi}(x)|\chi_{\varphi}(x)$,</li>
+<li>если $\vec{\alpha}$ - базис $L_P$, то $m_{\varphi}(x)=m_{A_{\vec{\alpha}}(\varphi)}(x),$</li>
+<li>$\forall{A},B\in{P}_{n,n}(A\approx{B}\Rightarrow{m}_A(x)=m_{B}(x)).$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Следует из <a href="./discrete_math12.3.html#Theorem12.4">теоремы 12.4</a>.</li>
+<li>Обозначим $t(x):=m_{\varphi}(x)$, $h(x):=m_{A_{\vec{\alpha}}(\varphi)}(x)$, тогда по <a href="./discrete_math12.3.html#Task12.5">задаче 12.5</a> и 
+п. 1 следствия 12.2
+$$
+t(\varphi)=\hat{0}\Rightarrow{t}(A_{\vec{\alpha}}(\varphi))=A_{\vec{\alpha}}(t(\varphi))=A_{\vec{\alpha}}(\hat{0})=\Theta\Rightarrow{h}(x)|t(x).
+$$
+С другой стороны, по <a href="./discrete_math12.3.html#Task12.5">задаче 12.5</a> и п. 1 следствия 12.2
+$$
+A_{\vec{\alpha}}(\hat{0})=\Theta=h(A_{\vec{\alpha}}(\varphi))=A_{\vec{\alpha}}(h(\varphi))\Rightarrow{h}(\varphi)=\hat{0}\Rightarrow{t}(x)|h(x)
+$$
+Таким образом, по <a href="./discrete_math7.4.html#Statement7.2">утверждению 7.2</a> многочлены $t(x),h(x)$ равны так как они унитарны.  
+</li>
+<li>Если матрицы $A,B\in{P}_{n,n}$ такие, что $A\approx{B}$, то по <a href="./discrete_math12.1.html#Note12.2">замечанию 12.2</a> 
+существует преобразование $\varphi\in\mathcal{L}(P^{(n)})$ и два базиса $\vec{\alpha},\vec{\beta}$ пространства $P^{(n)}$ такие, что 
+$A=A_{\vec{\alpha}}(\varphi)$, $B=A_{\vec{\beta}}(\varphi)$, следовательно, по пункту 2 $m_A(x)=m_B(x)=m_{\varphi}(x)$.
+</li>
+</ol>
+<p id="Definition12.10"><b>Определение 12.10:</b><br>
+Унитарный многочлен $f(x)\in{P}[x]$ называется минимальным многочленом вектора $\gamma\in{L}_P$ относительно преобразования $\varphi\in\mathcal{L}(L_P)$, 
+если 
+<ol>
+<li>$f(\varphi)(\gamma)=\theta$,</li>
+<li>$\forall{g}\in{P}[x]\backslash\{0\}(g(\varphi)(\gamma)=\theta\Rightarrow\deg{f(x)}\leq\deg{g(x)})$.</li>
+</ol>
+Минимальный многочлен вектора $\gamma$ относительно преобразования $\varphi$ обозначается $m_{\gamma,\varphi}(x)$.
+<p id="Theorem12.6"><b>Теорема 12.6:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, $\gamma\in{L}_P$, тогда
+<ol>
+<li>если многочлен $f(x)$ является минимальным многочленом для вектора $\gamma$ относительно преобразования $\varphi$, то
+$$\forall{g}(x)\in{P}[x](g(\varphi)(\gamma)=\theta\Leftrightarrow{f}(x)|g(x)),$$
+</li>
+<li>существует единственный минимальный многочлен вектора $\gamma$ относительно преобразования $\varphi$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Множество $H$ многочленов $h(x)\in{P}[x]$ таких, что $h(\varphi)(\gamma)=\theta$ не пусто. В этом множество, например, 
+входит многочлен $m_{\varphi}(x)$. Выберем из множества $H$ унитарный многочлен минимальной степени и обозначим его $f(x)$, тогда многочлен $f(x)$ - 
+минимальный многочлен вектора $\gamma$ относительно преобразования $\varphi$.<br>
+$\Rightarrow)$ Пусть многочлен $g(x)\in{P}[x]$ такой, что $g(\varphi)(\gamma)=\theta$. Поделим многочлен $g(x)$ на многочлен $f(x)$ с остатком, тогда
+$$
+\exists{q}(x),r(x)\in{P}[x]:(g(x)=q(x)f(x)+r(x)\,\wedge\,\deg{r(x)}<\deg{f(x)})\Rightarrow\\
+\Rightarrow{g}(\varphi)(\gamma)=(q(\varphi)\circ{f}(\varphi)+r(\varphi))(\gamma)=q(\varphi)(f(\varphi)(\gamma))+r(\varphi)(\gamma)=
+q(\varphi)(\theta)+r(\varphi)(\gamma)=r(\varphi)(\gamma).
+$$
+Здесь последнее равенство в силу того, что $q(\varphi)\in\mathcal{L}(L_P)$, a для любого $\psi\in\mathcal{L}(L_P)$ $\psi(\theta)=\theta$. 
+Таким образом, $r(\varphi)(\gamma)=g(\varphi)(\gamma)=\theta$ и аналогично доказательству 
+п. 1 <a href="./discrete_math12.3.html#Theorem12.5">теоремы 12.5</a> можно показать, что $r(x)=0$, то есть $f(x)|g(x)$.<br>
+$\Leftarrow)$ Пусть многочлен $g(x)\in{P}[x]$ такой, что $f(x)|g(x)$, тогда
+$$
+\exists{q}(x)\in{P}[x]:g(x)=q(x)f(x)\Rightarrow
+{g}(\varphi)(\gamma)=(q(\varphi)\circ{f}(\varphi))(\gamma)=q(\varphi)(f(\varphi)(\gamma))=q(\varphi)(\theta)=\theta.
+$$
+</li>
+<li>Существование минимального многочлена вектора $\gamma$ относительно преобразования $\varphi$ доказано в пункте 1. 
+Единственность доказывается аналогично п. 2 <a href="./discrete_math12.3.html#Theorem12.5">теоремы 12.5</a>.
+</li>
+</ol>
+<p id="Corollary12.4"><b>Следствие 12.4:</b><br>
+$$\forall\gamma\in{L}_P(m_{\gamma,\varphi}(x)|m_{\varphi}(x)).$$
+<p><b>Доказательство:</b><br>
+$$\forall\gamma\in{L}_P(m_{\varphi}(\varphi)(\gamma)=\hat{0}(\gamma)=\theta\Rightarrow{m}_{\gamma,\varphi}(x)|m_{\varphi}(x)).$$
+<p id="Statement12.8"><b>Утверждение 12.8:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, $\dim{L}_P=n$, $\gamma\in{L}_P\backslash\{\theta\}$, $k\in\overline{1,n}$ такое, что система векторов 
+$$\gamma,\varphi(\gamma),\varphi^2(\gamma),\ldots,\varphi^{k-1}(\gamma)\quad(*)$$
+линейно независима и вектор $\varphi^k(\gamma)$ линейно выражается через систему $(*)$, $c_0,c_1,\ldots,c_{k-1}\in{P}$ такие, 
+что $\varphi^k(\gamma)=\gamma{c}_0+\varphi(\gamma)c_1+\cdots+\varphi^{k-1}(\gamma)c_{k-1}$, тогда
+$$m_{\gamma,\varphi}(x)=x^k-c_{k-1}x^{k-1}-\cdots-c_1x-c_0.$$
+<p><b>Доказательство:</b><br><br>
+Пусть $f(x):=x^k-c_{k-1}x^{k-1}-\cdots-c_1x-c_0$, тогда по выбору элементов $c_0,c_1,\ldots,c_{k-1}\in{P}$
+$$
+f(\varphi)(\gamma)=(\varphi^k-\hat{c}_{k-1}\circ\varphi^{k-1}-\cdots-\hat{c}_1\varphi-\hat{c}_0)(\gamma)=
+\varphi^k(\gamma)-\varphi^{k-1}(\gamma)c_{k-1}-\cdots-\varphi(\gamma)c_1-c_0\gamma=\theta.
+$$
+Предположим, что $f(x)\neq{m}_{\gamma,\varphi}(x)$, тогда так как по п. 2 <a href="./discrete_math12.3.html#Theorem12.6">теоремы 12.6</a>
+минимальный многочлен вектора $\gamma$ относительно преобразования $\varphi$ единственен, то $m:=\deg{m_{\gamma,\varphi}(x)}&lt;k=\deg{f(x)}$, тогда
+$$
+\exists{g}_0,g_1,\ldots,g_{m-1}\in{P}:m_{\gamma,\varphi}(x)=x^m+g_{m-1}x^{m-1}+\cdots+g_1m+g_0\Rightarrow
+{m}_{\gamma,\varphi}(\varphi)(\gamma)=\varphi^m(\gamma)+g_{m-1}\varphi^{m-1}(\gamma)+\cdots+g_1\varphi(\gamma)+g_0\gamma=\theta\Rightarrow\\
+\Rightarrow\varphi^m(\gamma)=-g_{m-1}\varphi^{m-1}(\gamma)-\cdots-g_1\varphi(\gamma)-g_0. 
+$$
+Последнее равенство означает, что $\varphi^m(\gamma)$ ЛВЧ $\gamma,\varphi(\gamma),\ldots,\varphi^{m-1}(\gamma)$, что, в силу предположения $m&lt;k$, 
+противоречит линейной независимости системы $(*)$.
+<p id="Theorem12.7"><b>Теорема 12.7:</b><br>
+Пусть $\alpha_1,\ldots,\alpha_n$ - базис векторного пространтсва $L_P$, $\varphi\in\mathcal{L}(L_P)$, тогда 
+$$m_{\varphi}(x)=[m_{\alpha_1,\varphi}(x),\ldots,m_{\alpha_n,\varphi}(x)],$$
+<p><b>Доказательство:</b><br><br>
+Обозначим $f(x):=[m_{\alpha_1,\varphi}(x),\ldots,m_{\alpha_n,\varphi}(x)]$, 
+тогда так как по <a href="./discrete_math12.3.html#Corollary12.4">следствию 12.4</a>
+для любого $i\in\overline{1,n}$ $m_{\alpha_i,\varphi}(x)|m_{\varphi}(x)$, то $f(x)|m_{\varphi}(x)$.<br>
+С другой стороны, так как $f(\varphi)\in\mathcal{L}(L_P)$
+$$
+\forall{i}\in\overline{1,n}(m_{\alpha_i,\varphi}(x)|f(x))\Rightarrow\forall{i}\in\overline{1,n}(f(\varphi)(\alpha_i)=\theta)\Rightarrow
+\forall\gamma\in{L}_P\left(\exists{c}_1,\ldots,c_n\in{P}:f(\varphi)(\gamma)=f(\varphi)\left(\sum_{i=1}^n\alpha_ic_i\right)=
+\sum_{i=1}^nf(\varphi)(\alpha_i)c_i=\theta\right).
+$$
+Последнее утверждение означает, что $f(\varphi)=\hat{0}$, следовательно, $m_{\varphi}(x)|f(x)$.
+Таким образом, в силу унитарности обоих многочленов $f(x)=m_{\varphi}(x)$.
+<p id="Example12.2"><b>Пример 12.2;</b><br>
+Пусть $f(x)=x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\in{P}[x]$, тогда
+$$
+S(f)=
+\begin{pmatrix}
+0 	&0 	   & \cdots & 0 	& -c_0 		\\
+e 	&0 	   & \cdots & 0 	& -c_1 		\\
+\vdots& \ddots& \ddots & \vdots & \vdots 	\\
+0	& \cdots& e 	       & 0	& -c_{n-2}	\\
+0	& \cdots & \cdots    & e 	& -c_{n-1}	
+\end{pmatrix}\in{P}_{n,n}
+$$
+сопровождающая матрица для многочлена $f(x)$. Найдем многочлен $m_{S(f)}(x)$ минимальный для матрицы $S(f)$.<br>
+Фиксируем векторное пространство $L_P$ такое, что $\dim{L}_P=n$ и его базис $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)$. 
+Тогда существует преобразование $\varphi\in\mathcal{L}(L_P)$ такое, что $A_{\vec{\alpha}}(\varphi)=S(f)$ и 
+по п. 2 <a href="./discrete_math12.3.html#Corollary12.3">следствия 12.3</a> $m_{S(f)}(x)=m_{\varphi}(x)$. 
+Найдем многочлен $m_{\alpha_1,\varphi}(x)$ минимальный для вектора $\alpha_1$ относительно преобразования $\varphi$. Так как 
+$S(f)=A_{\vec{\alpha}}(\varphi)=\left(\varphi(\alpha_1)_{\vec{\alpha}}^{\downarrow},\ldots,\varphi(\alpha_n)_{\vec{\alpha}}^{\downarrow}\right)$, то
+$$\varphi(\alpha_1)=\vec{\alpha}\varphi(\alpha_1)_{\vec{\alpha}}^{\downarrow}=\vec{\alpha}S(f)_1^{\downarrow}=\alpha_2$$
+и
+$$
+\varphi^2(\alpha_1)=\varphi(\varphi(\alpha_1))=\varphi(\alpha_2)=\vec{\alpha}\varphi(\alpha_2)_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}S(f)_2^{\downarrow}=\alpha_3.
+$$
+Аналогично для любого $k\in\overline{1,n-1}$ $\varphi^k(\alpha_1)=\alpha_{k+1}$, то есть 
+$$(\alpha_1,\varphi(\alpha_1),\ldots,\varphi^{n-1}(\alpha_1))=(\alpha_1,\ldots,\alpha_n),$$ 
+следовательно, система векторов $(\alpha_1,\varphi(\alpha_1),\ldots,\varphi^{n-1}(\alpha_1))$ ЛНЗ. 
+Тогда по <a href="./discrete_math12.3.html#Statement12.8">утверждению 12.8</a> $\deg{m_{\alpha_1,\varphi}(x)}\geq{n}$. 
+В <a href="./discrete_math12.2.html#Task12.4">задаче 12.4</a> было показано, что $\chi_{S(f)}(x)=f(x)$, тогда $m_{\alpha_1,\varphi}(x)|f(x)$, 
+следовательно, $\deg{m_{\alpha_1,\varphi}(x)}=n$ и так как многочлены $m_{\alpha_1,\varphi}(x)$, $f(x)$ унитарны, 
+то по <a href="./discrete_math7.2.html#Theorem7.2">теореме 7.2</a> они равны. Таким образом, $m_{\varphi}(x)|f(x)$, так как $f(x)=\chi_{S(f)}(x)$ и 
+с другой стороны $f(x)|m_{\varphi}(x)$ так как $f(x)=m_{\alpha_1,\varphi}(x)$, то есть $m_{S(f)}(x)=m_{\varphi}(x)=f(x)$.
+<p id="Statement12.9"><b>Утверждение 12.9:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, $\alpha\in{L}_P$, тогда
+<ol>
+<li>если $f(x)\in{P}[x]$ и $\beta=f(\varphi)(\alpha)$, то 
+$$m_{\beta,\varphi}(x)=\frac{m_{\alpha,\varphi}(x)}{(f(x),m_{\alpha,\varphi}(x))};$$
+</li>
+<li>если $\gamma\in{L}_P$ такой, что $(m_{\alpha,\varphi}(x),m_{\gamma,\varphi}(x))=e$, тогда
+$$m_{\alpha+\gamma,\varphi}(x)=m_{\alpha,\varphi}(x)m_{\gamma,\varphi}(x).$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+Обозначим $d(x):=(f(x),m_{\alpha,\varphi}(x))$, тогда по п. 4 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a> существуют многочлены 
+$m_1(x),f_1(x)\in{P}[x]$ такие, что $m_{\alpha,\varphi}(x)=m_1(x)d(x)$, $f(x)=f_1(x)d(x)$ и $(m_1(x),f_1(x))=e$.
+<ol type="a">
+<li>По п. 4 <a href="./discrete_math12.3.html#Lemma12.1">леммы 12.1</a> и п. 1 <a href="./discrete_math12.3.html#Theorem12.6">теоремы 12.6</a>
+$$
+m_1(\varphi)(\beta)=m_1(\varphi)(f(\varphi)(\alpha))=m_1(\varphi)((f_1(\varphi)\circ{d}(\varphi))(\alpha))=
+(f_1(\varphi)\circ{m}_1(\varphi)\circ{d}(\varphi))(\alpha)=f_1(\varphi)({m}_{\alpha,\varphi}(\varphi)(\alpha))=
+f_1(\varphi)(\theta)=\theta\Rightarrow{m}_{\beta,\varphi}(x)|m_1(x)
+$$
+<li>
+</li>С другой стороны, по п. 1 <a href="./discrete_math12.3.html#Theorem12.6">теоремы 12.6</a>, 
+<a href="./discrete_math7.4.html#Note7.2">замечанию 7.2</a>, п. 2 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a>
+$$
+\theta=m_{\beta,\varphi}(\varphi)(\beta)=m_{\beta,\varphi}(\varphi)(f(\varphi)(\alpha))=(m_{\beta,\varphi}(\varphi)\circ{f}(\varphi))(\alpha)\Rightarrow
+{m}_{\alpha,\varphi}(x)|(m_{\beta,\varphi}(x)f(x))\Rightarrow{m}_1(x)|(m_{\beta,\varphi}(x)f_1(x))\Rightarrow{m}_1(x)|m_{\beta,\varphi}(x),
+$$
+где последняя импликация в силу того, что $(m_1(x),f_1(x))=e$.
+</li>
+</ol>
+Из пунктов (a), (b) следует, что 
+$$m_{\beta,\varphi}(x)=m_1(x)=\frac{m_{\alpha,\varphi}(x)}{d(x)}=\frac{m_{\alpha,\varphi}(x)}{(f(x),m_{\alpha,\varphi}(x))}.$$
+</li>
+</li>
+<ol type="a">
+<li>По п. 4 <a href="./discrete_math12.3.html#Lemma12.1">леммы 12.1</a>
+$$
+(m_{\alpha,\varphi}(\varphi)\circ{m}_{\gamma,\varphi}(\varphi))(\alpha+\gamma)=
+(m_{\alpha,\varphi}(\varphi)\circ{m}_{\gamma,\varphi}(\varphi))(\alpha)+(m_{\alpha,\varphi}(\varphi)\circ{m}_{\gamma,\varphi}(\varphi))(\gamma)=
+m_{\gamma,\varphi}(\varphi)(m_{\alpha,\varphi}(\varphi)(\alpha))+m_{\alpha,\varphi}(\varphi)(m_{\gamma,\varphi}(\varphi)(\gamma))=\\=
+m_{\gamma,\varphi}(\varphi)(\theta)+m_{\alpha,\varphi}(\varphi)(\theta)=
+\theta\Rightarrow{m}_{\alpha+\gamma,\varphi}(x)|m_{\alpha,\varphi}(x)m_{\gamma,\varphi}(x)
+$$
+</li>
+<li>С другой стороны, так как
+$$
+m_{\alpha+\gamma,\varphi}(\varphi)(\alpha+\gamma)=m_{\alpha+\gamma,\varphi}(\varphi)(\alpha)+m_{\alpha+\gamma,\varphi}(\varphi)(\gamma)=\theta\Rightarrow
+\exists\delta\in{L}_P:\delta={m}_{\alpha+\gamma,\varphi}(\varphi)(\alpha)=-m_{\alpha+\gamma,\varphi}(\varphi)(\gamma)
+$$
+то по пункту 1
+$$
+m_{\delta,\varphi}(x)=\frac{m_{\alpha,\varphi}(x)}{(m_{\alpha+\gamma,\varphi}(x),m_{\alpha,\varphi}(x))}\Rightarrow
+{m}_{\delta,\varphi}(x)|m_{\alpha,\varphi}(x)
+$$
+и 
+$$
+m_{\delta,\varphi}(x)=\frac{m_{\gamma,\varphi}(x)}{(-m_{\alpha+\gamma,\varphi}(x),m_{\gamma,\varphi}(x))}\Rightarrow
+{m}_{\delta,\varphi}(x)|m_{\gamma,\varphi}(x).
+$$
+Таким образом
+$$
+m_{\delta,\varphi}(x)|(m_{\alpha,\varphi}(x),m_{\gamma,\varphi}(x))=e\Rightarrow{m}_{\delta,\varphi}(x)=e\Rightarrow\hat{e}(\delta)=\theta\Rightarrow
+\delta=m_{\alpha+\gamma,\varphi}(\varphi)(\alpha)=m_{\alpha+\gamma,\varphi}(\varphi)(\gamma)=\theta\Rightarrow\\
+\Rightarrow({m}_{\alpha,\varphi}(x)|m_{\alpha+\gamma,\varphi}(x)\,\wedge\,m_{\gamma,\varphi}(x)|m_{\alpha+\gamma,\varphi}(x))\Rightarrow
+{m}_{\alpha,\varphi}(x)m_{\gamma,\varphi}(x)|m_{\alpha+\gamma,\varphi}(x).
+$$
+</li>
+</ol>
+Из пунктов (a), (b) следует, что $m_{\alpha+\gamma,\varphi}(x)=m_{\alpha,\varphi}(x)m_{\gamma,\varphi}(x)$.
+</li>
+</ol>
+<p id="Statement12.10"><b>Утверждение 12.10:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, унитарный многочлен ${f(x)\in{P}[x]}$ такой, что $f(x)|m_{\varphi}(x)$, тогда существует вектор $\beta\in{L}_P$ такой, 
+что $m_{\beta,\varphi}(x)=f(x)$.
+<p><b>Доказательство:</b><br><br>
+Докажем, что сущетствует вектор $\gamma\in{L}_P$ такой, что $m_{\gamma,\varphi}(x)=m_{\varphi}(x)$.<br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис пространства $L_P$, тогда по <a href="./discrete_math12.3.html#Theorem12.7">теореме 12.7</a>
+$m_{\varphi}(x)=[m_{\alpha_1,\varphi}(x),\ldots,m_{\alpha_n,\varphi}(x)]$. Пусть $m_{\varphi}(x)=g_1^{k_1}(x)\cdots{g}_n^{k_n}(x)$ - 
+каноническое разложение многочлена $m_{\varphi}(x)$, тогда из <a href="./discrete_math7.5.html#Theorem7.11">теоремы 7.11</a> следует
+$$
+\forall{i}\in\overline{1,t}\,\exists\beta_i\in\{\alpha_1,\ldots,\alpha_n\}:g_i^{k_i}(x)|m_{\beta_i,\varphi}(x)\Rightarrow
+\forall{i}\in\overline{1,t}\,\exists\beta_i\in\{\alpha_i,\ldots,\alpha_n\}\,h_i(x)\in{P}[x]:m_{\beta_i,\varphi}(x)=g_i^{k_i}(x)h_i(x).
+$$
+Для любого $i\in\overline{1,t}$ обозначим $\gamma_i:=h_i(\varphi)(\beta_i)$, тогда по утверждению 12.9
+$$
+\forall{i}\in\overline{1,t}\left(m_{\gamma_i,\varphi}(x)=\frac{m_{\beta_i,\varphi}(x)}{(m_{\beta_i,\varphi}(x),h_i(x))}=
+\frac{g_i^{k_i}(x)h_i(x)}{(g_i^{k_i}(x)h_i(x),h_i(x))}=g_i^{k_i}(x)\right)\Rightarrow
+{m}_{\gamma_i+\cdots+\gamma_n}(x)=\prod_{i=1}^tm_{\gamma_i,\varphi}(x)=\prod_{i=1}^tg_i^{k_i}(x)=m_{\varphi}(x).
+$$
+Таким образом, найден вектор $\gamma:=\gamma_1+\cdots+\gamma_n$ такой, что $m_{\gamma,\varphi}(x)=m_{\varphi}(x)$. Тогда по утверждению 12.9
+$$
+f(x)|m_{\varphi}(x)\Rightarrow\exists{g}(x)\in{P}[x]:m_{\varphi}(x)=f(x)g(x)\Rightarrow
+\exists\beta:=g(\varphi)(\gamma)\in{L}_P:m_{\beta,\varphi}(x)=\frac{m_{\gamma,\varphi}(x)}{(m_{\gamma,\varphi}(x),g(x))}=
+\frac{m_{\varphi}(x)}{(m_{\varphi}(x),g(x))}=\frac{f(x)g(x)}{(f(x)g(x),g(x))}=f(x).
+$$
+
+<br><br>
+<a href="discrete_math12.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.4.html">next</a>
+</body>
+</html>

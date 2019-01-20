@@ -1,0 +1,381 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 12.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math11.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.2.html">next</a>
+<br>
+
+<h3 id="12">12 Линейные преобразования векторных пространств.</h3>
+<h4 id="12.1">12.1 Введение.</h4>
+<p id=Definition12.1><b>Определение 12.1:</b><br>
+Линейным отображением векторного пространства $L_P$ в векторное пространство $M_P$ называется отображение $\varphi:L\to{M}$ такое, что 
+$$\forall\alpha,\beta\in{L}_P\,a\in{P}(\varphi(\alpha+\beta)=\varphi(\alpha)+\varphi(\beta)\,\wedge\,\varphi(\alpha{a})=\varphi(\alpha)a).$$
+Множество всех линейных отображений пространства $L_P$ в пространство $M_P$ обозначают $\mathcal{L}(L_P,M_P)$.<br>
+Линейное отображение пространства $L_P$ в себя называется линейным преобразованием пространства $L_P$. 
+Множество всех линейных преобразований пространства $L_P$ обозначают $\mathcal{L}(L_P)$.
+<p id="Note12.1"><b>Замечание 12.1:</b><br>
+<ol>
+<li>Если $\varphi\in\mathcal(L_P,M_P)$, то $\varphi:L\to{M}$ - гомоморфизм групп.</li>
+<li>Если $\varphi\in\mathcal(L_P,M_P)$, то по <a href="./discrete_math9.8.html#Statement9.8">утверждению 9.8</a> $\ker{\varphi}&lt;L$ и
+$$\forall\alpha\in\ker{\varphi}\,a\in{P}(\varphi(\alpha{a})=\varphi(\alpha)a=\theta{a}=\theta)\Rightarrow
+\forall\alpha\in\ker{\varphi}\,a\in{P}(\alpha{a}\in\ker{\varphi}).$$ 
+Таким образом, $(\ker{\varphi})_P&lt;L_P$.
+</li>
+<li>Если $\varphi:L_P\to{M}_P$ - изоморфизм векторных пространств, тогда ${\varphi\in\mathcal{L}(L_P,M_P)}$.</li>
+</ol>
+<p id="Example12.1"><b>Пример 12.1:</b><br>
+<ol>
+<li>Пусть $r\in{P}$ и $\varphi:P[x]\to{P}$ такое, что $\varphi(f(x))=f(r)$, тогда $\varphi$ - линейное отображение векторного пространства $P[x]_P$ 
+в векторное пространство $P_P$. Действительно, по п.1 <a href="./discrete_math7.2.html#Lemma7.1">леммы 7.1</a>
+$$
+\forall{a}(x),b(x)\in{P}[x](\varphi(a(x)+b(x))=(a+b)(r)=a(r)+b(r)=\varphi(a(x))+\varphi(b(x)))
+$$
+и по определению $f(r)$
+$$
+\forall{f}(x)\in{P}[x]\,a\in{P}(\varphi(f(x)a)=\sum_{i\geq{0}}f_iar^i=a\sum_{i\geq{0}}f_ir^i=f(r)a=\varphi(f(x))a).
+$$
+</li>
+<li>Пусть $\varphi:P[x]\to{P}[x]$ такое, что $\varphi(f(x))=f'(x)$, тогда $\varphi\in\mathcal{L}(L_P)$. 
+Действительно, по п. 1 <a href="./discrete_math7.6.html#Theorem7.14">теоремы 7.14</a> 
+$$
+\forall{a}(x),b(x)\in{P}[x](\varphi(a(x)+b(x))=(a(x)+b(x))'=a'(x)+b'(x)=\varphi(a(x))+\varphi(b(x)))
+$$
+и из доказательства п. 2(а) <a href="./discrete_math7.6.html#Theorem7.14">теоремы 7.14</a>
+$$\forall{f}(x)\in{P}[x]\,a\in{P}(\varphi(f(x)a)=(f(x)a)'=f'(x)a=\varphi(f(x))a).$$
+</li>
+<li>Пусть $L_P$ - векторное пространство, $a\in{P}$, отображение $\hat{a}:L\to{L}$ такое, что $\varphi(\alpha)=\alpha{a}$. 
+Тогда $\hat{a}\in\mathcal{L}(L_P)$. Это напрямую следует из определения векторного пространства.
+</li>
+</ol>
+<p id="Task12.1"><b>Задача 12.1:</b><br>
+Доказать, что для любого векторного пространства $L_P$ множество $\mathcal{L}(L_P)$ замкнуто относительно сложения, композиции и умножения на скаляр.<br>
+Решение.<br>
+Фиксируем $\alpha,\beta\in{L}_P$, $a\in{P}$.
+</ol>
+<li>По определению операции сложения функций $+$ и определению $\mathcal{L}(L_P)$
+$$
+\forall\varphi,\psi\in\mathcal{L}(L_P)((\varphi+\psi)(\alpha+\beta)=\varphi(\alpha+\beta)+\psi(\alpha+\beta)=
+\varphi(\alpha)+\varphi(\beta)+\psi(\alpha)+\psi(\beta)=(\varphi+\psi)(\alpha)+(\varphi+\psi)(\beta)).
+$$
+$$
+\forall\varphi,\psi\in\mathcal{L}(L_P)((\varphi+\psi)(\alpha)a=(\varphi(\alpha)+\psi(\alpha))a=
+\varphi(\alpha)a+\psi(\alpha)a=\varphi(\alpha{a})+\psi(\alpha{a})=(\varphi+\psi)(\alpha{a})).
+$$
+Таким образом, для любых $\varphi,\psi\in\mathcal{L}(L_P)$ $\varphi+\psi\in\mathcal{L}(L_P)$.
+</li>
+<li>По определению операции композиции $\circ$ и определению $\mathcal{L}(L_P)$
+$$
+\forall\varphi,\psi\in\mathcal{L}(L_P)((\varphi\circ\psi)(\alpha+\beta)=\varphi(\psi(\alpha+\beta))=\varphi(\psi(\alpha)+\psi(\beta))=
+\varphi(\psi(\alpha))+\varphi(\psi(\beta))=(\varphi\circ\psi)(\alpha)+(\varphi\circ\psi)(\beta))
+$$
+$$
+\forall\varphi,\psi\in\mathcal{L}(L_P)((\varphi\circ\psi)(\alpha)a=\varphi(\psi(\alpha))a=
+\varphi(\psi(\alpha)a)=\varphi(\psi(\alpha{a}))=(\varphi\circ\psi)(\alpha{a})).
+$$
+Таким образом, для любых $\varphi,\psi\in\mathcal{L}(L_P)$ $\varphi\circ\psi\in\mathcal{L}(L_P)$.
+</li>
+<li>Здесь операция умножения скаляра $a\in{P}$ на преобразование ${\varphi\in\mathcal{L}(L_P)}$ опускается, так же как и операция внешнего умножения, 
+какая операция выполняется в каждом конкретном случае понятно по типу операндов.
+$$
+\forall\varphi\in\mathcal{L}(L_P)((\varphi{a})(\alpha+\beta)=\varphi(\alpha+\beta)a=(\varphi(\alpha)+\varphi(\beta))a=
+\varphi(\alpha)a+\varphi(\beta)a=(\varphi{a})(\alpha)+(\varphi{a})(\beta)).
+$$
+Фиксируем $b\in{P}$, тогда
+$$
+\forall\varphi\in\mathcal{L}(L_P)((\varphi{a})(\alpha)b=(\varphi(\alpha)a)b=(\varphi(\alpha)b)a=\varphi(\alpha{b})a=(\varphi{a})(\alpha{b})).
+$$
+Таким образом, для любых $\varphi\in\mathcal{L}(L_P)$, $b\in{P}$ $\varphi{b}\in\mathcal{L}(L_P)$.
+<p id="Theorem12.1"><b>Теорема 12.1:</b><br>
+<ol>
+<li>$(\mathcal{L}(L_P);+,\circ)$ - кольцо с единицей,</li>
+<li>$(\mathcal{L}(L_P);+)_P$ - векторное пространство, где операция внешнего умножения определена как
+$$\forall\varphi\in\mathcal{L}(L_P)\,a\in{P}(\forall\alpha\in{L}_P((\varphi{a})(\alpha)=\varphi(\alpha)a).$$ 
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+См. задача 12.2
+<p id="Task12.2"><b>Задача 12.2:</b><br>
+Доказать теорему 12.1.<br>
+Решение:<br>
+<ol>
+<li> 
+Замкнутость множества $\mathcal{L}(L_P)$ относительно операций $+$ и $\circ$ доказана в задаче 12.1.<br>
+Фиксируем $\varphi,\psi,\tau\in\mathcal{L}(L_P)$, $\alpha\in{L}$.
+<ol type="a">
+<li>Ассоциативность операции $+$ следует из ассоциативности операции $+$ в $(L;+)$.<br>
+Ассоциативность операции композиции следует из ее определения.
+<li>Коммутативность операции $+$ следует из коммутативности операции $+$ в $(L;+)$.</li>
+<li>Докажем дистрибутивность операции $\circ$ относительно операции $+$
+$$
+((\varphi+\psi)\circ\tau)(\alpha)=(\varphi+\psi)(\tau(\alpha))=\varphi(\tau(\alpha))+\psi(\tau(\alpha))=
+(\varphi\circ\tau)(\alpha)+(\psi\circ\tau)(\alpha).
+$$
+</li>
+<li>Пусть отображение $\Omega:L\to{L}$ такое, что для любого $\alpha\in{L}$ $\Omega(\alpha)=\theta$, тогда $\Omega\in\mathcal{L}(L_P)$ и 
+$$
+\forall\varphi\in\mathcal{L}(L_P)((\varphi+\Omega)(\alpha)=\varphi(\alpha)+\Omega(\alpha)=\varphi(\alpha))\Rightarrow
+\forall\varphi\in\mathcal{L}(L_P)(\varphi+\Omega=\varphi).
+$$
+Аналогично $\Omega+\varphi=\varphi$, то есть перобразование $\Omega\in\mathcal{L}(L_P)$ нейтральный элемент относительно операции $+$.
+</li>
+<li>Симметричным элементом для преобразования $\varphi\in\mathcal{L}(L_P)$ является отображение $\varphi(-e)$ которое, 
+как было показано в п. 3 <a href="./discrete_math12.1.html#Task12.1">задачи 12.1</a> принадлежит $\mathcal{L}(L_P)$. 
+Действительно, по п. 2 <a href="./discrete_math11.1.html#Theorem11.1">теоремы 11.1</a>
+$$\forall\alpha\in{L}_P(\varphi+\varphi(-e))(\alpha)=\varphi(\alpha)+\varphi(\alpha)(-e)=\varphi(\alpha)-\varphi(\alpha)=\theta,$$
+то есть $\varphi+\varphi(-e)=\Omega$, аналогично $\varphi(-e)+\varphi=\Omega$.
+</li>
+<li>Пусть $\varepsilon:L\to{L}$ тождественное отображение, то есть для любого $\alpha\in{L}$ $\varepsilon(\alpha)=\alpha$. 
+Отображение $\varepsilon$ является изоморфизмом пространства $L_P$ в себя, следовательно, 
+$\varepsilon\in\mathcal{L}(L_P)$. При этом
+$$\forall\varphi\in\mathcal{L}(L_P)((\varphi\circ\varepsilon)(\alpha)=\varphi(\varepsilon(\alpha))=\varphi(\alpha)),$$
+$$\forall\varphi\in\mathcal{L}(L_P)((\varepsilon\circ\varphi)(\alpha)=\varepsilon(\varphi(\alpha))=\varphi(\alpha)).$$
+Таким образом, элемент $\varepsilon\in\mathcal{L}(L_P)$ - нейтральный относительно операции $\circ$.
+</li>
+</ol>
+Таким образом, $(\mathcal{L}(L_P);+,\circ)$ - кольцо с единицей $\varepsilon$.
+</li>
+<li>По пункту 1 $(\mathcal{L}(L_P);+)$ - коммутативная группа. Замкнутость множества $\mathcal{L}(L_P)$ относительно операции внешнего умножения 
+доказана в п. 3 <a href="./discrete_math12.1.html#Task12.1">задачи 12.1</a>. Так что для доказательства утверждения достаточно проверить аксиомы 
+опрерации внешнего умножения. Фиксируем $\varphi,\psi\in\mathcal{L}(L_P)$, $a,b\in{P}$, тогда так как $L_P$ - векторное пространство, то
+<ol>
+<li>
+$$
+\forall\alpha\in{L}(((\varphi{a})b)(\alpha)=(\varphi{a})(\alpha)b=(\varphi(\alpha)a)b=\varphi(\alpha)ab=
+(\varphi{a}b)(\alpha))\Rightarrow(\varphi{a})b=\varphi(ab)
+$$
+</li>
+<li>
+$$
+\forall\alpha\in{L}((\varphi(a+b))(\alpha)=\varphi(\alpha)(a+b)=\varphi(\alpha)a+\varphi(\alpha)b=
+(\varphi{a})(\alpha)+(\varphi{b})(\alpha))\Rightarrow\varphi(a+b)=\varphi{a}+\varphi{b}
+$$
+</li>
+<li>
+$$
+\forall\alpha\in{L}(((\varphi+\psi)a)(\alpha)=(\varphi+\psi)(\alpha)a=(\varphi(\alpha)+\psi(\alpha))a=
+\varphi(\alpha)a+\psi(\alpha)a=(\varphi{a})(\alpha)+(\psi{a})(\alpha))\Rightarrow(\varphi+\psi)a=\varphi{a}+\psi{a}
+$$
+</li>
+<li>
+$$\forall\alpha\in{L}((\varphi{e})(\alpha)=\varphi(\alpha)e=\varphi(\alpha))\Rightarrow\varphi{e}=\varphi.$$
+</li>
+</ol> 
+Таким образом, $(\mathcal{L}(L_P))_P$ - векторное пространство.
+</li>
+</ol>
+<p id="Statement12.1"><b>Утверждение 12.1:</b><br> 
+Пусть $\varphi,\psi\in\mathcal(L_P,M_P)$, $\alpha_1,\ldots,\alpha_n\in{L}_p$ - базис $L_P$, тогда
+<ol>
+<li>$\varphi=\psi\Leftrightarrow\forall{i}\in\overline{1,n}(\varphi(\alpha_i)=\psi(\alpha_i))$,</li>
+<li>$\forall\beta_1,\ldots,\beta_n\in{M}\,\exists!\varphi\in\mathcal{L}(L_P):\forall{i}\in\overline{1,n}(\varphi(\alpha_i)=\beta_i)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+$\Rightarrow)$ Очевидно.<br>
+$\Leftarrow)$ Пусть $\gamma\in{L}$, тогда
+$$
+\exists{c}_1,\ldots,c_n\in{P}:\gamma=\alpha_1c_1+\cdots+\alpha_nc_n\Rightarrow\varphi(\gamma)=\varphi\left(\sum_{i=1}^n\alpha_ic_i\right)=
+\sum_{i=1}^n\varphi(\alpha_i)c_i=\sum_{i=1}^n\psi(\alpha_i)c_i=\psi\left(\sum_{i=1}^n\alpha_ic_i\right)=\psi(\gamma)
+$$
+</li>
+<li>Единственность преобразования следует из пункта 1 докажем его существование. Рассмотрим отображение $\varphi:L\to{L}$ такое, 
+что для любого $\gamma=\sum_{i=1}^n\alpha_ic_i\in{L}$ $\varphi(\gamma):=\sum_{i=1}^n\beta_ic_i$. Докажем, что $\varphi\in\mathcal{L}(L_P)$.
+<ol>
+<li>Пусть $\gamma,\delta\in{L}$, тогда
+$$
+\exists{c}_1,\ldots,c_n,d_1,\ldots,d_n\in{P}:\left(\gamma=\sum_{i=1}^n\alpha_ic_i\,\wedge\,\delta=\sum_{i=1}^n\alpha_id_i\right)\Rightarrow
+\varphi(\gamma+\delta)=\varphi\left(\sum_{i=1}^n\alpha_i(c_i+d_i)\right)=\sum_{i=1}^n\beta_i(c_i+d_i)=
+\sum_{i=1}^n\beta_ic_i+\sum_{i=1}^n\beta_id_i=\varphi(\gamma)+\varphi(\delta)
+$$
+</li>
+<li>Пусть $a\in{P}$, $\gamma\in{L}$, тогда
+$$
+\exists{c}_1,\ldots,c_n\in{P}:\gamma=\sum_{i=1}^n\alpha_ic_i\Rightarrow\varphi(\gamma{a})=
+\varphi\left(\sum_{i=1}^n\alpha_ic_ia\right)=\sum_{i=1}^n\beta_ic_ia=\left(\sum_{i=1}^n\beta_ic_i\right)a=\varphi(\gamma)a
+$$
+</li>
+</ol>
+Таким образом, $\varphi\in\mathcal{L}(L_P)$.
+</li>
+</ol>
+<p id="Definition12.2"><b>Определение 12.2:</b><br>
+Пусть $L_P$ - векторное пространство, $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис $L_P$, $\varphi\in\mathcal{L}(L_P)$, тогда матрица
+$$A_{\vec{\alpha}}(\varphi):=\left(\varphi(\alpha_1)_{\vec{\alpha}}^{\downarrow},\ldots,\varphi(\alpha_n)_{\vec{\alpha}}^{\downarrow}\right)$$
+называется матрицей линейного преобразования $\varphi$ в базисе $\vec{\alpha}$.
+<br><br>
+Из утверждения 12.1 следует, что при фиксированном базисе $\vec{\alpha}$ определение 12.2 задает взаимнооднозначное соответствие 
+между множеством матриц $P_{n,n}$ и множеством $\mathcal{L}(L_P)$.<br>
+Если дано преобразование $\varphi\in\mathcal{L}(L_P)$, то по п. 1 <a href="./discrete_math12.1.html#Statement12.1">утверждения 12.1</a>
+образы базисных векторов $\varphi(\vec{\alpha})=(\varphi(\alpha_1),\ldots,\varphi(\alpha_n))$ определены однозначно, а по ним однозначно строится матрица 
+$A_{\vec{\alpha}}(\varphi)$.<br>
+С другой сторны, если дана матрица $A\in{P}_{n,n}$, тогда как показано в п. 2 <a href="./discrete_math12.1.html#Statement12.1">утверждения 12.1</a>
+отображение $\varphi(\gamma)=(\vec{\alpha}A)\gamma_{\vec{\alpha}}^{\downarrow}:L_P\to{L}_P$ будет линейным. При этом
+$$
+\varphi(\gamma)=\varphi(\vec{\alpha}\gamma_{\vec{\alpha}}^{\downarrow})=\varphi(\vec{\alpha})\gamma_{\vec{\alpha}}^{\downarrow}=
+\left(\vec{\alpha}A_{\vec{\alpha}}(\varphi)\right)\gamma_{\vec{\alpha}}^{\downarrow},
+$$
+то есть разложение образа вектора $\gamma$ по базису $\vec{\alpha}$ можно найти как
+$$\varphi(\gamma)_{\vec{\alpha}}^{\downarrow}=A_{\vec{\alpha}}(\varphi)\gamma_{\vec{\alpha}}^{\downarrow}.$$
+<p id="Statement12.2"><b>Утверждение 12.2:</b><br>
+Пусть $\vec{\alpha}$ - базис векторного пространства $L_P$ размерности $n$, $B\in{P}_{n,n}$. Отображение $\varphi:L\to{L}$ такое, 
+что для любого $\gamma\in{L}$ $\varphi(\gamma)=\vec{\alpha}B\gamma_{\vec{\alpha}}^{\downarrow}$, 
+тогда $\varphi\in\mathcal{L}(L_P)$ и $A_{\vec{\alpha}}(\varphi)=B$.
+<p><b>Доказательство:</b><br>
+По п. 2 <a href="./discrete_math12.1.html#Statement12.1">утверждения 12.1</a> существует $\psi\in\mathcal{L}(L_P)$ такое, что $A_{\vec{\alpha}}(\psi)=B$. 
+Фиксируем $\gamma\in{L}_P$, тогда
+$$\varphi(\gamma)=\vec{\alpha}B\gamma_{\vec{\alpha}}^{\downarrow}=\vec{\alpha}A_{\vec{\alpha}}(\psi)\gamma_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}\psi(\gamma)_{\vec{\alpha}}^{\downarrow}=\psi(\gamma),$$
+то есть $\varphi=\psi\in\mathcal{L}(L_P)$.
+<p id="Theorem12.2"><b>Теорема 12.2:</b><br>
+Пусть $L_P$ - векторное пространство, $\dim{L}_P=n$, тогда
+<ol>
+<li>$\mathcal{L}(L_P)_P\cong(P_{n,n})_P$, $\dim{\mathcal{L}(L_P)_P}=n^2$,</li>
+<li>$(\mathcal{L}(L_P);+,\circ)\cong(P_{n,n};+,\cdot)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис простраства $L_P$, отображение $\varphi:\mathcal{L}(L_P)\to{P}_{n,n}$ такое, 
+что $\tau(\varphi)=A_{\vec{\alpha}}(\varphi)$. Докажем, что отображение $\varphi$ изоморфизм. Фиксируем 
+$\varphi,\psi\in\mathcal{L}(L_P)$, $\gamma\in{L}_P$.
+<ol>
+<li>Отображение $\tau$ инъективно по <a href="./discrete_math12.1.html#Statement12.1">утверждению 12.1</a> и 
+сюръективно по <a href="./discrete_math12.1.html#Statement12.2">утверждению 12.2</a>, то есть отображение $\tau$ биективно.
+</li>
+<li>Применяя <a href="./discrete_math3.1.html#Theorem3.1">теорему 3.1</a> и <a href="./discrete_math11.3.html#Lemma11.1">лемму 11.1</a> получим
+$$
+(\varphi+\psi)(\gamma)=\varphi(\gamma)+\psi(\gamma)=
+\vec{\alpha}A_{\vec{\alpha}}(\varphi)\gamma_{\vec{\alpha}}^{\downarrow}+\vec{\alpha}A_{\vec{\alpha}}(\psi)\gamma_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}\left(A_{\vec{\alpha}}(\varphi)+A_{\vec{\alpha}}(\psi)\right)\gamma_{\vec{\alpha}}^{\downarrow}\Rightarrow{A}_{\vec{\alpha}}(\varphi+\psi)=
+A_{\vec{\alpha}}(\varphi)+A_{\vec{\alpha}}(\psi)\Rightarrow\tau(\varphi+\psi)=\tau(\varphi)+\tau(\psi)
+$$
+</li>
+<li>Применяя <a href="./discrete_math3.1.html#Theorem3.1">теорему 3.1</a> и <a href="./discrete_math11.3.html#Lemma11.1">лемму 11.1</a> получим
+$$
+(\varphi\circ\psi)(\gamma)=\varphi(\psi(\gamma))=\vec{\alpha}A_{\vec{\alpha}}(\varphi)\psi(\gamma)_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}\left(A_{\vec{\alpha}}(\varphi)A_{\vec{\alpha}}(\psi)\right)\gamma_{\vec{\alpha}}^{\downarrow}\Rightarrow
+{A}_{\vec{\alpha}}(\varphi)A_{\vec{\alpha}}(\psi)=A_{\vec{\alpha}}(\varphi\circ\psi)\Rightarrow\tau(\varphi\circ\psi)=\tau(\varphi)\tau(\psi)
+$$
+</li>
+<li>Фиксируем $a\in{P}$, применяя <a href="./discrete_math3.1.html#Theorem3.5">теорему 3.5</a> и 
+<a href="./discrete_math11.3.html#Lemma11.1">лемму 11.1</a> получим
+$$
+(\varphi{a})(\gamma)=\varphi(\gamma)a=\vec{\alpha}A_{\vec{\alpha}}(\varphi)\gamma_{\vec{\alpha}}^{\downarrow}a=\vec{\alpha}\left(A_{\vec{\alpha}}(\varphi)a\right)\gamma_{\vec{\alpha}}^{\downarrow}\Rightarrow\\
+\Rightarrow{A}_{\vec{\alpha}}(\varphi{a})=A_{\vec{\alpha}}(\varphi)a\Rightarrow\tau(\varphi{a})=\tau(\varphi)a
+$$
+</li>
+</ol>
+Таким образом из пунктов 1, 2, 4 следует, что $\tau$ изоморфизм векторного пространства $\mathcal{L}(L_P)$ в векторное пространство $(P_{n,n})_P$. 
+При этом векторное пространство $(P_{n,n})_P$ имеет базис размерности $n^2$, состоящий из матриц, у которых все элементы кроме одного, 
+равного единице, равны нулю, следовательно, $\dim{\mathcal{L}(L_P)_P}=\dim{P_{n,n}}=n^2$.<br>
+Из пунктов 1-3 следует, что $\tau$ изоморфизм колец $(\mathcal{L}(L_P);+,\circ)$ и $(P_{n,n};+,\cdot)$
+<p id="Corollary12.1"><b>Следствие 12.1:</b><br>
+Пусть $\vec{\alpha}$ - базис конечномерного векторного пространства $L_P$, тогда для любых $\varphi,\psi\in\mathcal{L}(L_P)$ и $a\in{P}$
+<ol>
+<li>$A_{\vec{\alpha}}(\varphi+\psi)=A_{\vec{\alpha}}(\varphi)+A_{\vec{\alpha}}(\psi)$,</li>
+<li>$A_{\vec{\alpha}}(\varphi\circ\psi)=A_{\vec{\alpha}}(\varphi)A_{\vec{\alpha}}(\psi)$,</li>
+<li>$A_{\vec{\alpha}}(\varphi{a})=A_{\vec{\alpha}}(\varphi)a$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Следует из доказательства теоремы 12.2.
+<p id="Task12.3"><b>Задача 12.3:</b><br>
+Пусть $L_P$ - векторное пространство, $\dim{L_P}=n$.
+Доказать, что 
+<ol>
+<li>преобразование $\varphi\in\mathcal{L}(L_P)$ биективно тогда и только тогда, когда ${A_{\vec{\alpha}}(\varphi)\in(P_{n,n})^*}$;</li>
+<li>если преобразование $\varphi\in\mathcal{L}(L_P)$ биективно, то $A_{\vec{\alpha}}(\varphi^{-1})=(A_{\vec{\alpha}}(\varphi))^{-1}$.</li>
+</ol>
+Решение:<br>
+<ol>
+<li> 
+$\Rightarrow)$ Если $\varphi\in\mathcal{L}(L_P)$ биективно, то оно изоморфизм, значит по п.2 
+<a href="./discrete_math11.3.html#Statement11.3">утверждения 11.3</a> существует изоморфизм $\varphi^{-1}:L_P\to{L}_P$. 
+Так как $\varphi^{-1}$ изоморфизм, то $\varphi^{-1}\in\mathcal{L}(L_P)$, тогда по п. 2 следствия 12.1
+$$A_{\vec{\alpha}}(\varphi)A_{\vec{\alpha}}(\varphi^{-1})=A_{\vec{\alpha}}(\varphi\circ\varphi^{-1})=A_{\vec{\alpha}}(\varepsilon)=E.$$
+Аналогично показывается, что $A_{\vec{\alpha}}(\varphi^{-1})A_{\vec{\alpha}}(\varphi)=E$, следовательно, 
+$A_{\vec{\alpha}}(\varphi)\in{P}_{n,n}^*$ и при этом $(A_{\vec{\alpha}}(\varphi))^{-1}=A_{\vec{\alpha}}(\varphi^{-1})$.<br>
+$\Leftarrow)$ Пусть $A_{\vec{\alpha}}(\varphi)\in{P}_{n,n}^*$, тогда по <a href="./discrete_math12.1.html#Statement12.2">утверждению 12.2</a>
+существует преобразование $\psi\in\mathcal{L}(L_P)$ такое, что $A_{\vec{\alpha}}(\psi)=(A_{\vec{\alpha}}(\varphi))^{-1}$, 
+тогда по п. 2 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a>
+$$A_{\vec{\alpha}}(\varphi\circ\psi)=A_{\vec{\alpha}}(\varphi)A_{\vec{\alpha}}(\psi)=A_{\vec{\alpha}}(\varphi)(A_{\vec{\alpha}}(\varphi))^{-1}=
+E\Rightarrow\varphi\circ\psi=\varepsilon.$$
+Аналогично показывается, что $\psi\circ\varphi=\varepsilon$, то есть существует $\varphi^{-1}=\psi$ и $\varphi$ - обратимо.
+</li>
+<li>Следует из доказательства пункта 1.</li>
+</ol>
+<p id="Statement12.3"><b>Утверждение 12.3:</b><br>
+Пусть $\vec{\alpha},\vec{\beta}$ - базисы векторного пространства $L_P$, $\dim{L}_P=n<\infty$, $\varphi\in\mathcal{L}(L_P)$, 
+матрица $C\in{P}_{n,n}$ такая, что $\vec{\beta}=\vec{\alpha}C$, тогда $A_{\vec{\beta}}(\varphi)=C^{-1}A_{\vec{\alpha}}(\varphi)C$.
+<p><b>Доказательство:</b><br>
+Матрица $C\in{P}_{n,n}$ перехода между базисами $\vec{\alpha}$ и $\vec{\beta}$ была введена в конце раздела 
+<a href="./discrete_math11.3.html#11.4">11.4</a> там же было показано, 
+что она обратима.<br>
+Так как $\vec{\beta}=\vec{\alpha}C$, то
+$$\varphi(\vec{\beta})=\varphi(\vec{\alpha}C)=\varphi(\vec{\alpha})C=\vec{\alpha}(A_{\vec{\alpha}}(\varphi)C).$$
+С другой стороны, 
+$$\varphi(\vec{\beta})=\vec{\beta}A_{\vec{\beta}}(\varphi)=\vec{\alpha}(CA_{\vec{\beta}}(\varphi)).$$
+Таким образом,
+$$A_{\vec{\alpha}}(\varphi)C=CA_{\vec{\beta}}(\varphi)\Rightarrow{A}_{\vec{\beta}}(\varphi)=C^{-1}A_{\vec{\alpha}}(\varphi)(C).$$
+<p id="Definition12.3"><b>Определение 12.3:</b><br>
+Матрицы $A,B\in{P}_{n,n}$ подобны если существует обратимая матрица $C\in(P_{n,n})^*$ такая, что $B=C^{-1}AC$.<br>
+Если матрицы $A$ и $B$ подобны, то пишут $A\approx{B}$.
+<p id="Statement12.4"><b>Утверждение 12.4:</b><br>
+Отношение подобия матриц есть отношение эквивалентности.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>$A=E^{-1}AE\Rightarrow{A}\approx{A}$.</li>
+<li>
+$$
+A\approx{B}\Rightarrow\exists{C}\in{P}_{n,n}^*:B=C^{-1}AC\Rightarrow\exists{D}:=C^{-1}\in{P}_{n,n}^*:A=CBC^{-1}=D^{-1}BD.
+$$
+</li>
+<li>Так как $P_{n,n}$ - кольцо, то по <a href="./discrete_math2.1.html#Note2.1">замечанию 2.1</a>
+$$
+(A\approx{B}\,\wedge\,B\approx{C})\Rightarrow\exists{F},G\in{P}_{n,n}^*:(B=F^{-1}AF\,\wedge\,C=G^{-1}BG)\Rightarrow
+{C}=G^{-1}F^{-1}AFG\Rightarrow\exists{H}:=FG\in{P}_{n,n}^*:C=H^{-1}AH\Rightarrow{A}\approx{C}
+$$
+</li>
+</ol>
+<p id="Note12.2"><b>Замечание 12.2:</b><br>
+Если $L_P$ - векторное пространство, $\dim{L_P}=n<\infty$, тогда матрицы $A,B\in{P}_{n,n}$ подобны тогда и только тогда, 
+когда существуют два базиса $\vec{\alpha},\vec{\beta}$ пространства $L_P$ и преобразование $\varphi\in\mathcal{L}(L_P)$ такие, 
+что $A=A_{\vec{\alpha}}(\varphi)$, $B=A_{\vec{\beta}}(\varphi)$.<br>
+Если $A\approx{B}$, то существует $C\in{P}_{n,n}^*$ такая, что $B=C^{-1}AC$. Фиксируем некоторый базис $\vec{\alpha}$ пространства $L_P$, 
+тогда по <a href="./discrete_math12.1.html#Statement12.2">утверждению 12.2</a> существует преобразование 
+$\varphi\in\mathcal{L}(L_P)$ такое, что $A_{\vec{\alpha}}(\varphi)=A$. Положим $\vec{\beta}:=\vec{\alpha}C$, 
+тогда $\vec{\beta}$ ЛНЗ система из $n$ векторов, то есть $\vec{\beta}$ - базис $L_P$. 
+Тогда по <a href="./discrete_math12.1.html#Statement12.3">утверждению 12.3</a>
+$$A_{\vec{\beta}}(\varphi)=C^{-1}A_{\vec{\alpha}}(\varphi)C=C^{-1}AC=B.$$
+Если матрицы $A$ и $B$ матрицы одного и того же линейного преобразования в разных базисах, то по 
+<a href="./discrete_math12.1.html#Statement12.3">утверждению 12.3</a>
+$A\approx{B}$ так как $B=C^{-1}AC$, где матрица $C\in{P}_{n,n}^*$ - матрица перехода между базисами.
+
+<br><br>
+<a href="discrete_math11.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.2.html">next</a>
+</body>
+</html>

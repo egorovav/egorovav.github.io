@@ -1,0 +1,286 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 17.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math17.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.5.html">next</a>
+<br>
+
+<h4 id="17.3">17.3 Идеалы и операции над ними.</h4>
+
+<p id="Definition17.4"><b>Определение 17.4:</b><br>
+Подкольцо $I&lt;R$ называют идеалом кольца $R$, если для любых $i\in{I}$, $r\in{R}$ $ir\in{I}$ и $ri\in{I}$.<br>
+Если $I$ идеал кольца $R$, то обозначают $I\vartriangleleft{R}$. 
+<p id="Note17.4"><b>Замечание 17.4:</b><br>
+Пусть $R$ - кольцо.
+<ol>
+<li>Идеалы $R\vartriangleleft{R}$ и $\{0\}\vartriangleleft{R}$ называются несобственными идеалами кольца $R$ все остальные идеалы называются собственными.
+<li>Пусть $S\subset{R}$, тогда по <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.1</a>
+$$
+I\vartriangleleft{R}\Leftrightarrow\forall{s}_1,s_2\in{S}\,\forall{r}\in{R}(s_1s_2\in{S}\,\wedge\,s_1-s_2\in{S}\,\wedge\,rs_1\in{S}\,\wedge\,s_1r\in{S}).
+$$
+</li>
+</ol>
+<p id="Example17.2"><b>Пример 17.2:</b><br>
+<ol>
+<li>Для любого коммутативного кольца $R$ и любого $a\in{R}$ $aR\vartriangleleft{R}$.</li>
+<li>Для любого поля $P$, $P[x]$ - коммутативное кольцо, следовательно по пункту 1 для любого $f(x)\in{P}[x]$ $f(x)P[x]\vartriangleleft{P}[x]$.</li>
+<li>Отношение "быть идеалом" не является транзитивным, например в кольце $\mathbb{Z}_4$ $2\cdot2=0$, и $2\mathbb{Z}_4=\{0,2\}$, 
+следовательно, $2\mathbb{Z}_4\vartriangleleft2\mathbb{Z}_4[x]$ и по пункту 2 $2\mathbb{Z}_4[x]\vartriangleleft\mathbb{Z}_4[x]$, то есть
+$$2\mathbb{Z}_4\vartriangleleft2\mathbb{Z}_4[x]\vartriangleleft\mathbb{Z}_4[x].$$
+Однако, $2\mathbb{Z}_4$ не является идеалом $\mathbb{Z}_4[x]$, так как, например, $2x\notin2\mathbb{Z}_4$.
+</il>
+</ol>
+</li>
+</ol>
+<p id="Task17.2"><b>Задача 17.2:</b><br>
+<ol>
+<li>Доказать, что для любого кольца $R$ и для любого $a\in{R}$ $aR\vartriangleleft{R}$.</li>
+<li>Доказать, что в поле нет собственных идеалов.</li>
+<li>Привести пример, когда $S&lt;R$, но $S$ не является идеалом $R$.</li>
+</ol>
+Решение.
+<ol>
+<li>Для любых $s_1,s_2\in{a}R$ существуют $r_1,r_2\in{R}$ такие, что $s_1=ar_1$, $s_2=ar_2$, тогда
+<ol type="a">
+<li>$s_1s_2=(ar_1)(ar_2)=a(ar_1r_2)\in{S},$</li>
+<li>$s_1-s_2=ar_1-ar_2=a(r_1-r_2)\in{S},$</li>
+<li>$\forall{r}\in{R}(s_1r=(ar_1)r=a(r_1r)\in{S}\,\wedge\,rs_1=r(ar_1)=a(rr_1)\in{S})$.</li>
+</ol>
+Следовательно, $I\vartriangleleft{R}$ по п. 2 замечания 17.4.
+</li>
+<li>Пусть $P$ - поле и $I\vartriangleleft{P}$, тогда
+$$
+I\neq\{0\}\Rightarrow\exists{s}\in{I}\backslash\{0\}\Rightarrow{s}s^{-1}=e\in{I}\Rightarrow\forall{r}\in{P}(er=r\in{I})\Rightarrow{I}=P.
+$$
+</li>
+<li>По п. 3 примера 17.2 $2\mathbb{Z}_4<\mathbb{Z}_4[x]$, но $2\mathbb{Z}_4$ не является идеалом $\mathbb{Z}_4[x]$.</li>
+</ol>
+<p id="Statement17.8"><b>Утверждение 17.8:</b><br>
+Пусть $L&lt;R$ и $I\vartriangleleft{R}$, тогда
+<ol>
+<li>$I+L&lt;R$,</li>
+<li>$I\cap{L}\vartriangleleft{L}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math9.4.html#Corollary9.8">следствию 9.8</a> и <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a>
+$$
+(L&lt;R\,\wedge\,I\vartriangleleft{R})\Rightarrow((L;+)&lt;(R;+)\,\wedge\,(I;+)&lt;(R;+))\Rightarrow
+{I}+L&lt;(R;+)\Rightarrow\forall{t}_1,t_2\in{I}+L(t_1-t_2\in{I}+L)
+$$
+и
+$$
+\forall{s}_1,s_2\in{I}\,\forall{l}_1,l_2\in{L}((s_1+l_1)(s_2+l_2)=(s_1s_2+s_1l_2+l_1s_1)+l_1l_2\in{I}+L).
+$$
+Таким образом, множество $I+L\subset{R}$ замкнуто относительно умножения и разности, следовательно, 
+по <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.1</a> $I+L&lt;R$.
+</li>
+<li>По <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.4</a> $I\cap{L}&lt;R$, следовательно, $I\cap{L}&lt;L$. При этом 
+$$(t\in{I}\cap{L}\,\wedge\,l\in{L})\Rightarrow(tl\in{I}\,\wedge\,tl\in{L})\Rightarrow{t}l\in{I}\cap{L},$$
+аналогично $lt\in{I}\cap{L}$, то есть $I\cap{L}\vartriangleleft{L}$.
+</li>
+</ol>
+<p id="Statement17.9"><b>Утверждение 17.9:</b><br>
+$$(I\vartriangleleft{R}\,\wedge\,L\vartriangleleft{R})\Rightarrow{I}+L\vartriangleleft{R}.$$
+<p><b>Доказательство:</b><br><br>
+По утверждению 17.8 $I+J&lt;R$ при этом
+для любых $i\in{I}$, $j\in{J}$, $r\in{R}$ $r(i+j)=ri+rj\in{I}+J$ и $(i+j)r=ir+jr\in{I}+J$, то есть $I+J\vartriangleleft{R}$.
+<p id="Statement17.10"><b>Утверждение 17.10:</b><br>
+$$\forall\alpha\in{A}(I_{\alpha}\vartriangleleft{R})\Rightarrow\bigcap_{\alpha\in{A}}I_{\alpha}\vartriangleleft{R}.$$
+<p><b>Докзательство:</b><br><br>
+Фиксируем $r\in{R}$, тогда
+$$
+i\in\bigcap_{\alpha\in{A}}I_{\alpha}\Rightarrow\forall\alpha\in{A}(i\in{I}_{\alpha})\Rightarrow
+\forall\alpha\in{A}(ir\in{I}_{\alpha}\,\wedge\,ri\in{I}_{\alpha})\Rightarrow\{ir,ri\}\subset\bigcap_{\alpha\in{A}}I_{\alpha}.
+$$
+<p id="Definition17.5"><b>Определение 17.5:</b><br>
+Пусть $R$ - кольцо, $S\subset{R}$, тогда идеал 
+$$(S)_R:=\bigcap_{S\subset{I}\vartriangleleft{R}}I$$
+называется идеалом порожденным множеством $S$.
+<p id="Note17.5"><b>Замечание 17.5:</b><br>
+Для любого кольца $R$, если $I\vartriangleleft{R}$, то $I&lt;R$. Следовательно, для любого $S\subset{R}$ $[S]_R\subset(S)_R$. 
+При этом обратное включение не всегда имеет место, например, из утверждений <a href="./discrete_math17.1.html#Statement17.5">17.5</a> и 17.11 следует, 
+что $[\mathbb{N}]_{\mathbb{Q}}=\mathbb{Z}\neq\mathbb{Q}=(\mathbb{N})_{\mathbb{Q}}$.
+<p id="Statement17.11"><b>Утверждение 17.11:</b><br>
+Пусть $R$ - коммутативное кольцо с единицей, ${S\subset{R}}$, $S\neq\varnothing$, тогда
+$$(S)_R=\biggl\{\sum_{i=1}^nr_is_i\,\Bigl|\,n\in\mathbb{N},s_i\in{S},r_i\in{R}\biggr\}.$$
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$T:=\biggl\{\sum_{i=1}^nr_is_i\,\Bigl|\,n\in\mathbb{N},s_i\in{S},r_i\in{R}\biggr\},$$
+тогда так как $R$ с единицей, то $S\subset{T}$ и, очевидно, что для любых $t_1,t_2\in{T}$ $t_1-t_2\in{T}$. При этом для любого $r\in{R}$
+$$
+t:=\sum_{i=1}^ns_ir_i\in{T}\Rightarrow{t}r=rt=\left(\sum_{i=1}^ns_ir_i\right)r=\sum_{i=1}^ns_i(r_ir)\in{T},
+$$
+следовательно, $T\vartriangleleft{R}$, тогда $(S)_R\subset{T}$.<br>
+Обратное включение следует из того, что $(S)_R\vartriangleleft{R}$ и $S\subset(S)_R$, таким образом, $T=(S)_R$.
+<p id="Corollary17.5"><b>Следствие 17.5:</b><br>
+Если $R$ коммутативное кольцо с единицей, $a\in{R}$, то $(a)_R=aR$.
+<p><b>Доказательство:</b><br><br>
+Так как $(a)_R\vartriangleleft{R}$, то для любого $r\in{R}$ $ar\in(a)_R$, то есть $aR\subset(a)_R$.<br>
+С другой стороны, по утверждению 17.11 для любого $s\in(a)_R$ 
+$$\exists{n}\in\mathbb{N},r_1,\ldots,r_n\in{R}:s=\sum_{i=1}^nar_i=a\sum_{i=1}^nr_i\in{a}R,$$
+то есть $(a)_R\subset{a}R$, таким образом, $(a)_R=aR$.
+<p id="Definition17.6"><b>Определение 17.6:</b><br>
+Идеал $I\vartriangleleft{R}$ называется главным, если существует $a\in{R}$ такое, что $I=(a)_R$.
+<p id="Definition17.7"><b>Определение 17.7:</b><br>
+Коммутативное кольцо с единицей называется кольцом главных идеалов, если все его идеалы главные.
+<p id="Theorem17.1"><b>Теорема 17.1:</b><br>
+Пусть $P$ - поле, тогда кольца $P$, $P[x]$, $\mathbb{Z}$ являются кольцами главных идеалов.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По п. 2 <a href="./discrete_math17.3.html#Task17.2">задачи 17.2</a> в поле только два идеала $P=(e)_P$ и $\{0\}=(0)_P$.</li>
+<li>Пусть $I\vartriangleleft{P}[x]$. Если $I=\{0\}$, то $I=(0)_{P[x]}$. Пусть $I\neq\{0\}$, 
+тогда выберем из $I$ ненулевой многочлен минимальной степени и обозначим его $f(x)$. Фиксируем $g(x)\in{I}$ и поделим его с остатком на $f(x)$, тогда
+$$
+\exists{q}(x),r(x)\in{P}[x]:(g(x)=f(x)q(x)+r(x)\,\wedge\,\deg{r}(x)<\deg{f}(x))\Rightarrow
+(r(x)=g(x)-f(x)q(x)\in{I}\,\wedge\,\deg{r}(x)&lt;\deg{f}(x))\Rightarrow{r}(x)=0\Rightarrow{g}(x)=f(x)q(x)\Rightarrow{g}(x)\in(f(x))_{P[x]},
+$$
+cледовательно, $I\subset(f(x))_{P[x]}$. Обратное включение следует из <a href="./discrete_math17.3.html#Statement17.11">утверждения 17.11</a> и 
+тогда $(f(x))_{P[x]}$.
+</li>
+<li>Пусть $I\vartriangleleft\mathbb{Z}$. Если  $I=\{0\}$, то $I=(0)_{\mathbb{Z}}$. Пусть $I\neq\{0\}$, 
+тогда выберем в $I$ минимальное по модулю число и обозначим его $a$. Фиксируем $b\in{I}$ и поделим его с остатком на $a$, тогда
+$$
+\exists{q},r\in\mathbb{Z}:(b=aq+r\,\wedge\,0\leq{r}&lt;|a|)\Rightarrow
+(r=b-aq\in{I}\,\wedge\,0\leq{r}<|a|)\Rightarrow{r}=0\Rightarrow{b}=aq\in(a)_{\mathbb{Z}},
+$$
+следовательно, $I\subset(a)_{\mathbb{Z}}$. Обратное включение следует из <a href="./discrete_math17.3.html#Statement17.11">утверждения 17.11</a> и 
+тогда $I=(a)_{\mathbb{Z}}$.
+</li>
+</ol>
+<p id="Corollary17.6"><b>Следствие 17.6:</b><br>
+Пусть $I\vartriangleleft{P}[x]$, $I\neq\{0\}$, тогда существует единственный унитарный многочлен $h(x)\in{P}[x]$ такой, что $I=(h(x))_{P[x]}$.
+<p><b>Доказательство:</b><br><br>
+По теореме 17.1 существует многочлен $f(x)\neq0$ такой, что $I=(f(x))_{P[x]}$. 
+Тогда существует $c\in{P}^*$ такое, что $f^*(x):=cf(x)$ унитарный многочлен, тогда по <a href="./discrete_math17.3.html#Corollary17.5">следствию 17.5</a>
+$$
+(f^*(x))_{P[x]}=f^*(x)P[x]=(cf(x))P[x]=f(x)(cP[x])=f(x)P[x]=(f(x))_{P[x]}.
+$$
+Здесь предпоследнее равенство в силу обратимости $c$.<br>
+Пусть унитарный многочлен $t(x)\in{P}[x]$ такой, что $I=(t(x))_{P[x]}$, тогда по <a href="./discrete_math17.3.html#Corollary17.5">следствию 17.5</a> и 
+<a href="./discrete_math7.4.html#Statement7.2">утверждению 7.2</a>
+$$
+(t(x)\in{I}=(f^*(x))_{P[x]}=f(x)P[x]\,\wedge\,f^*(x)\in{I}=(t(x))_{P[x]}=t(x)P[x])\Rightarrow(f^*(x)|t(x)\,\wedge\,t(x)|f^*(x))\Rightarrow{t}(x)=f^*(x).
+$$
+<p id="Task17.3"><b>Задача 17.3:</b><br>
+Пусть $R:=\mathbb{Z}_4[x]$, $I:=(2,x)_{R}$. Доказать, что идеал $I$ не является главным.<br>
+Решение.<br>
+Предположим, что существует $a(x)=a_0+a_1x+\cdots+a_nx^n\in{R}[x]$ такой, что $(a(x))_{P[x]}=I$. 
+Тогда так как для любого $b(x)=b_0+b_1x+\cdots+b_kx^k\in{I}$ $b_0\in\{0,2\}$ и $2\in{I}$, то $a_0=2$. Так как $x\in{I}$, 
+$$
+\exists{b}_0,b_1\in\mathbb{Z}_4:(2+a_1x)(b_0+b_1x)=x\Rightarrow(2b_0=0\,\wedge\,2b_1+a_1b_0=1)\Rightarrow
+(b_0\in\{0,2\}\,\wedge\,2b_1+a_1b_0=1)\Rightarrow\exists{c}\in\mathbb{Z}_4:2c=1
+$$
+последнее равенство в кольце $\mathbb{Z}_4$ не возможно, так что получено противоречие.
+
+<h4 id="17.4">17.4 Конгруэнции колец.</h4>
+
+<p id="Definition17.8"><b>Определение 17.8:</b><br>
+Отношение $\rho$ на кольце $(R;+,\cdot)$ называется конгруэнцией, если оно является отношение эквивалентности согласованным с операциями $+$ и $\cdot$. 
+То есть если оно является конгруэнцией на группоидах $(R;+)$ и $(R;\cdot)$.
+<p id="Statement17.12"><b>Определение 17.12:</b><br>
+Пусть $R$ - кольцо, $\rho$ - конгруэнция на $R$, тогда алгебра $(R/\rho;+,\cdot)$ является кольцом. При этом если $R$ коммутативно, 
+то $R/\rho$ коммутативно, если $R$ с единицей, то $R/\rho$ с единицей.
+<p><b>Доказательство:</b><br><br>
+Так как $\rho$ - конгруэнция на группоидах $(R;+)$ и $(R;\cdot)$, то по <a href="./discrete_math9.1.html#Corollary9.2">следствию 9.2</a> $(R/\rho;+)$ - 
+абелева группа, $(R;\cdot)$ - полугруппа. При этом если $(R;\cdot)$ коммутативна, то $(R/\rho;\cdot)$ коммутативна, если $(R;\cdot)$ с единицей, 
+то $(R/\rho;\cdot)$ с единицей. Осталось только проверить дистрибутивность операции $\cdot$ относительно операции $+$ в алгебре $(R/\rho;+,\cdot)$. 
+Фиксируем $[a],[b],[c]\in{R}/\rho$, тогда
+$$[a]([b]+[c])=[a][b+c]=[a(b+c)]=[ab+ac]=[ab]+[ac]=[a][b]+[a][c].$$  
+<p id="Definition17.9"><b>Определение 17.9:</b><br>
+Пусть $I\vartriangleleft{R}$, тогда говорят, что элементы $a,b\in{R}$ сравнимы по идеалу $I$, если $a-b\in{I}$, при этом обозначают $a\equiv{b}(I)$.
+<br><br>
+Таким образом, множество элементов $[a]_{\equiv(I)}$ сравнимых по идеалу $I$ с элементом $a\in{R}$ есть $a+I$.
+<p id="Theorem17.2"><b>Теорема 17.2:</b><br>
+<ol>
+<li>Для любого идеала $I\vartriangleleft{R}$ отношение $\equiv(I)$ является конгруэнцией на $R$.</li>
+<li>Для любой конгруэнции $\rho$ на кольце $R$ $[0]_{\rho}\vartriangleleft{R}$ и $\rho=(\equiv(I)).$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $I&lt;R$, то $(I;+)&lt;(R;+)$, тогда $\equiv(I)$ - есть отношение сравнимости по подгруппе $I$, следовательно, 
+по <a href="./discrete_math9.8.html#Theorem9.23">теореме 9.23</a> отношение $\equiv(I)$ является отношением эквивалентности. 
+При этом если $a\equiv{a}_1(I)$ и $b\equiv{b}_1(I)$, то
+$$
+(a+b)-(a_1+b_1)=(a-a_1)+(b-b_1)\in{I}\Rightarrow(a+b)\equiv(a_1+b_1)(I)
+$$
+и
+$$
+ab-a_1b_1=ab-a_1b+a_1b-a_1b_1=(a-a_1)b+a_1(b-b_1)\in{I}\Rightarrow(aa_1)\equiv(bb_1)(I).
+$$
+Таким образом, отношение $\equiv(I)$ является конгруэнцией.
+</li>
+<li>Так как отношение $\rho$ рефлексивно, симметрично и согласовано с операцией $+$, то для любых $a,b\in{R}$ 
+$$
+a,b\in[0]_{\rho}\Rightarrow((-b)\rho(-b)\,\wedge\,b\rho0\,\wedge\,a\rho0)\Rightarrow(0\rho(-b)\,\wedge\,a\rho0)\Rightarrow
+((-b)\rho0\,\wedge\,a\rho0)\Rightarrow(a-b)\rho0\Rightarrow(a-b)\in[0]_{\rho}.
+$$
+Так как отношение $\rho$ рефлексивно и согласовано с операцией $\cdot$, то для любых $r\in{R}$, $a\in[0]_{\rho}$
+$$(a\rho0\,\wedge\,r\rho{r})\Rightarrow((ar)\rho0\,\wedge\,(ra)\rho0)\Rightarrow\{ra,ar\}\subset[0]_{\rho}.$$
+Таким образом, $[0]_{\rho}\vartriangleleft{R}$ при этом 
+$$a\rho{b}\Leftrightarrow(a-b)\rho0\Leftrightarrow(a-b)\in[0]_{\rho}\Leftrightarrow{a}\equiv{b}([0]_{\rho}),$$
+то есть $\rho=(\equiv([0]_{\rho}))$.
+</li>
+</ol>
+<p id="Note17.6"><b>Замечание 17.6:</b><br>
+<ol>
+<li>Пусть $I\vartriangleleft{R}$, тогда кольцо $R/{\equiv}(I)$ обозначают $R/I$ и называют фактор кольцом кольца $R$ по идеалу $I$.
+<li>Так как по <a href="./discrete_math17.3.html#Theorem17.1">теореме 17.1</a> кольцо $\mathbb{Z}$ является кольцом главных идеалов, 
+то для любого ненулевого идеала $I\vartriangleleft{R}$ существует $n\in\mathbb{N}$ такое, что $I=(n)_{\mathbb{Z}}=n\mathbb{Z}$. При этом 
+$$
+a\equiv{b}(n\mathbb{Z})\Leftrightarrow(a-b)\in{n}\mathbb{Z}\Leftrightarrow{n}|a-b\Leftrightarrow{a}\equiv{b}\pmod{m}
+$$
+Таким обрзом, $\mathbb{Z}/n\mathbb{Z}=\mathbb{Z}/n$ и все фактор кольца кольца $\mathbb{Z}$ исчерпываются кольцами вычетов по модулю $n\in\mathbb{N}$.
+</li>
+<li>Если $P$ - поле, то аналогично пункту 2 для любого ненулевого идеала $I\vartriangleleft{P}[x]$ существует унитарный многочлен $f(x)\in{P}[x]$ такой, 
+что $I=(f(x))_{P[x]}=f(x)P(x)$ и $P[x]/f(x)P[x]=P[x]/f(x)$.
+</li>
+</ol>
+<p id="Task17.4"><b>Задача 17.4:</b><br>
+Привести пример полей порядка 9, 4, 8, 16, 27.<br>
+Решение.<br>
+<ol>
+<li>Пусть $P:=\mathbb{Z}_3$, тогда многочлен $f(x)=x^2+1\in{P}[x]$ неприводим, так как унитарен и не имеет корней, при этом $|P|=3$, $k:=\deg{f}(x)=2$.</li>
+<li>Пусть $P:=GF(2)$, тогда многочлен $f(x)=x^2+x+1\in{P}[x]$ неприводим, потому что унитарен и не имеет корней, при этом $|P|=2$, $k:=\deg{f}(x)=2$.</li>
+<li>Пусть $P:=GF(2)$, тогда многочлен $f(x)=x^3+x+1\in{P}[x]$ неприводим, потому что унитарен и не имеет корней, при этом $|P|=2$, $k:=\deg{f}(x)=3$.</li>
+<li>
+Пусть $P:=GF(2)/x^2+x+1$, тогда многочлен $f(x)=x^2+x+1\in{P}[x]$ неприводим, так как унитарен и не имеет корней, при этом $|P|=4$, $k:=\deg{f}(x)=2$.
+</li>
+<li>
+Пусть $P:=\mathbb{Z}_3$, тогда многочлен $f(x)=x^3+2x+1\in{P}[x]$ неприводим, так как унитарен и не имеет корней, при этом $|P|=3$, ${k:=\deg{f}(x)=3}$.
+</li>
+</ol>
+Во всех пяти случаях по <a href="./discrete_math8.1.html#Corollary8.3">следствию 8.3</a> кольцо вычетов $P[x]/f(x)$ является полем мощности $|P|^k$.
+
+<br><br>
+<a href="discrete_math17.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.5.html">next</a>
+</body>
+</html>

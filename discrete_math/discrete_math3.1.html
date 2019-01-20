@@ -1,0 +1,284 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.2.html">next</a>
+<br>
+
+<h3 id="3">3 Матрицы над кольцом.</h4>
+<h4 id="3.1">3.1 Кольцо матриц над кольцом.</h4>
+Везде далее обозначение $\cdot$ операции кольца $(R;+,\cdot)$  опускается.
+<p id="Definition3.1"><b>Определение 3.1: </b><br>
+Матрицей над кольцом $R$ размером $m\times{n}$ называется прямоугольная таблица из $m$ строк и $n$ столбцов заполненная элементами кольца $R$.</br>
+Матрицы обозначают заглавными буквами $A,B,\ldots$, если размер не ясен из контекста, то с указанием размера $A_{m\times{n}}$.</br>
+Множество матриц размера $m\times{n}$ над кольцом $R$ обозначают $R_{m,n}$.</br>
+Если дана матрица
+$$A:=\begin{pmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+\end{pmatrix}:=(a_{i,j})_{m\times{n}}$$
+то $i$-тая строка и $i$-тый столбец матрицы  $A$ обозначают как
+$$\forall{i}\in\overline{1,m}
+\left(\vec{A}_i:=\begin{pmatrix}a_{i,1} & a_{i,2} & \cdots & a_{i,n}\end{pmatrix}\right),
+\forall{i}\in\overline{1,n}\left(A_i^{\downarrow}:=\begin{pmatrix}a_{1,i} \\ a_{2,i} \\ \vdots \\ a_{m,i}\end{pmatrix}\right).$$
+Таким образом матрица $A$ может быть записана построчно или постолбцово
+$$A_{m\times{n}}=\begin{pmatrix}\vec{A}_1 \\ \vec{A}_2 \\ \vdots \\ \vec{A}_m\end{pmatrix}=
+\begin{pmatrix}A_1^{\downarrow} & A_2^{\downarrow} & \cdots & A_n^{\downarrow}\end{pmatrix}$$
+Матрицу $A_{1\times{n}}=\begin{pmatrix}a_1 & \cdots & a_n\end{pmatrix}$ размером $1\times{n}$ 
+называют вектор-строкой длинны $n$. Матрицу $B=\left(\begin{smallmatrix}a_1 \\ \vdots \\ a_m\end{smallmatrix}\right)$ размера $m\times{1}$ 
+называют вектор-столбец длины $m$. Mатрицу $A_{n\times{n}}$ размера $n\times{n}$ называют квадратной матрицей порядка $n$.
+<p id="Definition3.2"><b>Определение 3.2:</b><br>
+Суммой матриц одинакового размера $A=(a_{i,j})_{m\times{n}}$ и $B=(b_{i,j})_{m\times{n}}$ на кольцом $R$ называется матрица 
+$C=(c_{i,j})_{m\times{n}}$ такая, что для любых $i\in\overline{1,m}$, 
+$j\in\overline{1,n}$ $c_{i,j}=a_{i,j}+b_{i,j}$<br>
+При этом пишут $C=A+B$.
+<br>
+Таким образом, на множестве матриц размера $m\times{n}$ над кольцом $R$ задан группоид $(R_{m,n};+)$.
+<p id="Definition3.3"><b>Определение 3.3:</b><br>
+Произведением матриц $A=(a_{i,j})_{m\times{n}}$ и $B=(b_{i,j})_{n\times{k}}$ над кольцом $R$ называется матрица $C=(c_{i,j})_{m\times{k}}$ такая, 
+что для любых $i\in\overline{1,m}$, $j\in\overline{1,k}$
+$c_{i,j}=\sum_{s=1}^na_{i,s}b_{s,j}$.<br>
+При этом обозначают $C=A\cdot{B}\sim{C}=AB$.
+<br><br>
+Таким образом, матрицу $A$ можно умножить на матрицу $B$ тогда и только тогда, когда количество столбцов в матрице $A$ равно количеству строк в матрице $B$. При этом для любых $i\in\overline{1,m}$, $j\in\overline{1,k}$
+$$c_{i,j}:=\vec{A}_i\cdot{B}_j^{\downarrow}:=\begin{pmatrix}a_{i,1} & a_{i,2} & \cdots & a_{i,n}\end{pmatrix}\cdot
+\begin{pmatrix}b_{1,j} \\ b_{2,j} \\ \vdots \\ b_{n,j}\end{pmatrix}:=a_{i,1}b_{1,j}+a_{i,2}b_{2,j}+\cdots+a_{i,n}b_{n,j}.$$
+То есть 
+$$C:=(c_{i,j})_{m\times{k}}:=\begin{pmatrix}
+\vec{A}_1B_1^{\downarrow} & \vec{A}_1B_2^{\downarrow} & \cdots & \vec{A}_1B_k^{\downarrow}\\
+\vec{A}_2B_1^{\downarrow} & \vec{A}_2B_2^{\downarrow} & \cdots & \vec{A}_2B_k^{\downarrow}\\
+\vdots & \vdots & \ddots & \vdots\\
+\vec{A}_mB_1^{\downarrow} & \vec{A}_mB_2^{\downarrow} & \cdots & \vec{A}_mB_k^{\downarrow}\\
+\end{pmatrix}$$
+<p id="Example3.1"><b>Пример 3.1:</b><br>
+Пусть $A=\left(\begin{smallmatrix}1 & 0 \\ 1 & 1\end{smallmatrix}\right)\in{G}F(2)_{2\times2}$, 
+$B=\left(\begin{smallmatrix}1 & 1 \\ 0 & 1 \\ 1 & 0\end{smallmatrix}\right)\in{G}F(2)_{3\times2}$, 
+тогда выражение $A\cdot{B}$ не имеет смысла, а 
+$$B\cdot{A}=\begin{pmatrix}\vec{B}_1A_1^{\downarrow} & \vec{B}_1A_2^{\downarrow} \\ \vec{B}_2A_1^{\downarrow} & \vec{B}_2A_2^{\downarrow} \\ 
+\vec{B}_3A_1^{\downarrow} & \vec{B}_3A_2^{\downarrow}\end{pmatrix}=
+\begin{pmatrix}1\cdot1+1\cdot1 & 1\cdot0+1\cdot1 \\ 0\cdot1+1\cdot1 & 0\cdot0+1\cdot1 \\ 1\cdot1+0\cdot1 & 1\cdot0+0\cdot1\end{pmatrix}=
+\begin{pmatrix}0 & 1 \\ 1 & 1 \\ 1 & 0\end{pmatrix}\in{G}F(2)_{3\times2}.$$
+<p id="Task3.1"><b>Задача 3.1:</b><br>
+Пусть $\vec{A}$ вектор-строка длины $n$, $B^{\downarrow}$ вектор-столбец длины $m$. При каких $m$ и $n$ произведения $\vec{A}\cdot{B}^{\downarrow}$, 
+$B^{\downarrow}\cdot\vec{A}$ имеют смысл и чему они равны?<br>
+Решение:<br>
+Вектор-строка длины $n$ содержит $n$ столбцов, а вектор-столбец длины $m$ содержит $m$ строк, следовательно произведение $\vec{A}\cdot{B}^{\downarrow}$ 
+имеет смысл только при $m=n$, при этом $\vec{A}\cdot{B}^{\downarrow}=\sum_{i=1}^na_ib_i$.<br>
+Вектор-столбец любого размера содержит один столбец и вектор-строка любого размера содержит одну строку, следовательно произведение 
+$B^{\downarrow}\vec{A}$ имеет смысл при любых $m$ и $n$, при этом 
+$$B^{\downarrow}\cdot\vec{A}=\begin{pmatrix}b_1 \\ b_2 \\ \vdots \\ b_m\end{pmatrix}\cdot\begin{pmatrix}a_1 & a_2 & \cdots & a_n\end{pmatrix}=
+\begin{pmatrix}
+b_1a_1 & b_1a_2 & \cdots & b_1a_n \\ 
+b_2a_1 & b_2a_2 & \cdots & b_2a_n \\
+\vdots & \vdots & \ddots & \vdots\\
+b_ma_1 & b_ma_2 & \cdots & b_ma_n
+\end{pmatrix}$$
+<p id="Theorem3.1"><b>Теорема 3.1:</b><br>
+Для любых матриц $A,B,C$ подходящих (для выполнения операций) размеров над кольцом $R$ справедливы равенства
+<ol>
+<li> $A+B=B+A$,</li>
+<li> $A+(B+C)=(A+B)+C$,</li>
+<li> $A(BC)=(AB)C$,</li>
+<li> $A(B+C)=AB+AC$,</li>
+<li> $(A+B)C=AC+BC$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Следует из коммутативности операции $+$ в кольце.</li>
+<li> Следует из ассоциативности операции $+$ в кольце.</li>
+<li> Так как по условию матрицы имеют подходящий для выполнения операций размер, то 
+$A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{n\times{k}}$, $C=(c_{i,j})_{k\times{r}}$, 
+тогда $U:=BC=(u_{i,j})_{n\times{r}}$, $V:=AU=(v_{i,j})_{m\times{r}}$, 
+$X:=AB=(x_{i,j})_{m\times{k}}$, $Y:=XC=(y_{i,j})_{m\times{r}}$. Докажем, что для любых $i\in\overline{1,m}$, $j\in\overline{1,r}$ $v_{i,j}=y_{i,j}$
+$$
+v_{i,j}=\sum_{s=1}^na_{i,s}u_{s,j}=\sum_{s=1}^n\left(a_{i,s}\sum_{t=1}^kb_{s,t}c_{t,j}\right)=\sum_{s=1}^n\left(\sum_{t=1}^ka_{i,s}b_{s,t}c_{t,j}\right)
+=\sum_{t=1}^k\left(\sum_{s=1}^na_{i,s}b_{s,t}c_{t,j}\right)=
+\sum_{t=1}^k\left(\left(\sum_{s=1}^na_{i,s}b_{s,t}\right)c_{t,j}\right)=\sum_{t=1}^kx_{i,t}c_{t,j}=y_{i,j}.
+$$
+</li>
+<li> Пусть $A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{n\times{k}}$, $C=(c_{i,j})_{n\times{k}}$,<br>
+$U:=B+C=(u_{i,j})_{n\times{k}}$, $V:=AU=(v_{i,j})_{m\times{k}}$, $X:=AB=(x_{i,j})_{m\times{k}}$, $Y:=AC=(y_{i,j})_{m\times{k}}$, 
+$R:=X+Y=(r_{i,j})_{m\times{k}}$, тогда
+$$
+v_{i,j}=\sum_{s=1}^na_{i,s}u_{s,j}=\sum_{s=1}^na_{i,s}(b_{s,j}+c_{s,j})=\sum_{s=1}^n(a_{i,s}b_{s,j}+a_{i,s}c_{s,j})
+=\sum_{s=1}^na_{i,s}b_{s,j}+\sum_{s=1}^na_{i,s}c_{s,j}=x_{i,j}+y_{i,j}=r_{i,j}.
+$$
+</li>
+<li> Аналогично пункту 4.</li>
+</ol>
+<p id="Theorem3.2"><b>Теорема 3.2:</b><br>
+Если $R$ кольцо, то для любого $n\in\mathbb{N}$ алгебра $(R_{n,n};+,\cdot)$ является кольцом. 
+<p><b>Доказательство:</b><br><br>
+Так как при сложении и умножении двух квадратных матриц одного порядка получается квадратная матрица того же порядка, 
+то множество $R_{n,n}$ замкнуто относительно операций $+$, $\cdot$. При этом 
+<ol>
+<li> операции $+$ и $\cdot$ ассоциативны по п. п. 2, 3 <a href="./discrete_math3.1.html#Theorem3.1">теоремы 3.1</a>,</li>
+<li> операция $+$ коммутативна по п. 1 <a href="./discrete_math3.1.html#Theorem3.1">теоремы 3.1</a>,</li>
+<li> операция $\cdot$ дистрибутивна относительно операции $+$ по п. п. 4, 5 <a href="./discrete_math3.1.html#Theorem3.1">теоремы 3.1</a>,</li>
+<li> существует нейтральный относительно операции $+$ элемент равный $0=(0)_{n\times{n}}$,</li>
+<li> для любой матрицы $A=(a_{i,j})_{n\times{n}}$ существует симметричный относительно сложения элемент равный $-A=(-a_{i,j})_{n\times{n}}$.</li>
+</ol>
+<p id="Theorem3.3"><b>Теорема 3.3:</b><br>
+<ol>
+<li> Кольцо $(R_{n,n};+,\cdot)$ является кольцом с единицей тогда и только тогда, когда $R$ кольцо с единицей.</li>
+<li> Кольцо $(R_{n,n};+,\cdot)$ коммутативно тогда и только тогда, когда $n=1$ и кольцо $R$ коммутативно или $n>1$ и $R$ кольцо с нулевым умножением.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+$\Rightarrow)$ Пусть матрица $A=(a_{i,j})_{n\times{n}}$ единица кольца $R_{n,n}$, тогда для любой матрицы $B\in{R}_{n\times{n}}$ $AB=BA=B$. 
+Для любого $b\in{R}$ рассмотрим матрицу $B=(b_{i,j})_{n\times{n}}$ такую, что $b_{1,1}=b$, а при всех остальных $i,j$ $b_{i,j}=0$. 
+Тогда так как $B=AB$, то
+$$b=b_{1,1}=\vec{A}_1B_1^{\downarrow}=\begin{pmatrix}a_{1,1} & a_{1,2} & \cdots & a_{1,n}\end{pmatrix}\cdot
+\begin{pmatrix}b \\ 0 \\ \vdots \\ 0\end{pmatrix}=a_{1,1}b.$$
+С другой стороны, так как $B=BA$, то 
+$$b=b_{1,1}=\vec{B}_1A_1^{\downarrow}=
+\begin{pmatrix}b & 0 & \cdots & 0\end{pmatrix}\cdot\begin{pmatrix}a_{1,1} \\ a_{2,1} \\ \vdots \\a_{n,1}\end{pmatrix}=ba_{1,1}.$$ 
+Таким образом для любого $b\in{R}$ $a_{1,1}b=ba_{1,1}=b$, то есть $a_{1,1}$ единица кольца $R$.<br>
+$\Leftarrow)$ Пусть $e$ - единица кольца $R$, докажем, что в этом случае матрица $E_{n\times{n}}:=
+\left(\begin{smallmatrix}e  & 0 & \cdots & 0 \\ 0 & e & \cdots & 0 \\ \vdots & \vdots & \ddots \\ 0 & 0 & \cdots & e \end{smallmatrix}\right)$ 
+является единицей кольца 
+$(R_{n,n};+,\cdot)$. Действительно, пусть $B=(b_{i,j})_{n\times{n}}:=AE$, тогда $b_{i,j}=\vec{A}_iE_j^{\downarrow}=a_{i,j}$, следовательно, $AE=A$. 
+Аналогично $EA=A$.
+</li>
+<li> При $n=1$ очевидно, так как $R_{1,1}=R$.<br>
+Пусть $n>1$ и кольцо $(R_{n,n};+,\cdot)$ коммутативно. Для любых $a,b\in{R}$ рассмотрим матрицу $A=(a_{i,j})_{n\times{n}}$ такую, что $a_{1,1}=a$, 
+а остальные элементы равны 0 и матрицу $B=(b_{i,j})_{n\times{n}}$ такую, что 
+$b_{1,2}=b$, а остальные элементы равны 0. Обозначим $C=(c_{i,j})_{n\times{n}}=AB=BA$, тогда  
+$$c_{1,2}=\vec{A}_1B_2^{\downarrow}=\begin{pmatrix}a & 0 & \cdots & 0\end{pmatrix}\cdot\begin{pmatrix}b \\ 0 \\ \vdots \\ 0\end{pmatrix}=ab.$$
+ С другой стороны, 
+$$b_{1,2}=\vec{B}_1A_2^{\downarrow}=\begin{pmatrix}0 & b & 0 & \cdots & 0\end{pmatrix}\cdot\begin{pmatrix}0 \\ \vdots \\ 0\end{pmatrix}=0.$$ 
+Таким образом для любых $a,b\in{R}$ $ab=0$.<br>
+Если $R$ кольцо с нулевым умножением, то для любых двух матриц $A,B\in{R}_{n\times{n}}$ $AB=BA=0$, следовательно, 
+кольцо $R_{n,n}$ коммутативно при любом $n\in\mathbb{N}$.
+</li>  
+</ol>
+<p id="Corollary3.1"><b>Следствие 3.1:</b><br>
+<ol>
+<li> $R_{n,n}$ кольцо без делителей нуля тогда и только тогда, когда $n=1$ и $R$ кольцо без делителей нуля или $n>1$ и $R=\{0\}$,</li>
+<li> $R_{n,n}$ - поле тогда и только тогда, когда $n=1$ и $R$ - поле.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+$\Rightarrow)$ Если $n=1$, то $R_{n,n}=R$.<br>
+Пусть $n>1$ и кольцо $R_{n,n}$ не содержит делителей нуля. Предположим, что $R\neq\{0\}$, тогда существует $a\in{R}$ такой, что $a\neq0$. 
+Рассмотрим матрицу $A=(a_{i,j})_{n\times{n}}$ такую, что $a_{1,1}=a$, а все остальные элементы равны 0, и матрицу $B=(b_{i,j})_{n\times{n}}$ такую, 
+что $b_{1,2}=a$, а все остальные элементы равны 0. Тогда
+$$A\cdot{B}=\begin{pmatrix}a & 0 & \cdots & 0\\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & 0\end{pmatrix}\cdot
+\begin{pmatrix}0 & a & 0 & \cdots & 0 \\ 0 & 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots\\0 & 0 & 0 & \cdots & 0\end{pmatrix}=0,$$
+то есть матрицы $A$ и $B$ делители нуля, что противоречит условию.<br>
+$\Leftarrow)$ При $n=1$ $R_{n,n}=R$.<br>
+При $n>1$ и $R=\{0\}$ $R_{n,n}=\{(0)_{n\times{n}}\}=\{0\}$, следовательно, $R_{n,n}$ без делителей нуля, так как делитель нуля по определению не равен 0.
+</li>
+<li> 
+$\Rightarrow)$ Если кольцо $R_{n,n}$ является полем, то оно не содержит делителей нуля, тогда по пункту 1 либо $n=1$ либо $n>1$ и $R=\{0\}$. 
+Так как в случае $R=\{0\}$ множество $R_{n,n}$ состоит из одного элемента, а поле не может состоять из одного элемента, следовательно, $n=1$. 
+Тогда $R=R_{n,n}$ и, следовательно, $R$ - поле. <br>
+$\Leftarrow)$ При $n=1$ $R_{n,n}=R$, следовательно, $R_{n,n}$ тоже поле.
+</li>
+</ol>
+<p id="Definition3.4"><b>Определение 3.4:</b><br>
+Матрицей транспонированной к матрице $A=(a_{i,j})_{m\times{n}}$ называется матрица $A^{T}=(b_{i,j})_{n\times{m}}$ такая, 
+что для любого $i\in\overline{1,n}$, $j\in\overline{1,m}$ $b_{i,j}=a_{j,i}$.
+<p id="Theorem3.4"><b>Теорема 3.4:</b><br>
+Для любых двух матриц $A$ и $B$ подходящих размеров над кольцом $R$ справедливы равенства
+<ol>
+<li>$(A^{T})^T=A$,</li>
+<li>$(A+B)^T=A^T+B^T$,</li>
+</li>если $R$ коммутативно, то $(AB)^T=B^TA^T$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $A=(a_{i,j})_{m\times{n}}$, тогда $A^{T}=(b_{i,j})_{n\times{m}}$ такая, что для любых $i\in\overline{1,n}$, 
+$j\in\overline{1,m}$ $b_{i,j}=a_{j,i}$. Тогда $(A^T)^T=(c_{i,j})_{m\times{n}}$ такая, что для любых $i\in\overline{1,m}$,
+$j\in\overline{1,n}$ $c_{i,j}=b_{j,i}=a_{i,j}$, то есть $A=C$.
+</li>
+<li>Пусть $A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{m\times{n}}$, $C=(A+B)^T=(c_{i,j})_{n\times{m}}$. 
+Тогда для любых $i\in\overline{1,n}$, $j\in\overline{1,m}$ $c_{i,j}=a_{j,i}+b_{j,i}$, то есть $C=A^T+B^T$.
+</li>
+<li>Пусть $A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{n\times{k}}$, $C=AB=(c_{i,j})_{m\times{k}}$,<br> 
+$C^T=(c_{i,j}^T)_{k\times{m}}$, $A^T=(a_{i,j}^T)_{n\times{m}}$, $B^T=(b_{i,j}^T)_{k\times{n}}$, $D=B^TA^T=(d_{i,j})_{k\times{m}}$,
+тогда для любых $i\in\overline{1,k}$, $j\in\overline{1,m}$
+$$
+(c_{i,j}^T)=c_{j,i}=\vec{A}_jB_i^{\downarrow}=\sum_{s=1}^na_{j,s}b_{s,i}=\sum_{s=1}^na_{s,j}^Tb_{i,s}^T=
+\sum_{s=1}^nb_{i,s}^Ta_{s,j}^T=(B^T)_i^{\downarrow}\overrightarrow{(A^T)}_j=d_{i,j}.
+$$
+</li>
+</ol>
+<p id="Definition3.5"><b>Определение 3.5:</b><br>
+Произведением матрицы $A=(a_{i,j})_{m\times{n}}\in{R}_{m,n}$ на элемент кольца $r\in{R}$ называется матрица $B=(b_{i,j})_{m\times{n}}\in{R}_{m,n}$ такая, что для любых $i\in\overline{1,m}$, $j\in\overline{1,n}$ $b_{i,j}=a_{i,j}r$.
+При этом пишут $B=Ar$.<br>
+Аналогично определяется произведение элемента кольца $r$ на матрицу $A$, как матрица $C=(c_{i,j})_{m\times{n}}:=rA$ такая, что для любых $i\in\overline{1,m}$, $j\in\overline{1,n}$ $c_{i,j}=ra_{i,j}$ 
+<p id="Theorem3.5"><b>Теорема 3.5:</b><br>
+Пусть $\theta\in{R}_{m,n}$ матрица, все элементы которой равны $0\in{R}$.<br>
+Для любых элементов кольца $r_1,r_2\in{R}$, для любых матриц $A,B$ подходящих размеров над кольцом $R$ справедливы равенства
+<ol>
+<li>$r_1(r_2A)=(r_1r_2)A$,</li>
+<li>$(r_1A)r_2=r_1(Ar_2)$,</li>
+<li>$(Ar_1)r_2=A(r_1r_2)$,</li>
+<li>$r_1\theta=\theta{r}_1=\theta$,</li>
+<li>$0A=A0=\theta$,</li>
+<li>$(r_1+r_2)A=r_1A+r_2A$,</li>
+<li>$A(r_1+r_2)=Ar_1+Ar_2$,</li>
+<li>$(A+B)r_1=Ar_1+Br_1$,</li>
+<li>$r_1(A+B)=r_1A+r_1B$,</li>
+<li>$r_1(AB)=(r_1A)B$,</li>
+<li>$(AB)r_1=A(Br_1)$,</li>
+<li>$(Ar_1)B=A(r_1B)$,</li>
+<li>$(r_1A)^T=r_1A^T$,</li>
+<li>$(Ar_1)^T=A^Tr_1$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как умножение слева матрицы на элемент кольца не меняет размер матрицы, то размеры матриц стоящих в левой и правой частях равенства 1 равны.
+При этом элементы их равны так как $r_1(r_2a_{i,j})=(r_1r_2)a_{i,j}$ в силу ассоциативности операции $\cdot$ в кольце.
+</li>
+<li>Аналогично пункту 1.</li>
+<li>Аналогично пункту 1.</li>
+<li>Следует из определения нуля в кольце.</li>
+<li>Следует из определения нуля в кольце.</li>
+<li>Так как умножение слева матрицы на элемент кольца не меняет размер матрицы, то размер матриц стоящих в левой и правой частях равенства 1 равны.
+При этом элементы их равны, так как $(r_1+r_2)a_{i,j}=r_1a_{i,j}+r_2a_{i,j}$ в силу дистрибутивности операции $\cdot$ относительно операции $+$ в кольце.
+</li>
+<li>Аналогично пункту 6.</li>
+<li>Аналогично пункту 6.</li>
+<li>Аналогично пункту 6.</li>
+<li>Пусть $A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{n\times{k}}$
+Так как умножение слева матрицы на элемент кольца не меняет размер матрицы, то размер матрицы $r_1A$ равен размеру матрицы $A$, следовательно,
+размер матрицы $(r_1A)B$ равен размеру матрицы $AB$ равному размеру матрицы $r_1(AB)$. При этом элементы матриц стоящих в левой и правой частях 
+равенства равны так как в силу  дистрибутивности операции $\cdot$ относительно операции $+$ и ассоциативности операции $\cdot$ в кольце 
+$$r_1(\vec{A}_iB_j^{\downarrow})=r_1\sum_{s=1}^na_{i,s}b_{s,j}=\sum_{s=1}^nr_1(a_{i,s}b_{s,j})=\sum_{s=1}^n(r_1a_{i,s})b_{s,j}=
+\overrightarrow{(r_1A)}_iB_j^{\downarrow}.$$
+</li>
+<li>Аналогично пункту 10.</li>
+<li>Пусть $A=(a_{i,j})_{m\times{n}}$, $B=(b_{i,j})_{n\times{k}}$ 
+Так как умножение матрицы на элемет кольца не меняет ее размеров, то размер матрицы $Ar_1$ равен размеру матрицы $A$, 
+а размер матрицы $r_1B$ равен размеру матрицы $B$ следовательно размеры матриц стоящих в левой и правой частях равенства равны. 
+При этом элементы их равны, так как в силу ассоциативности операции $\cdot$ в кольце
+$$\overrightarrow{(Ar_1)}_iB_j^{\downarrow}=\sum_{s=1}^n(a_{i,s}r_1)b_{s,j}=\sum_{s=1}^na_{i,j}(r_1b_{s,j})=\vec{A}_i(r_1B_j)^{\downarrow}.$$
+</li>
+<li>Так как умножение слева матрицы на элемент кольца не меняет размер матрицы, то размер матрицы $(r_1A)^T$ равен размеру матрицы $A^T$ 
+равному размеру матрицы $r_1A^T$. Равенство элементов матриц стоящих в левой и правой частях равенства следует из определений умножения матрицы 
+на элемент кольца и транспонированной матрицы.
+</li>
+<li>Аналогично пункту 13.</li>
+</ol>
+<br><br>
+<a href="discrete_math2.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.2.html">next</a>
+</body>
+</html>

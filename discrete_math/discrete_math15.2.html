@@ -1,0 +1,343 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 15.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math15.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.3.html">next</a>
+<br>
+
+<h4 id="15.2">15.2 Нормальные преобразования.</h4>
+<p id="Definition15.2"><b>Определение 15.2:</b><br>
+Преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ называется нормальным, если $\varphi\circ\varphi^*=\varphi^*\circ\varphi$.<br>
+Матрица $A\in\mathbb{P}_{n,n}$ называется нормальной, если $A\overline{A}^T=\overline{A}^TA$.
+<br><br>
+Из определения и <a href="./discrete_math15.1.html#Theorem15.1">теоремы 15.1</a> следует, что если $\vec{\delta}$ ортонормированный базис 
+$(L_{\mathbb{P}},S)$, то преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ нормальное тогда и только тогда, когда матрица
+$A_{\vec{\delta}}(\varphi)$ нормальная.
+<p id="Lemma15.2"><b>Лемма 15.2:</b><br>
+Пусть подпространство $K&lt;L_{\mathbb{P}}$ и преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ такие, 
+что ${\varphi(K)\subset{K}}$, тогда $\varphi^*(K^{\perp})\subset{K}^{\perp}$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\beta\in\varphi^*(K^{\perp})$, то есть существет $\gamma\in{K}^{\perp}$ такое, что $\varphi^*(\gamma)=\beta$, тогда
+$$\forall\alpha\in{K}(S(\alpha,\beta)=S(\alpha,\varphi^*(\gamma))=S(\varphi(\alpha),\gamma)=0)\Rightarrow\beta\in{K}^{\perp}.$$
+<p id="Statement15.1"><b>Утверждение 15.1:</b><br>
+Пусть преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ нормальное, тогда
+<ol>
+<li>если $K&lt;L_{\mathbb{P}}$ и $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ такие, что $\varphi(K)\subset{K}$, 
+то подпростраства $K$ и $K^{\perp}$ инвариантны относительно преобразований $\varphi$ и $\varphi*$.
+</li>
+<li>$\alpha\in{L}_{\mathbb{P}}$ собственный вектор преобразования $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ 
+принадлежащий собственному значению $r\in\mathbb{P}$, тогда $\alpha$ собственный вектор преобразования $\varphi^*$ 
+принадлежащий собственному значению $\overline{r}$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем, что $\varphi(K^{\perp})\subset{K}^{\perp}$.<br>
+Пусть $\vec{\delta'}:=(\delta_1,\ldots,\delta_m)$ - ортонормированный базис подпространства $K$, 
+$\vec{\delta}:=(\delta_1,\ldots,\delta_m,\delta_{m+1},\ldots,\delta_n)$ - ортонормированный базис $L_{\mathbb{P}}$, 
+тогда из доказательства <a href="./discrete_math14.4.html#Theorem14.5">теоремы 14.5</a> следует, 
+что $K^{\perp}=(\delta_{m+1},\ldots,\delta_n)_{\mathbb{P}}$. Тогда по <a href="./discrete_math12.4.html#Theorem12.8">теореме 12.8</a> 
+существуют матрицы $B\in\mathbb{P}_{m,m}$, $C\in\mathbb{P}_{m,n-m}$, $D\in\mathbb{P}_{n-m,n-m}$ такие, что
+$$A:=A_{\vec{\delta}}(\varphi)=\begin{pmatrix}B & C \\ \Theta & D\end{pmatrix}.$$
+Тогда по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> для того, чтобы доказать, 
+что $\varphi(K^{\perp})\subset{K}^{\perp}$ достаточно доказать, что $C=\Theta$.<br>
+Преобразование $\varphi$ нормальное, следовательно, матрица $A$ нормальная, то есть
+$$
+\overline{A}^T=\begin{pmatrix}\overline{B}^T & \Theta \\ \overline{C}^T & \overline{D}^T\end{pmatrix}\Rightarrow{A}\overline{A}^T=
+\begin{pmatrix}B\overline{B}^T+C\overline{C}^T & X \\ Y & Z\end{pmatrix}=\overline{A}^TA=
+\begin{pmatrix}\overline{B}^TB & X_1 \\ Y_1 & Z_1\end{pmatrix}\Rightarrow{B}\overline{B}^T+C\overline{C}^T=\overline{B}^TB,
+$$
+где $X,Y,Z,X_1,Y_1,Z_1$ некоторые матрицы подходящих размеров.
+Обозначим $B:=(b_{i,j})_{m,m}$, $C:=(c_{i,j})_{m,n-m}$ и 
+$$F:=(f_{i,j})_{m,m}:=C\overline{C}^T=\overline{B}^TB-B\overline{B}^T,$$ 
+тогда для любого $i\in\overline{1,m}$
+$$
+f_{i,i}=\overline{B_i^{\downarrow}}^TB_i^{\downarrow}-\vec{B_i}\overline{\vec{B_i}}^T=
+\sum_{k=1}^m\overline{b}_{k,i}b_{k,i}-\sum_{k=1}^mb_{i,k}\overline{b}_{i,k}=\sum_{i=1}^m|b_{k,i}|^2-\sum_{k=1}^m|b_{k,i}|^2,
+$$
+следовательно,
+$$
+\sum_{i=1}^mf_{i,i}=\sum_{i=1}^m\left(\sum_{k=1}^m|b_{k,i}|^2-\sum_{k=1}^m|b_{i,k}|^2\right)=
+\sum_{i=1}^m\sum_{k=1}^m|b_{k,i}|^2-\sum_{i=1}^m\sum_{k=1}^m|b_{i,k}|^2=0,
+$$
+с другой стороны,
+$$
+F=C\overline{C}^T\Rightarrow\sum_{i=1}^mf_{i,i}=\sum_{i=1}^m\vec{C}_i\overline{\vec{C}_i}^T=\sum_{i=1}^m\sum_{j=1}^{n-m}c_{i,j}\overline{c}_{i,j}=
+\sum_{i=1}^m\sum_{j=1}^{n-m}|c_{i,j}|^2=0\Rightarrow\forall{i},j\in\overline{1,m}(c_{i,j}=0)\Rightarrow{C}=\Theta.
+$$
+Таким образом,
+<ol type="a">
+<li>по условию $\varphi(K)\subset{K}$,</li>
+<li>из (a) и леммы 15.2 следует $\varphi^*(K^{\perp})\subset{K^{\perp}}$,</li>
+<li>доказано выше, что $\varphi(K^{\perp})\subset{K}^{\perp}$,</li>
+<li>из (с) и леммы 15.2 следует 
+$$\varphi(K^{\perp})\subset{K^{\perp}}\Rightarrow\varphi^*((K^{\perp})^{\perp})\subset(K^{\perp})^{\perp}\Rightarrow\varphi^*(K)\subset{K}.$$
+</li>
+</ol>
+</li>
+<li>
+$\Rightarrow)$
+Положим $K:=(\alpha)_{\mathbb{P}}$, тогда по п. 1 <a href="./discrete_math12.1.html#Task12.3">задачи 12.3</a> и пункту 1 
+$$
+\varphi(K)\subset{K}\Rightarrow\varphi^*(K)\subset{K}\Rightarrow\varphi^*(\alpha)\in{K}\Rightarrow\exists{k}_1\in\mathbb{P}:\varphi^*(\alpha)=\alpha{r}_1,
+$$
+тогда так как $S(\varphi(\alpha),\alpha)=S(\alpha,\varphi^*(\alpha))$ и $S(\alpha,\alpha)\neq0$, то
+$$
+\begin{cases}
+S(\varphi(\alpha),\alpha)=S(\alpha{r},\alpha)&=rS(\alpha,\alpha) \\ 
+S(\alpha,\varphi^*(\alpha))=S(\alpha,\alpha{r}_1)&=\overline{r}_1S(\alpha,\alpha)
+\end{cases}\Rightarrow(r-\overline{r}_1)S(\alpha,\alpha)=0\Rightarrow{r}=\overline{r}_1\Rightarrow{r}_1=\overline{r}.
+$$
+$\Leftarrow)$ По доказанному $\alpha$ собственный вектор преобразования $(\varphi^*)^*$ принадлежащий собственному значению $\overline{\overline{r}}$, 
+то есть $\alpha$ собственный вектор преобразования $\varphi$ принадлежащий собственному значению $r$.
+</li>
+</ol>
+<p id="Statement15.2"><b>Утверждение 15.2:</b><br>
+Пусть $\vec{\delta}$ - ортонормированный базис евклидова пространства $(L_{\mathbb{P}},S)$, 
+тогда система векторов $\vec{\gamma}:=\vec{\delta}C$ являтеся ортонормированным базисом пространства $(L_{\mathbb{P}},S)$ тогда и только тогда, 
+когда матрица $C$ унитарна (см. <a href="./discrete_math14.3.html#Definition14.7">определение 14.7</a>).
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как $\vec{\delta}$ и $\vec{\gamma}:=\vec{\delta}C$ ортонормированные базисы, 
+то $\Gamma_S(\vec{\delta})=\Gamma_S(\vec{\gamma})=E$ и по <a href="./discrete_math14.3.html#Statement14.4">утверждению 14.4</a>
+$$
+E=\Gamma_S(\vec{\gamma})=C^T\Gamma_S(\vec{\delta})\overline{C}=C^T\overline{C}\Rightarrow(C^T\overline{C})^T=
+\overline{C}^TC=E\Rightarrow{C}^{-1}=\overline{C}^T.
+$$
+$\Leftarrow)$ Так как матрица $C$ унитарна, то она обратима, тогда $\vec{\gamma}$ - базис простраства $L_{\mathbb{P}}$. 
+Тогда по <a href="./discrete_math14.3.html#Statement14.4">утверждению 14.4</a> 
+$$C^{-1}=\overline{C}^T\Rightarrow\overline{C}^{-1}=C^T\Rightarrow\Gamma_S(\gamma)=C^T\Gamma_S(\vec{\delta})\overline{C}=C^T\overline{C}=E,$$ 
+то есть $\vec{\gamma}$ - ортонормированный базис.
+<p id="Theorem15.3"><b>Теорема 15.3:</b><br>
+Пусть преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ такое, что $\chi_{\varphi}(x)$ раскладывается на линейные множители, 
+тогда преобразование $\varphi$ нормальное тогда и только тогда, когда существует ортонормированный базис пространства $L_{\mathbb{P}}$ 
+из собственных векторов преобразования $\varphi$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем индукцией по $n$ размерности пространства $L_{\mathbb{P}}$.<br>
+<ol type="I">
+<li>При $n=1$ матрица любого преобразования $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ в любом базисе (в том числе и ортонормированном) диагональна, 
+следовательно, по <a href="./discrete_math12.2.html#Statement12.5">утверждению 12.5</a> ортонормированный базис пространства 
+$L_{\mathbb{P}}$ состоит из собственных векторов преобразования $\varphi$.
+</li>
+<li>Для любого $m\geq1$ докажем, что если утверждение верно при $n\in\overline{1,m}$, то оно верно при $n=m+1$.<br>
+Так как многочлен $\chi_{\varphi}(x)$ раскладывается на линейные множители, то существует $r\in\mathbb{P}$ такое, что $\chi_{\varphi}(r)=0$, 
+тогда по <a href="./discrete_math12.2.html#Theorem12.3">теореме 12.3</a> $r$ - собственное значение преобразования $\varphi$, 
+то есть существует $\alpha\in{L}_{\mathbb{P}}$ такое, что $\varphi(\alpha)=\alpha{r}$. Обозначим $K_{\mathbb{P}}:=(\alpha)_{\mathbb{P}}$, 
+тогда по п.1 <a href="./discrete_math12.4.html#Example12.3">примера 12.3</a> $K_{\mathbb{P}}$ инвариантное подпространство $L_{\mathbb{P}}$. 
+Тогда по утверждениям <a href="./discrete_math14.4.html#Statement14.6">14.6</a> и <a href="./discrete_math15.2.html#Statement15.1">15.1</a> 
+$K^{\perp}$ тоже инвариантное подпространство $L_{\mathbb{P}}$, причем по <a href="./discrete_math14.4.html#Theorem14.5">теореме 14.5</a>
+$L_{\mathbb{P}}=K\dotplus{K}^{\perp}$. Так как $\dim{K_{\mathbb{P}}}=1$, то по следствию 11.4 $\dim{K^{\perp}}=n-1$. Обозначим 
+$S'=S|_{K^{\perp}\times{K}^{\perp}}$, $\varphi'=\varphi|_{K^{\perp}}$, тогда по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> 
+$\chi_{\varphi'}(x)|\chi_{\varphi}(x)$, следовательно, многочлен $\chi_{\varphi'}(x)$ раскладывается на линейные множители.<br>
+Так как по п. 1 утверждения 15.1 $\varphi^*(K^{\perp})\subset{K}^{\perp}$, то для любых ${\beta,\gamma\in{K}^{\perp}}$
+$$S'(\varphi'(\beta),\gamma)=S(\varphi(\beta),\gamma)=S(\beta,\varphi^*(\gamma))=S'(\beta,\varphi^*(\gamma)),$$
+то есть $(\varphi')^*=\varphi^*|_{K^{\perp}}$. Тогда 
+$$
+\forall\beta\in{K}^{\perp}((\varphi'\circ(\varphi')^*)(\beta)=(\varphi\circ\varphi^*)(\beta)=(\varphi^*\circ\varphi)(\beta)=
+((\varphi')^*\circ\varphi')(\beta))\Rightarrow\varphi'\circ(\varphi')^*=(\varphi')^*\varphi',
+$$
+то есть преобразование $\varphi'$ нормальное, тогда по предположению индукции существует ортонормированный базис 
+$\vec{\delta'}:=(\delta_1,\ldots,\delta_{n-1})$ евклидова пространства $(K^{\perp},S')$ состоящий из собственных векторов преобразования $\varphi'$. 
+Тогда по п. 2 <a href="./discrete_math12.4.html#Note12.7">замечания 12.7</a> $\vec{\delta}:=(\alpha,\delta_1,\ldots,\delta_{n-1})$ - 
+базис пространства $L_{\mathbb{P}}$, причем так как $K=(\alpha)_{\mathbb{P}}$, то для любого $i\in\overline{1,n-1}$ 
+$\alpha\perp\delta_i$, то есть $\vec{\delta}$ - ортогональный базис. Так как вектор $\alpha$ - 
+собственный вектор $\varphi$ принадлежащий собственному заначению $r$, то вектор $\frac{\alpha}{\|\alpha\|}$ - 
+собственный вектор $\varphi$ принадлежащий собственному значению $\frac{r}{\|\alpha\|}$, следовательно, 
+система $\left(\frac{\alpha}{\|\alpha\|},\delta_1,\ldots,\delta_{n-1}\right)$ является искомым ортонормированным базисом пространства 
+$L_{\mathbb{P}}$ состоящим из собственных векторов преобразования $\varphi$.
+</li>
+</ol>
+$\Leftarrow)$ Пусть $\vec{\delta}$ - ортонормированный базис из собственных векторов преобразования $\varphi$, 
+тогда по <a href="./discrete_math12.2.html#Statement12.5">утверждению 12.5</a> матрица $A:=A_{\vec{\delta}}(\varphi)$ диагональна, 
+тогда $A\overline{A}^T=\overline{A}^TA$, тогда по п. 2 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a> и 
+<a href="./discrete_math15.1.html#Theorem15.1">теореме 15.1</a> преобразование $\varphi$ нормальное.
+<p id="Corollary15.1"><b>Следствие 15.1:</b><br>
+Пусть матрица $A\in\mathbb{P}_{n,n}$ такая, что $A$ - нормальная и $\chi_A(x)$ раскладывается на линейные множители, 
+тогда существуют матрицы $C,D\in\mathbb{P}_{n,n}$ такие, что матрица $C$ - унитарная, матрица $D$ - диагональная  и $D=C^{-1}AC$.
+<p><b>Доказательство:</b><br><br>
+Пусть $(L_{\mathbb{P}},S)$ евклидово пространство размерности $n$ (напрмер из п. 3 <a href="./discrete_math14.1.html#Example14.1">примера 14.1</a>), 
+$\vec{\delta}$ - ортонормированный базис пространства $(L_{\mathbb{P}},S)$, преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ такое, 
+что $A_{\vec{\delta}}(\varphi)=A$. Так как матрица нормальна, то по <a href="./discrete_math15.1.html#Theorem15.1">теореме 15.1</a> преобразование 
+$\varphi$ нормально. Тогда по <a href="./discrete_math15.2.html#Theorem15.3">теореме 15.3</a> существует ортонормированный базис 
+$\vec{\gamma}$ пространства $(L_{\mathbb{P}},S)$ из собственных векторов преобразования $\varphi$. 
+Тогда по <a href="./discrete_math12.2.html#Statement12.5">утверждению 12.5</a> матрица $D:=A_{\vec{\gamma}}(\varphi)$ - 
+диагональная и по <a href="./discrete_math12.1.html#Statement12.3">утверждению 12.3</a> существует матрица 
+$C\in\mathbb{P}_{n,n}$ такая, что $\gamma=\delta{C}$ и
+$$D:=A_{\vec{\gamma}}(\varphi)=C^{-1}A_{\vec{\delta}}(\varphi)C=C^{-1}AC.$$
+Так как $\vec{\gamma}=\vec{\delta}C$, то по <a href="./discrete_math15.2.html#Statement15.2">утверждению 15.2</a> матрица $C$ унитарна.
+<p id="Statement15.3"><b>Утверждение 15.3:</b><br>
+Собственные вектора нормального преобразования принадлежащие различным собственным значениям ортогональны.
+<p><b>Доказательство:</b><br><br>
+Пусть $\alpha_1,\alpha_2\in(L_{\mathbb{P}},S)$, $r_1,r_2\in\mathbb{P}$ такие, что $r_1\neq{r}_2$, $\varphi(\alpha_1)=\alpha_1r_1$, 
+$\varphi(\alpha_2)=\alpha_2r_2$. Пусть преобразование $\varphi$ нормальное, тогда 
+$S(\varphi(\alpha_1),\alpha_2)=S(\alpha_1,\varphi^*(\alpha_2))$, следовательно, по п. 2 <a href="./discrete_math15.2.html#Statement15.1">утверждения 15.1</a>
+$$
+\begin{cases}
+S(\varphi(\alpha_1),\alpha_2)=S(\alpha_1{r}_1,\alpha_2)&=r_1S(\alpha_1,\alpha_2) \\
+S(\alpha_1,\varphi^*(\alpha_2))=S(\alpha_1,\alpha_2\overline{r}_2)&=r_2S(\alpha_1,\alpha_2)
+\end{cases}\Rightarrow{S}(\alpha_1,\alpha_2)(r_1-r_2)=0\Rightarrow{S}(\alpha_1,\alpha_2)=0
+$$
+<br>
+<u>Алгоритм построение ортонормированного базиса из собственных векторов нормального преобразования.</u>
+<br>
+<br>
+Пусть $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ нормальное преобразование такое, что существуют элементы $r_1,\ldots,r_s\in\mathbb{P}$, 
+$k_1,\ldots,k_s\in\mathbb{N}$ такие, что $\chi_{\varphi}(x)=(x-r_i)^{k_1}\cdots(x-r_s)^{k_s}$.
+<ol>
+<li>Для любого $i\in\overline{1,s}$ строим МЛНП систему $\vec{\gamma_i}:=(\gamma_{i,1},\gamma_{i,2},\ldots,\gamma_{i,k_i})$ собственных векторов 
+преобразования $\varphi$ принадлежащих собственному значению $r_i$. Эта система равна ФСР СОЛУ $(Er_i-A_{\vec{\alpha}}(\varphi))x^{\downarrow}=0$.
+</li
+<li>Для любого $i\in\overline{1,s}$ применим к системе $\vec{\gamma}_i$ процесс ортогонализации описанный в 
+<a href="./discrete_math14.1.html#Note14.2">замечании 14.2</a> и поделим каждый из векторов на его норму получим ортонормированную систему 
+$\vec{\delta}_i:=(\delta_{i,1},\delta_{i,2},\ldots,\delta_{i,k_i})$ эквивалентную системе $\vec{\gamma}_i$.
+<li>Тогда по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> и <a href="./discrete_math15.2.html#Statement15.3">утверждению 15.3</a>
+система $\vec{\delta}:=(\vec{\delta_1},\ldots,\vec{\delta}_s)$ - ортонормированный базис из собственных векторов преобразования $\varphi$.
+</li> 
+</ol>
+В случае $\mathbb{P}=\mathbb{C}$ данный алгоритм работает всегда, так как над $\mathbb{C}$ любой многочлен раскладывается на линейные множители.
+<p id="Theorem15.4"><b>Теорема 15.4:</b><br>
+Если $\varphi\in\mathcal{L}(L_{\mathbb{R}})$, то $\varphi$ нормальное тогда и только тогда, 
+когда существует ортнонормированный базис пространства $(L_{\mathbb{R}},S)$ такой, что существуют $m,s\in\mathbb{N}_0$, 
+$r_1,\ldots,r_m,a_1,\ldots,a_s\in\mathbb{R}$, ${b_1,\ldots,b_s\in\mathbb{R}\backslash\{0\}}$ такие, что  
+$$
+A_{\vec{\delta}}(\varphi)=\diag{\left(r_1,\ldots,r_m,\begin{pmatrix}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix},\ldots,\begin{pmatrix}a_1 & b_s \\ 
+-b_s & a_s\end{pmatrix}\right)}\quad(*).$$ 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем индукцией по $n$ размерности пространства $L_{\mathbb{R}}$.<br>
+<ol type="I">
+<li>При $n=1$ любая матрица преобразования $\varphi$ диагональна, то есть имеет вид $(*)$ при $m=1$ и $s=0$.<br>
+При $n=2$, если $\chi_{\varphi}(x)$ раскладывается на линейные множители, то утверждение следует из 
+<a href="./discrete_math15.2.html#Theorem15.3">теоремы 15.3</a>. Если $\chi_{\varphi}(x)$ не раскладывается на линейные множители, то он не приводим. 
+Пусть $\vec{\delta}$ - ортонормированный базис пространства $(L_{\mathbb{R}},S)$, 
+$A:=A_{\vec{\delta}}(\varphi):=\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)$. 
+Тогда по <a href="./discrete_math15.1.html#Theorem15.1">теореме 15.1</a>
+$$
+AA^T=A^TA\Rightarrow\begin{pmatrix}a & b \\ c & d\end{pmatrix}\begin{pmatrix}a & c \\ b & d\end{pmatrix}=\begin{pmatrix}a & c \\ 
+b & d\end{pmatrix}\begin{pmatrix}a & b \\ c & d\end{pmatrix}\Rightarrow
+\begin{pmatrix}a^2+c^2 & ab+cd \\ ab+cd & b^2+d^2\end{pmatrix}=\begin{pmatrix}a^2+b^2 & ac+bd \\ ac+bd & c^2+d^2\end{pmatrix}\Rightarrow
+\begin{cases}a^2+b^2=&a^2+c^2 \\ ac+bd=&ab+cd \\ c^2+d^2=&b^2+d^2\end{cases}\Rightarrow\begin{cases}b^2=c^2 \\ ac+bd=ab+cd\end{cases}.
+$$
+Из первого равенства следует, что $c=b$ или $c=-b$. Предположим, что $b=c$, тогда 
+$$\chi_{\varphi}(x)=|Ex-A|=(x-a)(x-b)-bc=x^2-(a+d)x+ad-b^2.$$
+Дискриминант $D$ последнего выражения неотрицателен при любых $a,b,c,d\in\mathbb{R}$
+$$D:=(a+d)^2-4(ad-b^2)=(a-d)^2+4b^2\geq0.$$
+Следовательно, многочлен $\chi_{\varphi(x)}$ имеет корни, то есть приводим, что противоречит выбору преобразования $\varphi$. 
+Таким образом, $c=-b$ и $b\neq0$ (иначе $\chi_{\varphi}(x)=(x-a)(x-d)$), тогда
+$$-ab+bd=ab+d(-b)\Rightarrow{d}-a=a-d\Rightarrow{d}=a.$$
+</li>
+<li>Для любого $m\geq2$ докажем, что если утверждение верно при $n\in\overline{1,m}$, то оно верно при $n=m+1$.<br>
+<ol type="a">
+<li>Докажем, что в пространстве $L_{\mathbb{R}}$ существует собственное, инвариантное относительно преобразования $\varphi$ подпространство.<br>
+Так как над $\mathbb{C}$ любой многочлен имеет корни, то существует $z:=a+bi\in\mathbb{C}$ такое, что $\chi_{\varphi}(z)=0$. Пусть $\gamma$ - 
+ортонормированный базис пространства $(L_{\mathbb{R}},S)$, $A:=A_{\vec{\gamma}}(\varphi)$, тогда $A$ - нормальная матрица. 
+Тогда по <a href="./discrete_math15.2.html#Corollary15.1">следствию 15.1</a> существуют $r_1,\ldots,r_n\in\mathbb{C}$ и 
+матрица $T\in(\mathbb{C}_{n,n})^*$ такие, что $T^{-1}AT=D:=\diag{(r_1,\ldots,r_n)}$, то есть $AT=TD$. 
+По <a href="./discrete_math12.2.html#Statement12.6">утверждению 12.6</a> характерестические многочлены подобных матриц равны, то есть 
+$$\chi_{\varphi}(x)=\chi_D(x)=(x-r_1)\cdots(x-r_n),$$ 
+следовательно, существует $j\in\overline{1,n}$ такое, что $r_j=z$, тогда (зачем введено $z$? почему не взять вместо $r_j$ $r_1$???) 
+$AT_j^{\downarrow}=T_j^{\downarrow}z$. Существуют $R^{\downarrow},J^{\downarrow}\in\mathbb{R}^{(n)}$ такие, 
+что $T_j^{\downarrow}=R^{\downarrow}+J^{\downarrow}i$, тогда
+$$
+A(R^{\downarrow}+J^{\downarrow}i)=(R^{\downarrow}+J^{\downarrow}i)(a+bi)\Rightarrow
+{A}R^{\downarrow}+AJ^{\downarrow}i=R^{\downarrow}a-J^{\downarrow}b+(R^{\downarrow}b+J^{\downarrow}a)i\Rightarrow
+\begin{cases}AR^{\downarrow}=R^{\downarrow}a-J^{\downarrow}b \\ AJ^{\downarrow}=R^{\downarrow}b+J^{\downarrow}a.\end{cases}
+$$
+Обозначим $\alpha:=\vec{\gamma}R^{\downarrow}$, $\beta:=\vec{\gamma}J^{\downarrow}$, $K:=(\alpha,\beta)_{\mathbb{R}}$. 
+Предположим, что $\alpha=\beta=0$, тогда (так как $\vec{\gamma}$ ЛНЗ) 
+$$R^{\downarrow}=J^{\downarrow}=\theta\Rightarrow{T}_j^{\downarrow}=\theta\Rightarrow{T}\notin(\mathbb{C}_{n,n})^*.$$
+Таким образом, либо $\alpha\neq0$, либо $\beta\neq0$, то есть $1\leq\dim{K}_{\mathbb{R}}\leq2$. При этом
+$$
+\varphi(\alpha)=\vec{\gamma}A_{\vec{\gamma}}(\varphi)\alpha_{\vec{\gamma}}^{\downarrow}=\vec{\gamma}AR^{\downarrow}=
+\vec{\gamma}(R^{\downarrow}a-J^{\downarrow}b)=\vec{\gamma}R^{\downarrow}a-\vec{\gamma}J^{\downarrow}b=\alpha{a}-\beta{b}\in{K}_{\mathbb{R}}.
+$$
+Аналогично показывается, что $\varphi(\beta)\in{K}_{\mathbb{R}}$. Таким образом, по п. 1 <a href="./discrete_math12.4.html#Note12.6">замечания 12.6</a>
+$K_{\mathbb{R}}$ инвариантное относительно $\varphi$ подпространство пространства $L_{\mathbb{R}}$.
+</li>
+<li>По п.1 <a herf="./discrete_math15.2.html#Statement15.1">утверждения 15.1</a> $K^{\perp}$ - инвариантное относительно $\varphi$ 
+подпространство пространства $L_{\mathbb{R}}$, 
+по <a href="./discrete_math14.4.html#Theorem14.5">теореме 14.5</a> $L_{\mathbb{R}}=K_{\mathbb{R}}\dotplus{K}^{\perp}$ 
+при этом $1\leq\dim{K^{\perp}}&lt;n$. Обозначим $S_1:=S|_{K\times{K}}$, $S_2:=S|_{K^{\perp}\times{K}^{\perp}}$, 
+тогда $(K_{\mathbb{R}},S_1)$, $(K^{\perp},S_2)$ - евклидовы пространства. Из доказательства <a href="./discrete_math15.2.html#Theorem15.3">теоремы 15.3</a> 
+следует, что преобразования 
+$\sigma_1:=\varphi|_K$, $\sigma_2:=\varphi|_{K^{\perp}}$ нормальные, тогда по предположению индукции 
+<ul>
+<li>существует $\vec{\delta}_1$ ортонормированный базис пространства $(K_{\mathbb{R}},S_1)$ такой, 
+что матрица $A_{\vec{\delta}_1}(\sigma_1)$ имеет вид $(*)$,
+</li>
+<li>существует $\vec{\delta}_2$ ортонормированный базис пространства $(K^{\perp},S_2)$ такой, 
+что матрица $A_{\vec{\delta}_2}(\sigma_2)$ имеет вид $(*)$.
+</li>
+</ul>
+Так как $\vec{\delta_1}\perp\vec{\delta}_2$, то по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> 
+система $\vec{\delta}:=(\vec{\delta}_1,\vec{\delta}_2)$ является ортонормированным базисом пространства $(L_{\mathbb{R}},S)$ таким, что 
+$A_{\vec{\delta}}(\varphi)=\diag{(A_{\vec{\delta}_1}(\sigma_1),A_{\vec{\delta}_2}(\sigma_2))}$. 
+Таким обрзом, существует перестановка векторов базиса $\vec{\delta}$ такая, что матрица $A_{\vec{\delta}}(\varphi)$ имеет вид $(*)$.
+</li>
+</ol> 
+</li>
+</ol>
+$\Leftarrow)$ Так как для любых $a,b\in\mathbb{R}$
+$$
+\begin{pmatrix}a & b \\ -b & c\end{pmatrix}\begin{pmatrix}a & -b \\ b & a\end{pmatrix}=
+\begin{pmatrix}a^2+b^2 & 0 \\ 0 & a^2+b^2\end{pmatrix}=\begin{pmatrix}a & -b \\ b & a\end{pmatrix}\begin{pmatrix}a & b \\ -b & a\end{pmatrix},
+$$
+то матрица $\left(\begin{smallmatrix}a & b \\ -b & c\end{smallmatrix}\right)$ нормальная, следовательно, нормальная и матрица вида $(*)$.
+<p id="Corollary15.2"><b>Следствие 15.2:</b><br>
+Для любой нормальной матрицы $A\in\mathbb{R}_{n,n}$ существуют $m,s\in\mathbb{N}_0$, $r_1,\ldots,r_m,a_1,\ldots,a_s\in\mathbb{R}$, 
+${b_1,\ldots,b_s\in\mathbb{R}\backslash\{0\}}$ такие, что  
+$$
+A\approx{D}:=\diag{\left(r_1,\ldots,r_m,\begin{pmatrix}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix},\ldots,\begin{pmatrix}a_1 & b_s \\ 
+-b_s & a_s\end{pmatrix}\right)}.\quad(*)
+$$
+При этом существует ортогональная матрица $C\in(\mathbb{R}_{n,n})^*$ такая, что $C^{-1}AC=D$.
+<p><b>Доказательство:</b><br><br>
+Пусть $(L_{\mathbb{R}},S)$ евклидово пространство размерности $n$, $\vec{\alpha}$ - ортонормированный базис пространства $(L_{\mathbb{R}},S)$. 
+Существует преобразование $\varphi\in\mathcal{L}(L_{\mathbb{R}})$ такое, что 
+$A_{\vec{\alpha}}(\varphi)=A$ и так как матрица $A$ нормальная, то преобразование $\varphi$ тоже нормальное. 
+Тогда по теореме 15.4 существует ортонормированный базис $\vec{\delta}$ такой, что матрица $D:=A_{\vec{\delta}}(\varphi)$ имеет вид $(*)$. 
+По <a href="./discrete_math12.1.html#Statement12.3">утверждению 12.3</a> матрицы одного и того же преобразования в разных базисах подобны, 
+следовательно, $A=A_{\vec{\alpha}}(\varphi)\approx{A}_{\vec{\delta}}(\varphi)=D$.<br>
+Так как базисы $\vec{\alpha},\vec{\delta}$ ортонормированны, то существование ортогональной матрицы $C\in(\mathbb{R}_{n,n})^*$ такой, что $C^{-1}AC=D$ следует из утверждения~15.2. 
+<p id="Note15.1"><b>Замечание 15.1:</b><br>
+Матрица вида $(*)$ из формулировки <a href="./discrete_math15.2.html#Theorem15.4">теоремы 15.4</a> определена однозначно с точностью до перестановки клеток. 
+Действительно
+$$
+\begin{pmatrix}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix}\approx\begin{pmatrix}a_2 & b_2 \\ -b_2 & a_2\end{pmatrix}\Rightarrow(x-a_1)^2+b_1^2=
+(x-a_2)^2+b_2^2\Rightarrow{x}^2-2a_1x+a_1^2+b_1^2=x^2-2a_2x+a_2^2+b_2^2\Rightarrow
+\begin{cases}2a_1=2a_2 \\ a_1^2+b_1^2=a_2^2+b_2^2\end{cases}\Rightarrow\begin{cases}a_1=a_2 \\  b_1=b_2\end{cases}
+$$
+<p id="Definition15.3"><b>Определение 15.3</b><br>
+Пусть $\varphi\in\mathcal{L}(L_{\mathbb{R}})$ тогда базис $\vec{\delta}$ такой, что матрица $A_{\vec{\delta}}(\varphi)$ имеет вид
+$$\diag{\left(r_1,\ldots,r_m,\begin{pmatrix}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix},\ldots,\begin{pmatrix}a_1 & b_s \\ -b_s & a_s\end{pmatrix}\right)}$$
+называется геометрически нормальным базисом преобразования $\varphi$.
+
+<br><br>
+<a href="discrete_math15.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.3.html">next</a>
+</body>
+</html>

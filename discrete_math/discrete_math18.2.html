@@ -1,0 +1,268 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 18.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math18.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.4.html">next</a>
+<br>
+
+$\require{AMScd}$
+
+<h4 id="18.2">18.2 Поля частных.</h4>
+ 
+<p id="Definition18.7"><b>Определение 18.7:</b><br>
+Поле $P$ называется полем частных кольца $R$, если существует мономорфизм $\varphi:R\to{P}$ такой, 
+что для любого $c\in{P}$ существуют $a\in{R}$, $b\in{R}\backslash\{0\}$ такие, что $c=\varphi(a)\varphi(b)^{-1}$.
+<p id="Example18.6"><b>Пример 18.6:</b><br>
+Поле $\mathbb{Q}$ является полем частных кольца $\mathbb{Z}$. В качестве мономорфизма $\varphi$ можно взять тождественное отображение $\varepsilon$.
+<p id="Note18.6"><b>Замечание 18.6:</b><br>
+Если у кольца $R$ есть поле частных $P$, то $R\neq\{0\}$ и по п. 2 <a href="./discrete_math17.5.html#Theorem17.4">теоремы 17.4</a> $\varphi(R)&lt;P$. 
+Следовательно, $\varphi(R)$ - коммутативное кольцо без делителей нуля и так как $R\cong\varphi(R)$, то $R$ тоже коммутативное и без делителей нуля.
+<p id="Theorem18.3"><b>Теорема 18.3:</b><br>
+Для любого коммутативного кольца без делителей нуля $R\neq\{0\}$ существует поле частных.
+<p><b>Доказательство:</b><br><br>
+Рассмотрим отношение $~$ на множестве $M:=R\times{R}\backslash\{0\}$ такое, что 
+$$\forall(r,s),(r_1,s_1)\in{M}((r,s)\sim(r_1,s_1)\Leftrightarrow{r}s_1=r_1s).$$
+Покажем, что отношение $\sim$ является отношением эквивалентности.
+<ul>
+<li><b>рефлексивность</b> $\forall(r,s)\in{M}(rs=rs)\Rightarrow(r,s)\sim(r,s)$.</li>
+<li><b>симметричность</b> $$\forall(r,s)\in{M}((r,s)\sim(r_1,s_1)\Rightarrow{r}s_1=r_1s\Rightarrow(r_1,s_1)\sim(r,s).$$</li>
+<li><b>транзитивность</b> Пусть $(r,s)\sim(r_1,s_1)$, $(r_1,s_1)\sim(r_2,s_2)$, тогда
+$$
+(r_1s=rs_1\,\wedge\,r_2s_1=r_1s_2)\Rightarrow(r_1ss_2=rs_1s_2\,\wedge\,r_2s_1s=r_1s_2s)\Rightarrow
+{r}s_1s_2=r_2s_1s\Rightarrow{s}_1(rs_2-r_2s)=0\Rightarrow{r}s_2=r_2s\Rightarrow(r,s)\sim(r_2,s_2)
+$$
+</li>
+</ul>
+Таким образом, отношение $\sim$ является отношением эквивалентности. Обозначим $\hat{R}:=R/{\sim}$ множество классов эквивалентности $[(r,s)]_{\sim}$ и 
+для любых $(r,s)\in{M}$ обозначим $\frac{r}{s}:=[(r,s)]_{\sim}$. Введем на множестве $\hat{R}$ операции $+$ и $\cdot$ такие, что 
+$$
+\forall\frac{a}{b},\frac{a_1}{b_1}\in\hat{R}\left(\frac{a}{b}+\frac{a_1}{b_1}=\frac{ab_1+a_1b}{bb_1},\frac{a}{b}\frac{a_1}{b_1}=
+\frac{aa_1}{bb_1}\right).
+$$
+<ol>
+<li>Докажем корректность операций $+$, $\cdot$.<br>
+Пусть $\frac{a}{b}=\frac{a_1}{b_1}$, $\frac{c}{d}=\frac{c_1}{d_1}$, то есть $ab_1=a_1b$ и $cd_1=c_1d$, тогда
+$$
+(ab_1dd_1=a_1bdd_1\,\wedge\,cd_1bb_1=c_1dbb_1)\Rightarrow{a}b_1dd_1+cd_1bb_1=a_1bdd_1+c_1dbb_1\Rightarrow{b}_1d_1(ad+cb)=bd(a_1d_1+c_1b_1)\Rightarrow
+\frac{ad+cb}{bd}=\frac{a_1d_1+c_1b_1}{b_1d_1}
+$$
+$$ab_1cd_1=a_1bc_1d\Rightarrow(ac)(b_1d_1)=(bd)(a_1c_1)\Rightarrow\frac{ac}{bd}=\frac{a_1c_1}{b_1d_1}.$$
+</li>
+<li>Докажем, что $(\hat{R};+,\cdot)$ - поле.<br>
+<ol type="a">
+<li>Коммутативность операций $+$ и $\cdot$ следует из коммутативности одноименных операций в $R$.</li>
+<li>Для любых $b_1,b_2\in{R}\backslash\{0\}$
+$$0b_1=b_20\Rightarrow\frac{0}{b_1}=\frac{0}{b_2}.$$
+Тогда в качестве нуля можно выбрать элемент $\frac{0}{b}$ для любого фиксированного $b\in{R}\backslash\{0\}$ так как
+$$\frac{c}{d}+\frac{0}{b}=\frac{cb+0d}{db}=\frac{c}{d}.$$
+Для любых $b_1,b_2\in{R}\backslash\{0\}$ 
+$$b_1b_2=b_2b_1\Rightarrow\frac{b_1}{b_1}=\frac{b_2}{b_2}.$$
+Тогда в качестве единицы можно выбрать элемент $\frac{b}{b}$ для любого фиксированного $b\in{R}\backslash\{0\}$ так как
+$$\frac{c}{d}\frac{b}{b}=\frac{cb}{db}=\frac{c}{d}.$$
+</li>
+<li>Докажем ассоциативность операции $+$.
+$$
+\frac{a}{b}+\left(\frac{c}{d}+\frac{g}{h}\right)=\frac{a}{b}+\frac{ch+dg}{dh}=\frac{adh+bch+bdg}{bdh}=
+\frac{(ad+bc)h+bdg}{bdh}=\frac{ad+bc}{bd}+\frac{g}{h}=\left(\frac{a}{b}+\frac{c}{d}\right)+\frac{g}{h}
+$$
+$$\frac{a}{b}\left(\frac{c}{d}\frac{g}{h}\right)=\frac{a}{b}\frac{cg}{dh}=\frac{acg}{bdh}=\left(\frac{a}{b}\frac{c}{d}\right)\frac{g}{h}.$$
+</li>
+<li>Докажем дистрибутивность операции $\cdot$ относительно операции $+$.
+$$
+\frac{a}{b}\left(\frac{c}{d}+\frac{g}{h}\right)=\frac{a}{b}\frac{ch+dg}{dh}=\frac{ach+adg}{bdh}=
+\frac{(ach+adg)bdh}{(bdh)(bdh)}=\frac{ach}{bdh}+\frac{adg}{bdh}=\frac{ac}{bd}+\frac{ag}{bh}
+$$
+</li>
+<li>
+$$\frac{a}{b}+\frac{-a}{b}=\frac{ab+(-ab)}{bb}=\frac{0}{bb}\Rightarrow\frac{-a}{b}=-\frac{a}{b}.$$
+</li>
+<li> 
+$$
+\frac{a}{b}\neq\frac{0}{b}\Rightarrow{a}b\neq0\Rightarrow\frac{a}{b}\frac{b}{a}=\frac{ab}{ba}=e\Rightarrow\frac{b}{a}=\left(\frac{a}{b}\right)^{-1}
+$$
+</li>
+</ol>
+Таким образом, $\hat{R}$ - поле.
+</li>
+<li>Докажем, что $\hat{R}$ поле частных. Пусть $s\in{R}\backslash\{0\}$ рассмотрим отображение $\varphi:R\to\hat{R}$ такое, 
+что для любого $r\in{R}$ $\varphi(r)=\frac{rs}{s}$.
+<ol type="a">
+<li>Так как в кольце $R$ нет делителей нуля, то
+$$
+\varphi(r)=\varphi(t)\Leftrightarrow\frac{rs}{s}=\frac{ts}{s}\Leftrightarrow{r}ss=tss\Leftrightarrow
+{s}s(r-t)=0\Leftrightarrow{r}-t=0\Leftrightarrow{r}=t.
+$$
+Таким образом, отображение $\varphi$ инъективно.
+</li>
+<li>
+$$
+\varphi(r+t)=\frac{(r+t)s}{s}=\frac{(r+t)ss}{ss}=\frac{rss+tss}{ss}=\frac{rs}{s}+\frac{ts}{s}=\varphi(r)+\varphi(t)
+$$
+$$\varphi(rt)=\frac{rts}{s}=\frac{rtss}{ss}=\frac{rs}{s}\frac{ts}{s}=\varphi(r)\varphi(s).$$
+Таким образом, $\varphi$ - мономорфизм.
+</li>
+<li>Пусть $\frac{a}{b}\in\hat{R}$, тогда
+$$
+\exists{a},b\in{R}:\left(\frac{a}{b}=\frac{ass}{bss}=\frac{as}{s}\frac{s}{bs}=\frac{as}{s}\left(\frac{bs}{s}\right)^{-1}=\varphi(a)\varphi(b)^{-1}\right)
+$$
+</li>
+</ol>
+Таким образом, $\hat{R}$ - поле частных кольца $R$.
+</li>
+</ol>
+<p id="Note18.7"><b>Замечание 18.7:</b><br>
+<ol>
+<li>Пусть $P$ - поле, $R&lt;P$, $R\neq\{0\}$, тогда множество 
+$$T:=\{ab^{-1}\mid{a}\in{R},b\in{R}\backslash\{0\}\}$$ 
+является полем частных кольца $R$. Действительно, пусть $\sim$ - это отношение эквивалентности введенное при доказательстве теоремы 18.3, тогда
+$$\forall(a,b),(c,d)\in{R}\times{R}\backslash\{0\}((a,b)\sim(c,d)\Leftrightarrow{a}d=bc\Leftrightarrow{a}b^{-1}=cd^{-1}).$$
+Следовательно, $T\cong{R}/{\sim}$ и так как $R/{\sim}$ - поле, то $T$ тоже поле. При этом, если отображение $\varphi:R\to{T}$ тождественно, 
+то для любого $c\in{T}$ существуют $a,b\in{R}$ такие, что $c=ab^{-1}=\varphi(a)\varphi(b)^{-1}$, то есть $T$ - поле частных кольца $R$.<br>
+Таким образом, $T$ подполе поля $P$ и $R\subset{T}$. С другой стороны, для любого $P'$ подполя поля $P$ содержащего $R$
+$$(\forall{c}\in{T}\,\exists{a},b\in{R}:c=ab^{-1}\in{P}')\Rightarrow{T}\subset{P}',$$ 
+то есть $T$ - пересечение всех подполей поля $P$ содержащих кольцо $R$.
+</li>
+<li>Пусть $R$ - коммутативное кольцо без делителей нуля, $\hat{R}$ поле частных кольца $R$, $\varphi:R\to\hat{R}$ - мономорфизм. 
+Положим $\overline{R}:=(\hat{R}\backslash\varphi(R))\cup{R}$, тогда из доказательсва <a href="./discrete_math17.5.html#Theorem17.5">теоремы 17.5</a> следует, 
+что $\overline{R}\cong\hat{R}$, то есть $\overline{R}$ - поле, причем $\overline{R}$ являтся полем частных $R$ и $R\subset\overline{R}$. 
+Таким образом, любое коммутативное кольцо без делителей нуля можно вложить в некоторое поле.
+</li>
+<li>Так как кольцо многочленов над полем $P[x]$ коммутативно и не содержит делителей нуля, то существует поле $\overline{P[x]}$ такое, 
+что $P[x]\subset\overline{P[x]}$. Поле $P(x):=\overline{P[x]}$ называют полем рациональных функций от переменной $x$. 
+Аналогичным образом вводится поле рациональных функций $P(x_1,\ldots,x_n)$ от переменных $x_1,\ldots,x_n$.
+</li>
+</ol>
+<p id="Theorem18.4"><b>Теорема 18.4:</b><br>
+Пусть $R_1,R_2$ коммутативные кольца без делителей нуля такие, что $R_1\neq\{0\}$ и $R_2\neq\{0\}$; $\psi:{R}_1\to{R}_2$ - изоморфизм; 
+$P_1,P_2$ соответсвенно поля частных колец $R_1,R_2$, $\varphi_1:R_1\to{P}_1$, 
+$\varphi_2:R_2\to{P}_2$ мономорфизмы такие, что 
+$$\forall{c}_1\in{P}_1\,\exists{a}_1,b_1\in{R}_1:c_1=\varphi_1(a_1)\varphi(b_1)^{-1},$$
+$$\forall{c}_2\in{P}_2\,\exists{a}_2,b_2\in{R}_2:c_2=\varphi_2(a_2)\varphi(b_2)^{-1}.$$
+Тогда существует изоморфизм $\mu:P_1\to{P}_2$ такой, что 
+$$\forall{a}\in{R}_1(\mu(\varphi_1(a))=\varphi_2(\psi(a))),$$
+то есть коммутативна диаграмма
+$$
+\begin{CD}
+R_1			@>\psi>>	R_2			\\
+@V\varphi_1VV			@VV\varphi_2V	\\
+P_1			@>\mu>>	P_2
+\end{CD}
+$$
+<p><b>Доказательство:</b><br>
+Любой элемент $c\in{P}_1$ может быть представлен в виде $c=\varphi_1(a)\varphi_1(b)^{-1}$, где $a\in{R}_1$, $b\in{R}_1\backslash\{0\}$, 
+тогда для любого $a\in{R}_1$, $b\in{R}_1\backslash\{0\}$ положим $\mu(\varphi_1(a)\varphi(b)^{-1})=\varphi_2(\psi(a))\varphi_2(\psi(b))^{-1}$. 
+Докажем, что $\mu$ изоморфизм.
+<ul>
+<li><b>корректность и инъективность</b> Так как $\varphi_1,\varphi_2,\psi$ мономорфизмы, то
+$$
+\varphi_1(a)\varphi_1(b)^{-1}=\varphi_1(a_1)\varphi_1(b_1)^{-1}\Leftrightarrow
+\varphi_1(ab_1)=\varphi_1(a)\varphi_1(b_1)=\varphi_1(a_1)\varphi_1(b)=\varphi_1(a_1b)\Leftrightarrow
+{a}b_1=a_1b\Leftrightarrow\psi(ab_1)=\psi(a_1b)\Leftrightarrow\\
+\Leftrightarrow\varphi_2(\psi(a))\varphi_2(\psi(b_1))=\varphi_2(\psi(ab_1))=\varphi_2(\psi(a_1b))=\varphi_2(\psi(a_1))\varphi_2(\psi(b))\Leftrightarrow
+\mu(\varphi_2(a)\varphi_2(b)^{-1})=\varphi_2(\psi(a))\varphi_2(\psi(b))^{-1}=
+\varphi_2(\psi(a_1))\varphi_2(b_1)^{-1}=\mu(\varphi_2(a_1)\varphi_2(b_1)^{-1}).
+$$
+</li>
+<li><b>сюрективность</b>
+$$
+r\in{P}_2\Rightarrow\exists{c},d\in{R}_2:r=\varphi_2(c)\varphi_2(d)^{-1}\Rightarrow
+\exists{a}\in{R}_1,b\in{R}_1\backslash\{0\}:(c=\psi(a)\,\wedge\,d=\psi(b))\Rightarrow
+{r}=\varphi_2(\psi(a))\varphi_2(\psi(b))^{-1}=\mu(\varphi_1(a)\varphi_1(b)^{-1}).
+$$
+</li>
+<li><b>согласованность с операцией сложения</b> Так как отображения $\varphi_1,\varphi_2,\psi$ мономорфизмы, то
+$$
+\mu(\varphi_1(a)\varphi_1(b)^{-1}+\varphi_1(a_1)\varphi_1(b_1)^{-1})=
+\mu((\varphi_1(a)\varphi_1(b)+\varphi_1(a_1)\varphi_1(b_1))\varphi_1(b)^{-1}\varphi_1(b_1)^{-1})=
+\mu(\varphi_1(ab_1+a_1b)\varphi_1(bb_1)^{-1})=\\=
+\left(\varphi_2(\psi(a))\varphi_2(\psi(b_1))+\varphi_2(\psi(a_1))\varphi_2(\psi(b))\right)\varphi_2(\psi(b))^{-1}\varphi_2(\psi(b_1))^{-1}=
+\varphi_2(\psi(a))\varphi_2(\psi(b))^{-1}+\varphi_2(\psi(a_1))\varphi_2(\psi(b_1))^{-1}=
+\mu(\varphi_1(a)\varphi_1(b)^{-1})+\mu(\varphi_1(a_1)\varphi_1(b_1)^{-1}).
+$$
+</li>
+<li><b>согласованность с операцией умножения</b> Так как отображения $\varphi_1,\varphi_1,\psi$ мономорфизмы, то
+$$
+\mu(\varphi_1(a)\varphi_1(b)^{-1}\varphi_1(a_1)\varphi_1(b_1)^{-1})=\mu(\varphi_1(a,a_1)\varphi_1(bb_1)^{-1})=
+\varphi_2(\psi(aa_1))\varphi_2(\psi(bb_1))^{-1}=\\=
+\varphi_2(\psi(a))\varphi_2(\psi(a_1))\varphi_2(\psi(b))^{-1}\varphi_2(\psi(b_1))^{-1}=
+\mu(\varphi_1(a)\varphi_1(b)^{-1})\mu(\varphi_1(a_1)\varphi_1(b_1)^{-1}).
+$$
+</li>
+</ul>
+Таким образом, отображение $\mu$ - изоморфизм. При этом так как $R_1\neq\{0\}$, то существует $b\in{R}_1\backslash\{0\}$, 
+следовательно, для любого $a\in{R}_1$, $\varphi_1(a)$ можно представить в виде 
+$\varphi_1(a)=\varphi_1(a)\varphi_1(b)\varphi_1(b)^{-1}=\varphi_1(ab)\varphi_1(b)^{-1}$, тогда
+$$
+\mu(\varphi_1(a))=\mu(\varphi_1(ab)\varphi_1(b)^{-1})=\varphi_2(\psi(ab))\varphi_2(\psi(b))^{-1}=
+\varphi_2(\psi(ab)\psi(b)^{-1})=\varphi_2(\psi(a)).
+$$
+Таким образом, указанная в условии диаграмма коммутативна.
+<p id="Corollary18.5"><b>Следствие 18.5:</b><br>
+Пусть $P_1,P_2$ - поля частных кольца $R$; $\varphi_1:R_1\to{P}_1$, 
+$\varphi_2:R_2\to{P}_2$ мономорфизмы такие, что 
+$$\forall{c}_1\in{P}_1\,\exists{a}_1,b_1\in{R}_1:c_1=\varphi_1(a_1)\varphi(b_1)^{-1},$$
+$$\forall{c}_2\in{P}_2\,\exists{a}_2,b_2\in{R}_2:c_2=\varphi_2(a_2)\varphi(b_2)^{-1}.$$
+Тогда существует изоморфизм $\mu:P_1\to{P}_2$ такой, что 
+$$\forall{a}\in{R}_1(\mu(\varphi_1(a))=\varphi_2(a)).$$
+<p><b>Доказательство:</b><br>
+Следует из теоремы 18.4 при $\psi$ равном тождественному отображению.
+
+<h4 id="18.3">18.3 Простые поля.</h4>
+
+<p id="Theorem18.5"><b>Теорема 18.5:</b><br>
+Поле $P$ - простое тогда и только тогда, когда $P\cong\mathbb{Q}$ или существует простое число $p$ такое, что $P\cong\mathbb{Z}/p$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Пусть отображение $\varphi:\mathbb{Z}\to{P}$ такое, что для любого $n\in\mathbb{Z}$ $\varphi(n)=ne$, тогда
+$$\forall{m},n\in\mathbb{Z}(\varphi(n+m)=\varphi(n)+\varphi(m)\,\wedge\,\varphi(mn)=\varphi(m)\varphi(n)),$$
+то есть $\varphi$ - гомоморфизм колец, а $\varphi:\mathbb{Z}\to\varphi(\mathbb{Z})$ - эпиморфизм колец. Тогда по 
+<a href="./discrete_math17.5.html#Theorem17.3">теореме 17.3</a> $\varphi(\mathbb{Z})\cong\mathbb{Z}/\ker{\varphi}$, 
+где $\ker{\varphi}:=\{n\in\mathbb{Z}\mid{n}e=0\}$. По <a href="./discrete_math17.1.html#Corollary17.3">следствию 17.3</a> $\Char{P}=0$ или 
+существует простое число $p$ такое, что $\Char{P}=p$.
+<ol>
+<li>Пусть $\Char{P}=0$, тогда по <a href="./discrete_math17.1.html#Statement17.6">утверждению 17.6</a> $\ord{e}=\infty$ и $\ker{\varphi}=\{0\}$, 
+то есть $\varphi(\mathbb{Z})\cong\mathbb{Z}/\{0\}\cong\mathbb{Z}$. Пусть $T:=\{ab^{-1}\mid{a},b\in\varphi(\mathbb{Z}),b\neq0\}$, 
+тогда по п. 1 <a href="./discrete_math18.2.html#Note18.7">замечания 18.7</a> $T$ - поле частных кольца $\varphi(R)$, $T\subset{P}$ и 
+так как поле $P$ простое, то $P=T$. Таким образом, $P$ - поле частных кольца $\varphi(Z)$, $\mathbb{Q}$ поле частных кольца $\mathbb{Z}$ и
+$\varphi(\mathbb{Z})\cong\mathbb{Z}$, следовательно, по <a href="./discrete_math18.2.html#Theorem18.4">теореме 18.4</a> $P\cong\mathbb{Q}$.
+</li>
+<li>Пусть число $p:=\Char{P}$ простое, тогда по <a href="./discrete_math17.1.html#Statement17.6">утверждению 17.6</a> $\ord{e}=p$, 
+следовательно, $ne=0$ тогда и только тогда, когда $p|n$ и $\ker{\varphi}=p\mathbb{Z}$. Тогда 
+$\varphi(\mathbb{Z})\cong\mathbb{Z}/p\mathbb{Z}=\mathbb{Z}/p$, то есть $\varphi(\mathbb{Z})$ является полем. 
+При этом $\varphi(\mathbb{Z})\subset{P}$ и поле $P$ простое, следовательно, $P=\varphi(\mathbb{Z})\cong\mathbb{Z}/p$.
+</li>
+</ol>
+$\Leftarrow)$ Следует из <a href="./discrete_math18.1.html#Example18.1">примера 18.1</a>.
+
+
+<br><br>
+<a href="discrete_math18.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.4.html">next</a>
+</body>
+</html>

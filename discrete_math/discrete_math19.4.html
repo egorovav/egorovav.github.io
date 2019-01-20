@@ -1,0 +1,232 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 19.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math19.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math20.1.html">next</a>
+<br>
+
+<h4 id="19.4">19.4 Число неприводимых многочленов.</h4>
+
+<p id="Definition19.2"><b>Определение 19.2:</b><br>
+Функция $\mu:\mathbb{N}\to\mathbb{Z}$ такая, что, если $n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение числа $n\in\mathbb{N}$, то
+$$\mu:=\begin{cases}1, &n=1\\ (-1)^s, &\forall{i}\in\overline{1,s}(k_i=1)\\ 0, &\exists{i}\in\overline{1,s}:i_i>1\end{cases}$$
+называется функцией Мёбиуса.
+<p id="Statement19.2"><b>Утверждение 19.2:</b><br>
+Пусть $n\in\mathbb{N}$ $d_1,\ldots,d_k\in\mathbb{N}$ все делители числа $n$, тогда 
+$$\sum_{i=1}^k\mu(d_1)=\begin{cases}1, &n=1 \\ 0, &n\neq1\end{cases}.$$
+<p><b>Доказательство:</b><br><br>
+При $n=1$ очевидно.<br>
+Пусть $n&gt;1$ и $n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение, тогда
+$$
+(d|n\Leftrightarrow\exists\alpha_1\in\overline{0,k_1},\ldots,\alpha_s\in\overline{0,k_s}:d=p_1^{\alpha_1}\cdots{p}_s^{\alpha_s})\Rightarrow
+\sum_{i=1}^k\mu(d_i)=\sum_{\alpha_1=0}^{k_1}\ldots\sum_{\alpha_s=0}^{k_s}\mu(p_1^{\alpha_1}\cdots{p}_s^{\alpha_s})=
+\sum_{\alpha_1=0}^1\ldots\sum_{\alpha_s=0}^1\mu(p_1^{\alpha_1}\cdots{p}_s^{\alpha_s})=\\=
+\mu(1)+\sum_{1\leq{i}_1&lt;i_2\leq{s}}\mu(p_{i_1}p_{i_2})+\cdots+\sum_{1\leq{i}_1&lt;\ldots&lt;i_k\leq{s}}\mu(p_{i_1}\cdots{p}_{i_k})+\cdots+\mu(p_1\cdots{p}_s)=
+1-\binom{s}1+\binom{s}2-\cdots+(-1)^k\binom{s}k+\cdots+(-1)^s=0,
+$$
+где последнее равенство по п. 2 <a href="./discrete_math1.html#Corollary1.1">следствия 1.1</a>.
+<p id="Statement19.3"><b>Утверждение 19.3:</b><br>
+Пусть $f:\mathbb{N}\to\mathbb{Z}$, функция $F(n):\mathbb{N}\to\mathbb{Z}$ такая, что если $d_1,\ldots,d_k\in\mathbb{N}$ все делители $n\in\mathbb{N}$, 
+то $F(n)=\sum_{i=1}^kf(d_i)$, тогда 
+$$\sum_{i=1}^kF\left(\frac{n}{d_i}\right)\mu(d_i)=f(n).$$
+<p><b>Доказательство:</b><br><br> 
+$$
+\sum_{d|n}F\left(\frac{n}{d}\right)\mu(d)=\sum_{d|n}\left(\sum_{d_1\bigl|\frac{n}{d}}f(d_1)\right)\mu(d)=
+\sum_{d|n}\left(\sum_{d_1\bigl|\frac{n}{d}}f(d_1)\mu(d)\right).
+$$
+Так как 
+$$
+d_1\left|\frac{n}{d}\right.\Leftrightarrow\exists{t}\in\mathbb{N}:td_1=\frac{n}{d}\Leftrightarrow{t}d=
+\frac{n}{d_1}\Leftrightarrow{d}\left|\frac{n}{d_1}\right.,
+$$
+то последняя сумма равна
+$$
+\sum_{d_1|n}\left(\sum_{d\bigl|\frac{n}{d_1}}f(d_1)\mu(d)\right)=\sum_{d_1|n}f(d_1)\sum_{d\bigl|\frac{n}{d_1}}\mu(d)
+$$
+По утверждению 19.2 в последнем выражении внутренняя сумма не равна нуль тогда и только тогда, когда $\frac{n}{d_1}=1$ то есть только при $d_1=n$. 
+Таким обрзом, внешнаяя сумма содержит только одно ненулевое слагаемое равное$f(n)$.
+<br><br>
+Пусть $P=GF(q)$, будем обозначать число унитарных неприводимых многочленов степени $d$ над полем $P$ как $\Phi_P(d)$.
+<p id="Statement19.4"><b>Утверждение 19.4:</b><br>
+Пусть $P=GF(q)$, $n\in\mathbb{N}$, тогда
+$$\sum_{d|n}d\Phi_P(d)=q^n.$$
+<p><b>Доказательство:</b><br><br>
+Пусть многочлен $f(x)\in{P}[x]$ унитарный и неприводимый, $n:=\deg{f(x)}$, $F:=P(\alpha)$, $f(\alpha)=0$, тогда $|F|=q^n$.<br>
+Пусть многочлен $g(x)\in{P}[x]$ унитарный и неприводимый, $d:=\deg{g(x)}$, $d|n$. 
+Тогда по п.1 <a href="./discrete_math19.1.html#Corollary19.4">следствия 19.4</a> $F$ - поле разложения многочлена $g(x)$ и 
+$g(x)$ имеет в поле $F$ ровно $d$ корней.<br>
+Пусть многочлены $g(x),h(x)\in{P}[x]$ унитарные и неприводимые. Докажем от противного, что не существует $\beta\in{F}$ такого, 
+что $g(\beta)=h(\beta)=0$. Если предположить, что такое $\beta\in{F}$ существует, то $x-\beta|(g(x),h(x))$, тогда $(g(x),h(x))\neq{e}$ над полем $F$, 
+тогда $(g(x),h(x))\neq{e}$ над полем $P$, но многочлены $g(x),h(x)\in{P}[x]$ унитарные и неприводимые, значит $(g(x),h(x))=e$ над $P$, 
+таким образом, получено противоречие. То есть никаие два неприводимых над $P[x]$ унитарных многочлена не имеют одинаковых корней в $F$, 
+следовательно, $\sum_{d|n}d\Phi_P(d)$ - количество корней всех неприводимых над $P$ унитарных многочленов, степень которых делит $n$. 
+Таким образом, $\sum_{d|n}d\Phi_P(d)\leq|F|=q^n$.
+С другой стороны, для любого элемента $\gamma\in{F}$ существует унитарный неприводимый многочлен $m_{\gamma,P}(x)\in{P}[x]$ такой, 
+что $m_{\gamma,P}(\gamma)=0$ и по п. 2 <a href="./discrete_math19.1.html#Corollary19.4">следствия 19.4</a> $\deg{m_{\gamma,P}(x)}|n$, 
+следовательно, $\sum_{d|n}d\Phi_P(d)\geq|F|=q^n$. Таким образом, $\sum_{d|n}d\Phi_P(d)=q^n$.
+<p id="Theorem19.8"><b>Теорема 19.8:</b><br>
+Пусть $P=GF(q)$, $n\in\mathbb{N}$, тогда 
+$$\Phi_P(n)=\frac1{n}\sum_{d|n}q^{\frac{n}{d}}\mu(d).$$
+<p><b>Доказательство:</b><br><br>
+Положим $f(n):=n\Phi_P(n)$, $F(n):=q^n$, тогда по утверждению 19.4 $F(n)=\sum_{d|n}f(d)$, то есть фуниции $f(n)$ и 
+$F(n)$ удовлетворяют условиям <a href="./discrete_math19.4.html#Statement19.3">утверждения 19.3</a>, следовательно
+$$n\Phi_P(n)=\sum_{d|n}q^{\frac{n}{d}}\mu(d)\Rightarrow\Phi(n)=\frac1{n}\sum_{n|d}q^{\frac{n}{d}}\mu(d).$$
+<br><br>
+
+<u>Методы построения неприводимых многочленов.</u>
+<br><br>
+Одним из способов построения неприводимых многочленов над конечным полем заключается в случайном выборе унитарного многочлена заданной степени и 
+проверки его на неприводимость с помощью <a href="./discrete_math19.3.html#Theorem19.6">теоремы 19.6</a>. Так как над полем 
+$P:=GF(q)$ всего $q^n$ унитарных многочлена степени $n$, вероятность того, что случайно выбранный многочлен будет неприводим равна 
+$$\frac{\Phi_P(n)}{q^n}\sim\frac1{n}.$$
+Сложность проверки многочлена на неприводимость с помощью <a href="./discrete_math19.3.html#Theorem19.6">теоремы 19.6</a> (критерий Батлера) 
+имеет порядок $n^3$, то есть общая сложность данного алгоритма имеет порядок $n^4$.<br>
+Далее рассмотрим один из теоретических методов построения неприводимых многочленов над конечными полями.<br>
+Обозначим $P:=GF(q)$, отображения $\sigma$, $\tau$ такие, что
+$$\sigma:P[x]\to{P}[x]:\sigma\left(\sum_{i=0}^na_ix^i\right)=\sum_{i=0}^na_ix^{q^i-1},$$
+$$\tau:P[x]\to{P}[x]:\tau\left(\sum_{i=0}^na_ix^i\right)=\sum_{i=0}^na_ix^{q^i}.$$
+Несложно видеть, что $\tau(a(x))=x\sigma(a(x))$.
+<p id="Statement19.5"><b>Утверждение 19.5:</b><br>
+Для любых $g(x),h(x)\in{P}[x]$, $a,b\in{P}$, $i\in\mathbb{N}$
+<ol>
+<li>$\tau(ag(x)+bh(x))=a\tau(g(x))+b\tau(h(x))$,</li>
+<li>$\sigma(ag(x)+bh(x))=a\sigma(g(x))+b\sigma(h(x))$,</li>
+<li> 
+$$\tau(x^ig(x))=(\tau(g(x)))^{q^i}.$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Обозначим $g(x):=\sum_{i=0}^ng_ix^i$, $h(x):=\sum_{i=0}^nh_ix^i$.
+<ol>
+<li> 
+$$
+\tau(ag(x)+bh(x))=\tau\left(\sum_{i=0}^n(ag_i+bh_i)x^i\right)=\sum_{i=0}^n(ag_i+bh_i)x^{q^i}=
+\sum_{i=0}^nag_ix^{q^i}+\sum_{i=0}^nbh_ix^{q^i}=a\tau(g(x))+b\tau(h(x))
+$$
+<li>Доказывается аналогично пункту 1.</li>
+<li>Так как по <a href="./discrete_math19.1.html#Task19.1">задаче 19.1</a> для любых $a\in{P}$, $s\in\mathbb{N}$ $a^{q^s}=a$, 
+то по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a>
+$$
+\tau(x^ig(x))=\tau\biggl(x^i\sum_{j=0}^ng_jx^j\biggr)=\tau\biggl(\sum_{i=0}^ng_jx^{i+j}\biggr)=\sum_{j=0}^ng_jx^{q^{i+j}}=
+\sum_{i=0}^ng_j^{q^i}(x^{q^j})^{q^i}=\biggl(\sum_{j=0}^ng_jx^{q^j}\biggr)^{q^i}=\tau(g(x))^{q^i}
+$$
+</li>
+</ol>
+<p id="Statement19.6"><b>Утверждение 19.6:</b><br>
+$$\forall{g}(x),h(x)\in{P}[x](g(x)|h(x)\Rightarrow(\tau(g(x))|\tau(h(x))\,\wedge\,\sigma(g(x))|\sigma(h(x))).$$
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $g(x)|h(x)$, тогда существует $v(x):=\sum_{i=0}^kv_ix^i\in{P}[x]$ такой, что $h(x)=g(x)v(x)$, тогда
+$$
+\tau(h(x))=\tau(g(x)v(x))=\tau\biggl(\sum_{i=0}^k(v_ix^ig(x))\biggr)=\sum_{i=0}^kv_i\tau(x^ig(x))=
+\sum_{i=0}^kv_i(\tau(g(x)))^{q^i}=\tau(g(x))\sum_{i=0}^kv_i(g(x))^{q^i-1}\Rightarrow\tau(g(x))|\tau(h(x)).
+$$
+</li>
+<li>По пункту 1 существует $w(x)\in{P}[x]$ такой, что
+$$
+x\sigma(h(x))=\tau(h(x))=\tau(g(x))w(x)=x\sigma(g(x))w(x)\Rightarrow\sigma(h(x))=\sigma(g(x))w(x).
+$$
+</li>
+</ol>
+<p id="Corollary19.5"><b>Следствие 19.5:</b><br>
+Если многочлен $\sigma(h(x))$ неприводим над полем $P$, то многочлен $h(x)$ так же неприводим над полем $P$.
+<p><b>Доказательство:</b><br><br>
+Следутет от противного из утверждения 19.6.
+<p id="Statement19.7"><b>Утверждение 19.7:</b><br>
+Пусть многочлены $f(x),g(x)\in{P}[x]$ такие, что $f(x)$ неприводим и $(\sigma(f(x)),\sigma(g(x)))\neq{e}$, тогда $f(x)|g(x)$.
+<p><b>Доказательство:</b><br><br>
+Докажем от противного. Предположим, что $f(x)\nmid{g(x)}$, тогда, так как $f(x)$ неприводим, 
+то по п.1 <a href="./discrete_math7.5.html#Statement7.7">утверждения 7.7</a> и по <a href="./discrete_math19.1.html#Statement19.5">утверждению 19.5</a>
+$$
+(f(x),g(x))=e\Rightarrow\exists{u}(x),v(x)\in{P}[x]:u(x)f(x)+v(x)g(x)=e\Rightarrow
+\sigma(u(x)f(x)+v(x)g(x))=\sigma(e)\Rightarrow\sigma(u(x)f(x))+\sigma(v(x)g(x))=e.
+$$
+По <a href="./discrete_math19.4.html#Statement19.6">утверждению 19.6</a>
+$$
+f(x)|(u(x)f(x))\Rightarrow\sigma(f(x))|\sigma(u(x)f(x))\Rightarrow\exists{u}_1\in{P}[x]:\sigma(u(x)f(x))=u_1(x)\sigma(f(x)),
+$$
+аналогично существует $v_1(x)\in{P}[x]$ такой, что $\sigma(v(x)g(x))=v_1(x)\sigma(g(x))$. Тогда
+$$u_1(x)\sigma(f(x))+v_1(x)\sigma(g(x))=e\Rightarrow(\sigma(f(x)),\sigma(g(x)))=e.$$
+<p id="Definition19.3"><b>Определение 19.3:</b><br>
+Пусть $P:=GF(q)$, $f(x)\in{P}[x]$, $\alpha_1,\ldots,\alpha_s$ - множество ненулевых корней многочлена $f(x)$ в его поле разложения. Будем обозначать
+$$O(f(x)):=[\Ord{\alpha_1},\ldots,\Ord{\alpha_s}].$$
+Если у многочлена $f(x)$ нет ненулевых корней, то положим $O(f(x)):=1$. 
+<p id="Note19.3"><b>Замечание 19.3:</b><br>
+Пусть многочлен $f(x)\in{P}[x]$ неприводим, $n:=\deg{f(x)}$, $f(\alpha)=0$, тогда по <a href="./discrete_math19.1.html#Corollary19.2">следствию 19.2</a>
+мультипликативные порядки всех корней многочлена $f(x)$ равны, то есть $O(f)=\Ord{\alpha}$, следовательно, $
+O(f)|q^n-1$ и для любого $k\in\overline{1,n-1}$ $O(f)|q^k-1$.
+<p id="Theorem19.9"><b>Теорема 19.9: Теорема Цирлера (1967).</b><br>
+Пусть $f(x)\in{P}[x]$ - унитарный неприводимый многочлен не равный $x$, тогда все неприводимые делители многочлена $\sigma(f(x))$ имеют степень $O(f)$.
+<p><b>Доказательство:</b><br><br>
+Пусть $g(x)\in{P}[x]$ - унитарный неприводимый многочлен такой, что $g(x)|\sigma(f(x))$, обозначим $k:=\deg{g(x)}$, $t:=O(f)$, $\alpha_1,\ldots,\alpha_n$ - 
+все корни многочлена $f(x)$ в поле разложения. Тогда 
+$f(x)=(x-\alpha_1)\cdots(x-\alpha_n)$ и по п. 1 <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a> для любых различных 
+$i,j\in\overline{1,n}$ $\alpha_i\neq\alpha_j$, то есть $(x-\alpha_i,x-\alpha_j)=e$.<br>
+Для любого $i\in\overline{1,n}$
+$$\Ord{\alpha_i}|t\Rightarrow\alpha_i^t=e\Rightarrow\alpha_i^t-e=0\Rightarrow(x-\alpha_i)|(x^t-e),$$
+следовательно, по <a href="./discrete_math19.4.html#Statement19.6">утверждению 19.6</a>
+$$
+f(x)|x^t-e\Rightarrow\sigma(f(x))|\sigma(x^t-e)\Rightarrow\sigma(f(x))|x^{q^t-1}-e\Rightarrow\sigma(f(x))|x^{q^t}-x\Rightarrow{g}(x)|x^{q^t}-x.
+$$
+Так как по п. 3 <a href="./discrete_math19.1.html#Theorem19.1">теоремы 19.1</a> $GF(q^t)$ ПР многочлена $x^{q^t}-x$, то $GF(q^t)$ ПР многочлена $g(x)$. 
+Так как $g(x)$ неприводим над $P$, то теореме 19.5 $GF(q^k)$ МПР многочлена $g(x)$ над $P$. Следовательно, $GF(q^k)$ подполе поля 
+$GF(p^t)$, тогда по <a href="./discrete_math19.1.html#Corollary19.1">следствию 19.1</a> $k|t$.<br>
+С другой стороны, 
+$$(f(x),x)=e\Rightarrow((\sigma(f(x)),x)=e\,\wedge\,g(x)|\sigma(f(x)))\Rightarrow(g(x),x)=e.$$
+Тогда, так как $g(x)$ неприводим, то по п. 2 <a href="./discrete_math19.1.html#Theorem19.5">теоремы 19.5</a>, по выбору многочлена $g(x)$ и 
+по <a href="./discrete_math19.4.html#Statement19.7">утверждению 19.7</a>
+$$
+g(x)|x^{q^k}-x\Rightarrow{g}(x)|x^{q^k-1}-e\Rightarrow{g}(x)|\sigma(q^k-e)\Rightarrow(\sigma(f(x)),\sigma(x^k-e))\neq{e})\Rightarrow
+{f}(x)|x^k-e\Rightarrow\forall\alpha\in{P}(f(\alpha)=0\Rightarrow\Ord{\alpha}|k)\Rightarrow{t}|k.
+$$
+Таким образом, $t=k$.
+<p id="Corollary19.6"><b>Следствие 19.6: Оре-Глизон-Мэрш.</b><br>
+Пусть $P:=GF(q)$, $f(x)\in{P}[x]$ неприводимый унитарный многочлен не равный $x$, $n:=\deg{f(x)}$, 
+тогда многочлен $\sigma(f(x))$ неприводим тогда и только тогда, когда $O(f)=q^n-1$.
+<p><b>Доказательство:</b><br><br>
+Так как многочлен $f(x)$ унитарен, то многочлен $\sigma(f(x))$ так же унитарен.<br>
+$\Rightarrow)$ Так как $\sigma(g(x))|\sigma(g(x))$ и $\sigma(g(x))$ неприводим, то по теореме 19.9 
+$$O(f)=\deg{\sigma(g(x))}=q^n-1.$$
+$\Leftarrow)$ Так как $O(f)=q^n-1$, то по теореме 19.9 все неприводимые делители многочлена $\sigma(f(x))$ имеют степень $q^n-1=\deg{\sigma(f(x))}$. 
+Следовательно, по п. <a href="./discrete_math7.4.html#Statement7.2">утверждения 7.2</a> он ассоциирован с любоым своим неприводимым делителем. 
+Тогда, так как многочлен $\sigma(f(x))$ унитарен, то он неприводим.
+<p id="Note19.4"><b>Замечание 19.4:</b><br>
+Пусть $P:=GF(q)$, $f(x)\in{P}[x]$ - неприводимый унитарный многочлен такой, что $f(x)\neq{x}$, $f(x)\neq{x}-e$, $n:=\deg{f(x)}$. 
+Так как  $O(f)|q^n-1$, то если $q^n-1$ простое число, то $O(f)=q^n-1$ и из следствия 19.6 следует, что многочлен $\sigma(f(x))$ неприводим.<br>
+Пусть $q=2$. Простые числа вида $2^n-1$ называются простыми числами Мерсена. Вопрос о конечности множества простых чисел Мерсена открыт. 
+Например, при $n\in\{2,3,5,7\}$ число $2^n-1$ простое, а при $n\in\{4,6,8\}$ - нет. Положим $f(x)=x^2+x+1\in{G}F(2)$, то есть $n=2$, тогда
+$$\sigma(f(x))=x^3+x+1,\sigma^2(f(x))=x^7+x+1,\sigma^3(f(x))x^{127}+x+2$$
+неприводимы над $GF(2)$.
+
+<br><br>
+<a href="discrete_math19.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math20.1.html">next</a>
+</body>
+</html>

@@ -1,0 +1,305 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 18.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math18.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.5.html">next</a>
+<br>
+
+$\require{AMScd}$
+
+<h4 id="18.4">18.4 Простые расширения полей.</h4>
+
+<p id="Definition18.8"><b>Определение 18.8:</b><br>
+Пусть $P$ подполе поля $P'$, элемент $\alpha\in{P}'$ алгебраичен над $P$, тогда унитарный неприводимый многочлен $m(x)\in{P}[x]$ такой, 
+что $m(\alpha)=0$ называется минимальным многочленом элемента $\alpha$ над полем $P$.<br> 
+Минимальный многочлен элемента $\alpha$ над полем $P$ обозначается $m_{\alpha,P}(x)$.
+<br><br>
+<a href="./discrete_math18.1.html#Corollary18.3">Следствие 18.3</a> дает гарантию, 
+что для любого алгебраичного над подполем $P\subset{P}'$ элемента поля $\alpha\in{P}'$ существует единственный минимальный многочлен $m_{\alpha,P}(x)$.
+<p id="Theorem18.6"><b>Теорема 18.6:</b><br>
+Пусть $P$ подполе поля $P'$, $\alpha\in{P}'$, тогда 
+<ol>
+<li>если $\alpha$ трансцендентен над $P$, то $P(\alpha)\cong{P}(x)$,</li>
+<li>если $\alpha$ алгебраичен над $P$, то $P(\alpha)\cong{P}[x]/m_{\alpha,P}(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Рассмотрим отображение $\varphi:P[x]\to{P}(\alpha)$ такое, что для любого $t(x)\in{P}[x]$ $\varphi(t(x))=t(\alpha)$. 
+По <a href="./discrete_math7.2.html#Lemma7.1">лемме 7.1</a> отображение $\varphi$ - гомоморфизм. Обозначим $R:=\varphi(P[x])$, 
+тогда по п. 1 <a href="./discrete_math17.5.html#Theorem17.4">теоремы 17.4</a> $R&lt;P(\alpha)$ и 
+по <a href="./discrete_math17.5.html#Theorem17.3">теореме 17.3</a> $P[x]/\ker{\varphi}\cong{R}$. По определению отображения $\varphi$ 
+$$\ker{\varphi}=\{t(x)\in{P}[x]\mid{t}(\alpha)=0\}.$$ 
+Отметим так же, что для любого $a\in{P}$ $\varphi(\overline{a})=\overline{a}(\alpha)=a$, следовательно, $P\subset{R}$ и $\varphi(x)=\alpha$, 
+следовательно, $\alpha\in{R}$.
+<ol>
+<li>Пусть $\alpha$ трансцендентен над $P$, тогда $\ker{\varphi}=\{0\}$ и $R\cong{P}[x]$. Так как $R&lt;P(\alpha)$, 
+то по <a href="./discrete_math18.2.html#Note18.7">замечанию 18.7</a> существует $T$ поле частных кольца $R$ такое, что $T\subset{P}(\alpha)$, 
+с другой стороны 
+$$(P\subset{R}\,\wedge\,\alpha\in{R})\Rightarrow(P\subset{T}\,\wedge\,\alpha\in{T})\Rightarrow{P}(\alpha)\subset{T}\Rightarrow{T}=P(\alpha).$$
+Таким образом, поля $P(\alpha)$ и $P(x)$ являются полями частных колец $R$ и $P[x]$ изоморфных между собой, следовательно, 
+по <a href="./discrete_math18.2.html#Theorem18.4">теореме 18.4</a> $P(\alpha)\cong{P}(x)$.
+</li>
+<li>Пусть $\alpha$ алгебраичен над $P$, тогда по <a href="./discrete_math18.1.html#Corollary18.3">следствию 18.3</a>
+$$\ker{\varphi}={m}_{\alpha,P}(x)P[x]\Rightarrow{R}\cong{P}[x]/m_{\alpha,P}(x)P[x]=P[x]/m_{\alpha,P}(x),$$
+то есть $R$ - поле. При этом 
+$$(P\subset{R}\,\wedge\,\alpha\in{R})\Rightarrow{P}(\alpha)\subset{R}\Rightarrow{P}(\alpha)=R\cong{P}[x]/m_{\alpha,P}(x).$$
+</li>
+</ol>
+<p id="Corollary18.6"><b>Следствие 18.6:</b><br>
+Пусть $P$ подполе поля $P'$, $\alpha\in{P}'$, тогда 
+<ol>
+<li>если $\alpha$ - трансцендентен над $P$, то 
+$$P(\alpha)=\{g(\alpha)h(\alpha)^{-1}\mid{g}(x),h(x)\in{P}[x]:h(x)\neq0\}.$$
+</li>
+<li>если $\alpha$ алгебраичен над $P$, то
+$$\forall\beta\in{P}(\alpha)\,\exists!t(x)\in{P}(x):(\beta=t(\alpha)\,\wedge\,\deg{t(x)}&lt;\deg{m_{\alpha,P}(x)}),$$
+то есть 
+$$P(\alpha)=\{t(\alpha)\mid{t}(x)\in{P}[x]:\deg{t(x)}<\deg{m_{\alpha,P}}(x)\}.$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Обозначим $R:=\{t(\alpha)\mid{t}(x)\in{P}[x]\}$.
+<ol>
+<li>При доказательстве теоремы 18.6 было показано, что  
+$$
+P(\alpha)=T:=\{\beta\gamma^{-1}\mid\beta,\gamma\in{R},\gamma\neq0\}=\{t(\alpha)h(\alpha)^{-1}\mid{t}(x),h(x)\in{P}(x),h(x)\neq0\}.
+$$
+</li>
+<li>При доказательстве теоремы 18.6 было показано, что $P(\alpha)=R$. Фиксируем $\beta\in{P}(\alpha)$, тогда существует $t(x)\in{P}[x]$ такой, 
+что $\beta=t(\alpha)$. Поделим с остатком $t(x)$ на $m_{\alpha,P}(x)$, тогда
+$$
+\exists{q}(x),r(x)\in{P}[x]:(t(x)=m_{\alpha,P}(x)q(x)+r(x)\,\wedge\,\deg{r(x)}<\deg(m_{\alpha,P}(x)))\Rightarrow
+\beta=t(\alpha)=m_{\alpha,P}(\alpha)q(\alpha)+r(\alpha)=r(\alpha),
+$$
+где последнее равенство в силу того, что $m_{\alpha,P}(\alpha)=0$.<br>
+Пусть $r_1(x)\in{P}[x]$ такой, что $\beta=r_1(\alpha)$ и $\deg{r_1(x)}<\deg{m_{\alpha,P}(x)}$. Обозначим $h(x):=r(x)-r_1(x)$, 
+тогда по <a href="./discrete_math18.1.html#Corollary18.3">следствию 18.3</a>
+$$
+(h(\alpha)=r(\alpha)-r_1(\alpha)=\beta-\beta=0\,\wedge\,\deg{h(x)}<\deg{m_{\alpha,P}(x)})\Rightarrow
+(m_{\alpha,P}(x)|h(x)\,\wedge\,\deg{h(x)}<\deg{m_{\alpha,P}(x)})\Rightarrow{h}(x)=0\Rightarrow{r}_1(x)=r(x).
+$$
+</li>
+</ol>
+<p id="Statement18.6"><b>Утверждение 18.6:</b><br>
+Пусть $P$ подполе поля $P'$, элемент $\alpha\in{P}'$ алгебраичен над $P$, тогда $[P(\alpha):P]=\deg{m_{\alpha,P}(x)}$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $n:=\deg{m_{\alpha,P}(x)}$, $T:=\{e,\alpha,\alpha^2,\ldots,\alpha^{n-1}\}$. 
+<ol>
+<li>Пусть $c_0,c_1,\ldots,c_{n-1}\in{P}$ такие, что $c_0+c_1\alpha+\cdots+c_{n-1}\alpha^{n-1}=0$ и обозначим $f(x):=c_0+c_1x+\cdots+c_{n-1}x^{n-1}$, 
+тогда
+$$
+f(\alpha)=0\Rightarrow(m_{\alpha,P}(x)|f(x)\,\wedge\,\deg{f(x)}\leq{n-1}&lt;n)\Rightarrow{f}(x)=0\Rightarrow\forall{i}\in\overline{0,n-1}(c_i=0),
+$$
+следовательно, система $T$ ЛНЗ.
+</li>
+<li>По п. 2 следствия 18.6 для любого $\beta\in{P}(\alpha)$ существует многочлен $t(x)$ такой, 
+что $\beta=t(\alpha)$ и $\deg{t}(x)&lt;n$, то есть $\beta$ ЛВЧ $T$.
+</li>
+</ol>
+Из пунктов 1 и 2 следует, что $T$ базис пространства $P(\alpha)_P$, следовательно, $[P(\alpha):P]=\deg{P(\alpha)_P}=|T|=n$.
+<p id="Theorem18.7"><b>Теорема 18.7:</b><br>
+Пусть $P$ подполе поля $P'$, элементы $\alpha,\beta\in{P}'$ трансцендентны над $P$, тогда 
+<ol>
+<li>$P(\alpha)\cong{P}(\beta)$,</li>
+<li>сущетсвует изоморфизм $\mu:P(\alpha)\to{P}(\beta)$ такой, что для любого $a\in{P}$ $\mu(a)=a$ и $\mu(\alpha)=\beta$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Определим отображения 
+$$\tau_1:{P}[x]\to{P}(\alpha):\forall{t}(x)\in{P}[x](\tau_1(t(x))=t(\alpha)),$$
+$$\tau_2:{P}[x]\to{P}(\beta):\forall{t}(x)\in{P}[x](\tau_2(t(x))=t(\beta)).$$
+Обозначим
+$$R_1:=\tau_1(P[x])=\{t(\alpha)\mid{t}(x)\in{P}(x)\},R_2:=\tau_2(P[x])=\{t(\beta)\mid{t}(x)\in{P[x]}\}.$$
+При доказательстве <a href="./discrete_math18.4.html#Theorem18.6">теоремы 18.6</a> было показано, что $\tau_1$ и $\tau_2$ - изоморфизмы колец. 
+Тогда по <a href="./discrete_math9.1.html#Theorem9.2">теореме 9.2</a> отображение $\psi:=\tau_2\circ\tau_1^{-1}$ изоморфизм колец $R_1$ и $R_2$ такой, 
+что
+$$\forall{a}\in{P}(\psi(a)=\tau_2(\tau_1^{-1}(a))=\tau_1(\overline{a})=a),$$
+$$\psi(\alpha)=\tau_2(\tau_1^{-1}(\alpha))=\tau_2(x)=\beta.$$
+При доказательстве <a href="./discrete_math18.4.html#Theorem18.6">теоремы 18.6</a> было показано, 
+что $P(\alpha)$ и $P(\beta)$ поля частных колец $R_1$ и $R_2$ такие, что 
+$$P(\alpha)=\{a_1b_1^{-1}\mid{a}_1,b_1\in{R}_1,b_1\neq0\},P(\beta)=\{a_2b_2^{-1}\mid{a}_2,b_2\in{R}_2,b_2\neq0\},$$
+и при этом $R_1\subset{P}(\alpha)$, $R_2\subset{P}(\beta)$. Тогда существуют тождественные эпиморфизмы 
+$\varepsilon_1:R_1\to{P}(\alpha)$, $\varepsilon_2:R_2\to{P}(\beta)$ удовлетворяющие условию 
+<a href="./discrete_math18.2.html#Theorem18.4">теоремы 18.4</a>, то есть
+$$\forall{c}_1\in{P}(\alpha)\,\exists{a}_1,b_1\in{R}_1:c_1=a_1b_1^{-1}=\varepsilon_1(a_1)\varepsilon_1(b_1)^{-1},$$
+$$\forall{c}_2\in{P}(\beta)\,\exists{a}_2,b_2\in{R}_2:c_2=a_2b_2^{-1}=\varepsilon_2(a_2)\varepsilon_2(b_2)^{-1}.$$
+Тогда по <a href="./discrete_math18.2.html#Theorem18.4">теореме 18.4</a> существует изоморфизм $\mu:P(\alpha)\to{P}(\beta)$ такой, что 
+$$\forall{a}\in{R}_1(\mu(\varepsilon_1(a))=\varepsilon_2(\psi(a))),$$
+то есть коммутативна диаграмма
+$$
+\begin{CD}
+R_1			@>\psi>>	R_2 			\\
+@V\varepsilon_1VV			@VV\varepsilon_2V \\
+P(\alpha)		@>\mu>>	P(\beta)		\\
+\end{CD}
+$$
+Таким образом, 
+$$
+\forall{a}\in{P}\,\exists\overline{a}\in{P}[x]:\tau_1(\overline{a})=\overline{a}(\alpha)=a\Rightarrow{P}\subset\tau_1(P[x])={R}_1\Rightarrow
+\forall{a}\in{P}(\mu(a)=\mu(\varepsilon_1(a))=\varepsilon_2(\psi(a))=\varepsilon_2(a)=a)
+$$
+и 
+$$\mu(\alpha)=\mu(\varepsilon_1(\alpha))=\varepsilon_2(\psi(\alpha))=\varepsilon_2(\beta)=\beta.$$
+<p id="Statement18.7"><b>Утверждение 18.7:</b><br>
+Пусть $\sigma:P\to{F}$ изоморфизм полей, отображение $\sigma':P[x]\to{F}[x]$ такое, что 
+$$\forall{t}(x):=\sum_{i=0}^na_ix^i\in{P}[x]\left(\sigma'(t(x))=\sum_{i=0}^n\sigma(a_i)x^i\right),$$
+тогда
+<ol>
+<li>$\sigma'$ - изоморфизм колец,</li>
+<li>$\forall{f}(x),g(x)\in{P}[x]\bigl(f(x)|g(x)\Leftrightarrow\sigma'(f(x))|\sigma'(g(x))\bigr)$,</li>
+<li>$\forall{f}(x)\in{P}[x]\bigl(P[x]/f(x)\cong{F}[x]/\sigma'(f(x))\bigr).$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Фиксируем два многочлена $f(x):=f_0+f_1x+\cdots+f_mx^m\in{P}[x]$ и $g(x):=g_0+g_1x+\cdots+g_sx^s\in{P}[x]$. Так как $\sigma$ гомоморфизм, то
+$$
+\sigma'(f(x)+g(x))=\sum_{i\geq0}\sigma(f_i+g_i)x^i=\sum_{i\geq0}(\sigma(f_i)+\sigma(g_i))x^i=
+\sum_{i\geq0}\sigma(f_i)x^i+\sum_{i\geq0}\sigma(g_i)x^i=\sigma'(f(x))+\sigma'(g(x)).
+$$
+$$
+\sigma'(f(x)g(x))=\sigma'\left(\sum_{i=0}^{m+s}\biggl(\sum_{j=0}^if_ig_{i-j}\biggr)x^i\right)=
+\sum_{i=0}^{m+s}\sum_{j=0}^i\biggl(\sigma(f_i)\sigma(g_{i-j})\biggr)x^i=\sigma'(f(x))\sigma'(g(x)).
+$$
+Таким образом, $\sigma'$ - гомоморфизм. При этом $\sigma'(P[x])=F[x]$ и так как $\sigma(0_P)=0_F$, то $\ker{\sigma'}=\{\overline{0}_P\}$, 
+следовательно, по <a href="./discrete_math17.5.html#Theorem17.3">теореме 17.3</a> $\sigma'$ - изоморфизм.
+</li>
+<li>Так как $\sigma'$ - изоморфизм, то
+$$
+f(x)|g(x)\Rightarrow\exists{h}(x)\in{P}[x]:g(x)=f(x)h(x)\Rightarrow
+\sigma'(g(x))=\sigma'(f(x)h(x))=\sigma'(f(x))\sigma'(h(x))\Rightarrow\sigma'(f(x))\sigma'(g(x)).
+$$
+Так как по <a href="./discrete_math9.1.html#Theorem9.2">теореме 9.2</a> $(\sigma')^{-1}:F[x]\to{P}[x]$ - изоморфизм, то аналогично доказывается, 
+что если $\sigma'(f(x))|\sigma'(g(x))$, то $f(x)|g(x)$.
+</li>
+<li>Фиксируем многочлен $f(x)\in{P}[x]$, обозначим $\varphi_0:F[x]\to{F}[x]/\sigma'(f(x))$ - естественных эпиморфизм. 
+Тогда по п. 1.b <a href="./discrete_math9.1.html#Theorem9.2">теоремы 9.2</a> отображение $\varphi_0\circ\sigma':P[x]\to{F}[x]/\sigma'(f(x))$ - эпиморфизм. 
+Следовательно, по <a href="./discrete_math17.5.html#Theorem17.3">теореме 17.3</a> $P[x]/\ker{(\varphi_0\circ\sigma')}\cong{F}[x]/\sigma'(f(x))$. 
+Таким образом, осталось доказать, что $F[x]/\sigma'(f(x))=P[x]/f(x)$. По пункту 2 имеем
+$$
+\ker{(\varphi_0\circ\sigma')}=\{t(x)\in{P}[x]\mid\varphi_0(\sigma'(t(x)))=[\overline{0}]_{\sigma'(f(x))}\}=
+\{t(x)\in{P}[x]\mid[\sigma'(t(x))]_{\sigma'(f(x))}=[\overline{0}]_{\sigma'(f(x))}\}=\{t(x)\in{P}[x]\mid\sigma'(f(x))|\sigma'(t(x))\}=\\=
+\{t(x)\in{P}[x]\mid{f}(x)|t(x)\}=f(x)P[x]\Rightarrow{P}[x]/\ker{(\varphi_0\circ\sigma')}=P[x]/f(x)P[x]=P[x]/f(x).
+$$
+</li>
+</ol>
+<p id="Note18.8"><b>Замечание 18.8:</b><br>
+Пусть в условиях утверждения 18.7 $f(x)\in{P}[x]$ и отображение $\nu:P[x]/f(x)\to{F}[x]/\sigma'(f(x))$ - изоморфизм, 
+тогда п. 2 <a href="./discrete_math17.5.html#Theorem17.3">теоремы 17.3</a>
+$$\forall{t}(x)\in{P}[x]\bigl(\nu([t(x)]_{f(x)})=\nu(\psi_0(t(x)))=\varphi_0(\sigma'(f(x))=[\sigma'(t(x))]_{\sigma'(f(x))}\bigr).$$
+<p id="Corollary18.7"><b>Следствие 18.7:</b><br>
+В условиях утверждения 18.7 многочлен $f(x)\in{P}[x]$ неприводим над $P$ тогда и только тогда, когда многочлен $\sigma'(f(x))$ неприводим над $F$.
+<p><b>Доказательство:</b><br><br>
+Следует из п. 2 утверждения 18.7.
+<p id="Theorem18.8"><b>Теорема 18.8:</b><br>
+Пусть $P_1,P_2$ подполя поля $P'$, $\alpha_1,\alpha_2\in{P}'$ алгебраичны над $P_1$ и $P_2$ соответственно; $\sigma:P_1\to{P}_2$ изоморфизм полей, 
+отображение $\sigma':P_1[x]\to{P}_2[x]$ такое, что 
+$$\forall{t}(x):=\sum_{i=0}^na_ix^i\in{P}_1[x]\left(\sigma'(t(x))=\sum_{i=0}^n\sigma(a_i)x^i\right),$$
+$\sigma'(m_{\alpha_1,P_1}(x))=m_{\alpha_2,P_2}(x)$, тогда $P_1(\alpha_1)\cong{P}_2(\alpha_2)$ и 
+существует изоморфизм $\tau:P_1(\alpha_1)\to{P}_2(\alpha_2)$ такой, что $\tau|_{P_1}=\sigma$ и $\tau(\alpha_1)=\alpha_2$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $g_1(x):=m_{\alpha_1,P_1}(x)$, $g_2(x):=m_{\alpha_2,P_2}(x)$ и
+$$\varphi:P_1[x]\to{P}_1(\alpha_1):\forall{t}(x)\in{P}[x](\varphi(t(x))=t(\alpha_1)).$$
+Так же как и при доказательстве <a href="./discrete_math18.4.html#Theorem18.6">теоремы 18.6</a> можно показать, что отображение $\varphi$ - эпиморфизм колец, 
+тогда по п. 2 <a href="./discrete_math17.5.html#Theorem17.3">теоремы 17.3</a> существует изоморфизм $\tau_1:{P}_1[x]/g_1(x)\to{P}_1(\alpha_1)$ такой, что 
+$$\forall{t}(x)\in{P}_1[x](t(\alpha_1)=\varphi(t(x))=\tau_1(\varphi_0(t(x)))=\tau_1([t(x)]_{g_1(x)})).$$
+Тогда $\alpha_1=\varphi(x)=\tau_1([x]_{g_1(x)})$ и
+$$\forall{a}\in{P}_1(a=\varphi(\overline{a})=\tau_1(\varphi_0(\overline{a}))=\tau_1[\overline{a}]_{g_1(x)}).$$
+Аналогично существует изоморфизм $\tau_2:P_2[x]/g_2(x)\to{P}_2(\alpha_2)$ такой, что $\alpha_2=\tau_2([x]_{g_2(x)})$ и 
+для любого $b\in{P}_2$ $b=\tau_2([\overline{b}]_{g_2(x)})$.<br>
+По п. 3 <a href="./discrete_math18.4.html#Statement18.7">утверждения 18.7</a> существует изоморфизм $\nu:P_1[x]/g_1(x)\to{P}_2[x]/{g}_2(x)$ такой, 
+что по замечанию 18.8
+$$\forall{t}(x)\in{P}_1[x]\bigl([t(x)]_{g_1(x)}=[\sigma'(t(x))]_{\sigma'(g_1(x))}=[\sigma'(t(x))]_{g_2(x)}\bigr).$$
+Положим $\tau:=\tau_2\circ\nu\circ\tau_1^{-1}$, тогда $\tau:P_1(\alpha_1)\to{P}_2(\alpha_2)$ - изоморфизм и для любого $a\in{P}_1$
+$$
+\tau(a)=\tau_2(\nu(\tau_1^{-1}(a)))=\tau_2(\nu([\overline{a}]_{g_1(x)}))=
+\tau_2([\sigma'(\overline{a})]_{g_2(x)})=\tau_2([\overline{\sigma(a)}]_{g_2(x)})=\sigma(a),
+$$
+то есть $\tau|_{P_1}=\sigma$. При этом так как $\sigma'(g_1(x))=g_2(x)$ и $\sigma'(x)=x$, то
+$$\tau(\alpha_1)=\tau_2(\nu(\tau_1^{-1}(\alpha_1)))=\tau_2(\nu([x]_{g_1(x)}))=\tau_2([\sigma'(x)]_{g_2(x)})=\tau_2([x]_{g_2(x)})=\alpha_2.$$
+<p id="Corollary18.8"><b>Следствие 18.8:</b><br>
+Пусть $P$ подполе поля $P'$, элементы $\alpha,\beta\in{P}'$ алгебраичны над полем $P$, $m_{\alpha,P}(x)=m_{\beta,P}(x)$, 
+тогда существует изоморфизм $\mu:P(\alpha)\to{P}(\beta)$ такой, что для любого $a\in{P}$ $\mu(a)=a$ и $\mu(\alpha)=\beta$.
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 18.8 при $P_1=P_2=P$, и $\sigma=\varepsilon$.
+<p id="Example18.7"><b>Пример 18.7:</b><br>
+Условие $m_{\alpha,P}(x)=m_{\beta,P}(x)$ в формулировке следствия 18.8 достаточное, но не обязательное. 
+Поля $P(\alpha)$ и $P(\beta)$ могут быть изоморфны и в случае, когда $m_{\alpha,P}(x)\neq{m}_{\beta,P}(x)$. Например, 
+$\mathbb{Q}(\sqrt{2})=\mathbb{Q}(2\sqrt{2})$, однако, $x^2-2=m_{\sqrt{2},\mathbb{Q}}(x)\neq{m}_{2\sqrt{2},\mathbb{Q}}(x)=x^2-8$.
+<p id="Statement18.8"><b>Утверждение 18.8:</b><br>
+Пусть $P$ подполе поля $P'$, элементы $\alpha_1,\ldots,\alpha_k\in{P'}$ такие, что для любого $i\in\overline{2,k}$ $\alpha_i$  
+алгебраичен над $P(\alpha_1,\ldots,\alpha_{i-1})$, $\alpha_1$ алгебраичен над $P$, тогда 
+$[P(\alpha_1,\ldots,\alpha_k):P]<\infty$ в частности $P(\alpha_1,\ldots,\alpha_k)$ - конечное алгебраическое расширение поля $P$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math18.1.html#Corollary18.2">следствию 18.2</a>
+$$\forall{i}\in\overline{2,k}(P(\alpha_1,\ldots,\alpha_i)=P(\alpha_1)\ldots(\alpha_{i-1})(\alpha_i)=P(\alpha_1,\ldots,\alpha_{i-1})(\alpha_i)),$$
+следовательно, для любого $i\in\overline{2,k}$ $P(\alpha_1,\ldots,\alpha_{i-1})\subset{P}(\alpha_1,\ldots,\alpha_{i-1},\alpha_i)$ и 
+так как $\alpha_i$ алгебраичен над $P(\alpha_1,\ldots,\alpha_{i-1})$, то по <a href="./discrete_math18.4.html#Statement18.6">утверждению 18.6</a>
+для любого $i\in\overline{2,k}$ $[P(\alpha_1,\ldots,\alpha_{i-1}):P(\alpha_1,\ldots,\alpha_i)]&lt;\infty$ тогда по 
+<a href="./discrete_math18.1.html#Theorem18.2">теореме 18.2</a>
+$$
+[P(\alpha_1,\ldots,\alpha_k)]=[P(\alpha_1):P][P(\alpha_1,\alpha_2):P(\alpha_1)]\cdots
+\cdots[P(\alpha_1,\ldots,\alpha_k):P(\alpha_1,\ldots,\alpha_{k-1})]&lt;\infty
+$$
+<p id="Corollary18.9"><b>Следствие 18.9:</b><br>
+Пусть $P$ подполе поля $P'$, тогда $[P':P]&lt;\infty$ тогда и только тогда, когда $P'$ - конечное алгебраическое расширение поля $P$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$
+Расширение $P'$ алгебраично по <a href="./discrete_math18.1.html#Statement18.5">утверждению 18.5</a>.<br>
+Пусть $n:=[P':P]$, тогда существует $\alpha_1,\ldots,\alpha_n\in{P}'$ - базис пространства $P'_P$. Тогда 
+$$\forall{a}\in{P}'\exists{c}_1,\ldots,c_n\in{P}:\biggl(a=\sum_{i=1}^nc_i\alpha_i\in{P}(\alpha_1,\ldots,\alpha_n)\biggr)\Rightarrow
+{P}'\subset{P}(\alpha_1,\ldots,\alpha_n),$$
+следовательно, $P'=P(\alpha_1,\ldots,\alpha_n)$, так как обратное включение очевидно.<br>
+$\Leftarrow)$ Пусть $P':=P(\alpha_1,\ldots,\alpha_k)$, тогда элементы $\alpha_1,\ldots,\alpha_k\in{P}'$ алгебраичны над $P$, 
+таким образом утверждение следует из утверждения 18.8.
+<p id="Note18.9"><b>Замечание 18.9:</b><br>
+<ol>
+<li>Все расширения конечной степени, это конечные алгебраические расширения.</li>
+<li>Расширения бесконечной степени - это либо трансцендентные расширения, либо бесконечные алгебраические расширения.</li>
+</ol>
+<p id="Statement18.9"><b>Утверждение 18.9:</b><br>
+Пусть $P$ подполе поля $P'$, $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_k)\in(P')^k$, тогда 
+$$P(\alpha_1,\ldots,\alpha_k)=\{f(\vec{\alpha})g(\vec{\alpha})^{-1}\mid{f}(\vec{x}),g(\vec{x})\in{P}[x_1,\ldots,x_k],g(\vec{\alpha})\neq0\}.$$
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$T:=\{f(\vec{\alpha})g(\vec{\alpha})^{-1}\mid{f}(\vec{x}),g(\vec{x})\in{P}[x_1,\ldots,x_k],g(\vec{\alpha})\neq0\},$$
+тогда $T\subset{P}(\alpha_1,\ldots,\alpha_k)$. Пользуясь <a href="./discrete_math18.1.html#Statement18.1">утверждением 18.1</a> несложно проверить, 
+что множество $T$ - поле, например, проверим замкнутость $T$ относительно разности
+$$
+a,b\in{T}\Rightarrow\exists{f}_1(\vec{x}),g_1(\vec{x}),f_2(\vec{x}),g_2(\vec{x})\in{P}[\vec{x}]:a-b=
+f_1(\vec{\alpha})g_1(\vec{\alpha})^{-1}-f_2(\vec{\alpha})g_2(\vec{\alpha})^{-1}=
+(f_1(\vec{\alpha})g_2(\vec{\alpha})-f_2(\vec{\alpha})g_1(\vec{\alpha}))g_1(\vec{\alpha})^{-1}g_2(\vec{\alpha})^{-1}=f(\vec{\alpha})g(\vec{\alpha})^{-1},
+$$
+где $f(\vec{x}):=f_1(\vec{x})g_2(\vec{x})-f_2(\vec{x})g_1(\vec{x})$, $g(\vec{x}):=g_1(\vec{x})g_2(\vec{x})$.<br>
+Так как $T$ поле и $\{\alpha_1,\ldots,\alpha_k\}\subset{T}$, $P\subset{T}$, то $P(\alpha_1,\ldots,\alpha_k)\subset{T}$, 
+следоватльно, $T=P(\alpha_1,\ldots,\alpha_k)$. 
+
+<br><br>
+<a href="discrete_math18.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.5.html">next</a>
+</body>
+</html>

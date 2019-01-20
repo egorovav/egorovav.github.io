@@ -1,0 +1,310 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.11</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}",
+	rank: "{\\operatorname{rank}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.9.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math22.html">next</a>
+<br>
+
+<h4 id="21.11">21.11 ЛРП максимального периода над примарными кольцами вычетов.</h4>
+
+Введем некоторые обозначения.<br>
+Пусть $p,n\in\mathbb{N}$, где $p$ - простое, $n&gt;1$; $R:=\mathbb{Z}_{p^n}$. Тогда по п. 1 <a href="./discrete_math17.3.html#Task17.2">задачи 17.2</a>
+$pR\triangleleft{R}$, следовательно, можно рассмотреть факторкольцо $\overline{R}:=R/pR$. Существует эпиморфизм колец 
+$\varphi:R\to{G}F(2)$ такой, что $\varphi(r)$ равно остатку от деления $r$ на $p$. Очевидно, что $pR=\ker{\varphi}$, 
+тогда по п. 1 <a href="./discrete_math17.5.html#Theorem17.3">теоремы 17.3</a> $\overline{R}=R/pR\cong{G}F(p)$.<br>
+Обозначим образ элемента $a\in{R}$ при естественном эпиморфизме $R$ в $\overline{R}$ как $\overline{a}$, тогда
+$$\forall{a},b\in{R}(a=b\Leftrightarrow{a}\equiv{b}\pmod{p^n}),$$
+$$\forall\overline{a},\overline{b}\in\overline{R}(\overline{a}=\overline{b}\Leftrightarrow{a}\equiv{b}\pmod{p}).$$
+Так как по п. 1 <a href="./discrete_math8.1.html#Theorem8.4">теоремы 8.4</a>
+$$a\in{R}^*\Leftrightarrow(a,p^n)=e\Leftrightarrow(a,p)=e\Leftrightarrow\overline{a}\in\overline{R}^*,$$
+то многочлен $F(x):=\sum_{s\geq0}f_sx^s\in{R}[x]$ является реверсивным тогда и только тогда, 
+когда многочлен $\overline{F}(x):=\sum_{s\geq0}\overline{f}_sx^s\in\overline{R}[x]$ является реверсивным.
+<p id="Lemma21.1"><b>Лемма 21.1:</b><br>
+Пусть $F(x)\in{R}[x]$ - унитарный многочлен, многочлены $A(x),B(x)\in{R}[x]$ и число $s\in\overline{0,n-1}$ такие, что $p^sA(x)\equiv{p}^sB(x)\pod{F(x)}$, 
+тогда $\overline{A}(x)\equiv\overline{B}(x)\pod{\overline{F}(x)}$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $m:=\deg{F(x)}$ и разделим с остатком разность $A(x)-B(x)$ на $F(x)$, тогда 
+$$
+\exists{Q}(x),C(x)\in{R}(x):(A(x)-B(x)=Q(x)F(x)+C(x)\,\wedge\,\deg{C(x)}&lt;m)\Rightarrow(p^sA(x)-p^sB(x)=Q(x)p^sF(x)+p^sC(x)\,\wedge\,\deg{C(x)}&lt;m),
+$$
+следовательно,
+$$
+p^sA(x)\equiv{p}^sB(x)\pod{F(x)}\Rightarrow{F}(x)|(p^sA(x)-p^sB(x))\Rightarrow{F}(x)|(Q(x)p^sF(x)+p^sC(x))\Rightarrow{F}(x)|p^sC(x)\Rightarrow{p}^sC(x)=0.
+$$
+Следовательно, все коэффициенты многочлена $p^sC(x)$ равны нулю над $R$, то есть делятся на $p^n$. 
+Тогда все коэффициенты многочлена $C(x)$ делятся на $p^{n-s}$. Так как $s&lt;n$, то все коэффициенты многочлена $C(x)$ деляться на $p$, 
+следовательно, $\overline{C}(x)=0$. Применяя к обоим частям полученного выше равенства $A(x)-B(x)=Q(x)F(x)+C(x)$ естественный эпиморфизм $R$ в 
+$\overline{R}$, получим
+$$
+\overline{A}(x)-\overline{B}(x)=\overline{Q}(x)\overline{F}(x)+\overline{C}(x)=\overline{Q}(x)\overline{F}(x)\Rightarrow
+\overline{F}(x)|(\overline{A}(x)-\overline{B}(x))\Rightarrow\overline{A}(x)\equiv\overline{B}(x)\pod{\overline{F}(x)}.
+$$
+<br><br>
+Пусть $F(x)\in{R}[x]$ - унитарный реверсивный многочлен степени $m$. Наша цель найти $\tau:=T(F)$.<br>
+Так как $F(x)$ - реверсивен, то $\overline{F}(x)$ тоже реверсивен, то есть $\overline{F}(x)|(x^{\tau}-\overline{e})$. Тогда
+$$x^{\tau}\equiv{e}+pU(x)\pod{F(x)},\deg{U(x)}&lt;m\quad(*)$$
+где $U(x)$ остаток от деления $x^{\tau}-e$ на $F(x)$. Дальнейшие рассуждения основаны на возведении отношения $(*)$ в степени $p,p^2,\ldots$ 
+пока в правой части не будет $e$. Возведение в степень будем осуществлять по лемме 21.2.
+<p id="Lemma21.2"><b>Лемма 21.2:</b><br>
+Пусть $F(x)\in{R}[x]$ - унитарный, реверсивный многочлен степени $m$, $\tau:=T(F)$, $U(x)\in{R}[x]$, $t,l\in\mathbb{N}$ такие, что 
+$$x^t\equiv{e}+p^lU(x)\pmod{F(x)},\quad(2)$$
+тогда 
+$$\exists{V}(x)\in{R}[x]:x^{tp}\equiv{e}+p^{l+1}V(x)\pmod{F(x)}.\quad(3)$$
+При этом если $l+1&lt;n$, то для любого $V(x)\in{R}[x]$ такого, что ${\deg{V}(x)&lt;m}$
+$$p^l&gt;2\Rightarrow\overline{V}(x)=\overline{U}(x),\quad(4)$$
+$$p^l=2\Rightarrow\overline{V}(x)\equiv\overline{U}(x)+\overline{U}(x)^2\pmod{\overline{F}(x)}.\quad(5)$$
+<p><b>Доказательство:</b><br><br>
+Возведем соотношение $(2)$ в степень $p$
+$$
+x^{tp}\equiv(e+p^lU(x))^p=e+\binom{p}{1}p^lU(x)+\binom{p}{2}p^{2l}U(x)^2+\cdots+\binom{p}{p}p^{pl}U(x)^p
+$$
+В последнем выражении все биномиальные коэффициенты кроме первого деляться на $p$, следовательно, 
+все коэффициенты при степенях $U(x)$ делятся на $p^{l+1}$. Положим
+$$H(x):=U(x)+\binom{p}{2}p^{l-1}U(x)^2+\cdots+\binom{p}{p}p^{(p-1)(l-1)}U(x)^p,\quad(6)$$
+тогда в качестве искомого $V(x)$ можно взять остаток от деления $H(x)$ на $F(x)$.<br>
+Докажем утверждения $(4)$ и $(5)$.<br>
+Пусть $p^l&gt;2$, тогда либо $p>2$, либо $l>1$, следовательно, все слагаемые суммы $(6)$ кроме первого деляться на $p$, 
+то есть $\overline{H}(x)=\overline{U}(x)$.<br>
+Пусть $p^l=2$, тогда $p=2$ и $l=1$, следовательно, $H(x)=U(x)+U(x)^2$ и
+$$\overline{V}(x)\equiv\overline{H}(x)=\overline{U}(x)+\overline{U}(x)^2\pmod{\overline{F}(x)}.$$ 
+<p id="Theorem21.15"><b>Теорема 21.15:</b><br>
+Пусть $F(x)\in{R}[x]$ - унитарный, реверсивный многочлен степени $m$, тогда 
+<ol>
+<li>существует $k\in\overline{0,n-1}$ такое, что $T(F)=T(\overline{F})p^k$;</li>
+<li>если $\tau:=T(\overline{F})$, то $T(F)=T(\overline{F})p^{n-1}$ тогда и только тогда, когда существует $U(x)\in{R}[x]$ такой, что 
+<ol type="a">
+<li>$x^{\tau}\equiv{e}+pU(x)\pmod{F(x)}$,</li>
+<li>$(p>2\vee{p=n=2})\Rightarrow\overline{U}(x)\neq0$,</li>
+<li>$(p=2\,\wedge\,n>2)\Rightarrow\overline{U}(x)^2+\overline{U}(x)\not\equiv0\pmod{\overline{F}(x)}$</li>
+</ol>
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $F(x)|(x^{T(F)}-e)$, то $\overline{F}(x)|x^{T(F)}-\overline{e}$, следовательно, $\tau|T(F)$.<br>
+По лемме 21.2 для любого $s\in\overline{0,n-1}$
+$$\exists{U}_s(x)\in{R}[x]:(x^{\tau{p}^s}\equiv{e}+p^{s+1}U_s(x)\pod{F(x)}\,\wedge\,\deg{U_s(x)}&lt;m).$$
+При $s=n-1$, учитывая что $\tau|T(F)$
+$$
+x^{\tau{p}^{n-1}}\equiv{e}\pod{F(x)}\Rightarrow{F}(x)|(x^{\tau{p}^{n-1}}-e)\Rightarrow
+{T}(F)|\tau{p}^{n-1}\Rightarrow\exists{k}\in\overline{0,n-1}:T(F)=\tau{p}^k.
+$$
+</li>
+<li>Из леммы 21.2 следует, что многочлены $U_0(x),U_1(x),\ldots,U_{n-1}(x)$ из пункта 1 удовлетворяют условиям
+$$
+\begin{cases}
+\forall{k}\in\overline{0,n-2}(\overline{U}_k(x)=\overline{U}(x)), & p&gt;2				\\
+U_{n-2}=U_0(x), & p=n=2											\\
+\forall{k}\in\overline{1,n-2}(\overline{U}_k\equiv\overline{U}_0+\overline{U}_0(x)^2\pod{\overline{F}(x)}), & p=2,n&gt;2	
+\end{cases}\quad(7)
+$$
+По пункту 1 и <a href="./discrete_math21.11.html#Lemma21.1">лемме 21.1</a>
+$$
+T(F)=\tau{p}^{n-1}\Leftrightarrow{x}^{\tau{p}^{n-2}}\not\equiv{e}\pod{F(x)}\Leftrightarrow{p}^{n-1}U_{n-2}(x)\not\equiv0\pod{F(x)}\Leftrightarrow
+\overline{U}_{n-2}(x)\not\equiv0\pod{F(x)}\Leftrightarrow\overline{U}_{n-2}(x)\neq0.
+$$
+Последнее равенство в силу соотношений $(7)$ эквивалентно утверждению пункта 2.
+</li>
+</ol>
+<p id="Corollary21.15"><b>Следствие 21.15:</b><br>
+Пусть $F(x)\in{R}[x]$ - унитарный, реверсивный многочлен степени $m$, тогда 
+<ol>
+<li>$T(F)\leq(p^m-1)p^{n-1}$,</li>
+<li>если $\tau:=\deg{\overline{F}(x)}$, то $T(F)=(q^m-1)p^{n-1}$ тогда и только тогда, когда $\overline{F}(x)$ -
+многочлен максимального периода над полем $\overline{R}$ и существует $U(x)\in{R}[x]$ такой, что
+<ol type="a">
+<li>$x^{\tau}\equiv{e}+pU(x)\pmod{F(x)}$,</li>
+<li>$(p&gt;2\vee{p=n=2})\Rightarrow\overline{U}(x)\neq0$,</li>
+<li>$(p=2\,\wedge\,n>2)\Rightarrow\overline{U}(x)^2+\overline{U}(x)\not\equiv0\pmod{\overline{F}(x)}$</li>
+</ol>
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Следует из теорем <a href="./discrete_math21.7.html#Theorem21.11">21.11</a>, 21.15.
+<p id="Definition21.26"><b>Определение 21.26:</b><br>
+Пусть $F(x)\in{R}[x]$, $\deg{F(x)}=m$, тогда  
+<ol>
+<li>если $T(F)=T(\overline{F})$, то многочлен $F(x)$ называестя отмеченным,</li>
+<li>если $T(F)=T(\overline{F})p^{n-1}$, то многочлен $F(x)$ называется многочленом полного периода,</li>
+<li>если $T(F)=(p^m-1)p^{n-1}$, то многочлен $F(x)$ называется многочленом максимального периода.</li>
+</ol>
+<p id="Theorem21.16"><b>Теорема 21.16:</b><br>
+Для любого $m\in\mathbb{N}$ над $R$ существует многочлен максимального периода степени $m$.
+<p><b>Доказательство:</b><br><br>
+Пусть $F(x)\in{R}[x]$ - унитарный, реверсивный многочлен степени $m$, $\tau:=T(\overline{F})$, 
+$\overline{F}(x)\in\overline{R}$ многочлен максимального периода. Существует единственный многочлен $U(x)\in{R}[x]$ такой, что 
+$$x^{\tau}\equiv{e}+pU(x)\pmod{F(x)}.$$ 
+Если этот многочлен удовлетворяет условиям
+$$
+\begin{cases}
+(p&gt;2\vee{p=n=2})\Rightarrow\overline{U}(x)\neq0 \\
+(p=2\,\wedge\,n>2)\Rightarrow\overline{U}(x)^2+\overline{U}(x)\not\equiv0\pmod{F(x)}
+\end{cases}\quad(10)
+$$
+то по <a href="./discrete_math21.11.html#Corollary21.15">следствию 21.15</a> многочлен $F(x)$ - ММП.<br>
+Предположим, что многочлен $U(x)$ не удовлетворяет условиям $(10)$. Докажем, что в этом случае многочлен $G(x):=F(x+ep)$ является ММП. 
+Будем везде далее обозначать $x+ep$ как $x+p$. Так как $\overline{G}(x)=\overline{F}(x)$, то 
+$\overline{G}(x)$ - ММП, то есть $T(\overline{G})=\tau=p^m-1$. Пусть $V(x)\in{R}[x]$ такой, что 
+$$x^{\tau}\equiv{e}+p{V}(x)\pmod{G(x)},\quad(*)$$
+тогда по <a href="./discrete_math21.11.html#Corollary21.15">следствию 21.15</a> для того, чтобы  утверждать, что $G(x)$ - ММП, надо доказать, 
+что $V(x)$ удовлетворяет условиям $(10)$. Произведя замену $x\to{x}+p$ получим
+$$(x+p)^{\tau}\equiv{e}+pU(x+p)\pmod{G(x)},$$
+с другой стороны по биному Ньютона 
+$$(x+p)^{\tau}=x^{\tau}+p\tau{x}^{\tau-1}+p^2H(x),$$
+где $H(x)$ - некоторый многочлен степени не более $\tau-2$, тогда
+$$x^{\tau}\equiv{e}+pU(x+p)-p\tau{x}^{\tau-1}-p^2H(x)\pmod{G(x)}.$$
+Тогда из соотношения $(*)$ и леммы 21.1 следует 
+$$
+pV(x)\equiv{p}U(x+p)-p\tau{x}^{\tau-1}-p^2H(x)\pod{G(x)}\Rightarrow
+\overline{V}(x)\equiv{U}(x+p)-\overline{\tau{x}^{\tau-1}}\pod{\overline{G}(x)}\Rightarrow
+\overline{U}(x)-\overline{(p^m-1)x^{\tau-1}}\equiv\overline{U}(x)+x^{\tau-1}\pod{\overline{F}(x)}.
+$$
+<ol>
+<li>Пусть $p&gt;2$ или $p=n=2$, тогда, так как $U(x)$ не удовлетворяет соотношениям $(10)$, то 
+$$\overline{U}(x)=0\Rightarrow\overline{V}(x)\equiv{x}^{\tau-1}\pod{\overline{F}(x)}\Rightarrow\overline{V}(x)\neq0.$$
+Таким образом, $V(x)$ удовлетворяет условиям $(10)$ в первом случае.
+</li>
+<li>Пусть $p=2$ и $n&gt;2$, тогда 
+$$\overline{V}(x)+\overline{V}(x)^2\equiv\overline{U}(x)+\overline{U}(x)^2+x^{\tau-1}+x^{2(\tau-1)}\pod{\overline{F}(x)}.$$
+Так как $U(x)$ не удовлетворяет условию $(10)$, при $p=2$ $e=-e$ и $\tau=T(\overline{F})$, 
+то по <a href="./discrete_math21.9.html#Statement21.19">утверждению 21.19</a>
+$$\overline{U}(x)+\overline{U}(x)^2\equiv0\pod{\overline{F}(x)}\Rightarrow\overline{V}(x)\equiv{x}^{\tau-1}(x^{\tau-1}-e)\not\equiv0\pod{\overline{F}(x)}.$$
+Таким образом, ${V}(x)$ удовлетворяет условиям $(10)$.
+</li>
+</ol>
+<p id="Example21.18"><b>Пример 21.18:</b><br>
+Проверим является ли многочлен $F(x)=x^5-x^2-1$ ММП над кольцом $R:=\mathbb{Z}_{2^n}$ при $n\geq1$.<br>
+Многочлен $\overline{F}(x)=x^5-x^2-\overline{1}$ неприводим над $\overline{R}:=GF(2)$ (так как он не имеет корней и не делится на $x^2+x+1$). 
+Тогда по <a href="./discrete_math21.9.html#Corollary21.14">следствию 21.14</a>  многочлен $\overline{F}(x)$ является ММП над $GF(2)$, то есть
+$\tau:=T(\overline{F})=2^5-1=31$. Найдем многочлен $U(x)\in{R}(x)$ такой, что 
+$$x^{\tau}\equiv{1}+2U(x)\pmod{F(x)}.$$
+Для этого вычислим $x^{\tau}=x^{31}$. Так как 
+$$x^5\equiv{x}^2+1\pmod{F(x)},$$
+$$x^6\equiv{x}^3+x\pmod{F(x)},$$
+$$x^7\equiv{x}^4+x^2\pmod{F(x)},$$
+$$x^8\equiv{x}^5+x^3\equiv{x}^3+x^2+1\pmod{F(x)},$$
+$$x^{16}\equiv(x^3+x^2+1)^2\equiv{x}^4+3x^3+4x^2+x+3\pmod{F(x)},$$
+то 
+$$
+x^{31}=x^7x^8x^{16}=36x^4+34x^3+44x^2+22x+23=1+2(18x^4+17x^3+22x^2+11x+11)\Rightarrow2U(x)\equiv{x}^{31}-1\pod{F(x)}\Rightarrow\\
+\Rightarrow{U}(x)=18x^4+17x^3+22x^2+11x+11\Rightarrow\overline{U}(x)=x^3+x+1\neq0
+$$
+Тогда по п. 2 <a href="./discrete_math21.11.html#Corollary21.15">следствия 21.15</a> $F(x)$ - ММП над $\mathbb{Z}_4$ и так как 
+$$
+\overline{U}(x)+\overline{U}(x)^2=x^3+x+1+x^6+x^2+1=x^3+x+x^3+x+x^2=x^2\not\equiv0\pod{\overline{F}(x)},
+$$
+то по п. 2 <a href="./discrete_math21.11.html#Corollary21.15">следствия 21.15</a> многочлен $F(x)$ - ММП над $\mathbb{Z}_{2^n}$ для любого $n\geq1$.
+<p id="Definition21.27"><b>Определение 21.27:</b><br>
+Пусть $R:=\mathbb{Z}_{p^n}$, тогда нормой элемента $a\in{R}$ называют число
+$$\|a\|:=\max\{s\in\overline{0,n}\mid{a}\in{p}^sR\}.$$
+Нормой вектора $\vec{a}\in{R}^m$ называется число
+$$\|\vec{a}\|=\max\{s\in\overline{0,n}\mid\vec{a}\in(p^sR)^m\}.$$
+<p id="Note21.9"><b>Замечание 21.9:</b><br>
+Из определения следует, что 
+$$(\|r\|=0\Leftrightarrow{r}\in{R}),(\|r\|=n\Leftrightarrow{r}=0),\forall{s}\in\overline{0,n}(\|p^s\|=s).$$
+<p id="Theorem21.17"><b>Теорема 21.17:</b><br>
+Пусть $F(x)$ многочлен максимального периода степени $m$ над $R:=\mathbb{Z}_{p^n}$, $u\in{L}_R(F)\backslash\{0\}$, 
+$s:=\|u(\overline{0,m-1})\|\in\overline{0,n-1}$, тогда $T(u)=(p^m-1)p^{n-s-1}$.<br>
+Семейство $L_R(F)$ содержит $(p^m-1)p^{m(n-s-1)}$ последовательностей периода $(p^m-1)p^{n-s-1}$ и одну нулевую последовательность периода 1.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По п. 3 утверждения 21.15 $T(u)|T(F)$, следовательно, так как $F(x)$ - ММП, то $T(u)|(p^m-1)p^{n-1}$.</li>
+<li>Так как
+$$
+\|u(\overline{0,m-1})\|=s\Rightarrow\forall{i}\in\overline{0,m-1}(u(i)\in{p}^sR)\Rightarrow
+\forall{i}\in\mathbb{N}_0(u(i)\in{p}^sR)\Rightarrow\exists{v}\in{R}^{\infty}\backslash\{0\}:u={p}^sv,
+$$
+то
+$$
+F(x)u=0\Leftrightarrow{F}(x)p^sv=0\Rightarrow\overline{F}(x)\overline{v}=0\Leftrightarrow\overline{v}\in{L}_R(\overline{F}).
+$$
+Так как $F(x)$ - ММП, то по п. 2 <a href="./discrete_math21.11.html#Corollary21.15">следствия 21.15</a> $\overline{F}(x)$ - ММП, 
+тогда по <a href="./discrete_math21.9.html#Corollary21.12">следствию 21.12</a> $\overline{v}$ - ЛРП МП, то есть $\tau:=T(\overline{v})=p^m-1$.
+</li>
+<li>Для любого $i\in\mathbb{N}_0$
+$$
+u(i+T(u))=u(i)\Leftrightarrow{p}^sv(i+T(u))=p^sv(i)\Rightarrow\overline{v}(i+T(u))=\overline{v}(i)\Rightarrow{T}(\overline{v})|T(u)\Rightarrow{p}^m-1|T(u).
+$$
+</ol>
+Из пунктов 1, 3 следует, что существует целое число $k\in\overline{0,n-1}$ такое, что $T(u)=(p^m-1)p^k$, докажем, что $k=n-s-1$.<br>
+По <a href="./discrete_math21.11.html#Lemma21.2">лемме 21.2</a> существует многочлен $U_{n-s-1}(x)\in{R}[x]$ такой, что
+$$
+(x^{\tau{p}^{n-s-1}}\equiv1+p^{n-s}U_{n-s-1}(x)\pod{F(x)}\,\wedge\,\deg{F(x)}&lt;m)\Rightarrow
+\bigl(x^{\tau{p}^{n-s-1}}-1\bigr)u=p^{n-s}U_{n-s-1}(x)u=p^{n-s}U_{n-s-1}p^sv=0\Rightarrow
+{T}(u)|\tau{p}^{n-s-1}\Rightarrow{k}\leq{n-s-1}.
+$$
+Так как $F(x)$ - ММП, то по п. 2 <a href="./discrete_math21.11.html#Theorem21.15">теоремы 21.15</a> $\overline{U}_{n-s-1}(x)\neq0$. 
+Тогда так как $\overline{F}(x)$ - ММП и $\overline{v}\neq0$, то
+$$
+\bigl(x^{\tau{p}^{n-s-2}}-1\bigr)u=p^{n-s-1}U_{n-s-2}(x)u=p^{n-1}U_{n-s-2}(x)v\neq0\Rightarrow
+{T}(u)\nmid\tau{p}^{n-s-2}\Rightarrow{k}>n-s-2\Rightarrow{k}=n-s-1.
+$$
+Число последовательностей из $L_R(F)$ периода $(p^m-1)p^{n-s-1}$ равно числу векторов $u(\overline{0,m-1})\in{R}^m$ нормы $s$. Это число равно
+$$
+|p^sR^m/p^{s+1}R^m|=|p^sR^m|-|p^{s+1}R^m|=(p^{n-s})^m-(p^{n-s-1})^m=(p^m-1)p^{m(n-s-1)}.
+$$
+Кроме того $L_R(F)$ содержит нулевую последовательность периода $1$ при $\|0(\overline{0,m-1})\|=n$.
+<p id="Definition21.28"><b>Определение 21.28:</b><br>
+Линейная рекуррентная последовательность $u$ над $R:=\mathbb{Z}_{p^n}$ ранга $m$ называется последовательностью максимального периода, 
+если $T(u)=(p^m-1)p^{n-1}$.
+<p id="Corollary21.16"><b>Следствие 21.16:</b><br>
+Пусть $R:=\mathbb{Z}_{p^n}$, $F(x)\in{R}[x]$, $u\in{L}_R(F)$, тогда $u$ последовательность максимального периода тогда и только тогда, 
+когда $F(x)$ - многочлен максимального периода и $\overline{u}\neq0$.<br>
+При этом семейство $L_R(F)$ содержит $(p^m-1)p^{m(n-1)}$ последовательностей максимального периода.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как по п. 3 <a href="./discrete_math21.7.html#Statement21.15">утверждения 21.15</a> $T(u)\leq{T}(F)$, то если $u$ - ЛРП МП, то $F(x)$ - ММП.</li>
+<li>$\overline{u}\neq0\Leftrightarrow\|u(\overline{0,m-1})\|=0$.</li>
+</ol>
+Все остальное следует из <a href="./discrete_math21.11.html#Theorem21.17">теоремы 21.17</a>.
+<p id="Definition21.29"><b>Определение 21.29:</b><br>
+Графом семейства $L_R(F)$ называется ориенитированный граф $\Gamma(L_R(F))$, вершинами которого являются последовательности из $L_R(F)$, 
+а ребрами упорядоченные пары $(u,xu)$ для всех $u\in{L}_R(F)$.
+<p id="Definition21.30"><b>Определение 21.30:</b><br>
+Циклом чисто периодической последовательности $u$ называется множество $\{x^tu\mid{t}\geq0\}$.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Если $\deg{F(x)}=m$, то число вершин графа $\Gamma(L_R(F))$ равно $|R|^m$.</li>
+<li>Циклу последовательности $u\in{L}_R(F)$ соответствует цикл графа $\Gamma(L_R(F))$.</li>
+</ol>
+<p id="Corollary21.17"><b>Следствие 21.17:</b><br>
+Пусть $F(x)$ - многочлен максимального периода над $R:=\mathbb{Z}_{p^n}$, тогда граф $\Gamma(L_R(F))$ состоит из одного цикла длины 1 и 
+из $p^{(m-1)t}$ циклов длины $(p^m-1)p^t$ для каждого $t\in\overline{0,n-1}$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math21.11.html#Theorem21.17">теореме 21.17</a> граф $\Gamma(L_R(F))$ содержит один цикл длины 1 ($u=0$) и 
+$(p^m-1)p^{m(n-s-1)}$ циклов длины $T(u)=(p^m-1)p^{n-s-1}$ для каждого $s\in\overline{0,n-1}$. Так как $n-s-1\in\overline{0,n-1}$ тогда и только тогда, 
+когда $s\in\overline{0,n-1}$, то произведя замену $t:=n-s-1$ получим результат следствия.
+
+<br><br>
+<a href="discrete_math21.9.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math22.html">next</a>
+</body>
+</html>

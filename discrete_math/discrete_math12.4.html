@@ -1,0 +1,314 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 12.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math12.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math13.1.html">next</a>
+<br>
+
+<h4 id="12.4">12.4 Инвариантные подпространства.</h4>
+
+<p id="Definition12.11"><b>Определение 12.11:</b><br>
+Матрица $A\in{P}_{n,n}$ называется полураспавшейся, если существует $k\in\overline{1,n-1}$ и существуют матрицы 
+$B\in{P}_{k,k}$, $C\in{P}_{k,n-k}$, $D\in{P}_{n-k,n-k}$ такие, что
+$$A=\begin{pmatrix}B & C \\ \Theta & D\end{pmatrix}.$$ 
+<p id="Statement12.11"><b>Утверждение 12.11:</b><br>
+Пусть $A\in{P}_{n,n}$ полураспавшаяся матрица вида $\left(\begin{smallmatrix}B & C \\ \Theta & D\end{smallmatrix}\right)$ , тогда
+<ol>
+<li>$\chi_{A}(x)=\chi_B(x)\chi_{D}(x)$,</li>
+<li>$[m_B(x),m_{D}(x)]|m_A(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $B\in{P}_{k,k}$, тогда по <a href="./discrete_math3.3.html#Theorem3.7">теореме 3.7</a> (теорема Лапласа)
+$$
+\chi_A(x)=|Ex-A|=\begin{vmatrix}Ex-B & -C \\ \Theta & Ex-D\end{vmatrix}=|Ex-B|(-1)^{2(1+\cdots+k)}|Ex-D|=|Ex-B||Ex-D|=\chi_{B}(x)\chi_D(x)
+$$
+</li>
+<li>Пусть $m_{A}(x)=\sum_{i=0}^nc_ix^i$, тогда
+$$
+\Theta=m_A(A)=\sum_{i=0}^kc_iA^i=\sum_{i=0}^kc_i\begin{pmatrix}B^i & U_i \\ \Theta & D^i\end{pmatrix}=
+\begin{pmatrix}\sum_{i=0}^kc_iB^i & V \\ \Theta & \sum_{i=0}^kc_iD^i\end{pmatrix}=\begin{pmatrix}f(B) & V \\ \Theta & f(D)\end{pmatrix}\Rightarrow\\
+\Rightarrow{m}_A(B)=m_A(D)=\Theta\Rightarrow(m_{B}(x)|m_{A}(x)\,\wedge\,m_A(x)|m_D(x))\Rightarrow[m_B(x),m_{D}(x)]|m_A(x).
+$$
+</li>
+</ol>
+<p id="Definition12.12"><b></b><br>
+Матрица $A\in{P}_{n,n}$ называется распавшейся, если существует $k\in\overline{1,n-1}$ и матрицы $B\in{P}_{k,k}$, $D\in{P}_{n-k,n-k}$ такие, что 
+$$A=\begin{pmatrix}B & \Theta \\ \Theta & D \end{pmatrix}.$$
+Распавшуюся матрицу такого вида будем обозначать $A:=\diag(B,D)$. 
+<p id="Statement12.12"><b>Утверждение 12.12:</b><br>
+$$A=\begin{pmatrix}B & \Theta \\ \Theta & D\end{pmatrix}\Rightarrow{m}_A(x)=[m_B(x),m_D(x)].$$
+<p><b>Доказательство:</b><br><br>
+Обозначим $g(x)=\sum_{i=0}^mg_ix^i=[m_B(x),m_D(x)]$, тогда по <a href="./discrete_math12.3.html#Corollary12.2">следствию 12.2</a>
+$$
+(m_B(x)|g(x)\,\wedge\,m_D(x)|g(x))\Rightarrow(g(B)=\Theta\,\wedge\,g(D)=\Theta)\Rightarrow
+{g}(A)=\sum_{i=0}^mg_iA^i=\sum_{i=0}^mg_i\begin{pmatrix}B^i & \Theta \\ \Theta & D^i\end{pmatrix}=
+\begin{pmatrix}g(B) & \Theta \\ \Theta & g(D)\end{pmatrix}=\Theta\Rightarrow{m}_A(x)|g(x).
+$$
+Таким образом, $m_A(x)|[m_B(x),m_D(x)]$ и, так как по <a href="./discrete_math12.4.html#Statement12.11">утверждению 12.11</a> 
+$[m_B(x),m_D(x)]|m_A(x)$, то $[m_B(x),m_D(x)]=m_A(x)$.
+<p id="Definition12.13"><b>Определение 12.13:</b><br>
+Подпространство $K_P&lt;L_P$ называется инвариантным относительно преобразования $\varphi\in\mathcal{L}(L_P)$, если $\varphi(K_P)\subset{K}_P$.
+<p id="Example12.3"><b>Пример 12.3:</b><br>
+<ol>
+<li>Пусть $K_P=(\alpha_1,\ldots,\alpha_m)_P$, где для любого $i\in\overline{1,n}$ $\alpha_i$ - собственный вектор преобрзования 
+$\varphi\in\mathcal{L}(L_P)$ принадлежащий собственному значению $r_i$. То есть для любого $i\in\overline{1,n}$ $\varphi(\alpha_i)=\alpha_ir_i$, 
+тогда по <a href="./discrete_math11.1.html#Theorem11.6">теореме 11.6</a>
+$$
+\forall\gamma\in{K}_P\exists{c}_1,\ldots,c_m\in{P}:\gamma=\sum_{i=1}^m\alpha_ic_i\Rightarrow
+\varphi(\gamma)=\sum_{i=1}^m\varphi(\alpha_i)c_i=\sum_{i=1}^m\alpha_i(r_ic_i)\in{K}_P
+$$
+Таким образом, подпространство $K_P$ инвариантно относительно любого преобразования $\varphi\in\mathcal{L}(L_P)$.
+</li>
+<li>Пусть $f(x)\in{P}[x]$, $\varphi\in\mathcal{L}(L_P)$, $K=f(\varphi)(L)$. Так как $f(\varphi)\in\mathcal{L}(L_P)$, то $K_P&lt;L_P$. При этом 
+$$
+\varphi(f(\varphi)(\gamma))=f(\varphi)(\varphi(\gamma))\in{f}(\varphi)(L_P)\Rightarrow
+\forall\gamma\in{K}_P(\varphi(\gamma)\in{K}_P)\Rightarrow\varphi(K_P)\subset{K}_P.
+$$
+Таким образом, для любых $f(x)\in{P}[x]$, $\varphi\in\mathcal{L}(L_P)$ подпространство $K_P=f(\varphi)(L_P)$ инавариантно относительно преобразования 
+$\varphi$.
+</li>
+<li>Пусть $\varphi\in\mathcal{L}(L_P)$, $K=\ker{f(\varphi)}$. Так как $f(\varphi)\in\mathcal{L}(L_P)$, то для любых $\alpha,\beta\in\ker{f(\varphi)}$, 
+$a\in{P}$
+$$f(\varphi)(\alpha+\beta)=f(\varphi)(\alpha)+f(\varphi)(\beta)=\theta\Rightarrow\alpha+\beta\in\ker{f(\varphi)}$$
+$$f(\varphi)(\alpha{a})=f(\varphi)(\alpha)a=\theta\Rightarrow\alpha{a}\in\ker{f(\varphi)}.$$
+Таким образом, по <a href="./discrete_math11.1.html#Theorem11.5">теореме 11.5</a> $K_P&lt;L_P$. При этом 
+$$
+\forall\gamma\in{K}_P(f(\alpha)(\varphi(\gamma))=\varphi(f(\varphi)(\gamma))=\varphi(\theta)=\theta)\Rightarrow
+\forall\gamma\in{K}_P(\varphi(\gamma)\in{K}_P)\Rightarrow\varphi(K_P)\subset{K}_P
+$$
+Таким образом, для любых $f(x)\in{P}[x]$, $\varphi\in\mathcal{L}(L_P)$ подпространство $K_P=\ker{f(\varphi)}$ инвариантно относительно преобрзования 
+$\varphi$
+</li>
+</ol>
+<p id="Note12.6"><b>Замечание 12.6:</b><br>
+<ol>
+<li>Если $K_P=(\alpha_1,\ldots,\alpha_t)_P&lt;L_P$, $\varphi\in\mathcal{L}(L_P)$, то
+$$\varphi(K_P)\subset{K}_P\Leftrightarrow\forall{i}\in\overline{1,t}(\varphi(\alpha_i)\in{K_P}).$$
+Действительно, в прямую сторону очевидно, докажем в обратную. Пусть $\gamma\in{K}_P$, тогда <a href="./discrete_math11.1.html#Theorem11.6">теореме 11.6</a>
+$$
+\exists{c}_1,\ldots,c_t\in{P}:\gamma=\alpha_1c_1+\cdots+\alpha_tc_t\Rightarrow\varphi(\gamma)=
+\sum_{i=1}^t\varphi(\alpha_i)c_i\Rightarrow\varphi(\gamma)\in{K}_P,
+$$
+где последняя импликация в силу <a href="./discrete_math11.1.html#Theorem11.6">теоремы 11.6</a> и того, 
+то для любого $i\in\overline{1,t}$ $\varphi(\alpha_i)\in{K}_P$.
+</li>
+<li>Пусть $\varphi\in\mathcal{L}(L_P)$, $K_P&lt;L_P$, $\varphi(K_P)\subset{K}_P$. Обозначим $\varphi|_{K_P}$ отображение $\psi:K_P\to{K}_P$ такое, что 
+$$\forall\delta\in{K}_P(\psi(\delta)=\varphi(\delta)),$$
+тогда $\psi:=\varphi|_{K_P}\in\mathcal{L}(K_P)$.
+</li>
+</ol>
+<p id="Theorem12.8"><b>Теорема 12.8:</b><br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ базис $L_P$, $\varphi\in\mathcal{L}(L_P)$, тогда
+<ol>
+<li>матрица $A_{\vec{\alpha}}(\varphi)$ - полураспавшаяся тогда и только тогда, когда существует $k\in\overline{1,n-1}$ такое, 
+что подпространство $K_P:=(\alpha_1,\ldots,\alpha_k)_P$ инвариантно относительно преобразования $\varphi$;
+</li>
+<li>если $B\in{P}_{k,k}$, $C\in{P}_{k,n-k}$, $D\in{P}_{n-k,n-k}$ такие, что  
+$$A_{\vec{\alpha}}(\varphi)=\begin{pmatrix}B & C \\ \Theta & D\end{pmatrix},$$
+$K_P:=(\alpha_1,\ldots,\alpha_k)_P$, $\psi:=\varphi|_{K_P}\in\mathcal{L}(L_P)$, то $\chi_{\psi}(x)|\chi_{\varphi}(x)$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Обозначим $\vec{\alpha}':=(\alpha_1,\ldots,\alpha_k)$.
+<ol>
+<li>
+$\Rightarrow)$ Пусть существуют матрицы $B\in{P}_{k,k}$, $C\in{P}_{k,n-k}$, $D\in{P}_{n-k,n-k}$, такие, 
+что $A_{\vec{\alpha}}(\varphi)=\left(\begin{smallmatrix}B & C \\ \Theta & D\end{smallmatrix}\right)$, тогда
+$$
+\forall{i}\in\overline{1,k}(\varphi(\alpha_i)=\vec{\alpha}\varphi(\alpha_i)_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}\begin{pmatrix}B_i \\ 0 \\ \vdots \\ 0\end{pmatrix}=\vec{\alpha}'B_i^{\downarrow}\in(\alpha_1,\ldots,\alpha_k)=K_P),
+$$
+следовательно, по п. 1 замечания 12.6 $\varphi(K_P)\subset{K}_P$.<br>
+$\Leftarrow)$ Так как подпространтсво $K_P=(\alpha_1,\ldots,\alpha_k)_P$ инвариантно относительно преобразования $\varphi$, то
+$$
+\forall{i}\in\overline{1,k}(\varphi(\alpha_i)\in{K}_P)\Rightarrow
+\forall{i}\in\overline{1,t}(\exists{c}_{i,1},c_{i,2},\ldots,c_{i,k}\in{P}:\varphi(\alpha_i)=\alpha_1c_{i,1}+\cdots+\alpha_kc_{i,k})\Rightarrow
+\forall{i}\in\overline{1,t}\left(\varphi(\alpha_i)_{\vec{\alpha}}^{\downarrow}=(c_{i,1},\ldots,c_{i,k},0,\ldots,0)^T\right)\Rightarrow\\
+\Rightarrow{A}_{\vec{\alpha}}(\varphi)=\left(\varphi(\alpha_1)_{\vec{\alpha}}^{\downarrow},\ldots,\varphi(\alpha_n)_{\vec{\alpha}}^{\downarrow}\right)=
+\begin{pmatrix}B & U \\ \Theta & V\end{pmatrix},
+$$
+где $B=(b_{i,j})\in{P}_{k,k}$ такая, что для любых $i,j\in\overline{1,k}$ $b_{i,j}=c_{j,i}$, a $U$ и $V$ некоторые матрицы подходящих размеров.
+</li>
+<li>Пусть $B\in{P}_{k,k}$, $C\in{P}_{k,n-k}$, $D\in{P}_{n-k,n-k}$, 
+$A_{\vec{\alpha}}(\varphi)=\left(\begin{smallmatrix}B & C \\ \Theta & D\end{smallmatrix}\right)$. 
+Так как система $\alpha_1,\ldots,\alpha_k$ ЛНЗ и $K_P=(\alpha_1,\ldots,\alpha_k)_P$, то $\alpha_1,\ldots,\alpha_k$ - базис $K_P$, тогда
+$$
+\forall{i}\in\overline{1,k}(\psi(\alpha_i)=\varphi(\alpha_i)=\vec{\alpha}'B_i^{\downarrow})\Rightarrow\forall{i}\in\overline{1,k}(B_i^{\downarrow}=
+\psi(\alpha_i)_{\vec{\alpha}'}^{\downarrow})\Rightarrow{B}=A_{\vec{\alpha}'}(\psi)\Rightarrow\chi_B(x)=\chi_{\psi}(x).
+$$
+Тогда по п. 1 <a href="./discrete_math12.4.html#Statement12.11">утверждения 12.11</a>
+$$\chi_{\varphi}(x)=\chi_{A_{\vec{\alpha}}}(x)=\chi_B(x)\chi_D(x)=\chi_{\psi}(x)\chi_D(x)\Rightarrow\chi_{\psi}(x)|\chi_{\varphi}(x).$$
+</li>
+</ol>
+<p id="Theorem12.9"><b>Теорема 12.9:</b><br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ базис векторного пространства $L_P$, $\varphi\in\mathcal{L}(L_P)$, тогда
+<ol>
+<li>матрица $A_{\vec{\alpha}}(\varphi)$ распавшаяся тогда и только тогда, когда существует $k\in\overline{1,n-1}$ такое, 
+что подпространства $K_P:=(\alpha_1,\ldots,\alpha_k)_P$, $M_P=(\alpha_{k+1},\ldots,\alpha_n)_P$ инвариантны относительно преобразования $\varphi$.
+</li>
+<li>если $A_{\vec{\alpha}}(\varphi)=\diag(B_{k,k},D_{n-k,n-k})$, $\vec{\alpha}':=(\alpha_1,\ldots,\alpha_k)$, $\vec{\alpha}'':=
+(\alpha_{k+1},\ldots,\alpha_n)$, $\psi,\xi\in\mathcal{L}(L_P)$ такие, что $A_{\vec{\alpha}'}(\psi)=B$,
+$A_{\vec{\alpha}''}(\xi)=D$, то $\psi=\varphi|_{K_P}$, $\xi=\varphi|_{M_P}$ и $\chi_{\varphi}(x)=\chi_{\psi}(x)\chi_{\xi}(x)$. 
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Следует из <a href="./discrete_math12.4.html#Theorem12.8">теоремы 12.8.</a>
+<p id="Note12.7"><b>Замечание 12.7:</b><br>
+<ol>
+<li>Из <a href="./discrete_math12.4.html#Theorem12.8">теоремы 12.8</a> и <a href="./discrete_math11.5.html#Corollary11.3">следствия 11.3</a> следует, 
+что если $\varphi\in\mathcal{L}(L_P)$, матрица $A_{\vec{\alpha}}(\varphi)$ распавшаяся, то существуют инвариантные относительно $\varphi$ 
+собственные подпространства $K_P&lt;L_P$, $M_P&lt;L_P$ такие, что $L_P=K_P\dotplus{M}_P$.
+</li>
+<li>С другой стороны, если $K_P,M_P$ - собственные инвариантные относительно преобразования $\varphi\in\mathcal{L}(L_P)$ подпространсва $L_P$, 
+$\vec{\alpha}'=(\alpha_1,\ldots,\alpha_k)$, $\vec{\alpha}''=(\alpha_{k+1},\ldots,\alpha_n)$ - базисы $K_P$ и $M_P$, $L_P=K_P\dotplus{M}_P$, 
+следовательно, $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис $L_P$ и матрица $A_{\vec{\alpha}}(\varphi)$ распавшаяся.
+</li>
+</ol>
+<p id="Theorem12.10"><b>Теорема 12.10:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, многочлен $f(x)\in{P}[x]$ такой, что $f(\varphi)=\hat{0}$, многочлены $f_1(x),\ldots,f_t(x)\in{P}[x]$ такие, 
+что для любых неравных $i,j\in\overline{1,t}$ $(f_i(x),f_j(x))=e$ и $f(x)=f_1(x)\cdots{f}_t(x)$, тогда
+$$L_P=\ker{f_1(\varphi)}\dotplus\cdots\dotplus\ker{f_t(\varphi)}.$$
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $t$ числу множителей в разложении многочлена $f(x)$<br>
+<ol type="I">
+<li>При $t=1$ 
+$$f(\varphi)=\hat{0}\Rightarrow\forall\alpha\in{L}_P(f(\varphi)(\alpha)=\theta)\Rightarrow{L}_P=\ker{f(\varphi)}.$$
+При $t=2$ $f(x)=f_1(x)f_2(x)$ и $(f_1(x),f_2(x))=e$, тогда
+$$
+\exists{u}(x),v(x)\in{P}[x]:(f_1(x)u(x)+f_2(x)v(x)=e)\Rightarrow\hat{e}=f_1(\varphi)\circ{u}(\varphi)+f_2(\varphi)\circ{v}(\varphi)\Rightarrow
+\Rightarrow\forall\gamma\in{L}_P(\gamma=\hat{e}(\gamma)=(f_1(\varphi)\circ{u}(\varphi))(\gamma)+(f_2(\varphi)\circ{v}(\varphi))(\gamma)).
+$$
+Обозначим $\gamma_1:=(f_1(\varphi)\circ{u}(\varphi))(\gamma)\in{L}_P$, $\gamma_2:=(f_2(\varphi)\circ{v}(\varphi))(\gamma)\in{L}_P$, тогда
+$$
+f_2(\varphi)(\gamma_1)=(f_2(\varphi)\circ{f}_1(\varphi)\circ{u}(\varphi))(\gamma)=u(\varphi)((f_1(\varphi)\circ{f}_2(\varphi))(\gamma))=
+u(\varphi)(f(\varphi)(\gamma))=u(\varphi)(\theta)=\theta\Rightarrow\gamma_1\in\ker{f_2(\varphi)}.
+$$
+Аналогично $\gamma_2\in\ker{f_1(\varphi)}$, следовательно, 
+$$
+\forall\gamma\in{L}_P\,\exists\gamma_1\in\ker{f_1(\varphi)},\gamma_2\in\ker{f_2(\varphi)}:\gamma=\gamma_1+\gamma_2\Rightarrow
+{L}_P=\ker{f_1(\varphi)}+\ker{f_2(\varphi)}.
+$$
+Докажем, что сумма $L_P=\ker{f_1(\varphi)}+\ker{f_2(\varphi)}$ прямая.<br>
+Пусть $\beta\in\ker{f_1(\varphi)}\cap\ker{f_2(\varphi)}$, тогда
+$$
+f_1(\varphi)(\beta)=f_2(\varphi)(\beta)=\theta\Rightarrow(m_{\beta,\varphi}(x)|f_1(x)\,\wedge\,m_{\beta,\varphi}(x)|f_2(x))\Rightarrow
+{m}_{\beta,\varphi}(x)|(f_1(x),f_2(x))=e\Rightarrow{m}_{\beta,\varphi}=e\Rightarrow\hat{e}(\beta)=\theta\Rightarrow\beta=\theta,
+$$
+Следовательно, по п. 3 <a href="./discrete_math11.1.html#Theorem11.7">теоремы 11.7</a> $L_P=\ker{f_1(\varphi)}\dotplus\ker{f_2(\varphi)}$.
+</li>
+<li>Для любого $s\geq{2}$ докажем, что если утверждение верно при $t\in\overline{1,s}$, то оно верно при $t=s+1$.<br>
+Пусть $f(x)=f_1(x)\cdots{f}_s(x)f_{s+1}(x)$, где $(f_i(x),f_j(x))=e$ для любых неравных $i,j\in\overline{1,s+1}$. 
+Обозначим $g(x):=f_1(x)\cdots{f}_s(x)$, тогда по п. 1 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a> $(g(x),f_{s+1}(x))=e$, следовательно, 
+по доказанному в пункте I $L_P=\ker{g(\varphi)}\dotplus\ker{f_{s+1}}(\varphi)$. Обозначим $K_P:=\ker{g(\varphi)}&lt;L_P$, $\psi:=\varphi|_{K_P}$, тогда
+$$\forall\alpha\in{K}_P(g(\psi)(\alpha)=g(\varphi)(\alpha)=\theta)\Rightarrow{g}(\psi)=\hat{0}.$$
+Тогда по предположению индукции $K_P=\ker{f_1(\psi)}\dotplus\cdots\dotplus\ker{f_s(\psi)}$. Зафиксируем $i\in\overline{1,s}$, тогда
+$$
+\beta\in\ker{f_i(\psi)}\Leftrightarrow(\beta\in{K}_P\,\wedge\,f_i(\psi)(\beta)=\theta)\Leftrightarrow
+(f_i(\varphi)(\beta)=\theta\,\wedge\,g(\varphi)(\beta)=\theta)\Leftrightarrow{f}_i(\varphi)(\beta)=\theta\Leftrightarrow\beta\in\ker{f_i(\varphi)}.
+$$
+Таким образом, для любого $i\in\overline{1,s}$ $\ker{f_i(\psi)}=\ker{f_i(\varphi)}$, тогда
+$$L_P=K_P\dotplus\ker{f_{s+1}(\varphi)}=\ker{f_1(\varphi)}\dotplus\cdots\dotplus\ker{f_s(\varphi)}\dotplus\ker{f_{s+1}}(\varphi).$$
+</li>
+</ol>
+<p id="Corollary12.5"><b>Следствие 12.5:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, $\chi_{\varphi}(x)=(x-r_1)^{k_1}\cdots(x-r_t)^{k_t}$, где для любых неравных $i,j\in\overline{1,t}$ $r_i\neq{r}_j$, 
+для любого $i\in\overline{1,t}$ $k_i\in\mathbb{N}$, тогда
+<ol>
+<li>$L_P=\ker{(\varphi-\hat{r}_1)^{k_1}}\dotplus\cdots\dotplus\ker{(\varphi-\hat{r}_t)^{k_t}}$;</li>
+<li>для любого $i\in\overline{1,t}$ обозначим $\psi_i:=\varphi|_{\ker{(\varphi-r_i)^{k_i}}}$, 
+тогда для любого $i\in\overline{1,t}$ $\chi_{\psi_i}(x)=(x-r_i)^{k_i}$ 
+</li>
+<li>$\forall{i}\in\overline{i,t}(\dim{\ker{(\varphi-r_i)^{k_i}}}=k_i)$;</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $\chi_{\varphi}(\varphi)=\hat{0}$, то утверждение следует из <a href="./discrete_math12.4.html#Theorem12.10">теоремы 12.10</a>.</li>
+<li>Фиксируем $i\in\overline{1,t}$, по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> и 
+<a href="./discrete_math12.4.html#Note12.7">замечанию 12.7</a>
+$$
+\chi_{\varphi}(x)=\prod_{i=1}^t\chi_{\psi_i}(x)\Rightarrow\forall{i}\in\overline{1,t}(\chi_{\psi_i}(x)|\chi_{\varphi}(x))\Rightarrow
+\exists{l}_1,\ldots,l_t\in\mathbb{N}_0:\chi_{\psi_i}(x)=(x-r_1)^{l_1}\cdots(x-r_t)^{l_t}.
+$$
+Покажем от противного, что для любого $j\neq{i}$ $l_j=0$. Предположим, что существует $j\in\overline{1,t}$ такое, 
+что $j\neq{i}$ и $(x-r_j)|\chi_{\psi_i}(x)$, тогда по <a href="./discrete_math12.2.html#Theorem12.3">теореме 12.3</a>
+$$
+\chi_{\psi_i}(r_j)=0\Rightarrow\exists\alpha\in\ker{(\varphi-\hat{r_i})^{k_i}}\backslash\{\theta\}:\varphi(\alpha)=\psi_i(\alpha)=
+\hat{r}_j(\alpha)\Rightarrow(\varphi-\hat{r}_i)^{k_i}(\alpha)=(\varphi-\hat{r}_j)(\alpha)=\theta\Rightarrow\\
+\Rightarrow(m_{\alpha,\varphi}(x)|(x-r_i)^{k_i}\,\wedge\,m_{\alpha,\varphi}(x)|(x-r_j))\Rightarrow
+{m}_{\alpha,\varphi}(x)|((x-r_i)^{k_i},x-r_j)=e\Rightarrow{m}_{\alpha,\varphi}(x)=e\Rightarrow\hat{e}(\alpha)=\theta\Rightarrow\alpha=\theta
+$$
+Получено противоречие так как $\alpha\in\ker{(\varphi-\hat{r}_i)^{k_i}}\backslash\{0\}$. 
+Таким образом, для любого $i\in\overline{1,t}$ существует $l_i\in\overline{1,k_i}$ такое, что $\chi_{\psi_i}(x)=(x-r_i)^{l_i}$. Тогда
+$$
+\chi_{\varphi}(x)=\prod_{i=1}^t(x-r_i)^{k_i}=\prod_{i=1}^t\chi_{\psi_i}(x)\Rightarrow\forall{i}\in\overline{1,t}(\chi_{\psi_i}(x)=(x-r_i)^{k_i}).
+$$
+</li>
+<li>Так как $L_P=\ker{(\varphi-\hat{r}_1)^{k_1}}\dotplus\cdots\dotplus\ker{(\varphi-r_t)^{k_t}}$, 
+то по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a> для любого $i\in\overline{1,t}$ размерность подпространства 
+$\ker{(\varphi-r_i)^{k_i}}$ равна размеру матрицы преобразования $\psi_i$, который по п. 1 <a href="./discrete_math12.2.html#Note12.3">замечания 12.3</a> 
+равен $\deg\chi_{\psi_i}(x)=\deg(x-r_i)^{k_i}=k_i$. 
+</li>
+</ol>
+<br>
+Пространство развалилось на прямую сумму подпространств.
+<p id="Definition12.14"><b>Определение 12.14:</b><br>
+Если $\varphi\in\mathcal{L}(L_P)$, $r_1,\ldots,r_t\in{P},k_1,\ldots,k_t\in\mathbb{N}$ такие, что $\chi_{\varphi}(x)=(x-r_1)^{k_1}\cdots(x-r_t)^{k_t}$, 
+то для любого $i\in\overline{1,t}$ подпространство $\ker{(\varphi-\hat{r}_i)^{k_i}}$ называется корневым подпространством пространства $L_P$.
+<p id="Note12.8"><b>Замечание 12.8:</b><br>
+Опишем структуру корневого подпространства. Для любого многочлена $f(x)\in{P}[x]$
+$$
+\beta\in\ker{f(\varphi)}\Leftrightarrow{f}(\varphi)(\beta)=\theta\Leftrightarrow
+{f}(A_{\vec{\alpha}}(\varphi))\beta_{\vec{\alpha}}^{\downarrow}=0^{\downarrow}.
+$$
+Тогда при $f(x)=(x-r)^k$ 
+$$
+\beta\in\ker{(\varphi-\hat{r})^k}\Leftrightarrow\left(A_{\vec{\alpha}}(\varphi)-Er\right)^k\beta_{\vec{\alpha}}^{\downarrow}=0^{\downarrow}.
+$$
+То есть корневое подпространство $\ker{(\varphi-\hat{r})^k}$ совпадает с множеством решений СОЛУ 
+$(A_{\vec{\alpha}}(\varphi)-Er)^kx^{\downarrow}=0^{\downarrow}$
+<p id="Theorem12.11"><b>Теорема 12.11:</b><br>
+Матрица $A\in{P}_{n,n}$ подобна диагональной тогда и только тогда, когда $m_A(x)$ разложим в произведение линейных множителей и не имеет кратных корней.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть $A\approx{D}:=\diag(a_1,\ldots,a_n)$, тогда по <a href="./discrete_math12.3.html#Theorem12.7">теореме 12.7</a>
+$$
+\forall{i}\in\overline{1,n}(A-Ea_i)A_i^{\downarrow}=0^{\downarrow}\Rightarrow\forall{i}\in\overline{1,n}(m_{A_i^{\downarrow},A}(x)=x-a_i)\Rightarrow
+\Rightarrow{m}_A(x)=[x-a_1,\ldots,x-a_n]=(x-a_1)\cdots(x-a_n)
+$$
+$\Leftarrow)$ Пусть $L_P$ векторное пространство размерности $n$, $\vec{\alpha}$ - базис пространства $L_P$, 
+преобразование $\varphi\in\mathcal{L}(L_P)$ такое, что $A_{\vec{\alpha}}(\varphi)=A$, тогда по условию существуют попарно различные элементы 
+$r_1,\ldots,r_t\in{P}$ такие, что $m_{\varphi}(x)=m_A(x)=(x-r_1)\cdots(x-r_t)$. Тогда из <a href="./discrete_math11.5.html#Theorem11.10">теоремы 11.10</a> 
+следует, что $t=n$, $L_P=\ker{(\varphi-\hat{r}_1)}\dotplus\cdots\dotplus\ker{(\varphi-\hat{r}_t)}$ и 
+из <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a> следует, что $A=\diag(r_1,\ldots,r_n)$.
+
+<br><br>
+<a href="discrete_math12.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math13.1.html">next</a>
+</body>
+</html>

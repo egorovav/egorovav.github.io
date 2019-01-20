@@ -1,0 +1,166 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 3.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.5.html">next</a>
+<br>
+
+<h4 id="3.3">3.3 Теорема Лапласа.</h4>
+<p id="Definition3.7"><b>Определение 3.7:</b><br>
+Подматрицей матрицы $A\in{R}_{m,n}$ называется любая матрица полученная вычеркиванием из матрицы $A$ каких-либо строк и столбцов.<br>
+Подматрицу матрицы $A$ обозначают как 
+$A\begin{pmatrix}i_1, & \dots, & i_r \\ j_1, & \ldots, & j_s\end{pmatrix}$, где $i_1,\ldots,i_r\in\overline{1,m}$, $j_1,\ldots,j_s\in\overline{1,n}$ 
+такие, что $i_1&lt;i_2&lt;\cdots&lt;i_r$, $j_1&lt;j_2&lt;\cdots&lt;j_s$ номера не вычеркиваемых строк и столбцов.  
+<p id="Definition3.8"><b>Определение 3.8:</b><br>
+Минором $k$-того порядка матрицы $A\in{R}_{m,n}$ называется определитель любой его квадратной подматрицы порядка $k$.<br>
+Минор $k$-того порядка матрицы $A$ обозначают как 
+$$M_A\begin{pmatrix}i_1, & \ldots & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}:=
+\left|A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}\right|.$$
+<p id="Statement3.8"><b>Утверждение 3.8:</b><br>
+Пусть $A=(a_{i,j})_{n\times{n}}\in{R}_{n,n}$, $1\leq{i}_1&lt;i_2&lt;\cdots&lt;i_k\leq{n}$, $1\leq{j}_1&lt;j_2&lt;\cdots&lt;j_k\leq{n}$, тогда 
+$$M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}=
+\sum_{(t_1,\ldots,t_k)\in\mathcal{P}(\{j_1,\ldots,j_k\})}\delta(t_1,\ldots,t_k)a_{1,t_1}\cdots{a}_{k,t_k}.$$
+<p><b>Доказательство:</b><br><br>
+Пусть $B=A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}=(b_{r,s})_{k\times{k}}$, 
+тогда для любых $r,s\in\overline{1,k}$ $b_{r,s}=a_{i_r,j_s}$ и
+$$
+M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix} = |B| = 
+\sum_{(l_1,\ldots,l_k)\in\mathcal{P}(\overline{1,k})}\delta(l_1,\ldots,l_k)b_{1,l_1}\cdots{b}_{k,l_k}=
+\sum_{(l_1,\ldots,l_k)\in\mathcal{P}(\overline{1,k})}a_{i_1,j_{l_1}}\cdots{a_{i_k,j_{l_k}}}
+$$
+Так как набор $j_1,\ldots,j_k$ по определению подматрицы упорядочен, то 
+$$
+\forall{a},b\in\overline{1,k}(a&lt;b\Leftrightarrow{j}_a&lt;j_b)\Rightarrow
+{J}(l_1,\ldots,l_k)=J(j_{l_1},\ldots,j_{l_k})\Rightarrow\delta(l_1,\ldots,l_k)=\delta(j_{l_1},\ldots,j_{l_k}).
+$$
+Тогда
+$$|B|=\sum_{(l_1,\ldots,l_k)\in\mathcal{P}(\overline{1,k})}\delta(j_{l_1},\ldots,j_{l_k})a_{i_1,j_{l_1}}\cdots{a}_{i_k,j_{l_k}}.$$
+Рассмотрим отображение $\varphi:\mathcal{P}(\overline{1,k})\to\mathcal{P}(\{j_1,\ldots,j_k\})$ такое, что для любой перестановки 
+$(l_1,\ldots,l_k)\in\mathcal{P}(\overline{1,k})$ $\varphi(l_1,\ldots,l_k)=(j_{l_1},\ldots,j_{l_k})$. 
+Предположим, что отображение $\varphi$ не инъективно, то есть существуют две различные перестановки $(l_1,\ldots,l_k)$, $(l'_1,\ldots,l'_k)$ такие, 
+что 
+$$\varphi(l_1,\ldots,l_k)=\varphi(l'_1,\ldots,l'_k)=(j_{l_1},\ldots,j_{l_k}).$$ 
+Тогда существует $u\in\overline{1,k}$ такое, что $l_u\neq{l}'_u$, тогда так как в наборе $j_{l_1},\dots,j_{l_k}$ нет одинаковых чисел, 
+то $j_{l_u}\neq{j}_{l'_u}$, но это невозможно по предположению $\varphi(l_1,\ldots,l_k)=\varphi(l'_1,\ldots,l'_k)$. 
+Следовательно, отображение $\varphi$ инъективно, а так как $|\mathcal{P}(\overline{1,k})|=|\mathcal{P}(\{j_1,\ldots,j_k\})|$, 
+то отображение $\varphi$ биективно. Таким образом в последнем выражении для $|B|$ можно соответствующим образом заменить суммирование по множеству 
+$\mathcal{P}(\overline{1,k})$ на суммирование по множеству $\mathcal{P}(\{j_1,\ldots,j_k\})$, тогда
+$$|B|=\sum_{(t_1,\ldots,t_k)\in\mathcal{P}(\{j_1,\ldots,j_k\})}\delta(t_1,\ldots,t_k)a_{i_1,t_1}\cdots{a}_{i_k,t_k}.$$
+<p id="Definition3.9"><b>Определение 3.9:</b><br>
+Дополнительным минором $CM_A\begin{pmatrix}i_1,& \ldots, & i_k \\ j_i, & \ldots, & j_k\end{pmatrix}$ квадратной матрицы $A$ называется определитель 
+подматрицы матрицы $A$ полученный вычеркиванием из матрицы $A$ строк с номерами $i_1,\ldots,i_k$ и столбцов с номерами $j_1,\ldots,j_k$.
+<p id="Definition3.10"><b>Определение 3.10:</b><br>
+Алгебраическим дополнением минора $M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}$ квадратной матрицы 
+$A\in{R}_{n,n}$ называется элемент кольца $R$
+$$\overline{CM}_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}:=(-1)^{i_1+\cdots+i_k+j_1+\cdots+j_k}CM_A
+\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}.$$
+<p id="Theorem3.7"><b>Теорема 3.7: Теорема Лапласа.</b><br>
+Пусть $A=(a_{i,j})_{n\times{n}}\in{R}_{n,n}$, $1\leq{i}_1&lt;i_2&lt;\cdots&lt;i_k\leq{n}$, тогда
+$$|A|=\sum_{i\leq{j}_1&lt;\cdots&lt;j_k\leq{n}}M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}
+\overline{CM}_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}.$$
+<p><b>Доказательство:</b><br><br>
+Пусть $i_1=1$, $i_2=2$, ..., $i_k=k$. Обозначим 
+$$
+\Delta:=\sum_{1\leq{j}_1&lt;\cdots&lt;j_k\leq{n}}M_A\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}
+\overline{CM}_A\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k \end{pmatrix}=
+\sum_{i\leq{j}_1&lt;\cdots&lt;j_k\leq{n}}M_A\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}
+(-1)^{1+\cdots+k+j_1+\cdots+j_k}M_A\begin{pmatrix}k+1, & \ldots, & n \\ j_{k+1}, & \ldots, & j_n\end{pmatrix},
+$$
+где ${j_{k+1},\ldots,j_n}=\overline{1,n}\backslash\{j_1,\ldots,j_k\}$. Обозначим $P_1:=\mathcal{P}(\{j_1,\ldots,j_k\})$, 
+$P_2:=\mathcal{P}(\{j_{k+1},\ldots{j}_n\})$, тогда
+$$M_A\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}M_A\begin{pmatrix}k+1, & \ldots, & n \\ j_{k+1}, & \ldots, & j_n\end{pmatrix}=
+\left(\sum_{(t_1,\ldots{t}_k)\in{P}_1}\delta(t_1,\ldots,t_k)a_{1,t_1}\cdots{a}_{k,t_k}\right)
+\left(\sum_{(t_{k+1},\ldots,t_n)\in{P}_2}\delta(t_{k+1},\ldots,t_n)a_{k+1,t_{k+1}}\cdots{a}_{n,t_n}\right)=
+$$
+$$
+\sum_{(t_1,\ldots,t_k)\in{P_1} \\ (t_{k+1},\ldots,t_n)\in{P}_1}\delta(t_1,\ldots,t_k)\delta(t_{k+1},\ldots,t_n)a_{1,t_1}\cdots
+{a}_{k,t_k}a_{k+1,t_{k+1}}\ldots{a}_{n,t_n}.
+$$
+Если $(t_1,\ldots,t_k)\in{P}_1$, $(t_{k+1},\ldots,t_n)\in{P}_2$, то $(t_1,\ldots,t_k,t_{k+1},\ldots,t_n)\in\mathcal{P}(\overline{1,n})$. 
+Тогда по <a href="./discrete_math1.html#Statement1.2">утверждению 1.2</a> 
+$$
+\delta(t_1,\ldots,t_n)=\delta(t_1,\ldots,t_k,t_{k+1}\ldots,t_n)=(-1)^{t_1+\cdots+t_k-(1+\cdots+k)}\delta(t_1,\ldots,t_k)\delta(t_{k+1},\ldots,t_{n})
+$$
+Так как для любой перестановки $(t_1,\ldots,t_k)\in{P}_1$ $t_1+\cdots+t_k=j_1+\cdots+j_k$, то для любой перестановки $(t_1,\ldots,t_k)\in{P}_1$
+$$(-1)^{1+\cdots+k+j_1+\cdots+j_k}(-1)^{t_1+\cdots+t_k-(1+\cdots+k)}=(-1)^{2(j_1+\cdots+j_k)}=1.$$
+Тогда
+$$\Delta=\sum_{1\leq{j}_1&lt;\cdots&lt;j_k\leq{n}}
+\sum_{(t_1,\ldots,t_k)\in{P}_1 \\ (t_{k+1},\ldots,t_n)\in{P}_2}\delta(t_1,\ldots,t_n)a_{1,t_1}\cdots{a}_{n,t_n}$$ 
+Число слагаемых во внешней сумме равно $C_n^k$, число слагаемых в каждой из внутренних сумм равно $k!(n-k)!$, 
+следовательно общее число слагаемых в последнем выражении равно $C_n^kk!(n-k)!=\frac{n!}{k!(n-k)!}k!(n-k)!=n!=P_n$. Различным парам перестановок 
+$(t_1,\ldots,t_k)\in{P}_1$, $(t_{k+1},\ldots,t_n)\in{P}_2$ соответствуют различные перестановки 
+$(t_1,\ldots,t_k,t_{k+1},\ldots,t_n)\in\mathcal{P}(\overline{1,n})$. Таким образом повторную сумму в последнем выражении можно заменить на одну 
+сумму по множеству $\mathcal{P}(\overline{1,n})$, то есть
+$$\Delta=\sum_{(t_1,\ldots,t_n)\in\mathcal{P}(\overline{1,n})}\delta(t_1,\ldots,t_n)a_{1,t_1}\cdots{a}_{n,t_n}=|A|.$$
+
+Пусть теперь $i_1,\ldots,i_k$ произвольный упорядоченный набор из $\overline{1,n}$.<br>
+Совершив $i_1-1$ перестановок соседних строк, поставим строку $i_1$ на первое место. В получившейся матрице, совершив $i_2-2$ перестановок соседних строк, 
+поставим строку $i_2$ на второе место и так далее. В результате совершив 
+$(i_1-1)+(i_2-2)+\cdots+(i_k-k)$ перестановок получим матрицу $B$, в которой строки $i_1,\ldots,i_k$ матрицы $A$ стоят на первых $k$ местах. 
+При этом взаимный порядок всех остальных строк не изменился, тогда по доказанному выше
+$$
+|B|=\sum_{1\leq{j}_1&lt;\ldots&lt;j_k\leq{n}}M_B\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}\overline{CM}_A\begin{pmatrix}1, & 
+\ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}=
+\sum_{1\leq{j}_1&lt;\ldots&lt;j_k\leq{n}}M_A\begin{pmatrix}i_1, & \ldots, & i_k\\j_1, & \ldots, & j_k\end{pmatrix}(-1)^{1+\cdots+k+j_1+\cdots+j_k}CM_B
+\begin{pmatrix}1, & \ldots, & k \\ j_1, & \ldots, & j_k\end{pmatrix}=$$
+$$=\sum_{1\leq{j}_1&lt;\ldots&lt;j_k\leq{n}}M_A\begin{pmatrix}i_1, & \ldots, & i_k\\j_1, & \ldots, & j_k\end{pmatrix}(-1)^{1+\cdots+k+j_1+\cdots+j_k}CM_A
+\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}.
+$$  
+Тогда по <a href="./discrete_math3.2.html#Statement3.5">свойству 5 определителя</a>
+$$
+|A|=(-1)^{i_1+\cdots+i_k-(1+\cdots+k)}|B|=
+\sum_{1\leq{j}_1&lt;\ldots&lt;j_k\leq{n}}M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}(-1)^{i_1+\cdots+i_k+j_1+\cdots+j_k}
+CM_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}=\\=
+\sum_{1\leq{j}_1&lt;\ldots&lt;j_k\leq{n}}M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}\overline{CM}_A
+\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}.
+$$
+<br>
+Можно сформулировать и аналогично доказать теорему, в условии которой зафиксированы $k$ столбцов, а не строк.  
+<p id=Corollary3.3><b>Следствие 3.3:</b><br>
+Пусть $A\in{R}_{n,n}$, обозначим $A_{r,s}:=\overline{CM}_A\binom{r}s$, тогда
+$$\forall{i},j\in\overline{1,n}\left(|A|=\sum_{t=1}^na_{i,t}A_{i,t}=\sum_{t=1}^na_{t,j}A_{t,j}\right)$$
+<p><b>Доказательство:</b><br><br>
+Фиксируем $i\in\overline{1,n}$, тогда по теореме Лапласа при $k=1$ 
+$$|A|=\sum_{1\leq{t}\leq{n}}M_A\binom{i}t\overline{CM}_A\binom{i}t=\sum_{t=1}^n(-1)^{i+t}a_{i,t}CM_A\binom{i}t=\sum_{t=1}^na_{i,t}A_{i,t}.$$
+<p id="Corollary3.4"><b>Следствие 3.4:</b><br>
+Пусть $A\in{R}_{n,n}$, $i,j\in\overline{1,n}$, $i\neq{j}$, тогда
+$$\sum_{t=1}^na_{i,t}A_{j,t}=\sum_{t=1}^na_{t,i}A_{t,j}=0.$$
+<p><b>Доказательсво:</b><br>
+Пусть матрица $B=(b_{i,j})_{n\times{n}}$ такая, что для любых ${k\neq{j}}$ $\vec{B}_k=\vec{A}_k$ и $\vec{B}_j=\vec{A}_i$. 
+Тогда матрица $B$ имеет две одинаковые строки, следовательно, по свойству 3 определителя
+$$0=|B|=\sum_{t=1}^nb_{j,t}B_{j,t}=\sum_{t=1}^na_{i,t}A_{j,t}.$$
+
+<h4 id=3.4>3.4 Обратимые матрицы.</h4>
+Везде далее в этом разделе $R$ - коммутативное кольцо с единицей $e$.
+<p id="Theorem3.8"><b>Теорема 3.8:</b><br>
+$$\forall{A}\in{R}_{n,n}(A\in(R_{n,n})^*\Leftrightarrow|A|\in{R}^*).$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ 
+$$
+A\in(R_{n,n})^*\Rightarrow\exists{B}\in{R}_{n,n}:AB=BA=E\Rightarrow|A||B|=|B||A|=|AB|=|E|=e.
+$$
+Тогда по <a href="./discrete_math3.2.html#Theorem3.6">теореме 3.6</a> $|A||B|=|B||A|=e$, следовательно, $|A|\in{R}^*$.<br>
+$\Leftarrow)$ Пусть $|A|\in{R}^*$, $A=(a_{i,j})_{n\times{n}}$. Рассмотрим матрицу $A^*=(c_{i,j})_{n\times{n}}$ такую, что для любых 
+$i,j\in\overline{1,n}$ $c_{i,j}=A_{j,i}$. Пусть $AA^*=(d_{i,j})_{n\times{n}}$, тогда
+$$\forall{i},j\in\overline{1,n}\left(d_{i,j}=\vec{A}_i(A^*)_j^{\downarrow}=\sum_{t=1}^na_{t,i}c_{t,j}=\sum_{t=1}^na_{i,t}A_{j,t}\right).$$
+Тогда по <a href="./discrete_math3.3.html#Corollary3.4">следствию 3.4</a> при $i\neq{j}$ $d_{i,j}=0$, a при $i=j$ $d_{i,j}=|A|$, 
+то есть $AA^*=|A|E$ и $A(|A|^{-1}A^*)=E$. Аналогично $A^*A=|A|E$ и $(|A|^{-1}A^*)A=E$. Таким образом существует $A^{-1}=|A|^{-1}A^*$
+<br>
+Матрица $A^*$ называется взаимной матрицей для матрицы $A$.
+<br><br>
+
+<a href="discrete_math3.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.5.html">next</a>
+</body>
+</html>

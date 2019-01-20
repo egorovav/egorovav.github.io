@@ -1,0 +1,338 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 11.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math11.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.1.html">next</a>
+<br>
+<h4 id="11.5">11.5 Подпространства конечномерных векторных пространств.</h4>
+<p id="Theorem11.10"><b>Теорема 11.10:</b><br>
+Пусть $K_P,L_P$ - векторные пространства такие, что $\dim{L}_P=n$, $K_P&lt;L_P$, тогда
+<ol>
+<li>$\dim{K}_P\leq{n}$,</li>
+<li>$\exists{M}_P&lt;L_P(L_P=K_P\dotplus{M}_P)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Следует из п. 1 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a>.</li>
+<li>Обозначим $k:=\dim{K}_P$.<br>
+Если $k=0$, то $K_P=\{\theta\}$ и $M_P:=L_P$.<br>
+Если $k=n$, то по утверждению 11.6 $K_P=L_P$ и $M_P:=\{\theta\}$.<br>
+Если $0&lt;k&lt;n$, обозначим $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_k)$ - базис $K_P$. 
+Дополним $\vec{\alpha}$ до $(\alpha_1,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n)$ базиса $L_P$. Рассмотрим пространство 
+$M_P:=(\alpha_{k+1},\ldots,\alpha_n)_P$. Пусть $\beta\in{L}_P$, тогда
+$$
+\exists(c_1,\ldots,c_n)\in{P}^n:\beta=(\alpha_1c_1+\cdots+\alpha_kc_k)+(\alpha_{k+1}c_{k+1}+\cdots+\alpha_nc_n)\Rightarrow\beta\in{K}_P+M_P,
+$$
+следовательно, $L_P\subset{K}_P+M_P$. При этом очевидно, что $K_P+M_P\subset{L}_P$, следовательно, $L_P=K_P+M_P$. 
+Докажем, что сумма прямая. Пусть $\gamma\in{K}\cap{M}$, тогда
+$$
+\begin{cases}
+\exists(b_1,\ldots,b_k)\in{P}^k               &:\gamma=\alpha_1b_1+\cdots+\gamma_kb_k \\
+\exists(b_{k+1},\ldots,b_n)\in{P}^{n-k}&:\gamma=\alpha_{k+1}b_{k+1}+\cdots+\alpha_nb_n
+\end{cases}\Rightarrow\alpha_1b_1+\cdots+\alpha_kb_k+\alpha_{k+1}(-b_{k+1})+\cdots+\alpha_n(-b_n)=\gamma-\gamma=\theta\Rightarrow
+\forall{i}\in\overline{1,n}(b_i=0)\Rightarrow\gamma=\theta,
+$$
+где предпоследняя импликация следует из того, что система $(\alpha_1,\ldots,\alpha_n)$ ЛНЗ. 
+Таким образом, по п. 3 <a href="./discrete_math11.1.html#Theorem11.7">теоремы 11.7</a> сумма $K_P+M_P$ прямая.
+</ol>
+<p id="Example11.7"><b>Пример 11.7:</b><br>
+Пусть $L_{\mathbb{R}}:=(\mathcal{D}_2)_{\mathbb{R}}$, $K_{\mathbb{R}}$ - 
+пространство векторов с началом в точке $(0,0)$ и концами на прямой $K$ проходящей через точку $(0,0)$. 
+Тогда для любой прямой $M\neq{K}$ проходящей через точку $(0,0)$ $L_{\mathbb{R}}=K_{\mathbb{R}}\dotplus{M}_{\mathbb{R}}$. 
+<p id="Theorem11.11"><b>Теорема 11.11: Теорема Грассмана.</b><br>
+$$
+((K_1)_P&lt;L_P\,\wedge\,(K_2)_P&lt;L_P\,\wedge\,\dim{L}_P&lt;\infty)\Rightarrow\dim(K_1+K_2)=\dim{K}_1+\dim{K}_2-\dim(K_1\cap{K}_2)
+$$
+<p><b>Доказательство:</b><br><br><br>
+Обозначим $m_1:=\dim{K}_1$, $m_2:=\dim{K}_2$, $k:=\dim{(K_1\cap{K}_2)}$. Пусть $(\alpha_1,\ldots,\alpha_k)$ - базис $K_1\cap{K}_2$, 
+$(\alpha_1,\ldots,\alpha_k,\beta_{k+1},\ldots,\beta_{m_1})$ - базис $K_1$, 
+$(\alpha_1,\ldots,\alpha_k,\gamma_{k+1},\ldots,\gamma_{m_2})$ - базис $K_2$. Обозначим 
+$$\vec{\alpha}:=(\alpha_1,\ldots,\alpha_k,\beta_{k+1},\ldots,\beta_{m_1},\gamma_{k+1},\ldots,\gamma_{m_2})$$ 
+и докажем, что $\vec{\alpha}$ - базис $K_1+K_2$.
+<ol>
+<li>Пусть $\delta\in{K}_1+K_2$, тогда
+$$
+\exists\delta_1\in{K}_1\,\delta_2\in{K}_2:\delta=\delta_1+\delta_2\Rightarrow\exists{a}_1,\ldots,a_{m_1},b_1,\ldots,b_{m_2}\in{P}:\\
+\delta=(\alpha_1a_1+\cdots+\alpha_ka_k+\beta_{k+1}a_{k+1}+\cdots+\beta_{m_1}a_{m_1})+
+(\alpha_1b_1+\cdots+\alpha_kb_k+\gamma_{k+1}b_{k+1}+\cdots+\gamma_{m_2}b_{m_2})=\\=
+\alpha(a_1+b_1)+\cdots+\alpha_k(a_k+b_k)+\beta_{k+1}a_{k+1}+\cdots+\beta_{m_1}a_{m_1}+\gamma_{k+1}b_{k+1}+\cdots+\gamma_{m_2}b_{m_2},
+$$
+следовательно, $\delta$ ЛВЧ $\vec{\alpha}$ и $\{\vec{\alpha},\delta\}$ ЛЗ.
+</li>
+<li>Пусть $c_1,\ldots,c_{m_1},d_{k+1},\ldots,d_{m_2}\in{P}$ такие, что
+$$
+\alpha_1c_1+\cdots+\alpha_kc_k+\beta_{k+1}c_{k+1}+\cdots+\beta_{m_1}c_{m_1}+\gamma_{k+1}d_{k+1}+\cdots+\gamma_{m_2}d_{m_2}=\theta\Rightarrow\\
+\Rightarrow\alpha_1c_1+\cdots+\alpha_kc_k+\beta_{k+1}c_{k+1}+\cdots+\beta_{m_1}c_{m_1}=\gamma_{k+1}(-d_{k+1})+\cdots+\gamma_{m_2}(-d_{m_2}).
+$$
+В последнем равенстве выражение в левой части принадлежит $K_1$, а в правой $K_2$, так как они равны то они принадлежат $K_1\cap{K}_2$, тогда
+$$
+\exists{u}_1,\ldots,u_k\in{P}:\gamma_{k+1}(-d_{k+1})+\cdots+\gamma_{m_2}(-d_{m_2})=\alpha_1u_1+\cdots+\alpha_{m_2}u_{m_2}\Rightarrow
+\alpha_1(c_1-u_1)+\cdots+\alpha_k(c_k-u_k)+\beta_{k+1}c_{k+1}+\cdots+\beta_{m_1}c_{m_1}=\theta\Rightarrow\\
+\Rightarrow\forall{i}\in\overline{k+1,m_1}(c_i=0)\Rightarrow\alpha_1c_1+\cdots+\alpha_kc_k+\gamma_{k+1}d_{k+1}+\cdots+\gamma_{m_2}d_{m_2}=\theta\Rightarrow
+(\forall{i}\in\overline{1,k}(c_i=0)\,\wedge\,\forall{j}\in\overline{k+1,m_2}(d_j=0)),
+$$
+где последняя импликация в силу того, что система $\alpha_1,\ldots,\alpha_k,\gamma_{k+1},\ldots,\gamma_{m_2}$ ЛНЗ. Таким образом, система $\vec{\alpha}$ ЛНЗ.
+</li>
+</ol>
+Из пунктов 1, 2 следует, что система $\vec{\alpha}$ - базис пространства $K_1+K_2$, тогда $\dim(K_1+K_2)=|\vec{\alpha}|=m_1+m_2-k$.
+<p id="Corollary11.3"><b>Следствие 11.3:</b><br>
+$$\dim{(K_1+K_2)}=\dim{K}_1+\dim{K}_2\Leftrightarrow{K}_1+K_2=K_1\dotplus{K}_2.$$
+<p><b>Доказательство:</b><br>
+Так как $\theta\in{K}_1\cap{K}_2$ то по теореме 11.11 и п.3 <a href="./discrete_math11.1.html#Theorem11.7">теоремы 11.7</a>
+$$
+\dim{(K_1+K_2)}=\dim{K_1}+\dim{K_2}\Leftrightarrow\dim{(K_1\cap{K}_2)}=0\Leftrightarrow{K}_1\cap{K}_2=\{\theta\}\Leftrightarrow{K}_1+K_2=K_1\dotplus{K}_2
+$$
+<br>
+<u>Практический способ нахождения базиса суммы и пересечения.</u><br><br>
+Пусть $(K_1)_P&lt;L_P$, $(K_2)_P&lt;L_P$,<br>
+$\dim{L}_P=n$, $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис $L_P$,<br>
+$\dim{(K_1)_P}=m_1$, $\vec{\beta}=(\beta_1,\ldots,\beta_{m_1})$ - базис $(K_1)_P$,<br>
+$\dim{(K_2)_P}=m_2$, $\vec{\gamma}=(\gamma_1,\ldots,\gamma_{m_2})$ - базис $(K_2)_P$,
+$$U:=\left((\beta_1)_{\vec{\alpha}}^{\downarrow},\ldots,(\beta_{m_1})_{\vec{\alpha}}^{\downarrow}\right),$$
+$$V:=\left((\gamma_1)_{\vec{\alpha}}^{\downarrow},\ldots,(\gamma_{m_2})_{\vec{\alpha}}^{\downarrow}\right).$$
+<ol>
+<li>Найдем базис суммы $K_1+K_2$. Так как
+$$K_1+K_2=({\vec{\beta}})_P+(\vec{\gamma})_P=(\vec{\beta}\cup\vec{\gamma})_P,$$
+то по <a href="./discrete_math11.1.html#Corollary11.1">следствию 11.1</a>  базис системы векторов $\vec{\beta}\cup\vec{\gamma}$ 
+равен базису пространства $K_1+K_2$. Для нахождения базиса системы векторов по п. 3 <a href="./discrete_math11.3.html#Theorem11.8">теоремы 11.8</a>
+можно найти базис системы столбцов из $P^{(n)}$
+$$
+(\beta_1)_{\vec{\alpha}}^{\downarrow},\ldots
+(\beta_{m_1})_{\vec{\alpha}}^{\downarrow},(\gamma_1)_{\vec{\alpha}}^{\downarrow},\ldots,(\gamma_{m_2})_{\vec{\alpha}}^{\downarrow}
+$$
+приведя соответствующую матрицу к специальноступенчатой матрице $S$. Тогда по <a href="./discrete_math4.3.html#Corollary4.7">следствию 4.7</a>
+индексы вектров из системы $\vec{\beta}\cup\vec{\gamma}$ входящих в базис определяются типом матрицы $S$.
+</li>
+<li>Найдем базис пересечения $K_1\cap{K}_2$.<br>
+По <a href="./discrete_math11.3.html#Lemma11.1">лемме 11.1</a> и <a href="./discrete_math11.3.html#Statement11.5">утверждению 11.5</a>
+$$
+\delta\in{K}_1\Leftrightarrow\exists{b}^{\downarrow}\in{P}^{(m_1)}:\delta=\vec{\beta}b^{\downarrow}=\vec{\alpha}(Ub^{\downarrow})\Leftrightarrow
+\exists{b}^{\downarrow}\in{P}^{(m_1)}:\delta_{\vec{\alpha}}^{\downarrow}=Ub^{\downarrow}
+$$
+$$
+\delta\in{K}_2\Leftrightarrow\exists{c}^{\downarrow}\in{P}^{(m_2)}:\delta=\vec{\gamma}c^{\downarrow}=\vec{\alpha}(Vc^{\downarrow})\Leftrightarrow
+\exists{c}^{\downarrow}\in{P}^{(m_2)}:\delta_{\vec{\alpha}}^{\downarrow}=Vc^{\downarrow}.
+$$
+Таким образом,
+$$K_1\cap{K}_2=\{\vec{\alpha}Ub^{\downarrow}\mid{b}\in{P}^{(m_1)}:\exists{c}\in{P}^{(m_2)}:Ub^{\downarrow}=Vc^{\downarrow}\}.$$
+Так как
+$$
+Ub^{\downarrow}=Vc^{\downarrow}\Leftrightarrow{U}b^{\downarrow}-Vc^{\downarrow}=(U,-V)\begin{pmatrix}b^{\downarrow} \\ 
+c^{\downarrow}\end{pmatrix}=0^{\downarrow},
+$$
+то $K_1\cap{K}_2$ есть множество векторов вида $\vec{\alpha}(Ub^{\downarrow})$, где $b\in{P}^{(m_1)}$ такие для которых существует $c\in{P}^{(m_2)}$ такое, 
+что $\begin{pmatrix}b^{\downarrow} \\ c^{\downarrow}\end{pmatrix}$ являтеся решением СОЛУ
+$$(U,-V)x^{\downarrow}=0^{\downarrow}\quad(*).$$
+Пусть $\begin{pmatrix}b_1^{\downarrow} \\ c_1^{\downarrow}\end{pmatrix},\ldots,\begin{pmatrix}b_t^{\downarrow} \\ c_t^{\downarrow}\end{pmatrix}$ - 
+ФСР СОЛУ $(*)$. Для любого $i\in\overline{1,t}$ обозначим 
+$\delta_i:=\vec{\alpha}(Ub_i^{\downarrow})$. Докажем, что $\vec{\delta}:=(\delta_1,\ldots,\delta_t)$ - базис $K_1\cap{K}_2$.<br>
+Так как $\vec{\alpha}U=\vec{\beta}$, то для любого $b^{\downarrow}\in{P}^{(m_1)}$ $\vec{\alpha}(Ub^{\downarrow})\in{K}_1$, 
+следовательно, для любого $i\in\overline{1,t}$ $\delta_i\in{K}_1$.<br>
+Покажем, что $\vec{\delta}$ ЛНЗ. Пусть $d_1,\ldots,d_t\in{P}$ такие, что ${\delta_1d_1+\cdots+\delta_td_t=\theta}$, тогда
+$$
+\left((\delta_1)_{\vec{\alpha}}^{\downarrow}d_1+\cdots+(\delta_t)_{\vec{\alpha}}^{\downarrow}d_t=0^{\downarrow}\,\wedge\,
+\forall{i}\in\overline{1,t}\left((U,-V)\begin{pmatrix}b_i^{\downarrow} \\ c_i^{\downarrow}\end{pmatrix}=0^{\downarrow}\right)\right)\Rightarrow
+\begin{cases}
+(Ub_1^{\downarrow})d_1+\cdots+(Ub_t^{\downarrow})d_t=0^{\downarrow} \\
+(Vc_1^{\downarrow})d_1+\cdots+(Vc_t^{\downarrow})d_t=0^{\downarrow}
+\end{cases}\Rightarrow
+\begin{cases}
+U(b_1^{\downarrow}d_1+\cdots+b_t^{\downarrow}d_t)=0^{\downarrow} \\
+V(c_1^{\downarrow}d_1+\cdots+c_t^{\downarrow}d_t)=0^{\downarrow}
+\end{cases}
+$$
+Так как системы столбцов матриц $U$ и $V$ ЛНЗ, то СОЛУ $Ux^{\downarrow}=0^{\downarrow}$, 
+$Vy^{\downarrow}=0^{\downarrow}$ имееют единственное решение равное $0$. То есть 
+$$
+\begin{cases}
+b_1^{\downarrow}d_1+\cdots+b_td_t^{\downarrow}=0^{\downarrow} \\
+c_1^{\downarrow}d_1+\cdots+c_td_t^{\downarrow}=0^{\downarrow}
+\end{cases}\Rightarrow
+\begin{pmatrix}b_1^{\downarrow} \\ c_1^{\downarrow}\end{pmatrix}d_1+\cdots+\begin{pmatrix}b_t^{\downarrow} \\ 
+c_t^{\downarrow}\end{pmatrix}d_t=0^{\downarrow}\Rightarrow\forall{i}\in\overline{1,t}(d_i=0), 
+$$
+где последняя импликация в силу того что система столбцов в последнем уравнении является ФСР СОЛУ $(*)$ и, следовательно, они ЛНЗ. 
+Таким обрзаом, система $\vec{\delta}$ ЛНЗ. При этом по <a href="./discrete_math5.1.html#Theorem5.6">теореме 5.6</a>, пункту 1 и 
+<a href="./discrete_math11.5.html#Theorem11.11">теореме 11.11</a>
+$$
+t=m_1+m_2-\rang{(U,-V)}=m_1+m_2-\rang{(U,V)}=\dim{K_1}+\dim{K_2}-\dim{(K_1+K_2)}=\dim{(K_1\cap{K}_2)}.
+$$
+Таким образом, система векторов $\vec{\delta}\subset(K_1\cap{K}_2)$ ЛНЗ и $|\vec{\delta}|=\dim{(K_1\cap{K}_2)}$, 
+следовательно, $\vec{\delta}$ - базис $K_1\cap{K}_2$.
+</li>
+</ol>
+<p id="Theorem11.12"><b>Теорема 11.12:</b><br>
+Пусть $L_P$ - векторное пространство такое, что $|P|=q$, $\dim{L_P}=n<\infty$, тогда
+<ol>
+<li>$|L_P|=q^n$,</li>
+<li>число упорядоченных линейно не зависимых подсистем из $s$ векторов пространства $L_P$ равно $\prod_{i=0}^{s-1}(q^n-q^i)$,</li>
+<li>число подпространств размерности $s$ пространства $L_P$ равно
+$$\frac{\prod_{i=0}^{s-1}(q^n-q^i)}{\prod_{j=0}^{s-1}(q^s-q_j)}.$$
+</li> 
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как по <a href="./discrete_math11.3.html#Statement11.5">утверждению 11.5</a> $L_P\cong(P^{(n)})_P$, 
+то утверждение следует из п.1 <a href="./discrete_math4.3.html#Theorem4.11">теоремы 4.11</a>.</li>
+<li>Так как по <a href="./discrete_math11.3.html#Statement11.5">утверждению 11.5</a> $L_P\cong(P^{(n)})_P$, 
+то утверждение следует из п.1 <a href="./discrete_math11.3.html#Theorem11.8">теоремы 11.8</a> и п.2 
+<a href="./discrete_math4.3.html#Theorem4.11">теоремы 4.11</a>.</li>
+<li>По пункту 2 число упорядоченных ЛНЗ подсистем мощности $s$ любого векторного пространства мощности $n$ равно $N:=\prod_{i=0}^{s-1}(q^n-q^i)$. 
+Следовательно, любое подпространство размерности $s$ пространства $L_P$ содержит $D:=\prod_{j=0}^{s-1}(q^s-q^j)$ упорядоченных ЛНЗ подсистем мощности $s$. 
+При этом никакая ЛНЗ система порядка $s$ не может содержаться одновременно в двух подпространствах размерности $s$, следовательно, 
+$N=DX$, где $X$ - искомое число подпространств размерности $s$.
+</li>
+</ol>
+
+<h4 id="11.6">11.6 Фактор пространства.</h4>
+Пусть $M_P&lt;L_P$, тогда $(M;+)<(L;+)$. Так как группа $(L;+)$ абелева, то $M\triangleleft{L}$, следовательно, существует факторгруппа 
+$$L/\equiv{M}\sim{L}/M:=\{[\alpha]_{\equiv{M}}\mid\alpha\in{L}\},$$ 
+где
+$$[\alpha]_{\equiv{M}}\sim[\alpha]=\{\beta\in{L}\mid\alpha-\beta\in{M}\}=\alpha+M.$$
+Введем операцию внешнего умножения на множестве $L/M$ такую, что
+$$\forall\alpha\in{L}\,a\in{P}([\alpha]a=[\alpha{a}]).$$
+Проверим корректность операции как функции
+$$[\alpha]=[\beta]\Rightarrow\alpha-\beta\in{M}\Rightarrow(\alpha-\beta)a=\alpha{a}-\beta{a}\in{M}\Rightarrow[\alpha{a}]=[\beta{a}].$$
+Таким образом, равные классы эквивалентности при умножении на один и тот же элемент дают равные классы эквивалентности, 
+то есть операция определена корректно.
+<p id="Task11.2"><b>Задача 11.2:</b><br>
+Доказать, что если $L_P$ - векторное пространство и $M&lt;L$, 
+то группа $L/M$ образует с введенной выше операцией внешнего умножения векторное пространство $(L/M)_P$.<br>
+Решение:<br>
+При решении опускается как знак внешней операции так и знак умножения в поле $P$, применяемая операция определяется по операндам.<br>
+Так как группа $L$ абелева, то группа $L/M$ абелва. При этом для любых $a,b\in{P}$, $\alpha,\beta\in{L}/M$
+<ol>
+<li>$([\alpha]a)b=[(\alpha{a})b]=[\alpha(ab)]=[\alpha](ab)$,</li>
+<li>$[\alpha](a+b)=[\alpha(a+b)]=[\alpha{a}+\alpha{b}]=[\alpha{a}]+[\alpha{b}]=[\alpha]a+[\alpha]b$,</li>
+<li>$([\alpha]+[\beta])a=[\alpha+\beta]a=[(\alpha+\beta)a]=[\alpha{a}+\beta{a}]=[\alpha{a}]+[\beta{a}]=[\alpha]a+[\beta]a$,</li>
+<li>$[\alpha]e=[\alpha{e}]=[\alpha]$.</li>
+</ol>
+<p id="Theorem11.13"><b>Теорема 11.13:</b><br>
+Пусть $M_P&lt;L_P$, система $\alpha_1,\ldots,\alpha_k$ - базис $M_P$, тогда система $\alpha_1,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n$ - 
+базис $L_P$ тогда и только тогда, когда система $[\alpha_{k+1}],\ldots,[\alpha_n]$ - базис $(L/M)_P$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$
+<ol>
+<li>Пусть $c_{k+1},\ldots,c_n\in{P}$ такие, что $\sum_{i=k+1}^n[\alpha_i]c_i=[\theta]$, тогда
+$$
+\left[\sum_{i=k+1}^n\alpha_ic_i\right]=[\theta]\Rightarrow\sum_{k+1}^n\alpha_ic_i\in{M}_P+\theta=M_P\Rightarrow
+\exists{c}_1,\ldots,c_k\in{P}:\sum_{i=k+1}^n\alpha_ic_i=\sum_{j=1}^k\alpha_jc_j\Rightarrow\\
+\sum_{i=k+1}^n\alpha_ic_i+\sum_{j=1}^k\alpha_j(-c_j)=\theta\Rightarrow\forall{i}\in\overline{1,n}(c_i=0),
+$$
+где последняя импликация в силу того, что система $\alpha_1,\ldots,\alpha_n$ ЛНЗ. Тогда для любого $i\in\overline{k+1,n}$ $c_i=0$, 
+то есть система $[\alpha_{k+1}],\ldots,[\alpha_n]$ ЛНЗ.
+<li>
+</li>Пусть $[\beta]\in{L}/M$, тогда существуют элементы $b_1,\ldots,b_n\in{P}$ такие, что $\beta=\sum_{i=1}^n\alpha_ib_i$, следовательно, 
+$$
+\alpha_1,\ldots,\alpha_k\in{M}=M+\theta\Rightarrow\forall{i}\in\overline{1,k}([\alpha_i]=[\theta])\Rightarrow
+[\beta]=\left[\sum_{i=1}^n\alpha_ib_i\right]=\sum_{i=1}^n[\alpha_i]b_i=\sum_{i=k+1}^n[\alpha_i]b_i.
+$$
+Таким образом, $[\beta]$ ЛВЧ $[\alpha_{k+1}],\ldots,[\alpha_n]$, то есть для любого $[\beta]\in{L}/M$ система $[\alpha_{k+1}],\ldots,[\alpha_n],[\beta]$ ЛЗ.
+</li>
+</ol>
+Из пунктов 1 и 2 следует, что $[\alpha_{k+1}],\ldots,[\alpha_n]$ - базис пространства $(L/M)_P$.<br>
+$\Leftarrow)$
+<ol>
+<li>Пусть $c_1,\ldots,c_n\in{P}$ такие, что $\sum_{i=1}^n\alpha_ic_i=\theta$, тогда
+$$
+\alpha_1,\ldots,\alpha_k\in{M}\Rightarrow\forall{i}\in\overline{1,k}([\alpha_i]=[\theta])\Rightarrow
+[\theta]=\left[\sum_{i=1}^n\alpha_ic_i\right]=\sum_{i=1}^n[\alpha_i]c_i=\sum_{i=k+1}^n[\alpha_i]c_i.
+$$
+Тогда, в силу того что системы $([\alpha_{k+1}],\ldots,[\alpha_n])$, $(\alpha_1,\ldots,\alpha_k)$ ЛНЗ, 
+$$\forall{i}\in\overline{k+1,n}(c_i=0)\Rightarrow\sum_{i=1}^k\alpha_ic_i=\theta\Rightarrow\forall{i}\in\overline{1,k}(c_i=0).$$
+Таким образом, для любого $i\in\overline{1,n}$ $c_i=0$, то есть система $\alpha_1,\ldots,\alpha_n$ ЛНЗ.
+</li>
+<li>Пусть $\beta\in{L}$, тогда
+$$
+\exists{b}_{k+1},\ldots,b_n\in{P}:[\beta]=\sum_{i=k+1}^n[\alpha_i]c_i=\left[\sum_{i=k+1}^n\alpha_ic_i\right]\Rightarrow
+\beta-\sum_{i=k+1}^n\alpha_ic_i\in{M}\Rightarrow
+\exists{b}_1,\ldots,b_k\in{P}:\beta-\sum_{i=k+1}^n\alpha_ic_i=\sum_{j=1}^k\alpha_jc_j\Rightarrow\beta=\sum_{i=1}^n\alpha_ic_i.
+$$
+Таким образом, $\beta$ ЛВЧ $\alpha_1,\ldots,\alpha_n$, то есть для любого $\beta\in{L}$ система $\alpha_1,\ldots,\alpha_n,\beta$ ЛЗ.
+</li>
+</ol>
+Из пунктов 1 и 2 следует, что $\alpha_1,\ldots,\alpha_n$ - базис пространства $L_P$.
+<p id="Corollary11.4"><b>Следствие 11.4:</b><br>
+$$M_P&lt;L_P\Rightarrow\dim(L/M)_P=\dim{L_P}-\dim{M_P}.$$
+<p><b></b>Доказательство:<br><br>
+Пусть $\dim{M}_P=k$, $\dim{L}_P=n$, $\alpha_1,\ldots,\alpha_k$ - базис $M_P$. Тогда по п. 3 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a>
+ЛНЗ система $\alpha_1,\ldots,\alpha_k$ может быть дополнена до базиса $\alpha_1,\ldots,\alpha_k,\alpha_{k+1},\ldots,\alpha_n$ пространства $L_P$. 
+Тогда по теореме 11.13 система $[\alpha_{k+1}],\ldots,[\alpha_n]$ явлетеся базисом пространства $(L/M)_P$, то есть $\dim{(L/M)_P}=n-k$.
+<p id="Definition11.17"><b>Определение 11.17:</b><br>
+Многообразием векторного пространства $L_P$ порожденным вектором $\alpha\in{L}_P$ и подпространством $M_P&lt;L_P$ называется смежный класс $\alpha+M_P$.  
+<p id="Example11.8"><b>Пример 11.8:</b><br>
+<ol>
+<li>Пусть $M$ - прямая проходящая через точку $(0,0)$, вектор $\alpha\in(\mathcal{D}_2)_{\mathbb{R}}$ имеет начало в точке $(0,0)$. 
+Прямая $K$ получена из прямой $M$ параллельным переносом на вектор $\alpha$. Тогда многообразием 
+$\alpha+M_{\mathbb{R}}$ пространства $(\mathcal{D}_2)_{\mathbb{R}}$ порожденным вектором $\alpha$ и 
+подпространством $M_{\mathbb{R}}$ будет множество векторов с началом в точке $(0,0)$ и концами лежащими на прямой $K$.
+</li>
+<li>Пусть $x_0^{\downarrow}$ - частное решение СЛУ $Ax^{\downarrow}=b^{\downarrow}$, $H$ - множество решений СОЛУ $Ax^{\downarrow}=0^{\downarrow}$. 
+Тогда по <a href="./discrete_math5.1.html#Theorem5.6">теореме 5.6</a> $H&lt;(P^{(n)})_P$ и по <a href="./discrete_math5.1.html#Theorem5.7">теореме 5.7</a> 
+многообразие $x_0^{\downarrow}+H$ являтется множеством решений СЛУ $Ax^{\downarrow}=b^{\downarrow}$.
+</li>
+</ol>
+<p id="Theorem11.14"><b>Теорема 11.14:</b><br>
+Пусть $(M_1)_P&lt;L_P$, $(M_2)_P&lt;L_P$, $\alpha,\beta\in{L}_P$, тогда
+$$\alpha+M_1=\beta+M_2\Leftrightarrow(M_1=M_2\,\wedge\,\alpha-\beta\in{M}_1).$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ 
+$$
+\gamma\in\alpha+M_1\Rightarrow\gamma-\alpha\in{M}_1\Rightarrow(\gamma-\beta)-(\alpha-\beta)\in{M}_1\Rightarrow
+\gamma-\beta\in{M}_1=M_2\Rightarrow\gamma\in\beta+{M}_2.
+$$
+$\Leftarrow)$ Докажем, что $\alpha-\beta\in{M}_1$:
+$$
+\theta\in{M}_1\cap{M}_2\Rightarrow\exists\lambda_1\in{M}_1\,\lambda_2\in{M}_2:(\alpha=\beta+\lambda_2\,\wedge\,\beta=\alpha+\lambda_1)\Rightarrow
+\Rightarrow\alpha-\beta=\lambda_2=-\lambda_1\in{M}_1\cap{M}_2.
+$$
+Докажем, что $M_1=M_2$:
+$$
+\lambda_1\in{M}_1\Rightarrow\exists\lambda_2\in{M}_2:\alpha+\lambda_1=\beta+\lambda_2\Rightarrow\lambda_1=\lambda_2-(\alpha-\beta)\in{M}_2,
+$$
+следовательно, $M_1\subset{M}_2$. Аналогично доказывается, что $M_2\subset{M}_1$ и, тогда $M_1=M_2$.
+<p id="Task11.3"><b>Задача 11.3:</b><br>
+Пусть $a^{\downarrow}\in{P}^{(n)}$, $M_P<(P^{(n)})_P$, $\dim{M}_P=r&gt;0$. Доказать, что существуют матрица $A\in{P}_{n-r,n}$ и 
+вектор $b^{\downarrow}\in{P}^{(n-r)}$ такие, что многообразие $a^{\downarrow}+M_P$ является множеством решений СЛУ $Ax^{\downarrow}=b^{\downarrow}$.<br>
+Решение:<br>
+Пусть $a_1,\ldots,a_r$ - базис $M_P$, $B:=(a_1,\ldots,a_r)$, тогда $\rang{B}^{T}=\rang{B}=r$ и 
+по <a herf="./discrete_math5.1.html#Corollary5.2">следствию 5.2</a> СОЛУ $B^{T}y^{\downarrow}=0^{\downarrow}$ имеет ФСР из $n-r$ векторов обозначим её 
+$y_1^{\downarrow},\ldots,y_{n-r}^{\downarrow}$. Обозначим $D:=(y_1^{\downarrow},\ldots,y_{n-r}^{\downarrow})$, $A:=D^{T}$, 
+$b^{\downarrow}:=Aa^{\downarrow}$, тогда вектор $a^{\downarrow}$ являтеся решением системы уравнений
+$Ax^{\downarrow}=b^{\downarrow}$. При этом по п. 3 <a href="./discrete_math3.1.html#Theorem3.4">теоремы 3.4</a>
+$$B^{T}D=B^{T}(d_1^{\downarrow},\ldots,d_{n-r}^{\downarrow})=0\Rightarrow{A}(a_1^{\downarrow},\ldots,a_r^{\downarrow})=AB=D^TB=0.$$
+Так как $n-\rang{A}=n-\rang{D}^{T}=n-(n-r)=r$, то по <a href="./discrete_math5.1.html#Theorem5.2">теореме 5.2</a> ЛНЗ система 
+$a_1,\ldots,a_r$ - ФСР СОЛУ $Ax^{\downarrow}=0^{\downarrow}$. 
+Тогда по <a href="./discrete_math5.1.html#Corollary5.3">следствию 5.3</a> множество решений СОЛУ $Ax^{\downarrow}=0^{\downarrow}$ равно 
+$M$ и по <a href="./discrete_math5.1.html#Theorem5.7">теореме 5.7</a> множество решений СЛУ $Ax^{\downarrow}=b^{\downarrow}$ равно $a^{\downarrow}+M$. 
+
+<br><br>
+<a href="discrete_math11.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.1.html">next</a>
+</body>
+</html>

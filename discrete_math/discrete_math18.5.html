@@ -1,0 +1,169 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 18.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math18.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.1.html">next</a>
+<br>
+
+<h4 id="18.5">18.5 Поле разложение многочлена.</h4>
+
+<p id="Theorem18.9"><b>Теорема 18.9:</b><br>
+Пусть $P$ - поле, многочлен $f(x)\in{P}[x]$ неприводим над $P$, тогда существует поле $T$ и элемент $\alpha\in{T}$ такие, 
+что $T=P(\alpha)$ и $f(\alpha)=0$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $f(x):=f_0+f_1x+\cdots+f_nx^n$, $n:=\deg{f(x)}$, 
+$$P_1:=P[x]/f(x)=\{[g(x)]_{f(x)}\mid{g}(x)\in{P}[x]:\deg{g(x)}&lt;n\},$$
+$\varphi_0:P[x]\to{P}_1$ - естественных эпиморфизм. Так как многочлен $f(x)$ неприводим, то $P_1$ поле. 
+Положим $T:=(P_1\backslash\varphi_0(P))\cup{P}$, определим отображение 
+$$\psi:T\to{P}_1:\forall\gamma\in{T}\left(\psi(\gamma):=\begin{cases}\varphi_0(\gamma),&\gamma\in{P} \\ \gamma,&\gamma\notin{P}\end{cases}\right).$$
+Так как отображение $\varphi_0|_P$, очевидно, биективно, то биективно и отобаржение $\psi$, 
+тогда определим на множестве $T$ операции $+$ и $\cdot$ такие, что
+$$*\in\{+,\cdot\}\Rightarrow\forall\beta,\gamma\in{T}(\beta*\gamma=\psi^{-1}(\psi(\beta)*\psi(\gamma))),$$
+тогда из доказательства <a href="./discrete_math17.5.html#Theorem17.5">теоремы 17.5</a> следует, что $\psi$ - изоморфизм алгебр $(T;+,\cdot)$ и $P_1$, 
+то есть $T$ - поле и $P$ подполе поля $T$.<br>
+Так как в поле $T$ для любых $a\in{P}$, $i\in\mathbb{N}$ $a[x]_{f(x)}^i=[a]_{f(x)}[x]_{f(x)}^i$, то
+$$
+T=\bigl\{[g(x)]_{f(x)}\mid{g}(x)\in{P}[x]:0&lt;\deg{g(x)}&lt;n\bigr\}\cup{P}=
+\left\{\sum_{i=1}^{n-1}[a_i]_{f(x)}[x]_{f(x)}^i\,\biggl|\,a_i\in{P}\right\}\cup{P}=
+\left\{\sum_{i=0}^{n-1}a_i[x]_{f(x)}^i\,\biggl|\,a_i\in{P}\right\}=P\bigl([x]_{f(x)}\bigr).
+$$
+Покажем, что элемент $[x]_{f(x)}\in{T}$ является корнем многочлена $f(x)$ над полем $T$. Так как $\psi$ изоморфизм, то
+$$
+\psi\bigl(f([x]_{f(x)})\bigr)=\psi\biggl(\sum_{i=0}^nf_i[x]^i\biggr)=\sum_{i=0}^n\psi(f_i)\psi\bigl([x]_{f(x)}^i\bigr)=
+\sum_{i=0}^n[f_i]_{f(x)}[x]_{f(x)}^i=[f(x)]_{f(x)}=[0]_{f(x)}\Rightarrow{f}([x]_{f(x)})=0.
+$$
+<p id="Corollary18.10"><b>Следствие 18.10:</b><br>
+Пусть $P$ - поле, $f(x)\in{P}[x]$, $\deg{f(x)}\geq1$, тогда существует поле $T$ и элемент $\alpha\in{T}$ такие, что $T=P(\alpha)$ и $f(\alpha)=0$.
+<p><b>Доказательство:</b><br><br>
+Следует из теорем <a href="./discrete_math7.5.html#Theorem7.10">7.10</a> и 18.9. 
+<p id="Definition18.9"><b>Определение 18.9:</b><br>
+Поле $P'$ называется полем разложения (ПР) многочлена $f(x)\in{P}[x]$ над полем $P$, 
+если $P$ подполе ${P}'$ и $f(x)$ раскладывается над $P'$ на линейные множители. 
+<p id="Theorem18.10"><b>Теорема 18.10:</b><br>
+Пусть $P$ - поле, $f(x)\in{P}[x]$, $\deg{f(x)}\geq1$, тогда существует поле разложение многочлена $f(x)$ над $P$.
+<p><b>Доказательство:</b><br><br>
+Пусть $f(x):=f_np_1(x)\cdots{p}_s(x)$, где $f_n\in{P}^*$ и для любого $i\in\overline{1,s}$ $p_i(x)$ - унитарный неприводимый над полем $P$ многочлен. 
+Пусть отображение $d_P(f):P[x]\to\mathbb{N}_0$ такое, что для любого $f(x)\in{P}[x]$ 
+$d_P(f)$ равно $\deg{f(x)}$ минус число многочленов первой степени в разложении $p_1(x)\cdots{p}_s(x)$. 
+Отображение $d_P(f)$ обладает следующими свойствами
+<ol>
+<li>$d_P(f)\leq\deg{f(x)}$,</li>
+<li>$f(x)=g(x)h(x)\Rightarrow{d}_P(f)=d_P(g)+d_P(h)$,</li>
+<li>$P'\subset{T}\Rightarrow{d}_{P'}(f)\geq{d}_T(f)$.</li>
+</ol>
+Докажем утвержедение индукцией по $d_P(f)$.
+<ol type="I"> 
+<li>При $d_P(f)=0$ $\deg{f(x)}$ равно числу многочленов первой степени в разложении $f(x):=f_np_1(x)\cdots{p}_s(x)$ и 
+так как $\deg{f(x)}=\sum_{i=1}^s\deg{p_i(x)}$, то $s=\deg{f(x)}$ и для любого $i\in\overline{1,s}$ $\deg{p_i(x)}=1$.
+</li>
+<li>Докажем, что для любого $k\geq0$ из верности утверждения при любом поле $P$ и $d_P(f)\in\overline{0,k}$ следует его справедливость при $d_P(f)=k+1$.<br>
+Пусть $d_P(f&gt;0$, тогда сущетсвует $j\in\overline{1,s}$ такое, что $\deg{p_j(x)}>1$. По <a href="./discrete_math18.5.html#Theorem18.9">теореме 18.9</a>
+существует поле $T$, элемент $\alpha\in{T}$, $h(x)\in{T}[x]$ такие, что $T=P(\alpha)$ и $p_j(x)=(x-\alpha)h(x)$, тогда
+$$
+d_T(p_j)=d_T(x-\alpha)+d_T(h)\leq\deg{h(x)}<\deg{p_j(x)}=d_P(p_j)\Rightarrow{d}_T(f)=\sum_{i=1}^sd_T(p_i)<\sum_{i=1}^sd_P(p_i)=d_P(f).
+$$
+Тогда по предположению индукции существует поле $P'$ такое, что многочлен $f(x)$ раскладывается над $P'$ на линейные множители.
+</li>
+</ol>
+<p id="Definition18.10"><b>Определение 18.10:</b><br>
+Пусть $f(x)\in{P}[x]$, тогда поле разложения $P'$ многочлена $f(x)$ называется минимальным полем разложения (МПР) многочлена $f(x)$, 
+если $P'(x)=P(\alpha_1,\ldots,\alpha_n)$, где $\alpha_1,\ldots,\alpha_n\in{P}'$ - все корни многочлена $f(x)$ в $P'$. 
+<p id="Theorem18.11"><b>Теорема 18.11:</b><br>
+Пусть $f(x)\in{P}[x]$, $\deg{f(x)}\geq1$, тогда существует минимальное поле разложения $\overline{P}$ многочлена $f(x)$ над $P$. 
+Если $P'$ поле разложения многочлена $f(x)$ над $P$, то $\overline{P}\subset{P}'$.
+<p><b>Доказательство:</b><br><br>
+Пусть поле $P'$ - ПР многочлена $f(x)$ над $P$ (по теореме 18.10 как мимимум одно существует ). Тогда по 
+<a href="./discrete_math7.2.html#Theorem7.3">теореме 7.3</a> (теорема Безу) все корни $\alpha_1,\ldots,\alpha_n$ многочлена $f(x)$ принадлежат $P'$, тогда 
+$P(\alpha_1,\ldots,\alpha_n)$ - МПР многочлена $f(x)$ и $P(\alpha_1,\ldots,\alpha_n)\subset{P}'$.
+<p id="Theorem18.12"><b>Теорема 18.12:</b><br>
+Пусть $\sigma:P_1\to{P}_2$ - изоморфизм полей;  $f(x)\in{P}_1[x]$, $\overline{P}_1$ минимальное поле разложения многочлена $f(x)$ над $P_1$. 
+Отображение $\sigma':P_1[x]\to{P}_2[x]$ такое, что 
+$$\forall{t}(x):=\sum_{i=0}^na_ix^i\in{P}_1[x]\left(\sigma'(t(x))=\sum_{i=0}^n\sigma(a_i)x^i\right),$$
+$\overline{P}_2$ минимальное поле разложения многочлена $\sigma'(f(x))\in{P}_2[x]$, 
+тогда существует изоморфизм $\tau:\overline{P}_1\to\overline{P}_2$ такой, что $\tau|_{P_1}=\sigma$, то есть для любого $a\in{P}_1$ $\tau(a)=\sigma(a)$. 
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $d_{P_1}(f)$.
+<ol>
+<li>Пусть $d_{P_1}(f)=0$, тогда $P_1$ ПР многочлена $f(x)$ над $P$, тогда по теореме 18.11 $\overline{P}_1\subset{P}_1$, 
+следовательно, $\overline{P}_1=P_1$. Существуют $\alpha_1,\ldots,\alpha_n\in{P}_1$ такие, что
+$$f(x)=f_n\prod_{i=1}^n(x-\alpha_i)\Rightarrow\sigma'(f(x))=\sigma(f_n)\prod_{i=1}^n(x-\sigma(\alpha_i)),$$
+где $f_n\in{P}^*$. Таким образом, $P_2$ ПР многочлена $\sigma'(f(x))$, следовательно, $\overline{P}_2=P_2$ и $\tau:=\sigma$.
+</li>
+<li>Для любого $k\geq0$ докажем, что если утверждение верно для любого поля $P_1$ и $d_{P_1}(f)\in\overline{0,k}$, то оно верно при $d_{P_1}=k+1$.<br>
+Пусть $f(x):=f_np_1(x)\cdots{p}_s(x)$, где для любого $i\in\overline{1,s}$ $p_i(x)$ - унитарный неприводимый над $P_1$ многочлен, $f_n\in{P}^*$. 
+Тогда по <a href="./discrete_math18.4.html#Statement18.7">утверждению 18.7</a> и <a href="./discrete_math18.4.html#Corollary18.7">следствию 18.7</a> 
+$\sigma'(f(x))=\sigma(f_n)\sigma'(p_1(x))\cdots\sigma'(p_s(x))$, где для любого $i\in\overline{1,s}$ $\sigma'(p_i(x))$ - неприводим над $P_2$, тогда
+$$d_{P_1}(f)>0\Rightarrow\exists{j}\in\overline{1,s}:\deg{p}_j(x)&gt;1\Rightarrow\exists\alpha_1\in\overline{P}_1:p_j(\alpha_1)=0.$$
+Так как $\deg{p_j(x)}&gt;1$, то $\deg{\sigma'(p_j(x))}&gt;1$, тогда, аналогично, существует $\beta_1\in\overline{P}_2$ - 
+корень многочлена $\sigma'(p_j(x))$.<br>
+Так как многочлен $p_j(x)$ унитарный, неприводимый и $p_j(\alpha_1)=0$, то $m_{\alpha_1,P_1}(x)=p_j(x)$, аналогично, $m_{\beta_1,P_2}(x)=\sigma'(p_j(x))$. 
+То есть 
+$$\sigma'(m_{\alpha_1,P_1}(x))=\sigma'(p_j(x))=m_{\beta_1,P_2}(x),$$ 
+тогда по <a href="./discrete_math18.4.html#Theorem18.8">теореме 18.8</a> существует изоморфизм $\tau:{P}_1(\alpha_1)\to{P}_2(\beta_1)$ такой, 
+что $\tau|_{P_1}=\sigma$. Если $\alpha_1,\ldots,\alpha_n\in\overline{P}_1$ все корни многочлена $f(x)$, то
+$$\overline{P}_1=P_1(\alpha_1,\ldots,\alpha_n)=P_1(\alpha_1)(\alpha_2,\ldots,\alpha_n).$$
+Тогда $\overline{P}_1$ МПР многочлена $f(x)$ над полем $P_1(\alpha_1)$. 
+Аналогично $\overline{P}_2$ МПР многочлена $\sigma'(f(x))$ над полем $P_2(\beta_1)$.<br>
+Аналогично тому как это сделано при доказательстве <a href="./discrete_math18.5.html#Theorem18.10">теоремы 18.10</a> можно показать, 
+что $d_{P_1(\alpha_1)}(f)&lt;d_{P_1}(f)$. Определим отображение ${\tau':P_1(\alpha_1)[x]\to{P}_2(\beta_1)[x]}$ такое, что 
+$$\forall{t}(x):=\sum_{i=0}^na_ix^i\in{P}_1(\alpha_1)[x]\left(\tau'(t(x))=\sum_{i=0}^n\tau(a_i)x^i\right),$$
+тогда так как $\tau|_{P_1}=\sigma$, то $\tau'(f(x))=\sigma'(f(x))$. 
+Тогда по предположению индукции сущесвтует изоморфизм $\varphi:\overline{P}_1\to\overline{P}_2$ такой, 
+что $\varphi|_{P_1(\alpha_1)}=\tau$, следовательно, $\varphi|_{P_1(\alpha_1)}=\tau|_{P_1}=\sigma$.
+</li>
+</ol>
+<p id="Corollary18.11"><b>Следствие 18.11:</b><br>
+Пусть $P',P''$ - минимальные поля разложения многочлена $f(x)$ над полем $P$, тогда существует изоморфизм $\tau:P'\to{P}''$ такой, 
+что для любого $a\in{P}$ $\tau(a)=a$.
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 18.12 при $P_1=P_2$ и $\sigma=\varepsilon$.
+<p id="Definition18.11"><b>Определение 18.11:</b><br>
+Поле $P$ называется алгибраически замкнутым, если любой многочлен $f(x)\in{P}[x]$ раскладывается над $P$ на линейные множители.
+<p id="Theorem18.13"><b>Теорема 18.13: Теорема Штейница.</b><br>
+Для любого поля $P$ существует поле $\overline{P}$, называемое его алгебраическим замыканием, такое, 
+что $\overline{P}$ алгебраическое расширение поля $P$ и $\overline{P}$ алгебраически замкнуто.<br>
+Любые два алгебраических замыкания поля $P$ изоморфны.
+<p><b>Доказательство6</b><br><br>
+Ван дер Варден, гл. 10, параграф 72, стр. 236
+<p id="Task18.1"><b>Задача 18.1:</b><br>
+Доказать, что $[\overline{\mathbb{Q}}:\mathbb{Q}]=\infty$.<br>
+Решение.<br>
+Предположим, что $[\overline{\mathbb{Q}}:\mathbb{Q}]=n&lt;\infty$, тогда по <a href="./discrete_math18.1.html#Statement18.3">утверждению 18.3</a>
+существуют $\alpha_1,\ldots,\alpha_n\in\mathbb{C}$ такие, что $\overline{\mathbb{Q}}=\mathbb{Q}(\alpha_1,\ldots,\alpha_n)$, 
+так как $\overline{\mathbb{Q}}$ алгебраическое расширение, то для любого неприводимого $f(x)\in{P}[x]$
+$$\forall\alpha\in\overline{\mathbb{Q}}(f(\alpha)=0\Rightarrow\deg{f(x)}\leq\max_{1\leq{i}\leq{n}}\deg{m_{\alpha_i,\mathbb{Q}}}(x)).$$
+Однако, по <a href="./discrete_math7.6.html#Corollary7.13">следствию 7.13</a> над полем $\mathbb{Q}$ существуют неприводимые многочлены любой степени и 
+все их корни должны лежать в алгебраическом замыкании $\overline{\mathbb{Q}}$
+
+<br><br>
+<a href="discrete_math18.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.1.html">next</a>
+</body>
+</html>

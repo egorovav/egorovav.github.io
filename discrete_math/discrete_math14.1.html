@@ -1,0 +1,237 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 14.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math13.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.3.html">next</a>
+<br>
+
+<h3 id="14">14 Евклидовы пространства.</h3>
+<h4 id="14.1">14.1 Введение.</h4>
+
+Везде далее в этой главе $\mathbb{P}\in\{\mathbb{R},\mathbb{C}\}$, $L:=L_{\mathbb{P}}$.
+<p id="Definition14.1"><b>Определение 14.1:</b><br>
+Скалярным произведением на векторном пространстве $L$ называется отображение $S:L\times{L}\to\mathbb{P}$ такое, 
+что для любых $\alpha,\beta,\gamma\in{L}$, $a\in\mathbb{P}$
+<ol>
+<li>$S(\alpha{a},\beta)=aS(\alpha,\beta)$,</li>
+<li>$S(\alpha+\beta,\gamma)=S(\alpha,\gamma)+S(\beta,\gamma)$,</li>
+<li>$S(\alpha,\beta)=\overline{S(\beta,\alpha)}$,</li>
+<li>$\alpha\neq\theta\Rightarrow{S}(\alpha,\alpha)>0$.</li>
+</ol>
+<p id="Example14.1"><b>Пример 14.1:</b><br>
+<ol>
+<li>Пространство векторов в дву- и трех- мерном пространстве $(\mathcal{D}_2)_{\mathbb{R}}$, $(D_3)_{\mathbb{R}}$ является евклидовым пространством. 
+Скалярным произведением является скалярное произведение (произведение длинн векторов на синус угла между ними).
+</li>
+<li>Пространство функций непрерывных на отрезке $(C[a,b])_{\mathbb{R}}$ является евклидовым пространством. 
+В качестве скалярного произведения можно взять отображение $S(f(x),g(x))=\int_a^b{f}(x)g(x)dx$.
+</li>
+<li>Пусть $L_{\mathbb{P}}$ - произвольное векторное пространство $(\alpha_1,\ldots,\alpha_n)$ - базис $L_{\mathbb{P}}$, 
+тогда пространство $L_{\mathbb{P}}$ является евклидовым со скалярным произведением 
+$S(\beta,\gamma)=\sum_{i=1}^nb_i\overline{c}_i$, где $\beta=\sum_{i=1}^n\alpha_ib_i$, $\gamma=\sum_{i=1}^n\alpha_ic_i$
+</li>
+</ol>
+<p id="Definition14.2"><b>Определение 14.2:</b><br>
+Векторное пространство $L_{\mathbb{P}}$ с определенным на нем скалярным произведением $S$ называется евклидовым пространством $(L_{\mathbb{P}},S)$.
+<p id="Statement14.1"><b>Утверждение 14.1:</b><br> 
+Для любых $\alpha,\beta,\gamma\in{L}$ $a\in\mathbb{P}$
+<ol>
+<li>$S(\alpha,\beta{a})=\overline{a}S(\alpha,\beta)$,</li>
+<li>$S(\alpha,\beta+\gamma)=S(\alpha,\beta)+S(\alpha,\gamma)$,</li>
+<li>$S(\alpha,\theta)=S(\theta,\alpha)=0$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math6.5.html#Task6.1">задаче 6.1</a>
+<ol>
+<li>$S(\alpha,\beta{a})=\overline{S(\beta{a},\alpha)}=\overline{aS(\beta,\alpha)}=\overline{a}\overline{S(\beta,\alpha)}=
+\overline{a}\overline{\overline{S(\alpha,\beta)}}=\overline{a}S(\alpha,\beta)$.
+</li>
+<li> 
+$$
+S(\alpha,\beta+\gamma)=\overline{S(\beta+\gamma,\alpha)}=\overline{S(\beta,\alpha)+S(\gamma,\alpha)}=
+\overline{S(\beta,\alpha)}+\overline{S(\gamma,\alpha)}=\overline{\overline{S(\alpha,\beta)}}+\overline{\overline{S(\alpha,\gamma)}}
+$$
+</li>
+<li>$S(\theta,\alpha)=S(0\cdot\theta,\alpha)=0\cdot{S}(\theta,\alpha)=0$,<br>
+$S(\alpha,\theta)=\overline{S(\theta,\alpha)}=\overline{0}=0$.
+</li>
+</ol>
+<p id="Note14.1"><b>Замечание 14.1:</b><br>
+По <a href="./discrete_math14.1.html#Definition14.1">определению 14.1</a>
+$$
+\forall\alpha,\beta\in(L_{\mathbb{P}},S)(S(\alpha,\beta)=\overline{S(\beta,\alpha)})\Rightarrow
+\forall\alpha\in(L_{\mathbb{P}},S)(S(\alpha,\alpha)=\overline{S(\alpha,\alpha)})\Rightarrow
+\forall\alpha\in(L_{\mathbb{P}},S)(S(\alpha,\alpha)\in\mathbb{R}).
+$$
+То есть, п. 4 <a href="./discrete_math14.1.html#Definition14.1">определения 14.1</a> вообще говоря корректен, из него и п. 3 утверждения 14.1 следует, что 
+$$S(\delta,\delta)=0\Leftrightarrow\delta=\theta.$$ 
+<p id="Definition14.3"><b>Определение 14.3:</b><br>
+Нормой вектора $\alpha\in(L_{\mathbb{P}},S)$ называестя действительное число $\|\alpha\|:=\sqrt{S(\alpha,\alpha)}$.
+<p id="Statement14.2"><b>Утверждение 14.2:</b><br>
+Для любого $\alpha\in(L_{\mathbb{P}},S)$
+<ol>
+<li>$\forall{a}\in\mathbb{P}(\|\alpha\|=0\Leftrightarrow\alpha=\theta)$,</li>
+<li>$\forall{c}\in\mathbb{R}(\|\alpha{c}\|=\|\alpha\||c|)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По замечанию 14.1
+$$\|\alpha\|\Leftrightarrow{S}(\alpha,\alpha)=0\Leftrightarrow\alpha=\theta.$$
+</li>
+<li>По п. 1 <a href="./discrete_math14.1.html#Statement14.1">утверждения 14.1</a>
+$$\|\alpha{c}\|=\sqrt{S(\alpha{c},\alpha{c})}=\sqrt{cS(\alpha,\alpha{c})}=\sqrt{c^2S(\alpha,\alpha)}=\|\alpha\||c|.$$
+</li>
+</ol>
+
+<h4 id="14.2">14.2 Ортогональные системы векторов.</h4>
+
+<p id="Definition14.4"><b>Определение 14.4:</b><br>
+Вектора $\alpha,\beta\in{L}$ называются ортогональными если $S(\alpha,\beta)=0$.<br>
+Система векторов $\alpha_1,\ldots,\alpha_n\in{L}$ ортогональна, если для любых различных $i,j\in\overline{1,n}$ $S(\alpha_i,\alpha_j)=0$.
+<p id="Statement14.3"><b>Утверждение 14.3:</b><br>
+Пусть $\alpha_1,\ldots,\alpha_n$ - ортогональная система ненулевых векторов, тогда
+<ol>
+<li> 
+$$
+\exists{c}_1,\ldots,c_n\in\mathbb{P}:\beta=\sum_{i=1}^n\alpha_ic_i\Rightarrow\forall{i}\in\overline{1,n}\left
+(c_i=\frac{S(\beta_i,\alpha_i)}{S(\alpha_i,\alpha_i)}\right),
+$$
+</li>
+<li>система векторов $\alpha_1,\ldots,\alpha_n$ линейно независима.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Фиксируем $j\in\overline{1,n}$, тогда
+$$
+S(\beta,\alpha_j)=S\biggl(\sum_{i=1}^n\alpha_ic_i,\alpha_j\biggr)=\sum_{i=1}^nS(\alpha_ic_i,\alpha_j)=
+\sum_{i=1}^nc_iS(\alpha_i,\alpha_j)=c_jS(\alpha_j,\alpha_j)\Rightarrow{c}_j=\frac{S(\beta,\alpha_j)}{S(\alpha_j,\alpha_j)}
+$$
+</li>
+<li>Пусть $c_1,\ldots,c_n\in\mathbb{P}$ такие, что $\alpha_1c_2+\cdots+\alpha_nc_n=\theta$, тогда по пункту 1 для любого $i\in\overline{1,n}$
+$$c_i=\frac{S(\theta,\alpha_i)}{S(\alpha_i,\alpha_i)}=0.$$
+</li>
+</ol>
+<p id="Definition14.5"><b>Определение 14.5:</b><br>
+Системы векторов называются эквивалентными, если любой вектор одной из систем линейно выражается через другую систему.
+<p id="Theorem14.1"><b>Теорема 14.1:</b><br>
+Для любой линейно независимой конечной системы векторов евклидова пространства $(L_{\mathbb{P}},S)$ существует 
+равномощная эквивалентная ей ортогональная линейно независимая система векторов.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по мощности системы векторов $k$.
+<ol type="I">
+<li>При $k=1$ искомая система равна исходной.</li>
+<li>Для любого $t\geq1$ докажем, что из справедливости утверждения при $k\in\overline{1,t}$ следует его справедливость при $k=t+1$.<br>
+Пусть система $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_t,\alpha_{t+1})$ ЛНЗ, тогда система $\alpha_1,\ldots,\alpha_t$ ЛНЗ. 
+Тогда по предположению индукции существует система векторов $\beta_1,\ldots,\beta_t$ ортогональная, ЛНЗ и эквивалентная системе $\alpha_1,\ldots,\alpha_t$. 
+Найдем вектор $\beta_{t+1}\in{L}$ такой, чтобы система $\vec{\beta}:=(\beta_1,\ldots,\beta_t,\beta_{t+1})$ была ортогональна, 
+ЛНЗ и эквивалентна системе $\vec{\alpha}$. Вектор $\beta_{t+1}$ будем искать в виде $\beta_{t+1}=\alpha_{t+1}+\beta_1c_1+\cdots+\beta_tc_t$, 
+где для любого $i\in\overline{1,t}$ $c_i\in\mathbb{P}$. Так как система векторов $\beta_1,\ldots,\beta_t$ ортогональна, 
+то система векторов $\vec{\beta}$ ортогональна тогда и только тогда, когда для любого $i\in\overline{1,t}$ $S(\beta_{t+1},\beta_i)=0$. Так как
+$$
+S(\beta_{t+1},\beta_i)=S\biggl(\alpha_{t+1}+\sum_{j=1}^t\beta_jc_j,\beta_i\biggr)=S(\alpha_{t+1},\beta_i)+\sum_{j=1}^tS(\beta_jc_i,\beta_i)=
+S(\alpha_{t+1},\beta_i)+\sum_{j=1}^tc_jS(\beta_j,\beta_i)=S(\alpha_{t+1},\beta_i)+c_jS(\beta_i,\beta_i)
+$$ 
+то если для любого $i\in\overline{1,t}$ положить  
+$$c_i:=-\frac{S(\alpha_{t+1},\beta_i)}{S(\beta_i,\beta_i)},\beta_{t+1}:=\alpha_{t+1}+\beta_1c_1+\cdots+\beta_tc_t,$$ 
+то для любого $i\in\overline{1,t}$
+$$
+S(\beta_{t+1},\beta_i)=S(\alpha_{t+1},\beta_i)-c_iS(\beta_i,\beta_i)=
+S(\alpha_{t+1},\beta_i)-\frac{S(\alpha_{t+1},\beta_i)}{S(\beta_i,\beta_i)}S(\beta_i,\beta_i)=S(\alpha_{t+1},\beta_i)-S(\alpha_{t+1},\beta_i)=0
+$$
+</li>
+</ol>
+Таким образом, система $\vec{\beta}:=(\beta_1,\ldots,\beta_t,\beta_{t+1})$ ортогональна.<br>
+Докажем от противного, что система $\vec{\beta}$ ЛНЗ. Предположим, что система $\vec{\beta}$ ЛЗ, 
+тогда по <a href="./discrete_math14.1.html#Statement14.3">утверждению 14.3</a> она содержит нулевой вектор и, 
+так как система $\beta_1,\ldots,\beta_t$ - ЛНЗ, то $\beta_{t+1}=\theta$. Следовательно, $\alpha_{t+1}=-\beta_1c_1-\cdots-\beta_tc_t$, 
+то есть вектор $\alpha_{t+1}$ ЛВЧ $\beta_1,\ldots,\beta_t$ и так как система $\beta_1,\ldots,\beta_t$ эквивалентна системе
+$\alpha_1,\ldots,\alpha_t$, то $\alpha_{t+1}$ ЛВЧ $\alpha_1,\ldots,\alpha_t$ тогда, по <a href="./discrete_math11.1.html#Theorem11.2">теореме 11.2</a>
+система $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_t,\alpha_{t+1})$ ЛЗ, что противоречит выбору системы $\vec{\alpha}$.<br>
+Так как система векторов $\beta_1,\ldots,\beta_t$ эквивалентна системе векторов $\alpha_1,\ldots,\alpha_t$ и 
+$\beta_{t+1}:=\alpha_{t+1}+\beta_1c_1+\beta_tc_t$, то для любого $i\in\overline{1,t+1}$ $\beta_i$ ЛВЧ $\vec{\alpha}$, то есть система 
+$\vec{\beta}$ эквивалентна системе $\vec{\alpha}$.
+<p id="Corollary14.1"><b>Следствие 14.1:</b><br>
+В любом конечномерном евклидовом пространстве $(L_{\mathbb{P}}, S)$ существует ортогональный базис.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math11.1.html#Theorem11.4">теореме 11.4</a> любое векторное пространство имеет базис $\vec{\alpha}$. 
+Так как пространство $(L_{\mathbb{P}},S)$ конечномерно, то система $\vec{\alpha}$ конечна и ЛНЗ, 
+тогда по <a href="./discrete_math14.1.html#Theorem14.1">теореме 14.1</a> существует ортогональная ЛНЗ система такой же мощности, 
+которая по п. 4 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a> является базисом пространства $(L_{\mathbb{P}},S)$.
+<p id="Corollary14.2"><b>Следствие 14.2:</b><br>
+В любом конечномерном евклидовом пространстве $(L_{\mathbb{P}},S)$ любая ортогональная ЛНЗ система векторов может быть дополнена до ортогонального базиса. 
+<p><b>Доказательство:</b><br><br>
+Пусть $\dim{L}_{\mathbb{P}}=n$, $\vec{\beta}:=(\beta_1,\ldots,\beta_k)\in(L_{\mathbb{P}},S)$ - ортогональная ЛНЗ система по 
+п. 3 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a> она может быть дополнена до базиса 
+$\beta_1,\ldots,\beta_k,\alpha_{k+1},\ldots,\alpha_{n-k}$. Положим 
+$$
+\forall{i}\in\overline{1,k}\left(c_i:=-\frac{S(\alpha_{k+1},\beta_i)}{S(\beta_i,\beta_i)}\right),
+\beta_{k+1}:=\alpha_{k+1}+\beta_1c_1+\cdots+\beta_kc_k,
+$$
+тогда аналогично доказательству теоремы 14.1 можно показать, что система $\beta_1,\ldots,\beta_k,\beta_{k+1}$ - ортогональна и ЛНЗ.<br>
+Так как система $\beta_1,\ldots,\beta_k,\beta_{k+1},\alpha_{k+2},\ldots,\alpha_{n-k}$ ЛНЗ, то, применив к ней описаную выше процедуру, 
+получим ортогональную ЛНЗ систему из $k+2$ векторов, и так далее. Через $n-k$ шагов получим ортогональную ЛНЗ систему векторов $
+\beta_1,\ldots,\beta_k,\beta_{k+1},\ldots,\beta_n$, которая по п. 4 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a> 
+является базисом пространства $(L_{\mathbb{P}},S)$.
+<p id="Note14.2"><b>Замечание 14.2:</b><br>
+Процесс описанный при доказательтсве следствия 14.3 называется процессом ортоганализации.<br>
+Пусть дана ЛНЗ система векторов $\alpha_1,\ldots,\alpha_k$, тогда система $\beta_1,\ldots,\beta_k$ такая, что
+$$\forall{i}\in\overline{1,k}\left(\beta_i:=\alpha_i-\sum_{j=1}^{i-1}\beta_i\frac{S(\alpha_i,\beta_j)}{S(\beta_j,\beta_j)}\right)$$
+является ЛНЗ, ортогональной и эквивалентной системе $\alpha_1,\ldots,\alpha_k$. 
+<p id="Definition14.6"><b>Определение 14.6:</b><br>
+Вектор $\alpha\in(L_{\mathbb{P}},S)$ называется нормированным, если $\|\alpha\|=1$.<br>
+Ортогональная система нормированных векторов называется ортонормированной.
+<p id="Note14.3"><b>Замечание 14.3:</b><br>
+Так как $\|\theta\|=0\neq1$, то ортонормированная система не содержит нулевых векторов, следовательно, 
+по п. 2 <a href="./discrete_math14.1.html#Statement14.3">утверждения 14.3</a> любая ортонормированная система ЛНЗ. 
+<p id="Theorem14.2"><b>Теорема 14.2:</b><br>
+Для любой линейно независимой конечной системы векторов евклидова пространства $(L_{\mathbb{P}},S)$ 
+существует эквивалентная ей равномощная ортонормированная система векторов.
+<p><b>Доказательство:</b><br><br>
+Пусть $\vec{\alpha}:=(\alpha_i,\ldots,\alpha_k)$ - ЛНЗ система векторов, тогда по <a href="./discrete_math14.1.html#Theorem14.1">теореме 14.1</a> 
+существует эквиваленная ей ортогональная ЛНЗ система векторов $\vec{\beta}:=(\beta_1,\ldots,\beta_k)$. Тогда 
+$$
+\exists\gamma_1,\ldots,\gamma_k\in(L_{\mathbb{P}},S):\forall{i}\in\overline{1,k}\left(\gamma_i:=\frac{\beta_i}{\|\beta_i\|}\right)\Rightarrow
+\Rightarrow\forall{i}\in\overline{1,k}\left(\|\gamma_i\|=\sqrt{S(\gamma_i,\gamma_i)}=
+\sqrt{S\biggl(\frac1{\|\beta_i\|}\beta_i,\frac1{\|\beta_i\|}\beta_i}\biggr)=\frac1{\|\beta_i\|}\sqrt{S(\beta_i,\beta_i)}=1\right).
+$$
+Таким образом, ортонормированая система $\gamma_1,\ldots,\gamma_k$ эквивалентна $\vec{\beta}$, а, следовательно, эквивалентна и системе $\vec{\alpha}$.
+<p id="Corollary14.3"><b>Следствие 14.3:</b><br>
+В любом конечномерном евклидовом пространстве существует ортонормированный базис.
+<p><b>Доказательство:</b><br><br>
+Следует из <a href="./discrete_math14.1.html#Corollary14.1">следствия 14.1</a> и теоремы 14.2.
+<p id="Corollary14.4"><b>Следствие 14.4:</b><br>
+В любом конечномерном евклидовом пространстве любая ортонормированная система векторов может быть дополнена до ортонормированного базиса.
+<p><b>Доказательство:</b><br><br>
+Следует из следствия 14.2 и теоремы 14.2.
+
+<br><br>
+<a href="discrete_math13.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.3.html">next</a>
+</body>
+</html>

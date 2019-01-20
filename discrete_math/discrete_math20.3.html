@@ -1,0 +1,336 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 20.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math20.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.1.html">next</a>
+<br>
+
+<h4 id="20.3">20.3 Кратнотранзитивные группы подстановок.</h4>
+
+<p id="Definition20.7"><b>Опеределение 20.7:</b><br>
+Пусть $k\in\mathbb{N}$ $k\leq|\Omega|$.<br>
+Группа подстановок $G&lt;S(\Omega)$ называется $k$-транзитивной, если для любой пары наборов $k$ различных элементов 
+$(\alpha_1,\dots,\alpha_k),(\beta_1,\ldots,\beta_k)\in\Omega^k$ существует подстановка $g\in{G}$ такая, 
+что для любого $i\in\overline{1,k}$ $g(\alpha_i)=\beta_i$.<br>
+Группа подстановок $G&lt;S(\Omega)$ называется точно $k$-транзитивной, если для любой пары наборов $k$ различных элементов 
+$(\alpha_1,\dots,\alpha_k),(\beta_1,\ldots,\beta_k)\in\Omega^k$ существует единственная подстановка $g\in{G}$ такая, 
+что для любого $i\in\overline{1,n}$ $g(\alpha_i)=\beta_i$.
+<p id="Note20.6"><b>Замечание 20.6:</b><br>
+<ol>
+<li>Группа $G$ $1$-транзитивна тогда и только тогда, когда она транзитивна.</li>
+<li>Группа $G$ точно $1$-транзитивна тогда и только тогда, когда она регулярна.</li>
+<li>Группа $S_n$ точно $n$-транзитивна.</li>
+<li>Группа $A_n$ точно $(n-2)$-транзитивна.<br>
+Действительно, для любых двух наборов из $n-2$ различных элементов $\alpha:=(\alpha_1,\ldots,\alpha_{n-2})$, 
+$\beta:=(\beta_1,\ldots,\beta_{n-2})$ в $S_n$ существует ровно две постановки переводящие $\alpha$ в $\beta$. 
+При этом четности этих подстановок отличается на единицу, то есть одна из них принадлежит $A_n$, а другая нет. 
+Следовательно, существует ровно одна подстановка из $A_n$ переводящая $\alpha$ в $\beta$.
+</li>
+</ol>
+<p id="Theorem20.3"><b>Теорема 20.3:</b><br>
+Пусть $k\geq2$, $G&lt;S(\Omega)$, тогда $G$ - (точно) $k$-транзитивна тогда и только тогда, когда
+<ol>
+<li>группа $G$ транзитивна,</li>
+<li>существует $\alpha\in\Omega$ такой, что $G_{\alpha}$ - (точно) $(k-1)$-транзитивна как группа подстановок на множестве $\Omega\backslash\{\alpha\}$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Если $(\alpha_1,\ldots,\alpha_{k-1}),(\beta_1,\ldots,\beta_{k-1})\in(\Omega\backslash\{\alpha\})^{k-1}$ наборы 
+из $k-1$ различных элементов множества $\Omega\backslash\{\alpha\}$, то 
+$(\alpha_1,\ldots,\alpha_{k-1},\alpha),(\beta_1,\ldots,\beta_{k-1},\alpha)\in\Omega^k$ наборы $k$ различных элементов множества $\Omega$. 
+Тогда если группа $G&lt;S(\Omega)$ (точно) $k$-кратнотранзитивна, то существует (единственная) подстановка $g\in{G}$ такая, 
+что для любого $i\in\overline{1,k-1}$ $g(\alpha_i)=\beta_i$ и $g(\alpha)=\alpha$. Тогда $g\in{G}_{\alpha}$ и $G_{\alpha}$ - 
+(точно) $(k-1)$-кратнотранзитивна как группа подстановок на множестве $\Omega\backslash\{\alpha\}$.<br>
+$\Leftarrow)$ Пусть $(\alpha_1,\ldots,\alpha_k),(\beta_1,\ldots,\beta_k)\in\Omega^k$ наборы из $k$ различных элементов множества $\Omega$.
+<ol>
+<li>Пусть $G$ - транзитивна, тогда 
+$$\exists{g}_1,g_2\in{G}:(g_1(\alpha_1)=g_2(\beta_1)=\alpha\,\wedge\,\forall{i}\in\overline{2,k}(g_1(\alpha_i)=\alpha'_i\,\wedge\,g_2(\beta_i)=\beta'_i)).$$
+Так как $G_{\alpha}$ $(k-1)$-транзитивна, как группа подстановок на множестве $\Omega\backslash\{\alpha\}$, то
+$$
+\exists{g}_3\in{G}:(g_3(\alpha)=\alpha\,\wedge\,\forall{i}\in\overline{2,k}(g_3(\alpha_i)=\beta_i))\Rightarrow
+\exists{h}:=g_1g_3g_2^{-1}\in{G}:\forall{i}\in\overline{1,k}(h(\alpha_i)=\beta_i).
+$$
+</li>
+<li>Докажем от противного, что если $G_{\alpha}$ точно $(k-1)$-транзитивна как группа подстановок на множестве $\Omega\backslash\{\alpha\}$, 
+то группа $G&lt;S(\Omega)$ - точно $k$-транзитивна. Предположим, что существуют различные $g_4,g_5\in{G}$ такие, 
+что для любого $i\in\overline{1,k}$ $g_4(\alpha_i)=g_5(\alpha_i)=\beta_i$. Тогда 
+$$g_1^{-1}g_4g_2(\alpha)=g_4g_2(\alpha_1)=g_2(\beta_1)=\alpha,$$ 
+то есть подстановку $g_1^{-1}g_4g_2$ (выкинув из нее единичный цикл $(\alpha)$) можно рассматривать как элемент $G_{\alpha}$ такой, что
+$$\forall{i}\in\overline{2,k}(g_1^{-1}g_4g_2(\alpha'_i)=g_4g_2(\alpha_i)=g_2(\beta_i)=\beta'_i).$$
+Аналогично можно показать, что $g_1^{-1}g_5g_2\in{G}_{\alpha}$ и для любого $i\in\overline{2,k}$ $g_1^{-1}g_5g_2(\alpha'_i)=\beta'_i$. 
+Таким образом, две подстановки из $G_{\alpha}$ переводят набор $(\alpha'_2,\ldots,\alpha'_k)$ в набор
+$(\beta'_2,\ldots,\beta'_k)$ что противоречит точной $(k-1)$-транзитивности группы $G_{\alpha}$.
+</li>
+</ol>
+<p id="Statement20.6"><b>Утверждение 20.6:</b><br>
+Пусть $|\Omega|=n$, $G&lt;S(\Omega)$, $G$ - $k$-транзитивна, тогда
+<ol>
+<li>$n(n-1)\cdots(n-k+1)\bigl||G|$,</li>
+<li>$|G|=n(n-1)\cdots(n-k+1)$ тогда и только тогда, когда $G$ точно $k$-транзитивна.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $\alpha_1,\ldots,\alpha_k$ - различные элементы множетсва $\Omega$. По <a href="./discrete_math20.1.html#Theorem20.1">теореме 20.1</a> 
+(лемма Бернсайда) и по <a discrete_math20.1.html#Theorem20.3>теореме 20.3</a>
+$$
+|G|=|G(\alpha_1)||G_{\alpha_1}|=n|G_{\alpha_1}(\alpha_2)||G_{\alpha_1,\alpha_2}|=\cdots
+=n(n-1)\cdots(n-k+1)|G_{\alpha_1,\ldots,\alpha_k}|\Rightarrow{n}(n-1)\cdots(n-k+1)\bigl||G|.
+$$
+</li>
+<li> 
+$\Rightarrow)$
+Докажем индукцией по $k$.
+<ol type="I">
+<li>При $k=1$ $|G|=n=|\Omega|$, тогда по п. 3 <a href="./discrete_math20.1.html#Theorem20.2">теоремы 20.2</a>. группа $G$ - регулярна, 
+то есть точно $1$-транзитивна.
+</li>
+<li>Для любого  $m\geq1$ докажем, что из справедливости утверждения при $k\in\overline{1,m}$ следует его справедливость при $k=m+1$.<br>
+Так как $G$ $k$-транзитивна, то по теореме 20.3 она транзитивна, тогда по <a href="./discrete_math20.1.html#Corollary20.1">следствию 20.1</a>
+$$|G_{\alpha}|=\frac{|G|}{n}=(n-1)(n-2)\cdots(n-1-(k-1)+1).$$
+Так как $G$ $k$-транзитивна, то по теореме 20.3 $G_{\alpha}$ $(k-1)$-транзитивна как группа подстановок на множетсве $\Omega\backslash\{\alpha\}$. 
+Тогда по предположению индукции $G_{\alpha}$ точно $(k-1)$-транзитивна, следовательно, по теореме 20.3 $G$ точно $k$-транзитивна. 
+</li>
+</ol>
+$\Leftarrow)$  Если $G$ точно $k$-транзитивна, то для любого набора из $k$ различных элементов $\alpha_1,\ldots,\alpha_k\in\Omega$ 
+существует единственная подстановка $g\in{G}$ такая, что для любого $i\in\overline{1,k}$ 
+$g(\alpha_i)=\alpha_i$, то есть $|G_{\alpha_1,\ldots,\alpha_k}|=1$. Тогда из доказательтсва пункта 1 следует, что $|G|=n(n-1)\cdots(n-k+1)$.
+</li>
+</ol>
+<p id="Corollary20.2"><b>Следствие 20.2:</b><br>
+Группа $G$ точно $k$-транзитивна тогда и только тогда, когда 
+<ol>
+<li>группа $G$ транзитивна,</li>
+<li>для любых различных $\alpha_1,\ldots,\alpha_k\in\Omega$ $|G_{\alpha_1,\ldots,\alpha_k}|=1$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Следует из <a href="./discrete_math20.3.html#Theorem20.3">теоремы 20.3</a> и утверждения 20.6.
+<p id="Example20.4"><b>Пример 20.4:</b><br>
+<ol>
+<li>
+Пусть $P:=GF(q)$, $n\in\mathbb{N}$, для любого $\alpha\in{P}^{(n)}$, $\psi\in\mathcal{L}\bigl(P_P^{(n)}\bigr)^*$ обозначим 
+$$A_{\psi,\alpha}:P^{(n)}\to{P}^{(n)}:\forall\beta\in{P}^{(n)}(A_{\psi,\alpha}(\beta)=\psi(\beta)+\alpha).$$
+Для любых $\psi\in\mathcal{L}\bigl(P_P^{(n)}\bigr)^*$, $\alpha\in{P^{(n)}}$ отобаржение $A_{\psi,\alpha}$ биективно. Действительно, 
+$$
+\beta_1,\beta_2\in{P}^{(n)}:A_{\psi,\alpha}(\beta_1)=A_{\psi,\alpha}(\beta_2)\Rightarrow{A}_{\psi,\alpha}(\beta_1-\beta_2)=
+\theta\Rightarrow\beta_1=\beta_2,
+$$
+то есть для любых $\psi\in\mathcal{L}\bigl(P_P^{(n)}\bigr)^*$, $\alpha\in{P}^{(n)}$ $A_{\psi,\alpha}\in{S}(P^{(n)})$.
+Обозначим
+$$AGL(n,q):=\{A_{\psi,\alpha}\mid\psi\in\mathcal{L}\bigl(P^{(n)}\bigr)^*,\alpha\in{P}^{(n)}\},$$
+тогда множество постановок $AGL(n,q)$ замкнуто относительно композиции, $A_{\varepsilon,\theta}$ является нейтральным в группоиде $(AGL(n,q);\circ)$, 
+подстановка $A_{\psi^{-1},-\psi^{-1}(\alpha)}\in{A}GL(n,q)$ обратна к $A_{\psi,\alpha}\in{A}GL(n,q)$. Таким образом, $AGL(n,q)&lt;S(P^{(n)})$, 
+группа $AGL(n,q)$ называется полной афинной группой преобразований пространства $P_P^{(n)}$.<br>
+Для любых $\beta,\gamma\in{P}^{(n)}$ $A_{\varepsilon,\gamma-\beta}(\beta)=\gamma$, то есть группа $AGL(n,q)$ транзитивна. 
+При этом так как
+$$A_{\psi,\alpha}\in{A}GL(n,q)_{\theta}\Leftrightarrow\psi(\theta)+\alpha=\theta\Leftrightarrow\alpha=\theta,$$
+то 
+$$AGL(n,q)_{\theta}=\{A_{\psi,\theta}\mid\psi\in\mathcal{L}\bigl(P_P^{(n)}\bigr)^*\}.$$
+По <a href="./discrete_math20.1.html#Statement20.2">утверждению 20.2</a> $GL(n,q):=AGL(n,q)_{\theta}&lt;AGL(n,q)$, 
+группа $GL(n,q)$ называется полной линейной группой преобразований пространства $P_P^{(n)}$.<br>
+Пусть $\alpha_1,\beta_1\in{P}^{(n)}\backslash\{\theta\}$, тогда по п. 3 <a href="./discrete_math11.3.html#Theorem11.9">теоремы 11.9</a>
+существуют базисы $\vec{\alpha}:=(\alpha_1,\alpha_2,\ldots,\alpha_n$ и $\vec{\beta}:=(\beta_1,\beta_2,\ldots,\beta_n)$ пространства $P_P^{(n)}$. 
+Тогда по утверждению 12.1 существует $\psi\in\mathcal{L}(P_P^{(n)})$ такое, что для любого $i\in\overline{1,n}$ $\psi(\alpha_i)=\beta_i$ и 
+так как $\vec{\alpha}$, $\vec{\beta}$ - базисы, то $\psi\in\mathcal{L}\bigl(P_P^{(n)}\bigr)^*$. Таким образом, 
+$A_{\psi,\theta}\in{G}L(n,q)$ и $A_{\psi,\theta}(\alpha_1)=\beta_1$, то есть группа $GL(n,q)$ - транзитивна как подгруппа группы 
+$S(P_P^{(n)}\backslash\{\theta\})$. Тогда по <a href="./discrete_math20.3.html#Theorem20.3">теореме 20.3</a> группа $AGL(n,q)$ - $2$-транзитивна.<br>
+Так как 
+$$AGL(1,q)=\left\{\left.\binom{x}{ax+b}\right|a\in{P}^*,b\in{P}\right\}\Rightarrow|AGL(1,q)|=q(q-1),$$
+то по п. 2 <a href="./discrete_math20.3.html#Statement20.6">утверждения 20.6</a> группа $AGL(1,q)$ точно $2$-транзитивна. 
+При этом доказано, что других точно $2$-транзитивных групп не существует.
+</li>
+<li>Проективные линейные группы являются точно $3$-транзитивными (ГЕН т. 2 стр. 284 пример 7).</li>
+<li>Существуют как минимум две отличные от $S_n,A_n$ $4$-транзитивные группы обозначаемые $M_{11}$, $M_{23}$. 
+Существует одна и только одна отличная от $S_n,A_n$ точно $4$-транзитивная группа, это группа $M_{11}$.
+</li>
+<li>Существуют как минимум две отличные от $S_n,A_n$ $5$-транзитивные группы обозначаемые $M_{12}$, $M_{24}$. 
+Существует одна и только одна отличная от $S_n,A_n$ точно $5$-транзитивная группа, это группа $M_{12}$.<br>
+Группы $M_{11},M_{23},M_{12},M_{24}$ называются группами Матье, индекс в обозначении равен их порядку.
+</li>
+<li>В 1873 году М. Э. К. Жорданом было доказано, что  не существует точно $6$-транзитивных групп отличных от $S_n,A_n$.</li>
+<li>По завершении в 2004 году классификации конечных простых групп стало ясно, 
+что для любого $k\geq7$ $k$-транзитивных групп отличных от $S_n,A_n$ не существует.
+</li>
+</ol>
+
+<h4 id="20.4">20.4 Примитивные группы.</h4>
+
+<p id="Definition20.8"><b>Определение 20.8:</b><br>
+Подмножество $\Delta\subset\Omega$ называется блоком группы подстановок $G&lt;S(\Omega)$, 
+если для любой $g\in{G}$ $g(\Delta)=\Delta$ или $g(\Delta)\cap\Delta=\varnothing$.
+<p id="Note20.7"><b>Замечание 20.7:</b><br>
+Пусть $G&lt;S(\Omega)$, $\alpha\in\Omega$.
+<ol>
+<li>Блоки $\Omega$, $\varnothing$, $\{\alpha\}$ группы $G$ называются тривиальными.</li>
+<li>Фиксируем $g\in{G}$, тогда
+$$g(G(\alpha))=\{gh(\alpha)\mid{h}\in{G}\}=\{h(\alpha)\mid{h}\in{G}\}=G(\alpha),$$
+где предпоследнее равентсво в силу того, что для любой $h_1\in{G}$ $g(g^{-1}h_1)=h_1$. Таким образом, $G(\alpha)$ - блок группы $G$.
+</li>
+<li>Если $\Delta$ блок группы $G$, то для любой $g\in{G}$ $g(g(\Delta))=g(\Delta)$, то есть $g(\Delta)$ - блок группы $G$.</li>
+<li>Пусть $\Delta_1$, $\Delta_2$ блоки группы $G$, тогда
+<ul>
+<li>если $g\in{G}$ такая, что $g(\Delta_1)\cap\Delta_1=\varnothing$ или $g(\Delta_2)\cap\Delta_2=\varnothing$, 
+то $g(\Delta_1\cap\Delta_2)\cap(\Delta_1\cap\Delta_2)=\varnothing$,<br>
+</li>
+<li>если подстановка $g\in{G}$ такая, что $g(\Delta_1)=\Delta_1$ и $g(\Delta_2)=\Delta_2$, то $g(\Delta_1\cap\Delta_2)=\Delta_1\cap\Delta_2$, 
+так как для любого биективного отображения $f:A\to{B}$ и любых подмножеств $A_1,A_2\subset{A}$ верно $f(A_1\cap{A}_2)=f(A_1)\cap{f}(A_2)$.
+</li>
+</ul>
+Таким образом, $\Delta_1\cap\Delta_2$ - блок группы $G$.
+</li>
+</ol>
+<p id="Example20.5"><b>Пример 20.5:</b><br>
+Пусть $G:=\langle(1,2,3,4)\rangle$, $\Delta_1=\{1,3\}$, $\Delta_2=\{2,4\}$, 
+тогда для любого четного $k$ $g^k(\Delta_1)=\Delta_1$, $g^k(\Delta_2)=\Delta_2$, а для любого нечетного $k$ 
+$g^k(\Delta_1)\cap\Delta_1=g^k(\Delta_2)\cap\Delta_2=\varnothing$. Таким образом, $\Delta_1,\Delta_2$ блоки группы $G$.
+<p id="Definition20.9"><b>Определение 20.9:</b><br>
+Транзитивная группа подстановок называется примитивной, если она не имеет нетривиальных блоков в противном случае она называется импримитивной.
+<p id="Definition20.10"><b>Определение 20.10:</b><br>
+Система блоков $\Delta_1,\Delta_2,\ldots,\Delta_k$ импримитивной группы $G&lt;S(\Omega)$ называется полной 
+системой блоков сопряженной с блоком $\Delta_1$, если
+<ol>
+<li>$\Delta_1\cup\ldots\cup\Delta_k=\Omega$,</li>
+<li>$\forall{i},j\in\overline{1,k}(i\neq{j}\Rightarrow\Delta_i\cap\Delta_j=\varnothing)$,</li>
+<li>$\forall{i}\in\overline{1,k}\,\exists{g}_i\in{G}:\Delta_i=g_i(\Delta_1)$.</li>
+</ol>
+<p id="Statement20.7"><b>Утверждение 20.7:</b><br>
+Для любого непустого блока импримитивной группы подстановок существует полная система блоков сопряженная с этим блоком.
+<p><b>Доказательство:</b><br><br>
+Пусть $G=\{g_1,\ldots,g_N\}$, $\Delta$ - непустой блок $G$. Тогда для любого $i\in\overline{1,N}$ $g_i(\Delta)$ - блок $G$ и 
+для любого $j\in\overline{1,N}$ $g_j(\Delta)=g_jg_i^{-1}(g_i(\Delta))$, следовательно, либо $g_i(\Delta)=g_j(\Delta)$, 
+либо $g_j(\Delta)\cap{g}_i(\Delta)=\varnothing$.<br>
+Так как $G$ - импримитивна, то она по определению транзитивна, следовательно, 
+$$\forall\alpha\in\Omega\,\exists{g}\in{G}:\alpha\in{g}(\Delta)\Rightarrow\bigcup_{i=1}^Ng_i(\Delta)=\Omega,$$
+тогда можно получить искомую систему выкинув совпадающие блоки из системы $g_1(\Delta),\ldots,g_N(\Delta)$.
+<p id="Corollary20.3"><b>Следствие 20.3:</b><br>
+Пусть группа $G&lt;S(\Omega)$ импримитивна, $\Delta_1$ - блок $G$, тогда $|\Delta_1|\bigl|\Omega|$
+<p><b>Доказательство:</b><br><br>
+По утверждению 20.7 существует $\Delta_1,\ldots,\Delta_k$ - полная система блоков группы $G$ сопряженная с $\Delta_1$. 
+Так как подстановка - это биективное отображение, то
+$$
+\left(\forall{i}\in\overline{1,k}(|\Delta_1|=|\Delta_i|)\,\wedge\,\sum_{i=1}^k|\Delta_i|=|\Omega|\right)\Rightarrow|\Omega|=k|\Delta_1|
+$$
+<p id="Statement20.8"><b>Утверждение 20.8:</b><br>
+Пусть $\overline{\Omega}:=\{\Delta_1,\ldots,\Delta_k\}$ - полная система блоков импримитивной группы $G&lt;S(\Omega)$ порожденная блоком $\Delta_1$, 
+тогда отображение $\varphi:G\to{S}(\Omega)$ такое, что
+$$\forall{g}\in{G}\left(\varphi(g):=\begin{pmatrix}\Delta_1, & \ldots, & \Delta_k \\ g(\Delta_1), & \ldots, & g(\Delta_k)\end{pmatrix}\right)$$
+является гомоморфизмом.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем от противного, что $\varphi(g)\in{S}(\overline{\Omega})$. Предположим, что существуют $r,s,t\in\overline{1,k}$, $\alpha,\beta\in\Delta_r$, 
+$g\in{G}$ такие, что $s\neq{t}$, $g(\alpha)\in\Delta_s$, $g(\beta)\in\Delta_t$. 
+Из доказательства <a href="./discrete_math20.3.html#Statement20.7">утверждения 20.7</a> следует, что существует $h\in{G}$ такая, 
+что $h(\Delta_s)=\Delta_r$, тогда $g(\alpha),g(\beta)\in{h}g(\Delta_s)$ и $g(\beta)\notin\Delta_s$. 
+Таким образом, получено противоречие с тем, что $\Delta_s$ 
+блок группы $G$.
+</li>
+<li>Для любых $g,h\in{G}$ 
+$$
+\varphi(gh)=\begin{pmatrix}\Delta_1, & \ldots, & \Delta_k \\ gh(\Delta_1), & \ldots, & gh(\Delta_k)\end{pmatrix}=
+\begin{pmatrix}\Delta_1, & \ldots, & \Delta_k \\ g(\Delta_1), & \ldots, & g(\Delta_k)\end{pmatrix}
+\begin{pmatrix}\Delta_1, & \ldots, & \Delta_k \\ h(\Delta_1), & \ldots, & h(\Delta_k)\end{pmatrix}=\varphi(g)\varphi(h).
+$$
+</ol>
+<p id="Statement20.9"><b>Утверждение 20.9:</b><br>
+Если группа подстановок $2$-транзитивна, то она примитивна.
+<p><b>Доказательство:</b><br><br>
+Докажем от противного.
+Предположим группа $G&lt;S(\Omega)$ содержит нетривиальный блок $\Delta\subset\Omega$. Тогда существуют $\alpha,\beta\in\Delta$ $\alpha\neq\beta$, 
+$\gamma\in\Omega\backslash\Delta$. Так как группа $G$ $2$-транзитивна, то 
+$$
+\exists{g}\in{G}:(g(\alpha)=\beta\,\wedge\,g(\beta)=\gamma)\Rightarrow(g(\alpha)\in{g}(\Delta)\cap\Delta\,\wedge\,g(\beta)\notin\Delta)\Rightarrow
+(g(\Delta)\cap\Delta\neq\varnothing\,\wedge\,g(\Delta)\neq\Delta),
+$$
+следовательно, $\Delta$ не блок, то есть получено противоречие.
+<p id="Theorem20.4"><b>Теорема 20.4:</b><br>
+Пусть группа $G&lt;S(\Omega)$ транзитивна, $\alpha\in\Omega$, тогда группа $G$ примитивна тогда и только тогда, 
+когда не существует подгруппы $H&lt;G$ такой, что $G_{\alpha}&lt;H$, $G_{\alpha}\neq{H}$, $H\neq{G}$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем от противного. Предположим, что существует собственная подгруппа $H&lt;G$ такая, что $G_{\alpha}$ ее собственная подгруппа. 
+Обозначим $\Delta:=H(\alpha)$ и докажем, что $\Delta$ нетривиальный блок группы$G$.
+<ol>
+ <li>Пусть существует $g\in{G}$ такая, что существует $\beta\in{g}(\Delta)\cap\Delta$, тогда 
+$$
+ \exists{h}_1,h_2\in{H}:\beta=h_1(\alpha)=g(h_2(\alpha))=h_2g(\alpha)\Rightarrow\alpha=h_2gh_1^{-1}(\alpha)\Rightarrow
+{h}_2gh_1^{-1}\in{G}_{\alpha}&lt;H\Rightarrow{g}\in{H}\Rightarrow{g}(\Delta)=g(H(\alpha))=H(\alpha)=\Delta.
+$$
+ Таким образом, для любой $g\in{G}$ если пересечение $g(\Delta)\cap\Delta$ не пусто, то $g(\Delta)=\Delta$, то есть $\Delta$ - блок группы $G$.
+</li>
+<li>Так как по предположению $H\neq{G}_{\alpha}$, то
+ $$\exists{h}\in{H}\backslash{G}_{\alpha}\Rightarrow{h}(\alpha)=\gamma\neq\alpha\Rightarrow\alpha,\gamma\in\Delta,$$
+ следовательно, блок $\Delta$ содержит как минимум два различных элемента.
+</li>
+<li>Предположим, что $\Delta=\Omega$, тогда так как группа $G$ транзитивна и $G_{\alpha}&lt;H&lt;G$, то $H(\alpha)=G(\alpha)$ и 
+$H_{\alpha}=G_{\alpha}$ и по <a href="./discrete_math20.1.html#Theorem20.1">теореме 20.1</a> (лемма Бернсайда)
+ $$|H|=|H_{\alpha}||H(\alpha)|=|G_{\alpha}||G(\alpha)|=|G|\Rightarrow{H}={G},$$
+ получено противоречие, следовательно, $\Delta\neq\Omega$.
+</li>
+</ol>
+ Таким образом, из пунктов 1-3 следует, что $\Delta$ - нетривиальный блок группы $G$, то есть группа $G$ импримитивна, что противоречит условию.<br>
+$\Leftarrow)$ Докажем от противного. Предположим, что $\Delta$ нетривиальный блок группы $G$. 
+Тогда ввиду <a href="./discrete_math20.3.html#Statement20.7">утверждения 20.7</a> найдется нетривиальный блок содержащий $\alpha$, 
+то есть можем считать, что $\alpha\in\Delta$. Обозначим
+$$H:=\{g\in{G}\mid{g}(\Delta)=\Delta\}.$$
+<ol>
+<li>Так как для любых $g,h\in{H}$ $gh(\Delta)=h(g(\Delta))=h(\Delta)=\Delta$, то $H&lt;G$.<br>
+Так как $\Delta$ блок, то 
+$$\forall{g}\in{G}_{\alpha}(g(\alpha)=\alpha\in\Delta)\Rightarrow\forall{g}\in{G}_{\alpha}(g(\Delta)=\Delta)\Rightarrow{G}_{\alpha}\subset{H},$$  
+следовательно, по <a href="./discrete_math20.1.html#Statement20.5">утверждению 20.5</a> $G_{\alpha}&lt;H$.
+</li>
+<li>Так как $\Delta$ нетривиальный блок, то существуют $\alpha\in\Delta$ и $\beta\in{G}\backslash\Delta$. 
+Тогда по транзитивности $G$ существует $g\in{G}$ такая, что $g(\alpha)=\beta$, следовательн, $g\notin{H}$, то есть $G\neq{H}$.
+<li>Так как $|\Delta|&gt;1$ и группа $G$ транзитивна, то
+$$
+\exists\alpha,\beta\in\Delta,g\in{G}:(\alpha\neq\beta\,\wedge\,g(\alpha)=\beta)\Rightarrow
+(g\notin{G}_{\alpha}\,\wedge\,g(\Delta)=\Delta)\Rightarrow(g\notin{G}_{\alpha}\,\wedge\,g\in{H})\Rightarrow{G}_{\alpha}\neq{H}.
+$$
+</li>
+</ol>
+Из пунктов 1-3 следует, что $H$ собственная подгруппа группы $G$ такая, что $G_{\alpha}$ является ее собственной подгруппой, что противоречит условию.
+<p id="Theorem20.5"><b>Теорема 20.5: (Камил Мари Эдмон Жордан - 1871 г.)</b><br>
+Пусть группа $G&lt;S(\Omega)$ примитивна и содержит траспозицию, тогда $G=S(\Omega)$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\alpha\in\Omega$ такой, что $M:=\{(\alpha,\beta_1),\ldots,(\alpha,\beta_k)\}$ множество циклов длины два с мобильным элементом $\alpha$ не пусто. 
+Обозначим $H:=\langle{M}\rangle$, тогда $G_{\alpha}&lt;\langle{G}_{\alpha},H\rangle&lt;G$, причем 
+$G_{\alpha}\neq\langle{G}_{\alpha},H\rangle$, тогда по теореме 20.4 $G=\langle{G}_{\alpha},H\rangle$.<br>
+Фиксируем $g\in{G}_{\alpha}$, $i\in\overline{1,k}$, тогда по <a href="./discrete_math9.4.html#Lemma9.1">лемме 9.1</a>
+$$
+g^{-1}(\alpha,\beta_i)g=(g(\alpha),g(\beta_i))=(\alpha,g(\beta_i))\in{M}\subset{H}\Rightarrow
+(\alpha,\beta_i)g=g(\alpha,g(\beta_i))\Rightarrow{G}={G}_{\alpha}H\Rightarrow
+\forall{h}\in{G}\,\exists{g}\in{G}_{\alpha},i_1,\ldots,i_s\in\overline{1,k}:h=g(\alpha,\beta_{i_1})\cdots(\alpha,\beta_{i_s}).
+$$
+Таким образом, 
+$$\forall{h}\in{G}\,\exists{j}\in\overline{1,k}:h(\alpha)=\beta_j\Rightarrow{G}(\alpha)\subset\{\alpha,\beta_1,\ldots,\beta_k\}.$$
+Так как группа $G$ транзитивна, то $G(\alpha)=\Omega=\{\alpha,\beta_1,\ldots,\beta_k\}$, 
+тогда по п. 2 <a href="./discrete_math9.4.html#Theorem9.14">теоремы 9.14</a> $H=\langle{M}\rangle=S(\Omega)$
+
+<br><br>
+<a href="discrete_math20.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.1.html">next</a>
+</body>
+</html>

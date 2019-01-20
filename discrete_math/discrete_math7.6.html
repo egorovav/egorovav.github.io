@@ -1,0 +1,280 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 7.6</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math7.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math8.1.html">next</a>
+<br>
+
+<h4 id="7.6">7.6 Корни многочлена над полем. Производная многочлена.</h4>
+<p id="Definition7.14"><b>Определение 7.14:</b><br>
+Кратностью корня $\alpha\in{P}$ многочлена $f(x)\in{P}[x]$ называется число $k\in\mathbb{N}$ такое, что $(x-\alpha)^k|f(x)$ и 
+$(x-\alpha)^{k+1}\nmid{f}(x)$.<br>
+Если кратность корня равна 1, то корень называется простым, если кратность больше единицы, то корень называется крантным.
+<br><br>
+Из определения следует, что кратность корня $\alpha$  многочлена $f(x)$ - это степень многочлнена $x-\alpha$ в каноническом разложении многочлена $f(x)$.
+<p id="Theorem7.13"><b>Теорема 7.13:</b><br>
+Если многочлен $f(x)\in{P}[x]$ такой, что $\deg{(f(x))}=n>0$, $\alpha_1,\ldots,\alpha_t$ - попарноразличные корни многочлена $f(x)$ кратностей 
+$k_1,\ldots,k_t$ соответственно, то $k_1+\cdots+k_t\leq{n}$
+<p><b>Доказательство:</b><br><br>
+Так как 
+$$\forall{i}\in\overline{1,t}((x-\alpha)^{k_i}|f(x)\,\wedge\,\forall{i},j\in\overline{1,t}(i\neq{j}\Rightarrow
+\left((x-\alpha_i)^{k_i},(x-\alpha_j)^{k_j}\right)=e),$$
+то по п. 3 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a> и по <a href="./discrete_math7.4.html#Lemma7.5">леммме 7.5</a>
+$$\left.\prod_{i=1}^t(x-\alpha_i)^{k_i}\right|f(x)\Rightarrow{k}_1+\cdots+k_t\leq\deg{(f(x))}=n.$$
+<p id="Note7.4"><b>Замечание 7.4:</b><br>
+Для произвольного кольца $R$ с нулем $\theta$ введем обозначение, для любого $a\in{R}$ и любого $k\in\mathbb{N}$ положим $k\cdot{a}\sim{k}a:=\sum_{i=1}^ka$. 
+Положим так же $0\cdot{a}:=\theta$.<br>
+Очевидно, что для любых $k_1,k_2\in\mathbb{N}_0$ и $a,b\in{R}$.
+<ol>
+<li>$(k_1+k_2)a=\sum_{i=1}^{k_1+k_2}a=\sum_{i=1}^{k_1}a+\sum_{i=1}^{k_2}a=k_1a+k_2a$,</li>
+<li>$(k_1k_2)a=\sum_{i=1}^{k_1k_2}a=\sum_{i=1}^{k_1}\sum_{j=1}^{k_2}a=\sum_{i=1}^{k_1}(k_2a)=k_1(k_2a)$,</li>
+<li>$k_1(a+b)=\sum_{i=1}^{k_1}(a+b)=\sum_{i=1}^{k_1}a+\sum_{i=1}^{k_1}b=k_1a+k_1b$,</li>
+<li>$k_1(ab)=\sum_{i=1}^{k_1}(ab)=\left(\sum_{i=1}^{k_1}a\right)b=a\sum_{i=1}^{k_1}b=(k_1a)b=a(k_1b)$.</li>
+</ol>
+<p id="Definition7.15:"><b>Определение 7.15:</b><br>
+Производной многочлена $a(x)=\sum_{k=0}^n(a_kx^k)\in{P}[x]$ называется многочлен $a'(x)=\sum_{k=1}^n(ka_kx^{k-1})\in{P}[x]$.
+<p id="Theorem7.14"><b>Теорема 7.14:</b><br>
+Для любых $a(x),b(x)\in{P}[x]$
+<ol>
+<li>$(a(x)+b(x))'=a'(x)+b'(x)$,</li>
+<li>$(a(x)b(x))'=a'(x)b(x)+a(x)b'(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+$$
+(a(x)+b(x))'=\left(\sum_{i\geq0}(a_i+b_i)x^i\right)'=\sum_{i\geq0}i(a_i+b_i)x^{i-1}=\sum_{i\geq0}ia_ix^{i-1}+\sum_{i\geq0}ib_ix^{i-1}=a'(x)+b'(x)
+$$
+<li>Если $a(x)=0$ или $b(x)=0$, то равенство очевидно, так как производная нулевого многочлена - нулевой многочлен. Пусть $a(x)\neq0$ и $b(x)\neq0$. 
+Положим $b(x)=\sum_{i=1}^mb_ix^i$.
+<ol type="a">
+<li>Пусть $a(x)=a\in{P}$, тогда
+$$
+(a(x)b(x))'=\left(a\sum_{i=0}^mb_ix^i\right)'=\left(\sum_{i=0}^mab_ix^i\right)'=\sum_{i=1}^miab_ix^{i-1}=ab'(x)=a(x)b'(x)+a'(x)b(x),
+$$
+где последнее равенство верно в силу того, что $a'(x)=0$.
+</li>
+<li>Пусть $k\in\mathbb{N}$ $a(x)=ax^k$, то есть у многочлена $a(x)$ только один коэффициент не равен нулю и этот коэффициент не нулевой. Тогда 
+$$
+(a(x)b(x))'=\left(ax_k\sum_{i=0}^mb_ix^i\right)'=\left(\sum_{i=0}^mab_ix^{k+i}\right)'=\sum_{i=0}^m(k+i)(ab_i)x^{k+i-1}=
+\sum_{i=0}^m(k(ab_i)+i(ab_i))x^{k+i-1}=\\=\sum_{i=0}^mk(ab_i)x^{k+i-1}+\sum_{i=1}^mi(ab_i)x^{k+i-1}=
+kax^{k-1}\sum_{i=0}^mb_ix^i+ax^k\sum_{i=1}^mib_ix^{i-1}=a'(x)b(x)+a(x)b'(x)
+$$
+</li>
+<li>Пусть $a(x)=\sum_{j=0}^na_jx^j$ - произвольный многочлен, тогда по доказанному
+$$
+(a(x)b(x))'=\left(\left(\sum_{j=0}^na_jx^j\right)b(x)\right)'=\sum_{j=0}^n(a_jx^jb(x))'=\sum_{j=0}^n(a_jx^jb'(x)+(a_jx^j)'b(x))=
+\sum_{j=0}^n(a_jx^j)b'(x)+\sum_{j=0}(a_jx^j)'b(x)=\\=\left(\sum_{j=0}^na_jx^j\right)b'(x)+\left(\sum_{j=0}^na_jx^j\right)'b(x)=a(x)b'(x)+a'(x)b(x)
+$$
+</ol>
+</ol>
+<p id="Corollary7.6"><b>Следствия 7.6:</b><br>
+Для любых $a_1(x),\ldots,a_n(x)\in{P}[x]$
+$$(a_1(x)\cdots{a}_n(x))'=\sum_{i=1}^n(a_1(x)\cdots{a}_{i-1}(x)a'_i(x)a_{i+1}(x)\cdots{a}_n(x))$$
+<p><b>Доказательство:</b><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ следует из теоремы 7.14.</li>
+<li>Пусть для любого $k\geq2$ утверждение верно для всех $n\in\overline{2,k}$, докажем, что оно верно для $n=k+1$.<br>
+По теореме 7.14 и по предположению индукции
+$$
+(a_1(x)\cdots{a}_k(x)a_{k+1}(x))'=(a_1(x)\cdots{a}_k(x))a'_{k+1}(x)+(a_1(x)\cdots{a}_k(x))'a_{k+1}(x)=a_1(x)\cdots{a}_k(x)a'_{k+1}(x)+
+\sum_{i=1}^k(a_1(x)\cdots{a}_{i-1}(x)a'_i(x)a_{i+1}(x)\cdots{a}_{k+1}(x))=\\=\sum_{i=1}^{k+1}a_1(x)\cdots{a}_{i-1}(x)a'_i(x)a_{i+1}(x)\cdots{a}_{k+1}(x)
+$$
+</ol>
+<p id="Corollary7.7"><b>Следствие 7.7:</b><br><br>
+$$\forall{a}(x)\in{P}[x]((a^k(x))'=ka'(x)a^{k-1}(x))$$
+<p><b>Доказательство:</b><br><br>
+Следует из следствия 7.6 при $a_1(x)=\cdots=a_k(x)=a(x)$
+$$(a^k(x))'=\sum_{i=1}^k(a^{k-1}(x)a'(x))=ka^{k-1}(x)a'(x).$$
+<p id="Theorem7.15"><b>Теорема 7.15:</b><br>
+Если $f(x)\in{P}[x]\backslash\{0\}$, $\alpha\in{P}$, $f(\alpha)=0$, то $\alpha$ - простой корень многочлена $f(x)$ тогда и только тогда, 
+когда $f'(\alpha)\neq0$.
+<p><b>Доказательство:</b><br><br>
+Так как $f(\alpha)=0$, то существует $k\in\mathbb{N}$, $g(x)\in{P}[x]$ такие, что $f(x)=(x-\alpha)^kg(x)$ и $g(\alpha)\neq0$. Тогда
+$$
+f'(x)=(x-\alpha)^kg'(x)+\left((x-\alpha)^k\right)'g(x)=(x-\alpha)^kg'(x)+k(x-\alpha)^{k-1}g(x),
+$$
+следовательно, $f'(\alpha)=0$ тогда и только тогда, когда $k&gt;1$, то есть тогда и только тогда, когда $\alpha$ - кратный корень.
+<p id="Corollary7.8"><b>Следствие 7.8:</b><br>
+Множество кратных корней многочлена $f(x)$ совпадает с множеством корней многочлена $d(x)=(f(x),f'(x))$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\alpha$ кратный корень многочлена $f(x)$, тогда по теореме 7.15, 
+$$f'(\alpha)=0\Rightarrow((x-\alpha)|f(x)\,\wedge(x-\alpha)|f'(x))\Rightarrow(x-\alpha)|d(x)\Rightarrow{d}(\alpha)=0,$$
+то есть $\alpha$ - корень многочлена $d(x)$.<br>
+С другой стороны, если $\alpha$ корень многочлена $d(x)$, тогда 
+$$
+(x-\alpha)|d(x)\Rightarrow((x-\alpha)|f(x)\,\wedge\,(x-\alpha)|f'(x))\Rightarrow(f(\alpha)=0\,\wedge\,f'(\alpha)=0),
+$$
+следовательно, $\alpha$ - корень многочлена $f(x)$ и так как $f'(\alpha)=0$, то по теореме 7.15 $\alpha$ - не является простым корнем многочлена $f(x)$, 
+то есть $\alpha$ - это кратный корень многочлена $f(x)$. 
+<p id="Corollary7.9"><b>Следствие 7.9:</b><br>
+Если многочлен $f(x)\in{P}[x]$ раскладывается над $P$ на линейные множители, то $f(x)$ не имеет кратных корней тогда и только тогда, когда $(f(x),f'(x))=e$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $d(x):=(f(x),f'(x))$, тогда если $f(x)$ раскладывается в произведение линейных множителей, 
+то $d(x)$ раскладывается в произведение линейных множителей или $d(x)=e$.<br>
+$\Rightarrow)$ Если $f(x)$ не имеет кратных корней, по следствию 7.8 многочлен $d(x)$ не имеет корней, следовательно, по 
+<a href="./discrete_math7.2.html#Theorem7.3">теореме 7.3</a>  не имеет линейных делителей, то есть $d(x)=e$.<br>
+$\Leftarrow)$ Если $d(x)=e$, то $d(x)$ не имеет корней, следовательно, $f(x)$ не имеет кратных корней по 
+<a href="./discrete_math7.4.html#Theorem7.8">теореме 7.8</a>.
+
+
+<h4 id="7.7">7.7 Неприводимые многочлены над числовыми полями.</h4>
+
+<u>Неприводимые многочлены над полем комплексных чисел $\mathbb{C}$.</u><br><br>
+
+<p id="Theorem7.16"><b>Теорема 7.16: Гаусс.</b><br>
+Если многочлен $f(x)\in\mathbb{C}[x]$ такой, что $\deg{(f(x))}&gt;0$, то существует $\alpha\in\mathbb{C}$ такое, что $f(\alpha)=0$. 
+<p><b>Доказательство:</b><br><br>
+Не существует строгого алгебраического доказательства данной теоремы - все имеющиеся привлекают неалгебраические концепции, 
+вроде полноты множества вещественных чисел. Одно из таких доказательств можно найти, например, 
+в В. А. Зорич "Математический анализ" 2002 г., ч. 1 стр. 328.
+<p id="Corollary7.10"><b>Следствие 7.10:</b><br>
+Многочлен $f(x)\in\mathbb{C}$ неприводим тогда и только тогда, когда $\deg{(f(x))}=1$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем от противного. Предположим, что многочлен $f(x)\in\mathbb{C}[x]$ неприводим и $\deg{(f(x))}>1$, тогда по теореме 7.16
+$$\exists\alpha\in\mathbb{C}:f(\alpha)=0\Rightarrow\exists{q}(x):=x-\alpha:(q(x)|f(x)\,\wedge\,0&lt;\deg{(q(x))}&lt;\deg{(f(x))}),$$
+что означает, что многочлен $f(x)$ приводим. Получено противоречие.<br>
+$\Leftarrow)$ Многчлен первой степени неприводим над любым полем.
+<br><br>
+
+<u>Неприводимые многочлены над полем действительных чисел $\mathbb{R}$.</u><br><br>
+
+Пусть $f(x)=ax^2+bx+c\in\mathbb{R}[x]$, тогда из решения <a href="./discrete_math6.5.html#Task6.2">задачи 6.2</a> следует, 
+что $f(x)$ имеет корни тогда и только тогда, когда $\sigma(f):=b^2-4ac\geq0$, соответственно $f(x)$ неприводим тогда и только тогда, 
+когда $\sigma(f)&lt;0$.
+<p id="Theorem7.17"><b>Теорема 7.17:</b><br>
+Многочлен $f(x)\in\mathbb{R}[x]$ неприводим тогда и только тогда, когда $\deg{(f(x))}=1$ или $\deg{(f(x))}=2$ и $\sigma(f)&lt;0$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как $f(x)$ неприводим над $\mathbb{R}$, то он не имеет корней в $\mathbb{R}$. Тогда по теореме 7.16 
+существует $\alpha\in\mathbb{C}\backslash\mathbb{R}$ такое, что $f(\alpha)=0$. Так как $f(x)\in\mathbb{R}[x]$ то из 
+<a href="./discrete_math6.5.html#Task6.1">задачи 6.1</a> следует, что $f(\overline\alpha)=\overline{f(\alpha)}=\overline{0}=0$. 
+То есть $\overline{\alpha}$ корень многочлена $f(x)$, тогда по п. 3 <a href="./discrete_math7.5.html#Statement7.7">утверждения 7.7</a>
+$$
+\alpha\notin\mathbb{R}\Rightarrow\alpha\neq\overline{\alpha}\Rightarrow{x}-\alpha\neq{x}-\overline{\alpha}\Rightarrow(x-\alpha,x-\overline{\alpha})=1.
+$$
+Тогда по п. 3 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a> и <a href="./discrete_math6.5.html#Task6.1">задаче 6.1</a>
+$$
+((x-\alpha)|f(x)\,\wedge\,(x-\overline{\alpha})|f(x))\Rightarrow((x-\alpha)(x-\overline{\alpha}))|f(x)\Rightarrow
+(x^2+(\alpha+\overline{\alpha})x+\alpha\overline{\alpha})|f(x)\Rightarrow(x^2+2Re(\alpha)x+|\alpha|^2)|f(x),
+$$
+где $Re(\alpha)\in\mathbb{R}$ действительная часть числа $\alpha$. Таким образом найден многочлен $g(x):=x^2+2Re(\alpha)x+|\alpha|^2\in\mathbb{R}[x]$ такой, 
+что $\deg{(g(x))}=2$ и $g(x)|f(x)$. Следовательно, по определению неприводимости степень многочлена $f(x)$ не может привышать двух, 
+то есть $\deg{(f(x))}=2$. И так как многочлен $f(x)$ не имеет корней в $\mathbb{R}$, то $\sigma(f)<0$.<br>
+$\Leftarrow)$ Очевидно.
+<br><br>
+<u>Неприводимые многочлены над полем рациональных чисел $\mathbb{Q}$.</u><br><br>
+
+<p id="Definition7.16"><b>Определение 7.16:</b><br>
+Многочлен $c(x)=c_0+c_1x+c_2x^2+\cdots+c_nx^n\in\mathbb{Z}[x]$ называется примитивным, если $c_n&gt;0$ и $(c_0,c_1,\ldots,c_n)=1$.
+<p id="Statement7.8"><b>Утверждение 7.8:</b><br>
+Для любого многчлена $a(x)\in\mathbb{Q}[x]\backslash\{0\}$ существует единственный примитивный многочлен ассоциированнный с $a(x)$.
+<p><b>Доказательство:</b><br>
+Положим $n:=\deg{(a(x))}$, тогда  для любого  $k\in\overline{1,n}$ существуют $p_k\in\mathbb{Z}$, $q_k\in\mathbb{N}$ такие, что
+$$a(x)=\frac{p_n}{q_n}x^n+\frac{p_{n-1}}{q_{n-1}}x^{n-1}+\cdots+\frac{p_1}{q_1}x+\frac{p_0}{q_0},$$
+где $p_n\neq0$. Обозначим $k:=[q_0,q_1,\ldots,q_n]\neq0$ и рассмотрим многочлен $b(x):=ka(x):=b_nx^n+\cdots+b_1x+b_0$. Для любого $k\in\overline{1,n}$ 
+$b_k\in\mathbb{Z}$, следовательно, $b(x)\in\mathbb{Z}[x]$. Обозначим $d:=(b_0,b_1,\ldots,b_n)$, $\varepsilon:=\sgn{b_n}$, 
+тогда $\displaystyle\frac{\varepsilon{b}_n}{d}>0$ и по п. 4 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a>
+$$
+\left(\frac{\varepsilon{b}_n}{d},\frac{\varepsilon{b}_{n-1}}{d},\ldots,\frac{\varepsilon{b}_0}{d}\right)=
+\left(\frac{b_n}{d},\frac{b_{n-1}}{d},\ldots,\frac{b_0}{d}\right)=1.
+$$
+Таким образом многочлен $c(x):=\frac{\varepsilon{k}}{d}a(x)$ является примитивным ассоциированным с $a(x)$. Докажем, что такой многочлен единственный.
+Предположим, что существуют два примитивных многочлена $c(x)$, $\tilde{c}(x)$ ассоциированных с многочленом $a(x)$. 
+Тогда в силу транзитивности отношения ассоциированности многочлены $c(x)$ и $\tilde{c}(x)$ ассоциированы, то есть 
+$$\exists{u},v\in\mathbb{Z}:c(x)=\tilde{c}(x)\frac{u}{v}\Rightarrow{v}c(x)=u\tilde{c}(x).$$
+Так как положительный НОД коэффициентов многочлена $c(x)$ равен 1, то положительный НОД коэффициентов многочлена $vc(x)$ равен $|v|$. 
+Аналогично, положительный НОД коэффициентов многочлена $u\tilde{c}(x)$ равен $|u|$. Но так как $vc(x)=u\tilde{c}(x)$, 
+то все коэффициенты многочленов $vc(x)$ и $u\tilde{c}(x)$ равны, следовательно, $|u|=|v|$. Так как старший коэффициент многочленов $c(x)$ и 
+$\tilde{c}(x)$ положительный, то 
+$$\frac{u}{v}>0\Rightarrow\sgn{u}=\sgn{v}\Rightarrow{u}=v\Rightarrow{c}(x)=\tilde{c}(x).$$    
+<br>
+Примитивный многочлен ассоциированный с многочленом $a(x)\in\mathbb{Q}[x]$ обозначают $a^*(x)$.
+<p id="Lemma7.7"><b>Лемма 7.7: Гаусс.</b><br>
+Произведение примитивных многочленов - примитивный многочлен.
+<p><b>Доказательство:</b><br>
+Пусть $a(x)=\sum_{i=0}^na_ix^i$, $a_n>0$, $b(x)=\sum_{i=0}^mb_ix^i$, $b_m>0$, $c(x)=\sum_{i=0}^{m+n}c_ix^i$, $c_{m+n}=a_nb_m>0$. 
+Фиксируем простое число $p$, тогда, так как многочлен $a(x)$ примитивный, то 
+$$\exists{k}\in\mathbb{N}_0:(\forall{i}\in\overline{0,k-1}(p|a_i)\,\wedge\,p\nmid{a}_k),$$
+аналогично 
+$$\exists{s}\in\mathbb{N}_0:(\forall{i}\in\overline{0,s-1}(p|b_i)\,\wedge\,p\nmid{b}_s).$$
+Тогда (считая без ограничения общности, что $k>0$, $s>0$)
+$$c_{k+s}=\sum_{t=0}^{k+s}a_tb_{k+s-t}=\sum_{t=0}^{k-1}a_tb_{k+s-t}+a_kb_s+\sum_{t=k+1}^{k+s}a_tb_{k+s-t}.$$
+В последнем выражении первое и третье слагаемые делятся на $p$, а второе нет, следовательно, сумма равная $c_{k+s}$ не делится на $p$. 
+Таким образом, в силу произвола выбора простого числа $p$, для любого простого числа $p$ в многочлене $c(x)$ найдется коэффициент, 
+который не делится на $p$. И так как НОД чисел должен делить каждое из них, то положительный НОД коэффициентов многочлена $c(x)$ равен 1.
+<p id="Theorem7.18"><b>Теорема 7.18:</b><br>
+Для любых многочленов $a(x),b(x),c(x)\in\mathbb{Q}[x]\backslash\{0\}$, если $c(x)=a(x)b(x)$, то $c^*(x)=a^*(x)b^*(x)$. 
+<p><b>Доказательство:</b><br><br>
+Существуют $u,v\in\mathbb{Q}\backslash\{0\}$ такие, что $a(x)=ua^*(x)$ и $b(x)=vb^*(x)$, тогда $c(x)=a(x)b(x)=uv(a^*(x)b^*(x))$. 
+Таким образом многочлены $c(x)$ и $a^*(x)b^*(x)$ ассоциированы. И так как по лемме 7.7 многочлен $a^*(x)b^*(x)$ примитивный, то $a^*(x)b^*(x)=c^*(x)$.
+<p id="Corollary7.11"><b>Следствие 7.11:</b><br>
+Пусть $f(x)\in\mathbb{Z}[x]$, $\deg{(f(x))}=n>0$, тогда многочлен $f(x)$ приводим над $\mathbb{Q}$ тогда и только тогда, 
+когда сущесвуют многочлены $g(x),h(x)\in\mathbb{Z}[x]$ такие, что $f(x)=g(x)h(x)$ и $0&lt;\deg{(g(x))}&lt;n$. 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Существуют $u,v\in\mathbb{Z}$ такие, что $f(x)=f^*(x)\frac{u}{v}$, то есть $vf(x)=uf^*(x)$. 
+Обозначим $d\in\mathbb{N}$ положительный НОД коэффициентов многочлена $f(x)$. Так как положительный НОД коэффициентов многочлена $f^*(x)$ равен 1, 
+то $|vd|=|u|$, то есть $v|u$. Следовательно, существует число $r:=\frac{u}{v}\in\mathbb{Z}$ такое, что $f(x)=rf^*(x)$. 
+Если $f(x)$ приводим над полем $\mathbb{Q}$, то существуют многочлены $a(x),b(x)\in\mathbb{Q}[x]$ такие, что $f(x)=a(x)b(x)$ и $0<\deg{(a(x))}&lt;n$. 
+Тогда по теореме 7.18 $f(x)=rf^*(x)=ra^*(x)b^*(x)$, где $ra^*(x),b^*(x)\in\mathbb{Z}[x]$ и $0&lt;\deg{(ra^*(x))}=\deg{(a(x))}&lt;n$.<br>
+$\Leftarrow)$ Если существуют $g(x),h(x)\in\mathbb{Z}[x]\subset\mathbb{Q}[x]$ такие, что $f(x)=g(x)h(x)$ и $0<\deg{(g(x))}&lt;n$, 
+то многочлен $f(x)$ приводим над $\mathbb{Z}\subset\mathbb{Q}$, следовательно, он приводим и над $\mathbb{Q}$.
+<p id="Corollary7.12"><b>Следствие 7.12:</b><br>
+Пусть многочлен $a(x)\in\mathbb{Q}[x]$ такой, что $\deg{(a(x))}\geq1$, $a^*(x)=a_n^*x^n+\cdots+a_1^*x+a_0^*$; $u\in\mathbb{Z}$, $v\in\mathbb{N}$ такие, 
+что $(u,v)=1$ и $a\left(\frac{u}{v}\right)=0$, тогда $u|a_0^*$, $v|a_n^*$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $\alpha:=\frac{u}{v}\in\mathbb{Q}$, тогда
+$$
+a(\alpha)=0\Rightarrow(x-\alpha)|a(x)\Rightarrow\exists{b}(x)\in\mathbb{Q}[x]:a(x)=\left(x-\frac{u}{v}\right)b(x).
+$$
+Так как $(u,v)=1$, то $vx-u=v\left(x-\frac{u}{v}\right)=\left(x-\frac{u}{v}\right)^*$, тогда по теореме 7.18
+$$
+{a}^*(x)=(vx-u)b^*(x)\Rightarrow\forall{m}\in\mathbb{Z}((mv-u)|a^*(m))\Rightarrow-u|a^*(0)\Rightarrow{u}|a_0^*.
+$$
+И так как, если $b_m^*$ старший коэффициент многочлена $b^*(x)$, то $a_n^*=vb_m^*$, то есть $v|a_n^*$.
+<p id="Theorem7.19"><b>Теорема 7.19: Признак Эйзенштейна.</b><br>
+Пусть многочлен $a(x)=\sum_{k=0}^na_kx^k\in\mathbb{Z}[x]$ такой, что $\deg{(a(x))}=n>0$, простое число $p\in\mathbb{N}$ такое, 
+что для любого $k\in\overline{0,n-1}$ $p|a_k$, $p\nmid{a}_n$, $p^2\nmid{a}_0$, тогда $a(x)$ неприводим над $\mathbb{Q}$.
+<p><b>Доказательство:</b><br><br>
+Докажем утверждение от противного. Предположим, что многочлен $a(x)$ - приводим, тогда по <a href="./discrete_math7.6.html#Corollary7.11">следствию 7.11</a> 
+существуют многочлены $b(x),c(x)\in\mathbb{Z}[x]$ такие, что $0&lt;\deg{(b(x))}&lt;n$, $0&lt;\deg{(c(x))}&lt;n$. Обозначим $k:=\deg{(b(x))}$, 
+$s:=\deg{(c(x))}$. Так как $p|a_0$, то $p|(b_0c_0)$, следовательно, $p|b_0$ или $p|c_0$. Без ограничения общности будем считать, что $p|b_0$. 
+Тогда, так как $p^2\nmid{a}_0$, то $p\nmid{c}_0$. Так как $a_n=b_kc_s$, то
+$$
+p\nmid{a}_n\Rightarrow{p}\nmid(b_kc_s)\Rightarrow{p}\nmid{b}_k\Rightarrow\exists{t}\in\overline{1,k}:(\forall{i}\in\overline{1,t-1}(p|b_i)\,\wedge\,p\nmid{b}_t).
+$$
+Рассмотрим коэффициент $a_t$ многочлена $a(x)$
+$$a_t=\sum_{i=0}^{t-1}b_ic_{t-i}+b_tc_0$$
+по выбору $t$ первое слагаемое делится на $p$, а второе нет, так как $p\nmid{b}_t$, $p\nmid{c}_0$. Таким образом $p\nmid{a}_t$ и 
+в силу того, что $t\leq{k}=\deg{(b(x))}&lt;n$ получено противоречие с условием $p|a_i$ для любого 
+$i\in\overline{0,n-1}$.
+<p id="Corollary7.13"><b>Следствие 7.13:</b><br>
+Над полем $\mathbb{Q}$ существуют неприводимые многочлены любой натуральной степени.
+<p><b>Доказательство:</b><br><br>
+Например, для любого $n\in\mathbb{N}$ многочлен $x^n+2$ не приводим по признаку Эйзенштейна. Действительно, положим $p=2$, 
+тогда $p|2$, $p\nmid{1}$, $p^2\nmid{2}$.
+
+<br><br>
+<a href="discrete_math7.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math8.1.html">next</a>
+</body>
+</html>

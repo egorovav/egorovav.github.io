@@ -1,0 +1,260 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 11.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.5.html">next</a>
+<br>
+
+<h4 id="11.3">11.3 Изоморфизм векторных пространств.</h4>
+
+<p id="Definition11.14"><b>Определение 11.14:</b><br>
+Пусть $L_P,M_P$ - векторные пространства, тогда отображение $\varphi:L_P\to{M}_P$ называется изоморфизмом векторного пространства $L_P$ 
+в векторное пространство $M_P$, если
+<ol>
+<li>$\varphi:(L;+)\to(M;+)$ - изоморфизм групп,</li>
+<li>$\forall\alpha\in{L}_P\,a\in{P}(\varphi(\alpha\circ{a})=\varphi(\alpha)\circ{a})$.</li>
+</ol>
+Если существует изоморфизм векторного пространства $L_P$ в векторное пространство $M_P$, то говорят, 
+что векторное пространство $L_P$ изоморфно векторному пространству $M_P$ и обозначают $L_P\cong{M}_P$.
+<p id="Example11.6"><b>Пример 11.6:</b><br>
+<ol>
+<li>Пусть отображение $\varphi:(\mathcal{D}_2)_{\mathbb{R}}\to(\mathcal{D}_2)_{\mathbb{R}}$ такое, 
+что для любого $\alpha\in\mathcal{D}_2$ $\varphi(\alpha)$ получается из $\alpha$ поворотом на угол $\omega$. Тогда 
+$$\forall\alpha,\beta\in\mathcal{D}_2(\varphi(\alpha+\beta)=\varphi(\alpha)+\varphi(\beta)),$$
+следовательно, $\varphi$ - изоморфизм групп и 
+$$\forall\alpha\in\mathcal{D}_2\,a\in\mathbb{R}(\varphi(\alpha)\circ{a}=\varphi(\alpha)\circ{a}),$$
+следовательно, отображение $\varphi$ - изоморфизм векторного пространства $\mathcal{D}_2$ в себя.
+</li>
+<li>Пусть отображение $\varphi:P^n\to{P}^{(n)}$ такое, что $\varphi(\alpha)=\alpha^T$, тогда, очевидно, что $\varphi$ - изоморфизм.</li>
+<li>Пусть отображение $\varphi:(\mathcal{D}_2)_{\mathbb{R}}\to\mathbb{R}^2$ такое, 
+что для любого вектора ${\alpha=((0,0),(x,y))\in\mathcal{D}_2}$ $\varphi(\alpha)=(x,y)$, тогда, очевидно, что $\varphi$ - изоморфизм.
+</li>
+</ol>
+<p id="Statement11.3"><b>Утверждение 11.3:</b><br>
+усть $K_P,L_P,M_P$ - векторные пространства, тогда
+<ol>
+<li>если отображения $\varphi:L_P\to{M}_P$, $\psi:M_P\to{K}_P$ - изоморфизмы, то $\psi\circ\varphi:L_P\to{K}_P$ - изоморфизм;</li>
+<li>если $\varphi:L_P\to{M}_P$ изоморафизм, то $\varphi^{-1}:M_P\to{L}_P$ - изоморфизм;</li>
+<li>тождественно отображение $\varepsilon:L_P\to{L}_P$ является изоморфизмом.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+В силу <a href="./discrete_math9.1.html#Theorem9.2">теоремы 9.2</a> во всех случаях достаточно проверить согласованность отображений с операцией $\circ$.
+<ol>
+<li> 
+$$
+\forall\alpha\in{L}_P\,a\in{P}((\psi\circ\varphi)(\alpha\circ{a})=\psi(\varphi(\alpha\circ{a}))=\psi(\varphi(\alpha)\circ{a})=
+\psi(\varphi(\alpha))\circ{a}=(\psi\circ\varphi)(\alpha)\circ{a}).
+$$
+</li>
+<li>Так как отображение $\varphi$ биективно, то
+$$
+\forall\alpha\in{L}_P\,a\in{P}(\varphi(\varphi^{-1}(\alpha)\circ{a})=\varphi(\varphi^{-1}(\alpha))\circ{a}=\varphi(\varphi^{-1}(\alpha\circ{a})))\Rightarrow
+\forall\alpha\in{L}_P\,a\in{P}(\varphi^{-1}(\alpha)\circ{a}=\varphi^{-1}(\alpha\circ{a})).
+$$
+</li>
+<li>Следует из пунктов 1 и 2 так как $\varepsilon=\varphi\circ\varphi^{-1}$.</li>
+</ol>
+<p id="Corollary11.2"><b>Следствие 11.2:</b><br>
+Отношение изоморфности векторных пространств есть отношение эквивалентности.
+<p><b>Доказательство:</b><br><br>
+Следует из утверждения 11.3: рефлексивность из пункта 3, симметричность из пункта 2, 
+транзитивность из пункта 1.
+<p id="Theorem11.8"><b>Теорема 11.8:</b><br>
+Пусть отображение $\varphi:L_P\to{M}_P$ - изоморфизм векторных прстранств, $S\subset{L}$, $S\neq\varnothing$, тогда
+<ol>
+<li>система векторов $S$ линейно зависима тогда и только тогда, когда сиситем векторов $\varphi(S)$ линейно зависима;</li>
+<li>$(S)_P=L_P\Leftrightarrow(\varphi(S))_P\Leftrightarrow{M}_P$;</li>
+<li>система векторов $S$ - базис $L_P$ тогда и только тогда, когда система векторов $\varphi(S)$ - базис $M_P$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Система $S$ ЛЗ тогда и только тогда, когда существуют различные $\alpha_1,\ldots,\alpha_k\in{S}$ и 
+$(c_1,\ldots,c_k)\in{S}^k\backslash\{\overline{0}\}$ такие, что $\alpha_1\circ{c}_1+\cdots+\alpha_k\circ{c}_k=\theta_L$. 
+По <a href="./discrete_math9.1.html#Theorem9.1">теореме 9.1</a> $\varphi(\theta_L)=\theta_M$, следовательно, 
+$$
+\alpha_1\circ{c}_1+\cdots+\alpha_k\circ{c}_k=\theta_L\Leftrightarrow\varphi(\alpha_1\circ{c}_1+\cdots+\alpha_k\circ{c}_k)=\varphi(\theta_L)=
+\theta_M\Leftrightarrow\varphi(\alpha_1)\circ{c}_1+\cdots+\varphi(\alpha_k)\circ{c}_k=\theta_M.
+$$
+Последнее равенство эквивалентно тому, что $\varphi(S)$ ЛЗ. Обратные импликации справедливы в силу того, 
+что отображение $\varphi^{-1}:M_P\to{L}_P$ - изоморфизм.
+</li>
+<li>
+$\Rightarrow)$
+$$
+M_P=\varphi(L_P)=\varphi((S)_P)=\varphi(\{\alpha_1\circ{a}_1+\cdots+\alpha_n\circ{a}_n\mid{n}\in\mathbb{N},\alpha_i\in{S},a_i\in{P}\})=
+\{\varphi(\alpha_1\circ{a}_1+\cdots+\alpha_n\circ{a}_n)\mid{n}\in\mathbb{N},\alpha_i\in{S},a_i\in{P}\}=\\=
+\{\varphi(\alpha_1)\circ{a}_1+\cdots+\varphi(\alpha_k)\circ{a}_n\mid{n}\in\mathbb{N},\alpha_i\in{S},a_i\in{P}\}=
+\{\beta_1\circ{a}_1+\cdots+\beta_n\circ{a}_n\mid{n}\in\mathbb{N},\beta_i\in\varphi(S),a_i\in{P}\}=(\varphi(S))_P
+$$
+$\Leftarrow)$ $L_P=\varphi^{-1}(M_P)=\varphi^{-1}(\varphi((S)_P))=S_P$.
+</li>
+<li>Система $S$ является базисом $L_P$ тогда и только тогда, когда $(S)_P=L_P$ и $S$ ЛНЗ по пунктам 1, 2 тогда и только тогда, 
+когда $(\varphi(S))_P=M_P$ и $\varphi(S)$ ЛНЗ тогда и только тогда, когда $\varphi(S)$ базис $M_P$.
+</li>
+</ol>
+
+<h4 id="11.4">11.4 Конечномерные векторные пространства.</h4>
+<p id="Definition11.4"><b>Определение 11.4:</b><br>
+Векторное пространство называется конечномерным, если у него есть конечный базис, иначе оно называется бесконечномерным.
+<br><br>
+Введем некоторые обозначения.<br>
+Здесь и далее операцию внешнего умножения $\circ$ будем опускать.<br>
+Пусть $L_P$ - векторное пространство, $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)\in{L}^n$ - базис $L_P$. 
+Тогда по <a href="./discrete_math11.1.html#Theorem11.3">теореме 11.3</a> любой $\beta\in{L}_P$ выражается через $\vec{\alpha}$ однозначно. Запись 
+$$\beta_{\vec{\alpha}}^{\downarrow}=\begin{pmatrix}c_1\\ c_2 \\ \vdots \\ c_n\end{pmatrix},$$
+где $(c_1,\ldots,c_n)\in{P}^n$ будет означать, что $\beta=\alpha_1c_1+\cdots+\alpha_nc_n$.<br>
+Для любых $\vec{\gamma}:=(\gamma_1,\ldots,\gamma_t)\in{L}^t$, $d:=\left(\begin{smallmatrix}d_1 \\ \vdots \\ d_n\end{smallmatrix}\right)\in{P}^{(t)}$:
+$$\vec{\gamma}d^{\downarrow}:=\gamma_1d_1+\cdots+\gamma_td_t\in{L}.$$
+Тогда 
+$$\forall\beta\in{L}(\beta=\vec{\alpha}\beta_{\vec{\alpha}}^{\downarrow})$$
+и
+$$\beta=\vec{\alpha}c^{\downarrow}\Leftrightarrow{c}^{\downarrow}=\beta_{\vec{\alpha}}^{\downarrow}.$$
+Для любой матрицы $A\in{P}_{t,s}$
+$$\vec{\gamma}A:=\left(\vec{\gamma}A_1^{\downarrow},\ldots,\vec{\gamma}A_s^{\downarrow}\right)\in{L}^s$$
+<p id="Lemma11.1"><b>Лемма 11.1:</b><br>
+Пусть $L_P$ конечномерное векторное пространство, ${\vec{\gamma},\vec{\delta}\in{L}^t}$, $A,B\in{P}_{t,s}$, $C\in{P}_{s,k}$, тогда
+<ol>
+<li>$(\vec{\gamma}+\vec{\delta})A=\vec{\gamma}A+\vec{\delta}A$,</li>
+<li>$\vec{\gamma}(A+B)=\vec{\gamma}A+\vec{\gamma}B$,</li>
+<li>$\vec{\gamma}(AC)=(\vec{\gamma}A)C$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+$$
+(\vec{\gamma}+\vec{\delta})A=\left((\vec{\gamma}+\vec{\delta})A_1^{\downarrow},\ldots,(\vec{\gamma}+\vec{\delta})A_s^{\downarrow}\right)=
+\left(\vec{\gamma}A_1^{\downarrow}+\vec{\delta}A_1^{\downarrow},\ldots,
+\vec{\gamma}A_s^{\downarrow}+\vec{\delta}A_s^{\downarrow}\right)=
+\left(\vec{\gamma}A_1^{\downarrow},\ldots,\vec{\gamma}A_s^{\downarrow}\right)+\left(\vec{\delta}A_1^{\downarrow},\ldots,\vec{\delta}A_s^{\downarrow}\right)=
+\vec{\gamma}A+\vec{\delta}A
+$$
+</li>
+<li>
+$$
+\vec{\gamma}(A+B)=\vec{\gamma}\left(A_1^{\downarrow}+B_1^{\downarrow},\ldots,A_s^{\downarrow}+B_s^{\downarrow}\right)=
+\left(\vec{\gamma}(A_1^{\downarrow}+B_1^{\downarrow}),\ldots,\vec{\gamma}(A_s^{\downarrow}+B_s^{\downarrow})\right)=
+\left(\vec{\gamma}A_1^{\downarrow}+\vec{\gamma}B_1^{\downarrow},\ldots,\vec{\gamma}A_s^{\downarrow}+\vec{\gamma}B_s^{\downarrow}\right)=
+\left(\vec{\gamma}A_1^{\downarrow},\ldots,\vec{\gamma}A_s^{\downarrow}\right)+\left(\vec{\gamma}B_1^{\downarrow},\ldots,\vec{\gamma}B_s^{\downarrow}\right)=
+\vec{\gamma}A+\vec{\gamma}B.
+$$
+</li>
+<li>
+Пусть $(\alpha_1,\ldots,\alpha_k)=\vec{\gamma}(AC)\in{L}^k$, тогда
+$$
+\alpha_i=\vec{\gamma}\begin{pmatrix}\vec{A}_1C_i^{\downarrow} \\ \vdots \\ 
+\vec{A}_tC_i^{\downarrow}\end{pmatrix}=\gamma_1\sum_{j=1}^sa_{1,j}c_{j,i}+\cdots+\gamma_t\sum_{j=1}^sa_{t,j}c_{j,i}=
+\sum_{k=1}^t\sum_{j=1}^s(\gamma_ka_{k,j}c_{j,i})
+$$
+Пусть $(\beta_1,\ldots,\beta_k)=(\vec{\gamma}A)C\in{L}^k$, тогда
+$$
+\beta_i=\left(\vec{\gamma}A_1^{\downarrow},\ldots,\vec{\gamma}A_s^{\downarrow}\right)C_i^{\downarrow}=
+\left(\sum_{k=1}^t\gamma_ka_{k,1},\ldots,\sum_{k=1}^t\gamma_ka_{k,s}\right)C_i^{\downarrow}=\sum_{j=1}^s\sum_{k=1}^t(\gamma_ka_{k,j}c_{j,i})
+$$
+</li>
+</ol>
+Таким образом, для любого $i\in\overline{1,k}$ $\alpha_i=\beta_i$, то есть $\vec{\gamma}(AC)=(\vec{\gamma}A)C$.
+<p id="Statement11.4"><b>Утверждение 11.4:</b><br>
+Пусть $L_P$ конечномерное векторное пространство, $\vec{\alpha}$ - базис $L_P$, $\beta,\gamma\in{L}_P$, $c\in{P}$, тогда
+<ol>
+<li>$(\beta+\gamma)_{\vec{\alpha}}^{\downarrow}=\beta_{\vec{\alpha}}^{\downarrow}+\gamma_{\vec{\alpha}}^{\downarrow}$.</li>
+<li>$(\beta{c})_{\vec{\alpha}}^{\downarrow}=\beta_{\vec{\alpha}}^{\downarrow}c$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По п. 2 леммы 11.1
+$$
+\beta+\gamma=\vec{\alpha}\beta_{\vec{\alpha}}^{\downarrow}+\vec{\alpha}\gamma_{\vec{\alpha}}^{\downarrow}=
+\vec{\alpha}\left(\beta_{\vec{\alpha}}^{\downarrow}+\gamma_{\vec{\alpha}}^{\downarrow}\right).
+$$
+Таким образом, в силу однозначности разложения вектора $\beta+\gamma$ по базису $\vec{\alpha}$ 
+$(\beta+\gamma)_{\vec{\alpha}}^{\downarrow}=\beta_{\vec{\alpha}}^{\downarrow}+\gamma_{\vec{\alpha}}^{\downarrow}$.
+</li>
+<li>По п. 3 леммы 11.1 (где $c\in{P}$ есть матрица размера $1\times1$)
+$$\beta{c}=\left(\vec{\alpha}\beta_{\vec{\alpha}}^{\downarrow}\right)c=\vec{\alpha}\left(\beta_{\vec{\alpha}}^{\downarrow}c\right).$$
+Таким образом, аналогично пункту 1 $(\beta{c})_{\vec{\alpha}}^{\downarrow}=\beta_{\vec{\alpha}}^{\downarrow}c$.
+</li>
+</ol>
+<p id="Statement11.5"><b>Утверждение 11.5:</b><br>
+Если $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)$ - базис векторного пространства $L_P$, то $L_P\cong(P^{(n)})_P$. 
+<p><b>Доказательство:</b><br>
+Пусть отображение $\varphi:L\to{P}^{(n)}$ такое, что для любого $\alpha\in{L}$ $\varphi(\alpha)=\beta_{\vec{\alpha}}^{\downarrow}$. 
+По <a href="./discrete_math11.1.html#Theorem11.3">теореме 11.3</a> для любого $\beta\in{L}$ существует единственный $d^{\downarrow}\in{P}^{(n)}$ такой, 
+что $\beta=\vec{\alpha}d^{\downarrow}$, следовательно, отображение $\varphi$ инъективно. По теореме 11.6 отображение $\varphi$ сюръективно, 
+следовательно, оно биективно. При этом по утверждению 11.4 для любых $\beta,\gamma\in{L}$, $c\in{P}$ 
+$\varphi(\beta+\gamma)=\varphi(\beta)+\varphi(\gamma)$ и $\varphi(\beta{c})=\varphi(\beta)c$. 
+Таким образом, отображение $\varphi$ - измоморфизм векторного пространства $L_P$ в векторное пространство $(P^{(n)})_P$. 
+<p id="Theorem11.9"><b>Теорема 11.9:</b><br>
+Пусть $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)$ - базис векторного пространства $L_P$, тогда
+<ol>
+<li>любая ЛНЗ система векторов пространства $L_P$ конечна и состоит не более чем из $n$ векторов;</li>
+<li>любые два базиса пространства $L_P$ равномощны;</li>
+<li>любая ЛНЗ система векторов пространства $L_P$ может быть дополнена до базиса;</li>
+<li>любая ЛНЗ система векторов пространства $L_P$ состоящая из $n$ векторов является базисом.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+По утверждению 11.5 $L_P\cong(P^{(n)})_P$, тогда по <a href="./discrete_math11.3.html#Theorem11.8">теореме 11.8</a> 
+для доказательства утверждений данной теоремы можно сослаться на аналогичные утверждения для арифметического пространства $P^{(n)}$.
+<ol>
+<li>Следует из <a href="./discrete_math4.3.html#Corollary4.10">следствия 4.10</a>.</li>
+<li>Следует из <a href="./discrete_math4.3.html#Corollary4.12">следствия 4.12</a>.</li>
+<li>Следует из <a href="./discrete_math4.3.html#Theorem4.7">теоремы 4.7</a>.</li>
+<li>Из пункта 1 следует, что если к ЛНЗ системе мощности $n$ добавить ещё один вектор, то она станет ЛЗ, следовательно, исходная система МЛНП.</li>
+</ol>
+<p id="Definition11.16"><b>Определение 11.16:</b><br>
+Размерностью конечномерного векторного пространства $L_P$ называют число векторов в его базисе и обозначают $\dim{L}_P$.
+<p id="Statement11.6"><b>Утверждение 11.6:</b><br>
+Пусть $L_P,M_P$ - конечномерные векторные пространства, тогда
+$$L_P\cong{M}_P\Leftrightarrow\dim{L}_P=\dim{M}_P.$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$  Если $L_P\cong{M}_P$, то существует изоморфизм $\varphi:L_P\to{M}_P$. Тогда если $T=\{\alpha_1,\ldots,\alpha_n\}$ - базис $L_P$, 
+то по п. 3 <a href="./discrete_math11.3.html#Theorem11.8">теоремы 11.8</a> $\varphi(T)$ базис $M_P$. Причем так как отображение $\varphi$ биективно, 
+то $|\varphi(T)|=|T|=n$.<br>
+$\Leftarrow)$ Если $\dim{L}_P=\dim{M}_P=n$, то из <a href="./discrete_math11.3.html#Statement11.5">утверждения 11.5</a> следует, 
+что ${L_P\cong(P^n)_P\cong{M}_P}$ 
+<br><br>
+Введем некоторые обозначения.<br>
+Пусть $L_P$ - векторное пространство размерности $n$, $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)\in{L}^n$ и $\vec{\beta}:=(\beta_1,\ldots,\beta_n)\in{L}^n$ - 
+два базиса пространства $L_P$. Тогда матрицу
+$$C_{n\times{n}}:=\left((\beta_1)_{\vec{\alpha}}^{\downarrow},(\beta_2)_{\vec{\alpha}}^{\downarrow},\ldots,
+(\beta_n)_{\vec{\alpha}}^{\downarrow}\right)\in{P}_{n,n}$$
+называют матрицей перехода между базисами $\vec{\alpha}$ и $\vec{\beta}$. Несложно видеть, что
+$$\vec{\beta}=\left(\vec{\alpha}(\beta_1)_{\vec{\alpha}}^{\downarrow},\ldots,\vec{\alpha}(\beta_n)_{\vec{\alpha}}^{\downarrow}\right)=\vec{\alpha}C$$
+и
+$$\forall\gamma\in{L}_P\left(\gamma=\vec{\beta}\gamma_{\vec{\beta}}^{\downarrow}=(\vec{\alpha}C)\gamma_{\vec{\beta}}^{\downarrow}=
+\vec{\alpha}(C\gamma_{\vec{\beta}}^{\downarrow})\right)\Rightarrow
+\forall\gamma\in{L}_P\left(\gamma_{\vec{\alpha}}^{\downarrow}=C\gamma_{\vec{\beta}}^{\downarrow}\right).$$
+Так как система векторов $(\beta_1,\ldots,\beta_n)$ базис пространства $L_P$, то по <a href="./discrete_math11.3.html#Theorem11.8">теореме 11.8</a>
+система векторов $\left((\beta_1)_{\vec{\alpha}}^{\downarrow},\ldots,(\beta_n)_{\vec{\alpha}}^{\downarrow}\right)$ - базис пространства 
+$(P^{(n)})_P$, тогда по следствию 4.11 $C\in(P_{n,n})^*$, следовательно,
+$$\forall\gamma\in{L}_P\left(\gamma_{\vec{\beta}}^{\downarrow}=C^{-1}\gamma_{\vec{\alpha}}^{\downarrow}\right).$$
+
+<br><br>
+<a href="discrete_math11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.5.html">next</a>
+</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 14.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math14.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.4.html">next</a>
+<br>
+
+<h4 id="14.3">14.3 Матрица Грамма.</h4>
+<p id="Definition14.7"><b>Определение 14.7:</b><br>
+Пусть $\vec{\beta}:=(\beta_1,\ldots,\beta_k)$ система векторов евклидова пространства $(L_{\mathbb{P}},S)$, 
+тогда матрицей Грамма системы $\vec{\beta}$ относительно скалярного произведения $S$ называется матрица 
+$\Gamma_S(\vec{\beta})=\Gamma(\vec{\beta}):=(S(\beta_i,\beta_j))_{k,k}$.
+<p id="Definition14.8"><b>Определение 14.8:</b><br>
+Матрица $A\in\mathbb{R}_{n,n}$ называется 
+<ul>
+<li><b>симметричной</b> если $A=A^T$,</li>
+<li><b>ортогональной</b> если $A^{-1}=A^T$.</li>
+</ul>
+Матрица $A\in\mathbb{C}_{n,n}$ называется 
+<ul>
+<li><b>эрмитовой</b> если $\overline{A}=A^{T}$,</li>
+<li><b>унитарной</b> если $\overline{A}^{-1}=A^T$.</li>
+</ul>
+<p id="Note14.4"><b>Замечание 14.4:</b><br>
+Пусть $A\in\mathbb{C}_{n,n}$. Индукцией по $n$ легко показывается, что $|\overline{A}|=\overline{|A|}$, следовательно, 
+$$
+\forall\beta_i,\beta_j\in(L_{\mathbb{P}},S)(S(\beta_i,\beta_j)=\overline{S(\beta_j,\beta_i)})\Rightarrow
+\Gamma_{S}(\vec{\beta})=\overline{\Gamma_S(\vec{\beta})}^T\Rightarrow
+|\Gamma_S(\vec{\beta})|=\Bigl|\overline{\Gamma_S(\vec{\beta})}^T\Bigr|=\left|\overline{\Gamma_S(\vec{\beta})}\right|=
+\overline{|\Gamma_S(\vec{\beta})|}\Rightarrow|\Gamma_S(\vec{\beta})|\in\mathbb{R}
+$$
+<p id="Lemma14.1"><b>Лемма 14.1:</b><br>
+Пусть $\vec{\beta}:=(\beta_1,\ldots,\beta_k)$ система векторов евклидова пространства $(L_{\mathbb{P}},S)$, $a_1,\ldots,a_k,b_1,\ldots,b_k\in\mathbb{P}$, 
+тогда
+<ol>
+<li> 
+$$
+\Gamma_S(\vec{\beta})\begin{pmatrix}b_1 \\ \vdots \\ b_k\end{pmatrix}=
+\begin{pmatrix}
+S\Bigl(\beta_1,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr) \\
+S\Bigl(\beta_2,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr) \\
+\cdots \\
+S\Bigl(\beta_k,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr)
+\end{pmatrix}.
+$$
+</li>
+<li>
+$$
+(a_1,\ldots,a_k)\Gamma_S(\vec{\beta})\begin{pmatrix}b_1 \\ \vdots \\ b_k\end{pmatrix}=
+S\biggl(\sum_{j=1}^k\beta_ja_j,\sum_{i=1}^k\beta_i\overline{b}_i\biggr).
+$$
+</li>
+<li>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+Обозначим
+$$c^{\downarrow}:=\begin{pmatrix}c_1 \\ \vdots \\ c_k\end{pmatrix}:=\Gamma_S(\vec{\beta})\begin{pmatrix}b_1 \\ \vdots \\ b_k\end{pmatrix}.$$
+Тогда по пп. 1, 2 <a href="./discrete_math14.1.html#Statement14.1">утверждения 14.1</a>
+$$c_j=\sum_{i=1}^kS(\beta_j,\beta_i)b_i=\sum_{i=1}^kS(\beta_j,\beta_i\overline{b}_i)=S\biggl(\beta_j,\sum_{i=1}^k\beta_i\overline{b}_i\biggr).$$
+</li>
+<li>
+По пункту 1
+$$
+(a_1,\ldots,a_k)\Gamma_S(\vec{\beta})\begin{pmatrix}b_1 \\ \vdots \\ b_k\end{pmatrix} = 
+(a_1,\dots,a_k)
+\begin{pmatrix}
+S\Bigl(\beta_1,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr) \\
+S\Bigl(\beta_2,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr) \\
+\cdots \\
+S\Bigl(\beta_k,\sum_{i=1}^k\beta_i\overline{b}_i\Bigr) 
+\end{pmatrix}=
+S\biggl(\sum_{i=1}^k\beta_ja_j,\sum_{i=1}^k\beta_i\overline{b}_i\biggr)
+$$
+</li>
+</ol>
+<p id="Note14.5"><b>Замечание 14.5:</b><br>
+Из леммы 14.1 следует, что если на векторном пространстве $L_{\mathbb{P}}$ задано скалярное произведение $S$, $\vec{\alpha}$ - базис $L_{\mathbb{P}}$, 
+то для любых $\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+S(\beta,\gamma)=S\left(\vec{\alpha}\beta_{\vec{\alpha}}^{\downarrow},\vec{\alpha}\gamma_{\vec{\alpha}}^{\downarrow}\right)=
+\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^T\Gamma_S(\vec{\alpha})\overline{\left(\gamma_{\vec{\alpha}}^{\downarrow}\right)}.
+$$
+Далее мы решим обратную задачу, то есть выясним какие условия надо наложить на матрицу $A\in\mathbb{P}_{n,n}$, 
+чтобы функция $F:L_{\mathbb{P}}\times{L}_{\mathbb{P}}\to\mathbb{P}$ такая, что для любых 
+$\beta,\gamma\in{L_{\mathbb{P}}}$ $F(\beta,\gamma):=
+\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\left(\gamma_{\vec{\alpha}}^{\downarrow}\right)}$ являлась скалярным произведением.
+<p id="Statement14.4"><b>Утверждение 14.4:</b><br>
+Пусть $\dim{L_{\mathbb{P}}}=n$, $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_k)$, $\vec{\beta}:=(\beta_1,\ldots,\beta_k)$ - 
+базисы $(L_{\mathbb{P}},S)$, $C\in{P}_{n,n}$, $\vec{\beta}=\vec{\alpha}C$, тогда $\Gamma_S(\vec{\beta})=C^T\Gamma_S(\vec{\alpha})\overline{C}$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $C^T\Gamma_S(\vec{\alpha})\overline{C}:=(b_{i,j})_{k,k}$, тогда
+$$
+\forall{i},j\in\overline{1,k}\left(b_{i,j}=\left(c_i^{\downarrow}\right)^T\Gamma_S(\vec{\alpha})\overline{\left(c_j^{\downarrow}\right)}=
+\left(\beta_{i\vec{\alpha}}^{\downarrow}\right)^T\Gamma_S(\vec{\alpha})\overline{\left(\beta_{j\vec{\alpha}}^{\downarrow}\right)}=
+S(\beta_i,\beta_j)\right)\Rightarrow{C}^T\Gamma_S(\vec{\alpha})\overline{C}=\Gamma_S(\vec{\beta}).
+$$
+<p id="Statement14.5"><b>Утверждение 14.5:</b><br>
+Пусть $\vec{\beta}:=(\beta_1,\ldots,\beta_k)$ - система векторов из $(L_{\mathbb{P}},S)$, тогда $\vec{\beta}$ линейно независима тогда и только тогда, 
+когда $|\Gamma_S(\vec{\beta})|&gt;0$.
+<p><b></b><br><br>
+$\Rightarrow)$ Предположим, что система $\vec{\beta}$ - ЛЗ, тогда
+$$
+\exists{b}^{\downarrow}\in{P}^{(k)}\backslash\{0^{\downarrow}\}:\vec{\beta}b^{\downarrow}=\theta\Rightarrow
+\forall{i}\in\overline{1,k}\left(S(\beta_i,\vec{\beta}b^{\downarrow}\right)=0)\Rightarrow
+\begin{pmatrix}
+S(\beta_1,\vec{\beta}b^{\downarrow}) \\
+S(\beta_2,\vec{\beta}b^{\downarrow}) \\
+\cdots \\
+S(\beta_k,\vec{\beta}b^{\downarrow})
+\end{pmatrix}=0^{\downarrow}\Rightarrow\Gamma_S(\vec{\beta})\overline{b^{\downarrow}}=0^{\downarrow}
+$$
+Таким образом, столбцы матрицы $\Gamma_S(\vec{\beta})$ ЛЗ, тогда $|\Gamma_S(\vec{\beta})|=0$, получено противоречие.<br>
+$\Leftarrow)$ Обозначим $K_{\mathbb{P}}:=(\vec{\beta})_{\mathbb{P}}$, $S':=S|_{K_{\mathbb{P}}\times{K}_{\mathbb{P}}}$, 
+тогда $(K_{\mathbb{P}},S')$ евклидово пространство. По <a href="./discrete_math14.1.html#Corollary14.3">следствию 14.3</a> в пространстве 
+$(L_{\mathbb{P}},S)$ существует ортонормированный базис $\vec{\delta}$, то есть $\Gamma_{S'}(\vec{\delta})=E$. 
+Так как по <a href="./discrete_math11.1.html#Corollary11.1">следствию 11.1</a> $\vec{\beta}$ базис $K_{\mathbb{P}}$, 
+то существует матрица $D\in(\mathbb{P}_{k,k})^*$ такая, что $\vec{\beta}=\vec{\delta}D$, тогда по утверждению 14.4
+$$
+\Gamma_S(\vec{\beta})=\Gamma_{S'}(\vec{\beta})=D^T\Gamma_{S'}(\vec{\delta})\overline{D}=D^T\overline{D}\Rightarrow
+|\Gamma_S(\vec{\beta})|=|D^T||\overline{D}|=|D|\overline{|D|}=\Bigl||D|\Bigr|^2>0,
+$$
+где последнее неравенство в силу того, что $D\in(\mathbb{P}_{k,k})^*$, то есть $|D|\neq0$.
+<p id="Definition14.9"><b>Определение 14.9:</b><br>
+Пусть $A\in{P}_{n,n}$, $k\in\overline{1,n}$ тогда, минор $M_A\left(\begin{smallmatrix}1, & \ldots, & k \\ 1, & \ldots, & k\end{smallmatrix}\right)$ 
+называется главным угловым минором порядка $k$ матрицы $A$.
+
+<p id="Theorem14.3"><b>Теорема 14.3: Теорема Сильвестра.</b><br>
+Пусть система $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис евклидова пространства $(L_{\mathbb{P}},S)$, $A:=(a_{i,j})\in\mathbb{P}_{n,n}$, 
+функция $\Phi:L_{\mathbb{P}}\times{L}_{\mathbb{P}}\to\mathbb{P}$ такая, что для любых 
+$\beta,\gamma\in{L}_{\mathbb{P}}$ $\Phi(\beta,\gamma)=\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\gamma_{\vec{\alpha}}^{\downarrow}}$, 
+тогда функция $\Phi$ является скалярным произведением тогда и только тогда, когда матрица $A$ эрмитова и все ее главные угловые миноры 
+действительные положительные числа. 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как для любого $i\in\overline{1,n}$ в строке $\left(\alpha_{i\vec{\alpha}}\right)^T$ на $i$-том месте стоит единица, 
+а на остальных нули, то
+$$
+\forall{i},j\in\overline{1,n}\left(\Phi(\alpha_i,\alpha_j)=
+\left(\alpha_{i\vec{\alpha}}^{\downarrow}\right)^TA\overline{\alpha_{j\vec{\alpha}}^{\downarrow}}=a_{i,j}\right)\Rightarrow{A}=\Gamma_{\Phi}(\vec{\alpha}).
+$$
+Тогда для любого $k\in\overline{1,n}$ по <a href="./discrete_math14.3.html#Statement14.5">утверждению 14.5</a>
+$$
+M_A\begin{pmatrix}1, & \ldots, & k \\ 1, & \ldots, & k\end{pmatrix}=\left|A\begin{pmatrix}1, & \ldots, & k \\ 1, & \ldots, & k\end{pmatrix}\right|=
+|\Gamma_{\Phi}(\alpha_1,\ldots,\alpha_k)|&lt;0.
+$$
+$\Leftarrow)$ Докажем, что функция $\Phi$ удовлетворяет свойствам скалярного произведения
+<ol>
+<li>По п. 2 <a href="./discrete_math11.3.html#Statement11.4">утверждения 11.4</a>, <a href="./discrete_math3.1.html#Theorem3.5">теореме 3.5</a> 
+для любых $\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+\Phi(\beta,\gamma)=\left((\beta{b})_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\gamma_{\vec{\alpha}}^{\downarrow}}=
+b\left(\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\gamma_{\vec{\alpha}}^{\downarrow}}\right)=b\Phi(\beta,\gamma).
+$$
+</li>
+<li>По п. 1 <a href="./discrete_math11.3.html#Statement11.4">утверждения 11.4</a>, п. 2 <a href="./discrete_math3.1.html#Theorem3.4">теоремы 3.4</a>, 
+п. 5 <a href="./discrete_math3.1.html#Theorem3.1">теоремы 3.1</a> для любых $\alpha,\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+\Phi(\beta+\gamma,\delta)=\left((\beta+\gamma)_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\delta_{\vec{\alpha}}^{\downarrow}}=
+\left(\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^T+
+\left(\gamma_{\vec{\alpha}}^{\downarrow}\right)^T\right)A\overline{\delta_{\vec{\alpha}}^{\downarrow}}=
+\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\delta_{\vec{\alpha}}^{\downarrow}}+
+\left(\gamma_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\delta_{\vec{\alpha}}^{\downarrow}}=\Phi(\beta,\delta)+\Phi(\gamma,\delta).
+$$
+</li>
+<li>Так как $\overline{A}=A^T$, то по пп. 1, 2 <a href="./discrete_math6.5.html#Task6.1">задачи 6.1</a>, пп. 1, 3 
+<a href="./discrete_math3.1.html#Theorem3.4">теоремы 3.4</a> для любых $\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+\overline{\Phi(\beta,\gamma)}=\overline{\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\gamma_{\vec{\alpha}}^{\downarrow}}}=
+\left(\overline{\beta_{\vec{\alpha}}^{\downarrow}}\right)^T\overline{A}\overline{\overline{\gamma_{\vec{\alpha}}^{\downarrow}}}=
+\left(\overline{\beta_{\vec{\alpha}}^{\downarrow}}\right)^TA^T\gamma_{\vec{\alpha}}^{\downarrow}=
+\left(A\overline{\beta_{\vec{\alpha}}^{\downarrow}}\right)^T\gamma_{\vec{\alpha}}^{\downarrow}=
+\left(\gamma_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\beta_{\vec{\alpha}}^{\downarrow}}=\Phi(\gamma,\beta)
+$$
+</li>
+<li>Докажем индукцией по $n:=\dim{L_{\mathbb{P}}}$, что для любого $\delta\in{L}_{\mathbb{P}}\backslash\{\theta\}$ $\Phi(\delta,\delta)&gt;0$.<br>
+<ol type="I">
+<li>При $n=1$ $\vec{\alpha}=\alpha_1$, $A=(a_{1,1})$, где $a_{1,1}&gt;0$, тогда
+$$
+\forall\delta\in{L}_{\mathbb{P}}\backslash\{\theta\}\,\exists{c}\in\mathbb{P}\backslash\{0\}:\delta=\alpha_1c\Rightarrow\Phi(\delta,\delta)=
+ca_{1,1}\overline{c}=a_{1,1}|c|^2&gt;0.
+$$
+<li>
+</li>Для любого $m\geq1$ докажем, что из справедливости утверждения при $n\in\overline{1,m}$ следует его справедливость при $n=m+1$.<br>
+Обозначим $\vec{\alpha'}:=(\alpha_1,\ldots,\alpha_{n-1})$, $K_{\mathbb{P}}:=(\vec{\alpha'})_{\mathbb{P}}$, тогда $\vec{\alpha'}$ - базис $K_{\mathbb{P}}$ и 
+$\dim{K_{\mathbb{P}}}=n-1$.<br>
+Обозначим $A':=A\left(\begin{smallmatrix}1, & \ldots, & n-1 \\ 1, & \ldots, & n-1\end{smallmatrix}\right)$, тогда $\overline{A'}=(A')^T$ и
+все главные угловые миноры матрицы $A'$ действительные положительные числа.<br>
+Обозначим $\Phi':=\Phi|_{K_{\mathbb{P}}\times{K}_{\mathbb{P}}}$, тогда для любых $\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+\Phi'(\beta,\gamma)=\Phi(\beta,\gamma)=\left(\beta_{\vec{\alpha}}^{\downarrow}\right)^TA\overline{\gamma_{\vec{\alpha}}^{\downarrow}}=
+\begin{pmatrix}\beta_{\vec{\alpha}}^{\downarrow} \\ 0 \end{pmatrix}^TA\overline{\begin{pmatrix}\gamma_{\vec{\alpha}}^{\downarrow} \\ 0\end{pmatrix}}=
+\left(\beta_{\vec{\alpha'}}^{\downarrow}\right)^TA'\overline{\gamma_{\vec{\alpha'}}^{\downarrow}},
+$$
+следовательно, по предположению индукции $\Phi'$ - скалярное произведение на пространстве $K_{\mathbb{P}}$. 
+Тогда по <a href="./discrete_math14.1.html#Corollary14.3">следствию 14.3</a> в евклидовом пространстве $(K_{\mathbb{P}},\Phi')$ 
+существует ортонормированный базис $\vec{\beta'}:=(\beta_1,\ldots,\beta_{n-1})$. Положим $\beta_n:=\alpha_n-\sum_{i=1}^{n-1}\beta_i\Phi(\alpha_n,\beta_i)$, 
+тогда для любого $j\in\overline{1,n-1}$
+$$
+\Phi(\beta_n,\beta_j)=\Phi\biggl(\alpha_n-\sum_{i=1}^{n-1}\beta_i\Phi(\alpha_n,\beta_i),\beta_j\biggr)=
+\Phi(\alpha_n,\beta_j)-\sum_{i=1}^{n-1}(\Phi(\beta_i,\beta_j)\Phi(\alpha_n,\beta_i))=\Phi(\alpha_n,\beta_j)-\Phi(\alpha_n,\beta_j)=0
+$$
+и по пункту 3 $\Phi(\beta_j,\beta_n)=\overline{\Phi(\beta_n,\beta_j)}=0$. Таким образом,
+$$
+\Phi(\beta_i,\beta_j)=
+\begin{cases}
+0, & i\neq{j} 			\\
+1, & i=j\in\overline{1,n-1}	\\
+\Phi(\beta_n,\beta_n), & i=j=n 
+\end{cases}\Rightarrow\\
+\Rightarrow(\Phi(\beta_i,\beta_j))_{n,n}=\diag{(1,\ldots,1,\Phi(\beta_n,\beta_n))}.
+$$
+Докажем от противного, что система $\vec{\beta}:=(\beta_1,\ldots,\beta_{n-1},\beta_n)$ ЛНЗ. 
+Предположим, что существуют $c_1,\ldots,c_n\in\mathbb{P}$ такие, что 
+$$\beta_1c_1+\cdots+\beta_{n-1}c_{n-1}+\beta_nc_n=\theta.$$ 
+Так как система $\vec{\beta'}$ ЛНЗ, то либо $\beta_n=\theta$, либо $c_n\neq0$. В первом случае $\alpha_n$ ЛВЧ 
+$\beta_1,\ldots,\beta_{n-1}$, следовательно, $\alpha_n$ ЛВЧ $\alpha_1,\ldots,\alpha_{n-1}$. Во втором случае $\beta_n$ ЛВЧ $\beta_1,\ldots,\beta_{n-1}$, 
+следовательно, $\alpha_n$ ЛВЧ $\beta_1,\ldots,\beta_{n-1}$ и ЛВЧ 
+$\alpha_1,\ldots,\alpha_{n-1}$. Таким образом, в обоих случаях приходим к противоричию с линейной независимостью системы $\vec{\alpha}$. 
+Следовательно, $\vec{\beta}$ ЛНЗ система из $n$ векторов, то есть $\vec{\beta}$ - базис 
+$L_{\mathbb{P}}$. Тогда существует матрица $D\in(\mathbb{P}_{n,n})^*$ такая, что $\vec{\beta}=\vec{\alpha}D$, следовательно,
+$$
+\forall{i},j\in\overline{1,n}\left(\Phi(\beta_i,\beta_j)=\left(\beta_{i\vec{\alpha}}^{\downarrow}\right)^TA\overline{\beta_{j\vec{\alpha}}^{\downarrow}}=
+\left(D_i^{\downarrow}\right)^TA\overline{D_j^{\downarrow}}\right)\Rightarrow
+\diag{(1,\ldots,1,\Phi(\beta_n,\beta_n))}=(\Phi(\beta_i,\beta_j))_{n,n}=D^TA\overline{D}\Rightarrow\\
+\Rightarrow\Phi(\beta_n,\beta_n)=|D^TA\overline{D}|=|D||A||\overline{D}|=|A|\Bigl||D|\Bigr|^2&gt;0,
+$$ 
+где последнее неравенство в силу того, что $|A|$ главный угловой минор порядка $n$ матрицы $A$. Пусть $\delta\in{L}_{\mathbb{P}}\backslash\{\theta\}$, тогда существуют $c_1,\ldots,c_n\in\mathbb{P}$ не все равные нулю такие, что 
+$\delta=\sum_{i=1}^n\beta_ic_i$, тогда
+$$
+\Phi(\delta,\delta)=\Phi\biggl(\sum_{i=1}^n\beta_ic_i,\sum_{j=1}^n\beta_jc_j\biggl)=\sum_{i=1}^n\sum_{j=1}^nc_i\overline{c}_j\Phi(\beta_i,\beta_j)=
+\sum_{i=1}^{n-1}|c_i|^2+|c_n|^2\Phi(\beta_n,\beta_n)>0.
+$$
+</li>
+</ol>
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math14.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.4.html">next</a>
+</body>
+</html>

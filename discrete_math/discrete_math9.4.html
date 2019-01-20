@@ -1,0 +1,344 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.6.html">next</a>
+<br>
+<h4 id="9.4">9.4 Подгруппы групп.</h4>
+
+Везде далее в этом разделе $(G;\cdot)$ произвольная не обязательно конечная группа.
+<p id="Definition9.18"><b>Определение 9.18:</b><br>
+Непустое подмножество $H\subset{G}$ замкнутое относительно операции $\cdot$ такое, что группоид $(H;\cdot)$ является группой 
+называется подгруппой группы $(G;\cdot)$. При этом пишут $H&lt;G$.
+<p id="Example9.9"><b>Пример 9.9:</b><br>
+<ol>
+<li>$\{e\}&lt;G$, $G&lt;G$.</li>
+<li>Пусть $p\in\mathbb{N}$ - простое число, 
+$$\mathbb{C}(p^{\infty}):=\{z\in\mathbb{C}\mid\exists{k}\in\mathbb{N}:z^{p^k}=1\}=\bigcup_{k=1}^{\infty}\Gamma_{p^k}.$$</li>
+Тогда множество $\mathbb{C}(p^{\infty})$ замкнуто относительно умножения в $\mathbb{C}$ и группоид $(\mathbb{C}(p^{\infty});\cdot)$ - является группой, 
+следовательно, $\Gamma_{p^k}<\mathbb{C}(p^{\infty})<\mathbb{C}^*$.
+</li>
+<li>Группа $(\mathbb{Z}/n;+)$ не является подгруппой группы $(\mathbb{Z};+)$. Так как операции в группах разные, например, 
+для любого $n\in\mathbb{N}$ в $\mathbb{Z}/n$ $n-1+1=0$, а в $\mathbb{Z}$ $n-1+1=n$ .
+</li>
+<li>Если $A&lt;B&lt;C$, то $A&lt;C$.</li>
+</ol>
+<p id="Statement9.2"><b>Утверждение 9.2:</b><br>
+Пусть $H&lt;G$, тогда если $G$ и $H$ группы с единицами $e_G$ и $e_H$ соответственно, то
+<ol>
+<li>$e_H=e_G$,</li>
+<li>для любого $h\in{H}$ обратный к $h$ в группе $H$ совпадает с обратным к $h$ в группе $G$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $e_H$ единица в $H$, то $e_He_H=e_H$. Так как $e_G$ единица в $G$, то $e_He_G=e_H$. Так как $G$ группа, 
+то по п. 2 <a href="./discrete_math9.2.html#Theorem9.7">теоремы 9.7</a> уравнение $e_Hx=e_H$ разрешимо однозначно, следовательно, $e_H=e_G$.
+<li>Так как уравнение $hx=e$ разрешимо в группе $G$ однозначно, то обратный к $h$ в $H$ и $G$ должны совпадать.</ol>
+</ol>
+<p id="Statement9.3"><b>Утверждение 9.3:</b><br>
+Пусть $(G;\cdot)$ - группа, $H$ - не пустое подмножество $G$, тогда 
+$$H&lt;G\Leftrightarrow\forall{g},h\in{H}(gh^{-1}\in{H}).$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как $H$ - группа, то для любого $h\in{H}$ $h^{-1}\in{H}$ и, тогда для любых $g,h\in{H}$ $gh^{-1}\in{H}$.<br>
+$\Leftarrow)$
+<ol>
+<li>Если для любого $g,h\in{H}$ $gh^{-1}\in{H}$, то положив $g=h$ получим $e=hh^{-1}\in{H}$. Следовательно, единица содержится в $H$.</li>
+<li>Если для любого $g,h\in{H}$ $gh^{-1}\in{H}$, то положив $g=e$ для любого $h\in{H}$ получим $h^{-1}=eh^{-1}\in{H}$. 
+Следовательно, обратный элемент для любого элемента из $H$ содежится в $H$.
+</li>
+<li>Фиксируем $g,h\in{H}$, тогда по пункту 2 $h^{-1}\in{H}$. Следовательно, по условию $gh=g(h^{-1})^{-1}\in{H}$. 
+То есть $H$ замкнуто относительно операции $\cdot$.
+</li>
+</ol>
+Таким образом $(H;\cdot)$ - группа,  то есть $H&lt;G$.
+<p id="Corollary9.7"><b>Следствие 9.7:</b><br>
+Пусть $(G;\cdot)$ - группа, $H$ не пустое конечное подмножество $G$, тогда 
+$$H&lt;G\Leftrightarrow\forall{g},h\in{H}(gh\in{H}).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Так как $H$ - подгруппа, то оно замкнуто относительно $\cdot$.<br>
+$\Leftarrow)$ Если $|H|=1$, то $H=\{h\}$ и $hh=h$, тогда $h=e$. Следовательно, $H=\{e\}&lt;G$.<br>
+Пусть $|H|&gt;1$, тогда существует $h\in{H}\backslash\{e\}$, тогда для любого $k\in\mathbb{N}$ $h^k\in{H}$. Так как $H$ - конечно и $h\neq{e}$, то 
+$$
+\exists{r},s\in\mathbb{N}:(r&lt;s-1\,\wedge\,h^r=h^s)\Rightarrow(e=h^{s-r}\in{H}\,\wedge\,h^{-1}=h^{s-r-1}\in{H})
+$$
+<p id="Example9.10"><b>Пример 9.10:</b><br>
+<ol>
+<li>Так как любая подстановка из $A(\Omega)$ представима в виде произведения четного числа траспозиций, 
+то для любых $g,h\in{A}(\Omega)$ подстановка $gh$ так же представима в виде произведения четного числа транспозиций. 
+Таким образом множество $A(\Omega)$ замкнуто относительно операции $\cdot$, тогда по следствию 9.7 $A(\Omega)&lt;S(\Omega)$.
+Группу $(A(\Omega);\cdot)$ называют знакопеременной группой подстановок на множестве $\Omega$. 
+В частности группа $A_n&lt;S_n$ называется знакопеременной группой подстановок порядка $n$. 
+При этом $S_n\backslash{A}_n=(1,2)A_n:=\{(1,2)g\mid{g}\in{A}_n\}$, то есть $S_n=A_n\cap(1,2)A_n$ и $A_n=\frac{n!}{2}$.
+</li>
+<li>Если $(G;\cdot)$ - группа, то множество $C(G):=\{g\in{G}\mid\forall{h}\in{G}(gh=hg)\}$ называется мерой абелевости или центром группы $G$ и 
+так как $C(G)$ замкнуто относительно операции $\cdot$, то $C(G)&lt;G$.
+<li>Множество подстановок порядка 4 
+$$K_4:=\{\varepsilon,(1,2)(3,4),(1,3)(2,4),(1,4)(2,3)\}$$ 
+является группой и называется четверной группой Клейна при этом $K_4&lt;A_4&lt;S_4$
+</li>
+</ol>
+<p id="Statement9.4"><b>Утверждение 9.4:</b><br>
+Пусть $(G;\cdot)$ - группа и для любого $\alpha\in{A}$ $G_{\alpha}&lt;G$, тогда $\bigcap_{\alpha\in{A}}G_{\alpha}&lt;G$
+<p><b>Доказательство:</b><br><br>
+Так как для любого $\alpha\in{A}$ $e\in{G}_{\alpha}$, то $e\in\bigcap_{\alpha\in{A}}G_{\alpha}$, следовательно, 
+$\bigcap_{\alpha\in{A}}G_{\alpha}\neq\varnothing$. Тогда можем применить 
+<a href="./discrete_math9.4.html#Statement9.3">утверждение 9.3</a>, фиксируем $g,h\in\bigcap_{\alpha\in{A}}G_{\alpha}$
+$$
+g,h\in\bigcap_{\alpha\in{A}}G_{\alpha}\Rightarrow\forall\alpha\in{A}(g,h\in{G}_{\alpha})\Rightarrow\forall\alpha\in{A}(g,h^{-1}\in{G}_{\alpha})\Rightarrow
+\forall\alpha\in{A}(gh^{-1}\in{G}_{\alpha})\Rightarrow{g}h^{-1}\in\bigcap_{\alpha\in{A}}G_{\alpha}
+$$
+Таким образом по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $\bigcap_{\alpha\in{A}}G_{\alpha}&lt;G$.
+<p id="Theorem9.11"><b>Теорема 9.11:</b><br>
+Пусть $(G;\cdot)$ - группа, $A\subset{G}$, $A\neq\varnothing$, $B\subset{G}$, $B\neq\varnothing$. Обозначим $A\cdot{B}:=\{ab\mid{a}\in{A},b\in{B}\}$, 
+тогда
+$$A\cdot{B}&lt;G\Leftrightarrow{A}\cdot{B}=B\cdot{A}.$$ 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как $e\in{B}$, и $e\in{A}$, то $A\subset{A}\cdot{B}$, $B\subset{A}\cdot{B}$. Так как $A\cdot{B}$ группа, 
+то оно замкнуто относительно операции $\cdot$, следовательно, $B\cdot{A}\subset{A}\cdot{B}$. С другой стороны, так как $A\cdot{B}$ - группа, то
+$$
+g\in{A}\cdot{B}\Rightarrow{g}^{-1}\in{A}\cdot{B}\Rightarrow\exists{a}\in{A}\,\exists{b}\in{B}:g^{-1}=ab\Rightarrow
+{g}=(g^{-1})^{-1}=(ab)^{-1}=b^{-1}a^{-1}\in{B}\cdot{A}.
+$$
+Таким образом $A\cdot{B}\subset{B}\cdot{A}$ и $A\cdot{B}=B\cdot{A}$.<br>
+$\Leftarrow)$ Фиксируем $g,h\in{A}\cdot{B}$, тогда
+$$
+\exists{a},a_1\in{A}\,\exists{b},b_1\in{B}:(g=ab\,\wedge\,h=a_1b_1)\Rightarrow{g}h^{-1}=ab(a_1b_1)^{-1}=a(bb_1^{-1})a_1^{-1}
+$$
+Обозначим $b_2:=bb_1^{-1}\in{B}$, тогда $gh^{-1}=a(b_2a_1^{-1})$. Так как $A\cdot{B}=B\cdot{A}$ и $b_2a_1^{-1}\in{B}\cdot{A}$, 
+то существуют $a_3\in{A}$, $b_3\in{B}$ такие, что $b_2a_1^{-1}=a_3b_3$, тогда 
+$gh^{-1}=(aa_3)b_3\in{A}\cdot{B}$. Так как $A\neq\varnothing$, $B\neq\varnothing$, то $A\cdot{B}\neq\varnothing$, следовательно,
+по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $A\cdot{B}&lt;G$ 
+<p id="Corollary9.8"><b>Следствие 9.8:</b><br>
+Если $(G;\cdot)$ абелева группа и для любого $i\in\overline{1,k}$ $A_i&lt;G$, то $A_1+\cdots+A_k&lt;G$.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $k$.
+<ol type="I">
+<li>При $k=2$ следует из теоремы 9.11, так  как из абелевости $G$ следует, что $A_1+A_2=A_2+A_1$.</li>
+<li>Для любого $n>2$ докажем, что если утверждение верно для $k\in\overline{2,n}$, то оно верно для для $k=n+1$.<br>
+Так как $A_1+\cdots+A_n+A_{n+1}=(A_1+\cdots+A_n)+A_{n+1}$, то утверждение следует из предположения индукции.
+</li>
+</ol>
+<p id="Example9.11"><b>Пример 9.11:</b><br>
+Для любого $k\in\mathbb{Z}$ обозначим $k\mathbb{Z}:=\{ka\mid{a}\in\mathbb{Z}\}$. Для любого $k\in\mathbb{Z}$ группоид $(k\mathbb{Z};+)$ 
+являтеся абелевой группой, поэтому для любых $m,n\in\mathbb{Z}$ по <a href="./discrete_math9.4.html#Statement9.4">утверждению 9.4</a> группоид 
+$(n\mathbb{Z}\cap{m}\mathbb{Z};+)$ является группой, причем не трудно видеть, что $(n\mathbb{Z}\cap{m}\mathbb{Z};+)=([m,n]\mathbb{Z};+)$.<br>
+По теореме 9.11 $(m\mathbb{Z}+n\mathbb{Z};+) < \mathbb{Z}$ причем $(m\mathbb{Z}+n\mathbb{Z};+)=((m,n)\mathbb{Z};+)$.
+<p id="Definition9.19"><b>Определение 9.19:</b><br>
+Сумма $A_1+\cdots+A_k$ подгрупп $A_1,\ldots,{A}_k$ абелевой группы $(G;\cdot)$ называется прямой, 
+если для любого $h\in{A}_1+\cdots+{A}_k$ существует единственный набор $h_1\in{A}_1,\ldots,h_k\in{A}_k$ такой, что $h=h_1+\cdots+h_k$.<br>
+Прямая сумма обозначается $A_1\dotplus\cdots\dotplus{A}_k$. При этом, если $G=A_1\dotplus\cdots\dotplus{A}_k$ то, говорят, 
+что группа $G$ раскладывается в прямую сумму своих подгрупп.
+<p id="Theorem9.12"><b>Теорема 9.12:</b><br>
+Пусть $(G;+)$ - абелева группа, для любого $i\in\overline{1,k}$ $A_i&lt;G$ и $G=A_1+\cdots+A_k$, тогда следующие утверждения эквивалентны
+<ol>
+<li>$G=A_1\dotplus\cdots\dotplus{A}_k$,</li>
+<li>$\forall(h_1,\ldots,h_k)\in{A}_1\times\cdots\times{A}_k(h_1+\cdots+h_k=0\Rightarrow{h}_1=\cdots=h_k=0)$,</li>
+<li>$\forall{j}\in\overline{1,k}\left(A_j\cap\sum_{\substack{i=1 \\ i\neq{j}}}^kA_i=\{0\}\right)$</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Rightarrow2)$ По оперделению прямого произведения существует единственный набор $h_1\in{A}_1,\ldots,h_k\in{A}_k$ такой, 
+что $h_1+\cdots+h_k=0$. И так как один такой набор состоящий из одних нулей заведомо существует, то 
+$h_1=\cdots=h_k=0$.<br>
+$2)\Rightarrow3)$ Докажем от противного. Предположим, что существует $j\in\overline{1,k}$ такой, 
+что существует $h_j\in{A}_j\cap\sum_{\substack{i=1 \\ i\neq{j}}}^kA_i$ и $h_j\neq0$, тогда
+$$
+h_j\in\sum_{i=1,i\neq{j}}^kA_i\Rightarrow\exists(h_1,\ldots,h_{j-1},h_{j+1},\ldots,h_k)\in{A}_1\times\cdots\times{A}_{j-1}\times{A}_{j+1}\times\cdots\times{A}_k:
+h_j=h_1+\cdots+h_{j-1}+h_{j+1}+\cdots+h_k\Rightarrow \\ \Rightarrow{h}_1+\cdots+h_{j-1}+(-h_j)+h_{j+1}+\cdots+h_k=0
+$$
+Таким образом, получен набор элементов $h_1\in{A}_1,\ldots,h_k\in{A}_k$ такой, что $h_1+\cdots+h_k=0$ и как минимум одно из слагаемых - 
+$-h_j$ не равно $0$.<br>
+$3)\Rightarrow1)$ Докажем от противного. Предположим, что сумма $G=A_1+\cdots+A_k$ не прямая, 
+то есть существует $g\in{G}$ и $h_1,h'_1\in{A}_1,\ldots,h_k,h'_k\in{A}_k$ такие, что $g=h_1+\cdots+h_k=h'_1+\cdots+h'_k$ и существует 
+$j\in\overline{1,k}$ такое, что $h_j\neq{h}'_j$. Тогда существует не равный нулю элемент
+$$
+h_j-h'_j=(h_1-h'_1)+\cdots+(h_{j-1}-h'_{j-1})+(h_{j+1}-h'_{j+1})+\cdots+(h_k-h'_k)\in{A}_j\cap\sum_{i=1,i\neq{j}}^kA_i,
+$$  
+что противоречит пункту 2.
+<p id="Example9.12"><b>Пример 9.12:</b><br>
+Условие (3) в теореме 9.12 нельзя заменить на условие 
+$$\forall{i},j\in\overline{1,k}(i\neq{j}\Rightarrow{A}_i\cap{A}_j=\varnothing).$$
+Действительно, рассмотрим группу 
+$$G:=(GF(2)^2;+):=\{(0,0),(0,1),(1,0),(1,1)\},$$ 
+где сложение осуществляется покоординатно, положим $A_1:=\{(0,0),(0,1)\}$, $A_2:=\{(0,0),(1,0)\}$, $A_3:=\{(0,0),(1,1)\}$. 
+Очевидно, что $A_1&lt;G$, $A_2&lt;G$, $A_3&lt;G$, $G=A_1+A_2+A_3$ и для любых различных $i,j\in\overline{1,3}$ $A_i\cap{A}_j=\{0\}$. 
+Однако, сумма подгрупп $G=A_1+A_2+A_3$ не является прямой, так как $(0,0)=(0,1)+(1,0)+(1,1)$, что противоречит п. 2 теоремы 9.12.
+
+<h4 id="9.5">9.5 Порождение группы множеством.</h4>
+<p id="Definition9.20"><b>Определение 9.20:</b><br>
+Пусть $(G;\cdot)$ группа, тогда подгруппой порожденной множеством $S\subset{G}$ называется подгруппа $\langle{S}\rangle&lt;G$ 
+равная пересечению всех подгрупп $G$ содержащих $S$, то есть 
+$$\langle{S}\rangle=\bigcap_{S\subset{H}&lt;G}H.$$
+Если $\langle{S}\rangle=G$ то множество $S$ называют системой образующих $G$.<br>
+Группа называется конечнопорожденной, если у нее есть конечная система образующих.<br>
+Группа называется циклической, если у нее есть система образующих состоящая из одного элемента.<br>
+<p id="Example9.13"><b></b><br>
+<ol>
+<li>Для любой группы $G$, $G=\langle{G}\rangle$, $\langle{e}\rangle=\{e\}$, $\langle\varnothing\rangle=\{e\}$.</li>
+<li>$(\mathbb{Z};+)=\langle\mathbb{N}\rangle=\langle1\rangle$.</li>
+<li>Для любого $n\in\mathbb{N}$ $(\mathbb{Z}/n;+)=\langle[1]_n\rangle$.</li>
+<li>Для любого $n\in\mathbb{N}$ $(\Gamma_n;\cdot)=\langle\xi_k\rangle$, где $\xi_k$ - примитивный корень $n$-той степени из единицы 
+(см. <a href="./discrete_math6.5.html#Definition6.10">определение 6.10</a>).
+</li>
+</ol>
+Пусть $(G;\cdot)$ - группа, $g\in{G}$ для любого $c\in\mathbb{Z}$ введем обозначения.
+$$g^c=\begin{cases}\underbrace{g\cdots{g}}_{c} &, c>0 \\ e &, c=0 \\ \underbrace{g^{-1}\cdots{g}^{-1}}_{|c|} &, c<0\end{cases}.$$
+Тогда для любых $c,d\in\mathbb{Z}$ верны равенства
+<ol>
+<li>$g^cg^d=g^{c+d}$,</li>
+<li>$(g^c)^d=g^{cd}$</li>
+</ol>
+<p id="Theorem9.13"><b>Теорема 9.13:</b><br>
+Пусть $(G;\cdot)$ - группа и $S$ непустое подмножество $G$, тогда 
+$$\langle{S}\rangle=\{g\in{G}\mid{g}=s_1^{c_1}\cdots{s}_k^{c_k},k\in\mathbb{N},i\in\overline{1,i},s_i\in{S},c_i\in\mathbb{Z}\}.$$
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$M:=\{g\in{G}\mid{g}=s_1^{c_1}\cdots{s}_k^{c_k},k\in\mathbb{N},i\in\overline{1,k},s_i\in{S},c_i\in\mathbb{Z}\}.$$
+Пусть 
+$$g_1:=s_1^{c_1}\cdots{s}_k^{c_k}\in{M},g_2:=(s'_1)^{d_1}\cdots(s'_t)^{d_t}\in{M},$$
+тогда 
+$$g_1g_2^{-1}=g_1\left((s'_1)^{d_1}\cdots(s'_t)^{d_t}\right)^{-1}=s_1^{c_1}\cdots{s}_k^{c_k}(s'_1)^{-d_1}\cdots(s'_t)^{-d_t}\in{M},$$
+следовательно, по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $M&lt;G$. 
+При этом $S\subset{M}$, следовательно, $\langle{S}\rangle\subset{M}$.<br>
+С другой стороны, 
+$$
+S\subset\langle{S}\rangle&lt;G\Rightarrow\forall{k}\in\mathbb{N}\,\forall{s}_1,\ldots,s_k\in{S}\,\forall{c}_1,\ldots,c_k\in\mathbb{Z}
+\left(s_1^{c_1}\cdots{s}_k^{c_k}\in\langle{S}\rangle\right)\Rightarrow{M}\subset\langle{S}\rangle
+$$
+Таким образом $\langle{S}\rangle=M$.
+<p id="Task9.3"><b>Задача 9.3:</b><br>
+Доказать, что $\langle{S}\rangle$ - абелева тогда и только тогда, когда для любых $s_1,s_2\in{S}$ $s_1s_2=s_2s_1$.<br>
+Решение:<br>
+$\Rightarrow)$ Очевидно, так как $S\subset\langle{S}\rangle$.<br>
+$\Leftarrow)$ Очевидно, так как по теореме 9.13 любой элемент из $\langle{S}\rangle$ представим в виде произведения элементов множества $S$.
+<p id="Corollary9.9"><b>Следствие 9.9:</b><br><br>
+Если $S=\{s_1,\ldots,s_n\}$ и для любых $i,j\in\overline{1,n}$ $s_is_j=s_js_i$, тогда 
+$$\langle{S}\rangle=\{g\in{G}\mid{g}=s_1^{c_1}\cdots{s}_n^{c_n}, c_i\in\mathbb{Z}\}.$$ 
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$M:=\{g\in{G}\mid{g}=s_1^{c_1}\cdots{s}_n^{c_n},c_i\in\mathbb{Z}\}.$$
+Из теоремы 9.13 следует, что для любого $g\in{M}$ $g\in\langle{S}\rangle$, то есть $M\subset\langle{S}\rangle$. С другой стороны, 
+$$\langle{S}\rangle=\{g\in{G}\mid{g}=(s'_1)^{c_1}\cdots(s'_k)^{c_k}, k\in\mathbb{N},s'_i\in{S},c_i\in\mathbb{Z}\}.$$
+Так как для любых $i,j\in\overline{1,n}$ $s_is_j=s_js_i$, то можем переставить элементы местами так, чтобы одинаковые элементы стояли рядом, 
+тогда элемент множества $\langle{S}\rangle$ будет иметь вид 
+$s_{i_1}^{c_1}\cdots{s}_{i_k}^{c_k},$
+где для любого $j\in\overline{1,k}$ $i_j\in\overline{1,n}$ и все $i_j$ различны. Если $k&lt;n$, то допишем для любого 
+$j\in\overline{1,n}\backslash\{i_1,\ldots,i_k\}$ множитель $s_{i_j}^0$. Затем переставим множители так, чтобы они шли по порядку. 
+<p id="Corollary9.10"><b>Следствие 9.10:</b><br>
+Для любого $g\in{G}$ $\langle{g}\rangle=\{g^c\mid{c}\in\mathbb{Z}\}$.
+<p><b>Доказательство:</b><br><br>
+Следует из следствия 9.9 при $n=1$.
+<p id="Example9.14"><b>Пример 9.14:</b><br>
+Пусть множество $S\subset\mathbb{Q}$ состоит из чисел вида $\frac1{p^k}$, где $p$ - простое, $k\in\mathbb{N}$. 
+Любой элемент из $\mathbb{Q}$ представим в виде $\frac{u}{v}$, где $u\in\mathbb{Z}$, ${v\in\mathbb{N}}$. 
+Существуют простые числа $p_1,\ldots,p_t$ и натуральные $k_1,\ldots,k_t$ такие, что $v=p_1^{k_1}\cdots{p}_t^{k_t}$. 
+Тогда существуют (доказывается индукцией по $t$) ${c_1,\ldots,c_t\in\mathbb{Z}}$ такие, что
+$$\frac{u}{v}=\frac{c_1}{p_1^{k_1}}+\cdots+\frac{c_t}{p_t^{k_t}}\in\langle{S}\rangle<(\mathbb{Q};+).$$
+Таким образом $\langle{S}\rangle\subset\mathbb{Q}$ и $\mathbb{Q}\subset\langle{S}\rangle$, то есть $\langle{S}\rangle=\mathbb{Q}$.
+<p id="Task9.4"><b>Задача 9.4:</b><br>
+Доказать, что группа $(\mathbb{Q};+)$ не является конечнопорожденной.<br>
+Решение:<br>
+Докажем от противного. Предположим, что существует множество 
+$$S:=\left\{\frac{u_1}{v_1},\ldots,\frac{u_k}{v_k}\right\}\subset\mathbb{Q}$$
+такое, что $\langle{S}\rangle=\mathbb{Q}$. Тогда существует конечное множество $p_1,\ldots,p_n$ простых чисел 
+входящих в канонические разложения чисел $v_1,\ldots,v_k$. Так как любая линейная комбинация чисел из $S$ содержит в каноническом разложении знаменателя 
+только простые числа $p_1,\ldots,p_n$, то для любого простого $p\notin\{p_1,\ldots,p_n\}$ $\frac1{p}\notin\langle{S}\rangle$.
+<p id="Lemma9.1"><b>Лемма 9.1:</b><br>
+Пусть $|\Omega|&lt;\infty$, $f\in{S}(\Omega)$, 
+$$g=(\alpha_1,\ldots,\alpha_k)(\beta_1,\dots,\beta_t)\cdots(\gamma_1,\ldots,\gamma_m)\in{S}(\Omega),$$ 
+тогда 
+$$f^{-1}gf=(f(\alpha_1),\ldots,f(\alpha_k))(f(\beta_1),\ldots,f(\beta_t))\cdots(f(\gamma_1),\ldots,f(\gamma_m)).$$
+<p><b>Доказательство:</b><br>
+Пусть $\alpha\in\Omega$, тогда так как отображения $f,g$ биективные, то 
+$$
+\beta=g(\alpha)\Leftrightarrow{f}(\beta)=f(g(\alpha))=f(g(f^{-1}(f(\alpha)))=(f^{-1}gf)(f(\alpha)).
+$$
+Таким образом 
+$$g(\alpha)=\beta\Leftrightarrow(f^{-1}gf)(f(\alpha))=f(\beta),$$
+следовательно,
+$$
+f^{-1}(\alpha_1,\ldots,\alpha_k)f=(f(\alpha_1),\ldots,f(\alpha_k))\Rightarrow
+{f}^{-1}gf=f^{-1}(\alpha_1,\ldots,\alpha_k)ff^{-1}(\beta_1,\ldots,\beta_t)f\cdots{f}^{-1}(\gamma_1,\ldots,\gamma_m)f=
+(f(\alpha_1),\ldots,f(\alpha_k))(f(\beta_1),\ldots,f(\beta_t))\cdots(f(\gamma_1),\ldots,f(\gamma_m)).
+$$
+<p id="Theorem9.14"><b>Теорема 9.14:</b><br>
+Для любого $n\in\mathbb{N}$
+<ol>
+<li>$S_n=\langle{F}_1\rangle$, где $F_1:=\{(\alpha,\beta)\mid\alpha,\beta\in\overline{1,n},\alpha\neq\beta\}$.</li>
+<li>$S_n=\langle{F}_2\rangle$, где $F_2:=\{(1,\alpha)\mid\alpha\in\overline{2,n}\}$.</li>
+<li>$S_n=\langle{F}_3\rangle$, где $F_3:=\{(\alpha,\alpha+1)\mid\alpha\in\overline{1,n-1}\}$.</li>
+<li>$S_n=\langle{F}_4\rangle$, где $F_4:=\{(1,2),(1,2,\ldots,n)\}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Для любого $i\in\overline{1,4}$ обозначим $H_i=\langle{F}_i\rangle$ и докажем, что
+$$S_n\subset{H}_1\subset{H}_2\subset{H}_3\subset{H}_4\subset{S}_n.$$
+<ol>
+<li>По <a href="./discrete_math9.3.html#Corollary9.4">следствию 9.4</a> любая подстановка придставима в виде произведения транспозиций, 
+следовательно, по <a href="./discrete_math9.4.html#Theorem9.13">теореме 9.13</a> $S_n\subset{H}_1$.
+</li>
+<li>Если $\alpha=1$ или $\beta=1$, то $(\alpha,\beta)\in{F}_2$, следовательно, $(\alpha,\beta)\in{H}_2$.<br>
+Если $\alpha\neq1$ и $\beta\neq1$, то по лемме 9.1 $(\alpha,\beta)=(1,\alpha)^{-1}(1,\beta)(1,\alpha)\in{H}_2$. Таким образом, $F_1\subset{H}_2&lt;S_n$, 
+следовательно, $H_1=\langle{F}_1\rangle\subset{H}_2$.
+</li>
+<li>Докажем индукцией по $\alpha$, что для любого $\alpha\in\overline{2,n}$ $(1,\alpha)\in{H}_3$.</li>
+<ol type="I">
+<li>При $\alpha=2$ $(1,2)\in{F}_3$.</li>
+<li>Для любого $\gamma\in\overline{2,n-1}$ докажем, что если $(1,\gamma)\in{H}_3$, тогда $(1,\gamma+1)\in{H}_3$.<br> 
+По лемме 9.1 и <a href="./discrete_math9.4.html#Theorem9.13">теореме 9.13</a>
+$$(1,\gamma+1)=(\gamma,\gamma+1)^{-1}(1,\gamma)(\gamma,\gamma+1)\in{H}_3.$$
+</li>
+</ol>
+Таким образом, $F_2\subset{H}_3$ и $H_2\subset{H}_3$.
+<li>Обозначим $f=(1,2,\ldots,n)^{\alpha-1}\in{H}_4$, тогда $f(1)=\alpha$, $f(2)=\alpha+1$, тогда лемме 9.1 и 
+<a href="./discrete_math9.4.html#Theorem9.13">теореме 9.13</a> для любого $\alpha\in\overline{1,n-1}$
+$$(\alpha,\alpha+1)=f^{-1}(1,2)f\in{H}_4,$$
+следовательно, $F_3\subset{H}_3$ и $H_3\subset{H}_4$.
+</li>
+<li>Очевидно, что $H_4\subset{S}_4$.</li>
+</ol>
+Таким образом, доказано, что $S_n\subset{H}_1\subset{H}_2\subset{H}_3\subset{H}_4\subset{S}_n$, следовательно, $H_1=H_2=H_3=H_4=S_n$.
+<p id="Theorem9.15"><b>Теорема 9.15:</b><br>
+Если $n\geq3$, то множество
+$$T:=\{(\alpha,\beta,\gamma)\mid\alpha,\beta,\gamma\in\overline{1,n},\alpha\neq\beta,\beta\neq\gamma,\gamma\neq\alpha\}\subset{S}_n$$
+является системой образующих знакопеременной группы подстановок $A_n$.
+<p><b>Доказательство:</b><br>
+Для любой $g\in{A}_n$, существуют транспозиции $f_1,\ldots,f_{2k}$ такие, что $g=f_1\cdots{f}_{2k}$. Докажем, что $g\in\langle{T}\rangle$. 
+Для этого достаточно доказать, что для любых двух транспозиций $(\alpha,\beta),(\beta,\delta)$ $(\alpha,\beta)(\gamma,\delta)\in\langle{T}\rangle$.
+<ol>
+<li>Если $\{\alpha,\beta\}=\{\gamma,\delta\}$, то $(\alpha,\beta)(\gamma,\delta)=\varepsilon=(1,2,3)^3\in\langle{T}\rangle$.</li>
+<li>Если б. о. о. $\alpha=\gamma$, то 
+$$(\alpha,\beta)(\gamma,\delta)=(\alpha,\beta)(\gamma,\delta)=(\alpha,\beta)(\alpha,\delta)=(\alpha,\beta,\delta)\in\langle{T}\rangle.$$
+</li>
+<li>Если $\{\alpha,\beta\}\cap\{\gamma,\delta\}=\varnothing$, то непосредственно проверяется, что 
+$$(\alpha,\beta)(\gamma,\delta)=((\alpha,\beta)(\alpha,\gamma))((\alpha,\gamma)(\gamma,\delta))=
+(\alpha,\beta,\gamma)(\gamma,\alpha,\delta)\in\langle{T}\rangle.$$
+</li>
+</ol>
+Таким образом, $A_n\subset\langle{T}\rangle$. И так как для любых различных $\alpha,\beta,\gamma\in\overline{1,n}$ 
+$(\alpha,\beta,\gamma)=(\alpha,\beta)(\alpha,\gamma)\in{A}_n$, то $T\subset{A}_n$ и $A_n=\langle{T}\rangle$.
+
+<br><br>
+<a href="discrete_math9.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.6.html">next</a>
+</body>
+</html>

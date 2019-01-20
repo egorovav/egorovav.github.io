@@ -1,0 +1,398 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math8.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.2.html">next</a>
+<br>
+
+<h3 id="9">9 Основы теории групп.</h3>
+<h4 id="9.1">9.1 Гомоморфизмы множеств с операциями.</h4>
+
+<p id="Definition9.1"><b>Определение 9.1:</b><br>
+Группоид $(G;*)$ называется полугруппой, если операция $*$ ассоциативна.
+<p id="Definition9.2"><b>Определение 9.2:</b><br>
+Группа - это полугруппа с единицей, в которой для любого элемента существует симмеричный.
+<br>
+Таким образом группоид $(G;*)$ является группой, если операция $*$ ассоциативна, существует $e\in{G}$ такой, 
+что для любого элемента $g\in{G}$ $eg=ge=g$ и для любого $g\in{G}$ существует $g'\in{G}$ такой, что $gg'=g'g=e$.  
+<p id="Definition9.3"><b>Определение 9.3:</b><br>
+Гомоморфизмом группоида $(G;*)$ в группоид $(H;\circ)$ называется отображение $\varphi:G\to{H}$ такое, что 
+$$\forall{a},b\in{G}(\varphi(a*b)=\varphi(a)\circ\varphi(b)).$$
+Если при этом 
+<ul>
+<li>отображение $\varphi$ сюръективно, то гомоморфизм называют эпиморфизмом,</li>
+<li>отображение $\varphi$ инъективно, то гомоморфизм называют мономорфизмом или изоморфным вложением,</li>
+<li>отображение $\varphi$ биективно, то гомоморфизм называют изоморфизмом.</li>
+</ul>
+Группоиды $(G;*)$ и $(H;\circ)$ называются изоморфными, если существует изоморфизм $(G;*)$ в $(H;\circ)$, 
+при этом обозначают $(G;*)\cong(H;\circ)$ или $G\cong{H}$.  
+<p id="Example9.1"><b>Пример 9.1:</b><br>
+Рассмотрим отображение $\varphi:\mathbb{Z}/m\to\mathbb{C}$ такое, 
+что для любого $[a]\in\mathbb{Z}/m$ $\varphi([a])=\cos{\frac{2\pi{a}}{m}}+i\sin{\frac{2\pi{a}}{m}}$.<br>
+Так как для любых $[a],[b]\in\mathbb{Z}/m$
+$$
+[a]=[b]\Leftrightarrow{a}\equiv{b}\pod{m}\Leftrightarrow\exists{t}\in\mathbb{Z}:a=b+mt\Leftrightarrow
+\cos{\frac{2\pi{a}}{m}}+i\sin{\frac{2\pi{a}}{m}}=\cos{\frac{2\pi{b}}{m}}+i\sin{\frac{2\pi{b}}{m}}\Leftrightarrow\varphi([a])=\varphi([b]),
+$$
+то отображение $\varphi$ - инъективно.<br>
+Так как для любого $z\in\mathbb{C}$ (математический анализ определение 7.5.13)
+$$\sin{z}=\frac{e^{iz}-e^{-iz}}{2i},\,\cos{x}=\frac{e^{iz}+e^{-iz}}{2},$$
+то
+$$
+2\cos{\alpha}\cos{\beta}=\frac{e^{i(\alpha+\beta)}+e^{-i(\alpha-\beta)}+e^{i(\alpha-\beta)}+e^{-i(\alpha+\beta)}}{2}=
+\cos{(\alpha+\beta)}+\cos{(\alpha-\beta)},
+$$
+$$
+2\sin{\alpha}\sin{\beta} = \frac{-e^{i(\alpha+\beta)}+e^{-i(\alpha-\beta)}+e^{i(\alpha-\beta)}-e^{-i(\alpha+\beta)}}{2}=
+-\cos{(\alpha+\beta)}+\cos{(\alpha-\beta)}.
+$$
+Вычитая из первого равенства второе получим выражение для косинуса суммы $\cos{(\alpha+\beta)}=\cos{\alpha}\cos{\beta}-\sin{\alpha}\sin{\beta}$.<br>
+Так как
+$$
+2\sin{\alpha}\cos{\beta}=\frac{e^{i(\alpha+\beta)}-e^{-i(\alpha-\beta)}+e^{i(\alpha-\beta)}-e^{-i(\alpha+\beta)}}{2i}=
+\sin{(\alpha+\beta)}+\sin{(\alpha-\beta)},
+$$
+$$
+2\cos{\alpha}\sin{\beta}=\frac{e^{i(\alpha+\beta)}-e^{i(\alpha-\beta)}+e^{-i(\alpha-\beta)}-e^{-i(\alpha+\beta)}}{2i}=
+\sin{(\alpha+\beta)}-\sin{(\alpha-\beta)},
+$$
+то складывая равенства получим $\sin{(\alpha+\beta)}=\sin{\alpha}\cos{\beta}+\cos{\alpha}\sin{\beta}$. Следовательно, 
+$$
+\varphi([a]+[b])=\cos{\frac{2\pi(a+b)}{m}}+i\sin{\frac{2\pi(a+b)}{m}}=
+\cos{\frac{2\pi{a}}{m}}\cos{\frac{2\pi{b}}{m}}-\sin{\frac{2\pi{a}}{m}}\sin{\frac{2\pi{b}}{m}}+
+i\sin{\frac{2\pi{a}}{m}}\cos{\frac{2\pi{b}}{m}}+i\cos{\frac{2\pi{a}}{m}}\sin{\frac{2\pi{b}}{m}}=\\
+=\left(\cos{\frac{2\pi{a}}{m}}+i\sin{\frac{2\pi{a}}{m}}\right)\left(\cos{\frac{2\pi{b}}{m}}+i\sin{\frac{2\pi{b}}{m}}\right)=\varphi([a])\varphi([b]).
+$$
+Таким образом отображение $\varphi$ является эпиморфизмом группоида $(\mathbb{Z}/m;+)$ в группоид $(\mathbb{C};\cdot)$. 
+Если сузить область значений отображения $\varphi$ до множества корней $m$-той степени из единицы $\Gamma_m$, 
+то отображение $\varphi:\mathbb{Z}/m\to\Gamma_m$ будет изоморфизмом группоидов $(\mathbb{Z}/m;+)$ и $(\Gamma_m;\cdot)$. 
+Запись $(\Gamma_m;\cdot)$ корректна, так как в задаче 6.2 было показано, что множество $\Gamma_m$ замкнуто относительно умножения.
+<p id="Example9.2"><b>Пример 9.2:</b><br>
+Пусть $R$ - коммутативное кольцо с единицей. Рассмотрим отображение $\varphi:R_{n,n}\to{R}$  такое, что для любого $A\in{R}_{n,n}$ $\varphi(A)=|A|$. 
+Отображение $\varphi$ сюръективно, так как для любого $r\in{R}$ существует матрица 
+$A=\left(\begin{smallmatrix}
+e         & 0         & \cdots  & 0         & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0         & 0          & \cdots & e         & 0 \\ 
+0         & 0          & \cdots & 0         & r
+\end{smallmatrix}\right)$ такая, что $|A|=r$. С другой стороны при $n\geq2$, отображение $\varphi$ не инъективно, 
+так как для любого $r\in{R}\backslash\{e\}$ существует более одной матрицы таких, что $|A|=r$, например, 
+$$
+\begin{vmatrix}
+e         & 0         & \cdots  & 0         & 0 \\
+0         & e         & \cdots  & 0         & 0 \\ 
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0         & 0          & \cdots & e         & 0 \\ 
+0         & 0          & \cdots & 0         & r
+\end{vmatrix}=
+\begin{vmatrix}
+r         & 0         & \cdots  & 0         & 0 \\
+0         & e         & \cdots  & 0         & 0 \\ 
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0         & 0          & \cdots & e         & 0 \\ 
+0         & 0          & \cdots & 0         & e
+\end{vmatrix}=r.$$
+Следовательно, отображение $\varphi$ - эпиморфизм группоида $(R_{n,n};\cdot)$ в группоид $(R;\cdot)$, так как по 
+<a href="./discrete_math3.2.html#Theorem3.6">теореме 3.6</a> 
+$$\forall{A},B\in{R}_{n,n}(\varphi(AB)=|AB|=|A||B|=\varphi(A)\varphi(B)).$$
+<p id="Example9.3"><b>Пример 9.3:</b><br>
+В силу определения операций $+$ и $\cdot$ в кольце вычетов, отображение $\varphi:P[x]\to{P}[x]/f(x)$ такое, 
+что для любого многочлена $a(x)\in{P}[x]$ $\varphi(a(x))=[a(x)]_{f(x)}$,  
+является эпиморфизмом группоидов $(P[x];+)$ и $(P[x];\cdot)$ в группоиды $(P[x]/f(x);+)$ и $(P[x]/f(x);\cdot)$ соответственно. 
+<p id="Example9.4"><b>Пример 9.4:</b><br>
+Пусть $P$ - поле. Рассмотрим отображение $\varphi:P[x]\to{P}$ такое, что для любого $r\in{R}$ $\varphi(a(x))=a(r)$. 
+Так как в поле операция $\cdot$ коммутативна, то по <a href="./discrete_math7.2.html#Lemma7.1">лемме 7.1</a> 
+отображение $\varphi$ является эпиморфизмом группоидов $(P[x];+)$ и $(P[x];\cdot)$ в группоиды $(P;+)$ и $(P;\cdot)$ соответственно. 
+<p id="Theorem9.1"><b>Теорема 9.1:</b><br>
+Пусть отображение $\varphi:G\to{H}$ эпиморфизм группоида $(G;*)$ в группоид $(H;\circ)$, тогда
+<ol>
+<li>если операция $*$ ассоциативна, то операция $\circ$ ассоциативна;</li>
+<li>если операция $*$ коммутативна, то операция $\circ$ коммутативна;</li>
+<li>если элемент $e\in{G}$ нейтральный относительно операции $*$, то элемент $\varphi(e)\in{H}$ нейтральный относительно операции $\circ$;</li>
+<li>если элемент $g'\in{G}$ симметричен для элемента $g\in{G}$, то элемент $\varphi(g')\in{H}$ симметричен относительно элемента $\varphi(g)\in{H}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $h_1,h_2,h_3\in{H}$, тогда, так как отображение $\varphi$ сюръективно, то  существуют $g_1,g_2,g_3\in{G}$ такие, 
+что $h_1=\varphi(g_1)$, $h_2=\varphi(g_2)$, ${h_3=\varphi(g_3)}$. Тогда, так как отображение $\varphi$ - гомоморфизм и операция $*$ ассоциативна, то
+$$
+(h_1\circ{h}_2)\circ{h}_3=(\varphi(g_1)\circ\varphi(g_2))\varphi(g_3)=\varphi(g_1*g_2)\circ\varphi(g_3)=\varphi((g_1*g_2)*g_3)=
+=\varphi(g_1*(g_2*g_3))=\varphi(g_1)\circ\varphi(g_2*g_3)=\varphi(g_1)\circ(\varphi(g_2)\circ\varphi(g_3))=h_1\circ(h_2\circ{h}_3)
+$$
+</li>
+<li>Пусть $h_1,h_2\in{H}$, тогда существуют $g_1,g_2\in{G}$ такие, что $h_1=\varphi(g_1)$, $h_2=\varphi(g_2)$. Тогда, так как отображение $\varphi$ - 
+гомоморфизм и операция $*$ коммутативна, то
+$$
+h_1\circ{h}_2=\varphi(g_1)\circ\varphi(g_2)=\varphi(g_1*g_2)=\varphi(g_2*g_1)=\varphi(g_2)\circ\varphi(g_1)=h_2\circ{h_1}
+$$
+</li>
+<li>Фиксируем $h\in{H}$, существует $g\in{G}$ такое, что $h=\varphi(g)$, тогда
+$$
+h\circ\varphi(e)=\varphi(g)\circ\varphi(e)=\varphi(g*e)=\varphi(g)=h.
+$$
+Аналогично показывается, что $\varphi(e)\circ{h}=h$. Таким образом, в силу произвола выбора $h$, элемент $\varphi(h)$ является нейтральным в $(H;\circ)$.
+</li>
+<li>Так как $\varphi$ - гомоморфизм, то
+$$\varphi(g')\circ\varphi(g)=\varphi(g'*g)=\varphi(e).$$
+Аналогично показывается, что $\varphi(g)\circ\varphi(g')=\varphi(e)$. Тогда, так как по пункту 3 $\varphi(e)$ нейтральный в $(H;\circ)$, то $\varphi(g')$ обратный для $\varphi(g)$.
+</li>
+</ol>
+<p id="Corollary9.1"><b>Следствие 9.1:</b><br>
+Если существует эпиморфизм $\varphi:G\to{H}$ группоида $(G;*)$ в группоид $(H;\circ)$, то
+<ol>
+<li>если $(G;*)$ полугруппа, то $(H;\circ)$ полугруппа;</li>
+<li>если $(G;*)$ коммутативный группоид, то $(H;\circ)$ коммутативный группоид;</li>
+<li>если $(G;*)$ содержит нейтральный, то $(H;\circ)$ содержит нейтральный;</li>
+<li>если $(G;*)$ группа, то $(H;\circ)$ группа.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Если $(G;*)$ полугруппа, то операция $*$ ассоциативна, тогда по п. 1 теоремы 9.1 операция $\circ$ ассоциативна, 
+следовательно, $(H;\circ)$ полугруппа.
+</li>
+<li>Следует из п. 2 теоремы 9.1.</li>
+<li>Из п. 3 теоремы 9.1 следует, что если $e\in{G}$ нейтральный относительно операции $*$, 
+то $\varphi(e)\in{H}$ нейтральный относительно операции $\circ$. 
+</li>
+<li>Если $(G;*)$ группа с единицей $e$, то по пунктам 1, 3 $(H;\circ)$ полугруппа с единицей $\varphi(e)$. Докажем, 
+что любой $h\in{H}$ имеет симметричный в $H$. Фиксируем $h\in{H}$, тогда
+$$
+\exists{g},g'\in{G}:(h=\varphi(g)\,\wedge\,g'*g=g*g'=e)\Rightarrow{h}\circ\varphi(g')=\varphi(g)\circ\varphi(g')=\varphi(g*g')=\varphi(e).
+$$
+Аналогично показывается, что $\varphi(g')\circ{h}=\varphi(e)$, то есть $\varphi(g')\in{H}$ симметричный к $h$.
+</li>
+</ol>
+<p id="Theorem9.2"><b>Теорема 9.2:</b><br>
+<ol>
+<li> Пусть отображение $\varphi:G\to{H}$ гомоморфизм группоида $(G;*)$ в группоид $(H;\vartriangle)$, 
+отображение $\psi:H\to{K}$ гомоморфизм группоида $(H;\vartriangle)$ в группоид $(K;\cdot)$, тогда
+<ol type="a">
+<li>отображение $\psi\circ\varphi:G\to{K}$ гомоморфизм;</li>
+<li>если отображения $\varphi$, $\psi$ эпиморфизмы, то отображение $\varphi\circ\psi$ эпиморфизм;</li>
+<li>если отображения $\varphi$, $\psi$ мономорфизмы, то отображение $\varphi\circ\psi$ мономорфизм;</li>
+<li>если отображения $\varphi$, $\psi$ изоморфизмы, то отображение $\varphi\circ\psi$ изоморфизм.</li>
+</ol>
+<li>Если отображение $\varphi$ изоморфизм, то отображение $\varphi^{-1}$ изоморфизм.</li>
+<li>Тождественное отображение $\varepsilon:G\to{G}$ является изоморфизмом.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+<ol type="a">
+<li>
+Пусть $g_1,g_2\in{G}$, тогда
+$$
+\psi\circ\varphi(g_1*g_2)=\psi(\varphi(g_1*g_2))=\psi(\varphi(g_1)\vartriangle\varphi(g_2))=
+\psi(\varphi(g_1))\cdot\psi(\varphi(g_2))=\psi\circ\varphi(g_1)\cdot\psi\circ\varphi(g_2),
+$$
+следовательно, отображение $\psi\circ\varphi$ гомоморфизм группоида $(G;*)$ в группоид $(K;\cdot)$.<br>
+<li>
+Если отображения $\varphi$, $\psi$ являются эпиморфизмами, то сюръективны, тогда
+$$
+\forall{k}\in{K}\exists{h}\in{H}\,\exists{g}\in{G}:(k=\psi(h)\,\wedge\,h=\varphi(g))\Rightarrow
+\exists{g}\in{G}:k=\psi(\varphi(g))=\psi\circ\varphi(g),
+$$
+следовательно, отображение $\varphi\circ\psi$ сюръективно и является эпиморфизмом по  пункту 1a.
+</li>
+<li>Если отображения $\varphi$, $\psi$ являются мономорфизмами, то они инъективны, тогда
+$$
+\forall{g}_1,g_2\in{G}(g_1=g_2\Rightarrow\varphi(g_1)=\varphi(g_2)\Rightarrow
+\psi(\varphi(g_1))=\psi(\varphi(g_2))\Rightarrow\psi\circ\varphi(g_1)=\psi\circ\varphi(g_2)),
+$$
+следовательно, отображение $\psi\circ\varphi$ инъективно и является мономорфизмом по пункту 1a.
+</li>
+<li>Следует из пунктов 1b, 1c.</li>
+</ol>
+</li>
+<li>Пусть отображение $\varphi:G\to{H}$ изоморфизм группоидов $(G;*)$ и $(H;\circ)$, 
+тогда отображение $\varphi$ биективно и как известно из курса математического анализа определение 2.2.3 отображение тоже $\varphi^{-1}$ биективно. 
+Докажем, что отображение $\varphi^{-1}$ гомоморфизм, действительно
+$$
+\forall{h}_1,h_2\in{H}\exists{g}_1,g_2\in{G}:(\varphi(g_1)=h_1\,\wedge\,\varphi(g_2)=h_2)\Rightarrow
+\forall{h}_1,h_2\in{H}\exists{g}_1,g_2\in{G}:\varphi^{-1}(h_1\circ{h_2})=\varphi^{-1}(\varphi(g_1)\circ\varphi(g_2))=
+\varphi^{-1}(\varphi(g_1*g_2))=g_1*g_2=\varphi^{-1}(g_1)*\varphi^{-1}(g_2) 
+$$
+</li>
+<li>Тождественно отображение $\varepsilon:G\to{G}$, очевидно, биективно и
+$$\forall{g}_1,g_2\in{G}(\varepsilon(g_1*g_2)=g_1*g_2=\varepsilon(g_1)*\varepsilon(g_2)),$$
+то есть отображение $\varepsilon$ гомоморфизм.
+</li>
+</ol>
+<br>
+Таким образом из теоремы 9.2 следует, что отношение изоморфности группоидов $\cong$ есть отношение эквивалентности. 
+Рефлексивность следует из п. 3, симметричность из п. 2, транзитивность из п. 1d.
+<p id="Definition9.4"><b>Определение 9.4:</b><br>
+ Если $(G;*)$ группоид и подмножество $G_1\subset{G}$ замкнуто относительно операции $*$, 
+то группоид $(G_1;*)$ называется подгруппоидом группоида $(G;*)$.
+<p id="Note9.1"><b>Замечание 9.1:</b><br>
+Если отображение $\varphi:G\to{H}$ гомоморфизм группоида $(G;*)$ в группоид $(H;\circ)$, 
+то множество $\varphi(G)$ замкнуто относительно операции $\circ$, действительно
+$$
+\forall{h}_1,h_2\in\varphi(G)\exists{g}_1,g_2\in{G}:h_1\circ{h}_2=\varphi(g_1)\circ\varphi(g_2)=\varphi(g_1*g_2)\in\varphi(G).
+$$
+Таким образом, отображение $(\varphi(G);\circ)$ является подгруппоидом группоида $(H;\circ)$ и 
+отображение $\varphi:G\to\varphi(G)$ является эпиморфимзмом группоида $(G;*)$ в группоид $(\varphi(G);\circ)$.
+<p id="Definition9.5"><b>Определение 9.5:</b><br>
+Гомоморфизмом алгебры $(R_1;+,\cdot)$ в алгебру $(R_2;\oplus,\odot)$ называется отображение $\varphi:R_1\to{R}_2$ такое, что для любых $a,b\in{R}_1$
+$$\varphi(a+b)=\varphi(a)\oplus\varphi(b),$$
+$$\varphi(a\cdot{b})=\varphi(a)\odot\varphi(b).$$
+Аналогично <a href="./discrete_math9.1.html#Definition9.3">определению 9.3</a> вводятся понятия эпиморфизма, 
+мономорфизма и изоморфизма алгебр с двумя операциями.
+<p id="Theorem9.3"><b>Теорема 9.3:</b><br>
+Пусть отображение $\varphi:R_1\to{R}_2$ эпиморфизм алгебры $(R_1;+,\cdot)$ в алгебру $(R_2;\oplus,\odot)$, тогда
+<ol>
+<li>если $R_1$ кольцо, то $R_2$ кольцо;</li>
+<li>если $R_1$ коммутативное кольцо, то $R_2$ коммутативное кольцо;</li>
+<li>если $R_1$ кольцо с единицей, то $R_2$ кольцо с единицей;</li>
+<li>если $R_1$ поле, то $R_2$ поле.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+<ol type="a">
+<li>Ассоциативность операций $\oplus$, $\odot$ следует из п. 1 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.</li>
+<li>Коммутативность операции $\oplus$ следует из п. 2 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.</li>
+<li>Так как $\varphi$ эпиморфизм, то для любых $a_1,a_2,a_3\in{R}_2$ существуют $b_1,b_2,b_3\in{R}_1$ такие, 
+что $a_1=\varphi(b_1)$, $a_2=\varphi(b_2)$, $a_3=\varphi(b_3)$ и
+$$
+a_1\odot(a_2\oplus{a}_3)=\varphi(b_1)\odot(\varphi(b_2)\oplus\varphi(b_3))=\varphi(b_1)\odot\varphi(b_2+b_3)=
+\varphi(b_1\cdot(b_2+b_3))=\varphi(b_1\cdot{b}_2+b_1\cdot{b}_3)=\varphi(b_1\cdot{b}_2)\oplus\varphi(b_1\cdot{b}_3)=
+\varphi(b_1)\odot\varphi(b_2)\oplus\varphi(b_1)\odot\varphi(b_3)=a_1\odot{a}_2\oplus{a}_1\odot{a}_3
+$$
+</li>
+<li>Существование нейтрального относительно операции $\oplus$ следует из п. 3 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.</li>
+<li>Существование для любого элемента $a\in{R}_2$ симметричного отностиельно операции $\oplus$ элемента следует из п. 4 
+<a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1.</a>
+</ol>
+<li>Следует из пункта 1 и п. 2 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.
+<li>Следует из пункта 1 и п. 3 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.
+<li>Следует из пунктов 2, 3 и п. 4 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>.
+</ol>
+<p id="Definition9.6"><b>Определение 9.6:</b><br>
+Отношение эквивалентности $\rho$ на группоиде $(G;*)$ называют конгруэнцией, если
+$$\forall{a},b,a_1,b_1\in{G}(a\rho{b}\,\wedge\,a_1\rho{b}_1)\Rightarrow(a*a_1)\rho(b*b_1).$$
+<br>
+Конгруэнцию называют также отношением эквивалентности согласованным с операцией.
+<p id="Example9.5"><b>Пример 9.5:</b><br>
+<ol>
+<li>Пусть $R$ коммутативное кольцо с единицей. Введем на множестве $R_{n,n}$ матриц размера $n$ отношение $\rho$ такое, что
+$$\forall{A},B\in{R}_{n,n}(A\rho{B}\Leftrightarrow|A|=|B|).$$
+Отношение $\rho$, очевидно, является отношением эквивалентности причем
+$$
+\forall{A},B,A_1,B_1\in{R}_{n,n}((A\rho{B}\,\wedge\,A_1\rho{B}_1)\Rightarrow(|A|=|B|\,\wedge\,|A_1|=|B_1|)\Rightarrow
+|AA_1|=|A||A_1|=|B||B_1|=|BB_1|\Rightarrow{A}A_1\rho{B}B_1).
+$$
+Таким образом, отношение $\rho$ конгруэнция на группоиде $(R_{n,n};\cdot)$.
+</li>
+<li>Введем на множестве комплексных чисел $\mathbb{C}$ отношение $\rho$ такое, что
+$$\forall{z},z_1\in\mathbb{C}(z\rho{z}_1\Leftrightarrow|z|=|z_1|).$$
+Отношение $\rho$, очевидно, является отношением эквивалентности. В курсе  математического анализа (п. 4 утверждение 7.5.1) было показано, 
+что для любых $z,z_1\in\mathbb{C}$ $|zz_1|=|z||z_1|$, следовательно
+$$
+\forall{z}_1,z_2,z'_1,z'_2\in\mathbb{C}((z_1\rho{z}'_1\,\wedge\,z_2\rho{z}'_2)\Rightarrow(|z_1|=|z_2|\,\wedge\,|z'_1|=|z'_2|)\Rightarrow
+|z_1z'_1|=|z_1||z'_1|=|z_2||z'_2|=|z_2z'_2|\Rightarrow{z}_1z'_1\rho{z}_2z'_2).
+$$
+Таким образом, отношение $\rho$ является конгруэнцией на группоиде $(\mathbb{C};\cdot)$
+<li>Для любого группоида $(G;*)$ отношение равенства элементов очевидным образом является конгруэцией.</li>
+<li>Пусть $P$ - поле, $R\in\{\mathbb{Z},P[x]\}$, $m\in{R}\backslash\{0\}$. Тогда по 
+<a href="./discrete_math8.1.html#Note8.2">замечанию 8.2</a> отношение $\equiv\pod{m}$ сравнимости по модулю $m$ является отношением эквивалентности и 
+по пп. 1, 2 <a href="./discrete_math8.1.html#Theorem8.2">теоремы 8.2</a> сравнения можно почленно умножать и складывать. Таким образом, 
+отношение $\equiv\pod{m}$ является конгруэнцией на группоидах $(R;+)$, $(R;\cdot)$.
+</ol>
+<p id="Definition9.7"><b>Определение 9.7:</b><br>
+Пусть $\rho$ конгруэнция на группоиде $(G;\cdot)$. Обозначим $G/\rho:=\{[a]_{\rho}\mid{a}\in{G}\}$ множество классов эквивалентности, 
+на которые отношение $\rho$ разбивает множество $G$. Введем на множестве $G/\rho$ операцию 
+$\cdot$ такую, что для любых $[a]_{\rho},[b]_{\rho}\in{G}/\rho$ $[a]_{\rho}\cdot[b]_{\rho}=[a\cdot{b}]_{\rho}$. 
+Тогда группоид $(G/\rho;\cdot)$ называют факторгруппоидом группоида $(G;\cdot)$ по конгруэнции $\rho$.
+<p id="Note9.2"><b>Замечание 9.2:</b><br>
+Докажем корректность введения операции $\cdot$ на множестве $G/\rho$. Пусть $a_1,a_2\in[a]_{\rho}$, $b_1,b_2\in[b]_{\rho}$, тогда
+$$
+\begin{cases}
+[a_1]_{\rho}=[a_2]_{\rho}\Rightarrow{a}_1\rho{a}_2\\
+[b_1]_{\rho}=[b_2]_{\rho}\Rightarrow{b}_1\rho{b}_2
+\end{cases}\Rightarrow(a_1b_1)\rho(a_2b_2)\Rightarrow[a_1b_1]_{\rho}=[a_2b_2]_{\rho}
+$$
+<p id="Statement9.1"><b>Утверждение 9.1:</b><br>
+Пусть $\rho$ - конгруэнция на группоиде $(G;\cdot)$. Отображение $\varphi_{\rho}:G\to{G}/\rho$ такое, 
+что для любого $g\in{G}$ $\varphi_{\rho}(g)=[g]_{\rho}$, тогда $\varphi_{\rho}$ - эпиморфизм группоида $(G;\cdot)$ на факторгруппоид 
+$(G/\rho;\cdot)$. 
+<p><b>Доказательство:</b><br>
+Отображение $\varphi_{\rho}$ сюръективно по опредедению множества $G/\rho$ при этом
+$$\varphi_{\rho}(ab)=[ab]_{\rho}=[a]_{\rho}[b]_{\rho}=\varphi_{\rho}(a)\varphi_{\rho}(b).$$
+<p id="Corollary9.2"><b>Следствие 9.2:</b><br>
+Пусть $\rho$ конгруэнция на группоиде $(G;\cdot)$, $(G/\rho;\cdot)$ факторгруппоид группоида $(G;\cdot)$ тогда
+<ol>
+<li>если $(G;\cdot)$ полугруппа, то $(G/\rho;\cdot)$ полугруппа;</li>
+<li>если $(G;\cdot)$ коммутативный группоид, то $(G/\rho;\cdot)$ коммутативный группоид;</li>
+<li>если $(G;\cdot)$ содержит единицу, то $(G/\rho;\cdot)$ содержит единицу;</li>
+<li>если $(G;\cdot)$ группа, то $(G/\rho;\cdot)$ группа.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Утверждение следует из <a href="./discrete_math9.1.html#Corollary9.1">следствия 9.1</a>, так как по утверждению 9.1 
+существует эпиморфизм $\varphi_{\rho}:G\to{G}/\rho$ группоида $(G;\cdot)$ в группоид $(G/\rho;\cdot)$.  
+<br><br>
+Если $\rho$ конгруэнция на группоиде $(G;\cdot)$, то эпиморфизм $\varphi_{\rho}$ группоида $(G;\cdot)$ в факторгруппоид называют каноническим или 
+естественныи эпиморфизмом.
+<p id="Theorem9.4"><b>Теорема 9.4: Об эпиморфизме группоидов.</b><br>
+Пусть $\varphi:G\to{H}$ эпиморфизм группоида $(G;\cdot)$ в группоид $(H;*)$. Отношение $\rho$ такое, что 
+$$\forall{a},b\in{G}(a\rho{b}\Leftrightarrow\varphi(a)=\varphi(b)),$$
+тогда
+<ol>
+<li>отношение $\rho$ является конгруэнцией;</li>
+<li>$G/\rho\cong{H}$;</li>
+<li>существует единственный изоморфизм $\tau:G/\rho\to{H}$ такой, что $\varphi=\tau\circ\varphi_{\rho}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как отношенние равенства является отношением эквивалентности, то $\rho$ тоже является отношением эквивалентности, при этом
+$$
+\forall{a},a_1,b,b _1\in{G}((a\rho{b}\,\wedge\,a_1\rho{b}_1)\Rightarrow(\varphi(a)=\varphi(b)\,\wedge\,\varphi(a_1)=\varphi(b_1))\Rightarrow
+\varphi(a)*\varphi(b)=\varphi(a_1)*\varphi(b_1)\Rightarrow\varphi(aa_1)=\varphi(bb_1)\Rightarrow
+(aa_1)\rho(bb_1)),
+$$
+то есть $\rho$ - конгруэнция.
+</li>
+<li>Рассмотрим отображение $\tau:G/\rho\to{H}$ такое, что для любого ${[a]_{\rho}\in{G}/\rho}$ $\tau([a]_{\rho})=\varphi(a)$. Так как 
+$$[a]_{\rho}=[b]_{\rho}\Leftrightarrow{a}\rho{b}\Leftrightarrow\varphi(a)=\varphi(b)\Leftrightarrow\tau([a]_{\rho})=\tau([b]_{\rho}),$$
+то отображение $\tau$ определено корректно при этом оно инъективно. Так как $\varphi$ сюръективно, то 
+$$\forall{b}\in{H}\exists{a}\in{G}:\tau([a]_{\rho})=\varphi(a)=b,$$
+то есть отображение $\tau$ сюръективно, при этом 
+$$
+\tau([a]_{\rho}[b]_{\rho})=\tau([ab]_{\rho})=\varphi(ab)=\varphi(a)*\varphi(b)=\tau([a]_{\rho})*\tau([b]_{\rho}).
+$$
+Таким образом, $\tau$ биективный гомоморфизм, то есть изоморфизм.
+</li>
+<li>Пусть $\tau$ изоморфизм определенный в пункте 2, тогда
+$$\forall{a}\in{G}(\varphi(a)=\tau([a]_{\rho})=\tau(\varphi_{\rho}(a))=(\tau\circ\varphi_{\rho})(a)),$$
+то есть $\varphi=\tau\circ\varphi_{\rho}(a)$. Докажем, что такой изоморфизм единственный. Пусть изоморфизм $\tau_1:G/\rho\to{H}$ такой, 
+что $\tau_1\circ\varphi_{\rho}=\varphi$, тогда
+$$\forall{a}\in{G}(\tau_1([a]_{\rho})=\tau(\varphi_{\rho}(a))=(\tau_1\circ\varphi_{\rho})(a)=\varphi(a)=\tau([a]_{\rho})),$$
+то есть $\tau_1=\tau$.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math8.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.2.html">next</a>
+</body>
+</html>

@@ -1,0 +1,218 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.13</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.10.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math10.1.html">next</a>
+<br>
+
+<h4 id="9.13">9.13 Прямое произведение групп.</h4>
+<p id="Definition9.32"><b>Определение 9.32:</b><br>
+Пусть $(G_1;\cdot),\ldots,(G_t;\cdot)$ - группоиды. Определим на множетсве $G:=G_1\times\cdots\times{G}_t$ операцию $\cdot$ такую, что
+$$\forall{g}=(g_1,\ldots,g_t)\,h=(h_1,\ldots,h_t)\in{G}(gh=(g_1h_1,\ldots,g_th_t)).$$
+Тогда группоид $G_1\otimes\cdots\otimes{G}_t:=(G;\cdot)$ называется внешним прямым произведением группоидов $G_1,\ldots,G_t$.
+<p id="Theorem9.32"><b>Теорема 9.32:</b><br>
+Пусть $G_1,\ldots,G_t$ - группы, $G:=G_1\otimes\cdots\otimes{G}_t$, тогда
+<ol>
+<li>$G$ - группа;</li>
+<li>$G$ абелева тогда и только тогда, когда для любого $i\in\overline{1,t}$ $G_i$ абелева;</li>
+<li>
+$$\forall{g}=(g_1,\ldots,g_t)\in{G}(\ord{g}<\infty\Rightarrow\ord{g}=[\ord{g}_1,\ldots,\ord{g}_t]),$$
+$$\forall{g}=(g_1,\ldots,g_t)\in{G}(\ord{g}<\infty\Leftrightarrow\forall{i}\in\overline{1,t}(\ord{g_i}<\infty));$$
+</li>
+<li>
+$$\exp{G}&lt;\infty\Rightarrow\exp{G}=[\exp{G_1},\ldots,\exp{G}_t],$$
+$$\exp{G}&lt;\infty\Leftrightarrow\forall{i}\in\overline{1,t}(\exp{G_i}&lt;\infty).$$ 
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+Ассоциативность операции $\cdot$ на множестве $G$ очевидна.<br>
+Пусть $e_{G_1},\ldots,e_{G_t}$ - единицы групп $G_1,\ldots,G_t$ соответственно, обозначим $e_G:=(e_{G_1},\ldots,e_{G_t})$, тогда 
+$$\forall{g}=(g_1,\ldots,g_t)\in{G}(e_Gg=ge_G=(e_{G_1}g_1,\ldots,e_{G_t}g_t)=(g_1,\ldots,g_t)).$$
+Таким образом, $e_G$ единица группы $(G;\cdot)$.
+$$
+\forall{g}=(g_1,\ldots,g_t)\in{G}(g(g_1^{-1},\ldots,g_t^{-1})=(g_1^{-1},\ldots,g_t^{-1})g=(g_1g^{-1},\ldots,g_tg_t^{-1})=(e_{G_1},\ldots,e_{G_t})=e_G).
+$$
+Таким образом, $(g_1,\ldots,g_t)^{-1}:=(g_1^{-1},\ldots,g_t^{-1})$ элемент обратный к элементу $g$.
+</li>
+<li>
+$\Rightarrow)$ Для любого $i\in\overline{1,t}$ фиксируем произвольные $g_i,h_i\in{G}_i$. Так как $G$ абелева, то
+$$
+(g_1,\ldots,g_t)(h_1,\ldots,h_t)=(h_1,\ldots,h_t)(g_1,\ldots,g_t)\Rightarrow
+(g_1h_1,\ldots,g_th_t)=(h_1g_1,\ldots,h_tg_t)\Rightarrow\forall{i}\in\overline{1,t}(g_ih_i=h_ig_i).
+$$
+Таким образом, для любого $i\in\overline{1,t}$ в силу произвола выбора $g_i,h_i\in{G}_i$ группа $G_i$ абелева.<br>
+$\Leftarrow)$ Пусть для любого $i\in\overline{1,t}$ группа $G_i$ абелева, тогда
+$$
+\forall{g}=(g_1,\ldots,g_t),h=(h_1,\ldots,h_t)\in{G}(gh=(g_1h_1,\ldots,g_th_t)=(h_1g_1,\ldots,h_tg_t)=hg),
+$$
+то есть группа $G$ абелева.
+</li>
+<li>Пусть $\ord{g}=n&lt;\infty$, тогда
+$$
+g^n=(g_1^n,\ldots,g_t^n)=e_G\Rightarrow\forall{i}\in\overline{1,t}(g_i^n=e_{G_i})\Rightarrow
+\forall{i}\in\overline{1,t}(\ord{g_i}<\infty\,\wedge\,\ord{g_i}|n)\Rightarrow[\ord{g_1},\ldots,\ord{g_t}]\bigl|n.
+$$
+С другой стороны, пусть для любого $i\in\overline{1,t}$ $\ord{g_i}&lt;\infty$. Обозначим $k:=[\ord{g_1},\ldots,\ord{g_t}]$, тогда
+$$
+\forall{i}\in\overline{1,t}(\ord{g_i}|k)\Rightarrow\forall{i}\in\overline{1,t}(g_i^k=e_{G_i})\Rightarrow
+{g}^k=(g_1^{k},\ldots,g_t^{k})=e_G\Rightarrow(\ord{g}&lt;\infty\,\wedge\,\ord{g}|k).
+$$
+Таким образом, $[\ord{g}_1,\ldots,\ord{g}_t]\bigl|\ord{g}$ и $\ord{g}\bigl|[\ord{g}_1,\ldots\ord{g}_t]$, то есть $\ord{g}=[\ord{g_1},\ldots,\ord{g}_t]$.
+</li>
+<li>Пусть $\exp{G}=n&lt;\infty$, для любого $i\in\overline{1,t}$ фиксируем произвольный $g_i\in{G_i}$, тогда 
+$$
+(g_1^n,\ldots,g_t^n)=(g_1,\ldots,g_t)^n=e\Rightarrow
+\forall{i}\in\overline{1,t}(g_i^n=e_{G_i})\Rightarrow\forall{i}\in\overline{1,t}(\ord{g_i}|n)).
+$$
+Таким обазом, для любого $i\in\overline{1,t}$ в силу произвола выбора $g_i\in{G}_i$ $\exp{G_i}\leq{n}&lt;\infty$, тогда по п. 1 
+<a href="./discrete_math9.6.html#Theorem9.17">теоремы 9.17</a> $\exp{G_i}|n$, то есть $[\exp{G_1},\ldots,\exp{G_t}]\bigl|{n}$.<br>
+С другой стороны, пусть для любого $i\in\overline{1,t}$ $\exp{G_i}=n_i<\infty$. Обозначим $k=[n_1,\ldots,n_t]$, тогда
+$$
+\forall{g}=(g_1,\ldots,g_t)\in{G}(g^k=(g_1^k,\ldots,g_t^k)=e_G)\Rightarrow(\exp{G}&lt;\infty\,\wedge\,\exp{G}|k).
+$$
+Таким образом, $[\exp{G_1},\ldots,\exp{G_t}]\bigl|\exp{G}$ и $\exp{G}\bigl|[\exp{G_1},\ldots,\exp{G_t}]$, то есть $\exp{G}=[\exp{G_1},\ldots,\exp{G_t}]$.
+</li>
+</ol>
+<p id="Definition9.33"><b>Определение 9.33:</b><br>
+Если группы $(G_1;+),\ldots(G_t;+)$ абелевы, то внешнее прямое произведение $G$ называют внешней прямой суммой и обозначают 
+$G:=G_1\oplus\cdots\oplus{G}_t$. 
+<br><br>
+Введем некоторые обозначения.<br>
+Пусть для любого $i\in\overline{1,t}$ $G_i$ - группа, $G:=G_1\otimes\cdots\otimes{G}_t$. 
+Для любого $i\in\overline{1,t}$ для любого $g_i\in{G}_i$ положим $\overline{g}_i:=(e_{G_1},\ldots,e_{G_{i-1}},g_i,e_{G_{i+1}},\ldots,e_{G_t})$. 
+Для любого $i\in\overline{1,t}$ положим 
+$\overline{G}_i:=\{\overline{g}_i\mid{g}_i\in{G}_i\}\subset{G}$, тогда
+<ol>
+<li>$\forall{i}\in\overline{1,t}((\overline{G}_i;\cdot)&lt;G)$;</li>
+<li>$\forall{i}\in\overline{1,t}(\overline{G}_i\cong{G}_i)$;</li>
+<li>любой $g\in{G}$ однозначно представим в виде произведения $g=\overline{g}_1\cdots\overline{g}_t$,
+где для любого $i\in\overline{1,t}$ $g_i\in{G}_i$;
+</li>
+<li>$\forall{i},j\in\overline{1,t}(i\neq{j}\Rightarrow\forall\overline{g}_i\in{G}_i\,
+\overline{g}_j\in{G}_j(\overline{g}_i\overline{g}_j=\overline{g}_j\overline{g}_i)).$
+</li>
+</ol>
+<p id="Definition9.34"><b>Определение 9.34:</b><br>
+Группа $H$ является прямым произведением своих подгрупп $H_1,\ldots,H_t$, если:
+<ol>
+<li>любой $h\in{H}$ однозначно представим в виде $h=h_1\cdots{h}_t$, где для любого $i\in\overline{1,t}$ $h_i\in{H}_i$;</li>
+<li>$\forall{i},j\in\overline{1,t}(i\neq{j}\Rightarrow\forall{h}_i\in{H}_i\,h_j\in{H}_j(h_ih_j=h_jh_i))$.</li>
+</ol>
+Если группа $H$ является прямым произведением своих подгрупп $H_1,\ldots,H_t$, то обозначают $H=H_1\dprod\cdots\dprod{H}_t$.
+<p id="Task9.7"><b>Задача 9.7:</b><br>
+Доказать, что если $H=H_1\dprod\ldots\dprod{H}_t$, то для любого $i\in\overline{1,t}$ $H_i\triangleleft{H}$.<br>
+Решение:<br>
+Так как 
+$$\forall{i}\in\overline{1,t}\,\forall{h}_i\in{H}_i(h_iH_i=H_i=H_ih_i),$$
+и $H=H_1\dprod\cdots\dprod{H}_t$, то 
+$$\forall{i},j\in\overline{1,t}\,\forall{h}_j\in{H}_j(h_jH_i=H_ih_j).$$
+Фиксируем $g\in{H}$, $i\in\overline{1,t}$ тогда 
+$$
+\exists(h_1,\ldots,h_t)\in{H}_1,\times\cdots\times{H}_t:g=h_1\cdots{h}_t\Rightarrow{g}H_i=h_1\cdots{h}_tH_i=H_ih_1\cdots{h}_t=H_ig.
+$$
+Таким образом, в силу произвола выбора $g\in{G}$, $i\in\overline{1,t}$ утверждение доказано.
+<p id="Statement9.9"><b>Утверждение 9.9:</b><br>
+$$H=H_1\dprod\cdots\dprod{H}_t\Rightarrow{H}\cong\hat{H}:=H_1\otimes\cdots\otimes{H}_t.$$
+<p><b>Доказательство:</b><br><br>
+Рассмотрим отображение $\varphi:H\to\hat{H}$ такое, что для любого $h=h_1\cdots{h}_t\in{H}$ $\varphi(h)=(h_1,\ldots,h_t)$, 
+где для любого $i\in\overline{1,t}$ $h_i\in{H}_i$. Тогда
+$$
+\forall{i}\in\overline{1,t}(H_i&lt;H)\Rightarrow\forall{i}\in\overline{1,t}(H_i\subset{H})\Rightarrow
+\forall(h_1,\ldots,h_t)\in\hat{H}\,\exists{h}:=h_1\cdots{h}_t\in{H}:(\varphi(h)=(h_1,\ldots,h_t)),
+$$
+следовательно, отображение $\varphi$ - сюръективно. И так как отображение $\varphi$ инъективно по определению прямого произведения, то оно биективно. 
+При этом для любых $g=g_1\cdots{g}_t,h=h_1\cdots{h}_t\in{H}$
+$$
+\varphi(gh)=\varphi((g_1\cdots{g}_t)(h_1\cdots{h}_t))=\varphi((g_1h_1)\cdots(g_th_t))=(g_1h_1,\ldots,g_th_t)=
+(g_1,\ldots,g_t)(h_1,\ldots,h_t)=\varphi(g)\varphi(h),
+$$
+следовательно, $\varphi$ - изоморфизм.
+<p id="Note9.8"><b>Замечание 9.8:</b><br>
+Пусть $H=H_1\dprod\cdots\dprod{H}_t$, $h=h_1\cdots{h}_t$, где для любого $i\in\overline{1,t}$, тогда из 
+<a href="./discrete_math9.13.html#Theorem9.32">теоремы 9.32</a> и утверждения 9.9 следует
+<ol>
+<li>$\ord{h}&lt;\infty\Leftrightarrow\forall{i}\in\overline{1,t}(\ord{g}_i&lt;\infty)$,<br>
+$\ord{h}&lt;\infty\Rightarrow\ord{h}=[\ord{h}_1,\ldots,\ord{h}_t]$;
+</li>
+<li>$\exp{H}&lt;\infty\Leftrightarrow\forall{i}\in\overline{1,t}(\exp{H}_i&lt;\infty)$,<br>
+$\exp{H}&lt;\infty\Rightarrow\exp{H}=[\exp{H}_1,\ldots,\exp{H}_t]$;
+</li>
+<li>группа $H$ абелева тогда и только тогда, когда для любого ${i}\in\overline{1,t}$ группа $H_i$ абелева. </li>
+</ol>
+<p id="Theorem9.33"><b>Теорема 9.33:</b><br>
+Пусть $H_1,\ldots,H_t&lt;H$, $H=H_1\cdots{H}_t$ и
+$$\forall{i},j\in\overline{1,t}(i\neq{j}\Rightarrow\forall{h}_i\in{H}_i\,h_j\in{H}_j(h_ih_j=h_jh_i)),$$
+тогда следующие утверждения эквивалентны
+<ol>
+<li>$H=H_1\dprod\cdots\dprod{H}_t$;</li>
+<li>если $e_H=h_1\cdots{h}_t$, где для любого $i\in\overline{1,t}$ $h_i\in{H}_i$, то для любого $i\in\overline{1,t}$ $h_i=e_H$;</li>
+<li>$\forall{i}\in\overline{1,t}(H_i\cap{H}_1\ldots{H}_{i-1}H_{i+1}\cdots{H}_t)=\{e\}$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Rightarrow2)$ Следует из единственности разложения $e_H$ в произведение элементнов $H_i$.<br>
+$2)\Rightarrow3)$ Фиксируем $i\in\overline{1,t}$, тогда
+$$
+h\in{H}_i\cap{H}_1\cdots{H}_{i-1}H_{i+1}\cdots{H}_t\Rightarrow
+\Rightarrow\forall{i}\in\overline{1,t}\,\exists{h}_i\in{H}_i:h=h_i=h_1\cdots{h}_{i-1}h_{i+1}\cdots{h}_t\Rightarrow
+{h}_1\cdots{h}_{i-1}h_i^{-1}h_{i+1}\cdots{h}_t=e_H\Rightarrow{h}_i^{-1}=e_H\Rightarrow{h}=e_H
+$$
+$3)\Rightarrow1)$ Достаточно доказать единственность разложения $h=h_1\cdots{h}_t\in{H}$ в произведение элементов $H_i$. 
+Предположим, что таких разложения два $h=h_1\cdots{h}_t=h'_1\cdots{h}'_t$, где для любого $i\in\overline{1,t}$ 
+$h_i,h'_i\in{H}_i$ и сущестует $j\in\overline{1,t}$, такой, что $h_j\neq{h}'_j$. Будем без ограничения общности считать, что $j=1$, тогда
+$$
+hh^{-1}=h'_1\cdots{h'_t}(h_1\cdots{h}_t)^{-1}=(h'_1h_1^{-1})\cdots(h'_th_t^{-1})=e_H\Rightarrow
+{h}_1(h'_1)^{-1}=(h'_2h_2^{-1})\cdots(h'_th_t^{-1})\in{H}_1\cap{H}_2\cdots{H}_t.
+$$
+Но так как $h_1\neq{h}'_1$, то $h_1(h'_1)^{-1}\neq{e}_H$, что противоречит пункту 3.
+<p id="Task9.8"><b>Задача 9.8:</b><br>
+Доказать, что 
+<ol>
+<li>$H_1\dprod(H_2\dprod{H}_3)=(H_1\dprod{H}_2)\dprod{H}_3=H_1\dprod{H}_2\dprod{H}_3$;</li>
+<li>$H_1\dprod{H}_2=H_2\dprod{H}_1$.</li>
+</ol>
+Решение:<br>
+<ol>
+<li>Обозначим $G:=H_1\dprod{H}_2$, $H:=G\dprod{H}_3$. Если существует единственное разложение элемента $G$ в произведение элементов $H_1,H_2$ и 
+единственное разложение элемента $H$ в произведение элементов $G,H_3$, то, очевидно, 
+существует единственное разложение элемента $H$ в произведение элементов $H_1,H_2,H_3$.<br>
+Для любых $h_1\in{H}_1$, $h_2\in{H}_2$ $h_1h_2=h_2h_1$, так как $G=H_1\dprod{H}_2$.<br>
+Для любых $h_2\in{H}_2$, $h_3\in{H}_3$ $h_2=e_Hh_2\in{G}$, поэтому $h_2h_3=h_3h_2$, так как $H=G\dprod{H}_3$.<br>
+Аналогично для любых $h_1\in{H}_1$, $h_3\in{H}_3$ $h_1h_3=h_3h_1$.<br>
+Таким образом, $H=H_1\dprod{H}_2\dprod{H}_3$.
+</li>
+<li>Пусть $H=H_1\dprod{H}_2$, тогда
+$$\forall{h}\in{H}\,h_1\in{H}_1\,h_2\in{H}_2(h=h_1h_2\Leftrightarrow{h}=h_2h_1)$$
+и так как для любого $h\in{H}$ разложение $h=h_1h_2$, где $h_1\in{H}_1$, $h_2\in{H}_2$ существует и единственно, то $H=H_2\dprod{H}_1$.
+</li> 
+</ol>
+
+<br><br>
+<a href="discrete_math9.10.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math10.1.html">next</a>
+</body>
+</html>

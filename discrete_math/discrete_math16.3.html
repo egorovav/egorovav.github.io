@@ -1,0 +1,188 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 16.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math16.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.1.html">next</a>
+<br>
+<h4 id="16.3">16.3 Квадратичные формы над полями действительных и комплексных чисел.</h4>
+<p id="Theorem16.2"><b>Теорема 16.2:</b><br>
+<ol>
+<li>Пусть $f(x_1,\ldots,x_n)\in\mathbb{C}[x_1,\ldots,x_n]$ квадратичная форма ранга $r$, тогда $f(\vec{x})\sim{h}(\vec{z}):=z_1^2+\cdots+z_r^2$.</li>
+<li>Пусть $f(x_1,\ldots,x_n)\in\mathbb{R}[x_1,\ldots,x_n]$ квадратичная форма ранга $r$, тогда существует $p\in\mathbb{N}_0$ такое, 
+что $$f(\vec{x})\sim{h}(\vec{z}):=z_1^2+\cdots+z_p^2-z_{p+1}^2-\cdots-z_r^2.$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math16.1.html#Theorem16.1">теореме 16.1</a> в обоих случаях существуют коэффициенты $d_1,\ldots,d_n\in\mathbb{P}$ такие, 
+что $f(\vec{x})\sim{g}(\vec{y}):=d_1y_1^2+\cdots+d_ny_n^2$. По <a href="./discrete_math16.1.html#Statement16.4">утверждению 16.4</a> 
+$\rang{B}_g=\rang{g}=\rang{f}=r$. Будем считать б. о. о., что для любых $i\in\overline{1,r}$ $d_i\neq0$, тогда для любых $j\in\overline{r+1,n}$ $d_j=0$.
+<ol>
+<li>Для любого $i\in\overline{1,r}$ $d_i\in\mathbb{C}$, следовательно, для любого $i\in\overline{1,r}$ существует $c_i\in\mathbb{C}$ такое, 
+что $c_i^2=d_i$. Осуществим замену для любого $i\in\overline{1,r}$ $y_i:=c_i^{-1}z_1$, для любого 
+$j\in\overline{r+1,n}$ $y_i:=z_i$, то есть
+$$y^{\downarrow}=
+\begin{pmatrix}
+c_1^{-1} 	& 0 		& \cdots 	& \cdots 	& \cdots 	& 0 		\\ 
+0 		& \ddots 	&		& 		&		& \vdots 	\\ 
+\vdots		& 		& c_r^{-1}	&		& \Theta	& \vdots 	\\
+\vdots		& \Theta	& 		& 1		&		& \vdots 	\\
+\vdots 		&		&		& 		& \ddots 	& 0 		\\
+0 		& \cdots 	& \cdots 	& \cdots	& 0		& 1
+\end{pmatrix}z^{\downarrow}.$$
+Так как матрица перехода обратима, то замена не вырождена, то есть $g(\vec{y})\sim{h}(\vec{z})=z_1^2+\cdots+z_r^2$.
+</li>
+<li>Пусть $p$ - это число положительных коэффициентов в квадратичной форме $g(\vec{y})$.  Так как перестановка переменных, 
+очевидно, является невырожденной заменой б. о. о. будем считать, что для любого $i\in\overline{1,p}$ 
+$d_i&gt;0$ и для любого $j\in\overline{p+1,r}$ $d_j<0$. Для любого $i\in\overline{1,r}$ положим $c_i:=\sqrt{|d_i|}$ и 
+сделаем замену такую же как в пункте 1. Тогда так как 
+$$
+\forall{i}\in\overline{1,r}\;\frac{d_i}{c_i^2}=\frac{d_i}{|d_i|}=\begin{cases}1,&d_i&lt;0 \\ -1,&d_i&lt;0\end{cases}=
+\begin{cases}1,&1\leq{i}\leq{p} \\ -1,&p&lt;i\leq{r}\end{cases},
+$$
+то $g(\vec{y})\sim{h}(\vec{z})=z_1^2+\cdots+z_p^2-z_{p+1}^2-\cdots-z_r^2.$
+</li>
+</ol>
+<p id="Definition16.10"><b>Определение 16.10:</b><br>
+<ol>
+<li>Квадратичная форма вида $f(\vec{x})=x_1^2+\cdots+x_r^2$ называется нормальной над полем $\mathbb{C}$.</li>
+<li>Квадратичная форма вида $f(\vec{x})=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_r^2$ называется нормальной над полем $\mathbb{R}$.</li>
+</ol>
+<p id="Corollary16.1"><b>Следствие 16.1</b><br>
+Квадратичные формы над полем $\mathbb{C}$ эквивалентны тогда и только тогда, когда их ранги равны.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Следует из <a href="./discrete_math16.1.html#Statement16.4">утверждения 16.4</a>.<br>
+$\Leftarrow)$
+Из <a href="./discrete_math16.3.html#Theorem16.2">теоремы 16.2</a> следует, что любая квадратичная форма над $\mathbb{C}$ ранга $r$ 
+эквивалентна квадратичной форме $h(\vec{z})=z_1^2+\cdots+z_r^2$.
+<p id="Theorem16.3"><b>Теоремы 16.3:</b><br>
+Квадратичная форма над полем $\mathbb{R}$ эквивалентна единственной нормальной квадратичной форме над полем $\mathbb{R}$.
+<p><b>Доказательство:</b><br><br>
+Существование нормальной квадратичной формы эквивалентной данной следует из п. 2 <a href="./discrete_math16.3.html#Theorem16.2">теоремы 16.2</a>.
+Докажем ее единственность.<br>
+Пусть $f(\vec{x})$, $g(\vec{y})$, $h(\vec{z})$ квадратичные формы над $\mathbb{R}$ такие, 
+что $B_f\in\mathbb{R}_{n,n}$, $\rang{f}=r$, $g(\vec{y})$, $h(\vec{z})$ - нормальные над $\mathbb{R}$, $f(\vec{x})\sim{g}(\vec{y})$ и 
+${f}(\vec{x})\sim{h}(\vec{z})$. Тогда по утверждению 16.4 $\rang{g}=\rang{h}=r$, следовательно, существуют $p,u\in\mathbb{N}_0$ такие, что
+$$g(\vec{y})=y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2,$$
+$$h(\vec{z})=z_1^2+\cdots+z_u^2-z_{u+1}^2-\cdots-z_r^2.$$
+Таким образом, $g(\vec{y})\neq{h}(\vec{z})$ тогда и только тогда, когда $p\neq{u}$. Предположим, что $p\neq{u}$ и будем б. о. о. считать, что $p&lt;u$. 
+Пусть замена $z^{\downarrow}=Cx^{\downarrow}$ переводит $h(\vec{z})$ в $f(\vec{x})$, 
+а замена $y^{\downarrow}=Dx^{\downarrow}$ переводит $g(\vec{y})$ в $f(\vec{x})$. Рассмотрим систему уравнений
+$$
+\begin{cases}
+\forall{i}\in\overline{1,p}&(\vec{C}_ix^{\downarrow}=0) \\
+\forall{j}\in\overline{u+1,r}&(\vec{D}_jx^{\downarrow}=0)
+\end{cases}\quad(*)$$
+СОЛУ c $n$ переменными содержит $p+(r-u)=r-(u-p)&lt;r\leq{n}$ уравнений, следовательно, она имеет ненулевое решение $x_0^{\downarrow}$, тогда
+$$
+f(x_0^{\downarrow})=h\left(\vec{C}_1x_0^{\downarrow},\ldots,\vec{C}_nx_0^{\downarrow}\right)=
+(\vec{C}_1x_0^{\downarrow})^2+\cdots+(\vec{C}_px_0^{\downarrow})^2-(\vec{C}_{p+1}x_0^{\downarrow})^2-\cdots-(\vec{C_r}x_0^{\downarrow})^2\leq0
+$$
+Последнее неравенство в силу того, что $x_0^{\downarrow}$ решение СОЛУ $(*)$, то есть первые $p$ слагаемых нулевые. 
+С другой стороны, из СОЛУ $(*)$ аналогичным образом следует
+$$
+f(x_0^{\downarrow})=g(\vec{D}_1x_0^{\downarrow},\ldots,\vec{D}_nx_0^{\downarrow})=
+(\vec{D}_1x_0^{\downarrow})^2+\cdots+(\vec{D}_ux_0^{\downarrow})^2-(\vec{D}_{u+1}x_0^{\downarrow})^2-\cdots-(\vec{D}_rx_0^{\downarrow})^2\geq0.
+$$
+Тогда  из СОЛУ $(*)$ следует 
+$$
+f(x_0^{\downarrow})=0\Rightarrow(\vec{D}_1x_0^{\downarrow})^2+\cdots+(\vec{D}_ux_0^{\downarrow})^2=0\Rightarrow
+\forall{i}\in\overline{1,u}(\vec{D}_ix_0^{\downarrow}=0)\Rightarrow{D}x_0^{\downarrow}=0
+$$
+Следовательно, столбцы матрицы $D$ ЛЗ, то есть она необратима, что противоречит невырожденности замены  $y^{\downarrow}=Dx^{\downarrow}$.
+<p id="Definition16.11"><b>Определение 16.11:</b><br>
+Пусть квадратичная форма $f(\vec{x})\in\mathbb{R}[x_1,\ldots,x_n]$ эквивалентна нормальной квадратичной форме 
+$y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2$, тогда
+<ol>
+<li>число $p$ называют положительным индексом инерции $f(\vec{x})$,</li>
+<li>число $q:=r-p$ называют отрицательным индексом инерции $f(\vec{x})$.</li>
+</ol>
+<p id="Definition16.12"><b>Определение 16.12:</b><br>
+Квадратичная форма $f(\vec{x})$ называется положительно определенной, если для любого $\vec{a}\in\mathbb{R}\backslash\{\vec{0}\}$ $f(\vec{a})&gt;0$. 
+Если квадратичная форма $f(\vec{x})$ положиетльно определена, то обозначают $f&gt;0$.
+<p id="Statement16.5"><b>Утверждение 16.5:</b><br>
+Пусть  квадратичные формы $f(\vec{x}),g(\vec{y})\in\mathbb{R}[x_1,\ldots,x_n]$ такие, что $f(\vec{x})\sim{g}(\vec{y})$, $f&gt;0$, тогда $g&gt;0$.
+<p><b>Доказательство:</b><br><br>
+Так как $g(\vec{y})\sim{f}(\vec{x})$, то существует $C\in(\mathbb{R}_{n,n})^*$ такая, что 
+$$\forall\vec{y}\in\mathbb{R}^n\left(g(\vec{y})=f\left(\vec{C}_1y^{\downarrow},\ldots,\vec{C}_ny^{\downarrow}\right)\right).$$
+Так как $C\in(\mathbb{R}_{n,n})^*$, то СОЛУ $Cx^{\downarrow}=0^{\downarrow}$ не имеет ненулевых решений, следовательно 
+$$
+\forall\vec{a}\in\mathbb{R}^n\backslash\{\vec{0}\}\left(\left(\vec{C}_1a^{\downarrow},\ldots,\vec{C}_na^{\downarrow}\right)\neq\vec{0}\right)\Rightarrow
+\forall\vec{a}\in\mathbb{R}^n\backslash\{\vec{0}\}\left(g(\vec{a})=f\left(\vec{C}_1a^{\downarrow},\ldots,\vec{C}_na^{\downarrow}\right)&gt;0\right)
+$$
+<p id="Theorem16.4"><b>Теорема 16.4:</b><br>
+Пусть $f(\vec{x})\in\mathbb{R}[x_1,\ldots,x_n]$ квадратичная форма, тогда следующие утверждения эквивалентны
+<ol>
+<li>$f&gt;0$,<li>
+<li>все главные угловые миноры матрицы $B_f$ положительны,</li>
+<li>положительный индекс инерции $f(\vec{x})$ равен $n$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Leftrightarrow2)$ Пусть $L_{\mathbb{R}}$ векторное пространство размерности $n$, $\vec{\alpha}$ - базис $L_{\mathbb{R}}$. 
+Рассмотрим функцию $\Phi:L_{\mathbb{R}}\times{L}_{\mathbb{R}}\to\mathbb{R}$ такую, что для любых 
+$\beta,\gamma\in{L}_{\mathbb{R}}$ $\Phi(\beta,\gamma)=\vec{\beta}_{\vec{\alpha}}B_f\gamma_{\vec{\alpha}}^{\downarrow}$. 
+<ol>
+<li>
+$$\Phi(\beta+\gamma,\delta)=(\vec{\beta}_{\vec{\alpha}}+\vec{\gamma}_{\vec{\alpha}})B_f\delta_{\vec{\alpha}}^{\downarrow}=
+\vec{\beta}_{\vec{\alpha}}B_f\delta_{\vec{\alpha}}^{\downarrow}+\vec{\gamma}_{\vec{\alpha}}B_f\delta_{\vec{\alpha}}^{\downarrow}=
+\Phi(\beta,\delta)+\Phi(\gamma,\delta).
+$$
+</li>
+<li>$$\Phi(\beta{c},\gamma)=\vec{\beta}_{\vec{\alpha}}cB_f\gamma_{\vec{\alpha}}^{\downarrow}=
+c\left(\vec{\beta}_{\vec{\alpha}}B_f\gamma_{\vec{\alpha}}^{\downarrow}\right)=c\Phi(\beta,\gamma).
+$$
+</li>
+<li>Так как $B_f^T=B_f$, то
+$$\Phi(\beta,\gamma)=\vec{\beta}_{\vec{\alpha}}B_f\gamma_{\vec{\alpha}}^{\downarrow}=
+\left(\vec{\beta}_{\vec{\alpha}}B_f\gamma_{\vec{\alpha}}^{\downarrow}\right)^T=
+\vec{\gamma}_{\vec{\alpha}}B_f\beta_{\vec{\alpha}}^{\downarrow}=\Phi(\gamma,\beta).
+$$
+</li>
+</ol>
+Для любого $\vec{a}\in\mathbb{R}^n$ существует единственный $\beta\in{L}_{\mathbb{R}}$ такой, что $\vec{\beta}_{\vec{\alpha}}=\vec{a}$ и наоборот, 
+для любого $\beta\in{L}_{\mathbb{R}}$ существует единственный 
+$\vec{a}\in\mathbb{R}^n$ такой, что $\vec{\beta}_{\vec{\alpha}}=\vec{a}$. При этом $\vec{\theta}_{\vec{\alpha}}=\vec{0}\in\mathbb{R}^n$. Следовательно, 
+$$
+f&gt;0\Leftrightarrow\forall\vec{a}\in\mathbb{R}^n\backslash\{\vec{0}\}(f(\vec{a})=\vec{a}B_fa^{\downarrow}>0)\Leftrightarrow
+\forall\beta\in{L}_{\mathbb{R}}\backslash\{{\theta}\}(\vec{\beta}_{\vec{\alpha}}B_f\beta_{\vec{\alpha}}^{\downarrow}=\Phi(\beta,\beta)&gt;0).
+$$
+Из свойств 1)-3) функции $\Phi$ слудует, что последнее утверждение равносильно тому, что функция $\Phi$ является скалярным произведением. 
+Что в свою очередь по <a href="./discrete_math14.3.html#Theorem14.3">теореме 14.3</a> равносильно тому, 
+что $B_f=B_f^T$ и все главные угловые миноры матрицы $B_f$ положительны.<br>
+$1)\Leftrightarrow3)$ Пусть $r:=\rang{f}$, тогда по п. 2 <a href="./discrete_math16.3.html#Theorem16.2">теоремы 16.2</a>
+$$
+\exists{p}\in\mathbb{N}_0:f(\vec{x})\sim{g}(\vec{y})=y_1^2+\cdots+y_p^2-y_{p+1}^2-\cdots-y_r^2
+$$
+тогда по утверждению 16.5
+$$f&gt;0\Leftrightarrow{g}&gt;0\Leftrightarrow{p}=r=n$$
+
+<br><br>
+<a href="discrete_math16.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.1.html">next</a>
+</body>
+</html>

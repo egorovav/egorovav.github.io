@@ -1,0 +1,317 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 7.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.4.html">next</a>
+<br>
+
+<h4 id="7.2">7.2 Делимость многочленов.</h4>
+
+<p id="Definition7.3"><b>Определение 7.3:</b><br>
+Если $S$ - кольцо, $a,b\in{S}$, тогда говорят, что $b$ делит $a$ справа (слева), если существует $s\in{S}$ такой, что $a=sb$ ($a=bs$).
+<p id="Definition7.4"><b>Определение 7.4:</b><br>
+Разделить с остатком многочлен $a(x)\in{R}[x]$ на многочлен ${b(x)\in{R}[x]}$ справа (слева), значит найти многочлены $q_R(x),r_R(x)$ ($q_L(x),r_L(x)$) 
+такие, что $a(x)=q_R(x)b(x)+r_R(x)$ и $\deg{(r_R(x))}&lt;\deg{(b(x))}$ 
+(${a(x)=b(x)q_L(x)+r_L(x)}$ и $\deg{(r_L(x))}&lt;\deg{(b(x))}$).
+<p id="Example7.1"><b>Пример 7.1:</b><br>
+<ol>
+<li>В отличии от кольца целых чисел $\mathbb{Z}$ в кольце многочленов над ним $\mathbb{Z}[x]$ не всегда можно разделить с остатком один элемент на другой. 
+Например, $x$ нельзя разделить на $2x$. Действительно, предположим, что сущетсвуют $q(x)\in\mathbb{Z}[x]$ и $a\in\mathbb{Z}$ такие, что $x=2xq(x)+a$. 
+Так как в кольце $\mathbb{Z}$ нет делителей нуля, то их нет и в кольце $\mathbb{Z}[x]$. Тогда по п. 1 
+<a href="./discrete_math7.1.html#Corollary7.1">следствия 7.1</a> $\deg{(x)}=\deg{(2x)}+\deg{(q(x))}$, 
+следовательно, $\deg{(q(x))}=0$ и $2q_0=1$ чего не может быть так как $\mathbb{Z}^*=\{-1,1\}$.
+</li>
+<li>С другой стороны, результат деления может быть определен не однозначно, например,  пусть многочлены $a(x),b(x)\in{G}F(2)_{2,2}[x]$ такие, 
+что $a(x)=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}x^2$, $b(x)=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}x$, тогда 
+$$\forall{c},d\in{G}F(2)\left(a(x)=b(x)\begin{pmatrix}c & d \\ 0 & 1\end{pmatrix}x\right).$$
+</li>
+</ol>
+<p id="Theorem7.2"><b>Теорема 7.2:</b><br>
+Пусть $a(x),b(x)\in{R}[x]$, $\deg{(b(x))}=m$, $b_m\in{R}^*$, тогда многочлен $a(x)$ можно разделить на многочлен $b(x)$ с остатком справа (слева) 
+при этом неполное частное и остаток определены однозначно.  
+<p><b>Доказательство:</b><br>
+Рассмотрим случай деления с остатком справа. Случай деления слева рассматривается аналогично.<br>
+Обозначим $n:=\deg{(a(x))}$ и докажем утверждение индукцией по $n$.<br>
+<ol type="I">
+<li>При $n&lt;m$ $a(x)=0b(x)+a(x)$, где $\deg(a(x))=n&lt;\deg{(b(x))}=m$, то есть деление выполнено.</li>
+<li>Пусть для любого $k\geq{m}$ утверждение справедливо при всех $n&lt;k$, докажем, что оно справедливо при $n=k$.<br>
+Пусть $\deg{(a(x))}=k$. Положим $a_1(x):=a(x)-a_kb_m^{-1}x^{k-m}b(x)$. По п. 3 <a href="./discrete_math7.1.html#Statement7.1">утверждения 7.1</a>
+$$\deg(a_kb_m^{-1}x^{k-m}b(x))\leq{k}-m+m=k$$ 
+и так как $k$-тый коэффициент многочлена $a_kb_m^{-1}x^{k-m}b(x)$ равняется 
+$a_kb_m^{-1}b_m=a_k\neq0$, то, $\deg(a_kb_m^{-1}x^{k-m}b(x))=k$ и $k$-тый коэффициент многочлена $a_kb_m^{-1}x^{k-m}b(x)$ равен $a_k$. 
+Тогда $\deg(a_1(x))&lt;k$,  следовательно, по предположению индукции можно поделить с остатком многочлен $a_1(x)$ на многочле $b(x)$, 
+то есть  существуют многочлены $q(x)$, $r(x)$ такие, что $a_1(x)=q(x)b(x)+r(x)$ и $\deg{(r(x))}&lt;m$. Следовательно
+$$a(x)=a_1(x)+a_kb_m^{-1}x^{k-m}b(x)=(q(x)+a_kb_m^{-1}x^{k-m})b(x)+r(x).$$
+Таким образом неполное частное и остаток при делении многочлена $a(x)$ на многочлен $b(x)$ равны соответсвенно $q(x)+a_kb_m^{-1}x^{k-m}$ и $r(x)$.<br>
+</li>
+</ol>
+Докажем от противного однозначность результата деления. Предположим, что существуют многочлены $q(x),\tilde{q}(x),r(x),\tilde{r}(x)$ такие, что
+$$a(x)=q(x)b(x)+r(x),\,\deg{(r(x))}&lt;m,$$
+$$a(x)=\tilde{q}(x)b(x)+\tilde{r}(x),\deg{(\tilde{r}(x))}&lt;m.$$
+Предположим, что $q(x)\neq\tilde{q}(x)$, тогда вычитая второе равенство из первого получим
+$$(q(x)-\tilde{q}(x))b(x)=r(x)-\tilde{r}(x).$$
+Обозначим $g(x):=q(x)-\tilde{q}(x)\neq0$, $s:=\deg{(g(x))}\in\mathbb{N}_0$, тогда по п. 3 <a href="./discrete_math7.1.html#Statement7.1">утверждения 7.1</a>
+$$
+(g_s\neq0\,\wedge\,b_m\in{R}^*)\Rightarrow{g}_sb_m\neq0\Rightarrow\deg(g(x)b(x))=\deg{(g(x))}+\deg{(b(x))}=s+m\geq{m}.
+$$
+С другой стороны по п.1 <a href="./discrete_math7.1.html#Statement7.1">утверждения 7.1</a>
+$$
+\deg{(g(x)b(x))}=\deg(r(x)-\tilde{r}(x))\leq\max{\{\deg{(r(x))},\deg{(\tilde{r}(x))}\}}&lt;m.
+$$
+Таким образом получено противоречие, следовательно, $q(x)=\tilde{q}(x)$. Тогда 
+$$r(x)-\tilde{r}(x)=(q(x)-\tilde{q}(x))b(x)=0\Rightarrow{r}(x)=\tilde{r}(x).$$
+<p id="Corollary7.2"><b>Следствие 7.2:</b><br>
+<ol>
+<li>В кольце многочленов над полем любой многочлен можно разделить с остатком на любой не нулевой многочлен. 
+При этом неполное частное и остаток определены однозначно. 
+</li>
+<li>Если $a(x),b(x)\in{R}[x]$, $deg{(b(x))}=m$, $b_m\in{R}^*$, то $b(x)$ делит $a(x)$ справа (слева) тогда и только тогда, 
+когда остаток от деления многочлена $a(x)$ на многочлен $b(x)$ справа (слева) равен $0$. 
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $b(x)\neq0$ многочлен над полем. Обозначим ${m:=\deg{(b(x))}\in\mathbb{N}_0}$. Так как в поле все ненулевые элементы обратимы и $b_m\neq0$, 
+то $b_m$ обратим, следовательно, по теореме 7.2 любой многочлен можно поделить с остатком на многочлен $b(x)$.
+</li>
+<li>Ограничимся случаем делимости справа, случай делимости слева доказывается аналогично.<br>
+Из <a href="./discrete_math7.1.html#Theorem7.1">теоеремы 7.1</a> следует, что существуют многочлены $q(x)$, $r(x)$ такие, что $a(x)=q(x)b(x)+r(x)$.<br>
+$\Rightarrow)$
+Пусть $b(x)$ делит $a(x)$ справа, следовательно, существует многочлен $q_1(x)$ такой, что $a(x)=q_1(x)b(x)$. 
+Тогда в силу однозначности результата деления с остатком $q_1(x)=q(x)$ и $r(x)=0$.<br>
+$\Leftarrow)$
+$$r(x)=0\Rightarrow{a}(x)=b(x)q(x)\Rightarrow{b}(x)|a(x).$$ 
+</li>
+</ol>
+
+<h4 id="7.3">7.3 Значение и корень многочлена. Теорема Безу.</h4>
+<p id="Definition7.5"><b>Определение 7.5:</b><br>
+Значением многочлена $a(x)=a_nx^n+\cdots+a_1x+a_0\in{R}[x]$ в точке $\alpha\in{R}$ называется элемент кольца $R$ равный 
+$$a(\alpha):=a_n\alpha^n+\cdots+a_1\alpha+a_0.$$
+Если значение многочлена $a(x)$ в точке $\alpha$ равно нулю, то элемент $\alpha$ называется корнем многочлена $a(x)$. 
+<p id="Lemma7.1"><b>Лемма 7.1:</b><br>
+Пусть $a(x),b(x)\in{R}[x]$, $c(x):=a(x)+b(x)$, $d(x):=a(x)b(x)$, $\alpha\in{R}$ тогда 
+<ol>
+<li>$c(\alpha)=a(\alpha)+b(\alpha)$.</li>
+<li>Если $\alpha$ перестановочно со всеми коэффициентами многочлена $b(x)$, то $d(\alpha)=a(\alpha)b(\alpha)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как операция $\cdot$ в кольце $R$ дистрибутивна относительно операции $+$, то
+$$
+a(\alpha)+b(\alpha)=\sum_{i\geq0}a_i\alpha^i+\sum_{j\geq0}b_j\alpha^j=\sum_{i\geq0}(a_i\alpha^i+b_i\alpha^i)=
+\sum_{i\geq0}(a_i+b_i)\alpha^i=\sum_{i\geq0}c_i\alpha^i=c(\alpha).
+$$
+</li>
+<li> 
+<li>
+$$
+a(\alpha)b(\alpha)=\left(\sum_{i\geq0}a_i\alpha^i\right)\left(\sum_{j\geq0}b_j\alpha^j\right)=\sum_{i\geq0}\sum_{j\geq0}(a_i\alpha^ib_j\alpha^{j})=
+\sum_{i\geq0}\sum_{j\geq0}(a_ib_j\alpha^{i+j}).
+$$
+Здесь в последнем равенстве используется заявленное в условии свойство перестановочности элемента $\alpha$ с коэффициентами многочлена $b(x)$. 
+Полученная сумма только формально является бесконечной, так как в ней конечное число ненулевых слагаемых. Следовательно, 
+любая перестановка слагаемых в силу коммутативности операции $+$ не изменит значения суммы. Переставим слагаемые так, 
+чтобы сначала шли все слагаемые у которых $i+j=0$, потом все слагаемые у которых $i+j=1$ и т. д. 
+Таким образом все слагаемые будут исчерпаны и ни одно не встретится дважды, следовательно
+$$a(\alpha)b(\alpha)=\sum_{s\geq0}\left(\sum_{t=0}^sa_tb_{s-t}\right)\alpha^s=\sum_{s\geq0}d_s\alpha^s=d(\alpha).$$
+</li>
+</ol>
+<p id="Task7.1"><b>Задача 7.1:</b><br>
+Привести пример двух многочленов $a(x)$, $b(x)$ и элемента $\alpha$ таких, что $a(\alpha)b(\alpha)\neq(ab)(\alpha)$.
+Решение: Положим $a(x)=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}x,b(x)=\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}x\in{G}F(2)_{2,2}[x]$. Тогда
+$$c(x):=a(x)b(x)=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}x=\begin{pmatrix}0 & 0 \\ 0 & 0\end{pmatrix}x=0.$$
+Таким образом для любого $\alpha\in{G}F(2)_{2,2}$ $c(\alpha)=0$. Однако, при $\alpha=\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}$
+$$
+a(\alpha)b(\alpha)=\left(\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\right)
+\left(\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\right)=
+\begin{pmatrix}1 & 0 \\ 1 & 0\end{pmatrix}\begin{pmatrix}1 & 1 \\ 0 & 0\end{pmatrix}=\begin{pmatrix}1 & 1 \\ 1 & 1\end{pmatrix}\neq0.
+$$
+<p id="Theorem7.3"><b>Теорема 7.3: Теорема Безу.</b><br>
+Пусть $a(x)\in{R}[x]$, $\alpha\in{R}$, тогда
+<ol>
+<li>Правый остаток от деления многочлена $a(x)$ на многочлен $x-\alpha$ равен $a(\alpha)$.</li>
+<li>Элемент $\alpha$ является корнем многочлена $a(x)$ тогда и только тогда, когда многочлен $x-\alpha$ делит многочлен $a(x)$ справа.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Если многочлен $x-\alpha$ делит многочлен $a(x)$ справа, то существуют $q(x),r(x)\in{R}[x]$ такие, 
+что выполняется $a(x)=q(x)(x-\alpha)+r(x)$ и $\deg{(r(x))}<\deg{(x-\alpha)}=1$, то есть $\deg{(r(x))}\in\{-\infty,0\}$. 
+Таким образом $r(x)=r\in{R}$, следовательно, формулировка вообще говоря корректна.
+<ol>
+<li>Так как $\alpha{e}=e\alpha=\alpha$, то по п. 2 леммы 7.1</li>
+$$a(\alpha)=q(\alpha)(\alpha-\alpha)+r=r.$$
+</li>
+<li>По пункту 1
+$$a(\alpha)=0\Leftrightarrow{r}=0\Leftrightarrow{a}(x)=q(x)(x-\alpha),$$
+что эквивалентно делимости $a(x)$ на $x-\alpha$ справа.
+</li>
+</ol>
+<p id="Task7.2"><b>Задача 7.2:</b><br>
+Привести пример многочлена $a(x)$ и элемента кольца $\alpha$ таких, что $a(\alpha)\neq0$ и $x-\alpha$ делит $a(x)$ слева.<br>
+Решение: В самом простом случае $\deg{b(x)}=0$, то есть $b(x)=b\in{R}$ и $a(x)=(x-\alpha)b=bx-\alpha{b}$. Тогда $a(\alpha)=b\alpha-\alpha{b}\neq0$. 
+Таким образом в качестве $R$ можно выбрать любое не коммутативное кольцо, а в качестве $\alpha$ и $b$ любые два не перестановочных элемента в нем, 
+например, $R=GF(2)_{2,2}$
+$$
+\left(\alpha=\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\,\wedge\,b=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}\right)\Rightarrow
+{a}(\alpha)=\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}-\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}=
+\begin{pmatrix}1 & 0 \\ 1 & 0\end{pmatrix}-\begin{pmatrix}0 & 1 \\ 0 & 1\end{pmatrix}=\begin{pmatrix}1  &1 \\ 1 & 1\end{pmatrix}\neq0
+$$
+<br>
+<a href="./discrete_math7.2.html#Definition7.5">Опеределение 7.5</a> позволяет поставить в соответствие каждому многочлену 
+$a(x)\in{R}[x]$ функцию $\hat{a}:R\to{R}$ такую, что для любого $\alpha\in{R}$ $\hat{a}(\alpha)=a(\alpha)$. Если многочлены $a(x)$ и $b(x)$ равны, 
+то соответствующие функции $\hat{a}$ и $\hat{b}$ тождественно равны. Обратное неверно.
+<p id="Example7.2"><b>Пример 7.2</b><br>
+Рассмотрим многочлены $a(x)=x$, $b(x)=x^2$ над полем $GF(2)$.  Так как $\hat{a}(0)=\hat{b}(0)=0$ и $\hat{a}(1)=\hat{b}(1)=1$, то $\hat{a}=\hat{b}$, 
+однако, $a(x)\neq{b}(x)$.
+<p id="Definition7.6"><b>Опредедение 7.6:</b><br>
+Отображение $\varphi:R\to{R}$ называется полиномиальным, если существует многочлен $a(x)\in{R}[x]$ такой, что $\hat{a}=\varphi$.
+<p id="Theorem7.4"><b>Теорема 7.4:</b><br>
+Пусть $P$ - поле, $n\in\mathbb{N}$, $\alpha_1,\ldots,\alpha_n,\beta_1,\ldots,\beta_n\in{P}$ такие, что $\alpha_i\neq\alpha_j$ при $i\neq{j}$. 
+Тогда существует единственный многочлен $a(x)\in{P}[x]$ такой, что
+<ol>
+<li>$\deg{(a(x))}\leq{n-1}$,</li>
+<li>$\forall{i}\in\overline{1,n}(a(\alpha_i)=\beta_i)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Многочлен $a(x)=a_0+a_1x+\dots+a_{n-1}x^{n-1}$ удовлетворяет условию $a(\alpha_i)=\beta_i$ для любого $i\in\overline{1,n}$ тогда и только тогда, 
+когда для любого $i\in\overline{1,n}$ $a_0+a_1\alpha+\cdots+a_{n-1}\alpha^{n-1}=\beta_i$, тогда и только тогда, 
+когда вектор $(a_0,a_1,\ldots,a_{n-1})^T$ является решением СЛУ
+$$\begin{pmatrix}
+1 & \alpha_1 & \alpha_1^2 & \cdots & \alpha_1^{n-1} \\ 
+1 & \alpha_2 & \alpha_2^2 & \cdots & \alpha_2^{n-1} \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & \alpha_n & \alpha_n^2 & \cdots & \alpha_n^{n-1}
+\end{pmatrix}X^{\downarrow}=\begin{pmatrix}\beta_1 \\ \beta_2 \\ \vdots \\ \beta_{n-1}\end{pmatrix}.\quad(*)$$
+Докажем индукцией по количеству столбцов $n$, что определитель матрицы СЛУ $(*)$ $\Delta_n$ равен $\prod_{1\leq{i}&lt;j\leq{n}}(\alpha_j-\alpha_i)$.
+<ol>
+<li> При $n=2$ 
+$$\Delta_2=\begin{vmatrix}1 & \alpha_1 \\ 1 & \alpha_2\end{vmatrix}=\alpha_2-\alpha_1.$$</li>
+<li>Пусть для любого $k\geq2$ $\Delta_n=\prod_{1\leq{i}&lt;j\leq{n}}(\alpha_j-\alpha_i)$ для всех $n\in\overline{2,k-1}$, докажем, 
+что тогда $\Delta_k=\prod_{1\leq{i}&lt;j\leq{k}}(\alpha_j-\alpha_i)$.<br>
+Вычитая в исходной матрице из каждого столбца (кроме первого) предыдущий умноженный на $\alpha_1$ получим
+$$
+\Delta_k=
+\begin{vmatrix}
+1 & 0 & 0 & \cdots & 0 \\
+1 & \alpha_2-\alpha_1 & \alpha_2^2-\alpha_2\alpha_1 & \cdots & \alpha_2^{k-1}-\alpha_2^{k-2}\alpha_1 \\
+1 & \alpha_3-\alpha_1 & \alpha_3^2-\alpha_3\alpha_1 & \cdots & \alpha_3^{k-1}-\alpha_3^{k-2}\alpha_1 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & \alpha_k-\alpha_1 & \alpha_n^2-\alpha_k\alpha_1 & \cdots & \alpha_k^{k-1}-\alpha_k^{k-2}\alpha_1 \\
+\end{vmatrix}=
+\begin{vmatrix}
+\alpha_2-\alpha_1 & \alpha_2^2-\alpha_2\alpha_1 & \cdots & \alpha_2^{k-1}-\alpha_2^{k-2}\alpha_1 \\
+\alpha_3-\alpha_1 & \alpha_3^2-\alpha_3\alpha_1 & \cdots & \alpha_3^{k-1}-\alpha_3^{k-2}\alpha_1 \\
+\vdots & \vdots & \ddots & \vdots \\
+\alpha_k-\alpha_1 & \alpha_k^2-\alpha_k\alpha_1 & \cdots & \alpha_k^{k-1}-\alpha_k^{k-2}\alpha_1 \\
+\end{vmatrix}=
+(\alpha_2-\alpha_1)(\alpha_3-\alpha_1)\cdots(\alpha_k-\alpha_1)
+\begin{vmatrix}
+1 & \alpha_2 & \cdots & \alpha_2^{k-2} \\ 
+1 & \alpha_3 & \cdots & \alpha_3^{k-2} \\ 
+\vdots & \vdots & \ddots & \vdots \\ 
+1 & \alpha_k & \cdots & \alpha_k^{k-2} 
+\end{vmatrix}
+$$
+Последний определитель, это определитель $\Delta_{k-1}$ для переменных $\alpha_2,\alpha_3,\ldots,\alpha_{k}$, 
+так что по предположению индукции он равен $\prod_{2\leq{i}&lt;j\leq{k}}(\alpha_j-\alpha_i)$. Тогда 
+$\Delta_k=\prod_{1\leq{i}&lt;j\leq{k}}(\alpha_j-\alpha_i)$.
+</li>
+</ol>
+Так как по условию $\alpha_i\neq\alpha_j$ при $i\neq{j}$ и в поле нет делителей нуля, то определитель матрицы СЛУ $(*)$ не равен нулю, следовательно, 
+по <a href="./discrete_math5.1.html#Theorem5.2">теореме 5.2</a> СЛУ $(*)$ имеет единственное решение.
+<p id="Corollary7.3"><b>Следствие 7.3:</b><br>
+<ol>
+<li>Пусть $P$ - поле такое, что $|P|<\infty$, $\varphi:P\to{P}$, тогда существует многочлен $a(x)\in{P}[x]$ такой, что $\varphi=\hat{a}$.</li>
+<li>Пусть $P$ - поле, многочлен $a(x)\in{P}[x]$ такой, что $\deg{a(x)}=n\in\mathbb{N}_0$, тогда $a(x)$ имеет не более $n$ корней.</li>
+<li>Пусть $P$ - поле такое, что $|P|=\infty$, многочлены $a(x),b(x)\in{P}[x]$ такие, что $\hat{a}=\hat{b}$, тогда $a(x)=b(x)$.</li>
+</ol>
+<p><b>Доказательство:</b></br>
+<ol>
+<li>Пусть $|P|=n\in\mathbb{N}$ и $P=\{\alpha_1,\ldots,\alpha_n\}$. Положим для любого $j\in\overline{1,n}$ $b_j:=\varphi(\alpha_j)$. 
+Тогда по теореме 7.4 существует многочлен $a(x)\in{P}[x]$ такой,  что для любого $j\in\overline{1,n}$ 
+$a(\alpha_j)=\beta_j=\varphi(\alpha_j)$, то есть $\hat{a}=\varphi$.
+</li>
+<li>Докажем от противного. Пусть $\alpha_1,\ldots,\alpha_{n+1}$ корни многочлена $a(x)$. Положим для любого $j\in\overline{1,n+1}$ $\beta_j:=0$ тогда, 
+для любого $j\in\overline{1,n+1}$ $a(\alpha_j)=\beta_j$. И так как 
+$\deg{(a(x))}\in\mathbb{N}_0$, то $a(x)\neq0$. То есть существуют два различных многочлена (a(x) и нулевой) степени меньше $n+1$ таких, 
+что их значения от $\alpha_j$ равны $\beta_j$ для любого $j\in\overline{1,n+1}$. А это противоречит теореме 7.4.
+</li>
+<li>Рассмотрим многочлен $c(x):=a(x)-b(x)$. Докажем от противного, что $\deg{c(x)}=-\infty$. Предположим, что $\deg{(c(x))}=n\in\mathbb{N}_0$, 
+тогда по пункту 2 многочлен $c(x)$ имеет не более $n$ корней, однако, так как 
+$\hat{a}=\hat{b}$, то
+$$\forall\alpha\in{P}(c(\alpha)=a(\alpha)-b(\alpha)=\hat{a}(\alpha)-\hat{b}(\alpha)=0).$$
+То есть многочлен $c(x)$ имеет $|P|=\infty$ корней. Получено противоречие. Следовательно, $\deg{(c(x))}=-\infty$ и $c(x)=a(x)-b(x)=0$, то есть $a(x)=b(x)$.
+</li>
+</ol>
+<p id="Example7.3"><b>Пример 7.3:</b><br>
+В отличии от конечного поля функция заданная на конечном кольце может не быть полиномиальной. Например, 
+рассмотрим функцию $\varphi:\mathbb{Z}_4\to\mathbb{Z}_4$ такую, что $\varphi(0)=\varphi(1)=0$, $\varphi(2)=\varphi(3)=1$.
+Докажем, что не существует многочлена $a(x)\in\mathbb{Z}[x]$ такого, что $\hat{a}=\varphi$.<br>
+Так как для любого $a\in\mathbb{Z}_4$ и для любого $n>3$ $a^n=a$ или $a^n=a^2$, то если искомый многочлен $a(x)$ существует, то $\deg{(a(x))}\leq3$. 
+Тогда нахождение коэффициентов многочлена $a(x)$ сводится к решению СЛУ
+$$
+\begin{pmatrix}
+1 & 0 & 0^2 & 0^3 \\
+1 & 1 & 1^2 & 1^3 \\
+1 & 2 & 2^2 & 2^3 \\
+1 & 3 & 3^2 & 3^3 \\ 
+\end{pmatrix}X^{\downarrow}=\begin{pmatrix}0 \\ 0 \\ 1 \\ 1 \end{pmatrix}
+$$
+Проведем элементарные строчные преобразования расширенной матрицы СЛУ
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+1 & 1 & 1 & 1 & 0 \\
+1 & 2 & 0 & 0 & 1 \\
+1 & 3 & 1 & 3 & 1 \\
+\end{pmatrix}\rsim
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 2 & 0 & 0 & 1 \\
+0 & 3 & 1 & 3 & 1
+\end{pmatrix}\rsim
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 0 & 2 & 2 & 1 \\
+0 & 0 & 2 & 0 & 1 \\
+\end{pmatrix}\rsim
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 0 & 2 & 2 & 1 \\
+0 & 0 & 0 & 2 & 2 
+\end{pmatrix}\rsim
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 0 & 2 & 0 & 3 \\
+0 & 0 & 0 & 2 & 2
+\end{pmatrix}
+$$
+Таким образом из третей строки имеем $2a_2=3$, что не возможно в кольце $\mathbb{Z}_4$.
+
+<br><br>
+<a href="discrete_math7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.4.html">next</a>
+</body>
+</html>

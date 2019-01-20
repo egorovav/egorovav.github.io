@@ -1,0 +1,233 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 3.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}" 
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math4.1.html">next</a>
+<br>
+
+<h4 id="3.5">3.5 Элементарные преобразования матриц.</h4>
+
+Везде далее в этом разделе $R$ - коммутативное кольцо с единицей.
+<p id="Definition3.11"><b>Определение 3.11:</b><br>
+Элементарным преобразованием строк (столбцов) матрицы $A\in{R}_{n,m}$ называется 
+<ol>
+<li> умножение строки (столбца) на обратимый элемент кольца $R$,</li>
+<li> прибавление к строке (столбцу) другой строки (столбца) умноженной на любой элемент кольца $R$.</li>
+</ol>
+Элементарными преобразованиями матрицы называются элементарные преобразования ее строк и столбцов. 
+<br>
+<p id="Statement3.9"><b>Утверждение 3.9:</b><br>
+<ol>
+<li> Умножение $i$-той строки (столбца) матрицы $A\in{R}_{n,m}$ на элемент $r\in{R}$ равносильно умножению матрицы $A$ слева (справа) на матрицу 
+$D_n^{(i)}(r)$ ($D_m^{(i)}(r)$). Где матрица $D_n^{(i)}=(d_{s,t})_{n\times{n}}$ такая, что при $s\neq{t}$ $d_{s,t}=0$, 
+при $s\neq{i}$ $d_{s,s}=e$, $d_{i,i}=r$.
+</li>
+<li> Прибавление к $i$-той строке (столбцу) $j$-той $j\neq{i}$ строки (столбца) умноженной на элемент $r\in{R}$ 
+равносильно умножению слева (справа) матрицы $A$ на матрицу $T_n^{(i,j)}(r)$ ($T_n^{(j,i)}(r)$). Где матрица 
+$T_n^{(i,j)}=(c_{s,t})_{n\times{n}}$ такая, что для любого $s\in\overline{1,n}$ $c_{s,s}=e$, для любого 
+$(s,t)\in(\overline{1,n})^2$ такого, что $s\neq{t}$ и $(s,t)\neq(i,j)$ $c_{s,t}=0$ и $c_{i,j}=r$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Пусть $D_n^{(i)}(r)A=(b_{s,t})_{n\times{m}}$, тогда $b_{s,t}=\overrightarrow{(D_n^{(i)}(r))}_sA_t^{\downarrow}$. 
+Тогда для любого $s\neq{i}$ $b_{s,t}=d_{s,s}a_{s,t}=a_{s,t}$, а $b_{i,t}=d_{i,i}a_{i,t}=ra_{i,t}$.<br>
+Пусть $AD_m^{(i)}(r)=(b_{s,t})_{n\times{m}}$, тогда $b_{s,t}=\vec{A}_s(D_m^{(i)}(r))_t^{\downarrow}$. Тогда для любого 
+$t\neq{i}$ $b_{s,t}=a_{s,t}c_{t,t}=a_{s,t}$, а $b_{s,i}=d_{i,i}a_{s,i}=a_{s,i}r$.
+</li>
+<li> Пусть матрица $U_n^{(i,j)}(r)=(u_{s,t})_{n\times{n}}\in{R}_{n,n}$ такая, что $u_{i,j}=r$, а для любых $(s,t)\neq(i,j)$ $u_{s,t}=0$. 
+Обозначим $B:=U_n^{(i,j)}(r)A=(b_{s,t})_{n\times{m}}$, тогда 
+$b_{s,t}=\overrightarrow{(U_n^{(i,j)}(r))}_sA_t^{\downarrow}$. Следовательно, для любого $s\neq{i}$ $b_{s,t}=0$, а $b_{i,t}=u_{i,j}a_{j,t}=ra_{j,t}$. 
+Таким образом, для любого $s\neq{i}$ $\vec{B}_s=\vec{0}$, и $\vec{B}_i=r\vec{A}_j$. Поэтому, доказываемое утверждение следует из равенства 
+$T_n^{(i,j)}(r)=E+U_n^{(i,j)}(r)$ и дистрибутивности операции $\cdot$ относительно операции $+$, так как $T_n^{(i,j)}(r)A=(E+U_n^{(i,j)}(r))A=A+B$.<br>
+Для столбцов доказывается аналогично.
+</li>
+</ol>
+<p id="Definition3.12"><b>Определение 3.12:</b><br>
+Матрицы $D_n^{(i)}(r)$ при всех $r\in{R}^*$ и $T_n^{(i,j)}(r)$ при всех $r\in{R}$, $i\neq{j}$ называются элементарными.
+<p id="Note3.1"><b>Замечание 3.1:</b><br>
+<ol>
+<li>Матрица $D_k^{(i)}(r)$ обратима тогда и только тогда, когда $r\in{R}^*$, при этом $(D_k^{(i)}(r))^{-1}=D_k^{(i)}(r^{-1})$. Действительно,
+$$D_k^{(i)}(r)\in(R_{k,k})^*\Rightarrow|D_k^{(i)}(r)|\in{R}^*\Rightarrow{e}\cdots{e}r\in{R}^*\Rightarrow{r}\in{R}^*.$$
+С другой стороны,
+$$
+r\in{R}^*\Rightarrow\exists{r}^{-1}\in{R}\Rightarrow
+\exists(D_k^{(i)}(r))^{-1}:=D_k^{(i)}(r^{-1}):D_k^{(i)}(r)(D_k^{(i)}(r))^{-1}=(D_k^{(i)}(r))^{-1}D_r^{(i)}(r)=E\Rightarrow{D}_k^{(i)}(r)\in(R_{k,k})^*.
+$$
+</li>
+<li> Матрица $T_k^{(i,j)}$ обратима при любых $i\neq{j}$. При этом $(T_k^{(i,j)}(r))^{-1}=T_k^{(i,j)}(-r)$.</li>
+</ol>
+<p id="Definition3.13"><b>Определение 3.13:</b><br>
+Матрица $A$ эквивалентна матрице $B$ ($A\sim{B}$), если матрицу $B$ можно получить из матрицы $A$ с помощью конечного числа элементарных преобразований. 
+<p id="Statement3.10"><b>Утверждение 3.10:</b><br>
+<ol>
+<li> Отношение $\sim$ является отношнием эквивалентности (см. <a href="./discrete_math2.3.html#Definition2.15">определение 2.15</a>).</li>
+<li> Если матрица $B$ получена из матрицы $A$ перестановкой строк и столбцов, то $A\sim{B}$.</li>
+<li> $\forall{A},B\in{R}_{n,m}(A\sim{B}\Rightarrow\exists{U}\in(R_{n,n})^*\,\exists{V}\in(R_{m,m})^*:B=UAV)$.</li>
+<li> $\forall{A},B\in{R}_{n,n}(A\sim{B}\Rightarrow\exists{r}\in{R}^*:|B|=r|A|)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Проверим выполнение свойств отношения эквивалентноти для отношения эквивалентности матриц
+<ul>
+<li><b>рефлексивность</b> Матрица $A$ получается из матрицы $A$ домножение первой строки на $e$, следовательно, $A\sim{A}$.</b>
+<li><b>симметричность</b> Пусть $A\sim{B}$ и $B$ получено из $A$ с помощью одного элементарного преобразования. Тогда $B=CA$ (или $B=AC$), 
+где $C$ - элементарная матрица. Так как по замечанию 3.1 элементарные матрицы обратимы и обратные к ним так же элементарные матрицы, 
+то $A=C^{-1}B$ (или $A=BC^{-1}$), где $C^{-1}$ элементарная матрица. Таким образом, $B\sim{A}$. 
+Индукцией по числу элементарных преобразований доказательство распространяется на случай произвольного числа элементарных преобразований 
+примененных к матрице $A$.
+</li>
+<li><b>транзитивность</b> Пусть $A\sim{B}$ и $B\sim{C}$, тогда по утверждению~3.9 $B=L_1AR_1$ и $C=L_2BR_2$, где $L_1,L_2,R_1,R_2$ - 
+произведение элементарных матриц, тогда $C=L_2L_1AR_1R_2$, следовательно, $A\sim{C}$.
+</li>
+</ul> 
+</li>
+<li> Достаточно рассмотреть случай, когд $B$ получено из $A$ перестановкой двух строк. Пусть для любых $k\notin{i,j}$ 
+$\vec{A}_k=\vec{B}_k$, $B_i=A_j$ и $B_j=A_i$, тогда матрица $B$ получается из матрицы $B$ с помощью четырех элементарных преобразований
+$$A=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_i \\ \vdots \\ \vec{A}_j \\ \vdots \\ A_n \end{pmatrix}\sim
+\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_i+\vec{A}_j\\ \vdots \\ \vec{A}_j \\ \vdots \\ \vec{A}_n \end{pmatrix}\sim
+\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_i+\vec{A}_j \\ \vdots \\ -\vec{A}_i \\ \vdots \\ \vec{A}_n \end{pmatrix}\sim
+\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_j \\ \vdots \\ -\vec{A}_i \\ \vdots \\ \vec{V}_n\end{pmatrix}\sim
+\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_j \\ \vdots \\ \vec{A}_i \\ \vdots \\ \vec{A}_n\end{pmatrix}= B.$$
+</li>
+<li> По <a href="./discrete_math3.5.html#Statement3.9">утверждению 3.9</a> и <a href="./discrete_math3.5.html#Note3.1">замечанию 3.1</a>, 
+если $A\sim{B}$, то существуют матрицы $U_1,\ldots,U_s\in(R_{n,n})^*$, $V_1,\ldots,V_t\in(R_{m,m})^*$ такие, что $B=U_s\cdots{U}_1AV_1\cdots{V}_t$. 
+Так как для любых $i\in\overline{1,s}$ 
+$U_i\in(R_{n,n})^*$ и для любых $j\in\overline{1,t}$ $V_j\in(R_{m,m})^*$, то по замечанию 2.1 $U_s\cdots{U}_1\in(R_{n,n})^*$ и 
+$V_1\cdots{V}_t\in(R_{m,m})^*$.
+</li>
+<li> По пункту 3, <a href="./discrete_math3.2.html#Theorem3.6">теореме 3.6</a>, <a href="./discrete_math3.3.html#Theorem3.8">теореме 3.8</a> 
+и <a href="./discrete_math2.1.html#Note2.1">замечанию 2.1</a> имеем
+$$
+A\sim{B}\Rightarrow\exists{U},V\in(R_{n,n})^*:B=UAV\Rightarrow
+|B|=|U||A||V|=|U||V||A|\Rightarrow\exists{r}:=|U||V|\in{R}^*:|B|=r|A|.
+$$
+</li>
+</ol>
+<p id="Definition3.14"><b>Определение 3.14:</b><br>
+Говоят, что матрица $A$ строчно эквивалентна матрице $B$ ($A\rsim{B}$), если матрицу $B$ можно получить из матрицы $A$ конечным 
+числом элементарных преобразований строк.
+<p id="Statement3.11"><b>Утверждение 3.11:</b><br>
+<ol>
+<li> Отношение $\rsim$ является отношением эквивалентности.</li>
+<li> Если матрица $B$ получена из матрицы $A$ перестановкой строк, то $A\rsim{B}$.</li>
+<li> $\forall{A},B\in{R}_{n,m}(A\rsim{B}\Rightarrow\exists{U}\in(R_{n,n})^*:B=UA)$.</li>
+<li> $\forall{A},\in{R}_{n,n}(A\rsim{B}\Rightarrow\exists{r}\in{R}^*:|B|=r|A|)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Следует из п. 1 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a> так как  
+$$\forall{A},B\in{R}_{n,m}(A\rsim{B}\Rightarrow{A}\sim{B}).$$
+</li>
+<li> Аналогично п. 2 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>.</li>
+<li> По <a href="./discrete_math3.5.html#Statement3.9">утверждению 3.9</a>, <a href="./discrete_math3.5.html#Note3.1">замечанию 3.1</a> и 
+<a href="./discrete_math2.1.html#Note2.1">замечанию 2.1</a></li>
+$$
+A\rsim{B}\Rightarrow\exists{U}_1,\ldots,U_s\in(R_{n,n})^*:B=U_1\cdots{U}_sA\Rightarrow\exists{U}:=U_1\cdots{U}_s\in(R_{n,n})^*:B=UA.
+$$
+<li> Аналогично п. 4 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>.</li>
+</ol>
+<p id="Definition3.15"><b>Определение 3.15:</b><br>
+Говорят, что матрица $A$ столбцово эквивалентна матрице $B$ ($A\csim{B}$), 
+если матрицу $B$ можно получить из матрицы $A$ конечным числом элементарных преобразований столбцов.
+<p id="Theorem3.9"><b>Теорема 3.9:</b><br>
+<ol>
+<li> $\forall{A}\in{R}_{n,n}\,\forall{B}\in{R}_{n,m}((AB)\rsim(EC)\Rightarrow(A\in(R_{n,n})^*\wedge{C}=A^{-1}B))$.</li>
+<li> $\displaystyle\forall{A}\in{R}_{n,n}\,\forall{B}\in{R}_{m,n}\left(\binom{A}B\csim\binom{E}D\Rightarrow(A\in(R_{n,n})^*\wedge{D}=BA^{-1})\right)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+$$
+(A,B)\rsim(E,C)\Rightarrow\exists{U}\in(R_{n,n})^*:U(A,B)=(E,C)\Rightarrow(UA,UB)=(E,C)\Rightarrow(UA=E\wedge{U}B=C)\Rightarrow(U=A^{-1}\wedge{C}=A^{-1}B).
+$$
+</li>
+<li>
+$$
+\binom{A}B\csim\binom{E}D\Rightarrow\exists{V}\in(R_{n,n})^*:\binom{A}{B}V=\binom{E}D\Rightarrow\binom{AV}{BV}=\binom{E}D\Rightarrow
+(AV=E\wedge{BV}=D)\Rightarrow(V=A^{-1}\wedge{D}=BA^{-1}).
+$$
+</li>
+</ol>
+<p id="Corollary3.5"><b>Следствие 3.5:</b><br>
+<ol>
+<li>$\forall{A},B\in{R}_{n,n}((A,E)\rsim(E,B)\Rightarrow(A\in(R_{n,n})^*\wedge{A}^{-1}=B))$.</li>
+<li>$\displaystyle\forall{A},B\in{R}_{n,n}\left(\binom{A}E\csim\binom{E}B\Rightarrow(A\in(R_{n,n})^*\wedge{A}^{-1}=B)\right).$</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Следует из теоремы 3.9 при $C=E$.
+<p id="Note3.2"><b>Замечание 3.2:</b><br>
+<ol>
+<li> Если $P$ - поле и $A\in(P_{n,n})^*$, то $A\rsim{E}$.</li>
+<li> Если $A\in(R_{n,n})^*$, $B\in{R}_{n,m}$, $C\in{R}_{k,n}$, $AX=B$, $YA=C$, тогда $X=A^{-1}B$, $Y=CA^{-1}$.</li>
+</ol>
+<p id="Theorem3.10"><b>Теорема 3.10: О минорах эквивалентных матриц.</b><br>
+Пусть $A,B\in{R}_{n,m}$, $A\sim{B}$, $c\in{R}$, $k\in\overline{1,\min\{n,m\}}$. Тогда если все миноры $k$-того порядка матрицы $A$ делятся на $c$, 
+то все миноры $k$-того порядка матрицы $B$ тоже делятся на $c$
+<p><b>Доказательство:</b><br><br>
+Утверждение теоремы достаточно доказать для случая, тогда матрица $B$ получена из матрицы $A$ с помощью одного элементарного преобразования. 
+Без ограничения общности будем считать, что это преобразование строк.
+<ol>
+<li> Пусть матрица $B$ получается из матрицы $A$ умножением $i$-той строки на $r\in{R}^*$. 
+Тогда для любых фиксированных $i_1,\ldots,i_k\in\overline{1,n}$, если $i\notin\{i_1,\ldots,i_k\}$, то 
+$$M_B\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}=M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & i_k\end{pmatrix},$$
+а если $i\in\{i_1\ldots,i_k\}$, то 
+$$M_B\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}=rM_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}.$$
+В любом случае, 
+$$c\left|M_A\begin{pmatrix}i_1, & \dots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}\right.\Rightarrow{c}\left|M_B
+\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}\right..$$
+</li>
+<li> Пусть матрица $B$ получена из матрицы $A$ прибавлением к $s$-той строке $t$-той строки умноженой на $u\in{R}$. 
+Фиксируем $i_1,\ldots,i_k\in\overline{1,n}$, $j_1,\ldots,j_k\in\overline{1,m}$ и обозначим 
+$\Delta:=M_B\begin{pmatrix}i_1, & \dots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}$.
+<ul>
+<li>Пусть $s\notin\{i_1,\ldots,i_k\}$, тогда $\Delta=M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}$, 
+следовательно, $c|\Delta$.
+</li>
+<li> Пусть $t,s\in\{i_1,\ldots,i_k\}$, тогда по свойству 4 определитель подматрицы не изменится, 
+то есть $\Delta=M_A\begin{pmatrix}i_1, & \ldots, & i_k \\ j_1, & \ldots, & j_k\end{pmatrix}$, следовательно, $c|\Delta$.
+</li>
+<li> Пусть $s\in\{i_1,\ldots,i_k\}$, то есть существует $p\in\overline{1,k}$ такое, что $s=i_p$, а $t\notin\{i_1,\ldots,i_k\}$. 
+Обозначим $D=A\begin{pmatrix}1, & \ldots, &  n \\ j_1, & \ldots, & j_k\end{pmatrix}$, тогда
+$$
+\Delta=\begin{vmatrix}\vec{D}_{i_1} \\ \vdots \\ \vec{D}_{i_{p-1}} \\ \vec{D}_{i_p}+u\vec{D}_t \\ \vec{D}_{i_{p+1}} \\ \vdots \\ \vec{D}_{i_k}\end{vmatrix}=
+\begin{vmatrix}\vec{D}_{i_1} \\ \vdots \\ \vec{D}_{i_{p-1}} \\ \vec{D}_{i_p} \\ \vec{D}_{t_{p+1}} \\ \vdots \\ \vec{D}_{i_k}\end{vmatrix}+
+u\begin{vmatrix}\vec{D}_{i_1} \\ \vdots \\ \vec{D}_{i_{p-1}} \\ \vec{D}_t\ \\ \vec{D}_{i_{p+1}} \\ \vdots \\ \vec{D}_{i_k}\end{vmatrix}=
+M_A\begin{pmatrix}i_1, & \ldots, & i_k\\j_1, & \ldots, & j_k\end{pmatrix}+u(-1)^{\varepsilon}M_A
+\begin{pmatrix}i_1, & \ldots, & i_{p-1}, &  i_{p+1}, & \ldots, i_k; t \\ j_1, && \ldots, &&  j_k\end{pmatrix}
+$$
+Здесь в последнем слагаемом стоит минор матрицы $A$ составленный из $k$ строк с номерами $i_1,\ldots,i_{p-1},i_{p+1},\ldots,i_k,t$. 
+Причем позиция строки $t$ относительно других строк не известна (поэтому в обозначении минора $t$ отделено точкой с запятой). 
+А $\varepsilon$ - это колличество перестановок соседних строк подматрицы необходимых для того, чтобы переместить строку $p$ в позицию $t$. 
+Таким образом в обоих слагаемых выражения для $\Delta$ стоят некоторые миноры матрицы $A$ порядка $k$ умноженные на некоторый элемент кольца $R$, 
+следовательно, так как $c$ делит любой минор матрицы $A$ порядка $k$, то $c|\Delta$.
+</ul>
+</ol>
+<p id="Corollary3.6"><b>Следствие 3.6:</b><br>
+Если $A,B\in{R}_{n,m}$, $A\sim{B}$ и все миноры $k$-того порядка матрицы $A$ равны $0$, то все миноры $k$-того порядка матрицы $B$ тоже равны $0$.
+<p><b>Доказательство:</b><br>
+Если все миноры $k$-того порядка матрицы $A$ равны $0$, то $0$ делит все миноры $k$-того порядка матрицы $A$. 
+Тогда по теореме 3.10 $0$ делит все миноры $k$-порядка матрицы $B$, а это возможно только если все миноры $k$-того порядка матрицы $B$ равны $0$, 
+так как $0$ делит только $0$.
+<br><br>
+
+<a href="discrete_math3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math4.1.html">next</a>
+</body>
+</html>

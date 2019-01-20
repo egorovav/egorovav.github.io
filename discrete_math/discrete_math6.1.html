@@ -1,0 +1,359 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 6.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math6.5.html">next</a>
+<br>
+
+<h3 id="6">6. Числовые кольца и поля.</h3>
+<h4 id="6.1">6.1 Делимость в кольце целых чисел.</h4>
+Определение делимости в коммутативном кольце было дано в <a href="./discrete_math2.1.html#2.2">разделе 2.2</a> - это 
+<a href="./discrete_math2.1.html#Definition2.12">определение 2.12.</a>
+Там же были даны основные свойства отношения делимости в произвольном коммутативном кольце - это 
+утверждения <a href="./discrete_math2.1.html#Statement2.4">2.4</a>, <a href="./discrete_math2.1.html#Statement2.5">2.5</a>. 
+В рамках данного раздела рассматривается делимость элементов кольца целых чисел $\mathbb{Z}$.
+<p id="Statement6.1"><b>Утверждение 6.1:</b><br>
+$\forall{a},b\in\mathbb{Z}$
+<ol>
+<li>$a|b\Rightarrow\pm{a}|\pm{b}$,</li>
+<li>$a|b,b\neq0\Rightarrow|a|\leq|b|$,</li>
+<li>$(a|b\,\wedge\,b|a)\Rightarrow|a|=|b|$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $1,-1\in\mathbb{Z}$, то утверждение следует из п. 1 <a href="./discrete_math2.1.html#Statement2.5">утверждения 2.5</a>.</li>
+<li>$$a|b\Rightarrow\exists{c}\in\mathbb{Z}:b=ac\Rightarrow|b|=|a||c|.$$
+$$
+b\neq0\Rightarrow|b|\neq0\Rightarrow|c|\neq0\Rightarrow\exists{t}\in\mathbb{N}_0:|c|=t+1\Rightarrow\\
+|b|=|a|t+|a|\Rightarrow|b|-|a|=|a|b\geq0\Rightarrow|a|\leq|b|.
+$$
+</li>
+<li> 
+<ol type="a">
+<li> Если $a=0$, то
+$$a|b\Rightarrow\exists{c}\in\mathbb{Z}:b=0c=0\Rightarrow|a|=|b|=0$$.
+</li>
+<li> Если $b=0$, то аналогично $|a|=|b|=0$.</li>
+<li>Если $a\neq0$ и $b\neq0$, то по пункту 2 $|a|\leq|b|$, $|b|\leq|a|$, то есть $|a|=|b|$.</li>
+</ol>
+</ol>
+<p id="Definition6.1"><b>Определение 6.1:</b><br>
+Разделить с остатком целое число $a$ на целое число $b$ значит найти целые числа $q$ и $r$ такие, что 
+<ol>
+<li>$a=bq+r$,</li>
+<li>$0\leq{r}&lt;|b|$.</li>
+</ol>
+При этом число $q$ называется не полным частным, а число $r$ остатком деления $a$ на $b$.  
+<br>
+Из определения следует, что делить на $0$ нельзя так как не существует $r\in\mathbb{Z}$ такого, что $0\leq{r}&lt;0$.<br>
+Из определения не следует всегда ли можно поделить одно целое число на другое и если можно, то определен ли результат деления единственным образом.
+<p id="Theorem6.1"><b>Теорема 6.1:</b><br>
+Любое $a\in\mathbb{Z}$ можно разделить с остатком  на произвольное $b\in\mathbb{Z}\backslash\{0\}$, причем неполное частное и остаток определены однозначно. 
+<p><b>Доказательство:</b><br><br>
+Докажем делимость с остатком произвольного $a\in\mathbb{Z}$ на произвольный $b\in\mathbb{Z}\backslash\{0\}$.
+<ol>
+<li>Пусть $a\geq0$, $b&gt;0$, тогда по принципу Архимеда существует $c\in\mathbb{N}$ такое, что $a&lt;bc$. 
+Так как любое подмножество натуральных чисел ограничено снизу, то среди всех $c\in\mathbb{N}$ таких, что  
+$a&lt;bc$ можем выбрать минимальное $m$. Следовательно, существует $q:=m-1\in\mathbb{N}_0$ такое, что $bq\leq{a}&lt;b(q+1)$. Положим $r=a-bq$, тогда $a=bq+r$, и 
+$$bq\leq{a}&lt;b(q+1)\Rightarrow{b}q\leq{b}q+r&lt;b(q+1)\Rightarrow0\leq{r}&lt;b=|b|.$$
+Таким образом $q$ и $r$ неполное частное и остаток деления $a$ на $b$.
+</li>
+<li>Пусть $a&lt;0$, $b&gt;0$ тогда, $(-a)&gt;0$ и по пункту 1 
+$$\exists{q},r\in\mathbb{Z}:((-a)=bq+r\,\wedge\,0\leq{r}&lt;|b|).$$
+Если $r=0$, то $a=b(-q)+0$, следовательно, $(-q)$ - неполное частное, а $r$ - остаток.<br>
+Если $r&gt;0$, то  
+$$a=b(-q)-r\Rightarrow{a}=b(-q-1)+(b-r).$$
+Так $r&lt;b$ и $b&gt;0$, то $0&lt;b-r&lt;b=|b|$, то есть $(-q-1)$ - неполное частное, а $b-r$ - остаток.
+</li>
+<li>Пусть $b&lt;0$, $a$ - произвольное, тогда $(-b)&gt;0$ и по пунктам 1, 2 
+$$\exists{q},r\in\mathbb{Z}:(a=(-b)q+r\,\wedge\,0\leq{r}&lt;(-b)=|b|)\Rightarrow(a=b(-q)+r\,\wedge\,0\leq{r}&lt;|b|).$$
+Таким образом $(-q)$ - неполное частное, а $r$ - остаток.   
+</li>
+</ol>
+Докажем единственность неполного частного и остатка.<br>
+Пусть существуют $b,b_1,r,r_1\in\mathbb{Z}$ такие, что 
+$$\begin{cases}a=bq+r\,\wedge\,0\leq{r}&lt;|b| \\ a=bq_1+r_1\,\wedge\,0\leq{r}_1&lt;|b|\end{cases}.$$
+Тогда $|r_1-r|&lt;|b|$ и
+$$b(q-q_1)+(r-r_1)=0\Rightarrow{b}(q-q_1)=r_1-r\Rightarrow{b}|(r_1-r).$$
+Предположим, что $r_1\neq{r}$, тогда $r_1-r\neq0$ и по п. 2 утверждения 6.1 $|b|\leq|r_1-r|$ получено противоречие. Следовательно, $r_1=r$, тогда
+$$r_1-r=0\Rightarrow{b}(q_1-q)=0\Rightarrow(q_1-q)=0\Rightarrow{q}_1=q.$$ 
+<br>
+В силу единственности остатка от деления $a$ на $b$ для него можно ввести обозначение $r_b(a)$.
+<p id="Corollary6.1"><b>Следствие 6.1:</b><br>
+$$\forall{a}\in\mathbb{Z}\,\forall{b}\in\mathbb{Z}\backslash\{0\}(b|a\Leftrightarrow{r}_b(a)=0).$$
+<p><b>Доказательство:</b><br>
+$$b|a\Leftrightarrow\exists{q}\in\mathbb{Z}:a=bq\Leftrightarrow{r}_b(a)=0.$$
+<br>
+Кольца в которых можно ввести деление с остатком называют евклидовыми кольцами. Помимо $\mathbb{Z}$, евклидовым кольцом, например, 
+является кольцо многочленов над полем. Евклидовы кольца - это кольца, 
+в которых можно ввести отношение больше равно $\leq$ и функцию модуля $|a|$.
+ 
+<h4 id="6.2">6.2 Наибольший общий делитель.</h4>
+<p id="Definition6.2"><b>Определение 6.2:</b><br>
+Наибольшим общим делителем (НОД) чисел ${a_1,\ldots,a_n\in\mathbb{Z}}$ называется число $d\in\mathbb{Z}$ такое, что
+<ol>
+<li>$d|a_1,\ldots,d|a_n$,</li>
+<li>$\forall{d_1}\in\mathbb{Z}(d_1|a_1,\ldots,d_1|a_n\Rightarrow{d}_1|d)$.</li>
+</ol>
+Множество всех НОД чисел $a_1,\ldots,a_n\in\mathbb{Z}$ обозначают $\gcd\{a_1,\ldots,a_n\}$.
+<br><br>
+Необходим получить ответы на следующие вопросы:
+<ol>
+<li>Существует ли НОД?</li>
+<li>Если существует, то сколько их?</li>
+<li>Если существуте, то как его найти?</li>
+</ol>
+<p id="Statement6.2"><b>Утверждение 6.2:</b><br>
+<ol>
+<li>$\gcd\{0,\ldots,0\}=\{0\}$,</li>
+<li>Если $a_1,\ldots,a_n\in\mathbb{Z}$ не все равны нулю и $b\in\gcd\{a_1,\ldots,a_n\}$, тогда $\gcd\{a_1,\ldots,a_n\}=\{-b,b\}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть  $d\in\gcd\{0,\ldots,0\}$, тогда
+$$0|0\Rightarrow0|d\Rightarrow{d}=0\Rightarrow\gcd\{0,\ldots,0\}\subset\{0\}.$$
+С другой стороны 
+$$(0|0\,\wedge\,(d_1|0\Rightarrow{d}_1|0))\Rightarrow0\in\gcd\{0,\ldots,0\}\Rightarrow\{0\}\subset\gcd\{0,\ldots,0\}.$$
+Таким образом $\gcd\{0,\ldots,0\}=\{0\}$.
+</li>
+<li>Так как числа $a_1,\ldots,a_n$ не все равны нулю, то 
+$$
+\exists{i}\in\overline{1,n}:a_i\neq0\Rightarrow\forall{b}\in\gcd\{a_1,\ldots,a_n\}(b|a_i)\Rightarrow\forall{b}\in\gcd\{a_1,\ldots,a_n\}(b\neq0).
+$$
+Тогда по п. 3 теоремы 6.1
+$$\forall{b},d\in\gcd\{a_1,\ldots,a_n\}(b|d\,\wedge\,d|b)\Rightarrow\forall{b},d\in\gcd\{a_1,\ldots,a_n\}(|b|=|d|).$$
+Таким образом $\gcd\{a_1,\ldots,a_n\}\subset\{-b,b\}$, покажем, что $(-b)\in\gcd\{a_1,\ldots,a_n\}$.
+По п. 1 теоремы 6.1
+$$b|a_1,\ldots,b|a_n\Rightarrow(-b)|a_1,\ldots,(-b)|a_n.$$
+и
+$$\forall{d}_1\in\mathbb{Z}(d_1|a_1,\ldots,d_1|a_n\Rightarrow{d}_1|b\Rightarrow{d}_1|(-b)).$$
+Таким обрзаом число $(-b)$ удовлетворяет определению НОД чисел $a_1,\ldots,a_n$. Обозначим его $(a_1,\ldots,a_n)$
+</li>
+</ol>
+<br>
+Из утверждения следует, что если $\gcd\{a_1,\ldots,a_n\}\neq\varnothing$, то существует единственный $b\in\gcd\{a_1,\ldots,a_n\}$ такой, 
+что $b\geq0$. Обозначим его $(a_1,\ldots,a_n)$.
+<p id="Lemma6.1"><b>Лемма 6.1:</b><br>
+$$\forall{a}\in\mathbb{Z}\,\forall{b}\in\mathbb{Z}\backslash\{0\}(\exists(b,r_b(a))\Rightarrow\exists(a,b)=(b,r_b(a))).$$
+<p><b>Доказательство:</b><br>
+Существует $q\in\mathbb{Z}$ такое, что $a=bq+r_b(a)$, тогда
+$$d:=(b,r_b(a))\Rightarrow(d|b\,\wedge\,d|r_b(a))\Rightarrow{d}|(bq+r_b(a))\Rightarrow{d}|a.$$
+Пусть $d_1\in\mathbb{Z}$ такой, что $d_1|a$, $d_1|b$, тогда 
+$$d_1|(a-bq)\Rightarrow{d}_1|r_b(a)\Rightarrow(d_1|b\,\wedge\,d_1|r_b(a)\,\wedge\,d=(b,r_b(a)))\Rightarrow{d}_1|d.$$
+Таким образом число $d=(b,r_b(a))\geq0$ удовлетворяет определению НОД чисел $a$ и $b$,  следовательно, $d=(a,b)$.
+<p id="Theorem6.2"><b>Теорема 6.2: Алгоритм Евклида.</b><br>
+$$\forall{a},b\in\mathbb{Z}(\gcd\{a,b\}\neq\varnothing).$$
+<p><b>Доказательство:</b><br>
+<ol type="I">
+<li>Если $a|b$, то $a\in\gcd\{a,b\}$.</li>
+<li>Если $b|a$, то $b\in\gcd\{a,b\}$.</li>
+<li>Если $a\nmid{b},b\nmid{a}$ то $b\neq0$, тогда <a href="./discrete_math6.1.html#Theorem6.1">теореме 6.1</a><br>
+1) $\exists{q}_1,r_1\in\mathbb{Z}:(a=bq_1+r_1\,\wedge\,0\leq{r}_1&lt;|b|),$<br>
+2) $\exists{q}_2,r_2\in\mathbb{Z}:(b=r_1q_2+r_2\,\wedge\,0\leq{r}_2&lt;|b|),$<br>
+3) $\exists{q}_3,r_3\in\mathbb{Z}:(r_1=r_2q_3+r_3\,\wedge\,0\leq{r}_3&lt;|b|),$<br>
+$\cdots$<br>
+n) $\exists{q}_n,r_n\in\mathbb{Z}:(r_{n-2}=r_{n-1}q_n+r_n\,\wedge\,0\leq{r}_n&lt;|b|),$<br>
+n+1) $\exists{q}_{n+1}\in\mathbb{Z}:r_{n-1}=r_nq_{n+1}+0.$<br>
+Процесс оборвется на конечном шаге так как последовательность неотрицательных чисел $r_1,r_2,\ldots,r_n,\ldots$ убывает.<br>
+Тогда по лемме 6.1 $$(a,b)=(b,r_1)=(r_1,r_2)=\cdots=(r_{n-1},r_n)=(r_n,0)=r_n.$$
+</li>
+</ol>
+Таким образом для произвольных $a,b\in\mathbb{Z}$ найден $r_n\in\gcd\{a,b\}$.
+</ol>
+<p id="Theorem6.3"><b>Теорема 6.3: </b><br>
+$$\forall{a},b\in\mathbb{Z}\,\exists{u},v\in\mathbb{Z}:(a,b)=ua+vb.$$
+<p><b>Доказательство:</b><br><br>
+Если $a|b$, то $(a,b)=|a|$, следовательно, $v=0$ и $u=1$, если $a&gt;0$, $u=-1$, если $a&lt;0$. Для случая $b|a$ доказывается аналогично.<br>
+Пусть $a\nmid{b}$, $b\nmid{a}$, тогда можем осуществить последовательность делений по алгоритму Евклида. 
+Докажем утверждение по количеству $n$ шагов алгоритма Евклида.
+<ol type="I">
+<li>Пусть $n=1$, то есть $a=bq_1+(a,b)$, тогда $(a,b)=a+(-q)b$.</li>
+<li>Пусть для любых $c,d\in\mathbb{Z}$ таких, что алгоритм Евклида для них содержит $n&gt;1$ шагов существуют $u,v\in\mathbb{Z}$ такие, 
+что $uc+vd=(c,d)$. Докажем, что для любых $a,b\in\mathbb{Z}$ таких, что алгоритм Евклида содержит $n+1$ шаг утверждение верно. 
+Действительно, если алгоритм Евклида для чисел $a$ и $b$ состоит из $n+1$ шагов, первый из которых $a=bq_1+r_1$, 
+то алгоритм Евклида для чисел $b$ и $r_1$ состоит из $n$ шагов (это шаги алгоритма Евклида для чисел $a$ и $b$ со второго по $n+1$). 
+Тогда по предположению индукции 
+$$\exists{u},v\in\mathbb{Z}:(a,b)=(b,r_1)=ub+vr_1=ub+v(a-bq_1)=va+(u-vq_1)b.$$
+</li>
+</ol>
+<p id="Theorem6.4"><b>Теорема 6.4:</b><br>
+Для любых $n\geq2$, $a_1,\ldots,a_n\in\mathbb{Z}$ $\gcd\{a_1,\ldots,a_n\}\neq\varnothing$, при этом $(a_1,\ldots,a_n)=(\ldots((a_1,a_2),a_3),\ldots,a_n)$.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ утверждение следует из <a href="./discrete_math6.1.html#Theorem6.2">теоремы 6.2</a>.</li>
+<li>Пусть для любого $t\geq{2}$ утверждение верно при $n\in\overline{2,t}$. Докажем, что оно верно при $n=t+1$.<br>
+По предположению индукции существуют числа $d_0:=(a_1,\ldots,a_t)$ и $d:=(d_0,a_{t+1})=((a_1,\ldots,a_t),a_{t+1})$.
+$$d=((a_1,\ldots,a_t),a_{t+1})\Rightarrow(\forall{i}\in\overline{1,t}(d|a_i)\,\wedge\,d|a_{t+1})\Rightarrow\forall{i}\in\overline{1,t+1}(d|a_i).$$ 
+$$\forall{i}\in\overline{1,t+1}(d_1|a_i)\Rightarrow({d}_1|d_0\,\wedge\,d_1|a_{t+1}\Rightarrow{d}_1|(d_0,a_{t+1})\Rightarrow{d}_1|d.$$
+Таким образом 
+$$d=(a_1,\ldots,a_t,a_{t+1})=((a_1,\ldots,a_t),a_{t+1})=(\ldots((a_1,a_2)a_3,\ldots,a_{t+1}),$$
+где последнее равенство верно по предположению индукции.
+</li>
+</ol>
+<p id="Theorem6.5"><b>Теорема 6.5:</b><br>
+$$\forall{n}\geq2\,\forall{a}_1,\ldots,a_n\in\mathbb{Z}(\exists{u}_1,\ldots,u_n\in\mathbb{Z}:(a_1,\ldots,a_n)=u_1a_1+\cdots+u_na_n).$$
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ утверждение следует из теоремы 6.3.</li>
+<li>Пусть для любого $t\geq2$ утверждение верно для при $n\in\overline{2,t}$. Докажем, что оно верно при $n=t+1$.<br>
+По теореме 6.4 
+$$(a_1,\ldots,a_t,a_{t+1})=(\ldots((a_1,a_2),a_3),\ldots,a_{t+1})=((a_1,\ldots,a_t),\ldots,a_{t+1}).$$
+По <a href="./discrete_math6.1.html#Theorem6.3">теореме 6.3</a>
+$$\exists{u},v\in\mathbb{Z}:(a_1,\ldots,a_t,a_{t+1})=u(a_1,\ldots,a_t)+va_{t+1}.$$
+Тогда по предположению индукции
+$$
+\exists{u}_1,\ldots,u_t\in\mathbb{Z}:(a_1,\ldots,a_t,a_{t+1})=u(a_1,\ldots,a_t)+va_{t+1}=
+u(u_1a_1+\cdots+u_ta_t)+va_{t+1}.=(uu_1)a_1+\cdots+(uu_t)a_t+va_{t+1}.
+$$
+</li>
+</ol>
+<h4 id="6.3">6.3 Взаимно простые числа.</h4>
+<p id="Definition6.3"><b>Определение 6.3:</b><br>
+Числа $a_1,\ldots,a_n\in\mathbb{Z}$ являются взаимно простыми в совокупности если $(a_1,\ldots,a_n)=1$.
+<p id="Theorem6.6"><b>Теорема 6.6:</b><br>
+$$\forall{a}_1,\ldots,a_n((a_1,\ldots,a_n)=1\Leftrightarrow\exists{u}_1,\ldots,u_n\in\mathbb{Z}:u_1a_1+\cdots+u_na_n=1).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Следует из теоремы 6.5.<br>
+$\Leftarrow)$ По пп. 2, 3 <a href="./discrete_math2.1.html#Statement2.4">утверждения 2.4</a> и п. 2 
+<a href="./discrete_math6.1.html#Statement6.1">утверждения 6.1</a>  
+$$d=(a_1,\ldots,a_n)\Rightarrow\forall{i}\in\overline{1,n}(d|a_i)\Rightarrow{d}|(u_1a_1+\cdots+u_na_n)\Rightarrow|d|\leq1\Rightarrow{d}\in\{0,1\}.$$
+Если $d=0$, то для любого $i\in\overline{1,n}$ $a_i=0$, но этого не может быть так как $u_1a_1+\cdots+u_na_n=1$, следовательно, $d=1$.
+<p id="Note6.1"><b>Замечание 6.1:</b><br>
+Если $a|b$ и $a\neq0$, то существует единственное $c\in\mathbb{Z}$ такое, что $ac=b$. В этом случае число $c$ называют частным чисел $b$ и $a$ и 
+обозначают $\frac{b}{a}$. 
+<p id="Theorem6.7"><b>Теорема 6.7:</b><br>
+Для любых $a,b,c\in\mathbb{Z}$
+<ol>
+<li>$(a,b)=(a,c)=1\Rightarrow(a,bc)=1$,</li>
+<li>$(a|bc\,\wedge\,(a,b)=1)\Rightarrow{a}|c$,</li>
+<li>$(a|c\,\wedge\,b|c\,\wedge\,(a,b)=1)\Rightarrow{a}b|c$,</li>
+<li>$((a,b)=d\,\wedge\,d\neq0)\Rightarrow\left(\frac{a}{d},\frac{b}{d}\right)=1$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По теореме 6.6
+$$(a,b)=1\Rightarrow\exists{u},v\in\mathbb{Z}:ua+vb=1,$$
+$$(a,c)=1\Rightarrow\exists{u'},v'\in\mathbb{Z}:u'a+v'c=1.$$
+Перемножив равенства получим
+$$
+uu'a^2+uv'ac+uv'ab+vv'bc=1\Rightarrow(uu'a+uv'c+vu'b)a+(vv')bc=1\Rightarrow(a,bc)=1,
+$$
+где последняя импликация по теореме 6.6.
+</li>
+<li> $a|bc\Rightarrow\exists{q}\in\mathbb{Z}:bc=aq$.<br>
+По теореме 6.6
+$$
+(a,b)=1\Rightarrow\exists{u},v\in\mathbb{Z}:ua+vb=1\Rightarrow{c}=uac+vbc=uca+vqa=a(uc+vq)\Rightarrow{a}\c.
+$$
+</li>
+<li>$(a|c\,\wedge\,b|c)\Rightarrow\exists{q}_1,q_2\in\mathbb{Z}:c=aq_1=bq_2$.<br>
+По теореме 6.6
+$$
+(a,b)=1\Rightarrow\exists{u},v\in\mathbb{Z}:ua+bv=1\Rightarrow{c}=auc+bvc=aubq_2+bvaq_1=ab(uq_2+vq_1)\Rightarrow{a}b|c.
+$$
+</li>
+<li>По <a href="./discrete_math6.1.html#Theorem6.5">теореме 6.5</a> и определению делимости 
+$$
+(a,b)=d\Rightarrow\exists{u},v,q_1,q_2\in\mathbb{Z}:(ua+vb=d\,\wedge\,a=dq_1\,\wedge\,b=dq_2)\Rightarrow{d}=udq_1+vdq_2\Rightarrow(uq_1+vq_2-1)d=0.
+$$
+Так как в кольце целых чисел нет делителей нуля и $d\neq0$, то по теореме 6.6
+$$uq_1+vq_2-1=0\Rightarrow{u}q_1+vq_2=1\Rightarrow(q_1,q_2)=1.$$ 
+Так как $d\neq0$, то $q_1=\frac{a}{d}$, $q_2=\frac{b}{d}$.
+</ol>
+<h4 id="6.4">6.4 Наименьшее общее кратное.</h4> 
+<p id="Definition6.4"><b>Определение 6.4:</b><br>
+Наименьшим общим кратным (НОК) чисел ${a_1,\ldots,a_n\in\mathbb{Z}}$ называется число $k\in\mathbb{Z}$ такое, что 
+<ol>
+<li>$\forall{i}\in\overline{1,n}(a_i|k)$,</li>
+<li>$\forall{k}_1\in\mathbb{Z}(\forall{i}\in\overline{1,n}({a}_i|k_1)\Rightarrow{k}|k_1)$.</li>
+</ol>
+Множество всех НОК чисел $a_1,\ldots,a_n$ обозначают $\lcm\{a_1,\ldots,a_n\}$.
+<p id="Statement6.3"><b>Утверждение 6.3:</b><br>
+<ol>
+<li>$\forall{a}_1,\ldots,a_n\in\mathbb{Z}(\exists{i}\in\overline{1,n}:a_i=0\Rightarrow\lcm\{a_1,\ldots,a_n\}=\{0\})$.</li>
+<li>
+$$
+\forall{a}_1,\ldots,a_n\in\mathbb{Z}\backslash\{0\}(b\in\lcm\{a_1,\ldots,a_n\}\Rightarrow(b\neq0\,\wedge\,\lcm\{a_1,\ldots,a_n\}=\{-b,b\}))
+$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $d\in\lcm\{a_1,\ldots,a_n\}$, тогда $0|d$, следовательно, $d=0$. 
+С другой стороны для любого $a\in\mathbb{Z}$ $a|0$ и для любого $k_1\in\mathbb{Z}$ такого, что $a_i|k_1$ означает $0|k_1$, 
+следовательно, $0\in\lcm\{a_1,\ldots,a_n\}$. Таким образом $\lcm\{a_1,\ldots,a_n\}=\{0\}$.
+</li>
+<li>Предположим, что $b=0$, тогда
+$$
+(\forall{i}\in\overline{1,n}(a_i|a_1\cdots{a}_n)\,\wedge\,d=0\in\lcm\{a_1,\ldots,a_n\})\Rightarrow0|a_1\cdots{a}_n\Rightarrow{a}_1\cdots{a}_n=0.
+$$
+Последнее равенство противоречит условию $a_1,\ldots,a_n\in\mathbb{Z}\backslash\{0\}$, следовательно, $b\neq0$.<br>
+Пусть $d\in\lcm\{a_1,\ldots,a_n\}$, тогда $b|d$ и $d|b$, следовательно, по п. 3 <a href="./discrete_math6.1.html#Statement6.1">утверждения 6.1</a> 
+$|b|=|d|$, то есть $d\in\{-b,b\}$. С другой стороны  в силу п. 1 <a href="./discrete_math6.1.html#Statement6.1">утверждения 6.1</a> 
+$(-b)\in\lcm\{a_1,\ldots,a_n\}$, таким образом $\lcm\{a_1,\ldots,a_n\}=\{-b,b\}$.
+</li>
+</ol>
+<br>
+Из утверждения следует, что если множество $\lcm\{a_1,\ldots,a_n\}$ не пусто, то оно содержит только одно неотрицательное, число. 
+Неотрицательный НОК чисел $a_1,\ldots,a_n\in\mathbb{Z}$ обозначают $[a_1,\ldots,a_n]$.
+<p id="Theorem6.8"><b>Теорема 6.8:</b><br>
+$$\forall{a},b\in\mathbb{Z}\backslash\{0\}\left(\lcm\{a,b\}\neq\varnothing\,\wedge\,[a,b]=\frac{|ab|}{(a,b)}\right).$$
+<p><b>Доказательство:</b><br>
+Обозначим $d:=(a,b)$, тогда $d&gt;0$, $d|a$, $d|b$. По п. 3 <a href="./discrete_math2.1.html#Statement2.4">утверждения 2.4</a> $d||ab|$, 
+следовательно, существует $k:=\frac{|ab|}{(a,b)}\in\mathbb{N}$.
+<ol>
+<li> 
+$$(d|a\,\wedge\,d\neq0)\Rightarrow\frac{|a|}{d}\in\mathbb{Z}\Rightarrow{k}=\frac{|ab|}{(a,b)}=\frac{|a||b|}{d}=\frac{|a|}{d}|b|\Rightarrow{b}|k.$$
+Аналогично показывается, что $a|k$.
+</li>
+<li>Пусть $k_1\in\mathbb{Z}$ такой, что $a|k_1$, $b|k_1$, тогда $d|k_1$, то есть $k_1=d\frac{k_1}{d}$, $a=d\frac{a}{d}$.
+$$a|d_1\Rightarrow\exists{q}\in\mathbb{Z}:k_1=aq\Rightarrow{d}\frac{k_1}{d}=d\left(\frac{a}{d}q\right)\Rightarrow\frac{k_1}{d}=
+\frac{a}{d}q\Rightarrow\left.\frac{a}{d}\right|\frac{k_1}{d},$$
+где последнее равенство в силу $b\neq0$. Аналогично показывается, что $\displaystyle\left.\frac{b}{d}\right|\frac{k_1}{d}$. 
+Тогда по пп. 4, 3 теоремы 6.7
+$$
+\left(\frac{a}{d},\frac{b}{d}\right)=1\Rightarrow\left.\frac{ab}{d^2}\right|\frac{k_1}{d}\Rightarrow\exists{t}\in\mathbb{Z}:\frac{k_1}{d}=
+\frac{ab}{d^2}t\Rightarrow{k}_1=\frac{ab}{d}t\Rightarrow\left.\frac{ab}{d}\right|k_1\Rightarrow{k}|k_1.
+$$
+</li>
+</ol>
+<p id="Theorem6.9"><b>Теоерма 6.9:</b><br>
+Для любых $n\geq2$, $a_1,\ldots,a_n\in\mathbb{Z}$ $\lcm\{a_1,\ldots,a_n\}\neq\varnothing$ при этом $[a_1,\ldots,a_n]=[\ldots[[a_1,a_2],a_3],\ldots,a_n]$.
+<p><b>Доказательство:</b><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ следует из теоремы 6.8.</li>
+<li>Пусть для любого $k\geq2$ утверждение верно при $n\in\overline{2,k}$, докажем, что оно верно при $n=k+1$.<br>
+По предположению индукции существуют числа $d_0:=[a_1,\ldots,a_k]$ и $d:=[[a_1,\ldots,a_k],a_{k+1}]$.
+$$
+d=[[a_1,\ldots,a_k],a_{k+1}]\Rightarrow([a_1,\ldots,a_k]|d\,\wedge\,a_{k+1}|d)\Rightarrow\forall{i}\in\overline{1,k+1}(a_i|d)
+$$
+Пусть $b\in\mathbb{Z}$ такое, что для любого $i\in\overline{1,k+1}$ $a_i|b$, тогда $d_0|b$ и $a_{k+1}|b$. Так как $d=[d_0,a_{k+1}]$, то $d|b$. 
+Таким образом $d=[a_1,\ldots,a_k,a_{k+1}]$, и по предположению индукции $d=[\ldots[[a_1,a_2],a_3],\ldots,a_{k+1}]$.
+</li>
+</ol>
+<br><br>
+<a href="discrete_math5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math6.5.html">next</a>
+</body>
+</html>

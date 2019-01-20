@@ -1,0 +1,155 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 15.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math14.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.2.html">next</a>
+<br>
+
+<h3 id="15">15 Линейные преобразования конечномерных евклидовых пространств.</h3>
+<h4 id="15.1">15.1 Сопряженные преобразования.</h4>
+<p id="Definition15.1"><b>Определение 15.1:</b><br>
+Пусть $(L_{\mathbb{P}},S)$ конечномерное евклидово пространство $\varphi,\psi\in\mathcal{L}(L_{\mathbb{P}})$ такие, что
+$$\forall\alpha,\beta\in{L}_{\mathbb{P}}(S(\varphi(\alpha),\beta)=S(\alpha,\psi(\beta))).$$
+тогда преобразование $\psi$ называют  сопряженным к преобразованию $\varphi$. 
+<p id="Lemma15.1"><b>Лемма 15.1:</b><br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис $L_{\mathbb{P}}$, $\varphi,\psi\in\mathcal{L}(L_{\mathbb{P}})$, 
+тогда преобразование $\varphi$ сопряжено к преобразованию $\psi$ тогда и только тогда, когда для любого $i,j\in\overline{1,n}$
+$S(\varphi(\alpha_i),\alpha_j)=S(\alpha_i,\psi(\alpha_j))$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Следует из определения 15.1<br>
+$\Leftarrow)$ Пусть $\beta,\gamma\in{L}_{\mathbb{P}}$, $b_1,\ldots,b_n,\gamma_1,\ldots,\gamma_n\in\mathbb{P}$ такие, 
+что $\beta=\sum_{i=1}^n\alpha_ib_i$, $\gamma=\sum_{i=1}^n\alpha_ic_i$, тогда
+$$
+S(\varphi(\beta),\gamma)=S\biggl(\varphi\biggl(\sum_{i=1}^n\alpha_ib_i\biggr),\sum_{j=1}^n\alpha_jc_j\biggr)=
+S\biggl(\sum_{i=1}^n\varphi(\alpha_i)b_i,\sum_{i=1}^n\alpha_jc_j\biggr)=
+\sum_{i=1}^n\sum_{j=1}^nb_i\overline{c}_jS(\varphi(\alpha_i),\alpha_j)=\sum_{i=1}^n\sum_{j=1}^nb_i\overline{c}_jS(\alpha_i,\psi(\alpha_j))=
+S(\beta,\psi(\gamma)).
+$$
+<p id="Theorem15.1"><b>Теорема 15.1:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_{\mathbb{P}})$, тогда существует единственне преобразование $\psi\in\mathcal{L}(L_{\mathbb{P}})$ сопряженное к $\varphi$.
+При этом в любом ортонормированном базисе $\vec{\delta}$ $A_{\vec{\delta}}(\psi)=\overline{A_{\vec{\delta}}(\varphi)}^T$.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем единственность сопряженного преобразования. Пусть преобразования $\psi_1,\psi_2\in\mathcal{L}(L_{\mathbb{P}})$ сопряженные к $\varphi$, тогда
+$$
+\forall\alpha,\beta\in{L}_{\mathbb{P}}(S(\alpha,\psi_1(\beta))=S(\varphi(\alpha),\beta)=S(\alpha,\psi_2(\beta))\Rightarrow
+{S}(\alpha,\psi_1(\beta)-\psi_2(\beta))=0)
+$$
+Подставив в полученное равенство $\alpha:=\psi_1(\beta)-\psi_2(\beta)$ получим
+$$
+\forall\beta\in{L}_{\mathbb{P}}(S(\psi_1(\beta)-\psi_2(\beta),\psi_1(\beta)-\psi_2(\beta))=0\Rightarrow
+\psi_1(\beta)-\psi_2(\beta)=\theta\Rightarrow\psi_1(\beta)=\psi_2(\beta))\Rightarrow\psi_1=\psi_2
+$$
+</li>
+<li>Докажем существование преобразования сопряженного к преобразованию $\varphi$. Пусть $\vec{\delta}:=(\delta_1,\ldots,\delta_n)$ - 
+ортонормированный базис пространства $(L_{\mathbb{P}},S)$, преобразование $\psi\in\mathcal{L}(L_{\mathbb{P}})$ такое, 
+что $A_{\vec{\delta}}(\psi)=\overline{A_{\vec{\delta}}(\varphi)}^T$. 
+Обозначим $A_{\vec{\delta}}(\varphi):=(a_{i,j})_{n,n}$, $A_{\vec{\delta}}(\psi):=(b_{i,j})_{n,n}$, 
+тогда для любых $i,j\in\overline{1,n}$ $b_{i,j}=\overline{a}_{j,i}$. Для любых $r,s\in\overline{1,n}$
+$$
+S(\varphi(\delta_r),\delta_s)=S\biggl(\sum_{i=1}^n\delta_ia_{i,r},\delta_s\biggr)=\sum_{i=1}^na_{i,r}S(\delta_i,\delta_s)=a_{s,r}
+$$
+$$
+S(\delta_r,\psi(\delta_s))=S\biggl(\delta_r,\sum_{i=1}^n\delta_ib_{i,s}\biggr)=\sum_{i=1}^n\overline{b}_{i,s}S(\delta_r,\delta_i)=\overline{b}_{r,s}
+$$
+Таким образом, для любых $r,s\in\overline{1,n}$ $S(\varphi(\delta_r),\delta_s)=S(\delta_r,\psi(\delta_s))$, следовательно, 
+по лемме 15.1 преобразование $\psi$ сопряженное к преобразованию $\varphi$.
+</li>
+<li>Пусть $\gamma$ - ортонормированный базис пространства $L_{\mathbb{P}}$, преобразование $\psi'\in\mathcal{L}(L_{\mathbb{P}})$ такое, 
+что $A_{\vec{\gamma}}(\psi')=\overline{A_{\vec{\gamma}}(\varphi)}^T$, тогда по пункту 2 преобразование $\psi'$ сопряженное к $\varphi$, 
+тогда по пункту 1 $\psi'=\psi$, следовательно, $A_{\vec{\gamma}}(\psi)=A_{\vec{\gamma}}(\psi')=\overline{A_{\vec{\gamma}}(\varphi)}^T$.
+</li>
+</ol>
+Преобразование сопряженное к преобразованию $\varphi$ обозначают $\varphi^*$.
+<p id="Theorem15.2"><b>Теорема 15.2:</b><br>
+Пусть $\varphi,\psi\in\mathcal{L}(L_{\mathbb{P}})$, $f(x)=c_mx^m+\cdots+c_1m+c_0\in{P}[x]$, 
+$\overline{f}(x):=\overline{c}_mx^m+\cdots+\overline{c}_1x+\overline{c}_0\in{P}[x]$, тогда
+<ol>
+<li>$(\varphi^*)^*=\varphi$,</li>
+<li>$(\varphi+\psi)^*=\varphi^*+\psi^*$,</li>
+<li>$(\varphi\circ\psi)^*=\psi^*\circ\varphi^*$,</li>
+<li>$f(\varphi)^*=\overline{f}(\varphi^*)$,</li>
+<li>$\varphi\in\mathcal{L}(L_{\mathbb{P}})\Leftrightarrow\varphi^*\in\mathcal{L}(L_{\mathbb{P}})$, $(\varphi^{-1})^*=(\varphi^*)^{-1}$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Пусть $\vec{\delta}$ - ортонормированный базис $L_{\mathbb{P}}$
+<ol>
+<li>По теореме 15.1
+$$
+A_{\vec{\delta}}((\varphi^*)^*)=\overline{A_{\vec{\delta}}(\varphi^*)}^T=\overline{\overline{A_{\vec{\delta}}(\varphi)}^T}^T=
+A_{\vec{\delta}}(\varphi)\Rightarrow(\varphi^*)^*=\varphi
+$$
+</li>
+<li>По теореме 15.1, п. 1 <a href="./discrete_math12.1.html#Corollary12.1">следствия 12.1</a>, п. 2 <a href="./discrete_math6.5.html#Task6.1">задачи 6.1</a>, 
+п. 2 <a href="./discrete_math3.1.html#Theorem3.4">теоремы 3.4</a>
+$$
+A_{\vec{\delta}}((\varphi+\psi)^*)=\overline{A_{\vec{\delta}}(\varphi+\psi)}^T=\overline{A_{\vec{\delta}}(\varphi)+A_{\vec{\delta}}(\psi)}^T=
+\overline{A_{\vec{\delta}}(\varphi)}^T+\overline{A_{\vec{\delta}}(\psi)}^T=
+A_{\vec{\delta}}(\varphi^*)+A_{\vec{\delta}}(\psi^*)=A_{\vec{\delta}}(\varphi^*+\psi^*)\Rightarrow(\varphi+\psi)^*=\varphi^*+\psi^*.
+$$
+</li>
+<li>По теореме 15.1, п. 2 <a href="./discrete_math12.1.html#Theorem12.2">теоремы 12.2</a>, пп. 2, 3 <a href="./discrete_math6.5.html#Task6.1">задачи 6.1</a>, 
+п. 3 <a href="./discrete_math3.1.html#Theorem3.4">теоремы 3.4</a>
+$$
+A_{\vec{\delta}}((\varphi\circ\psi)^*)=\overline{A_{\vec{\delta}}(\varphi\circ\psi)}^T=
+\overline{A_{\vec{\delta}}(\varphi)A_{\vec{\delta}}(\psi)}^T=\left(\overline{A_{\vec{\delta}}(\varphi)}\;\overline{A_{\vec{\delta}}(\psi)}\right)^T=
+\overline{A_{\vec{\delta}}(\psi)}^T\overline{A_{\vec{\delta}}(\varphi)}^T=A_{\vec{\delta}}(\psi^*)A_{\vec{\delta}}(\varphi^*)=
+A_{\vec{\delta}}(\psi^*\circ\varphi^*)\Rightarrow(\varphi\circ\psi)^*=\psi^*\circ\varphi^*.
+$$
+</li>
+<li>Так как для любого $c\in\mathbb{P}$ $(\hat{c})^*=\hat{\overline{c}}$ и 
+для любого преобразования $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ $\hat{c}\circ\varphi=\varphi\circ\hat{c}$, то по пунктам 2, 3
+$$
+f(\varphi)^*=(\hat{c}_m\circ\varphi^m+\cdots+\hat{c}_1\circ\varphi+\hat{c}_0)^*=
+(\hat{c}_m\circ\varphi^m)^*+\cdots+(\hat{c}_1\circ\varphi)^*+\hat{\overline{c}}_0=
+(\varphi^m)^*\circ\hat{\overline{c}}_m+\cdots+(\varphi)^*\circ\hat{\overline{c}}_1+\hat{\overline{c}}_0=\overline{f}(\varphi^*).
+$$
+</li>
+<li>По теореме 15.1, п. 2 <a href="./discrete_math12.1.html#Task12.3">задачи 12.3</a>
+$$
+\varphi\in\mathcal{L}(L_{\mathbb{P}})^*\Leftrightarrow{A}_{\vec{\delta}}(\varphi)\in(\mathbb{P}_{n,n})^*\Leftrightarrow
+|A_{\vec{\delta}}(\varphi)|=\left|\overline{\overline{A_{\vec{\delta}}(\varphi)}^T}\right|=
+\overline{|A_{\vec{\delta}}(\varphi^*)|}\neq0\Leftrightarrow
+|A_{\vec{\delta}}(\varphi^*)|\neq0\Leftrightarrow\varphi^*\in\mathcal{L}(L_{\mathbb{P}})^*.
+$$
+Так как для любой матрицы $A\in(\mathbb{P}_{n,n})^*$ 
+$$\left(\overline{A^{-1}}\right)^T\overline{A}^T=\left(\overline{A}\;\overline{A^{-1}}\right)^T=\overline{E}^T=E,$$
+то $\left(\overline{A^{-1}}\right)^T=\left(\overline{A}^T\right)^{-1}$, следовательно,
+$$
+A_{\vec{\delta}}((\varphi^{-1})^*)=\overline{A_{\vec{\delta}}(\varphi^{-1})}^T=\overline{A_{\vec{\delta}}(\varphi)^{-1}}^T=
+\left(\overline{A_{\vec{\delta}}(\varphi)}^T\right)^{-1}=A_{\vec{\delta}}(\varphi^*)^{-1}.
+$$
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math14.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.2.html">next</a>
+</body>
+</html>

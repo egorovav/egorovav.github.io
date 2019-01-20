@@ -1,0 +1,149 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 13.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math13.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.1.html">next</a>
+<br>
+
+<h4 id="13.3">13.3 Жорданова форма матрицы.</h4>
+
+<p id="Definition13.4"><b>Определение 13.4:</b><br>
+Пусть $P$ - поле, $r\in{P}$, $k\in\mathbb{N}$, тогда матрица
+$$J_k(r):=
+\begin{pmatrix}
+r	& e 		& 0 		& \cdots	& 0		\\
+0	& r 		& e 		& \cdots	& 0		\\
+\vdots	& \ddots	& \ddots	& \ddots	& \vdots	\\
+0	& \cdots	& 0 		& r		& e		\\
+0	& \cdots	& 0 		& 0		& r		\\	
+\end{pmatrix}\in{P}_{k,k}$$
+называется жордановой клеткой с корнем $r$ порядка $k$.
+<p id="Statement13.3"><b>Утверждение 13.3</b><br>
+$$K(Ex-J_k(t))=\diag(e,\ldots,e,(x-r)^k).$$
+<p><b>Докзательство:</b><br><br>
+Обозначим $K(Ex-J_k(r)):=(\delta_1(x),\ldots,\delta_k(x))$.<br>
+Так как
+$$Ex-J_k(r)=
+\begin{pmatrix}
+x-r 	& -e 		& 0 		& \cdots 	& 0	\\
+0	& x-r 		& -e 		& \cdots 	& 0	\\
+\vdots	& \ddots	& \ddots	& \ddots	&\vdots	\\
+0	& \cdots	& 0 		& x-r 		& -e	\\
+0	& \cdots	& 0 		& 0 		& x-r	\\
+\end{pmatrix}\in{P}[x]_{k,k},
+$$
+то по <a href="./discrete_math13.1.html#Note13.4">замечанию 13.4</a> и в силу того что определитель верхне-(нижне-)треугольной матрицы равен 
+произведению элементов главной диагонали
+$$
+M_{Ex-J_k(r)}\begin{pmatrix}1, & \ldots, & k-1 \\ 2, & \ldots, & k\end{pmatrix}=(-e)^{k-1}\Rightarrow
+{d}_{Ex-J_k(r)}^{(k-1)}(x)=\delta_1(x)\cdots\delta_{k-1}(x)=e\Rightarrow\forall{i}\in\overline{1,k-1}(\delta_i=e)\Rightarrow\\
+\Rightarrow\chi_{J_k(r)}(x)=|Ex-J_k(r)|=(x-r)^k=\delta_1(x)\cdots\delta_{k-1}(x)\delta_k(x)=\delta_k(x)\Rightarrow{K}(Ex-J_k(r))=\diag(e,\ldots,e,(x-r)^k).
+$$
+<p id="Definition13.5"><b>Определение 13.5:</b><br>
+Пусть $r_1,\ldots,r_s$ - не обязательно различные элементы поля $P$, тогда матрицу вида $\diag(J_{k_1}(r_1),\ldots,J_{k_s}(r_s))\in{P}_{n,n}$ 
+называют жордановой матрицей или матрицей в жордановой форме.
+<p id="Lemma13.2"><b>Лемма 13.2:</b><br>
+Пусть матрица $A(x):=\diag{(g_1(x),\ldots,g_u(x))}\in{P}[x]_{m,n}$ такая, что $u\in\min{\{m,n\}}$, для любого $i\in\overline{1,u}$ $g_i(x)$ - 
+унитарный многочлен, для любый различных $i,j\in\overline{1,u}$ $(g_i(x),g_j(x))=e$, тогда 
+$$K(A(x))=\diag{(e,\ldots,e,g_1(x)\cdots{g}_u(x))}.$$
+<p><b>Доказательство:</b><br><br>
+Для любого $i\in\overline{1,u}$ обозначим 
+$$\overline{g_i(x)}:=g_1(x)\cdots{g}_{i-1}(x)g_{i+1}(x)\cdots{g}_u(x),$$ 
+тогда из п. 3 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a> следует, 
+что $\left[\overline{g_1(x)},\ldots,\overline{g_u(x)}\right]=\overline{g_1(x)}\cdots\overline{g_u(x)}$. 
+Обозначим $K(A(x))=\diag{(\delta_1(x),\ldots,\delta_u(x))}$, тогда по <a href="./discrete_math7.4.html#Theorem7.9">теореме 7.9</a>, 
+<a href="./discrete_math13.1.html#Statement13.1">утверждению 13.1</a>, п. 4 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>
+$$
+d_{A(x)}^{(u-1)}(x)=(\overline{g_1(x)},\ldots,\overline{g_u(x)})=e\Rightarrow\delta_1(x)\cdots\delta_{u-1}(x)\Rightarrow
+\forall{i}\in\overline{1,u-1}(\delta_i(x)=e)\Rightarrow\exists{v}\in{P}^*:\delta_u(x)=|K(A(x))|=v|A(x)|\Rightarrow\delta_u(x)=g_1(x)\cdots{g}_u(x),
+$$
+где последняя импликация в силу унитарности многочленов $g_1(x),\ldots,g_u(x)$ и $\delta_u(x)$.
+<p id="Theorem13.6"><b>Теорема 13.6:</b><br>
+Матрица $A\in{P}_{n,n}$ подобна матрице в жордановой форме тогда и только тогда, когда многочлен $\chi_A(x)$ раскладывается на линейные множители.<br>
+Существует не более одной, c точность до перестановки клеток, жордановой матрицы подобной матрице $A\in{P}(x)$. 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Пусть $A\approx{J}:=\diag{(J_{k_1}(r_1),\ldots,J_{k_s}(r_s))}$, тогда по <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a>
+$$\chi_A(x)=\chi_J(x)=\prod_{i=1}^s\chi_{J_{k_i}(r_i)}(x)=\prod_{i=1}^s(x-r_i)^{k_i}.$$
+$\Leftarrow)$ Пусть существуют элементы $a_1\ldots,a_t\in{P}$ и числа $m_1,\ldots,m_t\in\mathbb{N}$ такие, 
+что $\chi_A(x)=(x-a_1)^{m_1}\cdots(x-a_t)^{m_t}$, $m_1+\cdots+m_t=n$. Обозначим $K(Ex-A):=\diag{(e,\ldots,e,f_1(x),\ldots,f_s(x))}$, 
+тогда по <a href="./discrete_math13.1.html#Note13.4">замечанию 13.4</a> $\chi_A(x)=f_1(x)\cdots{f}_s(x)$ и для любого $i\in\overline{1,t}$ 
+существуют $m_{i,1},\ldots,m_{i,t}\in\mathbb{N}_0$ такие, что $f_i(x)=(x-a_1)^{m_{i,1}}\cdots(x-a_t)^{m_{i,t}}$. Рассмотрим жорданову матрицу 
+$J:=\diag{(J_{m_{1,1}}(a_1),\ldots,J_{m_{1,t}}(a_t),J_{m_{2,1}}(a_1),\ldots,J_{m_{s,t}}(a_t))}$.
+По <a href="./discrete_math13.3.html#Statement13.3">утверждению 13.3</a>, лемме 13.2</a> и <a href="./discrete_math13.1.html#Theorem13.1">теореме 13.1</a>
+$$
+Ex-J\sim{K}(Ex-J)=\diag(K(Ex-J_{m_{1,1}}(a_1)),\ldots,K(Ex-J_{m_{1,t}}(a_t)),K(Ex-J_{m_{2,1}}(a_1)),\ldots,K(Ex-J_{m_{s,t}}(a_t)))=\\=
+\diag(e,\ldots,e,(x-a_1)^{m_{1,1}},e,\ldots,e(x-a_t)^{m_{1,t}},e,\ldots,e,(x-a_1)^{m_{2,1}},e,\ldots,e,(x-a_t)^{m_{s,t}})\sim\\
+\sim\diag(e,\ldots,e,f_1(x),e,\ldots,e,f_2(x),e,\ldots,e,f_s(x))\sim\diag{(e,\ldots,e,f_1(x),\ldots,f_s(x))}=K(Ex-A)\Rightarrow{A}\approx{J},
+$$
+Докажем от противного единственность жордановой матрицы подобной матрице $A\in{P}_{n,n}$. Предположим, 
+что существуют две жордановые матрицы $J_1:=\diag{(J_{k_1}(a_1),\ldots,J_{k_u}(a_u))}$ и $J_2:=(J_{l_1}(b_1),\ldots,J_{l_v}(b_v))$ подобные матрице $A$, 
+тогда по <a href="./discrete_math13.1.html#Theorem13.1">теореме 13.1</a> и <a href="./discrete_math13.3.html#Statement13.3">утверждению 13.3</a>
+$$Ex-A\sim{E}x-J_1\sim{F}(x):=\diag{(e,\ldots,e,(x-a_1)^{k_1},\ldots,(x-a_u)^{k_u})},$$
+$$Ex-A\sim{E}x-J_2\sim{H}(x):=\diag{(e,\ldots,e,(e-b_1)^{l_1},\ldots,(x-b_v)^{l_v})}.$$
+Тогда 
+$$
+\chi_A(x)=|Ex-A|=|F(x)|=|H(x)|=\prod_{i=1}^u(x-a_i)^{k_i}=\prod_{j=1}^v(x-b_j)^{l_j}\Rightarrow\{a_1,\ldots,a_u\}=\{b_1,\ldots,b_v\}.
+$$
+Обозначим $X:=\{a_1,\ldots,a_u\}$. Для завершения доказательства осталось показать, что для любого $c\in{X}$ набор степеней, 
+в которых множитель $(x-c)$ встречается в произведении для $F(x)$ совпадает с соответствующим набором в произведении для $|H(x)|$. 
+Фиксируем $c\in{X}$. Пусть множитель $(c-x)$ встречается в произведении $|F(x)|$ в степенях $\alpha_1,\ldots,\alpha_{\mu}$, 
+где $0&lt;\alpha_1\leq\cdots\leq\alpha_{\mu}$, а в произведении $|H(x)|$ множитель $(x-c)$ встречается в степенях $\beta_1,\ldots,\beta_{\nu}$, 
+где $0&lt;\beta_1\leq\cdots\leq\beta_{\nu}$. Пусть без ограничения общности $\mu\geq\nu$. 
+По <a href="./discrete_math13.1.html#Statement13.1">утверждению 13.1</a> для любого $i\in\overline{1,n}$ $d_{F(x)}^{(i)}(x)=d_{H(x)}^{(i)}(x)$. 
+Выпишем инвариантные делители $d_{F(x)}^{(i)}(x)$ и $d_{H(x)}^{(i)}(x)$ в виде $(x-c)^kg(x)$, где $g(c)\neq0$<br>
+<br>
+<table align="center" class="solid">
+<tr><td><b>$i$</td><td><b>$d_{F(x)}^{(i)}(x)$</b></td><td><b>$d_{H(x)}^{(i)}(x)$</b></td></tr>
+<tr><td>$n$</td><td>$(x-c)^{\alpha_1+\cdots+\alpha_{\mu}}\varphi_n(x)$</td><td>$(x-c)^{\beta_1+\cdots+\beta_{\nu}}\psi_n(x)$</td></tr>
+<tr><td>$n-1$</td><td>$(x-c)^{\alpha_1+\cdots+\alpha_{\mu-1}}\varphi_{n-1}(x)$</td><td>$(x-c)^{\beta_1+\cdots+\beta_{\nu}}\psi_n(x)$</td></tr>
+<tr><td>$\cdots$</td><td>$\cdots$</td><td>$\cdots$</td></tr>
+<tr><td>$n-\nu+1$</td><td>$(x-c)^{\alpha_1+\cdots+\alpha_{\mu-\nu+1}}\varphi_{n-\nu+1}(x)$</td><td>$(x-c)^{\beta_1}\psi_{n-\nu+1}(x)$</td></tr>
+<tr><td>$n-\nu$</td><td>$(x-c)^{\alpha_1+\cdots+\alpha_{\mu-\nu}}\varphi_{n-\nu}(x)$</td><td>$(x-c)^{\beta_1}\psi_{n-\nu+1}(x)$</td></tr>
+</table><br>
+<br>
+Приравнивая выражения стоящие во втором и третеьм столбцах получим систему равенств
+$$
+\begin{cases}
+\alpha_1+\cdots+\alpha_{\mu}		&=\beta_1+\cdots+\beta_{\nu}	\\
+\alpha_1+\cdots+\alpha_{\mu-1}		&=\beta_1+\cdots+\beta_{\nu-1}	\\
+\cdots					&				\\
+\alpha_1+\cdots+\alpha_{\mu-\nu+1}	&=\beta_1			\\
+\alpha_1+\cdots+\alpha_{\mu-\nu}	&=0				\\
+\end{cases}.
+$$
+Так как для любого $i\in\overline{1,\mu}$ $\alpha_i>0$, то из последнего равенства получаем $\mu=\nu$, 
+тогда из предпоследнего $\alpha_1=\beta_1$ и т. д. для любого $i\in\overline{1,\mu}$ имеем $\alpha_i=\beta_i$.
+<p id="Definition13.6"><b>Определение 13.6:</b><br>
+Жорданова матрица подобная матрице $A\in{P}_{n,n}$ называется жордановой формой матрицы $A$ и обозначается $J(A)$.
+
+<br><br>
+<a href="discrete_math13.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math14.1.html">next</a>
+</body>
+</html>

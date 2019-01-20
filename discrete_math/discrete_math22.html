@@ -1,0 +1,128 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.11</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}",
+	rank: "{\\operatorname{rank}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.11.html">previous</a> <a href="./math_contents.html">contents</a>
+<br>
+
+<h3 id="22">22 Граф преобразования конечного множества.</h3>
+
+<p id="Definition22.1"><b>Определение 22.1:</b><br>
+Пусть $\Omega$ - конечное множество, $\varphi:\Omega\to\Omega$, 
+$$E:=\{(a,\varphi(a))\mid{a}\in\Omega\}\subset\Omega\times\Omega.$$
+Тогда ориентированный граф $\Gamma(\varphi):=(\Omega,E)$ называется графом преобразования $\varphi$.
+<p id="Note22.1"><b>Замечание 22.1:</b><br>
+Ориентированный граф является графом преобразования множества своих вершин тогда и только тогда, когда из каждой вершины выходит одно ребро.
+<p id="Example22.1"><b>Пример 22.1:</b><br>
+Пусть $\Omega=\overline{1,7}$, $\varphi=\begin{pmatrix}1,2,3,4,5,6,7 \\ 7,3,4,5,3,6,4\end{pmatrix}$, 
+тогда граф $\Gamma(\varphi)$ будет выглядеть следующим образом<br>
+<br>
+<table>
+<tr><td>7</td><td>$\to$</td><td>4</td><td>$\gets$</td><td>3</td><td>$\gets$</td><td>2</td><td>$\gets$</td><td>1</td></tr>
+<tr><td></td><td></td><td>$\uparrow$</td><td>$\nearrow$</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+и единичный цикл в точке $6$.
+<p id="Definition22.2"><b>Определение 22.2:</b><br>
+Вершина $a$ графа $\Gamma(\varphi)$ называется 
+<ol>
+<li>циклической или регулярной, если существует $t\geq1$ такое, что $\varphi^t(a)=a$;</li>
+<li>точкой подхода, если для любого $t\geq1$ $\varphi^t(a)\neq{a}$;</li>
+<li>начальной точкой если для любого $x\in\Omega$ $\varphi(x)\neq{a}$.</li>  
+</ol>
+Граф $\Gamma(\varphi)$ называется регулярным, если все его вершины регулярны.
+<p id="Note22.2"><b>Замечание 22.2:</b><br>
+<ol>
+<li>Регулярные вершины и точки подхода образуют разбиение множества вершин графа преобразования.</li>
+<li>Начальная вершина является точкой подхода.</li>
+</ol>
+<p id="Definition22.3"><b>Определение 22.3:</b><br>
+Циклом длины $t\geq1$ называется подграф вида<br>
+<br>
+<table>
+<tr><td>$a_1$</td><td>$\to$</td><td>$a_2$</td><td>$\to$</td><td>$\cdots$</td><td>$\to$</td><td>$a_k$</td></tr>
+<tr><td>$\uparrow$</td><td></td><td></td><td></td><td></td><td></td><td>$\downarrow$</td></tr>
+<tr><td>$a_t$</td><td>$\gets$</td><td>$a_{t-1}$</td><td>$\gets$</td><td>$\cdots$</td><td>$\gets$</td><td>$a_{k+1}$</td></tr>		
+</table>
+<br><br>
+Подходом длины $l$ называется подграф вида 
+<br><br>
+<table>
+<tr><td>$a_1$</td><td>$\to$</td><td>$a_2$</td><td>$\to$</td><td>$\cdots$</td><td>$\to$</td><td>$a_{l-1}$</td><td>$\to$</td><td>$a_l$ 
+</table>
+<br><br>
+где
+<ol>
+<li>$a_0$ - начальная вершина,</li>
+<li>$a_1$ - $a_{l-1}$ - точки подхода,</li>
+<li>$a_l$ - регулярная вершина.</li>
+</ol>
+<p id="Definition22.4"><b>Определение 22.4:</b><br>
+Пусть $\varphi:\Omega\to\Omega$, тогда вершины $a,b\in\Omega$, графа $\Gamma(\varphi)$ называются связными, если существуют $i,j\in\mathbb{N}_0$ такие, 
+что $\varphi^i(a)=\varphi^j(b)$.<br>
+Если вершины $a$ и $b$ связны, то будем обозначать $a\sim{b}$.<br>
+Если все вершины графа связны, то будем говорить, что граф связен.
+<p id="Note22.3"><b>Замечание 22.3:</b><br>
+Несложно видеть, что отношение связности на множестве вершин $\Omega$  является отношением эквивалентности.
+<ul>
+<li><b>рефлексивность</b> Так как $\varphi(a)=\varphi(a)$, то $a\sim{a}$ ($i=j=1$);</li>
+<li><b>симметричность</b> Если $a\sim{b}$, то существуют числа $i,j\in\mathbb{N}_0$ такие, что $\varphi^i(a)=\varphi^j(b)$, 
+тогда $\varphi^i(b)=\varphi^i(a)$, то есть $b\sim{a}$.
+</li>
+<li><b>транзитивность</b> Если $\varphi^i(a)=\varphi^j(b)$ и $\varphi^k(b)=\varphi^s(c)$, где б. о. о. будем считать, что $k\geq{j}$,  
+тогда $\varphi^{i+k-j}(a)=\varphi^k(b)=\varphi^s(c)$.
+</li>
+</ul>
+<p id="Theorem22.1"><b>Теорема 22.1:</b><br>
+Граф преобразования конечного множества является объединением попарно не персекающихся подграфов, каждый из которых является циклом с подходами.
+<p><b>Доказательство:</b><br><br>
+Так как отношение связности является отношением эквивалентности, то оно разбивает множество $\Omega$ на не пересекающиеся классы эквивалентности.
+$$\Omega=\Omega_1\sqcup\ldots\sqcup\Omega_s.$$
+Так как для любого $a\in\Omega$ $\varphi(a)\sim{a}$, то для любого $r\in\overline{1,s}$ $\varphi(\Omega_r)\subset\Omega_r$. 
+Тогда для любого $r\in\overline{1,s}$ можно рассмотреть отображение $\varphi_r:=\varphi|_{\Omega_r}$. Так как классы не пересекаются, 
+то вершины в них входящие связаны ребрами только друг с другом. Подграф состоящий из вершин $\Omega_r$ и 
+вершин их соединяющих есть $\Gamma(\varphi_r)$ и
+$$\Gamma(\varphi)=\Gamma(\varphi_1)\sqcup\ldots\sqcup\Gamma(\varphi_s).$$
+Остается доказать, что $\Gamma(\varphi_r)$ - это цикл с подходами.<br>
+Пусть $c\in\Omega_r$, тогда ввиду конечности $\Omega_r$ последовательность элементов
+$$c,\varphi(c),\ldots,\varphi^i(c),\ldots$$
+периодическая. То есть вершина $c$ лежит либо на цикле, либо на подходе к нему. Остается доказать, что в графе $\Gamma(\varphi_r)$ только один цикл.<br>
+Пусть $a,b\in\Omega_r$ две циклические вершины графа $\Gamma(\varphi_r)$. Тогда существует $t\in\mathbb{N}$ такое, 
+что $\varphi^t(a)=a$ и ввиду связности множества вершин $\Omega_r$ существуют $i,j\in\mathbb{N}_0$ такие, что
+$\varphi^i(a)=\varphi^j(b)$. Существует $k\in\mathbb{N}$ такое, что $kt\geq{i}$, следовательно
+$$a=\varphi^{kt}(a)=\varphi^{kt-i}(\varphi^i(a))=\varphi^{kt-i}(\varphi^j(b))=\varphi^{kt-i+j}(b),$$
+то есть $a$ и $b$ лежат на одном цикле.
+
+<br><br>
+<a href="discrete_math21.11.html">previous</a> <a href="./math_contents.html">contents</a>
+</body>
+</html>

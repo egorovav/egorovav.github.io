@@ -1,0 +1,212 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 15.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math15.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math16.1.html">next</a>
+<br>
+
+<h4 id="15.3">15.3 Самосопряженные преобразования.</h4>
+<p id="Definition15.4"><b>Определение 15.4:</b><br>
+Преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ называется самосопряженным, если $\varphi=\varphi^*$. 
+<p id="Note15.2"><b>Замечание 15.2:</b><br>
+<ol>
+<li>Если преобразование $\varphi$ самосопряженное, то $\varphi\circ\varphi^*=\varphi^2=\varphi^*\circ\varphi$, 
+то есть преобразование $\varphi$ нормальное.
+</li>
+<li>Если $\vec{\delta}$ ортонормированный базис пространства $(L_{\mathbb{P}},S)$, то по <a href="./discrete_math15.1.html#Theorem15.1">теореме 15.1</a>
+ преобразование $\varphi$ самосопряженное тогда и только тогда, когда 
+$A_{\vec{\delta}}(\varphi)=A_{\vec{\delta}}(\varphi^*)=\overline{A_{\vec{\delta}}(\varphi)}^T$, 
+то есть когда матрица $A_{\vec{\delta}}(\varphi)$ эрмитова.
+</li>
+</ol>
+ 
+<p id="Theorem15.5"><b>Теорема 15.5: Критерий самосопряженности.</b><br>
+Преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ самосопряженное тогда и только тогда, когда
+<ol>
+<li>существует ортонормированный базис пространства $L_{\mathbb{P}}$ из собственных векторов преобразования $\varphi$,</li>
+<li>все корни многочлена $\chi_{\varphi}(x)$ действительные числа.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как преобразование $\varphi$ самосопряженное, то оно нормальное.
+<ol>
+<li>Пусть $\mathbb{P}=\mathbb{C}$, тогда $\chi_{\varphi}(x)$ раскладывается на линейные множители и по 
+<a href="./discrete_math15.2.html#Theorem15.3">теореме 15.3</a> 
+существует ортонормированный базис $\vec{\gamma}$ из собственных векторов преобразования $\varphi$. Тогда 
+$A:=A_{\vec{\gamma}}(\varphi)=\diag{(r_1,\ldots,r_n)}$, где $r_1,\ldots,r_n\in\mathbb{C}$ корни многочлена $\chi_{\varphi}(x)$. При этом 
+$$
+\varphi=\varphi^*\Rightarrow{A}=\overline{A}^T\Rightarrow\diag{(r_1,\ldots,r_n)}=\diag{(\overline{r}_1,\ldots,\overline{r}_n)}\Rightarrow
+\forall{i}\in\overline{1,n}(r_i=\overline{r}_i)\Rightarrow\forall{i}\in\overline{1,n}(r_i\in\mathbb{R}).
+$$
+</li>
+<li>Пусть $\mathbb{P}=\mathbb{R}$, тогда по теореме 15.4 существуют ортонормированный базис $\vec{\delta}$ и $m,s\in\mathbb{N}_0$, 
+$r_1,\ldots,r_m,a_1,\ldots,a_s\in\mathbb{R}$, $b_1,\ldots,b_s\in\mathbb{R}\backslash\{0\}$ такие, что 
+$$
+A_{\vec{\delta}}(\varphi)=\diag\left(r_1,\ldots,r_m,\begin{pmatrix}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix},\ldots,
+\begin{pmatrix}a_s & b_s \\ -b_s & a_s\end{pmatrix}\right).
+$$
+Предположим, что $s&lt;0$, тогда
+$$
+\varphi=\varphi^*\Rightarrow{A}=A^T\Rightarrow\forall{i}\in\overline{1,s}\left(\begin{pmatrix}a_i & b_i \\ -b_i & a_i\end{pmatrix}=
+\begin{pmatrix}a_i & - b_i \\ b_i & a_i\end{pmatrix}\right)\Rightarrow\forall{i}\in\overline{1,s}(b_i=-b_i=0).
+$$
+Получено противоречие, следовательно, $s=0$, $m=n$, матрица $A_{\vec{\gamma}}(\varphi)$ диагональная и по 
+<a href="./discrete_math12.2.html#Statement12.5">утверждению 12.5</a> $\vec{\gamma}$ - 
+базис пространства $L_{\mathbb{R}}$ из собственных векторов преобразования $\varphi$.
+</li>
+</ol>
+$\Leftarrow)$ Если $\vec{\delta}$ ортонормированный базис из собственных векторов преобразования $\varphi$, $r_1,\ldots,r_n\in\mathbb{R}$ - 
+корни многочлена $\chi_{\varphi}(x)$, то по <a href="./discrete_math12.2.html#Statement12.5">утвеждению 12.5</a>
+$A:=A_{\vec{\delta}}(\varphi)=\diag{(r_1,\ldots,r_n)}$. Тогда $A=\overline{A}^T$, следовательно, преобразование $\varphi$ самосопряженное.
+<p id="Corollary15.3"><b>Следствие 15.3:</b><br>
+Пусть $A\in\mathbb{P}_{n,n}$ такая, что $A=\overline{A}^T$, тогда существуют унитарная матрица $C\in(\mathbb{P}_{n,n})^*$ и 
+диагональная матрица $D\in\mathbb{R}_{n,n}$ такие, что $C^{-1}AC=D$.
+<p><b>Доказательство:</b><br>
+Существует пространство $(L_\mathbb{P},S)$ размерности $n$ с ортонормированным базисом $\vec{\delta}$ и 
+преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ такие, что ${A_{\vec{\delta}}(\varphi)=A}$. Так как $A=\overline{A}^T$, 
+то преобразование $\varphi$ самосопряженное. Тогда по теореме 15.5 существует ортонормированный базис $\vec{\gamma}$ из собственный векторов 
+преобразования $\varphi$ и все корни $r_1,\ldots,r_n$ многочлена $\chi_{\varphi}(x)$ действительные числа, то есть 
+$D:=A_{\vec{\gamma}}(\varphi)=\diag{(r_1,\ldots,r_n)}$. Тогда существует матрица $C\in(\mathbb{P}_{n,n})^*$ такая, 
+что $\vec{\gamma}=\vec{\delta}C$, тогда по утверждению 12.3 $C^{-1}AC=D$ и по <a href="./discrete_math15.2.html#Statement15.2">утверждению 15.2</a>
+матрица $C$ унитарна.
+
+<h4 id="15.4">15.4 Изометрические преобразования.</h4>
+
+<p id="Definition15.5"><b>Определение 15.5:</b><br>
+Преобразование $\varphi\in\mathcal{L}(L_{\mathbb{P}})$ называется изометрическим, 
+если для любых $\alpha,\beta\in{L}_{\mathbb{P}}$ $S(\varphi(\alpha),\varphi(\beta))=S(\alpha,\beta)$.
+<p id="Theorem15.6"><b>Теорема 15.6:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_{\mathbb{P}})$, $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)$ - базис $L_{\mathbb{P}}$, 
+тогда следующие утверждения эквивалентны
+<ol>
+<li>преобразование $\varphi$ изометрическое,</li>
+<li>$\forall{i},j\in\overline{1,n}(S(\varphi(\alpha_i),\varphi(\alpha_j))=S(\alpha_i,\alpha_j))$,</li>
+<li>$\forall\gamma\in{L}_{\mathbb{P}}(\|\varphi(\gamma)\|=\|\gamma\|)$,</li>
+<li>преобразование $\varphi$ обратимо и $\varphi^{-1}=\varphi^*$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Rightarrow2)$ Следует из определения 15.5.<br>
+$2)\Rightarrow3)$ Пусть $\gamma\in{L}_{\mathbb{P}}$ и $c_1,\ldots,c_n\in\mathbb{P}$ такие, что $\gamma=\sum_{i=1}^n\alpha_ic_i$, тогда
+$$
+\|\varphi(\gamma)\|^2=S(\varphi(\gamma),\varphi(\gamma))=
+S\biggl(\varphi\biggl(\sum_{i=1}^n\alpha_ic_i\biggr),\varphi\biggl(\sum_{j=1}^n\alpha_jc_j\biggr)\biggr)=
+S\biggl(\sum_{i=1}^n\varphi(\alpha_i)c_i,\sum_{j=1}^n\varphi(\alpha_j)c_j\biggr)=
+\sum_{i=1}^n\sum_{j=1}^nc_i\overline{c}_jS(\varphi(\alpha_i),\varphi(\alpha_j))=\\=
+\sum_{i=1}^n\sum_{j=1}^nc_i\overline{c}_jS(\alpha_i,\alpha_j)=S\biggl(\sum_{i=1}^n\alpha_ic_i,\sum_{j=1}^n\alpha_jc_j\biggr)=S(\gamma,\gamma)=\|\gamma\|^2
+$$
+Следовательно, так как норма не отрицательна по определению скалярного произведения, то $\|\varphi(\gamma)\|=\|\gamma\|$.<br>
+$3)\Rightarrow4)$ Обозначим $\psi:=\varphi^*\circ\varphi$, тогда по п.3 <a href="./discrete_math15.1.html#Theorem15.2">теоремы 15.2</a>
+$$\psi^*=(\varphi^*\circ\varphi)^*=\varphi^*\circ(\varphi^*)^*=\varphi^*\circ\varphi=\psi.$$
+Таким образом, преобразование $\psi$ самосопряженное, тогда по <a href="./discrete_math15.3.html#Theorem15.5">теореме 15.5</a>
+существует ортонормированный базис $\vec{\delta}:=(\delta_1,\ldots,\delta_n)$ и $r_1,\ldots,r_n\in\mathbb{R}$ такие, что для любого $i\in\overline{1,n}$ 
+$\psi(\delta_i)=\delta_i{r}_i$, тогда для любого $i\in\overline{1,n}$
+$$
+1=\|\delta_i\|^2=\|\varphi(\delta_i)\|^2=S(\varphi(\delta_i),\varphi(\delta_i))=S(\delta_i,\varphi^*(\varphi(\delta_i)))=
+S(\delta_i,\psi(\delta_i))=S(\delta_i,\delta_i{r}_i)=r_iS(\delta_i,\delta_i)=r_i\|\delta_i\|^2=r_i.
+$$
+Таким образом, для любого $i\in\overline{1,n}$ $r_i=1$, тогда $A_{\vec{\delta}}(\psi)=A_{\vec{\delta}}(\varphi^*\circ\varphi)=E$, 
+то есть $\varphi^*\circ\varphi=e$, следовательно, преобразование $\varphi$ обратимое и 
+$\varphi^{-1}=\varphi^*$.<br>
+$4)\Rightarrow1)$ Для любых $\alpha,\beta\in{L}_{\mathbb{P}}$
+$$S(\varphi(\alpha),\varphi(\beta))=S(\alpha,\varphi^*(\varphi(\beta)))=S(\alpha,\varphi^{-1}(\varphi(\beta)))=S(\alpha,\beta).$$
+<p id="Note15.3"><b>Замечание 15.3:</b><br>
+<ol>
+<li>Если $\varphi$ изометрическое, то из п.4 теоремы 15.6 следует 
+$$\varphi^*\circ\varphi=\varphi^{-1}\circ\varphi=e=\varphi\circ\varphi^{-1}=\varphi\circ\varphi^*,$$
+то есть преобразование $\varphi$ нормальное.
+</li>
+<li>Пусть $\vec{\delta}$ - ортонормированный базис $(L_{\mathbb{P}},S)$, $\varphi\in{L}_{\mathbb{P}}$, тогда из п. 4 теоремы 15.6, 
+<a href="./discrete_math15.1.html#Theorem15.1">теоремы 15.1</a> и п. 2 <a href="./discrete_math12.1.html#Task12.3">задачи 12.3</a> следует, 
+что преобразование $\varphi$ изометрическое тогда и только тогда, когда $A_{\vec{\delta}}(\varphi)^{-1}=\overline{A_{\vec{\delta}}(\varphi)}^T$. 
+При $\mathbb{P}=\mathbb{C}$ последние условие означает, что матрица $A_{\vec{\delta}}(\varphi)$ унитарна, при $\mathbb{P}=\mathbb{R}$ - ортогональна.
+</li>
+</ol>
+<p id="Theorem15.7"><b>Теорема 15.7:</b><br>
+<ol>
+<li>Преобразование $\varphi\in{L}_{\mathbb{P}}$ изометрично тогда и только тогда, 
+когда существует ортонормированный базис пространства $(L_{\mathbb{P}},S)$ из собственных векторов преобразования $\varphi$ и 
+все собственные значения $\varphi$ по модулю равны единице.
+</li>
+<li>Преобразование $\varphi\in{L}_{\mathbb{R}}$ изометрично тогда и только тогда, 
+когда существует ортонормированный базис пространства $(L_{\mathbb{P}},S)$ такой, что 
+$$
+A_{\vec{\delta}}(\varphi)=\diag{\left(r_1,\ldots,r_k,\begin{pmatrix}{2}\cos{\omega_1} & \sin{\omega_1} \\ 
+-\sin{\omega_1} & \cos{\omega_1}\end{pmatrix},\ldots,
+\begin{pmatrix}{2}\cos{\omega_s} & \sin{\omega_s} \\ -\sin{\omega_s} & \cos{\omega_s}\end{pmatrix}\right)},
+$$
+где $k,s\in\mathbb{N}_0$, для любого $i\in\overline{1,k}$ $r_i\in\{1, -1\}$, для любого $j\in\overline{1,s}$ $\omega_j\in(0,2\pi)\backslash\{\pi\}$ 
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+$\Rightarrow)$ Так как преобразование $\varphi$ изометрическое, то оно нормальное. По <a href="./discrete_math15.2.html#Theorem15.3">теореме 15.3</a>
+существует ортонормированный базис $\vec{\delta}$ такой, что $A_{\vec{\delta}}(\varphi)=\diag{(r_1,\ldots,r_n)}$, где 
+$r_1,\ldots,r_n\in\mathbb{P}$ собственные значения преобразования $\varphi$. По п. 2 замечания 15.3 
+$$
+A_{\vec{\delta}}(\varphi)^{-1}=\overline{A_{\vec{\delta}}(\varphi)}^T\Rightarrow\diag{(r_1^{-1},\ldots,r_n^{-1})}=
+\diag{(\overline{r}_1,\ldots,\overline{r}_n)}\Rightarrow
+\forall{i}\in\overline{1,n}(r_i^{-1}=\overline{r}_i)\Rightarrow\forall{i}\in\overline{1,n}(|r_i|^2=|r_i|=1).
+$$ 
+$\Leftarrow)$ По утверждению 12.4 $A_{\vec{\delta}}(\varphi):=\diag{(r_1,\ldots,r_n)}$, 
+где $r_1,\ldots,r_n\in\mathbb{P}$ собственные занчения преобразования $\varphi$. Так как для любого $i\in\overline{1,n}$ 
+$|r_i|=|r_i|^2=\overline{r}_ir_i=1$, то $r_i^{-1}=\overline{r}_i$ и тогда $A_{\vec{\delta}}(\varphi)^{-1}=\overline{A_{\vec{\delta}}(\varphi)}^T$, 
+то есть преобразование $\varphi$ изометрическое.
+</li>
+<li>
+$\Rightarrow)$ Так как преобразование изометрично, то оно нормальное. Тогда по <a href="./discrete_math15.2.html#Theorem15.4">теореме 15.4</a>
+существуют ортонормированный базис $\vec{\delta}$ и $k,s\in\mathbb{N}_0$, $r_1,\ldots,r_k,a_1,\ldots,a_s\in\mathbb{R}$, 
+$b_1,\ldots,b_s\in\mathbb{R}\backslash\{0\}$ такие, что
+$$
+A_{\vec{\delta}}(\varphi)=\diag\left(r_1,\ldots,r_k,\begin{pmatrix}{2}a_1 & b_1 \\ -b_1 & a_1\end{pmatrix},\ldots,
+\begin{pmatrix}{2}a_s & b_s \\ -b_s & a_s\end{pmatrix}\right).
+$$
+Так как преобразование $\varphi$ изометрическое, то $A_{\vec{\delta}}(\varphi)^{-1}=\overline{A_{\vec{\delta}}(\varphi)}^T$, 
+следовательно, для любого $i\in\overline{1,k}$ $r_i=r_i^{-1}$, то есть $r_i\in\{1, -1\}$ и для любого 
+$j\in\overline{1,s}$
+$$
+\begin{pmatrix}{2}a_j & b_j \\ -b_j & a_j\end{pmatrix}^{-1}=\begin{pmatrix}{2}a_j & b_j \\ -b_j & a_j\end{pmatrix}^T\Rightarrow
+\begin{pmatrix}{2}a_j & b_j \\ -b_j & a_j\end{pmatrix}\begin{pmatrix}{2}a_j & -b_j \\ b_j & a_j\end{pmatrix}=E\Rightarrow
+{a}_j^2+b_j^2=1\Rightarrow\exists\omega_j\in(0,2\pi)\backslash\{0\}:(\cos{\omega_j}=a_j\,\wedge\,\sin{\omega_j}=b_j).
+$$
+$\Leftarrow)$ Так как для любого $i\in\overline{1,k}$ $r_i=r_i^{-1}$ и для любого $j\in\overline{1,s}$
+$$
+\begin{pmatrix}{2}\cos{\omega_j} & \sin{\omega_j} \\ -\sin{\omega_j} & \cos{\omega_j}\end{pmatrix}\begin{pmatrix}{2}\cos{\omega_j} & -\sin{\omega_j} \\ 
+\sin{\omega_j} & \cos{\omega_j}\end{pmatrix}=
+\begin{pmatrix}\sin^2{\omega_j}+\cos^2{\omega_j} & \sin{\omega_j}\cos{\omega_j}-\sin{\omega_j}\cos{\omega_j} \\
+\sin{\omega_j}\cos{\omega_j}-\sin{\omega_j}\cos{\omega_j} & \sin^2{\omega_j}+\cos^2{\omega_j}\end{pmatrix}=E,
+$$
+то $A_{\vec{\delta}}(\varphi)^{-1}=A_{\vec{\delta}}(\varphi^T)$.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math15.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math16.1.html">next</a>
+</body>
+</html>

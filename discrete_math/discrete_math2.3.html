@@ -1,0 +1,148 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 2.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.1.html">next</a>
+<br>
+
+<h4 id="2.3">2.3 Поля.</h4>
+
+<p id="Definition2.13"><b>Определение 2.12:</b><br>
+Полем называется коммутативное кольцо с единицей отличной от нуля,  в котором каждый ненулевой элемент обратим.
+<br>
+Из определения следует, что для любого поля $P$ $P^*=P\backslash\{0\}$.<br>
+Из определения и утверждения 2.3 следует, что в поле нет делителей нуля.
+<p id="Definition2.13"><b>Определение 2.13:</b><br>
+<ol>
+<li> Алгебры $(\mathbb{R};+,\cdot),(\mathbb{Q};+,\cdot)$ являются полями.</li>
+<li> Кольцо $(\mathbb{Z};+,\cdot)$ не является полем так как $\mathbb{Z}^*=\{-1,1\}\neq\mathbb{Z}\backslash\{0\}$.</li>
+<li> Кольца $\mathbb{R}^2,\mathbb{Z}_4$ не являются полями так как имеют делители нуля.</li>
+<li> Существует единственное поле состоящее из двух элементов, это поле называется полем Галуа и обозначаестя $GF(2)$. 
+Операции поля Галуа задаются следующим образом
+<br>
+<table>
+<tr>
+<td>
+<table class="solid">
+<tr><td>$+$</td><td><b>$0$</b></td><td><b>$1$</b></td></tr>
+<tr><td><b>$0$</b></td><td>$0$</td><td>$1$</td></tr>
+<tr><td><b>$1$</b></td><td>$1$</td><td>$0$</td></tr>
+</table>
+</td>
+<td>
+<table class="solid">
+<tr><td>$\cdot$</td><td><b>$0$</b></td><td><b>$1$</b></td></tr>
+<tr><td><b>$0$</b></td><td>$0$</td><td>$0$</td></tr>
+<tr><td><b>$1$</b></td><td>$0$</td><td>$1$</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+Наличие нейтральных и симметричных элементов, коммутативность операций следует из струстуры таблиц Кэли. 
+Ассоциативность операций очевидна, так как для любых $(a,b,c)\in{G}F(2)^3$ либо $0\in\{a,b,c\}$, либо $(a,b,c)=(1,1,1)$. 
+Дистрибутивность операции $\cdot$ относительно операции $+$ так же очевидна, так как $a\in\{0,1\}$ (если $a=0$, 
+то $a\cdot(b+c)=0=0+0=a\cdot{b}+a\cdot{c}$, если $a=1$, то $a\cdot(b+c)=b+c=a\cdot{b}+a\cdot{c}$).
+</li>
+</ol>
+<p id="Example2.9"><b>Пример 2.9:</b><br>
+Проверим являются ли полями следующие алгебраические структуры
+<ol>
+<li> $\mathbb{Z}(\sqrt{2}):=\{a+b\sqrt{2}\mid{a},b\in\mathbb{Z}\}$,</li>
+<li> $\mathbb{Q}(\sqrt{2}):=\{a+b\sqrt{2}\mid{a},b\in\mathbb{Q}\}$,</li>
+<li> $\mathbb{Q}(\sqrt[3]{2}):=\{a+b\sqrt[3]{2}\mid{a},b\in\mathbb{Q}\}$</li>
+</ol>
+<ol>
+<li> Замкнутость относительно операции $+$ очевидна, проверим замкнутость относительно операции $\cdot$. Действительно,
+$$\forall{a},b,c,d\in\mathbb{Z}((a+b\sqrt{2})(c+d\sqrt{2})=ac+ad\sqrt{2}+cb\sqrt{2}+2bd=(ac+2bd)+(ad+cb)\sqrt{2}).$$
+Так как $ac+2bd\in\mathbb{Z}$ и $ad+cb\in\mathbb{Z}$, то замкнутость $\mathbb{Z}(\sqrt{2})$ относительно операции $\cdot$ доказана.
+Коммутативность, ассациативность операций $+$ и $\cdot$, а так же дистрибутивность операции $\cdot$ относительно операции $+$ 
+следует из свойств аналогичных операций над полем $\mathbb{R}$.<br>
+Для любого $a+b\sqrt{2}\in\mathbb{Z}(\sqrt{2})$ существует обратный $-a-b\sqrt{2}\in\mathbb{Z}(\sqrt{2})$.<br>
+Таким образом $\mathbb{Z}(\sqrt{2})$ - коммутативное кольцо с единицей, но не поле, так как оно не содержит, например, 
+элемента обратного для элемента $2+0\sqrt{2}=2$. Действительно, предположим, что $\frac12\in\mathbb{Z}(\sqrt{2})$, 
+тогда существуют $a,b\in\mathbb{Z}$ такие, что $\frac12=a+b\sqrt{2}$, то есть $1-2a=2b\sqrt{2}$. Тогда если $b=0$, то $\frac12\in\mathbb{Z}$, 
+если $b\neq0$, то $2b\sqrt{2}\in\mathbb{Z}$, таким образом получено противоречие.
+</li>
+<li> Аналогично пункту 1 $\mathbb{Q}(\sqrt{2})$ является коммутативным кольцом с единицей. Проверим наличие обратного элемента для 
+произвольного ненулевого элемента $a+b\sqrt{2}$. Действительно,
+$$
+(a+b\sqrt{2})^{-1}=\frac1{a+b\sqrt{2}}=\frac1{a+b\sqrt{2}}\frac{a-b\sqrt{2}}{a-b\sqrt{2}}=\frac{a-b\sqrt{2}}{a^2-2b^2}
+=\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}.
+$$
+Так как $a,b\in\mathbb{Q}$ причем либо $a\neq0$, либо $b\neq0$, то $a^2-2b^2\in\mathbb{Q}\backslash\{0\}$, тогда и 
+$\displaystyle\frac1{a^2-2b^2}\in\mathbb{Q}$. Таким образом получено представления числа $(a+b\sqrt{2})^{-1}$ в виде 
+$c+d\sqrt{2}$, где $c,d\in\mathbb{Q}$. 
+</li>
+<li> Проверим замкнутость множества $\mathbb{Q}(\sqrt[3]{2})$ относительно операции $\cdot$. Так как
+$$(a_1+b_1\sqrt[3]{2})(a_2+b_2\sqrt[3]{2})=a_1a_2+\sqrt[3]{4}b_1b_2+(a_1b_2+a_2b_1)\sqrt[3]{2},$$
+то $\mathbb{Q}(\sqrt[3]{2})$ замкнуто относительно операции $\cdot$ тогда и только тогда, когда существуют $p,q\in\mathbb{Q}$ такие, 
+что $\sqrt[3]{4}=p+q\sqrt[3]{2}$. Причем, если такое разложение существует, то оно единственно, иначе вычитая одно из другого получим, 
+что рациональное число равно иррациональному. Предположим, что существуют $p,q\in\mathbb{Q}$ такие, что
+$$
+4=(p+q\sqrt[3]{2})^3=p^3+3p^2q\sqrt[3]{2}+3pq^2(\sqrt[3]{2})^2+2q^3\Rightarrow3pq^2\sqrt[3]{4}=4-p^3-3p^2q\sqrt[3]{2}-2q^3\Rightarrow$$
+$$\Rightarrow\sqrt[3]{4}=\frac{4}{3pq^2}-\frac{p^3}{3pq^2}-\frac{3p^2q}{3pq^2}\sqrt[3]{2}-\frac{2q^3}{2pq^2}=
+\left(\frac{4}{3pq^2}-\frac{p^2}{3q^2}-\frac{2q}{3p}\right)-\frac{p}{q}\sqrt[3]{2}.
+$$
+Тогда в силу единственности разложения $\sqrt[3]{4}=p+q\sqrt[3]{2}$ имеем
+$$q=-\frac{p}{q},\quad{p}=\frac{4}{3pq^2}-\frac{p^2}{3q^2}-\frac{2q}{3p}.$$
+Исключая из последнего равенства $p$ равное $-q^2$ получаем 
+$$-q^2=-\frac{4}{3q^4}-\frac{q^2}{3}+\frac{2}{3q}\Rightarrow-3q^6=-4+2q^3+q^6\Rightarrow2q^6+q^3-2=0.$$
+Решая последнее уравнение относительно $q^3$, получим $q^3=\frac{-1\pm\sqrt{17}}{4}$. 
+Таким образом $q$ - иррациональное число, следовательно, $\mathbb{Q}(\sqrt[3]{2})$ не замкнуто относительно операции $\cdot$. 
+То есть $\mathbb{Q}(\sqrt[3]{2})$ не является кольцом. 
+</ol>
+
+<h4 id="2.4">2.4 Отношения эквивалентности.</h4>
+<p id="Definition2.14"><b>Определение 2.14:</b><br>
+Отношением на множестве $A$ называется любое подмножество декартова квадрата множества $A$.<br>
+Пусть $\rho\subset{A}^2$, то есть $\rho$ отношение на множестве $A$ и $(a,b)\in\rho$, тогда пишут $a\rho{b}$.
+<p id="Definition2.15"><b>Определение 2.15:</b><br>
+Отношение $\rho$ на множестве $A$  
+<ol>
+<li><b>симметрично</b>, если $$\forall{a},b\in{A}(a\rho{b}\Rightarrow{b}\rho{a}),$$</li>
+<li><b>рефлексивно</b>, если $$\forall{a}\in{A}(a\rho{a}),$$</li>
+<li><b>транзитивно</b>, если $$\forall{a},b,c\in{A}((a\rho{b}\wedge{b}\rho{c})\Rightarrow{a}\rho{c}).$$</li>
+</ol>
+Отношение является отношением эквивалентности, если оно симметрично, рефлексивно, транзитивно
+<br>
+<p id="Theorem2.2"><b>Теорема 2.2:</b><br>
+Пусть $\rho$ отношение эквивалентности на множестве $A$, тогда множество $A$ представимо в виде объединения попарно не пересекающихся подмножеств, 
+таких, что для любых $a,b\in{A}$ $a$ и $b$ принадлежат одному подмножеству тогда и только тогда, когда $a\rho{b}$. 
+<p><b>Доказательство:</b><br><br>
+Для любого $a\in{A}$ обозначим $[a]_{\rho}=\{x\in{A}\mid{x}\rho{a}\}$. В силу рефлексивности $a\in[a]_{\rho}$, следовательно, 
+$A=\bigcup_{a\in{A}}[a]_{\rho}$. Докажем, что 
+$$\forall{a},b\in{A}([a]_{\rho}=[b]_{\rho}\vee[a]_{\rho}\cap[b]_{\rho}=\varnothing).$$
+Пусть $[a]_{\rho}\cap[b]_{\rho}\neq\varnothing$, тогда 
+$$\exists{c}\in[a]_{\rho}\cap[b]_{\rho}\Rightarrow{c}\in[a]_{\rho}\wedge{c}\in[b]_{\rho}\Rightarrow{a}\rho{c}\wedge{c}\rho{b}\Rightarrow{a}\rho{b},$$
+следовательно,
+$$\forall{x}\in{A}(x\in[a]_{\rho}\Rightarrow{x}\rho{a}\wedge{a}\rho{b}\Rightarrow{x}\rho{b}\Rightarrow{x}\in[b]_{\rho})\Rightarrow
+[a]_{\rho}\subset[b]_{\rho}.$$
+Аналогично $[b]_{\rho}\subset[a]_{\rho}$, то есть $[a]_{\rho}=[b]_{\rho}$.
+<br>
+Таким образом, если $\rho$ отношение эквивалентности на $A$, то существует $A'\subset{A}$ такое, что $A=\bigcup_{a\in{A}'}[a]_{\rho}$ 
+и для любых $a_1,a_2\in{A}'$ таких, что $a_1\neq{a}_2$ $[a_1]_{\rho}\cap[a_2]_{\rho}=\varnothing$. 
+Подмножество $[a]_{\rho}$ называют классом $\rho$-эквивалентных элементов с представителем $a$. 
+Разбиение $A=\bigcup_{a\in{A}'}[a]_{\rho}$ называют разбиением множества $A$ индуцированным отношением эквивалентности $\rho$.
+
+С другой стороны, если задано разбиение $A=\bigcup_{i\in{I}}A_i$, где $A_i\cap{A}_j=\varnothing$ для любых $i\neq{j}$, то отношение заданное как 
+$$\forall{a},b\in{A}(a\rho{b}\Leftrightarrow\exists{i}\in{I}:a,b\in{A}_i)$$
+является отношением эквивалентности. Действительно, если $a,b\in{A}_i$ и $b,c\in{A}_i$, то $a,c\in{A}_i$, следовательно, $\rho$ транзитивно, 
+доказательства других свойств еще более тривиальны.
+
+<br><br>
+<a href="discrete_math2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.1.html">next</a>
+</body>
+</html>

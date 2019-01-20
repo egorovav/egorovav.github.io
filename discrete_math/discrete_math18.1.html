@@ -1,0 +1,290 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 18.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math17.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.2.html">next</a>
+<br>
+
+<h3 id="18">18 Основы теории полей.</h3>
+<h4 id="18.1">18.1 Подполя. Расширения полей.</h4>
+
+<p id="Definition18.1"><b>Определение 18.1:</b><br>
+Если $(P;+,\cdot)$ - поле, $L\subset{P}$, $L$ замкнуто относительно операций $+$, $\cdot$ и является полем, то $L$ является подполем поля $P$.
+<p id="Note18.1"><b>Замечание 18.1:</b><br>
+<ol>
+<li>Любое подполе поля является его подкольцом.</li>
+<li>Любое поле является подполем себя самого.</li>
+<li>Если $L$ подполе поля $P$, то единица и ноль поля $P$ совпадают с единицей и нулем поля $L$.</li>
+</ol>
+<p id="Statement18.1"><b>Утверждение 18.1:</b><br>
+Если $P$ - поле, $L\subset{P}$, $L\neq\{0\}$, то $L$ подполе $P$ тогда и только тогда, когда 
+<ol>
+<li>$\forall{l}_1,l_2\in{L}(l_1l_2\in{L}\,\wedge\,l_1-l_2\in{L})$,</li>
+<li>$\forall{l}\in{L}\backslash\{0\}(l^{-1}\in{L})$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$
+<ol>
+<li>Следует из <a href="./discrete_math17.1.html#Statement17.1">утвеждения 17.1</a>.</li>
+<li>Следует из того, что $L$ - поле.</li>
+</ol>
+$\Leftarrow)$ Из пункта 1 условий и утверждений <a href="./discrete_math17.1.html#Statement17.1">17.1</a>, 
+<a href="./discrete_math17.1.html#Statement17.2">17.2</a> следует, что $(L;+,\cdot)$ - коммутативное кольцо с единицей не равной нулю. 
+Из пункта два условий следует, что любой ненулевой элемент $L$ обратим. Таким образом, $(L;+,\cdot)$ - поле, то есть подполе поля $P$. 
+<p id="Corollary18.1"><b>Следствие 18.1:</b><br>
+<ol>
+<li>Отношение "быть подполем" транзитивно.</li>
+<li>Если для любого $\alpha\in{A}$ $L_{\alpha}$ подполе поля $P$, то $\bigcap_{\alpha\in{A}}L_{\alpha}$ подполе поля $P$.</li>
+<li>Если $L\subset{P}$, $L\neq\{0\}$, $|L|<\infty$, то $L$ подполе поля $P$ тогда и только тогда, 
+когда для любых $l_1,l_2\in{L}$ $l_1l_2\in{L}$ и $l_1+l_2\in{L}$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Если $L$ подполе поля $(P;+,\cdot)$ и $M$ подполе поля $L$, то $M$ - поле замкнутое относительно операций $+$, 
+$\cdot$ и $M\subset{L}\subset{P}$, следовательно, $M$ подполе поля $P$.
+</li>
+<li>По утверждениям <a href="./discrete_math17.1.html#Statement17.4">17.4</a>, <a href="./discrete_math17.1.html#Statement17.2">17.2</a> 
+$\bigcap_{\alpha\in{A}}L_{\alpha}$ - коммутативное кольцо с единицей, при этом
+$$
+l\in\bigcap_{\alpha\in{A}}L_{\alpha}\Rightarrow\forall\alpha\in{A}(l\in{L}_{\alpha})\Rightarrow
+\forall\alpha\in{A}(l^{-1}\in{L}_{\alpha})\Rightarrow{l}^{-1}\in\bigcap_{\alpha\in{A}}{L}_{\alpha}.
+$$
+Таким образом, множество $\bigcap_{\alpha\in{A}}L_{\alpha}\subset{P}$ является полем и, следовательно, подполем поля $P$.
+</li>
+<li>
+$\Rightarrow)$ Следует из <a href="./discrete_math18.1.html#Definition18.1">определения 18.1</a>.<br>
+$\Leftarrow)$ Следует из следствий <a href="./discrete_math17.1.html#Corollary17.1">17.1</a>, <a href="./discrete_math17.1.html#Corollary17.2">17.2</a>.
+</li>
+</ol>
+<p id="Definition18.2"><b>Определение 18.2:</b><br>
+Поле $P$ называется простым, если оно не содержит никаких подполей, кроме себя самого.
+<p id="Theorem18.1"><b>Теорема 18.1:</b><br>
+В любом поле содержится единственное простое подполе.
+<p><b>Доказательство:</b><br><br>
+Пусть $P_0$ пересечение всех подполей поля $P$. По п. 2 следствия 18.1 $P_0$ - подполе поля $P$. Если $P_1$ подполе поля $P_0$, 
+то $P_1\subset{P}_0$ и по п. 1 следствия 18.1 $P_1$ подполе поля $P$, следовательно, $P_0\subset{P}_1$, то есть $P_1=P_0$. 
+Таким образом, поле $P_0$ простое.<br>
+Пусть поле $P$ содержит простое подполе $P'_0$, тогда $P_0\subset{P}'_0$ и в силу простоты $P'_0$ $P_0=P'_0$.
+<p id="Example18.1"><b>Пример 18.1:</b><br>
+<ol>
+<li>Пусть $p$ - простое, тогда по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> (теорема Лагранжа) группа $(\mathbb{Z}/p;+)$ 
+не имеет собственных подгрупп. Следовательно, кольцо $(\mathbb{Z}/n;+,\cdot)$ не имеет собственных подколец, значит поле 
+$(\mathbb{Z}/p;+,\cdot)$ простое.
+</li>
+<li>Пусть $P$ - подполе поля $\mathbb{Q}$, тогда по п. 1 <a href="./discrete_math18.1.html#Note18.1">замечания 18.1</a>, 
+пп. 1, 2 <a href="./discrete_math18.1.html#Statement18.1">утверждения 18.1</a>.
+$$1\in{P}\Rightarrow\mathbb{Z}\subset{P}\Rightarrow\mathbb{Q}\subset{P}\Rightarrow{P}=\mathbb{Q},$$
+следовательно, поле $\mathbb{Q}$ простое.
+</li>
+</ol>
+<p id="Definition18.1"><b>Определение 18.3:</b><br>
+Если $P$ подполе поля $P'$, то поле $P'$ называют расширением поля $P$.<br>
+Если при этом $M\subset{P'}$, то пересечение всех подполей поля $P'$ содержащих $M$  и $P$ называют расширением поля $P$ порожденным множеством $M$.<br>
+Расширение поля $P$ порожденное множеством $M$ обозначают $P(M)$.<br>
+Если $M$ конечно, то расширение $P(M)$ называют конечным, если $|M|=1$, то расширение $P(M)$ называют простым.
+<p id="Note18.2"><b>Замечание 18.2:</b><br>
+<ol>
+<li>Расширение поля $P$ множеством $M$ не зависит от выбора внешнего поля $P'$. Действительно, пусть существует ещё поле $P''$ такое, 
+что $P$ подполе $P''$ и $M\subset{P''}$. Тогда множество $P'\cap{P}''$ является полем и все его подполя являются подполями полей $P'$ и $P''$, 
+следовательно, расширение поля $P$ множеством $M$ в полях $P'$ и $P''$ равно расширению поля $P$ множеством $M$ в поле $P'\cap{P}''$. 
+Таким образом, определение 18.3 корректно. 
+<li>Из п. 2 <a href="./discrete_math18.1.html#Corollary18.1">следствия 18.1</a> следует, что расширение поля $P$ множеством $M$ является полем.</li>
+<li>Если $M:=\{\alpha_1,\ldots,\alpha_n\}$, то будем обозначать $P(\alpha_1,\ldots,\alpha_n):=P(M)$.</li>
+</ol>
+<p id="Example18.2"><b>Пример 18.2:</b><br>
+<ol>
+<li>
+Расширение поля $\mathbb{R}$ элементом $i\in\mathbb{C}$ совпадает с полем $\mathbb{C}$, то  есть $\mathbb{R}(i)=\mathbb{C}$.<br>
+Действительно, так как $\mathbb{R}$ - поле, то $\{a+bi\mid{a},b\in\mathbb{R}\}\subset\mathbb{R}(i)\subset\mathbb{C}$. 
+С другой стороны, известно, что $\mathbb{C}=\{a+bi\mid{a},b\in\mathbb{R}\}$.
+</li>
+<li>
+В п. 2 <a href="./discrete_math2.3.html#Example2.9">примера 2.9</a> было показано, что $\mathbb{Q}(\sqrt{2})=\{a+b\sqrt{2}\mid{a},b\in\mathbb{Q}\}$.
+</li>
+</ol>
+<p id="Statement18.2"><b>Утверждение 18.2:</b><br>
+Пусть $P'$ расширение поля $P$; $L,M\subset{P}'$, тогда
+<ol>
+<li>$L\subset{M}\Rightarrow{P}(L)\subset{P}(M)$,</li>
+<li>$P(L\cup{M})=P(L)(M)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>$(P,M\subset{P}(M)\,\wedge\,L\subset{M})\Rightarrow{P},L\subset{P}(M)\Rightarrow{P}(L)\subset{P}(M)$.</li>
+<li>Так как 
+$$
+(P,L\subset{P}(L)\,\wedge\,P(L)(M)\subset{P}(L),M)\Rightarrow{P},L,M\subset{P}(L)(M)\Rightarrow
+{P},L\cup{M}\subset{P}(L)(M)\Rightarrow{P}(L\cup{M})\subset{P}(L)(M)
+$$
+и
+$$(P(L)\subset{P}(L\cup{M})\,\wedge\,M\subset{L}\cup{M}\subset{P}(L\cup{M}))\Rightarrow{P}(L)(M)\subset{P}(L\cup{M}),$$
+то $P(L\cup{M})=P(L)(M)$.
+</li>
+</ol>
+<p id="Corollary18.2"><b>Следствие 18.2:</b><br>
+Если поле $P'$ расширение поля $P$ и $\alpha_1,\ldots,\alpha_n\in{P'}$, то $P(\alpha_1,\ldots,\alpha_n)=P(\alpha_1)\ldots(\alpha_n)$.
+<p><b>Доказательство:</b><br><br>
+Следует из п. 2 утверждения 18.2.
+<p id="Note18.3"><b>Замечание 18.3:</b><br>
+Если $P'$ расширение поля $P$, то поле $P'$ можно рассматривать как векторное пространство $P'_P$ взяв в качестве внешней операции умножения 
+операцию умножения в поле $P'$.
+<p id="Definition18.4"><b>Определение 18.4:</b><br>
+Пусть $P'$ расширение поля $P$, тогда $P'$ называется расширением конечной степени, если векторное пространство $P'_P$ конечномерно, 
+при этом степенью расширения $P'$ называют число $[P':P]:=\dim{P}'_P$.<br>
+Если векторное пространство $P'_P$ бесконечномерно, то считаeтся, что $P'$ расширение бесконечной степени, то есть $[P':P]=\infty$.
+<p id="Example18.3"><b>Пример 18.3:</b><br>
+Так как $\{1,i\}$ - базис $\mathbb{C}_{\mathbb{R}}$, то $[\mathbb{C}:\mathbb{R}]=\dim{\mathbb{C}_{\mathbb{R}}}=2$.
+<p id="Statement18.3"><b>Утверждение 18.3:</b><br>
+Расширение поля $P$ конечной степени является конечным расширением поля $P$.
+<p><b>Доказательство:</b><br><br>
+Пусть $[P':P]=n&lt;\infty$, тогда существует $\alpha_1,\ldots,\alpha_n\in{P}'$ - базис векторного пространства $P'_P$, 
+тогда по <a href="./discrete_math11.1.html#Corollary11.1">следствию 11.1</a> и <a href="./discrete_math11.1.html#Theorem11.6">теореме 11.6</a>
+$$
+P'=(\alpha_1,\ldots,\alpha_n)_P=\{c_1\alpha_1+\cdots+c_n\alpha_n\mid\forall{i}\in\overline{1,n}(c_i\in{P})\}\Rightarrow
+{P}'\subset{P}(\alpha_1,\ldots,\alpha_n),
+$$
+с другой стороны, включение $P(\alpha_1,\ldots,\alpha_n)\subset{P}'$ очевидно, следовательно, $P'=P(\alpha_1,\ldots,\alpha_n)$.
+<p id="Theorem18.2"><b>Теорема 18.2: Теорема о башне полей</b><br>
+Пусть $P_1\subset{P}_2\ldots\subset{P}_n$ - поля, тогда $[P_n:P_1]&lt;\infty$ тогда и только тогда, 
+когда для любого $i\in\overline{1,n-1}$ $[P_{i+1}:P_i]&lt;\infty$.<br>
+При этом если $[P_n:P_1]&lt;\infty$, то $[P_n:P_1]=\prod_{i=1}^{n-1}[P_{i+1}:P_i]$. 
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем от противного, предположим, что существует $i\in\overline{1,n-1}$ такое, что $[P_{i+1}:P_i]=\infty$, 
+то есть $\dim{(P_{i+1})_{P_i}}=\infty$. Тогда для любого $k\in\mathbb{N}$ существует система $\alpha_1,\ldots,\alpha_k\in{P}_{i+1}$  ЛНЗ над $P_i$. 
+Так как $P_{i+1}\subset{P}_n$ и $P_1\subset{P}_i$, то для любого $k\in\mathbb{N}$ существует система $\alpha_1,\ldots,\alpha_k\in{P_n}$ ЛНЗ над $P_1$, 
+то есть $[P_n:P_1]=\dim{(P_n)_{P_1}}=\infty$.<br>
+$\Leftarrow)$ Докажем индукцией по $n$, что $[P_n:P_1]=\prod_{i=1}^{n-1}[P_{i+1}:P_i]$.
+<ol type="I">
+<li>При $n=2$ $[P_2:P_1]=[P_2:P_1]$.</li>
+<li>Докажем, что для любого $t\geq2$ из справедливости утверждения при $n\in\overline{1,t}$ следует его справедливость при $n=t+1$.<br>
+Обозначим $m:=\prod_{i=1}^{t-1}[P_{i+1}:P_i]$, тогда по предположению индукции $[P_n:P_1]:=\dim{(P_t)_{P_1}}=m$. 
+Тогда существует базис $\alpha_1,\ldots,\alpha_m\in{P}_t$ пространства $(P_t)_{P_1}$. Обозначим $s:=\dim{(P_{t+1})_{P_t}}$, 
+тогда существует базис $\beta_1,\ldots,\beta_s\in{P}_{t+1}$ пространства $(P_{t+1})_{P_t}$. 
+Докажем, что система векторов $t:=\{\alpha_i\beta_j\mid{i}\in\overline{1,m},j\in\overline{1,s}\}\subset{P}_{t+1}$ базис пространства $(P_{t+1})_{P_1}$.
+<ol type="a">
+<li>Пусть $\sum_{i=1}^m\sum_{j=1}^s(\alpha_i\beta_j)c_{i,j}=0$, где для любых $i\in\overline{1,m}$, $j\in\overline{1,s}$ $c_{i,j}\in{P}_1$. 
+Тогда, так как $\beta_1,\ldots,\beta_s$ базис пространства $(P_{t+1})_{P_t}$, a $\alpha_1,\ldots,\alpha_m$ базис пространства $(P_{t})_{P_1}$, то
+$$
+\left(\forall{j}\in\overline{1,s}\left(\sum_{i=1}^m\alpha_ic_{i,j}\in{P}_t\right)\,\wedge\sum_{j=1}^s\beta_j\sum_{i=1}^m\alpha_ic_{i,j}=0\right)\Rightarrow
+\forall{j}\in\overline{1,s}\left(\sum_{i=1}^m\alpha_ic_{i,j}=0\right)\Rightarrow\forall{i}\in\overline{1,m}\,\forall{j}\in\overline{1,s}(c_{i,j}=0).
+$$
+Таким образом, система векторов $t$ ЛНЗ.
+</li>
+<li>Пусть $\gamma\in{P_{t+1}}$, тогда существуют $b_1,\ldots,b_s\in{P}_t$ такие, что $\gamma=\sum_{j=1}^s\beta_jb_j$. 
+В свою очередь для любого $j\in\overline{1,s}$ существуют $a_{1,j},\ldots,a_{m,j}\in{P}_1$ такие, что $b_j=\sum_{i=1}^m\alpha_ia_{i,j}$. Тогда
+$$\gamma=\sum_{j=1}^s\sum_{i=1}^m(\alpha_i\beta_j)a_{i,j}$$
+то есть система $\{t,\gamma\}$ ЛЗ.
+</li>
+</ol>
+Из пунктов (a), (b) следует, что система векторв $t$ - базис пространства $(P_{t+1})_{P_1}$, при этом 
+$$|t|=sm=\dim{(P_{t+1})_{P_t}}\prod_{i=1}^{t-1}[P_{i+1}:P_i]=\prod_{i=1}^t[P_{i+1}:P_i].$$
+</li>
+</ol>
+<p id="Definition18.5"><b>Определение 18.5:</b><br>
+Пусть $P'$ расширение поля $P$, тогда элемент $\alpha\in{P}'$ называется алгебраическим над $P$, 
+если система $e,\alpha,\alpha^2,\ldots,\alpha^n,\ldots$ линейно зависима.<br>
+В противном случае элемент $\alpha$ называется трансцендентным над $P$.
+<p id="Note18.4"><b>Замечание 18.4:</b><br>
+<ol>
+<li>Любой элемент $\alpha\in{P}$ алгебраичен над самим полем $P$, так как существуют $-e,\alpha\in{P}$ такие, что $e\alpha+\alpha(-e)=0$, 
+то есть система $e,\alpha$ ЛЗ.
+</li>
+<li>Если элемент $\alpha$ трансцендентен над $P$, то $[P(\alpha):P]=\infty$, так как для любого $n\in\mathbb{N}_0$ $\alpha^n\in{P}(\alpha)$.</li>
+<li>Если $P\subset{P}'\subset{P}''$ - поля и элемент $\alpha\in{P}''$ алгебраичен над $P$, то он алгебраичен над $P'$.</li>
+</ol>
+<p id="Example18.4"><b>Пример 18.4:</b><br>
+<ol>
+<li>Для любых $n\in\mathbb{N}_0$, $a\in\mathbb{Q}$ элемент $c:=\sqrt[n]{a}\in\mathbb{R}$ алгебраичен над $\mathbb{Q}\subset{\mathbb{R}}$, 
+так как $a-c^n=0$, то есть система $1,c^n$ ЛЗ.
+</li>
+<li>Элемент $i\in\mathbb{C}$ алгебраичен над $\mathbb{R}$ и над $\mathbb{Q}$, так как $i^2=-1$, следовательно, $1+i^2=0$, то есть система $1,i^2$ ЛЗ.</li>
+</ol>
+<p id="Statement18.4"><b>Утверждение 18.4:</b><br>
+Пусть $P'$ расширение поля $P$, $\alpha\in{P}'$, тогда элемент $\alpha$ алгебраичен над $P$ тогда и только тогда, 
+когда существует многочлен $f(x)\in{P}[x]\backslash\{0\}$ такой, что $f(\alpha)=0$.
+<p><b>Доказательство:</b><br>
+Элемент $\alpha$ алгебраичен над $P$ тогда и только тогда, когда система $e,\alpha,\alpha^2,\ldots,\alpha^n,\ldots$ ЛЗ тогда и только тогда, 
+когда существует ЛЗ конечная подсистема $\alpha_{i_1},\ldots,\alpha_{i_t}$ тогда и только тогда, 
+когда существует набор $(c_1,\ldots,c_t)\in{P}\backslash\{\vec{0}\}$ такой, что $\alpha^{i_1}c_1+\cdots+\alpha^{i_t}c_n=0$ тогда и только тогда, 
+когда $\alpha$ корень многочлена $f(x):=c_1x^{i_1}+\cdots+c_tx^{i_t}$.
+<p id="Corollary18.3"><b>Следствие 18.3:</b><br>
+Пусть $P'$ расширение поля $P$, элемент $\alpha\in{P}'$ алгебраичен над $P$, 
+тогда существует единственный унитарный неприводимый многочлен $m(x)\in{P}[x]$ такой, что $m(\alpha)=0$. При этом 
+$$\forall{f}(x)\in{P}[x](f(\alpha)=0\Leftrightarrow{m}(\alpha)|f(\alpha)).$$
+<p><b>Доказательство:</b><br><br>
+Пусть $F:=\{f(x)\in{P}[x]\mid{f}(\alpha)=0\}$, тогда по утверждению 18.4 $F\neq\varnothing$ и 
+$$
+\forall{g}(x)\in{P}[x]\forall{f}(x)\in{F}(f(\alpha)g(\alpha)=0)\Rightarrow
+\forall{g}(x)\in{P}[x]\forall{f}(x)\in{F}(g(x)f(x)\in{F})\Rightarrow{F}\vartriangleleft{P}[x].
+$$
+Тогда по <a herf="./discrete_math17.3.html#Corollary17.6">следствию 17.6</a> существует единственный унитарный многочлен $m(x)\in{P}[x]$ такой, 
+что $F=(m(x))_{P[x]}=m(x)P[x]$. Тогда
+$$f(\alpha)=0\Leftrightarrow{f}(x)\in{m}(x)P[x]\Leftrightarrow\exists{g}(x)\in{P}[x]:f(x)=m(x)g(x)\Leftrightarrow{m}(x)|f(x).$$
+Докажем от противного, что многочлен $m(x)$ неприводим. Предположим противное
+$$
+\exists{u}(x),v(x)\in{P}[x]:(m(x)=u(x)v(x)\,\wedge\,\deg{u}(x)<\deg{m}(x))\Rightarrow
+{m}(\alpha)=u(\alpha)v(\alpha)=0\Rightarrow(u(\alpha)=0\vee{v}(\alpha)=0)
+$$
+б. о. о. будем считать, что $u(\alpha)=0$, тогда по доказанному $m(x)|u(x)$ и так как $\deg{u}(x)&lt;\deg{m}(x)$, то $m(x)=u(x)=0$. 
+Таким образом, получено противоречие с унитарностью $m(x)$.<br>
+Для любого унитарного неприводимного многочлена $h(x)\in{P}[x]$ такого, что $h(\alpha)=0$ по доказанному $m(x)|h(x)$ и $h(x)|m(x)$, 
+следовательно, в силу унитарности и неприводимости обоих многочленов $m(x)=h(x)$.
+<p id="Corollary18.4"><b>Следствие 18.4:</b><br>
+Пусть $P'$ расширение $P$, тогда элемени $\alpha$ трансциндентен над $P$ тогда и только тогда, когда для любого $f(x)\in{P}[x]$ $f(\alpha)\neq0$. 
+<p><b>Доказательство:</b><br><br>
+Следует от противного из утверждения 18.4.
+<p id="Note18.5"><b>Замечание 18.5:</b><br>
+Так как множество $\mathbb{Q}$ счетно, то множество $\mathbb{Q}[x]$ тоже счетно. 
+По п. 2 <a href="./discrete_math7.2.html#Corollary7.3">следствия 7.3</a> число корней многочлена конечно, следовательно, 
+число корней всех многочленов из $\mathbb{Q}[x]$ счетно. Так как $\mathbb{R}$ несчетно, 
+то по следствию 18.4 $\mathbb{R}$ содержит элементы трансцендентные над $\mathbb{Q}$.  
+<p id="Definition18.6"><b>Определение 18.6:</b><br>
+Расширение $P'$ поля $P$ называется алгебраическим, если любой элемент $\alpha\in{P}'$ алгебраичен над $P$.<br>
+В противном случае расширение $P'$ называется трансцендентным.
+<p id="Example18.5"><b>Пример 18.5:</b><br>
+<ol>
+<li>Из замечания 18.5 следует, что $\mathbb{R}$ трансцендентное расширение $\mathbb{Q}$.</li>
+<li>Расширение $\mathbb{C}$ поля $\mathbb{R}$ алгебраично, так как для любого $\alpha:=a+bi\in\mathbb{C}$ сущестует многочлен 
+$f(x):=(x-a)^2+b^2\in\mathbb{R}[x]$ такой, что $f(\alpha)=0$.
+</li>
+</ol>
+<p id="Statement18.5"><b>Утверждение 18.5:</b><br>
+Если $[P':P]&lt;\infty$, то $P'$ алгебраичное расширение $P$.
+<p><b></b><br><br>
+Так как $[P':P]&lt;\infty$, то $\deg{P}'_P&lt;\infty$, то есть в $P'_P$ нет бесконечных ЛНЗ систем, следовательно, 
+для любого $\alpha\in{P}'$ система $e,\alpha,\alpha^2,\ldots,\alpha^n,\ldots$ ЛЗ. Таким образом, любой элемент 
+$\alpha\in{P}'$ алгебраичен и $P'$ алгебраическое расширение $P$.
+
+<br><br>
+<a href="discrete_math17.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math18.2.html">next</a>
+</body>
+</html>

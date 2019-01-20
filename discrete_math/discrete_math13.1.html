@@ -1,0 +1,424 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 13.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math12.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math13.3.html">next</a>
+<br>
+
+<h3 id="13">13 Подобие матриц над полем.</h3>
+<h4 id="13.1">13.1 Критерий подобия матриц над полем.</h4>
+<p id="Note13.1"><b>Замечание 13.1:</b><br>
+Пусть $P$ - поле, $\tau:P[x]_{n,n}\to{P}_{n,n}[y]$ - изоморфизм колец определенный при доказательстве 
+<a href="./discrete_math12.3.html#Lemma12.2">леммы 12.2</a>, 
+$C(x),D(x)\in{P}[x]_{n,n}$, $C(y):=\tau(C(x))\in{P}_{n,n}[y]$ и многочлен $D(y):=\tau(D(x))\in{P}_{n,n}[y]$ такой, что его старший коэффициент обратим. 
+По <a href="./discrete_math7.2.html#Theorem7.2">теореме 7.2</a> можем разделить с остатктом многочлен $C(y)$ на многочлен $D(y)$, 
+тогда, так как отображение $\tau^{-1}$ является изоморфизмом, то
+$$
+\exists{Q}(y),R(y)\in{P}_{n,n}[y]:(C(y)=Q(y)D(y)+R(y)\,\wedge\,\deg{R(y)}&lt;\deg{D(y)})\Rightarrow
+{C}(x)=\tau^{-1}(C(y))=\tau^{-1}(Q(y)D(y)+R(y))=\tau^{-1}(Q(y))D(x)+\tau^{-1}(R(y)))
+$$
+Таким обрзом, можно ввести операцию "деления с остатком" полиномиальной матрицы $C(x)$ на полиномиальную матрицу $D(x)$, где "неполным частным" 
+считается матрица $\tau^{-1}(Q(y))$, а "остатком" матрица $\tau^{-1}(R(y))$.<br>
+Под "степенью" полиномиальной матрицы $C(x)$ будем понимать степень многочлена $C(y):=\tau(C(x))$ и будем обозначать $\deg{C(x)}:=\deg{C(y)}$. 
+Фактически значение $\deg{C(x)}$  равно максимальной степени многочленов являющихся элементами матрицы $C(x)$.<br>
+Данное замечание позволяет говорить, что отображение $\tau$ согласовано не только с операциями $+$ и $\cdot$, но и соперацией деления с остатком 
+(когда она возможна в обоих кольцах). Это позвояет при доказательстве следующий теоремы избежать многочисленных преобразований матриц в многочлены и 
+обратно и производить все операции нал кольцом матриц $P[x]_{n,n}$.
+<p id="Theorem13.1"><b>Теорема 13.1:</b><br>
+$$\forall{A},B\in{P}_{n,n}(A\approx{B}\Leftrightarrow(Ex-A)\sim(Ex-B)).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Так как $A\approx{B}$, то существует матрица $T\in{P}_{n,n}^*$ такая, что $B=T^{-1}AT$, тогда $T^{-1}(Ex-A)T=Ex-B$. 
+Так как $T,T^{-1}\in{P}_{n,n}^*$, то по <a href="./discrete_math4.1.html#Corollary4.3">следствию 4.3</a> $T\sim{E}$, $T^{-1}\sim{E}$, следовательно, 
+матрицы $T,T^{-1}$ представимы в виде произведения элементарных матриц, то есть $Ex-A\sim{E}x-B$.<br>
+$\Leftarrow)$ Если $Ex-A\sim{E}x-B$, то по п. 3 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a> 
+сущетсвуют $L(x),R(x)\in{P}[x]_{n,n}$ такие, что 
+$$
+L(x)(Ex-A)R(x)=Ex-B\Rightarrow{L}(x)(Ex-A)=(Ex-B)R(x)^{-1}.\quad{(1)}
+$$
+Разделим слева с остатком $L(x)$ на $Ex-B$, тогда
+$$\exists{U}(x),\overline{L(x)}\in{P}[x]_{n,n}:(L(x)=(Ex-B)U(x)+\overline{L(x)}\,\wedge\,\deg{\overline{L(x)}}&lt;1),\quad{(2)}$$
+обозначим $\overline{L}:=\overline{L(x)}\in{P}_{n,n}$.<br>
+Разделим слева с остатком $R^{-1}(x)$ на $Ex-B$, тогда
+$$\exists{V}(x),\overline{R(x)}\in{P}[x]_{n,n}:(R(x)^{-1}=(Ex-A)V(x)+\overline{R(x)}\,\wedge\,\deg{\overline{R(x)}}&lt;1),\quad{(3)}$$
+обозначим $\overline{R}:=\overline{R(x)}\in{P}_{n,n}$.<br>
+Подставив равенства $(2),(3)$ в равенство $(1)$ получим
+$$
+(Ex-B)U(x)(Ex-A)+\overline{L}(Ex-A)=(Ex-B)U(x)(Ex-A)+(Ex-B)\overline{R}\Rightarrow(Ex-B)(U(x)-V(x))(Ex-A)=(Ex-B)\overline{R}-\overline{L}(Ex-A)
+$$
+Обозначим 
+$$M(x):=(Ex-B)(U(x)-V(x))(Ex-A),N(x):=(Ex-B)\overline{R}-\overline{L}(Ex-A),$$
+тогда $\deg{M(x)}=\deg{N(x)}\leq1$. Предположим, $(U(x)-V(x))\neq0$, тогда по п. 4 <a href="./discrete_math7.1.html#Statement7.1">утверждения 7.1</a>, 
+так как $E\in{P}_{n,n}^*$, то 
+$$\deg{M(x)}=\deg(U(x)-V(x))+2\geq2.$$
+Получено противоречие, следовательно, $U(x)-V(x)=0$, тогда $N(x)=0$ и
+$$\overline{L}(Ex-A)=(Ex-B)\overline{R}\Rightarrow\overline{L}x-\overline{L}A=\overline{R}x-B\overline{R}\Rightarrow
+(\overline{L}=\overline{R}\,\wedge\,\overline{L}A=B\overline{R}).$$
+Осталось доказать, что матрица $\overline{R}$ обратима.<br>
+Разделим слева с остатком $R(x)$ на $Ex-B$, тогда применив равенство $(2)$ и равенство $\overline{L}(Ex-A)=(Ex-B)\overline{R}$ получим
+$$
+\exists{Q}(x)\in{P}[x]_{n,n},S\in{P}_{n,n}:R(x)=Q(x)(Ex-B)+S\Rightarrow{E}=R(x)R(x)^{-1}=R(x)(V(x)(Ex-A)+\overline{R})=\\=
+R(x)V(x)(Ex-A)+Q(x)(Ex-B)\overline{R}+S\overline{R}=(R(x)V(x)+Q(x)\overline{L})(Ex-A)+S\overline{R}.
+$$
+Обозначим $F(x):=R(x)V(x)+Q(x)\overline{L}$, тогда 
+$$F(x)x-F(x)A+S\overline{R}=E\Rightarrow{F}(x)=\Theta\Rightarrow{F}(x)A=\Theta\Rightarrow{S}\overline{R}=E.$$
+Равенство $\overline{R}S=E$ аналогичным образом следует из равенства $E=R(x)^{-1}R(x)$, то есть $\overline{R}\in{P}_{n,n}^*$  и $B=S^{-1}AS$.
+<p id="Note13.2"><b>Замечание 13.2:</b><br>
+Из доказательства теоремы 13.1 следует, что матрица $S$, остаток от деления многочлена $R(x)$ на многочлен $Ex-B$ справа, 
+является решением уравнения $B=X^{-1}AX$. Для отыскания этого решения достаточно найти матрицу $R(x)$, 
+тогда по <a href="./discrete_math7.2.html#Theorem7.3">теореме 7.3</a> (теорема Безу) $S=R(B)$.
+
+<h4 id="13.2">13.2 Каноническая форма полиномиальной матрицы.</h4>
+
+<p id="Definition13.1"><b>Определение 13.1:</b><br>
+Матрица $K(x)\in{P}[x]_{m,n}$ называется канонической, если 
+<ol>
+<li>$t:=\{m,n\}$ $K(x)=\diag(f_1(x),\ldots,f_t(x))$,</li>
+<li>$\forall{i}\in\overline{1,t-1}(f_i(x)|f_{i+1}(x))$,</li>
+<li>для любого $i\in\overline{1,t}$ многочлен $f_i(x)$ унитарный или нулевой.</li>
+</ol>
+<p id="Lemma13.1"><b>Лемма 13.1:</b><br>
+Пусть матрица $A=(a_{i,j}(x))\in{P}_{m,n}$ такая, что ${a_{1,1}\neq0}$ и существуют $k\in\overline{1,m}$, $s\in\overline{1,n}$ такие, 
+что $a_{1,1}(x)\nmid{a}_{k,s}(x)$, тогда существует матрица $B(x)=(b_{i,j}(x))\in{P}_{n,m}$ такая, что 
+$A(x)\sim{B}(x)$, $b_{1,1}\neq0$ и $\deg{b_{1,1}(x)}&lt;\deg{a_{1,1}(x)}$.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $k=1$, тогда $a_{1,1}(x)\nmid{a}_{1,s}(x)$, то есть существуют многочлены $q(x),r(x)\in{P}[x]$ такие, 
+что $a_{1,s}(x)=a_{1,1}(x)q(x)+r(x)$, $r(x)\neq0$ и $\deg{r(x)}&lt;\deg{a_{1,1}(x)}$, тогда
+$$
+A(x)=
+\begin{pmatrix}
+a_{1,1}(x)	& \cdots	& a_{1,s}(x)	& \cdots	& a_{1,n}(x)	\\ 
+*		& \cdots	& \cdots	& \cdots	& *		\\
+\vdots		& 		&		&		& \vdots	\\
+*		& \cdots	& \cdots	& \cdots	& *		\\
+\end{pmatrix}\sim
+\begin{pmatrix}
+a_{1,1}(x)	& \cdots	& r(x)		& \cdots	& a_{1,n}(x)	\\
+*		& \cdots	& \cdots	& \cdots	& *		\\
+\vdots 		&		&		&		& \vdots	\\
+*		& \cdots	& \cdots	& \cdots	& *		\\	
+\end{pmatrix}\sim
+\begin{pmatrix}
+r(x)	& \cdots	& a_{1,1}(x)	& \cdots	& a_{1,n}(x)	\\
+*	& \cdots	& \cdots	& \cdots	& *		\\
+\vdots	&		&		&		& \vdots	\\
+*	& \cdots	& \cdots	& \cdots	& *		\\
+\end{pmatrix}=B(x),
+$$
+где последняя эквивалентность в силу п. 2 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>.
+</li>
+<li>При $s=1$ доказывается аналогично пункту 1.</li>
+<li>Пусть $k\neq1$, $s\neq1$, тогда $a_{1,1}(x)|a_{k,1}(x)$, то есть существует многочлен $u(x)\in{P}[x]$ такой, 
+что $a_{л,1}(x)=a_{1,1}(x)u(x)$. Тогда умножая первую строку матрицы $A(x)$ на $u(x)$ и вычитая результат из $k$-той строки получим
+$$
+A(x)=
+\begin{pmatrix}
+a_{1,1}(x)	& \cdots	& a_{1,s}(x)	& \cdots	& a_{1,n}(x)	\\
+\vdots 		&		& \vdots	&		& \vdots	\\
+a_{k,1}(x)	& \cdots	& a_{k,s}(x)	& \cdots	& a_{k,n}(x)	\\
+*		& \cdots	& \cdots	& \cdots	& *		\\
+\vdots		&		&		&		& \vdots	\\
+*		& \cdots	& \cdots	& \cdots	& *	
+\end{pmatrix}\sim
+\begin{pmatrix}
+a_{1,1}(x)	& \cdots	& a_{1,s}(x)			& \cdots	& a_{1,n}(x)	\\
+\vdots		&		& \vdots			&		& \vdots	\\
+0		& \cdots	& a_{k,s}(x)-a_{1,s}(x)u(x)	& \cdots	& a_{k,n}(x)	\\
+*		& \cdots	& \cdots			& \cdots	& *		\\
+\vdots		&		&				&		& \vdots	\\
+*		& \cdots	& \cdots			& \cdots	& *	
+\end{pmatrix}\sim\\
+\sim\begin{pmatrix}
+a_{1,1}(x)	& \cdots & a_{k,s}(x)-a_{1,s}(x)(1-u(x))	& \cdots	& a_{1,n}(x)	\\
+*		& \cdots	& \cdots			& \cdots	& *		\\
+\vdots		&		&				&		& \vdots	\\
+*		& \cdots	& \cdots			& \cdots	& *		
+\end{pmatrix}
+$$
+Так как $a_{1,1}(x)|a_{1,s}(x)$ и $a_{1,1}(x)\nmid{a}_{k,s}(x)$, то по п. 2 
+<a href="./discrete_math2.1.html#Statement2.4">утверждения 2.4</a> $a_{1,1}(x)\nmid(a_{k,s}(x)+a_{1,s}(x)(1-u(x)))$ и утверждение следует из пункта 1. 
+</li>
+</ol>
+<p id="Theorem13.2"><b>Теорема 13.2:</b><br>
+Для любой матрицы $A\in{P}[x]_{n,n}$ существует эквивалентная ей каноническая.
+<p><b>Доказательство:</b><br><br>
+ Так как нулевая матрица является канонической, то при $A(x)=\Theta$ утверждение не требует доказательства. Пусть $A(x)\neq\Theta$, 
+докажем утверждение индукцией по $m+n$.
+<ol type="I">
+<li>При $m+n=2$ $m=1$, $n=1$ $A(x)=(a_{1,1}(x))$. По утверждению~7.3 существует унитарный многочлен $a_{1,1}^*(x)$ ассоцированный с $a_{1,1}(x)$, 
+тогда матрица $A$ эквивалентна канонической матрице $(a_{1,1}^*(x))$.
+</li>
+<li>Для любого $t\geq1$ докажем, что из справедливости утверждения при $m+n\in\overline{1,t}$ следует его справедливость при $m+n=t+1$.
+<ol type="a">
+<li>Пусть матрица $A(x)=(a_{i,j}(x))\in{P}[x]_{m,n}$ такая, что $a_{1,1}(x)\neq0$ и для любых $i\in\overline{1,m}$ $j\in\overline{1,n}$ 
+$a_{1,1}(x)|a_{i,j}(x)$. Так как в частности для любого $i\in\overline{1,m}$ 
+$a_{1,1}(x)|a_{i,1}(x)$ и для любого $j\in\overline{1,n}$ $a_{1,1}(x)|a_{1,j}(x)$, то
+$$
+A(x)\sim
+\begin{pmatrix}
+a_{1,1}(x)	& 0	& \cdots	& 0	\\
+0		&	& 		&	\\
+\vdots		&	& A_1(x)	&	\\
+0		&	&		&	
+\end{pmatrix}\sim
+\begin{pmatrix}
+a_{1,1}^*(x)	& 0	& \cdots	& 0 	\\
+0		&	&		&	\\
+\vdots		&	&A_1(x)		&	\\
+0		&	&		&	
+\end{pmatrix}
+$$
+Матрица $A_1(x)\in{P}[x]_{m-1,n-1}$ по предположению индукции эквивалентна некоторой канонической матрице $\diag(f_2(x),\ldots,f_t(x))$, 
+где $t:=\min{\{m-1,n-1\}}$. Следовательно,
+$$A(x)\sim{A}'_1(x):=\diag(a_{1,1}^*(x),f_2(x),\ldots,f_t(x)),$$ 
+причем многочлен $a_{1,1}^*(x)$ делит все миноры первого порядка матрицы $A(x)$, тогда по <a href="./discrete_math3.5.html#Theorem3.10">теореме 3.10</a>
+он делит и все миноры первого порядка матрицы $A'_1(x)$, то есть делит $f_2(x)$. Таким образом, матрица $A'_1(x)$ каноническая.
+</li>
+<li>Если $a_{1,1}(x)=0$, то, так как $A(x)\neq\Theta$, то существует матрица $B(x)=(b_{i,j}(x))$ такая, что $A(x)\sim{B}(x)$ и $b_{1,1}(x)\neq0$. 
+Если при этом для любых $i\in\overline{1,m}$, $j\in\overline{1,n}$ $b_{1,1}(x)|b_{i,j}(x)$, то утверждение следует из пункта (a). 
+Если существуют $r\in\overline{1,m}$, $s\in\overline{1,n}$ такие, что $b_{1,1}(x)\nmid{b}_{r,s}(x)$, 
+то по <a href="./discrete_math13.1.html#Lemma13.1">лемме 13.1</a> существует матрица $C^{(1)}(x)=(c_{i,j}^{(1)}(x))\in{P}[x]_{m,n}$ такая, 
+что $B(x)\sim{C}^{(1)}(x)$ и $\deg{c_{1,1}^{(1)}(x)}<\deg{b_{1,1}(x)}$. Если для любого $i\in\overline{1,m}$, $j\in\overline{1,n}$ 
+$c_{1,1}^{(1)}(x)|c_{i,j}^{(1)}(x)$, то утверждение следует из пункта (a), если же матрица $C^{(1)}(x)$ содержит элемент не делящийся на 
+$c_{1,1}^{(1)}(x)$, то аналогичным образом можно построить из матрицы $C^{(1)}(x)$ матрицу $C^{(2)}(x)=(c_{i,j}^{(2)}(x))$ и т. д. 
+Последовательность оборвется на конечном шаге так как 
+$0\leq\deg{c_{1,1}^{(k+1)}(x)}&lt;\deg{c_{1,1}^{(k)}(x)}$, то есть последовательность $C^{(1)}(x),C^{(2)}(x),\ldots$ не может содержать более 
+$\deg{b_{1,1}}(x)$ матриц. Последняя матрица последовательности $C(x)=(c_{i,j}(x))$ будет такова, что $A(x)\sim{B}(x)\sim{C}(x)$, 
+$c_{1,1}(x)\neq0$ и для любых $i\in\overline{1,m}$, $j\in\overline{1,n}$ $c_{1,1}(x)|c_{i,j}(x)$, тогда утверждение следует из пункта (a).
+</li>
+</ol>
+</li>
+</ol>
+<p id="Definition13.2"><b>Определение 13.2:</b><br>
+Пусть $A(x)\in{P}[x]_{m,n}$, $k\in\overline{1,\min{\{m,n\}}}$, тогда инвариантным делителем $k$-того порядка матрицы $A(x)$ называется унитарный или 
+нулевой НОД всех ее миноров $k$-того порядка.<br>
+Инвариантный делитель $k$-того порядка матрицы $A(x)$ обозначают $d_{A(x)}^{(k)}(x)$.
+<p id="Note3.3"><b>Замечание 3.3:</b><br>
+Пусть $0&lt;k&lt;\min{\{m,n\}}$. НОД миноров $k$-того порядака матрицы $A(x)\in{P}[x]_{m,n}$ делит каждый из них. 
+Так как по <a href="./discrete_math3.3.html#Theorem3.7">теореме 3.7</a> (теорема Лапласа) минор $(k+1)$-го порядка представим в виде 
+линейной комбинации миноров $k$-того порядка, то $k$-тый инвариантный делитель делит каждый минор $(k+1)$-го порядка, тогда он делит и их НОД, 
+то есть $d_{A(x)}^{(k)}(x)|d_{A(x)}^{(k+1)}(x)$.
+<p id="Statement13.1"><b>Утверждение 13.1:</b><br>
+Пусть матрицы $A(x),B(x)\in{P}[x]_{m,n}$ такие, что $A\sim{B}$, $t:=\min{\{m,n\}}$, 
+тогда для любого $k\in\overline{1,t}$ $d_{A(x)}^{(k)}(x)=d_{B(x)}^{(k)}(x)$.
+<p><b>Доказательство:</b><br><br>
+Фиксируем $k\in\overline{1,t}$.
+Так как $d_{A(x)}^{(k)}(x)$ делит все миноры $k$-того порядка матрицы $A(x)$, то по <a href="./discrete_math3.5.html#Theorem3.10">теореме 3.10</a> 
+$d_{A(x)}^{(k)}(x)$ делит все миноры $k$-того порядка матрицы $B(x)$, тогда он делит и их НОД, то есть 
+$d_{A(x)}^{(k)}(x)|d_{B(x)}^{(k)}(x)$. Аналогично $d_{B(x)}^{(k)}(x)|d_{A(x)}^{(k)}(x)$, тогда $d_{A(x)}^{(k)}(x)=d_{B(x)}^{(k)}$.
+<p id="Theorem3.3"><b>Теорема 3.3:</b><br>
+Для любой матрицы $A(x)\in{P}[x]_{m,n}$ существует единственная эквивалентная ей каноническая.
+<p><b>Доказательство:</b><br><br>
+Существование канонической матрицы эквивалентной матрице $A(x)$ доказано в <a href="./discrete_math13.1.html#Theorem13.2">теореме 13.2</a>. 
+Пусть $t:=\min{\{m,n\}}$ и каноническая матрица $K(x):=(\delta_1(x),\ldots,\delta_t(x))$ такая, что $A(x)\sim{K}(x)$.<br>
+Любой ненулевой минор $k$-того порядка матрицы $K(x)$ имеет вид $\delta_{i_1}\cdots\delta_{i_k}$ где для любого $j\in{1,k}$ $i_j\in\overline{1,t}$ и 
+для любых различных $r,s\in\overline{1,k}$ $i_r\neq{i}_s$.<br>
+Так как для любого $k\in\overline{1,t}$ $\delta_1(x)|\delta_k(x)$, то по утверждению 13.1
+$$d_{A(x)}^{(1)}(x)=d_{K(x)}^{(1)}(x)=\delta_1(x).$$
+То есть многочлен $\delta_1(x)$ определен однозначно.
+Так как по замечанию 13.3 $d_{K(x)}^{(1)}(x)|d_{K(x)}^{(2)}(x)$, то существует $s\in\overline{2,t}$ такое, 
+что $d_{K(x)}^{(2)}(x)=d_{K(x)}^{(1)}(x)\delta_s(x)$. Так как для любого $k\in\overline{3,t}$ 
+$\delta_2(x)|\delta_k(x)$, то $s=2$, то есть
+$$d_{A(x)}^{(2)}(x)=d_{K(x)}^{(2)}(x)=d_{K(x)}^{(1)}\delta_2(x)=\delta_1(x)\delta_2(x).$$
+Аналогично показывается, что для любого $k\in\overline{2,t}$
+$$d_{A(x)}^{(k)}(x)=d_{K(x)}^{(k)}(x)=d_{K(x)}^{(k-1)}(x)\delta_k(x)=\delta_1(x)\cdots\delta_k(x).$$
+Таким образом, $\delta_1(x)=d_{A(x)}^{(1)}(x)$ и для любого $k\in\overline{2,t}$ $d_{A(x)}^{(k-1)}\delta_k(x)=d_{A(x)}^{(k)}(x)$. 
+То есть для любого $k\in\overline{2,t}$ многочлен $\delta_k(x)$ определен однозначно если $d_{A(x)}^{(k-1)}\neq0$, то
+$$\delta_k(x)=\frac{d_{A(x)}^{(k)}(x)}{d_{A(x)}^{(k-1)}(x)},$$
+если $d_{A(x)}^{(k-1)}=\delta_1\ldots\delta_{k-1}=0$, то существует $s\in\overline{1,k-1}$ такой, что $\delta_s=0$ и, 
+так как $\delta_s(x)|\delta_k(x)$, то $\delta_k(x)=0$. 
+<p id="Definition13.3"><b>Определение 13.3:</b><br>
+Каноническая матрица эквивалентная матрице $A(x)$ назыавается канонической формой матрицы $A(x)$ и обозначается $K(A(x))$.<br>
+Если $K(A(x))=(\delta_1(x),\ldots,\delta_t(x))$, то для любого $k\in\overline{1,t}$ 
+многочлен $\delta_k(x)$ называется $k$-тым инвариантным множителем матрицы $A(x)$ и обозначается $\delta_{A(x)}^{(k)}(x)$.
+<p id="Note13.4"><b>Замечание 13.4:</b><br>
+Пусть $A\in{P}_{n,n}$ и $K(Ex-A):=\diag(\delta_1(x),\ldots,\delta_n(x))$, тогда по п. 4 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>
+$$
+Ex-A\sim{K}(Ex-A)\Rightarrow\exists{u}\in{P}[x]^*=P^*:|Ex-A|=u|K(Ex-A)|\Rightarrow\chi_A(x)=|K(Ex-A)|=\delta_1(x)\cdots\delta_n(x),
+$$
+где последняя импликация верна в силу того, что многочлены $|Ex-A|$ и $|K(Ex-A)|$ унитарны.<br>
+Из доказательства теоремы 13.3 так же следует, что для любого ${k\in\overline{1,n}}$ $d_{Ex-A}^{(k)}(x)=\delta_1(x)\cdots\delta_k(x)$.
+<p id="Theorem13.4"><b>13.4 Критерий эквивалентности полиномиальных матриц.</b><br>
+Пусть $A(x),B(x)\in{P}[x]_{m,n}$, $t:=\min{\{m,n\}}$, тогда следующие утверждения эквивалентны
+<ol>
+<li>$A(x)\sim{B}(x)$,</li>
+<li>$K(A(x))\sim{K}(B(x))$,</li>
+<li>$\forall{k}\in\overline{1,t}\left(\delta_{A(x)}^{(k)}(x)=\delta_{B(x)}^{(k)}(x)\right)$,</li>
+<li>$\forall{k}\in\overline{1,t}\left(d_{A(x)}^{(k)}(x)=d_{B(x)}^{(k)}(x)\right)$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Leftrightarrow2)$ В силу того, что $A(x)\sim{K}(A(x))$, $B(x)\sim{K}(B(x))$ и отношение эквивалентности матриц есть отношение эквивалентности 
+(п. 1 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>).<br>
+$2)\Leftrightarrow3)$ Следует из равенств 
+$$
+K(A(x))=\diag{\left(\delta_{A(x)}^{(1)}(x),\ldots,\delta_{A(x)}^{(t)}(x)\right)},K(B(x))=
+\diag{\left(\delta_{B(x)}^{(1)}(x),\ldots,\delta_{B(x)}^{(t)}(x)\right)}.
+$$
+$3)\Leftrightarrow4)$ Следует из равенств 
+$$d_{A(x)}^{(k)}(x)=\delta_{A(x)}^{(1)}(x)\cdots\delta_{A(x)}^{(k)}(x),d_{B(x)}^{(k)}(x)=\delta_{B(x)}^{(1)}(x)\cdots\delta_{B(x)}^{(k)}(x)$$ 
+верных для любого $k\in\overline{1,t}$ и <a href="./discrete_math7.4.html#Lemma7.6">леммы 7.6</a>.
+<br><br>
+
+<u>Алгоритм решения уравнений подобия.</u><br><br>
+Пусть $A,B\in{P}_{n,n}$, найдем решение уравнения $X^{-1}AX=B$.
+<ol>
+<li>Найдем матрицы $U_1(x),V_1(x)\in{P}[x]_{n,n}^*$ такие, что $$U_1(x)(Ex-A)V_1(x)=K(Ex-A).$$</li>
+<li>Найдем матрицы $U_2(x),V_2(x)\in{P}[x]_{n,n}^*$ такие, что $$U_2(x)(Ex-B)V_2(x)=K(Ex-B).$$</li>
+<li>Если $K(Ex-A)\neq{K}(Ex-B)$, то уравнение $X^{-1}AX=B$ не имеет решений.<br>
+Если $K(Ex-A)=K(Ex-B)$, то 
+$$U_2^{-1}(x)U_1(x)(Ex-A)V_1(x)V_2^{-1}(x)=Ex-B,$$ 
+вычисляем матрицу $V(x):=V_1(x)V_2^{-1}(x)$.
+<li>Вычисляем матрицу $T:=V(B)\in{P}_{n,n}$, которая по замечанию 13.2 является решением уравнения $X^{-1}AX=B$.</li>
+</ol>
+<p id="Task13.1"><b>Задача 13.1:</b><br>
+<ol>
+<li>Пусть $A(x),B(x)\in{P}[x]_{m,n}$, доказать, что если
+$$
+\begin{pmatrix}A(x) & E_{m,m} \\ E_{n,n} & \Theta_{n,m}\end{pmatrix}\sim\begin{pmatrix}B(x) & U(x) \\ V(x) & \Theta\end{pmatrix},
+$$
+то $B(x)=U(x)A(x)V(x)$.
+</li>
+<li>Доказать, что если $C(x)\in{P}[x]_{n,n}^*$, то $C(x)\sim{E}$</li>
+</ol>
+Решение:
+<ol>
+<li>Так как 
+$$
+\begin{pmatrix}A(x) & E_{m,m} \\ E_{n,n} & \Theta_{n,m}\end{pmatrix}\sim\begin{pmatrix}B(x) & U(x) \\ V(x) & \Theta_{n,m}\end{pmatrix},
+$$
+то существуют $R(x)\in{P}[x]_{m,m}^*$, $S(x)\in{P}[x]_{n,n}^*$ такие, что
+$$
+\begin{pmatrix}R(x) & \Theta_{m,n} \\ \Theta_{n,m} & E_{n,n}\end{pmatrix}\begin{pmatrix}A(x) & E_{m,m} \\ 
+E_{n,n} & \Theta_{n,m}\end{pmatrix}\begin{pmatrix}S(x) & \Theta_{n,m} \\ \Theta_{m,n} & E_{m,m}\end{pmatrix}=
+\begin{pmatrix}R(x)A(x) & R(x) \\ E_{n,n} & \Theta_{n,m}\end{pmatrix}\begin{pmatrix}S(x) & \Theta_{n,m} \\ \Theta_{m,n} & E_{m,m}\end{pmatrix}=
+\begin{pmatrix}R(x)A(x)S(x) & R(x) \\ S(x) & \Theta_{n,m}\end{pmatrix}=\begin{pmatrix}B(x) & U(x) \\ V(x) & \Theta_{n,m}\end{pmatrix}.
+$$
+Тогда из последнего равенства получаем $R(x)=U(x)$, $S(x)=V(x)$ и $B(x)=R(x)A(x)S(x)=U(x)A(x)V(X)$.
+</li>
+<li>По <a href="./discrete_math4.1.html#Corollary4.3">следствию 4.3</a>
+$$C(x)\in{P}[x]_{n,n}^*\Rightarrow{C}(x)\in(P_{n,n})^*\Rightarrow{C}(x)\sim{E}$$
+</li>
+</ol>
+<p id="Statement13.2"><b>Утверждение 13.2:</b><br>
+Пусть $f(x)\in{P}[x]$ унитарный многочлен степени $n$, тогда $K(Ex-S(f))=\diag(e,\ldots,e,f(x))$.
+<p><b>Доказательство:</b><br><br>
+Пусть $f(x):=x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0$, тогда 
+$$
+S(f)=
+\begin{pmatrix}
+0	& 0		& \cdots	& 0		& -c_0		\\
+e	& 0		& \cdots	& 0		& -c_1		\\
+\vdots	& \ddots	& \ddots	& \vdots	& \vdots	\\
+0	& \cdots	& e		& 0		& -c_{n-2}	\\
+0	& \cdots	& \cdots	& e		& -c_{n-1}	\\
+\end{pmatrix}\Rightarrow{E}x-S(f)=
+\begin{pmatrix}
+x	& 0		& \cdots	& 0	& c_0		\\
+-e	& x		& \cdots	& 0	& c_1		\\
+\vdots	& \ddots	& \ddots	&\vdots	& \vdots	\\
+0	& \cdots	& -e		& x	& c_{n-2}	\\
+0	& \cdots	& \cdots	& -e	& c_{n-1} 
+\end{pmatrix}.
+$$
+Обозначим $K(Ex-S(f)):=\diag(\delta_1(x),\ldots,\delta_{n-1}(x))$, тогда 
+$$
+M_{Ex-S(f)}\begin{pmatrix}2, & \ldots, & n \\ 1, & \ldots, & n-1\end{pmatrix}=(-e)^{n-1}\Rightarrow
+{d}_{Ex-S(f)}^{(n-1)}(x)=\delta_1(x)\cdots\delta_{n-1}(x)=e\Rightarrow\forall{i}\in\overline{1,n-1}(\delta_i(x)=e)
+$$
+С другой стороны, из <a href="./discrete_math12.2.html#Task12.4">задачи 12.4</a> и <a href="./discrete_math13.1.html#Note13.4">замечания 13.4</a> следует, 
+что
+$$
+f(x)=\chi_{S(f)}(x)=\delta_1(x)\cdots\delta_{n-1}(x)\delta_n(x)\Rightarrow\delta_n(x)=f(x)\Rightarrow{K}(Ex-S(f))=\diag(e,\ldots,e,f(x)).
+$$
+<p id="Theorem13.5"><b>Теорема 13.5: Теорема Фробениуса.</b><br>
+Для любой матрицы $A\in{P}_{n,n}$ $m_A(x)=\delta_{Ex-A}^{(n)}(x)$
+<p><b>Доказательство:</b><br><br>
+Обозначим $K(Ex-A):=(e,\ldots,e,f_1(x),\ldots,f_s(x))$ и для любого $i\in\overline{1,s}$ $n_i:=\deg{f_i(x)}$. Так как $Ex-A\sim{K}(Ex-A)$, 
+то по п. 1 <a href="./discrete_math12.2.html#Note12.3">замечания 12.3</a> и <a href="./discrete_math13.1.html#Note13.4">замечанию 13.4</a>
+$$
+\deg{\chi_A(x)}=n\Rightarrow\chi_{A}(x)=|Ex-A|\neq0\Rightarrow|K(Ex-A)|=f_1(x)\cdots{f}_s(x)\neq0\Rightarrow\forall{i}\in\overline{1,s}(n_i&gt;0).
+$$
+$$\chi_A(x)=f_1(x)\cdots{f}_s(x)\Rightarrow{n}_1+\cdots+n_s=n\Rightarrow{B}:=(S(f_1),\ldots,S(f_s))\in{P}_{n,n}.$$
+По утверждению 13.2
+$$
+Ex-B=\diag(Ex-S(f_1),\ldots,Ex-S(f_s))\sim\diag(K(Ex-S(f_1)),\ldots,K(Ex-S(f_s)))=\\=
+\diag(e,\ldots,e,f_1(x),e,\ldots,e,f_2(x),e,\ldots,e,f_s(x))\sim(e,\ldots,f_1(x),\cdots,f_s(x))=K(Ex-A)\sim{E}x-A.
+$$
+Таким образом, $Ex-B\sim{E}x-A$, тогда по <a href="./discrete_math13.1.html#Theorem13.1">теореме 13.1</a> $A\approx{B}$, 
+тогда по п. 3 <a href="./discrete_math12.3.html#Corollary12.3">следствия 12.3</a>, <a href="./discrete_math12.4.html#Statement12.12">утверждению 12.12</a> и
+<a href="./discrete_math12.3.html#Example12.2">примеру 12.2</a>
+$$
+m_A(x)=m_B(x)=[m_{S(f_1)}(x),\ldots,m_{S(f_s)}(x)]=[f_1(x),\ldots,f_s(x)]=f_s(x)=\delta_{Ex-A}^{(n)}(x).
+$$
+<p id="Corollary13.1"><b>Следствие 13.1:</b><br>
+Для любой матрицы $A\in{P}_{n,n}$
+<ol>
+<li>$\exists{l}\in\mathbb{N}:\chi_A(x)|m_A^k(x)$,</li>
+<li>пусть неприводимый многочлен $g(x)\in{P}[x]$ такой, что $g(x)|\chi_A(x)$, тогда $g(x)|m_A(x)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+По <a href="./discrete_math13.1.html#Note13.4">замечанию 13.4</a> $\chi_A(x)=\delta_{Ex-A}^{(1)}(x)\cdots\delta_{Ex-A}^{(n)}(x)$.<br>
+По теореме 13.5 $m_A(x)=\delta_{Ex-A}^{(n)}(x)$ и при этом для любого $k\in\overline{1,n-1}$ $\delta_{Ex-A}^{(k)}(x)|\delta_{Ex-A}^{(n)}(x)$,
+следовательно, $\chi_A(x)|m_A^n(x)$.
+</li>
+<li>По пункту 1 существует $k\in\mathbb{N}$ такое, что $g(x)|m_A^k(x)$. Если $k=1$, то доказано, если $k&gt;1$, 
+то утверждение следует из п. 2 <a href="./discrete_math7.5.html#Statement7.7">утверждения 7.7</a>.
+</li>
+</ol>
+<p id="Task13.2"><b>Задача 13.2:</b><br>
+Пусть $\varphi\in\mathcal{L}(L_P)$, многочлены  $f_1(x),\ldots,f_t(x)\in{P}[x]$ такие, что $\chi_{\varphi}(x)=f_1(x)\cdots{f}_t(x)$ и 
+для любых различных $i,j\in\overline{1,t}$ $(f_i(x),f_j(x))=e$, тогда 
+$L_P=\ker{f_1(\varphi)}\dotplus\cdots\dotplus\ker{f_t(\varphi)}$ и для любого $i\in\overline{1,t}$ верно равенство 
+$\dim{\ker{f_i(\varphi)}}=\deg{f_i(x)}$.<br>
+Решение:<br>
+Равенство $L_P=\ker{f_1(\varphi)}\dotplus\cdots\dotplus\ker{f_t(\varphi)}$ было доказано в <a href="./discrete_math12.4.html#Theorem12.10">теореме 12.10</a>. 
+Докажем, что для любого $i\in\overline{1,t}$ $\dim{\ker{f_i(\varphi)}}=\deg{f_i(x)}$.<br>
+Обозначим $\varphi_i:=\varphi|_{\ker{f_i(\varphi)}}$. Пусть $t_i(x)$ неприводимый многочлен такой, что $t_i(x)|\chi_{\varphi_i}(x)$, 
+тогда по п. 2 следствия 13.1 $t_i(x)|m_{\varphi_i}(x)$, тогда по <a href="./discrete_math12.3.html#Statement12.10">утверждению 12.10</a> существует вектор 
+$\beta_i\in\ker{f_i(\varphi)}\backslash\{\theta\}$ такой, что $m_{\beta_i,\varphi_i}(x)=t_i(x)$. Тогда, 
+$$
+t_i(\varphi)(\beta)=f_i(\varphi)(\beta)=\theta\Rightarrow(m_{\beta,\varphi}(x)|t_i(x)\,\wedge{m}_{\beta,\varphi}(x)|f_i(x))\Rightarrow
+(t_i(x),f_i(x))\neq{e}\Rightarrow{t}_i(x)|f_i(x)
+$$
+Таким образом, для любых неравных $i,j\in\overline{1,t}$ $(\chi_{\varphi_i}(x),\chi_{\varphi_j}(x))=e$. Действительно, предположим, 
+что существуют различные $i,j\in\overline{1,t}$ такие, что $(\chi_{\varphi_i}(x),\chi_{\varphi_j}(x))\neq{e}$, 
+но тогда существует неприводимый многочлен, который делит и $\chi_{\varphi_i}(x)$ и $\chi_{\varphi_j}(x)$, 
+тогда по доказанному он делит и $f_i(x)$, $f_j(x)$, то есть $(f_i(x),f_j(x))\neq{e}$.<br>
+По <a href="./discrete_math12.4.html#Theorem12.9">теореме 12.9</a>
+$$\chi_{\varphi}(x)=\chi_{\varphi_1}(x)\cdots\chi_{\varphi_t}(x)=f_1(x)\cdots{f}_t(x),$$
+тогда в силу однозначности канонического разложения многочлена $\chi_{\varphi}(x)$ для любого $i\in\overline{1,t}$ $f_i(x)=\chi_{\varphi_i}(x)$ и 
+$\dim{\ker{f_i(\varphi)}}=\deg{\chi_{\varphi_i}(x)}=\deg{f_i(x)}$.
+
+<br><br>
+<a href="discrete_math12.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math13.3.html">next</a>
+</body>
+</html>

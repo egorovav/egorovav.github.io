@@ -1,0 +1,185 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 14.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math14.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.1.html">next</a>
+<br>
+
+<h4 id="14.4">14.4 Изометричность евклидовых пространств.</h4>
+<p id="Definition14.10"><b>Определение 14.10:</b><br> 
+Изометрией евклидовых пространств $(L_{\mathbb{P}},S)$ и $(K_{\mathbb{P}},F)$ называется изоморфизм векторных пространств 
+$\sigma:L_{\mathbb{P}}\to{K}_{\mathbb{P}}$ такой, что для любых $\alpha,\beta\in{L}_{\mathbb{P}}$ $S(\alpha,\beta)=F(\sigma(\alpha),\sigma(\beta))$.
+<p id="Note14.6"><b>Замечание 14.6:</b><br>
+Из определения следутет, что для любого $\alpha\in{L}_{\mathbb{P}}$ 
+$$\|\sigma(\alpha)\|=\sqrt{F(\sigma(\alpha),\sigma(\alpha))}=\sqrt{S(\alpha,\alpha)}=\|\alpha\|.$$ 
+То есть изометрия евклидова пространства сохраняет норму векторов.
+<p id="Theorem14.4"><b>Теорема 14.4:</b><br>
+Конечномерные евклидовы пространства $(L_{\mathbb{P}},S)$ и $(K_{\mathbb{P}},F)$ изометричны тогда и только тогда, когда $\dim{L}_{\mathbb{P}}=\dim{K}_{\mathbb{P}}$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ По <a href="./discrete_math11.3.html#Statement11.6">утверждению 11.6</a>
+$$
+(L_{\mathbb{P}},S)\cong(K_{\mathbb{P}},F)\Rightarrow{L}_{\mathbb{P}}\cong{K}_{\mathbb{P}}\Rightarrow\dim{L}_{\mathbb{P}}=\dim{K}_{\mathbb{P}}.
+$$
+$\Leftarrow)$ Пусть $\dim{L}_{\mathbb{P}}=\dim{K}_{\mathbb{P}}=n$, тогда существует $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_n)$ - 
+ортонормированный базис пространства $(L_{\mathbb{P}},S)$ и $\vec{\delta}:=(\delta_1,\ldots,\delta_n)$ - 
+ортонормированный базис пространства $(K_{\mathbb{P}},F)$. Докажем, что отображение $\sigma:L_{\mathbb{P}}\to{K}_{\mathbb{P}}$ такое, 
+что для любого $\beta\in{L}_{\mathbb{P}}$ 
+$\sigma(\beta)=\vec{\delta}\beta_{\vec{\alpha}}^{\downarrow}$ является изометрией евклидовых пространств $(L_{\mathbb{P}},S)$ и $(K_{\mathbb{P}},F)$.
+<ol>
+<li>По п. 1 <a href="./discrete_math11.3.html#Statement11.4">утверждения 11.4</a> для любых $\beta,\gamma\in{L}_{\mathbb{P}}$
+$$
+\sigma(\beta+\gamma)=\vec{\delta}(\gamma+\beta)_{\vec{\delta}}^{\downarrow}=
+\vec{\delta}\left(\beta_{\vec{\alpha}}^{\downarrow}+\gamma_{\vec{\alpha}}^{\downarrow}\right)=
+\vec{\delta}\beta_{\vec{\alpha}}^{\downarrow}+\vec{\delta}\gamma_{\vec{\alpha}}^{\downarrow}=\sigma(\beta)+\sigma(\gamma).
+$$
+</li>
+<li>По п. 2 <a href="./discrete_math11.3.html#Statement11.4">утверждения 11.4</a> для любых $\beta\in{L}_{\mathbb{P}}$, $a\in\mathbb{P}$
+$$\sigma(\beta{a})=\vec{\delta}(\beta{a})_{\vec{\alpha}}^{\downarrow}=\left(\vec{\delta}\beta_{\vec{\alpha}}^{\downarrow}\right)a=\sigma(\beta)a.$$
+</li>
+<li>Так как при любых различных $i,j\in\overline{1,n}$ $F(\delta_i,\delta_j)=S(\alpha_i,\alpha_j)=0$ и $F(\delta_i,\delta_i)=S(\alpha_i,\alpha_i)=1$, 
+то для любых $i,j\in\overline{1,n}$ $F(\delta_i,\delta_j)=S(\alpha_i,\alpha_j)$.
+Следовательно, по пп. 1, 2 <a href="./discrete_math14.1.html#Statement14.1">утверждения 14.1</a> для любых $\beta=\sum_{i=1}^n\alpha_ib_i$ и 
+$\gamma=\sum_{i=1}^n\alpha_ic_i$ из ${L}_{\mathbb{P}}$.
+$$
+F(\sigma(\beta),\sigma(\gamma))=F\left(\vec{\delta}\beta_{\vec{\alpha}}^{\downarrow},\vec{\delta}\gamma_{\vec{\alpha}}^{\downarrow}\right)=
+F\biggl(\sum_{i=1}^n\delta_ib_i,\sum_{j=1}^n\delta_jc_j\biggr)=
+\sum_{i=1}^n\sum_{j=1}^nb_i\overline{c}_jF(\delta_i,\delta_j)=\sum_{i=1}^n\sum_{j=1}^nb_i\overline{c}_jS(\alpha_i,\alpha_j)=
+S\biggl(\sum_{i=1}^n\alpha_ib_i,\sum_{j=1}^n\alpha_jc_j\biggr)=S(\beta,\gamma).
+$$
+</li>
+</ol>
+
+<h4 id="14.5">14.5 Ортогональные дополнения.</h4>
+<p id="Definition14.11"><b>Определение 14.11:</b><br>
+Пусть $K_{\mathbb{P}}$ подпространство евклидова пространства $(L_{\mathbb{P}},S)$, тогда множество
+$$
+K^{\perp}:=\{\alpha\in{L}_{\mathbb{P}}\mid\forall\beta\in{K}_{\mathbb{P}}(S(\alpha,\beta)=0)\}
+$$ 
+называется ортогональным дополнением подпространства $K_{\mathbb{P}}$. 
+<p id="Statement14.6"><b>Утверждение 14.6:</b><br>
+$$K_{\mathbb{P}}&lt;L_{\mathbb{P}}\Rightarrow{K}^{\perp}&lt;L_{\mathbb{P}}.$$
+<p><b>Доказательство:</b><br><br>
+Фиксируем $\gamma\in{L}_{\mathbb{P}}$, тогда для любых $\alpha,\beta\in{K}^{\perp}$, $a\in\mathbb{P}$
+$$
+(S(\alpha,\gamma)=0\,\wedge\,S(\beta,\gamma)=0)\Rightarrow{S}(\alpha+\beta,\gamma)=S(\alpha,\gamma)+S(\beta,\gamma)=0\Rightarrow
+\alpha+\beta\in{K}^{\perp},
+$$
+$$S(\alpha,\gamma)=0\Rightarrow{S}(\alpha{a},\gamma)=aS(\alpha,\gamma)=0\Rightarrow\alpha{a}\in{K}^{\perp}.$$
+Таким образом, по <a href="./discrete_math11.1.html#Theorem11.5">теореме 11.5</a> $K^{\perp}&lt;L_{\mathbb{P}}$.
+<p id="Theorem14.5"><b>Теорема 14.5:</b><br>
+Если евклидово пространство $(L_{\mathbb{P}},S)$ конечномерно, ${K&lt;L_{\mathbb{P}}}$, то $L_{\mathbb{P}}=K\dotplus{K}^{\perp}$.  
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+Если $K=\{\theta\}$, то по п. 3 <a href="./discrete_math14.1.html#Statement14.1">утверждения 14.1</a> $K^{\perp}=L_{\mathbb{P}}$ и, 
+очевидно, $L_{\mathbb{P}}=K\dotplus{K}^{\perp}$.<br>
+</li>
+<li>
+Если $K=L_{\mathbb{P}}$, то для любого $\beta\in{K}^{\perp}$ $\beta\in{K}$ и $S(\beta,\beta)=0$, так что в силу п. 4 
+<a href="./discrete_math14.1.html#Definition14.1">определения 14.1</a> $K^{\perp}=\{\theta\}$ и, очевидно, $L_{\mathbb{P}}=K\dotplus{K}^{\perp}$.<br>
+</li><li>
+Пусть $m:=\dim{K}_{\mathbb{P}}$ и $0&lt;m&lt;n:=\dim{L}_{\mathbb{P}}$, $\vec{\alpha}:=(\alpha_1,\ldots,\alpha_m)$ - ортогональный базис $K_{\mathbb{P}}$, 
+$(\alpha_1,\ldots,\alpha_m,\alpha_{m+1},\ldots,\alpha_n)$ - ортогональный базис 
+$L_{\mathbb{P}}$, $M_{\mathbb{P}}:=(\alpha_{m+1},\ldots,\alpha_n)_{\mathbb{P}}$. Тогда из доказательства 
+<a href="./discrete_math11.5.html#Theorem11.10">теоремы 11.10</a>
+следует, что $L_{\mathbb{P}}=K_{\mathbb{P}}\dotplus{M}_{\mathbb{P}}$. Докажем, что $M_{\mathbb{P}}=K^{\perp}$. Так как
+$$
+(\beta\in{K}_{\mathbb{P}}\,\wedge\,\gamma\in{M}_{\mathbb{P}})\Rightarrow
+\exists{b}_1,\ldots,b_m,c_{m+1},\ldots,c_n\in\mathbb{P}:\biggl(\beta=\sum_{i=1}^m\alpha_ib_i\,\wedge\,\gamma=\sum_{j=m+1}^n\alpha_jc_j\biggr)\Rightarrow
+{S}(\beta,\gamma)=S\biggl(\sum_{i=1}^m\alpha_ib_i,\sum_{j=m+1}^n\alpha_jc_j\biggr)=\sum_{i=1}^m\sum_{j=m+1}^nb_i\overline{c}_jS(\alpha_i,\alpha_j)=0,
+$$
+то $M_{\mathbb{P}}\subset{K}^{\perp}$. С другой стороны, 
+$$
+\delta\in{K}^{\perp}\Rightarrow\exists{d}_1,\ldots,d_n\in\mathbb{P}:\delta=\sum_{i=1}^n\alpha_i{d}_i\Rightarrow
+\forall{j}\in\overline{1,m}\biggl(S(\delta,\alpha_j)=0=S\biggl(\sum_{i=1}^m\alpha_id_i,\alpha_j\biggr)=\sum_{i=1}^md_iS(\alpha_i,\alpha_j)=
+d_jS(\alpha_j,\alpha_j)\biggr)\Rightarrow\\
+\Rightarrow\forall{j}\in\overline{1,m}(d_j=0)\Rightarrow\delta=\sum_{i=m+1}^n\alpha_id_i\Rightarrow\delta\in{M}_{\mathbb{P}},
+$$
+следовательно, $K^{\perp}\subset{M}_{\mathbb{P}}$ и тогда, $M_{\mathbb{P}}=K^{\perp}$.
+</li>
+</ol>
+<p id="Definition14.12"><b>Определение 14.12:</b><br>
+Пусть $(L_{\mathbb{P}},S)$ - евклидово пространство, $K<L_{\mathbb{P}}$, вектора $\alpha\in{L}_{\mathbb{P}}$, $\beta\in{K}$, 
+$\gamma\in{K}^{\perp}$ такие, что $\alpha=\beta+\gamma$, тогда
+<ol>
+<li>вектор $\beta$ называется ортогональной проекцией вектора $\alpha$ на подпространство $K_{\mathbb{P}}$,</li>
+<li>вектор $\gamma$ называется ортогональной составляющей вектора $\alpha$ относительно подпространства $K_{\mathbb{P}}$.</li>
+</ol>
+
+<h4 id="14.6">14.6 Геометрия евклидовых пространств.</h4>
+<p id="Theorem14.6"><b>Теорема 14.6: Неравенство Коши - Буняковского.</b><br>
+$$\forall\alpha,\beta\in(L_{\mathbb{P}},S)(\|\alpha\|\|\beta\|\geq|S(\alpha,\beta)|).$$
+<p><b>Доказательство:</b><br><br>
+Если $\alpha=\theta$ или $\beta=\theta$, то $\|\alpha\|\|\beta\|=S(\alpha,\beta)=0$.<br>
+Пусть $\alpha\neq\theta$ и $\beta\neq\theta$, тогда для любого $c\in\mathbb{P}$
+$$
+\alpha{c}+\beta\neq\theta\Rightarrow0\leq{S}(\alpha{c}+\beta,\alpha{c}+\beta)=S(\alpha{c},\alpha{c}+\beta)+S(\beta,\alpha{c}+\beta)=
+c\overline{c}S(\alpha,\alpha)+cS(\alpha,\beta)+\overline{c}S(\beta,\alpha)+S(\beta,\beta)=
+|c|^2S(\alpha,\alpha)+cS(\alpha,\beta)+\overline{c}\overline{S(\alpha,\beta)}+S(\beta,\beta)
+$$
+Положим $c:=-\frac{\overline{S(\alpha,\beta)}}{S(\alpha,\alpha)}$ и подставим в полученное неравенство
+$$
+\frac{|S(\alpha,\beta)|^2}{S(\alpha)}-\frac{|S(\alpha,\beta)|^2}{S(\alpha,\alpha)}-\frac{|S(\alpha,\beta)|^2}{S(\alpha,\alpha)}+S(\beta,\beta)=
+-\frac{|S(\alpha,\beta)|^2}{S(\alpha,\alpha)}+S(\beta,\beta)\geq0\Rightarrow
+-|S(\alpha,\beta)|^2+S(\alpha,\alpha)S(\beta,\beta)\geq0\Rightarrow\|\alpha\|^2\|\beta\|^2\geq|S(\alpha,\beta)|^2.
+$$
+<p id="Corollary14.5"><b>Следствие 14.5:</b><br>
+$$\forall\alpha,\beta\in(L_{\mathbb{P}},S)(\|\alpha+\beta\|\leq\|\alpha\|+\|\beta\|).$$
+<p><b>Доказательство:</b><br><br>
+Так как для любого $z\in\mathbb{C}$ $z+\overline{z}\leq2|z|$, то по теореме 14.6
+$$
+\|\alpha+\beta\|^2=S(\alpha+\beta,\alpha+\beta)=S(\alpha,\alpha+\beta)+S(\beta,\alpha+\beta)=
+S(\alpha,\alpha)+S(\alpha,\beta)+\overline{S(\alpha,\beta)}+S(\beta,\beta)=\\=\|\alpha\|^2+\|\beta\|^2+S(\alpha,\beta)+\overline{S(\alpha,\beta)}\leq
+\|\alpha\|^2+\|\beta\|^2+2|S(\alpha,\beta)|\leq\|\alpha\|^2+\|\beta\|^2+2\|\alpha\|\|\beta\|=(\|\alpha\|+\|\beta\|)^2
+$$
+<p id="Theorem14.7"><b>Теорема 14.7: Теорема Пифагора.</b><br>
+$$\forall\alpha,\beta\in(L_{\mathbb{P}},S)(\alpha\perp\beta\Rightarrow\|\alpha+\beta\|^2=\|\alpha\|^2+\|\beta\|^2).$$
+<p><b>Доказательство:</b><br><br>
+Так как при $\alpha\perp\beta$ $S(\alpha,\beta)=\overline{S(\alpha,\beta)}=0$, то утверждение следует из равенства полученого при доказательстве 
+следствия 14.5 
+$$\|\alpha+\beta\|^2=\|\alpha\|^2+\|\beta\|^2+S(\alpha,\beta)+\overline{S(\alpha,\beta)}.$$
+<p id="Definition14."13><b>Определение 14.13:</b><br>
+Пусть $\alpha,\beta\in{L}_{\mathbb{R}}\backslash\{\theta\}$, тогда углом между векторами $\alpha$ и $\beta$ называется число $\varphi\in[0,\pi)$ такое, что 
+$$\cos{\varphi}=\frac{S(\alpha,\beta)}{\|\alpha\|\|\beta\|}.$$
+Угол между векторами $\alpha$ и $\beta$ обозначают $\widehat{\alpha,\beta}$
+<p id="Theorem14.8"><b>Теорема 14.8: Теорема косинусов.</b><br>
+$$\forall\alpha,\beta\in(L_{\mathbb{R}},S)(\|\alpha-\beta\|^2=\|\alpha\|^2+\|\beta\|^2-2\|\alpha\|\|\beta\|\cos{\widehat{\alpha,\beta}}).$$
+<p><b>Доказательство:</b><br><br>
+Так как для любого $x\in\mathbb{R}$ $x=\overline{x}$ и по определению угла между $\alpha$ и 
+$\beta$ $S(\alpha,\beta)=\|\alpha\|\|\beta\|\cos{\widehat{\alpha,\beta}}$, то
+$$
+\|\alpha-\beta\|^2=S(\alpha-\beta,\alpha-\beta)=S(\alpha,\alpha-\beta)-S(\beta,\alpha-\beta)=
+S(\alpha,\alpha)-S(\alpha,\beta)-\overline{S(\alpha,\beta)}+S(\beta,\beta)=\|\alpha\|^2+\|\beta\|^2-2\|\alpha\|\|\beta\|\cos{\widehat{\alpha,\beta}}.
+$$
+
+<br><br>
+<a href="discrete_math14.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math15.1.html">next</a>
+</body>
+</html>

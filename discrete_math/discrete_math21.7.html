@@ -1,0 +1,258 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.7</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}",
+	rank: "{\\operatorname{rank}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.9.html">next</a>
+<br>
+
+<h4 id="21.7">21.7 Периодические последовательности.</h4>
+
+<p id="Definition21.20"><b>Определение 21.20:</b><br>
+Последовательность $u\in\Omega^{\infty}$ называется периодической, если 
+$$\exists{t}\in\mathbb{N}\,\lambda\in\mathbb{N}_0:\forall{i}\geq\lambda(u(i+t)=u(i)).$$
+Наименьшее $t\in\mathbb{N}$ такое, что 
+$$\exists\lambda\in\mathbb{N}_0:\forall{i}\geq\lambda(u(i+t)=u(i))$$
+называется периодом последовательности $u$ и обозначается $T(u)$.<br>
+Наименьшее $\lambda\in\mathbb{N}_0$ такое, что
+$$\exists{t}\in\mathbb{N}:\forall{i}\geq\lambda(u(i+t)=u(i))$$
+называется подходом последовательности $u$ и обозначается $\Lambda(u)$.
+<p id="Theorem21.10"><b>Теорема 21.10:</b><br>
+Пусть $u\in\Omega^{\infty}$ - периодическая последовательность, ${t\in\mathbb{N}}$, $\lambda\in\mathbb{N}_0$, 
+тогда $u(i+t)=u(i)$ для любого $i\geq\lambda$ тогда и только тогда, когда $\lambda\geq\Lambda(u)$ и $T(u)|t$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Пусть для любого $i\geq\lambda$ $u(i+t)=u(i)$, тогда по определению периода и подхода $\lambda\geq\Lambda(u)$, $t\geq{T}(u)$. 
+Разделим $t$ на $T(u)$ с остатком, тогда
+$$\exists{q},r\in\mathbb{N}_0:(t=T(u)q+r\,\wedge\,0\leq{r}&lt;T(u)).$$
+По определению $T(u)$
+$$\exists\lambda_0\in\mathbb{N}_0:\forall{i}\geq\lambda_0(u(i+T(u))=u(i)),$$
+тогда для любого $i\geq\max\{\lambda,\lambda_0\}$
+$$
+u(i)=u(i+t)=u(i+T(u)q+r)=u(i+r)\Rightarrow{r}=0\Rightarrow{T}(u)|t.
+$$
+$\Leftarrow)$ По определению периода и подхода 
+$$\exists\lambda_0\in\mathbb{N}_0:\forall{i}\geq\lambda_0(u(i+T(u))=u(i)),$$
+$$\exists{t}_0\in\mathbb{N}:\forall{i}\geq\Lambda(u)(u(i+t_0)=u(i)).$$
+Существует $k\in\mathbb{N}_0$ такое, что $kt_0\geq\lambda_0$, следовательно
+$$
+\forall{i}\geq\Lambda(u)(u(i)=u(i+kt_0)=u(i+kt_0+T(u))=u(i+T(u)))\Rightarrow
+\forall{i}\geq\Lambda(u)\left(u(i)=u\left(i+\frac{t}{T(u)}T(u)\right)=u(i+t)\right)\Rightarrow\forall{i}\geq\lambda(u(i)=u(i+t)).
+$$
+<br>
+Везде далее будем рассматривать периодические последовательности над коммутативным кольцом $R$ с единицей $e$.
+<p id="Statement21.12"><b>Утверждение 21.12:</b><br>
+Всякая периодическая последовательность над коммутативным кольцом с единицей является линейной рекуррентной последовательностью. 
+Если кольцо конечно, то верно и обратное.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Если последовательность $u\in{R}^{\infty}$ переодическая, то 
+$$\exists\lambda\in\mathbb{N}_0\,t\in\mathbb{N}:\forall{i}\geq\lambda(u(i+t)=u(i))\Leftrightarrow
+(x^{\lambda+t}-x^{\lambda})u=0\Leftrightarrow{u}\in{L}_P\bigl(x^{\lambda}(x^t-e)\bigr).$$
+$\Leftarrow)$ Пусть кольцо $R$  конечно, $u\in{L}_R(F)$. Будет доказано позднее (см. <a href="./discrete_math21.7.html#Corollary21.10">следствие 21.10</a>).
+<p id="Statement21.13"><b>Утверждение 21.13:</b><br>
+Пусть $u,v\in{R}^{\infty}$ периодические последовательности, тогда $w:=u+v$ - периодическая последовательность такая, 
+что $\Lambda(w)\leq\max\{\Lambda(u),\Lambda(v)\}$, $T(w)\bigl|[T(u),T(v)]$, при этом
+<ol>
+<li>если $\Lambda(u)\neq\Lambda(v)$, то $\Lambda(w)=\max\{\Lambda(u),\Lambda(v)\}$;</li>
+<li>если $(T(u),T(v))=1$, то $T(w)=T(u)T(v)$;</li>
+<li>если $u,v$ - последовательности со взаимнопростыми характеристическими многочленами, 
+то $\Lambda(w)=\max\{\Lambda(u),\Lambda(v)\}$, $T(w)=[T(u),T(v)]$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Обозначим $\lambda=\max\{\Lambda(u),\Lambda(v)\}$, $t=[T(u),T(v)]$, тогда по <a href="./discrete_math21.7.html#Theorem21.10">теореме 21.10</a> и 
+утверждению 21.12
+$$
+\begin{cases}x^{\lambda}(x^t-e)u=0 \\ x^{\lambda}(x^t-e)v=0\end{cases}\Rightarrow{x}^{\lambda}(x^t-e)w=0\Rightarrow(\Lambda(w)\leq\lambda\,\wedge\,T(w)|t)
+$$
+<ol>
+</li>
+<li>Пусть б. о. о. $\Lambda(u)<\Lambda(v)$, тогда $\Lambda(v)=\lambda$. Предположим, что ${\Lambda(w)&lt;\lambda}$, тогда
+$$
+\begin{cases}x^{\lambda-1}(x^t-e)w=0 \\ x^{\lambda-1}(x^t-e)u=0\end{cases}\Rightarrow
+{x}^{\lambda-1}(x^t-e)v=x^{\lambda-1}(x^t-e)(w-u)=0\Rightarrow\Lambda(v)&lt;\lambda.
+$$
+Таким образом, получено противоречие с утверждением $\Lambda(v)=\lambda$.
+</li>
+<li>По <a href="./discrete_math21.7.html#Theorem21.10">теореме 21.10</a>
+$$
+x^{\lambda}\bigl(x^{T(w)T(u)}-e\bigr)v=x^{\lambda}\bigl(x^{T(w)T(u)}-e\bigr)(w-u)=0\Rightarrow{T}(v)|T(w).
+$$
+Аналогично показывается, что $T(u)|T(w)$, тогда по п. 3 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a> $(T(u)T(v))|T(w)$ и, 
+так как $[T(u),T(v)]=T(u)T(v)$, то $T(w)|(T(u)T(v))$, то есть $T(w)=T(u)T(v)$.
+</li>
+<li>Пусть $u\in{L}_R(F)$, $v\in{L}_R(G)$, где $(F(x),G(x))=1$, тогда для любого $H(x)\in{R}[x]$
+$$
+H(x)w=0\Leftrightarrow{H}(x)(u+v)=0\Leftrightarrow{H}(x)u+H(x)v=0\Leftrightarrow(H(x)u=0\,\wedge\,H(x)v=0),
+$$
+где последняя эквивалентнось следует из п. 2 <a href="./discrete_math21.3.html#Theorem21.3">теоремы 21.3</a>.
+Положив $H(x)=x^{\lambda}(x^t-e)$ по <a href="./discrete_math21.7.html#Theorem21.10">теореме 21.10</a> имеем
+$$
+x^{\lambda}(x^t-e)w=0\Leftrightarrow\begin{cases}x^{\lambda}(x^t-e)u=0 \\ x^{\lambda}(x^t-e)v=0\end{cases}\Leftrightarrow
+\begin{cases}\lambda\geq\Lambda(u)\,\wedge\,T(u)|t \\ \lambda\geq\Lambda(v)\,\wedge\,T(v)|t\end{cases}\Leftrightarrow
+\begin{cases}\lambda\geq\max\{\Lambda(u),\Lambda(v)\} \\ [T(u),T(v)]\bigl|t\end{cases}.
+$$
+Так как $\Lambda(w)$ и $T(w)$ - это наименьшие числа удовлетворяющие условию $x^{\lambda}(x^t-e)w=0$, то $t=[T(u),T(v)]$ и 
+$\lambda=\max\{\Lambda(u),\Lambda(v)\}$.
+</li>
+</ol>
+<p id="Definition21.21"><b>Определение 21.21:</b><br>
+Последовательность $u$ является чисто периодической или реверсивной, если $\Lambda(u)=0$ и вырожденной если для любого $i\geq\Lambda(u)$ $u(i)=0$.
+<p id="Statement21.14"><b>Утверждение 21.14:</b><br>
+Любая периодическая последовательность $u$ представима в виде суммы $u=u_0+u_1$, где $u_0$ - вырожденная последовательность, 
+$u_1$ - чисто периодическая последовательность при этом такое представление однозначно и $\Lambda(u)=\Lambda(u_0)$, $T(u)=T(u_1)$.
+<p><b>Доказательство:</b><br><br>
+Обозначим $\lambda:=\Lambda(u)$, $t:=T(u)$, тогда по <a href="./discrete_math21.7.html#Statement21.12">утверждению 21.12</a> 
+$u\in{L}_R\bigl(x^{\lambda}(x^t-e)\bigr)$. 
+Для многочленов над коммутативным кольцом аналогичным образом можно доказать утверждение подобное утверждению 
+п. 3 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a>. Тогда из очевидного соотношения $(x,x^t-e)=e$ следует, что $(x^{\lambda},x^t-e)=e$. 
+Тогда по п. 3 <a href="./discrete_math21.3.html#Theorem21.3">теоремы 21.3</a>
+$$L_R\bigl(x^{\lambda}(x^t-e)\bigr)=L_R\bigl(x^{\lambda}\bigr)\dotplus{L}_R\bigl(x^t-e\bigr).$$
+Так как все последовательности из $L_R\bigl(x^{\lambda}\bigr)$ вырожденные, а из $L_R\bigl(x^t-e\bigr)$ чисто периодические, 
+то существование разложения $u$ в сумму вырожденной и чисто периодической последовательности доказано. Докажем единственность такого разложения. 
+Для любых $u_0$, $u_1$ таких, что $u_0$ вырожденная, а $u_1$ чисто периодическая и $u=u_0+u_1$
+$$\lambda:=\Lambda(u)=\max\{\Lambda(u_0),\Lambda(u_1)\}=\max\{\Lambda(u_0),0\}=\Lambda(u_0),$$
+$$t:=T(u)=[T(u_0),T(u_1)]=[1,T(u_1)]=T(u_1),$$
+следовательно, $u_0\in{L}_R\bigl(x^{\lambda}\bigr)$ и $u_1\in{L}_R\bigl(x^t-e\bigr)$. 
+Тогда, так как сумма $L_R\bigl(x^{\lambda}\bigr)\dotplus{L}_R\bigl(x^t-e\bigr)$ прямая, то $u_0$ и $u_1$ определены однозначно.
+<br>
+<h4 id="21.8">21.8 Периодические многочлены.</h4>
+
+<p id="Definition21.22"><b>Определение 21.22:</b><br>
+Многочлен $F(x)\in{R}[x]$ называется периодическим, если 
+$$\exists\lambda\in\mathbb{N}_0\,t\in\mathbb{N}:F(x)|x^{\lambda}(x^t-1).$$
+Наименьшее $t\in\mathbb{N}$ для которого существует $\lambda\in\mathbb{N}_0$ такое, 
+что $F(x)|x^{\lambda}(x^t-1)$ называестя периодом многочлена $F(x)$ и обозначается $T(F)$.<br>
+Наименьшее $\lambda\in\mathbb{N}_0$ для которого существует $t\in\mathbb{N}$ такое, 
+что $F(x)|x^{\lambda}(x^t-1)$ называестя длиной подхода многочлена $F(x)$ и обозначается $\Lambda(F)$.
+<p id="Statement21.15"><b>Утверждение 21.15:</b><br>
+Пусть многочлен $F(x)\in{R}[x]$ унитарный.
+<ol>
+<li>Многочлен $F(x)$ периодический тогда и только тогда, когда последовательность $e^F\in{L}_R(F)$ является периодической.<br>
+Если многочлен $F(x)$ периодический, то $\Lambda(F)=\Lambda(e^F)$, $T(F)=T(e^F)$.
+</li>
+<li>$\forall\lambda\in\mathbb{N}_0,t\in\mathbb{N}(F(x)|x^{\lambda}(x^t-1)\Leftrightarrow(\lambda\leq\Lambda(F)\,\wedge\,T(F)|t))$.</li>
+<li>Если многочлен $F(x)$ периодический, то любая последовательность $u\in{L}_R(F)$ периодическая и $\Lambda(u)\leq\Lambda(F)$, $T(u)|T(F)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math21.4.html#Statement21.6">утверждению 21.6</a> последовательность $e^F$ является ЛРП с 
+единственным минимальным многочленом равным $F(x)$ и $An(e^F)=F(x)R[x]$. Следовательно, 
+$$\forall{H}(x)\in{R}[x](H(x)e^F=0\Leftrightarrow{F}(x)|H(x)).$$
+Положив $H(x)=x^{\lambda}(x^t-1)$ имеем 
+$$x^{\lambda}(x^t-1)e^F=0\Leftrightarrow{F}(x)|x^{\lambda}(x^t-1).$$
+</li>
+<li>По <a href="./discrete_math21.7.html#Theorem21.10">теореме 21.10</a> и пункту 1 
+$$
+F(x)|x^{\lambda}(x^t-1)\Leftrightarrow{x}^{\lambda}(x^t-1)\Leftrightarrow(\lambda\geq\Lambda(e^F)\,\wedge\,T(e^F)|t)\Leftrightarrow
+(\lambda\geq\Lambda(F)\,\wedge\,T(F)|t).
+$$
+</li>
+<li>По <a href="./discrete_math21.7.html#Theorem21.10">теореме 21.10</a>
+$$
+u\in{L}_R(F)\Rightarrow{F}(x)u=0\Rightarrow{x}^{\Lambda(u)}(x^{T(u)}-1)u=0\Rightarrow(\Lambda(u)\leq\Lambda(F)\,\wedge\,T(u)|T(F)).
+$$
+</li>
+</ol>
+<p id="Statement21.16"><b>Утверждение 21.16:</b><br>
+Если $F(x),G(x)\in{R}[x]$ - периодические, унитарные, взаимнопростые многочлены, 
+то многочлен $H(x):=F(x)G(x)$ является периодическим и $\Lambda(H)=\max\{\Lambda(F),\Lambda(G)\}$, $T(H)=T(F)T(G)$. 
+<p><b>Доказательство:</b><br><br>
+По п. 2 <a href="./discrete_math21.7.html#Statement21.15">утверждения 21.15</a>
+$$
+H(x)|x^{\lambda}(x^t-1)\Leftrightarrow\begin{cases}F(x)|x^{\lambda}(x^t-1) \\ G(x)|x^{\lambda}(x^t-1)\end{cases}\Leftrightarrow
+\begin{cases}\lambda\geq\Lambda(F)\wedge{T}(F)|t \\ \lambda\geq\Lambda(G)\wedge{T}(G)|t\end{cases}\Leftrightarrow
+\begin{cases}\lambda\geq\max\{\Lambda(F),\Lambda(G)\} \\ [T(F),T(G)]\bigl|t\end{cases}\Leftrightarrow
+\begin{cases}\Lambda(H)=\max\{\Lambda(F),\Lambda(G)\} \\ T(H)=[T(F),T(G)]\end{cases}
+$$
+<p id="Corollary21.9"><b>Следствие 21.9:</b><br>
+Если $F(x),G(x)\in{R}[x]$ периодические унитарные многочлены, $F(x)|G(x)$, то $\Lambda(F)\leq\Lambda(G)$, $T(F)|T(G)$.
+<p><b>Доказательство:</b><br><br>
+По п. 2 <a href="./discrete_math21.7.html#Statement21.15">утверждения 21.15</a>
+$$G(x)|x^{\Lambda(G)}(x^{T(G)}-1)\Rightarrow{F}(x)|x^{\Lambda(G)}(x^{T(G)}-1)\Rightarrow(\Lambda(F)\leq\Lambda(G)\wedge{T}(F)|T(G)).$$
+<p id="Theorem21.11"><b>Теорема 21.11:</b><br>
+Пусть $R$ - конечное кольцо, $F(x)\in{R}[x]$ - унитарный многочлен, $m:=\deg{F(x)}$, тогда многочлен $F(x)$ периодический и если $|R|^m&gt;2$, 
+то $\Lambda(F)+T(F)&lt;|R|^m$.
+<p><b>Доказательство:</b><br><br>
+Рассмотрим кольцо вычетов $S:=R[x]/F(x)$. Так как кольцо $R$ конечно, то $|S|=|R|^m$, то есть последовательность
+$$[e]_{F(x)},[x]_{F(x)},[x^2]_{F(x)},\ldots,[x^i]_{F(x)},\ldots$$
+конечна. Следовательно, существуют $\lambda\in\mathbb{N}_0$, $t\in\mathbb{N}$ такие, что $t+\lambda\leq|R|^m$ и 
+$$[x^{\lambda}]_{F(x)}=[x^{\lambda+t}]_{F(x)}\Leftrightarrow[x^{\lambda+t}-x^{\lambda}]_{F(x)}=0\Leftrightarrow{F}(x)|x^{\lambda}(x^t-e),$$
+то есть, многочлен $F(x)$ периодический и $\Lambda(F)+T(F)\leq\lambda+t\leq|R|^m$. Докажем от противного, что если $|R|^m&gt;2$, 
+то $\Lambda(F)+T(F)&lt;|R|^m$. Обозначим $k:=|R|^m$ и предположим, что
+$\Lambda(F)+T(F)=k&gt;2$, тогда вычеты 
+$$[e]_{F(x)},[x]_{F(x)},\ldots,[x^{k-1}]_{F(x)}$$
+все различны, то есть 
+$$S=\{[e]_{F(x)},[x]_{F(x)},\ldots,[x^{k-1}]_{F(x)}\}.$$
+Так как $0\in{S}$, то существует $i\in\overline{1,k-1}$ такое, что $[x^i]=0$, тогда $[x]$ - делитель нуля и для любого $i\in\overline{1,k-1}$ $[x^i]$ - 
+делитель нуля, то есть в $S$ только один обратимый элемент. Так как для любого 
+$i\in\overline{1,k-2}$ $[x^i]\neq0$, иначе $[x^{i+1}]=[x^i][x]=0=[x^i]$, то $[x^{k-1}]=0$. Тогда 
+$$[e-x]_{F(x)}[e+x+\cdots+x^{k-2}]_{F(x)}=[e-x^{k-1}]_{F(x)}=[e]_{F(x)}.$$
+Следовательно, $[e-x]$ обратим и в силу единственности обратимого 
+$$[e-x]_{F(x)}=[e]_{F(x)}\Rightarrow[x]_{F(x)}=0\Rightarrow{S}=\{[0]_{F(x)},[e]_{F(x)}\}\Rightarrow|S|=|R|^m=2.$$
+Таким образом, получено противоречие с предпосылкой $|R^m|&gt;2$.
+<p id="Corollary21.10"><b>Следствие 21.10:</b><br>
+Если $R$ - конечное кольцо, $u$ - линейная рекуррентная последовательность над $R$ порядка $m$, 
+то $u$ - периодическая последовательность и если $|R^m|&gt;2$, $\Lambda(u)+T(u)&lt;|R|^m$.
+<p><b>Доказательство:</b><br><br>
+Пусть $u\in{L}_R(F)$, тогда по теореме 21.11 многочлен $F(x)$ периодический, 
+тогда по <a href="./discrete_math21.7.html#Statement21.15">утверждению 21.15</a> последовательность $u$ периодическая и 
+$\Lambda(u)\leq{L}(F)$, $T(u)\leq{T}(F)$. Тогда по теореме 21.11 если $|R|^m&gt;2$, то
+$$\Lambda(u)+T(u)\leq\Lambda(F)+T(F)&lt;|R|^m$$
+<p id="Example21.13"><b>Пример 21.13:</b><br>
+Пусть $R:=GF(2)$, $m=1$, тогда $|R|^m=2$ и условие 
+$$\Lambda(F)+T(F)&lt;|R|^m$$ 
+может не выполнятся. Например, при $F(x)=x$ 
+$$\Lambda(F)+T(F)=1+1=2=|R|^m,$$ 
+а при $F(x)=x+1$ 
+$$\Lambda(F)+T(F)=0+1=1&lt;|R|^m.$$
+<p id="Definition21.23"><b>Определение 21.23:</b><br>
+Если кольцо $R$ конечно, многочлен $F(x)\in{R}[x]$ унитарный и $F(0)\in{R}^*$, то многочлен $F(x)$ называется регулярным или реверсивным. 
+<p id="Statement21.17"><b>Утверждение 21.17:</b><br>
+Пусть $R$ - конечное кольцо, многочлен $F(x)\in{R}[x]$ унитарен, тогда
+$$\Lambda(F)=0\Leftrightarrow{F}(0)\in{R}^*.$$  
+<p><b>Доказательство:</b><br><br>
+Так как кольцо $R$ конечно, то по <a href="./discrete_math21.7.html#Theorem21.11">теореме 21.11</a> многочлен $F(x)$ периодичный, то есть 
+$$\exists\lambda\in\mathbb{N}_0,t\in\mathbb{N}:F(x)|x^{\lambda}(x^t-e).$$
+$\Rightarrow)$ 
+$$
+\Lambda(F)=0\Rightarrow{F}(x)|x^t-e\Rightarrow\exists{G}(x)\in{R}[x]:F(x)G(x)=x^t-e\Rightarrow{F}(0)G(0)=e\Rightarrow{F}(0)\in{R}^*.
+$$
+$\Leftarrow)$ 
+$$
+\exists{U}(x)\in{R}(x):F(x)=F(0)+xU(x)\Leftrightarrow{F}(x)-xU(x)=F(0)
+$$
+Так как $F(0)\in{R}^*$, то последнее равенство можно умножить на $F(0)^{-1}$, тогда 
+$$(F(x),x)=e\Rightarrow(F(x),x^{\lambda})=e\Rightarrow{F}(x)|x^t-e\Rightarrow\Lambda(F)=0.$$
+
+<br><br>
+<a href="discrete_math21.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.9.html">next</a>
+</body>
+</html>

@@ -1,0 +1,60 @@
+body {
+ font-family: Courier New, monospace;
+ font-size: 18px;
+}
+h6 {
+ font-size: 1.0em;
+}
+h5 {
+ font-size: 1.4em;
+}
+h4 {
+ font-size: 1.8em;
+}
+h3 {
+ font-size: 2.2em;
+}
+h2 {
+ font-size: 2.6em;
+}
+h1 {
+ font-size: 3.0em;
+}
+pre {
+  font-size: 1.0em;
+}
+p {
+  font-size: 1.0em;
+}
+i {
+  font-size: 0.9em;
+}
+a {
+  font-size: 0.9em;
+  color: black;
+}
+
+table td {
+  font-size: 1.1em;
+  padding: 5px;
+  vertical-align: center;
+}
+
+table.solid {
+  border-collapse: collapse;
+}
+
+table.solid td {
+  border: 1px;
+  border-color: gray;
+  border-style: solid;
+}
+
+table.collapse {
+  border-collapse: collapse;
+}
+
+table.collapse td {
+  border: 0px;
+}
+

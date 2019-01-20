@@ -1,0 +1,262 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 10.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.1.html">next</a>
+<br>
+
+<h4 id="10.3">10.3 Строение конечной абелевой группы.</h4>
+
+Пусть $G$ - абелева группа такая, что $|G|=p^n$. Для любого $i\in\overline{1,n}$ введем обозначение 
+$$G(i):=\{g\in{G}\mid{p}^ig=0\}=\{g\in{G}\mid\ord{g}|p^i\}.$$
+<p id="Theorem10.6"><b>Теорема 10.6:</b><br>
+Пусть $G$ - конечная абелева группа, $g\in{G}$, $p$ - простое число, $\exp{G}=\ord{g}=p^m$, тогда следующие утверждения эквивалентны
+<ol>
+<li> $G=\langle{g}\rangle$,</li>
+<li> $G(1)\subset\langle{g}\rangle$,</li>
+<li> $|G(1)|=p$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Rightarrow2)$ По определению множетсва $G(1)$ $G(1)\subset{G}=\langle{g}\rangle$.<br>
+$2)\Rightarrow3)$ Обозначим $F:=\langle{g}\rangle$. Так как $F&lt;G$, то $F(1)\subset{G}(1)$. Так как $G(1)\subset{F}$ по условию, 
+то $G(1)\subset{F}(1)$ и $G(1)=F(1)$, следовательно,
+$$
+|G(1)|=|F(1)|=\left|\left\{kg\left|{k}\in\overline{1,p^m}:\ord{kg}=\frac{\ord{g}}{(k,\ord{g})}=\frac{p^m}{(k,p^m)}=p\right.\right\}\cup\{0\}\right|=
+|\{k\in\overline{1,p^m}\mid{p}^{m-1}=(k,p^m)\}|+1=|\{k\in\overline{1,p}\mid(k,p)=1\}|+1=\varphi(p)+1=p.
+$$ 
+$3)\Rightarrow1)$ Докажем индукцией по $m$.
+<ol type="I">
+<li>При $m=1$ 
+$$\exp{G}=p\Rightarrow\forall{h}\in{G}:ph=0\Rightarrow{G}=G(1)\Rightarrow|G|=|G(1)|=p.$$
+С другой стороны, по условию 
+$$\ord{g}=\exp{G}=p\Rightarrow(|\langle{g}\rangle|=p\,\wedge\,\langle{g}\rangle&lt;G)\Rightarrow\langle{g}\rangle=G.$$
+</li>
+<li>Для любого $t\geq1$ докажем, что если утверждение верно при $1\leq{m}\leq{t}$, то оно верно при $m=t+1$.<br>
+Обозначим $H:=G(m-1)$ и фиксируем $h_1,h_2\in{H}$, тогда
+$$
+(\ord{h}_1|p^{m-1}\,\wedge\,\ord{h}_2|p^{m-1})\Rightarrow\ord{(h_1+h_2)}=[h_1,h_2]\bigl|{p}^{m-1}\Rightarrow{h}_1+h_2\in{H}.
+$$
+Следовательно, в силу произвола выбора $h_1h_2\in{H}$ по <a href="./discrete_math9.4.html#Corollary9.7">следствию 9.7</a> $H&lt;G$. 
+Так как для любого $h\in{H}$ $\ord{h}|p^{m-1}$, то $\exp{H}\leq{p}^{m-1}$.
+С другой стороны, обозначим $h:=pg$, тогда по п. 3 <a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$
+\ord{h}=\frac{\ord{g}}{(p,\ord{g})}=\frac{p^m}{(p,p^m)}=\frac{p^m}{p}=p^{m-1}\Rightarrow\ord{h}|p^{m-1}\Rightarrow{h}\in{H},
+$$
+следовательно, $\exp{H}=p^{m-1}$.<br>
+Пусть $f\in{G}(1)$, тогда
+$$pf=0\Rightarrow\exists{k}\in\overline{1,p}:f=kp^{m-1}g\Rightarrow{f}\in{H},$$
+следовательно, $H(1)=G(1)$.<br>
+Таким образом, группа $H$ и элемент $h$ удовлетворяют условиям теоремы при показателе степени $m-1\leq{m}$, 
+следовательно, по предположению индукции $H=\langle{h}\rangle$. Тогда для любого $f\in{G}$
+$$
+pf\in{H}\Rightarrow\exists{r}\in\mathbb{Z}:pf=rh=rpg\Rightarrow{p}(f-rg)=0\Rightarrow\\
+\Rightarrow{f}-rg\in{G}(1)=H(1)\subset{H}=\langle{h}\rangle\Rightarrow\exists{s}\in\mathbb{Z}:f-rg=spg\Rightarrow{f}=(r+sp)g\in\langle{g}\rangle.
+$$
+Таким образом, в силу произвола выбора $f\in{G}$ $G\subset\langle{g}\rangle$ и $G=\langle{g}\rangle$.
+</li>
+</ol>
+<p id="Theorem10.7"><b>Теорема 10.7:</b><br>
+Пусть $G$ - конечная абелева группа, $p$ - простое число, $g\in{G}$ $\exp{G}=\ord{g}=p^m$, тогда существует подгруппа $H&lt;G$ такая, 
+что $G=\langle{g}\rangle\dotplus{H}$.
+<p><b>Доказательство:</b><br><br>
+Докажем от противного, что существует $n\in\mathbb{N}$ такое, что $|G|=p^n$. Без ограничения общности будем считать, 
+что в каноническое разложение числа $|G|$ входит два простых числа.  Пусть существуют простое число 
+$q\neq{p}$ и $k\in\mathbb{N}$ такое, что $|G|=p^nq^k$, тогда по теореме 9.31 существует подгруппа $H&lt;G$ такая, что $|H_1|=q^k$. 
+И так как $\exp{G}\bigl||H|$, то $n\geq{m}$ и существует подгруппа $H_2&lt;G$ такая, что $|H_2|=p^n$.   
+По <a href="./discrete_math10.1.html#Theorem10.4">теореме 10.4</a> $G=H_1\dotplus{H}_2$. Cуществуют $h_2\in{H}_2$, $s\in\overline{1,k-1}$ такие, 
+что $\ord{h}_2=q^s$ и по п. 2 теоремы 9.17 существует $h_1\in{H}_1$ такой, что $\ord{h}_1=\exp{G}=p^m$, тогда 
+$$\ord{(h_1+h_2)}=[\ord{h}_1,\ord{h}_2]=q^mp^s>q^m\Rightarrow\exp{G}=exp{(H_1\dotplus{H}_2)}>p^m.$$
+Получено противоречие. Таким образом, существует $n\in\mathbb{N}$ такое, что ${n\geq{m}}$ и $|G|=p^n$. Докажем утверждение индукцией по $n$.
+<ol type="I">
+<li>При $n=1$ $m=1$, $|G|=\ord{g}=p$ $G=\langle{g}\rangle\dotplus\{0\}$.</li>
+<li>Для любого $j\geq1$ докажем, что из справедливости утверждения при $n\in\overline{1,j}$, следует справедливость утверждения при $n=j+1$.<br>
+Если $G=\langle{g}\rangle$, то доказано, пусть $G\neq\langle{g}\rangle$. Тогда по теореме 10.6 существует $\xi\in{G}(1)\backslash\langle{g}\rangle$, 
+тогда $\ord{\xi}=p$. Обозначим $\overline{G}:=G/\langle{g}\rangle$, тогда
+$$
+|\overline{G}|=\frac{|G|}{|\langle\xi\rangle|}=\frac{p^n}{p}=p^{n-1}
+$$
+Пусть $\varphi:{G}\to\overline{G}$ - естественных эпиморфизм, тогда
+$$\forall{x}\in{G}(\overline{x}:=\varphi(x)=x+\langle\xi\rangle),$$
+и 
+$$\forall{x}\in{G}(p^m\overline{x}=p^m\varphi(x)=\varphi(p^mx)=\varphi(0)=\overline{0})\Rightarrow\exp{\overline{G}}\leq{p}^m.$$
+Так как $\ord{\overline{g}}\bigl||\overline{G}|=p^{n-1}$ и $\ord{\overline{g}}|\exp{\overline{G}}\leq{p}^m$, то $\ord{\overline{g}}|p^m$. 
+Предположим, что $\ord{\overline{g}}&lt;p^m$, тогда
+$$
+\ord{\overline{g}}|p^{m-1}\Rightarrow\varphi(p^{m-1}g)={p}^{m-1}\overline{g}=\overline{0}\Rightarrow
+{p}^{m-1}g\in\ker{\varphi}=\langle{\xi}\rangle\Rightarrow\langle{p}^{m-1}g\rangle<\langle\xi\rangle,
+$$
+при этом 
+$$
+|\langle{p}^{m-1}g\rangle|=\ord{(p^{m-1}g)}=\frac{\ord{g}}{(p^{m-1},\ord{g})}=\frac{p^m}{(p^{m-1},p^m)}=\frac{p^m}{p^{m-1}}=
+p=\ord{\xi}=|\langle\xi\rangle|,
+$$
+таким образом, $\langle{p}^{m-1}g\rangle=\langle\xi\rangle$. Следовательно, $\xi\in\langle{p}^{m-1}g\rangle<\langle{g}\rangle$, 
+то есть $\xi\in\langle{g}\rangle$, что противоричит выбору $\xi\in{G}(1)\backslash\langle{g}\rangle$.<br>
+Таким образом, доказано, что $\ord{\overline{g}}=p^m=\exp{\overline{G}}$. Так как $|\overline{G}|=p^{n-1}$, 
+то по предположению индукции существует подгруппа $\overline{H}&lt;\overline{G}$ такая, что 
+$\overline{G}=\langle\overline{g}\rangle\dotplus\overline{H}$. Обозначим $H:=\varphi^{-1}(\overline{H})$, 
+тогда по п. 2  <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25</a> $H&lt;G$. Докажем, что $G\subset\langle{g}\rangle+H$, 
+действительно по п. 3 <a href="./discrete_math9.6.html#Theorem9.18">теоремы 9.18</a> и <a href="./discrete_math9.8.html#Statement9.8">утверждению 9.8</a>
+$$
+f\in{G}\Rightarrow\overline{f}\in\overline{G}=\langle\overline{g}\rangle+\overline{H}\Rightarrow
+\exists{s}\in\mathbb{Z}\,h\in{H}:\overline{f}=s\overline{g}+\overline{h}=\overline{sg+h}\Rightarrow
+{f}+\langle\xi\rangle=(sg+h)+\langle\xi\rangle\Rightarrow{f}-(sg+h)\in\langle\xi\rangle=\ker{\varphi}&lt;H\Rightarrow
+{h}_1:=f-(sg+h)\in{H}\Rightarrow{f}=sg+(h_1+h)\in\langle{g}\rangle+H.
+$$
+Таким образом, $G\subset\langle{g}\rangle+H$ и так как обратное включение очевидно, то $G=\langle{g}\rangle+H$. 
+С помощью п. 3 <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12</a> докажем, что сумма прямая. Действительно
+$$
+t\in\langle{g}\rangle\cap{H}\Rightarrow\overline{t}\in\langle\overline{g}\rangle\cap\overline{H}=\{\overline{0}\}\Rightarrow\overline{t}=
+\overline{0}\Rightarrow{t}\in\langle\xi\rangle\Rightarrow\langle{t}\rangle&lt;\langle\xi\rangle
+$$
+Так как $|\langle\xi\rangle|=\ord{\xi}=p$ - простое число и $|\langle{t}\rangle|\bigl||\langle\xi\rangle|$, то либо $t=0$, 
+либо $|\langle{t}\rangle|=p$ и $\langle{t}\rangle=\langle\xi\rangle$, но последнее не возможно так как 
+$$(t\in\langle{g}\rangle\,\wedge\,\langle\xi\rangle=\langle{t}\rangle)\Rightarrow\xi\in\langle{t}\rangle<\langle{g}\rangle$$
+где последнее противоречит выбору $\xi\in{G}(1)\backslash\langle{g}\rangle$. Следовательно, $t=0$ и $\langle{g}\rangle\cap{H}=\{0\}$, 
+тогда по п. 3 <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12</a> $G=\langle{g}\rangle\dotplus{H}$.
+</li>
+</ol>
+<p id="Theorem10.8"><b>Теорема 10.8:</b><br>
+Любая неединичная конечная абелева группа либо примарная циклическая, либо раскладывается в прямую сумму примарных циклических подгрупп. 
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть группа $G$ примарная, то есть $|G|=p^n$. Докажем индукцией по $n$, что она либо циклическая, 
+либо раскладывается в прямую сумму циклических подгрупп.
+<ol type="I">
+<li>При $n=1$ для любого $g\in{G}\backslash\{0\}$ $\ord{g}=p$, то есть $G=\langle{g}\rangle$.</li>
+<li>Для любого $t\geq1$ докажем, что если утверждение верно при $n\in\overline{1,t}$, то оно верно при $n=t+1$.<br>
+Так как $\exp{G}\bigl||G|$, то существует $m\in\overline{1,n}$ такое, что $\exp{G}=p^m$. Так как группа $G$ абелева, 
+то по п. 2 <a href="./discrete_math9.6.html#Theorem9.17">теоремы 9.17</a> существует ${g\in{G}}$ такой, что $\ord{g}=\exp{G}=p^m$, 
+тогда по теореме 10.7 сущетсвует подгруппа $H&lt;G$ такая, что $G=\langle{g}\rangle\dotplus{H}$. Так как сумма прямая, то
+$$|G|=|\langle{g}\rangle||H|\Rightarrow|H|=\frac{|G|}{\ord{g}}=\frac{p^n}{p^m}=p^{n-m}&lt;p^n.$$
+Тогда если $H=\{0\}$, то доказано, если $H\neq\{0\}$, то по предположению индукции 
+$$
+\exists{g}_1,\ldots,g_s\in{H}:(H=\langle{g}_1\rangle\dotplus\cdots\dotplus\langle{g}_s\rangle)\Rightarrow
+{G}=\langle{g}\rangle\dotplus\langle{g}_1\rangle\dotplus\cdots\dotplus\langle{g}_s\rangle.
+$$
+Так как для любого $i\in\overline{1,s}$ $\langle{g}_i\rangle&lt;H&lt;G$, то $|\langle{g}_i\rangle|\bigl|p^n$, то есть группа $\langle{g}_i\rangle$ примарная. 
+</li>
+</ol>
+<li>Пусть порядок группы $G$ натуральное число $n&gt;1$ с каноническим разложением $n=p_1^{k_1}\cdots{p}_s^{k_s}$, 
+тогда по <a href="./discrete_math10.1.html#Theorem10.4">теореме 10.4</a> $G=G_{p_1}\dotplus\cdots\dotplus{G}_{p_s}$. 
+Так как для любого $i\in\overline{1,s}$ группа $G_{p_i}$ примарная и абелева, то по пункту 1 
+$$
+\exists{g}_{i,1},\ldots,g_{i,l_i}\in{G}\,\alpha_{i,1},\ldots,\alpha_{i,l_i}\in\mathbb{N}:
+(G_{p_i}=\langle{g}\rangle\dotplus\cdots\dotplus\langle{g}\rangle\,\wedge\,\forall{j}\in\overline{1,l_i}(|\langle{g}_{i,j}\rangle|=p_i^{\alpha_{i,j}})),
+$$
+следовательно,
+$$G=\langle{g}_{1,1}\rangle\dotplus\langle{g}_{1,2}\rangle\dotplus\cdots\dotplus\langle{g}_{1,l_1}\rangle\dotplus
+\langle{g}_{2,1}\rangle\dotplus\cdots\dotplus\langle{g}_{s,l_s}\rangle,$$
+где все подгруппы входящие в сумму примарные.
+</li>
+</ol>
+<p id="Example10.3"><b>Пример 10.3:</b><br>
+По теореме 10.8 существует разложение абелевой группы в прямую сумму её примарных циклических подгрупп, но такое разложение не обязательно единственно. 
+Например, рассмотрим группу $G:=\mathbb{Z}/2\oplus\mathbb{Z}/2$. Подгруппы<br>
+$G_1:=\{(0,0),(1,0)\}=\langle(1,0)\rangle$,<br>
+$G_2:=\{(0,0),(0,1)\}=\langle(0,1)\rangle$,<br>
+$G_3=\{(0,0),(1,1)\}=\langle(1,1)\rangle$<br>
+приманые циклические и при этом 
+$$G=G_1\dotplus{G}_2=G_1\dotplus{G}_3=G_2\dotplus{G}_3.$$
+<p id="Note10.2"><b>Замечание 10.2:</b><br>
+Пусть $G$ абелева группа $|G|=n$ и $n=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение, тогда $G=G_{p_1}\dotplus\cdots\dotplus{G}_{p_s}$ и 
+$$
+\forall{i}\in\overline{1,s}(\exists{g}_{i,1},\ldots{g}_{i,l_i}\in{G}_{p_i}\,\alpha_{i,1}\ldots\alpha_{i,l_i}\in\mathbb{N}:
+G_{p_i}=\langle{g}_{i,1}\rangle\dotplus\cdots\dotplus\langle{g}_{i,l_i}\rangle\,\wedge\,\forall{j}\in\overline{1,l_i}(|\langle{g}_{i,j}\rangle|=
+p_i^{\alpha_{i,j}})).
+$$ 
+По п. 1 <a href="./discrete_math10.1.html#Theorem10.1">теоремы 10.1</a>
+$$\forall{i}\in\overline{1,s}\,j\in\overline{1,l_i}(\langle{g}_{i,j}\rangle\cong\mathbb{Z}/{p}_i^{\alpha_{i,j}}),$$
+тогда по <a href="./discrete_math9.13.html#Statement9.9">утверждению 9.9</a>
+$$
+G\cong\bigoplus_{i=1}^s\bigoplus_{j=1}^{l_i}\langle{g}_{i,j}\rangle\cong\bigoplus_{i=1}^s\bigoplus_{j=1}^{l_i}\mathbb{Z}/p_i^{\alpha_{i,j}}.
+$$
+<p id="Definition10.1"><b>Определение 10.1:</b><br>
+Пусть $G$ - абелева группа, $p_1,\ldots,p_s$ - простые числа такие, что $p_1&gt;p_2>\cdots&gt;{p}_s$, 
+для любого $i\in\overline{1,s}$ $\alpha_{i,1},\alpha_{i,2},\ldots,\alpha_{i,l_i}\in\mathbb{N}$ такие, что 
+$\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq\alpha_{i,l_i}$ и
+$$G\cong\bigoplus_{i=1}^s\bigoplus_{j=1}^{l_i}\mathbb{Z}/p_i^{\alpha_{i,j}},$$
+тогда упорядоченный набор 
+$$\typ{G}:=(p_1^{\alpha_{1,1}},p_1^{\alpha_{1,2}},\ldots,p_1^{\alpha_{1,l_1}},p_2^{\alpha_{2,1}},\ldots,p_s^{\alpha_{s,l_s}})$$
+назовем типом абелевой группы $G$. 
+<p id="Theorem10.9"><b>Теорема 10.9:</b><br>
+Тип абелевой группы определен однозначно.
+<p><b>Доказательство:</b><br><br>
+Предположим, что у абелевой группы $G$ существует два типа 
+$$\typ{G}=(p_1^{\alpha_{1,1}}\cdots{p}_1^{\alpha{1,l_1}}p_2^{\alpha_{2,1}}\cdots{p}_s^{\alpha_{s,l_s}})=
+(q_1^{\beta_{1,1}}\cdots{q}_1^{\beta_{1,t_1}}q_2^{\beta_{2,1}}\cdots{q}_r^{\beta_{r,t_r}}).$$
+Обозначим, 
+$$G_1:=\bigoplus_{i=1}^s\bigoplus_{j=1}^{l_i}\mathbb{Z}/p_i^{\alpha_{i,j}},G_2:=\bigoplus_{i=1}^r\bigoplus_{j=1}^{t_i}\mathbb{Z}/p_i^{\beta_{i,j}},$$
+тогда $G\cong{G}_1\cong{G}_2$. Для всех допустимых $i,j$ обозначим $T_{i,j}:=\mathbb{Z}/p_i^{\alpha_{i,j}}$, $K_{i,j}:=\mathbb{Z}/q_i^{\beta_{i,j}}$.
+<ol>
+<li>По п. 4 <a href="./discrete_math9.13.html#Theorem9.32">теоремы 9.32</a>
+$$
+\exp{G}=\exp{G}_1=[\exp{T_{1,1}},\ldots,\exp{T_{1,l_1}},\exp{T_{2,1}},\ldots,\exp{T_{s,l_s}}]=
+[p_1^{\alpha_{1,1}},\ldots,p_1^{\alpha_{1,l_1}},p_2^{\alpha_{2,1}},\ldots,p_s^{\alpha_{s,l_s}}]=
+p_1^{\alpha_{1,1}}p_2^{\alpha_{2,1}}\cdots{p}_s^{\alpha_{s,1}}
+$$
+$$
+\exp{G}=\exp{G}_2=[\exp{K_{1,1}},\ldots,\exp{K_{1,t_1}},\exp{K_{2,1}},\ldots,\exp{K_{r,t_r}}]=
+[q_1^{\beta_{1,1}},\ldots,q_1^{\beta_{1,t_1}},q_2^{\beta_{2,1}},\ldots,q_r^{\beta_{r,t_r}}]=
+q_1^{\beta_{1,1}}q_2^{\beta_{2,1}}\cdots{q}_r^{\beta_{r,1}},
+$$
+следовательно, по единственности канонического разложения числа $\exp{G}$, $r=s$ и для любого $i\in\overline{1,s}$ $p_i=q_i$, $\alpha_{i,1}=\beta_{i,1}$. 
+</li>
+<li>Так как $G_1\cong{G}_2$, то для любого $i\in\overline{1,s}$ число элементов $G_1$, порядок которых делит $p_i$, равно числу элементов $G_2$, 
+порядок которых делит $p_i$. Число таких элементов равно произведению чисел таких элементов в каждом из слагаемых. 
+Для любого $i\in\overline{1,s}$ в группе  $T_{u,v}<G_1$ число элементов, порядок которых равен $1$ или $p_i$, 
+равно $p_i$, если $u=i$ и $1$ если $u\neq{i}$. Таким образом, для любого $i\in\overline{1,s}$ число элементов $G_1$, 
+порядок которых делит $p_i$ равно $p_i^{l_i}$. Аналогично, для любого $i\in\overline{1,s}$ число элементов $G_2$, порядок которых делит $p_i$, 
+равно $p_i^{t_i}$. Следовательно, для любого $i\in\overline{1,s}$ 
+$l_i=t_i$.
+</li>
+<li>Докажем от противного, что для любых допустимых $i,j$ $\alpha_{i,j}=\beta_{i,j}$. Предположим, 
+что существуют $i\in\overline{1,s}$ $j\in\overline{1,l_i}$ такие, что для любых $u\in\overline{1,j-1}$ $\alpha_{i,u}=\beta_{i,u}$ и 
+$\alpha_{i,j}\neq\beta_{i,j}$. Обозначим $\beta:=\beta_{i,j}$ и без ограничения общности будем считать, что $\alpha_{i,j}>\beta$. 
+Тогда для любого $u\in\overline{1,j}$ $p_i^{\beta}T_{i,u}\neq0$, следовательно, число элементов группы 
+$p_i^{\beta}G_1$, порядок которых делит $p_i$ не менее $p_i^j$. С другой стороны, для любого $u\in\overline{j,l_i}$ $p_i^{\beta}K_{i,u}=0$, 
+следовательно, число элементов группы $p_i^{\beta}G_2$, порядок которых делит $p_i$ не превосходит $p_i^{j-1}$. 
+Так как $p_i^{\beta}G_1\cong{p}_i^{\beta}G_2$, то получено противоречие.
+</li>
+</ol>
+<p id="Corollary10.5"><b>Следствие 10.5:</b><br>
+Две конечные абелевы группы изоморфны тогда и только тогда, тогда их типы равны.
+<p><b>Доказательство:</b><br><br>
+Пусть $G$, $H$ - конечные абелевы группы и
+$$\typ{G}=(p_1^{\alpha_{1,1}},\ldots,p_1^{\alpha_{1,l_1}},p_2^{\alpha_{2,1}},\ldots,p_s^{\alpha_{s,l_s}}),$$ 
+тогда так как тип определен однозначно, то
+$$
+G\cong{H}\Leftrightarrow{H}\cong{G}\cong\bigoplus_{i=1}^s\bigoplus_{j=1}^{l_i}\mathbb{Z}/p_i^{\alpha_{i,j}}\Leftrightarrow
+\typ{H}=(p_1^{\alpha_{1,1}},\ldots,p_1^{\alpha_{1,l_1}},p_2^{\alpha_{2,1}},\ldots,p_s^{\alpha_{s,l_s}})
+$$
+
+<br><br>
+<a href="discrete_math10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.1.html">next</a>
+</body>
+</html>

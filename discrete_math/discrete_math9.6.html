@@ -1,0 +1,310 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.6</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.8.html">next</a>
+<br>
+
+<h4 id="9.6">9.6 Порядок элемента и экспонента группы.</h4>
+<p id="Definition9.21"><b>Определение 9.21:</b><br>
+Порядком элемента $g$ группы $(G;\cdot)$ называется минимальное $k\in\mathbb{N}$ такое, что $g^k=1$. Если такого $k$ не существует, 
+то порядок элемента $g$ равен $\infty$. Порядок элемента $g$ обозначают $\ord{g}$.  
+<p id="Example9.15"><b>Пример 9.15:</b><br>
+<ol>
+<li>В группе $(\mathbb{Z}/n;+)$ $\ord{[1]_n}=n$.</li>
+<li>Для любой группы $G$ $\ord{e}=1$.</li>
+<li>В группе $(\mathbb{Z};+)$ для любого $a\in\mathbb{Z}\backslash\{0\}$ $\ord{a}=\infty$.</li>
+<li>В бесконечной группе $\mathbb{C}(p^{\infty})$ любой элемент имеет конечный порядок.</li>
+</ol>
+<p id="Statement9.5"><b>Утвержедние 9.5:</b><br>
+$$|G|<\infty\Rightarrow\forall{g}\in{G}(\ord{g}<\infty).$$
+<p><b>Доказательство:</b><br><br>
+В последовательности элементов $g^1,g^2,\ldots,g^n,\ldots$ из $G$ конечное число различных элементов. Следовательно, 
+$$\exists{k},t\in\mathbb{N}:(k&lt;t\,\wedge\,g^k=g^t)\Rightarrow{g}^{t-k}=g^tg^{-k}=g^kg^{-k}=e\Rightarrow\ord{g}\leq{t}-k.$$
+<p id="Theorem9.16"><b>Теорема 9.16:</b><br>
+Пусть $(G;\cdot)$ - группа, $g\in{G}$, $\ord{g}=m&lt;\infty$, тогда
+<ol>
+<li>$g^{-1}=g^{m-1}$,</li>
+<li>$\forall{k}\in\mathbb{Z}(g^k=e\Leftrightarrow{m}|k)$,</li>
+<li>$\forall{k}\in\mathbb{Z}\left(\ord{g^k}=\frac{m}{(m,k)}\right)$,</li>
+<li>$\forall{h}\in{G}(\ord{h}=t<\infty\,\wedge\,(m,t)=1\,\wedge\,gh=hg)\Rightarrow\ord{gh}=mt)$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>$e=g^m=gg^{m-1}=g^{m-1}g\Rightarrow{g}^{m-1}=g^{-1}$.</li>
+<li><br>
+$\Rightarrow)$ Пусть $k\in\mathbb{Z}$ такое, что  $g^k=e$. Поделим $k$ на $m$ с остатаком, тогда существуют $q,r\in\mathbb{Z}$ такие, 
+что $k=mq+r$ и $0\leq{r}&lt;m$, тогда
+$$e=g^k=g^{mq+r}=(g^m)^rq^r=g^r.$$
+Так как $m$ минимальное натуральное такое, что $g^m=e$, то $r=0$.<br>
+$\Leftarrow)$ $m|k\Rightarrow\exists{q}\in\mathbb{Z}:{k}=mq\Rightarrow{g}^k=(g^m)^q=e$.
+</li>
+<li>Пусть $k\neq0$. Обозначим $f:=g^k$, тогда по пункту 2 и по пп. 2, 4 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a>, 
+тогда для любого $u\in\mathbb{N}$
+$$
+f^u=e\Rightarrow{g}^{ku}=e\Leftrightarrow{m}|ku\Leftrightarrow\left.\frac{m}{(m,k)}\right|\frac{k}{(m,k)}u\Leftrightarrow\left.\frac{m}{(m,k)}\right|u.
+$$
+Таким образом, $\ord{f}=\frac{m}{(m,k)}$.<br>
+Если $k=0$, то 
+$$g^k=e\Rightarrow\ord{g^k}=1=\frac{m}{m}=\frac{m}{(m,k)}.$$
+</li>
+<li>Обозначим $k:=\ord{gh}$, тогда по пункту 2
+$$gh=hg\Rightarrow(gh)^{mt}=g^{mt}h^{mt}=e\Rightarrow{k}|mt.$$
+По пункту 3
+$$
+(gh)^k=e\Rightarrow{g}^k=h^{-k}\Rightarrow\ord{g}^k=\ord{h^{-k}}\Rightarrow\frac{m}{(m,k)}=\frac{t}{(t,k)}.
+$$
+$$
+(m,t)=1\Rightarrow\left(\frac{m}{(m,k)},\frac{t}{(t,k)}\right)=1\Rightarrow\frac{m}{(m,k)}=\frac{t}{(t,k)}=1\Rightarrow
+((m,k)=m\,\wedge\,(t,k)=t)\Rightarrow(m|k\,\wedge\,t|k\,\wedge\,(m,t)=1)\Rightarrow{mt|k}.
+$$
+Таким образом, $k|mt$ и $mt|k$, следовательно, $mt=k:=\ord{gh}$
+</li>
+</ol>
+<p id="Lemma9.2"><b>Лемма 9.2:</b><br>
+Пусть подстановки $g,h\in{S}_n$ независимы (<a href="./discrete_math9.3.html#Definition9.11">определение 9.11</a>), тогда $\ord{gh}=[\ord{g},\ord{h}]$.
+<p><b>Доказательство:</b><br>
+Обозначим $m:=\ord{g}$, $t:=\ord{h}$, $k:=\ord{gh}$. По п. 3 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a> 
+независимые подстановки перестановочны, следовательно
+$$(m|[m,t]\,\wedge\,t|[m,t])\Rightarrow(gh)^{[m,t]}=g^{[m,t]}h^{[m,t]}=\varepsilon\Rightarrow{k}|[m,t].$$
+С другой стороны, по п. 5 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a> подстановки $g^k$, $h^k$ независимы, 
+тогда по п. 4 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a>
+$$
+(gh)^k={g}^kh^k=\varepsilon\Rightarrow{g}^k=h^k=\varepsilon\Rightarrow(m|k\,\wedge\,t|k)\Rightarrow[m,t]|k
+$$
+Таким образом, $k|[m,t]$ и $[m,t]|k$, следовательно, $[m,t]=k$
+<p id="Statement9.6"><b>Утверждение 9.6:</b><br>
+Пусть $g\in{S}_n$ такая, что $g=h_1\cdots{h}_s$, где для любого $i\in\overline{1,s}$ $h_i$ - попарнонезависимые циклы длины $l_i$, 
+тогда $\ord{g}=[l_1,\ldots,l_s]$.
+<p><b>Доказательство:</b><br>
+Пусть $s=1$, то есть $g=(\alpha_0,\ldots,\alpha_{l-1})$ - независимый цикл длины $l$. Для любого $i\in\overline{0,l-1}$ $g(\alpha_i)=\alpha_j$, 
+где $j\equiv{i}+1\pmod{l}$. Индукцией по $m$ нетрудно доказать, что для любого 
+$m\in\mathbb{N}$, для любого $i\in\overline{0,l-1}$ $g^m(\alpha_i)=\alpha_j$, где $j\equiv{i+m}\pmod{l}$. Тогда
+$$
+g^m=\varepsilon\Leftrightarrow\forall{i}\in\overline{0,l-1}(g^m(\alpha_i)=\alpha_i)\Leftrightarrow
+\forall{i}\in\overline{0,l-1}(i+m\equiv{i}\pmod{l})\Leftrightarrow{m}\equiv0\pmod{l}\Leftrightarrow{l}|m.
+$$
+Следовательно, $\ord{g}=l$.<br>
+Таким образом, по лемме 9.2, если $g=h_1\dots{h}_s$, то 
+$$\ord{g}=[\ord{h_1},\ldots,\ord{h_s}]=[l_1,\ldots,l_s].$$
+<p id="Note9.3"><b>Замечание 9.3:</b><br>
+Если $\ord{g}=m<\infty$, то для любого $k\in\mathbb{Z}$ существует $r\in[0,m)$ такое, что $q^k=q^r$. Тогда по 
+<a href="./discrete_math9.4.html#Corollary9.10">следствию 9.10</a>
+$$\langle{g}\rangle=\{g^k\mid{k}\in\mathbb{Z}\}=\{g^k\mid{k}\in\overline{0,m-1}\}\Rightarrow|\langle{g}\rangle|=\ord{g}.$$
+<p id="Definition9.22"><b>Определение 9.22:</b><br>
+Экспонентой группы $G$ называется минимальное ${k\in\mathbb{N}}$ такое, что для любого $g\in{G}$ $g^k=e$. Если такого $k$ не существует, 
+то экспонента группы равна $\infty$.<br>
+Экспонента группы $G$ обозначается $\exp{G}$.
+<p id="Note9.4"><b>Замечание 9.4:</b><br>
+$$\exp{G}<\infty\Rightarrow\forall{g}\in{G}(\ord{g}|\exp{G}).$$
+<p id="Example9.16"><b>Пример 9.16:</b><br>
+<ol>
+<li>Для любого $g\in\mathbb{C}(p^{\infty})$ $\ord{g}<\infty$, однако, $exp{\mathbb{C}(p^{\infty})}=\infty$.</li>
+<li>Так как для любого $f(x)\in{G}F(2)[x]$ $f(x)+f(x)=0$, то ${\exp(GF(2);+)=2}$.</li>
+<li>Так как в группе $(\mathbb{Z}/n;+)$ $\ord{[1]_n}=n$ и для любого $g\in\mathbb{Z}/n$ $ng=0$, то $\exp{(\mathbb{Z}/n;+)}=n$.</li>
+<li>Для любого $g\in\mathbb{Z}\backslash\{0\}$ и для любого $n\in\mathbb{N}$ $ng\neq0$, следовательно, 
+в группе $(\mathbb{Z};+)$ $\ord{g}=\infty$ и $\exp{(\mathbb{Z};+)}$. 
+</li>
+</ol>
+<p id="Theorem9.17"><b>Теорема 9.17:</b><br>
+<ol>
+<li>Если группа $G=\{g_1,\ldots,g_n\}$ конечна, то $\exp{G}=[\ord{g_1},\ldots,\ord{g_n}]$.</li>
+<li>Если группа $G$ абелева, $\exp{G}=t<\infty$, то существует $g\in{G}$ такой, что $\ord{g}=t$.</li> 
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Обозначим $m:=[m_1,\ldots,m_n]$, $t:=\exp{G}$ и для любого $i\in\overline{1,n}$ обозначим $m_i:=\ord{g_i}$. 
+Тогда по п. 2 <a href="./discrete_math9.6.html#Theorem9.16">теоермы 9.16</a> и определению экспоненты
+$$\forall{i}\in\overline{1,n}(m_i|m)\Rightarrow\forall{i}\in\overline{1,n}(g_i^m=e)\Rightarrow{m}\geq{t}.$$
+С другой стороны, по тем же основаниям и определению НОК
+$$\forall{i}\in\overline{1,n}(g_i^t=e)\Rightarrow\forall{i}\in\overline{1,n}(m_i|t)\Rightarrow{m}|t\Rightarrow{m}\leq{t}.$$
+Таким образом, m=t.
+</li>
+<li>Пусть $t=p_1^{k_1}\cdots{p}_s^{k_s}$ - каноническое разложение числа $t$. Докажем от противного, 
+что для любого $i\in\overline{1,s}$ существует $g_i\in{G}$ такой, что $p_i^{k_i}|\ord{g_i}$. Предположим, что существует 
+$j\in\overline{1,s}$ такой, что для любого $g\in{G}$ $p_j^{k_j}\nmid\ord{g}$, тогда
+$$
+\forall{g}\in{G}(\ord{g}|t)\Rightarrow\forall{g}\in{G}\,\exists{r}_1,\ldots,r_s\in\mathbb{N}_0:\\(\ord{g}=p_1^{r_1}\cdots{p}_j^{r_j}\cdots{p}_s^{r_s}\,
+\wedge\,\forall{i}\in\overline{1,s}(r_i\leq{k_i})\,\wedge\,r_j\leq{k}_j-1)\Rightarrow
+\forall{g}\in{G}(\ord{g}|p_1^{k_1}\cdots{p}_j^{k_j-1}\cdots{p}_s^{k_s})
+$$
+Обозначим $u:=p_1^{k_1}\cdots{p}_j^{k_j-1}\cdots{p}_s^{k_s}$, тогда для любого $g\in{G}$ $g^u=e$ и $u<t$, следовательно, 
+число $t$ не является экспонентой группы $G$. Таким образом доказано, что
+$$\forall{i}\in\overline{1,s}\,\exists{g}_i\in{G}:p_i^{k_i}|\ord{g_i}.$$
+Тогда по пп. 3, 4 <a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$
+\forall{i}\in\overline{1,s}\,\exists{g}_i\in{G}\,\exists{u}_i\in\mathbb{Z}:\ord{g_i}=p_i^{k_i}u_i\Rightarrow
+\forall{i}\in\overline{1,s}\,\exists{h}_i:=g^{u_i}:\ord{h}_i=\frac{p_i^{k_i}u_i}{(p_i^{k_i}u_i,u_i)}=p_i^{k_i}\Rightarrow
+\ord(h_1\cdots{h}_s)=p_1^{k_1}\cdots{p}_s^{k_s}=t
+$$
+</ol>
+<p id="Example9.17"><b>Пример 9.17:</b><br>
+В п. 2 теоремы 9.17 нельзя отказаться от абелевости группы $G$, например, рассмотрим симметрическую группу подстановок порядка 3. 
+По <a href="./discrete_math9.3.html#Theorem9.9">теореме 9.9</a> любая подстановка из $S_3$ раскладывается в произведение независимых циклов. 
+Следовательно, любая подстановка из $S_n$ имеет вид $(a,b,c)$, $(a)(b,c)$, $(a)(b)(c)$. 
+Тогда по <a href="./discrete_math9.6.html#Statement9.6">утверждению 9.6</a> для любого $g\in{S_n}$ $\ord{g}\in\{1,2,3\}$, следовательно, 
+по п.1 теоремы 9.17 $\exp{G}=6$, то есть для любого 
+$g\in{G}$ $\ord{g}\neq\exp{G}$.
+
+<h4 id="9.7">9.7 Смежные классы по подгруппе.</h4>
+<p id="Definition9.23"><b>Определение 9.23:</b><br>
+Пусть $(G;\cdot)$ - группа, $H<G$, $g\in{G}$, тогда множество $Hg:=\{hg\mid{h}\in{H}\}$ называется правым смежным классом группы $G$ по подмножеству $H$.<br>
+Аналогично, $gH$ - левый смежный класс группы $G$ по подмножеству $H$.
+<p id="Theorem9.18"><b>Теорема 9.18:</b><br>
+<ol>
+<li>Любые два правых (левых) смежных класса группы $G$ по подгруппе $H$ либо не пересекаются, либо совпадают.</li>
+<li>Группа $G$ раскладывается в объединение не пересекающихся правых (левых ) смежных классов по подгруппе $H$.</li>
+<li>$Hg_1=Hg_2\Leftrightarrow{g}_1g_2^{-1}\in{H}$,<br>
+$g_1H=g_2H\Leftrightarrow{g}_1^{-1}g_2\in{H}$.
+</li>
+<li>Любые два правых (левых) смежных класса группы $G$ по подгруппе $H$ равномощны.</li>
+<li>Множество правых смежных классов группы $G$ по подгруппе $H$ равномощно множеству левых смежных классов группы $G$ по подгруппе $H$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $Hg_1$ и $Hg_2$ пересекаются, то есть существует $h\in{H}g_1\cap{H}g_2$, тогда
+$$
+\exists{h}_1,h_2\in{H}:h_1g_1=h_2g_2=h\Rightarrow{g}_1=h_1^{-1}h_2g_2\Rightarrow{H}g_1=H(h_1^{-1}h_2g_2)=(H(h_1^{-1}h_2))g_2=Hg_2.
+$$
+</li>
+<li>Так как $e\in{H}$, то для любого $g\in{G}$ $g=ge\in{gH}$, тогда $G=\bigcup_{g\in{G}}gH$. 
+По пункту 1 все множества из объединения либо совпадают либо не пересекаются, тогда удалив из объединения дубликаты получим искомое разбиение. 
+</li>
+<li>
+$$Hg_1=Hg_2\Leftrightarrow{H}g_1g_2^{-1}=H{g}_2g_2^{-1}\Leftrightarrow{H}g_1g_2^{-1}=H\Leftrightarrow{g}_1g_2^{-1}\in{H}.$$
+Аналогично, доказывается для случая левых смежных классов.
+</li>
+<li>Докажем, что для любого $g\in{G}$ $|Hg|=|H|$. Рассмотрим отображение $\varphi:H\to{H}g$ такое, что для любого $h\in{H}$ $\varphi(h)=hg$. Так как 
+$$\varphi(h_1)=\varphi(h_2)\Rightarrow{h}_1g=h_2g\Rightarrow{h}_1=h_2,$$ 
+то отображение $\varphi$ биективно, следовательно, $|Hg|=|H|$.
+</li>
+<li>Обозначим $\mathcal{R}:=\{Hg\mid{g}\in{G}\}$, $\mathcal{L}:=\{gH\mid{g}\in{G}\}$. Рассмотрим отображение $\psi:\mathcal{R}\to\mathcal{L}$ такое, 
+что для любого $Hg\in\mathcal{R}$ $\psi(Hg)=g^{-1}H$.<br>
+Отображение $\psi$ - корректно и инъективно, так как по пункту 3
+$$
+Hg=Hg_1\Leftrightarrow{g}g_1^{-1}\in{H}\Leftrightarrow{g}^{-1}H=g_1^{-1}H\Leftrightarrow\psi(Hg)=\psi(Hg_1).
+$$
+Отображение $\psi$ - сюръективно, так как для любого класса $gH\in\mathcal{L}$ $\psi(Hg^{-1})=gH$.<br>
+Таким обрзаом отображение $\psi$ - биективно, следовательно, $|\mathcal{R}|=|\mathcal{L}|$.
+</li>
+</ol>
+<p id="Example9.18"><b>Пример 9.18:</b><br>
+<ol>
+<li>Если группа $G$ абелева, то для любой подгруппы $H&lt;G$ и для любого $g\in{G}$ $gH=Hg$.</li>
+<li>Пусть $G=S_3$, $H=\langle(1,2)\rangle=\{\varepsilon,(1,2)\}$, тогда 
+$$(1,2,3)H=\{(1,2,3),(2,3)\}\neq{H}(1,2,3)=\{(1,2,3),(1,3)\}.$$
+</li>
+<li>Пусть $m\in\mathbb{N}$, $a\in\mathbb{Z}$, тогда $a+m\mathbb{Z}=[a]_m$ и $\mathcal{R}=\mathcal{L}=\mathbb{Z}/m$.</li>
+<li>Пусть $\Gamma:=\{z\in\mathbb{C}\mid|z|=1\}$, тогда $(\Gamma;\cdot)<(\mathbb{C};\cdot)$. Пусть $a\in\mathbb{C}$, 
+тогда $a\Gamma=\{z\in\mathbb{C}\mid|z|=|a|\}$ и $\mathbb{C}^*=\bigcup_{b\in\mathbb{R}^+}b\Gamma$ - 
+разбиение мультипликативной группы поля $\mathbb{C}$ в объединение не пересекающихся смежных классов.
+</li>
+<li>Пусть $h$ - нечетная подстановка из $S_n$, тогда $S_n=A_n\cup{A}_nh$ - разбиение $S_n$ в объединение не пересекающихся смежных классов.</li>
+</ol>
+<p id="Corollary9.11"><b>Следствие 9.11:</b><br>
+Любой левый смежный класс группы  $G$ по подгруппе $H$ равномощен любому правому смежному классу группы $G$ по подгруппе $H$ и равномощен $H$.
+<p><b>Доказательство:</b><br>
+Следует из доказательства п. 4 теоремы 9.18. 
+<p id="Definition9.24"><b>Определение 9.24:</b><br>
+Индексом группы $G$ по подгруппе $H$ называется колличество правых (левых) смежных классов в разбиении группы $G$ на не пересекающиеся 
+смежные классы по подгруппе $H$.<br>
+Индекс группы $G$ по подгруппе $H$ обозначают как $|G:H|$.
+<br><br>
+Так как любые два смежных класса по одной и той же подгруппе равномощны, то определение корректно. 
+Любое разбиение группы $G$ по подгруппе $H$ будет содержать одно и то же количество смежных классов. 
+<p id="Example9.19"><b>Пример 9.19:</b><br>
+<ol>
+<li>$|\mathbb{Z}:n\mathbb{Z}|=n$.</li>
+<li>$|S_n:A_n|=2$.</li>
+<li>$|\mathbb{C}^*:\Gamma|=\infty$.</li>
+</ol>
+<p id="Corollary9.12"><b>Следствие 9.12: Теорема Лагранжа.</b><br>
+Если $|G|&lt;\infty$, $H&lt;G$, то $|H|\bigl||G|$ и $|G|=|H||G:H|$.
+<p><b>Доказательство:</b><br>
+Пусть $G_1\subset{G}$ и $G=\bigcup_{g\in{G}_1}gH$ разбиение группы $G$ в объединение не пересекающихся левых смежных классов. 
+Так как все левые смежные классы равномощны $H$, то
+$$|G|=\left|\bigcup_{g\in{G}_1}gH\right|=\sum_{g\in{G}_1}|gH|=\sum_{g\in{G}_1}|H|=|H||G_1|=|H||G:H|.$$
+<p id="Corollary9.13"><b>Следствие 9.13:</b><br>
+Если $|G|&lt;\infty$, $K&lt;H&ltG$, то $|G:K|=|G:H||H:K|$.
+<p><b>Доказательство:</b><br>
+По следствию 9.12
+$$|K||G:K|=|G|=|H||G:H|=|K||H:K||G:H|\Rightarrow|G:K|=|G:H||H:K|.$$
+<p id="Corollary9.14"><b>Следствие 9.14:</b><br>
+Если $|G|&lt;\infty$, $g\in{G}$, то $\ord{g}\bigl||G|$.
+<p><b>Доказательство:</b><br><br>
+Так как $|G|&lt;\infty$, то $k:=\ord{g}&lt;\infty$, тогда по <a href="./discrete_math9.4.html#Corollary9.10">следствию 9.10</a> 
+$\langle{g}\rangle=\{e,g,g^2,\ldots,g^{k-1}\}&lt;G$. Тогда $k=|\langle{g}\rangle|$ и по следствию 9.12 $k\bigl||G|$.
+<p id="Corollary9.15"><b>Следствие 9.15:</b><br>
+$$|G|&lt;\infty\Rightarrow\exp{G}\bigl||G|$$
+<p><b>Доказательство:</b><br>
+Пусть $G=\{g_1,\ldots,g_n\}$, тогда по следствию 9.14 и по <a href="./discrete_math9.6.html#Theorem9.17">теореме 9.17</a>
+$$\forall{i}\in\overline{1,n}(\ord{g_i}\bigl||G|)\Rightarrow\exp{G}=[\ord{g_1},\ldots,\ord{g_n}]\bigl||G|.$$
+<p id="Corollary9.16"><b>Следствие 9.16:</b><br>
+Если $p$ - простое число, $|G|=p$, то для любого $g\in{G}\backslash\{e\}$ $G=\langle{g}\rangle$.
+<p><b>Доказательство:</b><br><br>
+Пусть $g\neq{e}$, тогда $\ord{g}>1$ и по следствию 9.14 $\ord{g}\bigl||G|$, тогда $\ord{g}=p$. 
+Следовательно, $|\langle{g}\rangle|=p=|G|$ и $\langle{g}\rangle=G$.
+<p id="Example9.20"><b>Пример 9.20:</b><br>
+По следствию 9.12 мощность любой подгруппы делит мощность группы, однако обратное не верно. 
+Не для каждого делителя мощности группы существует подгруппа мощности равной этому делителю. 
+Например, рассмотрим группу $A_n$, её мощность равна  $|A_n|=\frac{4!}{2}=12$, однако не существует подгруппы группы $A_n$ порядка 6. 
+Докажем это от противного. Предположим, что существует группа $H<A_4$ такая, что $|H|=6$, тогда для любого $g\in{H}$ 
+$\ord{g}\bigl|6$, то есть $\ord{g}\in\{1,2,3,6\}$.
+<ol>
+<li>Группа $H&lt;A_4&lt;S_4$ не может содержать подстановки порядка 6, так как их нет в группе $S_4$. Так как в подстановке только четыре элемента, 
+то она может иметь только цикловую структуру $[2^2]$ или $[3]$ или равняться 
+$\varepsilon$. Таким образом по утверждению 9.6 для любого $g\in{S}_4$ $\ord{g}\in\{1,2,3\}$.
+</li>
+<li>Предположим, что все неединичные подстановки из $H$ имеют порядок $2$, тогда в $A_4$ как минимум пять подстановок с цикловой структурой $[2^2]$. 
+Но их там всего три $(1,2)(3,4)$, $(1,3)(2,4)$, $(1,4)(2,3)$, значит не все неединичные подстановки из $H$ имеют порядок $2$.
+</li>
+<li>Предположим, что все неединичные подстановки из $H$ имеют порядок $3$. Тогда для любого $g\in{H}\backslash\{\varepsilon\}$ по п. 3 
+<a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a> $\ord{g}=\ord{g}^{-1}$ и так как $\ord{g}=3$, то $g^2\neq1$, следовательно, 
+$g\neq{g}^{-1}$. То есть число подстановок порядка $3$ четно, тогда, так как $\varepsilon\in{H}$, то $|H|$ - нечетно, получено противоречие. 
+Таким образом не все неединичные подстановки $H$ имеют порядок $3$.
+</li>
+<li>Из пунктов 1-3 следует, что существуют подстановки $g,h\in{H}$ такие, что $\ord{g}=3$, $\ord{h}=2$, 
+обозначим их без ограничения общности $g:=(\alpha,\beta,\gamma)$, $h:=(\alpha,\beta)(\gamma,\delta)$. Тогда группа $H$ содержит следующие подстановки
+<ol type="a">
+<li>$\varepsilon$,</li>
+<li>$g=(\alpha,\beta,\gamma)$,</li>
+<li>$h=(\alpha,\beta)(\gamma,\delta)$,</li>
+<li>$g^{-1}=(\gamma,\beta,\alpha)$,</li>
+<li>$h^{-1}gh=(\beta,\alpha,\delta)$,</li>
+<li>$(h^{-1}gh)^{-1}=(\delta,\alpha,\beta)$,</li>
+<li>$g^{-1}hg=(\beta,\gamma)(\alpha,\delta)$.</li>
+</li>
+</ol>
+Таким образом $|H|&gt;6$, получено противоречие. 
+</li>
+</ol>
+<br>
+Заметим, что разбиение группы $G$ в объединение левых (правых) смежных классов порождает на множестве элементов группы $G$ отношение эквивалентности.
+
+<br><br>
+<a href="discrete_math9.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.8.html">next</a>
+</body>
+</html>

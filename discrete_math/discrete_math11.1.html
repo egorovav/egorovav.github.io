@@ -1,0 +1,305 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 11.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math10.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.3.html">next</a>
+<br>
+
+<h3 id="11">11 Векторные пространства.</h3>
+<h4 id="11.1">11.1 Введение.</h4>
+<p id="Definition11.1"><b>Определение 11.1:</b><br>
+Пусть $L,K$ - произвольные множества, тогда функция $\circ:L\times{K}\to{L}$ назввается внешенй операцией умножения справа (внешним умножением) 
+элементов множества $L$ на элементы множества $K$.
+<p id="Example11.1"><b>Пример 11.1:</b><br>
+Например, операция умножения матриц из $R_{m,n}$ на элементы кольца $R$ является внешним умножением.
+<p id="Definition11.2"><b>Определение 11.2:</b><br>
+Пусть $P$ - поле, $(L;+)$ - абелева группа, $\circ$ - внешнее умножение элементов группы $L$ на элементы поля $P$. 
+Тогда говорят, что группа $(L;+)$ является правым векторным пространством над полем $P$, если для любых 
+$\alpha,\beta\in{L}$, $a,b\in{P}$
+<ol>
+<li>$(\alpha\circ{a})\circ{b}=\alpha\circ(ab)$,</li>
+<li>$\alpha\circ(a+b)=\alpha\circ{a}+\alpha\circ{b}$,</li>
+<li>$(\alpha+\beta)\circ{a}=(\alpha\circ{a})+(\beta\circ{a})$,</li>
+<li>$\alpha\circ{e}=\alpha$, где $e$ - единица поля $P$.</li>
+</ol>
+Векторное пространство $L$ над полем $P$ обозначают $L_P$. Элементы $L$ называют векторами, элементы $P$ скалярами. 
+Нулевой вектор обычно обозначают $\theta$.<br>
+Аналогично определяется левое векторное пространство обозначаемое ${}_{P}{L}$.
+<p id="Task11.1"><b>Задача 11.1:</b><br>
+Доказать, что аксиомы определения 11.2 независимы, то есть привести примеры, когда три из них выполняются, а четвертая нет.<br>
+Решение.<br>
+<ol>
+<li>При $P:=GF(2)$, $L:=(P;+)$, для любых $\alpha\in{L}$, $k\in{P}$ $\alpha\circ{k}=0$ первые три аксиомы выполняются так как во всех равенствах 
+в правой и левой частях будет стоять 0, однако аксиома 4 не выполняется так как $1\circ1=0\neq{1}$.
+</li>
+<li>При $P:=GF(2)$, $L:=(P;+)$ и $0\circ0=0\circ1=0$, $1\circ0=1\circ1=1$ выполняются все аксиомы кроме аксиомы 2.</li>
+<li></li>
+<li></li>
+</ol>
+<p id="Example11.2"><b>Пример 11.2:</b><br>
+<ol>
+<li>$P_P^n$, $P_P^{(n)}$ - $n$-мерные арифметические пространства (<a href="./discrete_math4.3.html#Definition4.8">определение 4.8</a>),</li>
+<li>$(P_{m,n})_P$,
+<li>Пространство непрерывных функций заданных на отрезке над $\mathbb{R}$ $(C_{[a,b]})_{\mathbb{R}}$,
+<li>$P[x]_P$,</li>
+<li>$\mathbb{C}_{\mathbb{R}}$, $\mathbb{C}_{\mathbb{Q}}$, $\mathbb{R}_{\mathbb{Q}}$,</li>
+<li>если $\mathcal{D}_2$ множество векторов плоскости с началом в точке $(0,0)$, то $(\mathcal{D}_2)_{\mathbb{R}}$ - вектороное пространство, 
+аналогично $(\mathcal{D}_3)_{\mathbb{R}}$.
+</li>
+</ol>
+<p id="Theorem11.1"><b>Теорема 11.1:</b><br>
+$\forall\alpha\in{L}_P$, $a\in{P}$
+<ol>
+<li>$\alpha\circ{a}\Leftrightarrow(\alpha=\theta\,\vee\,a=0)$,</li>
+<li>$\alpha\circ(-a)=-(\alpha\circ{a})=(-\alpha)\circ{a}$,</li>
+<li>$(-\alpha)\circ(-a)=\alpha\circ{a}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>$\Leftarrow)$ Для любого $a\in{P}$ по аксиоме 3
+$$\theta\circ{a}=(\theta+\theta)\circ{a}=\theta\circ{a}+\theta\circ{a}\Rightarrow\theta\circ{a}=\theta.$$
+Для любого $\alpha\in{L}_P$ по аксиоме 2
+$$\alpha\circ0=\alpha\circ(0+0)=\alpha\circ0+\alpha\circ0\Rightarrow\alpha\circ0=\theta.$$
+$\Rightarrow)$ Пусть $\theta\circ{a}=\theta$ и $a\neq0$, тогда по аксиомам 1, 4 и доказанному выше
+$$\alpha\circ{e}=\alpha\circ(aa^{-1})=(\alpha\circ{a})\circ{a}^{-1}=\theta\circ{a}^{-1}=\theta\Rightarrow\alpha=\theta.$$
+Пусть $\alpha\circ{a}=\theta$ и $\alpha\neq\theta$, тогда если предположить, что $a\neq0$, то по доказанному выше $\alpha=\theta$, 
+что противоречит условию.
+</li>
+<li>По аксоме 2 и пункту 1
+$$\alpha\circ{a}+\alpha\circ(-a)=\alpha\circ(a+(-a))=\alpha\circ0=\theta.$$
+Аналогично $\alpha\circ(-a)+\alpha\circ{a}=\theta$, следовательно, $\alpha\circ(-a)=-(\alpha\circ{a})$.
+По аксиоме 3 и пункту 1
+$$\alpha\circ{a}+(-\alpha)\circ{a}=(\alpha+(-\alpha))\circ{a}=\theta\circ{a}=\theta.$$
+Аналогично $(-\alpha)\circ{a}+\alpha\circ{a}=\theta$, следовательно, $(-\alpha)\circ{a}=-(\alpha\circ{a})$.
+</li>
+<li>По пункту 2
+$$(-\alpha)\circ(-a)=-((-\alpha)\circ{a})=(-(-\alpha))\circ{a}=\alpha\circ{a}.$$
+</li>
+</ol>
+<p id="Definition11.3"><b>Определение 11.3:</b><br>
+Пусть $L_P$ - векторное пространство. Конечная не пустая система векторов $\alpha_1,\ldots,\alpha_k\in{L}_P$ называется линейно зависимой (ЛЗ), 
+если существуют $c_1,\ldots,c_k\in{P}$ не все равные нулю такие, что 
+$$\alpha_1\circ{c}_1+\cdots+\alpha_k\circ{c}_k=\theta.$$
+В противном случае система векторов называется линейно независимой (ЛНЗ).<br>
+Пустая система векторов считается линейно независимой.
+<p id="Definition11.4"><b>Определение 11.4:</b><br>
+Пусть $L_P$ - векторное пространство. Будем говорить, что вектор $\beta\in{L}_P$ линейно выражается через (ЛВЧ) систему векторов 
+$\alpha_1,\ldots,\alpha_k\in{L}_P$, если 
+$$\exists{b}_1,\ldots,b_k\in{P}:\alpha_1\circ{b}_1+\cdots+\alpha_k\circ{b}_k=\beta.$$
+<p id="Definition11.5"><b>Определение 11.5:</b><br>
+Пусть $L_P$ - векторное пространство. Подсистема $T$ конечной системы векторов $\alpha_1,\ldots,\alpha_k\in{L}_P$ называется её максимальной 
+линейно независимой подсистемой (МЛНП), если
+<ol>
+<li>подсистема $T$ линейно независима,</li>
+<li>для любого $i\in\overline{1,k}$ система $\{T,\alpha_i\}$ линейно зависима.</li>
+</ol>
+Базисом конечной системы векторов называется её упорядоченная МЛНП.
+<p id="Definition11.6"><b>Определение 11.6:</b><br>
+Пусть $L_P$ - вектрное пространство.<br>
+ Вектор $\alpha\in{L}_P$ линейно выражается через бесконечную систему векторов $S\subset{L}_P$, 
+если он линейно выражается через какую-либо конечную подсистему системы $S$.<br>
+Система векторов $S\subset{L}_P$ линейно выражается через систему векторов $T\subset{L}_P$, 
+если каждый вектор системы $S$ линейно выражается через систему $T$. 
+<p id="Definition11.7"><b>Определение 11.7:</b><br>
+Пусть $L_P$ - векторное пространство. Бесконечную систему векторов $S\subset{L}_P$ называют линейно зависимой, 
+если в ней существует хотя бы одна линейно зависимая конечная подсистема. В противном случае систему $S$ называют линейно независимой. 
+<p id="Theorem11.2"><b>Теорема 11.2:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}_P$ $|S|>1$, тогда система векторов $S$ линейно зависима тогда и только тогда, 
+когда сущестсвует вектор $\alpha\in{S}$ такой, что $\alpha$ линейно выражается через $S\backslash\{\alpha\}$. 
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Так как система $S$ ЛЗ, то существует система $S'\subset{S}$ такая, что $|S'|&lt;\infty$ и $S'$ ЛЗ.<br>
+Если $S'=\{\theta\}$, то
+$$|S|>1\Rightarrow\exists\beta\in{S}\backslash{S}'\Rightarrow\exists\alpha:=\theta:\alpha=\beta\circ0.$$
+Если $|S'|>1$, то, так как $S'$ ЛЗ, аналогично п. 1 <a href="./discrete_math4.3.html#Theorem4.6">теоремы 4.6</a> 
+существует $\alpha$ ЛВЧ $S'\backslash\{\alpha\}$, следовательно, $\alpha$ ЛВЧ $S\backslash\{\alpha\}$.<br>
+$\Leftarrow)$ Если $\alpha$ ЛВЧ $S\backslash\{\alpha\}$, то существует система $S'\subset{S}\backslash\{\alpha\}$ $|S'|&lt;\infty$ и $\alpha$ ЛВЧ $S'$. 
+Тогда аналогично п. 1 <a href="./discrete_math4.3.html#Theorem4.6">теоремы 4.6</a> $S'\cup\{\alpha\}$ - конечная ЛЗ подсистема системы $S$, 
+то есть система $S$ ЛЗ.
+<p id="Theorem11.3"><b>Теорема 11.3:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}_P$, $|S|&gt;0$, $S$ - линейно независима. Тогда для любого $\alpha\in{L}_P$, 
+если $S\cup\{\alpha\}$ - линейно зависима, то $\alpha$ линейно выражается через $S$ однозначно.
+<p><b>Доказательство:</b><br><br>
+Так как система $S\cup\{\alpha\}$ ЛЗ, то существует $S'\subset{S}\cup\{\alpha\}$ такая, что $|S'|<\infty$ и $S'$ - ЛЗ. 
+Так как $S$ ЛНЗ, то $S'\backslash\{\alpha\}\subset{S}$ ЛНЗ, тогда аналогично <a href="./discrete_math4.3.html#Statement4.3">утверждению 4.3</a> $\alpha$ ЛВЧ 
+$S'\backslash\{\alpha\}$, следовательно, $\alpha$ ЛВЧ $S$.<br>
+Если существует единственная подсистема $S'\subset{S}\cup\{\alpha\}$ такая, что $|S'|&lt;\infty$ и $S'$ - ЛЗ, 
+аналогично <a href="./discrete_math4.3.html#Statement4.4">утверждению 4.4</a> можно показать, что $\alpha$ ЛВЧ $S'\backslash\{\alpha\}$ однозначно. 
+Если существуют две такие системы $S'$ и $S''$, то $|S'\cup{S}''|&lt;\infty$ и $\alpha$ ЛВЧ $S'\cup{S}''$ однозначно, следовательно, 
+$\alpha$ ЛВЧ $S$ однозначно.
+<p id="Definition11.8"><b>Определение 11.8:</b><br>
+Пусть $L_P$ - векторное пространство. Подсистему $T$ системы $S\subset{L}_P$ называют максимальной линейно независимой подсистемой системы $S$, если
+<ol>
+<li>система $T$ линейно независима</li>
+<li>для любого $\alpha\in{S}$ система $T\cup\{\alpha\}$ линейно зависима.</li>
+</ol>
+<p id="Definition11.9"><b>Определение 11.9:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}_P$. Базисом системы векторов $S$ называется её конечная упорядоченная или 
+бесконечная максимальная линейно независимая подсистема.
+<p id="Example11.3"><b>Пример 11.3:</b></br>
+Для бесконечной МЛНП упорядоченность не требуется так как она может быть несчетна, тогда упорядочить её будет невозможно. 
+<ol>
+<li>Базисом векторного пространства $P[x]_P$ многочленов над полем $P$ являтеся счетная система многочленов $\{1,x,x^2,\ldots,x^n,\ldots\}$.<br>
+Действительно, пусть 
+$$\{\alpha_i\mid{i}\in\mathbb{N}_0\}:=\{x^i\mid{i}\in\mathbb{N}_0\}=\{1,x,x^2,\ldots,x^n,\ldots\}\subset{P}[x],$$ 
+тогда для любого конечного не нулевого набора $a_1,\ldots,a_n\in{P}$ и для любого набора различных индексов 
+$i_1,\ldots,i_n\in\mathbb{N}_0$ многчлен $\sum_{j=1}^na_j\alpha_{i_j}$ не нулевой, то есть система $\{\alpha_i\mid{i}\in\mathbb{N}_0\}$ ЛНЗ.<br>  
+С другой стороны, для любого многочлена $f(x)=\sum_{i\geq0}a_ix^i\in{P}[x]$  $f(x)=\sum_{i=0}^{\deg{f(x)}}a_i\alpha_i$. 
+Таким образом, $\{\alpha_i\}\cup{f}(x)$ ЛЗ, то есть система $\{\alpha_i\mid{i}\in\mathbb{N}_0\}$ МЛНП.
+</li>
+<li>Базис векторного пространства $\mathbb{R}_{\mathbb{Q}}$ не является счетным. Действительно, если предположить, 
+что существует счетное $B\subset\mathbb{R}$ такое, что для любого $r\in\mathbb{R}$ $r$ ЛВЧ $B$ над $\mathbb{Q}$, 
+то мощность множества $\mathbb{R}$ не превосходит мощность множесва $B\times\mathbb{Q}$, которое счетно. 
+Получено противоречие с несчетностью множества $\mathbb{R}$. 
+</li>
+</ol>
+<p id="Theorem11.4"><b>Теорема 11.4:</b><br>
+Любая система векторов любого векторного пространства имеет базис.
+<p><b>Доказательство:</b><br>
+Без доказательства.
+
+<h4 id="11.2">11.2 Подпространства векторых пространств.</h4>
+
+<p id="Definition11.10"><b>Определение 11.10:</b><br>
+Пусть $L_P$ - векторное пространство. Будем говорить что множество $K\subset{L}$ замкнуто относительно внешнего умножения если для любого $\alpha\in{K}$ и 
+для любого $a\in{P}$ $\alpha\circ{a}\in{K}$.
+<p id="Definition11.11"><b>Определение 11.11:</b><br>
+Пусть $L_P$ - векторное пространство, не пустое множество $K\subset{L}_P$ такое, что
+<ol>
+<li>$K$ замкнуто замкнуто относительно операций $+$, $\circ$,</li>
+<li>$K_P$ - векторное пространство.</li>
+</ol>
+Тогда будем говорить, что $K_P$ подпространство пространства $L_P$ и обозначать $K_P&lt;L_P$.
+<p id="Example11.4"><b>Пример 11.4:</b><br>
+Очевидно, что если $K_P&lt;L_P$, то $K&lt;L$, однако, обратное не верно, например, $(\mathbb{C}_{p^k};\cdot)&lt;(\mathbb{C};\cdot)$, 
+но $\mathbb{C}_{p^k}$ не замкнуто относительно умножения на действительное число. 
+Так что $\mathbb{C}_{p^k}$ не являтеся подпространством векторного пространства $(\mathbb{C};\cdot)_{\mathbb{R}}$.
+<p id="Theorem11.5"><b>Теорема 11.5: Критерий быть подпространством.</b><br>
+Пусть $L_P$ - векторное пространство, $K\subset{L}$, $K\neq\varnothing$, тогда $K_P&lt;L_P$ тогда и только тогда, 
+когда $K$ замкнуто относительно операций $+$, $\circ$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ По определению 11.11.<br>
+$\Leftarrow)$ Так как п. 1 определения 11.11 выполняется по условию, то достаточно доказать, что $K_P$ - векторное пространство. 
+Так как $K\subset{L}_P$, то достаточно доказать, что $K$ - группа, действительно по п. 2 <a href="./discrete_math11.1.html#Theorem11.1">теоремы 11.1</a> и 
+в силу замкнутости $K$ относительно $+$, $\circ$
+$$\forall\alpha,\beta\in{K}(\alpha+(-\beta)=\alpha+\beta\circ(-e)\in{K}).$$
+Таким образом, по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $K&lt;L$.
+<p id="Example11.5"><b>Пример 11.5:</b><br>
+<ol>
+<li>Подпространства $\{\theta\}&lt;L_P$, $L_P&lt;L_P$ называются несобственными.</li>
+<li>Пусть $K$ - множество векторов плоскости с началом в точке $(0,0)$ и концами лежащими на одной прямой, 
+тогда $K_{\mathbb{R}}&lt;(\mathcal{D}_2)_{\mathbb{R}}$. 
+</li>
+<li>Пусть $P_{\leq{n}}[x]$ - множество многочленов над полем $P$, степень которых не превосходит $n$, тогда $(P_{\leq{n}}[x])_P&lt;P[x]_P$.</li>
+<li>$\mathbb{Q}_\mathbb{Q}&lt;\mathbb{R}_\mathbb{Q}&lt;\mathbb{C}_\mathbb{Q}$.</li>
+</ol>
+<p id="Statement11.1"><b>Утверждение 11.1:</b><br>
+$$\forall\alpha\in{A}(K_{\alpha}&lt;L_{P})\Rightarrow\bigcap_{\alpha\in{A}}K_{\alpha}&lt;L_P.$$
+<p><b>Доказательство:</b><br><br>
+Так как 
+$$\beta,\gamma\in\bigcap_{\alpha\in{A}}K_{\alpha}\Rightarrow\forall\alpha\in{A}(\beta,\gamma\in{K}_{\alpha})\Rightarrow
+\forall\alpha\in{A}(\beta+\gamma\in{K}_{\alpha})\Rightarrow\beta+\gamma\in\bigcap_{\alpha\in{A}}K_{\alpha},$$
+$$\beta\in\bigcap_{\alpha\in{A}}K_{\alpha}\,\wedge\,a\in{P}\Rightarrow\forall\alpha\in{A}(\beta\circ{a}\in{K}_{\alpha})\Rightarrow
+\beta\circ{a}\in\bigcap_{\alpha\in{A}}K_{\alpha},$$
+то $\bigcap_{\alpha\in{A}}K_{\alpha}$ замкнуто относительно операций $+$ и $\circ$, следовательно, по 
+<a href="./discrete_math11.1.html#Theorem11.5">теореме 11.5</a> $\bigcap_{\alpha\in{A}}K_{\alpha}&lt;L_P$.
+<p id="Definition11.12"><b>Определение 11.12:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}$. Подпространством пространства $L_P$ порожденным множеством $S$ называется множество 
+$(S)_P:=\bigcap_{S\subset{K}_P&lt;L_P}K_P$.  
+<p id="Theorem11.6"><b>Теорема 11.6:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}$, $S\neq\varnothing$, тогда 
+$$(S)_P=\{\alpha_1\circ{c}_1+\cdots+\alpha_n\circ{c}_n\mid{n}\in\mathbb{N},\alpha_i\in{S},c_i\in{P}\}.$$
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$M:=\{\alpha_1\circ{c}_1+\cdots+\alpha_n\circ{c}_n\mid{n}\in\mathbb{N},\alpha_i\in{S},c_i\in{P}\}.$$
+Пусть $\alpha,\beta\in{M}$, тогда
+$$
+\begin{cases}
+\exists{m}\in\mathbb{N}\,c_1,\ldots,c_m\in{P},\alpha_1,\ldots,\alpha_m\in{S}:\alpha=\alpha_1\circ{c}_1+\cdots+\alpha_m\circ{c}_m\\
+\exists{n}\in\mathbb{N}\,d_1,\ldots,d_n\in{P},\beta_1,\ldots,\beta_n\in{S}:\beta=\beta_1\circ{d}_1+\cdots+\beta_n\circ{d}_n
+\end{cases}
+$$
+тогда 
+$$\alpha+\beta=\alpha_1\circ{c}_1+\cdots+\alpha_m\circ{c}_m+\beta_1\circ{d}_1+\cdots+\beta_n\circ{d}_n\in{M}.$$
+и
+$$
+a\in{P}\Rightarrow\alpha\circ{a}=(\alpha_1\circ{c}_1+\cdots+\alpha_m\circ{c}_m)\circ{a}=
+(\alpha_1\circ{c}_1)\circ{a}+\cdots+(\alpha_m\circ{c}_m)\circ{a}=\alpha_1\circ(c_1a)+\cdots+\alpha_m\circ(c_ma)\in{M},
+$$
+таким образом, по <a href="./discrete_math11.1.html#Theorem11.5">теореме 11.5</a> $M_P&lt;L_P$.
+Так как для любого $\alpha\in{S}$ $\alpha=\alpha\circ{e}\in{M}$, то $S\subset{M}$ и тогда $(S)_P\subset{M}_P$.<br>
+С другой стороны, 
+$$
+S\subset(S)_P\Rightarrow\forall{i}\in\overline{1,m}(\alpha_i\in(S)_P)\Rightarrow\forall{i}\in\overline{1,m}(\alpha_i\circ{c}_i\in(S)_P)\Rightarrow
+\alpha\in(S)_P\Rightarrow{M}_P\subset(S)_P,
+$$
+таким образом, $M_P=(S)_P$.
+<br><br>
+Из теоремы в частности следует, что если $T$ базис $L_P$, то $(T)_P=L_P$.
+<p id="Corollary11.1"><b>Следствие 11.1:</b><br>
+Пусть $L_P$ - векторное пространство, $S\subset{L}$, тогда базис системы векторов $S$ является базисом системы векторов $(S)_P$.
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Если $S=\varnothing$, то $(S)_P=\{\theta\}$. Так как $\theta\circ{e}=\theta$, то $\{\theta\}$ - ЛЗ, 
+то есть базис $\{\theta\}$ равен базису $\varnothing$ и равен $\varnothing$.
+</li>
+<li>Если $S=\{\theta\}$, то аналогично пункту 1 базис $S$ равен базису $(S)_P$ и равен $\varnothing$.</li>
+<li>Пусть $S\notin\{\varnothing,\{\theta\}\}$. Обозначим $T$ базис $S$. Для любого $\beta\in(S)_P$ по 
+<a href="./discrete_math11.1.html#Theorem11.6">теореме 11.6</a> $\beta$ ЛВЧ $S$, тогда $\beta$ ЛВЧ $T$, следовательно, 
+по <a href="./discrete_math11.1.html#Theorem11.2">теореме 11.2</a> система $\{T,\beta\}$ ЛЗ, то есть $T$ базис $(S)_P$.
+</li>
+</ol>
+<p id="Statement11.2"><b>Утверждение 11.2:</b><br>
+$$\forall{i}\in\overline{1,s}(K_i&lt;L_P)\Rightarrow{K}_1+\cdots+K_s&lt;L_P.$$
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math9.4.html#Corollary9.8">следствию 9.8</a> $(K_1;+)+\cdots+(K_s;+)&lt;(L;+)$, 
+следовательно, множество $K_1+\cdots+K_s$ замкнуто относительно операции $+$. 
+Пусть $\alpha=\alpha_1+\cdots+\alpha_s\in{K}_1+\cdots+K_s$, где для любого $i\in\overline{1.s}$ $\alpha_i\in{K}_i$, тогда
+$$
+\forall{a}\in{P}(\alpha\circ{a}=(\alpha_1+\cdots+\alpha_s)\circ{a}=\alpha_1\circ{a}+\cdots+\alpha_s\circ{a}\in{K}_1+\cdots+K_s),
+$$
+следовательно, $K_1+\cdots+K_s$ замкнуто относительно операции $\circ$. Таким образом, 
+по <a href="./discrete_math11.1.html#Theorem11.5">теореме 11.5</a> $K_1+\cdots+K_s&lt;L_P$.
+<p id="Definition11.13"><b>Определение 11.13:</b><br>
+Сумма подпространств векторного пространства $L_P$ называется прямой, если она является прямой суммой подгрупп группы $(L;+)$.
+<p id="Theorem11.7"><b>Теорема 11.7:</b><br>
+Пусть для любого $i\in\overline{1,s}$ $K_i<L_P$, $M_P=K_1+\cdots+K_s$, тогда следующие утверждения эквивалентны
+<ol>
+<li>$M_P=K_1\dotplus\cdots\dotplus{K}_s$,</li>
+<li>$\forall(\alpha_1,\ldots,\alpha_s)\in{K}_1\times\cdots\times{K}_s(\alpha_1+\cdots+\alpha_s=\theta\Leftrightarrow
+\forall{i}\in\overline{1,s}(\alpha_i=\theta))$,
+</li>
+<li>$\forall{i}\in\overline{1,s}\left(K_i\cap\sum_{j=1,j\neq{i}}^sK_j=\{\theta\}\right)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Следует из <a href="./discrete_math9.4.html#Theorem9.12">теоремы 9.12.</a>
+
+<br><br>
+<a href="discrete_math10.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math11.3.html">next</a>
+</body>
+</html>

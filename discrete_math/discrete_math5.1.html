@@ -1,0 +1,394 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 5.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math6.1.html">next</a>
+<br>
+
+<h3 id="5">5. Системы линейных уравнений.</h3>
+<h4 id="5.1">5.1 Линейная зависимость векторов.</h4> 
+Везде далее в данном разделе $R$ - коммутативное кольцо с единицей.
+<p id="Definition5.1"><b>Определение 5.1:</b><br>
+Системой из $m$ линейных уравнений (СЛУ) с $n$ неизвестными называется $m$ символьных последовательностей вида:
+$$
+\begin{cases}
+a_{1,1}x_1+a_{1,2}x_2+\cdots+a_{1,n}x_n=b_1\\
+a_{2,1}x_1+a_{2,2}x_2+\cdots+a_{2,n}x_n=b_2\\
+\cdots\\
+a_{m,1}x_1+a_{m,2}x_2+\cdots+a_{m,n}x_n=b_m\\
+\end{cases}
+$$  
+где $x_1,\ldots,x_n$ - символы переменных, $\cdot$ (опущено), $+$ - символы операций кольца $R$, $=$ - символ отношения равенства.<br>
+При этом каждую из последовательностей называют уравнением СЛУ.
+<p id="Definition5.2"><b>Определение 5.2:</b><br>
+Решением СЛУ называется упорядоченный набор $(c_1,\ldots,c_n)$ элементов кольца $R$, подстановка которых в СЛУ вместо символов переменных $x_1,\ldots,x_n$ 
+соответсвенно обращает все уравнения СЛУ в верные в кольце $R$ равенства. При этом говорят, что вектор 
+$c^{\downarrow}=\begin{pmatrix}c_1\\\vdots\\c_n\end{pmatrix}$ является решением СЛУ или удовлетворяет СЛУ.
+<p id="Definition5.3"><b>Определение 5.3:</b><br>
+СЛУ назвается совместной, если она имеет хотябы одно решение и несовместной в противном случае.
+<p id="Definition5.4"><b>Определение 5.4:</b><br>
+СЛУ называется неопределенной, если она имеет более одного решения и определенной, если она имеет единственное решение.
+<p id="Definition5.5"><b>Определение 5.5:</b><br>
+Решить СЛУ значит найти все ее решения или доказать, что СЛУ не совместна.
+<p id="Definition5.6"><b>Определение 5.6:</b><br>
+Две СЛУ на одинаковом наборе переменных называются равносильными, если они имеют одинаковое множество решений.
+<br><br>
+Матрца $A=(a_{i,j})_{m\times{n}}$ называется матрицей СЛУ, столбец $b^{\downarrow}=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}$ 
+называется столбцом свободных членов. Матрица $(A_{m,n},b^{\downarrow})$ назвается расширенной матрицей СЛУ. 
+Столбец $x^{\downarrow}=\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$ назывется стобцом неизвестных. 
+Запись $Ax^{\downarrow}=b^{\downarrow}$ назовем матричной записью СЛУ.
+<p id="Note5.1"><b>Замечание 5.1:</b><br>
+Столбец $c^{\downarrow}\in{P}^{(n)}$ является решением СЛУ $Ax^{\downarrow}=b^{\downarrow}$ тогда и только тогда, когда $Ac^{\downarrow}=b^{\downarrow}$.<br>
+Действительно, столбец $c^{\downarrow}$ является решением СЛУ $Ax^{\downarrow}=b^{\downarrow}$ тогда и только тогда, когда выполняется система равенств
+$$
+\begin{cases}
+a_{1,1}c_1+a_{1,2}c_2+\cdots+a_{1,n}x_n=b_1\\
+a_{2,1}c_2+a_{2,2}c_2+\cdots+a_{2,n}x_n=b_n\\
+\cdots\\
+a_{m,1}c_m+a_{m,2}c_2+\cdots+a_{m,n}x_n=b_n,
+\end{cases}
+$$
+которая эквивалентна уравнению 
+$$
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n}\\
+a_{2,1} & a_{2,2} & \cdots & a_{2,n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+\end{pmatrix}
+\begin{pmatrix}c_1\\c_2\\\vdots\\c_n\end{pmatrix}=\begin{pmatrix}b_1\\b_2\\\vdots\\b_n\end{pmatrix}\Leftrightarrow{A}c^{\downarrow}=b^{\downarrow}.$$
+<p id="Theorem5.1"><b>Теорема 5.1: О равносильности СЛУ.</b><br>
+Пусть $A\in{R}_{m,n}$, $U\in(R_{m,m})^*$, $b^{\downarrow}\in{R}^{(m)}$, тогда 
+$$\forall{x}\in{R}^{(n)}(Ax^{\downarrow}=b^{\downarrow}\Leftrightarrow(UA)x^{\downarrow}=Ub^{\downarrow}).$$  
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Пусть $c^{\downarrow}\in{R}^{(n)}$ решение СЛУ $Ax^{\downarrow}=b^{\downarrow}$, то есть $Ac^{\downarrow}=b^{\downarrow}$. 
+Тогда по ассоциативности умножения в кольце матриц 
+$(UA)c^{\downarrow}=U(Ac^{\downarrow})=b^{\downarrow}$.<br>
+$\Leftarrow)$ Так как $U\in(R_{m,n})^*$, то существует $U^{-1}\in{R}_{m,m}$, тогда
+$$(UA)c^{\downarrow}=Ub^{\downarrow}\Rightarrow(U^{-1}U)Ac^{\downarrow}=(U^{-1}U)b^{\downarrow}\Rightarrow{A}c^{\downarrow}=b^{\downarrow}.$$
+То есть столбец $c^{\downarrow}$ является решением СЛУ. 
+<p id="Corollary5.1"><b>Следствие 5.1:</b><br>
+Пусть $A,C\in{R}_{m,n}$, $b^{\downarrow},d^{\downarrow}\in{R}^{(n)}$ такие, что $(A,b^{\downarrow})\rsim(C,d^{\downarrow})$, тогда 
+$$\forall{x}\in{R}^{(n)}(Ax^{\downarrow}=b^{\downarrow}\Leftrightarrow{C}x^{\downarrow}=d^{\downarrow}).$$
+<p><b>Доказательство:</b><br><br>
+$$(A,b^{\downarrow})\rsim(C,d^{\downarrow})\Rightarrow\exists{U}\in(R_{m,m})^*:U(A,b^{\downarrow})=
+U(C,d^{\downarrow})\Rightarrow(UA=C\,\wedge\,{U}b^{\downarrow}=d^{\downarrow}).$$
+Тогда 
+$$\forall{x}\in{R}^{(n)}(Cx^{\downarrow}=d^{\downarrow}\Leftrightarrow(UA)x^{\downarrow}=Ub^{\downarrow}\Leftrightarrow{A}x^{\downarrow}=b^{\downarrow}).$$
+<p id="Theorem5.2"><b>Теорема 5.2: Крамер.</b><br>
+Если $A\in(R_{m,m})^*$, $b\in{R}^{(m)}$, тогда СЛУ $Ax^{\downarrow}=b^{\downarrow}$ имеет единственное решение 
+$c^{\downarrow}=\begin{pmatrix}c_1\\\vdots\\c_m\end{pmatrix}$ причем для любого $i\in\overline{1,m}$ $c_i=|A|^{-1}|A_i|$, где $A_i\in{R}_{m,m}$ 
+матрица полученная из матрицы $A$ заменой $i$-того столбца столбцом свободных членов $b^{\downarrow}$.
+<p><b>Доказательство:</b><br><br>
+Так как $A\in(P_{m,m})^*$, то существует $A^{-1}\in{R}_{m,m}$, следовательно
+$$Ac^{\downarrow}=b^{\downarrow}\Leftrightarrow{c}^{\downarrow}=A^{-1}b^{\downarrow}.$$
+То есть система $Ax^{\downarrow}=b^{\downarrow}$ имеет единственное решение
+$$c^{\downarrow}=\begin{pmatrix}c_1\\\vdots\\c_m\end{pmatrix}=A^{-1}b^{\downarrow}=|A|^{-1}A^*b^{\downarrow}.$$
+Где $A^*=(a_{i,j}^*)_{m\times{m}}$ - матрица взаимная для $A$, то есть для любых $i,j\in\overline{1,m}$ $a_{i,j}^*=A_{j,i}:=\overline{CM}_A\binom{j}i$ - 
+алгебраическое дополнение элемента $a_{i,j}$ матрицы $A$ (см. <a href="./discrete_math3.3.html#Definition3.10">определение 3.10</a>).
+Тогда для любоо $i\in\overline{1,m}$
+$$c_i=|A|^{-1}(\vec{A}_i^*b^{\downarrow})=|A|^{-1}\sum_{j=1}^mA_{j,i}b_j,$$
+где сумма в последнем выражении есть ни что иное, как разложение определителя матрицы $A_i$ по $i$-тому столбцу равному $b^{\downarrow}$ 
+(см. <a href="discrete_math3.3.html#Corollary3.3">следствие 3.3</a>). Таким образом для любого $i\in\overline{1,m}$ $c_i=|A|^{-1}|A_i|$.
+
+<h4 id="5.2">5.2 Системы линейных уравнений над полем</h4>
+Везде далее в этом разделе $P$ - поле, $A\in{P}_{m,n}$, $A\neq0$, $b^{\downarrow}\in{P}^{(n)}$
+<p id="Theorem5.3"><b>Теорема 5.3: Критерий Кронекера - Капелли.</b><br>
+СЛУ $Ax^{\downarrow}=b^{\downarrow}$ совместна тогда и только тогда, когда $\rang{A}=\rang(A,b^{\downarrow})$.
+<p><b>Доказательство:</b><br>
+Пусть $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ - базис системы стобцов матрицы $A$, тогда $\rang{A}=r$. СЛУ совместна тогда и только тогда, когда существует 
+$c^{\downarrow}=\begin{pmatrix}c_1\\\vdots\\c_m\end{pmatrix}\in{P}^{(n)}$ такой, что $Ac^{\downarrow}=b^{\downarrow}$. Тогда и только тогда, когда $b^{\downarrow}=c_1A_1^{\downarrow}+\dots+c_nA_n^{\downarrow}$, тогда и только тогда, когда $b^{\downarrow}$ ЛВЧ $A_1^{\downarrow},\ldots,A_n^{\downarrow}$, тогда и только тогда, когда $b^{\downarrow}$ ЛВЧ $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$. Тогда и только тогда, когда 
+$A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ базис системы $A_1^{\downarrow},\ldots,A_n^{\downarrow},b^{\downarrow}$ тогда и только тогда, когда $\rang(A,b^{\downarrow})=r$.
+<br><br>
+
+Рассмотрим два наиболее распространенных метода решения СЛУ.<br><br>
+
+1.<u>Метод Гаусса.</u><br><br>
+Пусть $(A,b^{\downarrow})\rsim{S}:=(C,d^{\downarrow})\in{S}_{m,n+1}(i_1,\ldots,i_r)$, где $S$ - 
+специальная ступенчатая матрица, тогда СЛУ $Ax^{\downarrow}=b^{\downarrow}$ равносильна системе $Cx^{\downarrow}=d^{\downarrow}$.
+<ul>
+<li> Пусть $i_r=n+1$, тогда $C\in{S}(i_1,\ldots,i_{r-1})$, следовательно, ${\rang{C}=r-1}$, а $\rang(C,d^{\downarrow})=r$. 
+Тогда по теореме 5.3 СЛУ $Cx^{\downarrow}=d^{\downarrow}$ не совместна, следовательно, не совместна и СЛУ $Ax^{\downarrow}=b^{\downarrow}$.
+</li>
+<li> Пусть $i_r\leq{n}$ и $r=n$, тогда $C\in{S}(1,\ldots,n)$, то есть $C=\begin{pmatrix}E_{n,n}\\0_{(m-n),n}\end{pmatrix}$ и 
+$d^{\downarrow}=\begin{pmatrix}{d_1^{\downarrow}}\\\theta\end{pmatrix}$, где $d_1^{\downarrow}\in{P}^{(n)}$. 
+Таким образом столбец $v^{\downarrow}\in{P}^{(n)}$ является решением СЛУ $Cx^{\downarrow}=d^{\downarrow}$ 
+(равносильной СЛУ $Ax^{\downarrow}=b^{\downarrow}$) тогда и только тогда, когда 
+$\begin{pmatrix}E_{n,n}\\0_{(m-n),n}\end{pmatrix}v^{\downarrow}=\begin{pmatrix}{d_1^{\downarrow}}\\\theta\end{pmatrix}$ тогда и только тогда, 
+когда $v^{\downarrow}=d^{\downarrow}$.
+</li>
+<li>Пусть $i_r\leq{n}$ и $r&lt;n$, тогда матрица $(C,d^{\downarrow})$ имеет нулевые строки, соответствующие уравнениям вида $0x_1+\cdots+0x_n=0$. 
+Если эти строки удалить, то получим СЛУ равносильную СЛУ
+$\underline{S}=\underline{C},d_0^{\downarrow}$. Где матрицы $\underline{S}$, $\underline{C}$ специально ступенчатые вида $(i_1,\ldots,i_r)$ 
+полученые удалением нулевых строк из матриц $S$ и $C$ соответственно, а $d_0^{\downarrow}\in{P}^{(n-r)}$. 
+Обозначим $\{i_{r+1},\ldots,i_n\}:=\overline{1,n}\backslash\{i_1,\ldots,i_r\}$, 
+$|\underline{C}:=\left(\underline{C}_{i_1}^{\downarrow},\ldots,\underline{C}_{i_r}^{\downarrow}\right)\in{P}_{r,r}$,
+$\underline{C}|:=\left(\underline{C}_{i_{r+1}}^{\downarrow},\ldots,\underline{C}_{i_n}^{\downarrow}\right)\in{P}_{r,n-r}$. 
+Для любого $v^{\downarrow}\in{P}^{(n)}$ обозначим $\overline{v}^{\downarrow}:=\begin{pmatrix}v_{i_1}\\\vdots\\v_{i_r}\end{pmatrix}$, 
+$\underline{v}^{\downarrow}:=\begin{pmatrix}v_{i_{r+1}}\\\vdots\\v_{i_n}\end{pmatrix}$. 
+Таким образом $v^{\downarrow}$ решение СЛУ $\underline{C}x^{\downarrow}=d_0^{\downarrow}$ тогда и только тогда, когда
+$$
+\underline{C}v^{\downarrow}=d_0^{\downarrow}\Leftrightarrow(|\underline{C},\underline{C}|)\begin{pmatrix}\overline{v}^{\downarrow}\\
+\underline{v}^{\downarrow}\end{pmatrix}=d_0^{\downarrow}\Leftrightarrow
+|\underline{C}\,\underline{v}^{\downarrow}+\underline{C}|v^{\downarrow}=d_0^{\downarrow}\Leftrightarrow\overline{v}^{\downarrow}=
+d_0^{\downarrow}-\underline{C}|\underline{v}^{\downarrow},
+$$
+где последняя эквивалентность в силу того, что $|\underline{C}=E_{r,r}$. Таким образом
+$$\forall\underline{v}^{\downarrow}\in{P}^{(n-r)}\,\exists!\overline{v}^{\downarrow}=
+\begin{pmatrix}v_{i_1}\\\vdots\\v_{i_r}\end{pmatrix}:A\begin{pmatrix}\overline{v}^{\downarrow}\\\underline{v}^{\downarrow}\end{pmatrix}=b^{\downarrow}$$
+</ul> 
+
+<p id="Theorem5.4"><b>Теорема 5.4:</b><br>
+СЛУ $Ax^{\downarrow}=b^{\downarrow}$ определена, тогда и только тогда, когда $\rang{A}=\rang(A,b^{\downarrow})=n$.
+<p><b>Доказательство:</b><br>
+Следует из метода Гаусса.
+<p id="Theorem5.5"><b>Теорема 5.5:</b><br>
+СЛУ $Ax^{\downarrow}=b^{\downarrow}$ не определена тогда и только тогда, когда $\rang{A}=\rang(A,b^{\downarrow})=r&lt;n$.<br>
+При этом если поле $P$ бесконечное, то СЛУ имеет бесконечное множество решений, если $|P|=q$, то СЛУ имеет $q^{n-r}$ решений.
+<p><b>Доказательство:</b><br>
+Из метода Гаусса следует, что СЛУ не определена тогда и только тогда, когда $\rang{A}=\rang(A,b^{\downarrow})=r&lt;n$.<br>
+Все решения СЛУ $Ax^{\downarrow}=b^{\downarrow}$ можно найти по методу Гаусса в виде 
+$$
+\left\{\left.\begin{pmatrix}\overline{v}^{\downarrow}\\\underline{v}^{\downarrow}\end{pmatrix}
+\right|\forall\underline{v}^{\downarrow}\in{P}^{(n-r)}\left(\overline{v}^{\downarrow}=
+d_0^{\downarrow}-\underline{C}|\,\underline{v}^{\downarrow}\right)\right\}
+$$
+Так как вектор $\overline{v}^{\downarrow}$ определяется однозначно при заданном $\underline{v}^{\downarrow}$, 
+то мощность множества решений равно $|P^{(n-r)}|$. Если при $r&lt;n$ множество $P$ бесконечно, то множество $P^{(n-r)}$ бесконечно, 
+следовательно и множество решений бесконечно, если $|P|=q$, то $|P^{(n-r)}|=q^{n-r}$.
+<p id="Example5.1"><b>Пример 5.1:</b><br>
+Рассмотрим СЛУ над полем $P=\mathbb{Q}$ при $m=3$, $n=5$.<br>
+$$A=
+\begin{pmatrix}
+1 & 2 & -1 & 3 & -2 \\ 
+2 & 4 & -1 & 0 & 1 \\
+3 & 6 & -2 & 3 & -1
+\end{pmatrix}, b^{\downarrow}=\begin{pmatrix}-1 \\ 2 \\ 1\end{pmatrix}.$$
+Таким образом надо найти все $x^{\downarrow}\in\mathbb{Q}^{(5)}$ такие, что $Ax^{\downarrow}=b^{\downarrow}$ то есть 
+$$\begin{pmatrix}1 & 2 & -1 & 3 & 2 \\ 2 & 4 & -1 & 0 & 1 \\ 3 & 6 & -2 & 3 & -1\end{pmatrix}\begin{pmatrix}x_1 \\ \vdots \\ x_5\end{pmatrix}=
+\begin{pmatrix}-1\\ 2\\1\end{pmatrix},$$
+или доказать, что таких $x^{\downarrow}$ не существует.<br>
+Приведем расширенную матрицу СЛУ $(A,b^{\downarrow})$ к специально ступенчатому виду
+$$
+(A,b^{\downarrow})=
+\left(\left.
+\begin{matrix}
+1 & 2 & -1 & 3 & -2 \\
+2 & 4 & -1 & 0 & 2  \\
+3 & 6 & -2 & 3 & -1
+\end{matrix}
+\right|
+\begin{matrix} -1 \\ 2 \\ 1 \end{matrix}\right)\rsim
+\left(\left.\begin{matrix}1 & 2 & -1 & 3 & -2 \\ 0 & 0 & 1 & -6 & 5 \\ 0 & 0 & 1 & -6 & 5\end{matrix}\right|
+\begin{matrix} -1 \\ 4 \\ 4\end{matrix}\right)\rsim\\\rsim
+\left(\left.\begin{matrix}1 & 2 & -1 & 3 & -2 \\ 0 & 0 & 1 & -6 & 5 \\ 0 & 0 & 0 & 0 & 0 \end{matrix}\right|
+\begin{matrix} -1 \\ 4 \\ 0\end{matrix}\right)\rsim
+\left(\left.\begin{matrix} 1 & 2 & 0 & -3 & 3 \\ 0 & 0 & 1 & -6 & 5 \\ 0 & 0 & 0 & 0 & 0 \end{matrix}\right|
+\begin{matrix} 3 \\ 4 \\ 0 \end{matrix}\right)=(S,d^{\downarrow})\in{S}(1,3).
+$$
+
+Таким образом $\rang{A}=\rang(A,b^{\downarrow})=2&lt;3$, следовательно, система совместна и имеет бесконечно много решнений, найдем их. 
+Удалив последнюю строку из матрицы $(S,d^{\downarrow})$ получим
+$$(\underline{C},d_0^{\downarrow})=
+\left(\left.\begin{matrix}1 & 2 & 0 & -3 & 3 \\ 0 & 0 & 1 & -6 & 5\end{matrix}\right|\begin{matrix} 3 \\ 4 \end{matrix}\right),
+|\underline{C}=\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix},\underline{C}|=\begin{pmatrix}2 & -3 & -3 \\ 0 & 6 & 5\end{pmatrix}.$$
+Следовательно, вектор $v^{\downarrow}=\begin{pmatrix}v_1 \\ \vdots \\ v_5\end{pmatrix}$ является решением СЛУ тогда и только тогда, когда 
+$$
+\begin{pmatrix}v_1 \\ v_3\end{pmatrix}=d_0^{\downarrow}-\underline{C}|\begin{pmatrix}v_2 \\ v_4 \\ v_5\end{pmatrix}=
+\begin{pmatrix}3 \\ 4\end{pmatrix}-\begin{pmatrix}2 & -3 & 3 \\ 0 & -6 & 5\end{pmatrix}\begin{pmatrix}v_2 \\ v_4 \\ v_5\end{pmatrix}=
+\begin{pmatrix}3-2v_2+3v_4-3v_5 \\ 4+6v_4-5v_5\end{pmatrix}
+$$
+Так как $v_2,v_4,v_5$ произвольные элементы $\mathbb{Q}$, то множество решений СЛУ имеет вид
+$$\left\{\left.\begin{pmatrix}3-2v_2+3v_4-3v_5 \\ v_2 \\ 4+6v_4-5v_5 \\ v_4 \\ v_5 \end{pmatrix}\right|v_2,v_4,v_5\in\mathbb{Q}\right\}$$
+или в векторном виде
+$$\left\{\left.\begin{pmatrix}3 \\ 0 \\ 4 \\ 0 \\ 0\end{pmatrix}+c_1\begin{pmatrix}-2 \\ 1 \\ 0 \\ 0 \\ 0\end{pmatrix}
++c_2\begin{pmatrix}3 \\ 0 \\ 6 \\ 1 \\ 0\end{pmatrix}+c_3\begin{pmatrix}-3 \\ 0 \\ -5 \\ 0 \\ 1\end{pmatrix}\right|
+c_1,c_2,c_3\in\mathbb{Q}\right\}.$$
+<br>
+Запись ввиде 
+$$x^{\downarrow}=A_1^{\downarrow}c_1+\cdots+A_t^{\downarrow}c_t+A_0^{\downarrow},$$
+где $A_0^{\downarrow},\ldots,A_t^{\downarrow}\in{P}^{(n)}$, будем называть  общим решением СЛУ, 
+если для любых $c_1\ldots,c_t\in{P}$ $A_1^{\downarrow}c_1+\cdots+A_t^{\downarrow}c_t+A_0^{\downarrow}$ 
+является решением СЛУ и для любого решения СЛУ $v^{\downarrow}$
+$$\exists{c}_1,\ldots,c_t\in{P}:v^{\downarrow}=A_1^{\downarrow}c_1+\cdots+A_t^{\downarrow}c_t+A_0^{\downarrow}.$$
+<br>
+2.<u>Метод рангового минора.</u><br><br>
+Система $Ax^{\downarrow}=b^{\downarrow}$ совместна тогда и только тогда, когда $\rang{A}=\rang(A,b^{\downarrow})=r>0$. 
+Пусть $A'=A\begin{pmatrix}j_1,\ldots,j_r \\ i_1,\ldots,i_r\end{pmatrix}$ ранговая подматрица матриц $A$ и 
+$B:=(A,b^{\downarrow})$. Пусть $B_{j_1},\ldots,B_{j_r}$ базис системы строк матрицы $B$, тогда для любого $j\in\overline{1,m}$ 
+$B_j$ ЛВЧ $B_{j_1},\ldots,B_{j_r}$, следовательно,
+$$B\rsim(C,d^{\downarrow}):=\begin{pmatrix}B_{j_1} \\ \vdots \\ B_{j_r} \\ \theta\end{pmatrix}.$$
+Удалим нулевые строки из матрицы $(C,d^{\downarrow})$ получим 
+$(\underline{C},d_0^{\downarrow}):=\begin{pmatrix}B_{j_1} \\ \vdots \\ B_{j_r}\end{pmatrix}$. Тогда по тем же соображение, что и в методе Гаусса СЛУ 
+$\underline{C}x^{\downarrow}=d_0^{\downarrow}$ равносильна СЛУ $Ax^{\downarrow}=b^{\downarrow}$.<br>
+Обозначим по аналогии с методом Гаусса $\{i_{r+1},\ldots,i_n\}:=\overline{1,n}\backslash\{i_1,\ldots,i_r\}$, 
+$|\underline{C}:=\left(\underline{C}_{i_1}^{\downarrow},\ldots,\underline{C}_{i_r}^{\downarrow}\right)$, 
+$\underline{C}|:=\left(\underline{C}_{i_{r+1}}^{\downarrow},\ldots,\underline{C}_{i_n}^{\downarrow}\right)$, 
+$\overline{v}^{\downarrow}=\begin{pmatrix}v_{i_1} \\ \vdots \\ v_{i_r}\end{pmatrix}$, 
+$\underline{v}^{\downarrow}=\begin{pmatrix}v_{i_{r+1}} \\ \vdots \\ v_{i_n}\end{pmatrix}$. Тогда вектор 
+$v^{\downarrow}=\begin{pmatrix}\overline{v}^{\downarrow} \\ \underline{v}^{\downarrow}\end{pmatrix}\in{P}^{(n)}$ 
+является решением СЛУ $\underline{C}x^{\downarrow}=d_0^{\downarrow}$ тогда и только тогда, когда
+$$|\underline{C}\overline{v}^{\downarrow}+|\underline{C}\,\underline{v}^{\downarrow}=
+d_0^{\downarrow}\Leftrightarrow|\underline{C}\overline{v}^{\downarrow}=d_0^{\downarrow}\Leftrightarrow
+\overline{v}^{\downarrow}=(|\underline{C})^{-1}\left(d_0^{\downarrow}-\underline{C}|\,\underline{v}^{\downarrow}\right).$$
+Матрица $(|\underline{C})^{-1}$ существует так как $|\underline{C}\rsim{A}'\in(P_{r,r})^*$.
+</ol>
+<p id="Definition5.7"><b>Определение 5.7:</b><br>
+Если $A\begin{pmatrix}i_1, & \ldots, & i_r \\ j_1, & \ldots & j_r\end{pmatrix}$ ранговая подматрица матрицы $A\in{P}_{n,n}$ и
+$\{i_{r+1},\ldots,i_n\}:=\overline{1,n}\backslash\{i_1,\ldots,i_r\}$, то переменные $x_{i_1},\ldots,x_{i_r}$ 
+называются связанными или зависимыми переменными СЛУ $Ax^{\downarrow}=b^{\downarrow}$, 
+а переменные $x_{i_{r+1}},\ldots,x_{i_n}$ свободными или независимыми.<br>
+Это разбиение условно, оно зависит от выбора ранговой подматрицы.
+<p id="Example5.2"><b>Пример 5.2:</b><br>
+Рассмторим СЛУ над полем $P=\mathbb{Q}$ при $n=3$, $n=5$.
+$$A=
+\begin{pmatrix}
+1 & 2 & -1 & 3 & -2 \\
+2 & 4 & -1 & 0 & 1 \\
+3 & 6 & -2 & 3 & -1
+\end{pmatrix},
+b^{\downarrow}=\begin{pmatrix}-1 \\ 2 \\ 1\end{pmatrix}.
+$$
+Таким образом надо найти все $x^{\downarrow}\in\mathbb{Q}^{(5)}$ такие, что $Ax^{\downarrow}=b^{\downarrow}$, то есть 
+$$\begin{pmatrix}1 & 2 & -1 & 3 & -2 \\ 2 & 4 & -1 & 0 & 1 \\ 3 & 6 & -2 & 3 & -1\end{pmatrix}
+\begin{pmatrix}x_1\\ \vdots \\ x_5\end{pmatrix}=\begin{pmatrix}-1 \\ 2 \\ 1\end{pmatrix},$$
+или доказать, что таких $x^{\downarrow}$ не существует.<br>
+В <a href="./discrete_math5.1.html#Example5.1">примере 5.1</a> было показано, что $\rang{A}=\rang(A,b^{\downarrow})=2$, тогда подматрица 
+$A'=A\begin{pmatrix}2,3 \\ 4,5\end{pmatrix}=\begin{pmatrix}0 & 1 \\ 3 & -1\end{pmatrix}$ является ранговой, 
+так как $|A'|=-3\neq0$. При таком выборе ранговой подматрицы переменные $x_1,x_2,x_3$ являются свободными, 
+а переменные $x_4,x_5$ - связные. Таким образом СЛУ $Ax^{\downarrow}=b^{\downarrow}$ равносильна СЛУ 
+$\underline{C}x^{\downarrow}=d_0^{\downarrow}$, где 
+$$\underline{C}=\begin{pmatrix}2 & 4 & -1 & 0 & 1 \\ 3 & 6 & -2 & 3 & -1\end{pmatrix},d_0^{\downarrow}=\begin{pmatrix}2 \\ 1\end{pmatrix},$$
+тогда 
+$$|\underline{C}=\begin{pmatrix}0 & 1 \\ 3 & -1\end{pmatrix},\underline{C}|=\begin{pmatrix}2 & 4 & -1 \\ 3 & 6 & -2\end{pmatrix}.$$
+Таким образом вектор $v^{\downarrow}=\begin{pmatrix}v_1 \\ \vdots \\ v_5\end{pmatrix}$ является решением СЛУ $Ax^{\downarrow}=b^{\downarrow}$ 
+тогда и только тогда, когда
+\begin{multline*}
+\begin{pmatrix}v_4 \\ v_5\end{pmatrix}=\begin{pmatrix}0 & 1 \\ 3 & -1\end{pmatrix}^{-1}
+\left(\begin{pmatrix}2 \\ 1\end{pmatrix}-\begin{pmatrix}2 & 4 & -1 \\ 3 & 6 & -2\end{pmatrix}
+\begin{pmatrix}v_1 \\ v_2 \\ v_3\end{pmatrix}\right)=\\
+=\left(-\frac13\right)\begin{pmatrix}-1 & -1 \\ 3 & 0\end{pmatrix}\begin{pmatrix}2-2v_1-4v_2+v_3 \\ 1-3v_1-6v_2+2v_3\end{pmatrix}=
+\begin{pmatrix}1-\frac53v_1-\frac{10}3v_2+v_3 \\ 2-2v_1-4v_2+v_3\end{pmatrix}.
+\end{multline*}
+Следовательно, множество решений СЛУ $Ax^{\downarrow}=b^{\downarrow}$ имеет вид 
+$$\left\{\left.\begin{pmatrix}c_1 \\ c_2 \\ c_3 \\ 1-\frac53c_1-\frac{10}3c_2+c_3 \\ 2-2c_1-4c_2+c_3\end{pmatrix}
+\right|c_1,c_2,c_3\in\mathbb{Q}\right\}.$$
+Общее решение СЛУ $Ax^{\downarrow}=b^{\downarrow}$ имеет вид
+$$x^{\downarrow}=\begin{pmatrix}0 \\ 0 \\ 0 \\ 1 \\ 2 \end{pmatrix}+c_1\begin{pmatrix}1 \\ 0 \\ 0 \\ -\frac53 \\ -2\end{pmatrix}+
+c_2\begin{pmatrix}0 \\ 1 \\ 0 \\ -\frac{10}3 \\ -4\end{pmatrix}+
+c_3\begin{pmatrix}0 \\ 0 \\ 1 \\ 1 \\ 1\end{pmatrix}.$$
+
+<h4 id="5.3">5.3 Системы однородных линейных уравнений.</h4>
+Далее везде в данном разделе $P$ - поле, $A\in{P}_{m,n}$.<br>
+<p id="Defintion5.8"><b>Определение 5.8:</b><br>
+Система линейных уравнений $Ax^{\downarrow}=b^{\downarrow}$ называется системой однородных линейных уравнений (СОЛУ), 
+если $b^{\downarrow}=\theta^{\downarrow}$.
+<br>
+Система однородных линейных уравнений $Ax^{\downarrow}=\theta^{\downarrow}$ всегда совместна, 
+так как она имеет как минимум одно решение равное $\theta^{\downarrow}$.
+<p id="Theorem5.6"><b>Теорема 5.6:</b><br>
+Множество $M$ решений СОЛУ $Ax^{\downarrow}$ с $n$ неизвестными является подпространством арифметического пространства $P^{(n)}$ 
+при этом $\dim{M}=n-\rang{A}$.
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Докажем, что множество $M$ решений СОЛУ является подпространством пространства $P^{(n)}$. Пусть $u^{\downarrow},v^{\downarrow}\in{M}$, тогда
+$$A(u^{\downarrow}+v^{\downarrow})=Au^{\downarrow}+Av^{\downarrow}=\theta^{\downarrow}+\theta^{\downarrow}=
+\theta^{\downarrow}\Rightarrow{u}^{\downarrow}+v^{\downarrow}\in{M},$$
+$$\forall{c}\in{P}(A(cv^{\downarrow})=c(Av^{\downarrow})=c\theta^{\downarrow}=\theta^{\downarrow}\Rightarrow{c}v^{\downarrow}\in{M}).$$
+Таким образом множество $M\subset{P}^{(n)}$ замкнуто относительно, операций сложения и умножение на элемент поля, то есть $M&lt;P{(n)}$.
+</li>
+<li>Пусть $\rang{A}=n$, тогда по теореме 5.4 
+$$|M|=1\Rightarrow{M}=\{\theta^{\downarrow}\}\Rightarrow\dim{M}=|\varnothing|=0=n-\rang{A}.$$
+</li>
+<li>Пусть $\rang{A}=r&lt;n$, тогда существуют $i_1,\ldots,i_r\in\overline{1,n}$ и существуют $\{i_{r+1},\ldots,i_n\}:=
+\overline{1,n}\backslash\{i_1,\ldots,i_r\}$ такие, что $x_{i_1},\ldots,x_{i_r}$ являются независимыми переменными, а 
+$x_{i_{r+1}},\ldots,x_{i_n}$  связными. Обозначим $v^{\downarrow}=\begin{pmatrix}v_1 \\ \vdots \\ v_n\end{pmatrix}$, $\underline{v}^{\downarrow}:=
+\begin{pmatrix}v_{i_1} \\ \vdots \\ v_{i_r}\end{pmatrix}$, $\overline{v}^{\downarrow}:=\begin{pmatrix}v_{i_{r+1}} \\ \vdots \\ v_{i_n}\end{pmatrix}$, 
+тогда из метода рангового минора следует, 
+$$\forall\underline{v}^{\downarrow}\in{P}^{(n-r)}\,\exists!\,\overline{v}^{\downarrow}\in{P}^{r}:v^{\downarrow}\in{M}.$$
+Следовательно, существуют $v_1^{\downarrow},\ldots,v_{n-r}^{\downarrow}\in{M}$ такие, что $\underline{v}_1^{\downarrow}=
+\begin{pmatrix}e \\ 0 \\ \vdots \\ 0\end{pmatrix}$, 
+$\underline{v}_2^{\downarrow}=\begin{pmatrix}0 \\ e \\ \vdots \\ 0\end{pmatrix}$, $\ldots$, 
+$\underline{v}_{n-r}^{\downarrow}=\begin{pmatrix}0 \\ \vdots \\ 0 \\ e\end{pmatrix}$. 
+Обозначим $V=\left(v_1^{\downarrow},\ldots,v_{n-r}^{\downarrow}\right)$, тогда 
+$$V\begin{pmatrix}i_{r+1}, & \ldots, & i_n \\ 1, & \ldots, & n\end{pmatrix}=
+\left(\underline{v}_1^{\downarrow},\ldots,\underline{v}_{n-r}^{\downarrow}\right)=E\Rightarrow\rang{V}=n-r,$$
+следовательно, система $v_1^{\downarrow},\ldots,v_{n-r}^{\downarrow}$ ЛНЗ.<br>
+Пусть $v^{\downarrow}\in{M}$. Так как $\left(\underline{v}_1^{\downarrow},\ldots,\underline{v}_{n-r}^{\downarrow}\right)=E$, 
+то существуют ${c_1,\ldots,c_{n-r}\in{P}}$ такие, что 
+$\underline{v}^{\downarrow}=c_1\underline{v}_1^{\downarrow}+\cdots+c_{n-r}\underline{v}_{n-r}^{\downarrow}$. Так как по пункту 1 $M&lt;{P}^{(n)}$, 
+то $w^{\downarrow}:=c_1v_1^{\downarrow}+\cdots+c_{n-r}v_{n-r}^{\downarrow}\in{M}$, при этом 
+$\underline{w}^{\downarrow}=c_1\underline{v}_1^{\downarrow}+\cdots+\underline{v}_{n-r}^{\downarrow}=\underline{v}^{\downarrow}.$
+Таким образом имеются два решения $v^{\downarrow}$ и $w^{\downarrow}$, у которых значения свободных пременных совпадают, следовательно, совпадают и 
+значения зависимых переменных, то есть $v^{\downarrow}=w^{\downarrow}$.
+Следовательно, любой $v^{\downarrow}\in{M}$ ЛВЧ $v_1^{\downarrow},\ldots,v_{n-r}^{\downarrow}$, 
+следовательно, $v_1^{\downarrow},\ldots,v_{n-r}^{\downarrow}$  базис $M$, тогда $\dim{M}=n-r=n-\rang{A}$.
+</li>
+</ol>
+<p id="Definition5.9"><b>Определение 5.9:</b><br>
+Базис пространства решений СОЛУ называется функциональной системой решений (ФСР) СОЛУ. 
+<p id="Corollary5.2"><b>Следствие 5.2:</b><br>
+<ol>
+<li> Любая СОЛУ имеет ФСР.</li>
+<li>ФСР СОЛУ $Ax^{\downarrow}=\theta^{\downarrow}$ состоит из $n-\rang{A}$ векторов</li>
+<li>Любая ЛНЗ система из пространства решений СОЛУ состоящая из $n-\rang{A}$ векторов является ФСР.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> По п. 1 теоремы 4.10 в любом подпространстве $L_n$ есть базис, который в случае подпространства решений СОЛУ является ее ФСР.</li>
+<li>Следует из теоремы 5.6.</li>
+<li>Пусть существует ЛНЗ система из $n-\rang{A}$ векторов не являющаяся базисом, тогда по п. 3 теоремы 4.10 она может быть дополнена до базиса. 
+Таким образом мощность полученного базиса будет превышать $n-\rang{A}$. И так как по пункту 2 в пространстве решений есть базис мощности $n-\rang{A}$, 
+то получено противоречие с п.2 теоремы 4.10.
+</li>
+</ol>
+<p id="Corollary5.3"><b>Следствие 5.3:</b><br>
+Если $a_1^{\downarrow},\ldots,a_{n-r}^{\downarrow}$ - ФСР СОЛУ, то общее решение СОЛУ имеет вид
+$x^{\downarrow}=c_1a_1^{\downarrow}+\cdots+c_{n-r}a_{n-r}^{\downarrow}$.
+<p><b>Доказательство:</b><br><br>
+Так как $M<P^{(n)}$, то для любых $c_1,\ldots,c_{n-r}\in{P}$ и для любых 
+$a_1^{\downarrow},\ldots,a_{n-r}^{\downarrow}\in{M}$ $c_1a_1^{\downarrow}+\cdots+c_{n-r}a_{n-r}^{\downarrow}\in{M}$.<br>
+С другой стороны так как $a_1,\ldots,a_{n-r}$ - базис $M$, то для любого $v^{\downarrow}\in{M}$ существуют $c_1,\ldots,c_{n-r}\in{P}$ такие, 
+что $v^{\downarrow}=c_1a_1^{\downarrow}+\cdots+c_{n-r}a_{n-r}^{\downarrow}$.
+<p id="Definition5.10"><b>Определение 5.10:</b><br>
+Для любого $b^{\downarrow}\in{P}^{(n)}\backslash\{\theta^{\downarrow}\}$ СОЛУ $Ax^{\downarrow}=\theta^{\downarrow}$ называется СОЛУ ассоциированной 
+со СЛУ $Ax^{\downarrow}=b^{\downarrow}$.
+<p id="Theorem5.7"><b>Теорема 5.7:</b><br>
+Пусть $M$ множество решений СЛУ $Ax^{\downarrow}=b^{\downarrow}$, $M_0$ - множество решений ассоциированной с ней СОЛУ 
+$Ax^{\downarrow}=\theta^{\downarrow}$, тогда для любого $a^{\downarrow}\in{M}$ 
+$M=a^{\downarrow}+M_0$, то есть $M=\left\{\left.a^{\downarrow}+a_0^{\downarrow}\right|a_0^{\downarrow}\in{M}_0\right\}$
+<p><b>Доказательство:</b><br><br>
+$$
+v^{\downarrow}\in{M}\Leftrightarrow{A}v^{\downarrow}=b^{\downarrow}\Leftrightarrow{A}v^{\downarrow}=
+Aa^{\downarrow}\Leftrightarrow{A}\left(v^{\downarrow}-a^{\downarrow}\right)=\theta^{\downarrow}\Leftrightarrow
+{v}^{\downarrow}-a^{\downarrow}\in{M}_0\Leftrightarrow{v}^{\downarrow}\in{a}^{\downarrow}+M_0.
+$$
+Где последняя эквивалентность в силу того, что $M_0&lt;P^{(n)}$.
+<br>
+Таким образом, если $a_1^{\downarrow},\ldots,a_{n-r}^{\downarrow}$ - базис пространства решений СОЛУ $Ax^{\downarrow}=\theta^{\downarrow}$ 
+ассоциированной со СЛУ $Ax^{\downarrow}=b^{\downarrow}$, $a^{\downarrow}$ - решение СЛУ $Ax^{\downarrow}=b^{\downarrow}$, 
+то общее решение СЛУ $Ax^{\downarrow}=b^{\downarrow}$ может быть представлено в виде 
+$$x^{\downarrow}=a^{\downarrow}+c_1a_1^{\downarrow}+\cdots+a_{n-r}a_{n-r}^{\downarrow}.$$
+
+<br><br>
+<a href="discrete_math4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math6.1.html">next</a>
+</body>
+</html>

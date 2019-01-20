@@ -1,0 +1,187 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 12.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.3.html">next</a>
+<br>
+
+<h4 id="12.2">12.2 Собственные векторы линейного преобразования.</h4>
+Везде далее в этом разделе $L_P$ - конечномерное векторное пространство размерности $n$.
+<p id="Definition12.2"><b>Определение 12.2:</b><br>
+Вектор $\alpha\in{L}_P\backslash\{\theta\}$ называется собственным вектором линейного преобразования $\varphi\in\mathcal{L}(L_P)$ 
+принадлежащим собственному значению $r\in{P}$, если $\varphi(\alpha)=\alpha{r}$.<br>
+Элемент $r\in{P}$  называют собственным значением преобразования $\varphi\in\mathcal{L}(L_P)$, 
+если существует вектор $\alpha\in{L}_P\backslash\{\theta\}$ такой, что $\varphi(\alpha)=\alpha{r}$.
+<p id="Statement12.5"><b>Утверждение 12.5:</b><br>
+Пусть $\vec{\alpha}=(\alpha_1,\ldots,\alpha_n)$ - базис векторного простаранства $L_P$, $\varphi\in\mathcal{L}(L_P)$, 
+тогда матрица $A_{\vec{\alpha}}(\varphi)$ диагональная тогда и только тогда, когда для любого $i\in\overline{1,n}$ 
+$\alpha_i$ - собственный вектор преобразования $\varphi$. 
+<p><b>Доказательство:</b><br><br>
+Матрица $A_{\vec{\alpha}}(\varphi)$ диагональная тогда и только тогда, когда для любого $i\in\overline{1,n}$ вектор 
+$\varphi(\alpha_i)_{\vec{\alpha}}^{\downarrow}$ имеет на $i$-том месте некоторое $r_i\neq0$, а на всех остальных местах 0. 
+Тогда и только тогда, когда для любого $i\in\overline{1,n}$ $\varphi(\alpha_i)=\vec{\alpha}\varphi(\alpha_i)_{\vec{\alpha}}^{\downarrow}=\alpha_i{r}_i$. 
+Тогда и только тогда, когда для любого $i\in\overline{1,n}$ $\alpha_i$ - собственный вектор преобразования $\varphi$ принадлежащий собственному 
+значению $r_i$.
+<p id="Definition12.5"><b>Определение 12.5:</b><br>
+Пусть $A\in{P}_{n,n}$, тогда матрица $Ex-A\in{P}[x]_{n,n}$ называется характеристической матрицей матрицы $A$.<br>
+Многочлен $\chi_{A}(x):=|Ex-A|\in{P}[x]$ называется характеристическим многочленом матрицы $A$. 
+<p id="Note12.3"><b>Замечание 12.3:</b><br>
+<ol>
+<li>Пусть $A=(a_{i,j})\in{P}_{n,n}$. Определитель $|Ex-A|$ содержит одно и только одно слагаемое степени $n$ - 
+это произведение элементов главной диагонали, которые имеют вид $x-a_{i,i}$, cледовательно, многочлен $\chi_{A}(x)$ унитарен и $\deg{\chi_{A}(x)}=n$.
+</li>
+<li>Если $A=\diag(r_1,\ldots,r_n)$, то $\chi_{A}(x)=\prod_{i=1}^n(x-r_i)$.</li>
+<li>Пусть $f(x)=x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\in{P}[x]$, тогда матрица вида
+$$
+S(f)=
+\begin{pmatrix}
+0 	& 0	    & \cdots 	& 0 	  & -c_0	\\
+e 	& 0	    & \cdots 	& 0 	  & -c_1	\\
+\vdots& \ddots & \ddots 	&\vdots& \vdots 	\\
+0	& \cdots & e 		& 0	  & -c_{n-2}	\\
+0	& \cdots & \cdots	& e 	  & -c_{n-1}	
+\end{pmatrix}\in{P}_{n,n}
+$$
+назвается сопровождающей матрицей для многочлена $f(x)$.
+</li>
+</ol>
+<p id="Task12.4"><b>Задача 12.4:</b><br>
+Пусть $f(x)=x^n+c_{n-1}x^{n-1}+\cdots+c_1x+c_0\in{P}[x]$.
+Доказать, что $\chi_{S(f)}(x)=f(x)$.<br>
+Решение.<br>
+Докажем индукцией по степени многочлена.
+<ol type="I">
+<li>При $n=1$ $f(x)=x+c_0$, $S(f)=(-c_0)\in{P}_{1,1}$, тогда 
+$$\chi_{S(f)}(x)=|Ex-S(f)|=|(x+c_0)|=x+c_0=f(x).$$
+</li>
+<li>Для любого $m\geq1$ докажем, что из справедливости утверждения при $1\leq{n}&lt;m$ следует его справедливость при $n=m$.<br>
+По <a href="./discrete_math3.3.html#Theorem3.7">теореме 3.7</a> (теорема Лапласа), разложив определитель по первой строке, имеем
+$$
+\chi_{S(f)}(x)=|Ex-S(f)|=
+\begin{vmatrix}
+x 	& 0	   & \cdots 	& 0 		& c_0		\\
+-e 	& x 	   & \cdots 	& 0 		& c_1		\\
+\vdots& \ddots & \ddots 	&\vdots 	& \vdots 	\\
+0	& \cdots & -e 	& x 		& c_{n-2}	\\
+0	& \cdots & \cdots 	& -e 		& c_{n-1}			
+\end{vmatrix} =
+x(-e)^2
+\begin{vmatrix}
+x 	& 0  	    & \cdots 	& 0 		& c_1		\\
+-e 	& x 	    & \cdots 	& 0 		& c_2 	\\
+\vdots & \ddots& \ddots 	&\vdots 	& \vdots 	\\
+0 	& \cdots & -e 	& x 		& c_{n-2} 	\\
+0	& \cdots &\cdots	& -e 		& c_{n-1}	
+\end{vmatrix}+c_0(-e)^{n+1}(-e)^{n-1}
+$$
+Определитель в последнем выражении есть $\chi_{S(g)}(x)=|Ex-S(g)|$, где $g(x)=x^{n-1}+c_{n-1}x^{n-2}+\cdots+xc_2+c_1$. 
+Тогда $\deg{g(x)}=n-1&lt;n$ и по предположению индукции $\chi_{S(g)}(x)=g(x)$, следвательно
+$$(-e)^{2n}=e\Rightarrow\chi_{S(f)}(x)=xg(x)+c_0=f(x).$$
+</li>
+</ol>
+<p id="Statement12.6"><b>Утверждение 12.6:</b><br>
+Пусть матрицы $A,B\in{P}_{n,n}$ такие, что $A\approx{B}$, тогда $\chi_{A}(x)=\chi_{B}(x)$.
+<p><b>Доказательство:</b><br><br>
+Так как $A\approx{B}$, то существует матрица $C\in{P}_{n,n}^*$ такая, что $B=C^{-1}AC$. По <a href="./discrete_math3.1.html#Theorem3.5">теореме 3.5</a>
+$$Ex=(C^{-1}C)Ex=C^{-1}(CE)x=C^{-1}(EC)x=C^{-1}E(xC)=C^{-1}ExC,$$ 
+тогда по <a href="./discrete_math3.2.html#Theorem3.6">теореме 3.6</a>
+$$
+\chi_{B}(x)=|Ex-B|=|Ex-C^{-1}AC|=|C^{-1}ExC-C^{-1}AC|=\\=|C^{-1}(Ex-A)C|=|C^{-1}||Ex-A||C|=|C|^{-1}\chi_{A}(x)|C|=\chi_{A}(x)
+$$
+<p id="Note12.4"><b>Замечание 12.4:</b><br>
+Утверждение обратное утверждению 12.6 не верно, например, 
+при $P=GF(2)$, $A=\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)$, 
+$b=\left(\begin{smallmatrix}1 & 1 \\ 0 & 1\end{smallmatrix}\right)$ $\chi_{A}(x)=\chi_{B}(x)=(x-1)^2$, 
+но $A=E$ не подобна $B$, так как единичной матрице подобна только единичная.
+<p id="Definition12.6"><b>Определение 12.6:</b><br>
+Для любого базиса $\vec{\alpha}$ векторного пространства $L_P$ и преобразования $\varphi\in\mathcal{L}(L_P)$ характеристический многочлен матрицы 
+$A_{\vec{\alpha}}(\varphi)$ называется характеристическим многочленом преобразования $\varphi$. <br>
+Характеристические многочлены преобразования $\varphi$ обозначаются как $\chi_{\varphi}(x)$.
+<p id="Theorem12.3"><b>Теорема 12.3:</b><br>
+Пусть $\vec{\alpha}$ - базис векторного пространства $L_P$, $\varphi\in\mathcal{L}(L_P)$, $r\in{P}$, тогда
+<ol>
+</li>вектор $\gamma\in{L}_P$ является собственным вектором преобразования $\varphi$ принадлежащим собственному занчению $r$ тогда и только тогда, 
+когда $\gamma\neq\theta$ и 
+$(Er-{A}_{\vec{\alpha}}(\varphi))\gamma_{\vec{\alpha}}^{\downarrow}=0^{\downarrow}$
+</li>
+<li>элемент $r$ является собственным значением преобразования $\varphi$ тогда и только тогда, когда $\chi_{\varphi}(r)=0$,
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Вектор $\gamma\in{L}_P$ является собственным вектором преобразования $\varphi$ принадлежащим собственному значению $r$ тогда и только тогда, когда 
+$$
+(\gamma\neq\theta\,\wedge\,\varphi(\gamma)=\gamma{r})\Leftrightarrow\left(\gamma\neq\theta\,\wedge,\varphi(\gamma)_{\vec{\alpha}}^{\downarrow}=
+(\gamma{r})_{\vec{\alpha}}^{\downarrow}\right)\Leftrightarrow
+\left(\gamma\neq\theta\,\wedge\,A_{\vec{\alpha}}(\varphi)\gamma_{\vec{\alpha}}^{\downarrow}=\gamma_{\vec{\alpha}}^{\downarrow}r=
+(Er)\gamma_{\vec{\alpha}}^{\downarrow}\right)\Leftrightarrow
+\left(\gamma\neq\theta\,\wedge\,(Er-A_{\vec{\alpha}}(\varphi))\gamma_{\vec{\alpha}}^{\downarrow}=0^{\downarrow}\right)
+$$
+</li>
+<li>По пункту 1 элемент $r$ является собственным значением преобразования $\varphi$ тогда и только тогда, 
+когда сущетсвует вектор $\gamma\in{L}_P\backslash\{\theta\}$ такой, что 
+$(Er-A_{\vec{\alpha}}(\varphi))\gamma_{\vec{\alpha}}^{\downarrow}=0^{\downarrow}$ тогда и только тогда, 
+когда СОЛУ $(Er-A_{\vec{\alpha}}(\varphi))x^{\downarrow}=0^{\downarrow}$ имеет ненулевое решение тогда и только тогда, когда 
+$\rang(Er-A_{\vec{\alpha}}(\varphi))&lt;n$ тогда и только тогда, когда $$\chi_{\varphi}(r)=|Er-A_{\vec{\alpha}}(\varphi)|=0.$$
+</li>
+</ol>
+<p id="Statement12.7"><b>Утверждение 12.7:</b><br>
+Пусть $r_1,\ldots,r_t$ - попарноразличные корни многочлена $\chi_{\varphi}(x)$, для любого $i\in\overline{1,t}$ 
+$\alpha_{i,1},\ldots,\alpha_{i,m_i}$ линейно независимая система собствернных векторов принадлежащих собственному значению $r_i$, 
+тогда система векторов $\alpha_1,\ldots,\alpha_{1,m_1},\alpha_{2,1},\ldots,\alpha_{2,m_2},\ldots,\alpha_{t,1},\ldots,\alpha_{t,m_t}$ линейно независимая.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $t$.<br>
+<ol type="I">
+<li>При $t=1$ система состоит из одной ЛНЗ подсистемы, следовательно, она ЛНЗ.</li>
+<li>Для любого $n\geq1$ докажем, что если для любого $t\in\overline{1,n}$ утверждение верно, то оно верно при $t=n+1$.<br>
+Пусть $c_{i,j}\in{P}$ такие, что $\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}c_{i,j}=\theta$, тогда
+$$r_t\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}c_{i,j}=\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}r_tc_{i,j}=\theta\quad(*),$$
+$$
+\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}r_ic_{i,j}=\sum_{i=1}^t\sum_{j=1}^{m_i}\varphi(\alpha_i)c_{i,j}=
+\varphi\left(\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}c_{i,j}\right)=\varphi(\theta)=\theta.
+$$
+Вычитая из полученного равенства равенство $(*)$, получим
+$$\sum_{i=1}^t\sum_{j=1}^{m_i}\alpha_{i,j}(r_i-r_t)c_{i,j}=\sum_{i=1}^{t-1}\sum_{j=1}^{m_i}\alpha_{i,j}(r_i-r_t)=\theta.$$ 
+Здесь первое равенство в силу того, что все слагаемые $t$-той суммы будут равны 0. По предположению индукции система векторов 
+$\alpha_{1,1},\ldots,\alpha_{1,m_1},\alpha_{2,1},\ldots,\alpha_{2,m_2},\ldots,\alpha_{t-1,1},\ldots,\alpha_{t-1,m_{t-1}}$ ЛНЗ, тогда для любого $i\in\overline{1,t-1}$ $j\in\overline{1,m_i}$ $(r_i-r_t)c_{i,j}=0$. Так как все элементы в $r_1,\ldots,r_t$ попарноназличны, то
+$$
+\forall{i}\in\overline{1,t-1}(r_i-r_t\neq0)\Rightarrow\forall{i}\in\overline{1,t-1}\,\forall{j}\in\overline{1,m_i}(c_{i,j}=0)\Rightarrow
+\sum_{i=1}^{t-1}\sum_{j=1}^{m_i}\alpha_{i,j}c_{i,j}=\theta\Rightarrow\sum_{j=1}^{m_t}\alpha_{t,j}c_{t,j}=\theta\Rightarrow
+\forall{j}\in\overline{1,m_t}(c_{t,j}=0)\Rightarrow\forall{i}\in\overline{1,t}\,j\in\overline{1,m_i}(c_{i,j}=0).
+$$
+Здесь предпоследняя импликация в силу того что система $\alpha_{t,1},\ldots,\alpha_{t,m_t}$ ЛНЗ. Таким образом, 
+система $\alpha_{1,1},\ldots,\alpha_{1,m_1},\alpha_{2,1},\ldots,\alpha_{2,m_2},\ldots,\alpha_{t,1},\ldots,\alpha_{t,m_t}$ ЛНЗ.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math12.3.html">next</a>
+</body>
+</html>

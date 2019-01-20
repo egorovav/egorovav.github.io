@@ -1,0 +1,200 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 7.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math6.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.2.html">next</a>
+<br>
+<h3 id="7">7. МНОГОЧЛЕНЫ.</h3>
+<h4 id="7.1">7.1 Многочлены над кольцом.</h4>
+Везде далее в данном разделе $R$ - кольцо с единицей $e$.
+<p id="Definition7.1"><b>Определение 7.1:</b><br>
+Многочленом над кольцом $R$ называется последовательность элементов кольца $(a_i)=(a_0,a_1,\ldots,a_n,\ldots)$, 
+в которой только конечное число членов не равно нулю.<br>
+Члены последовательности $a_i$ называются коэффициентами многочлена.<br>
+Многочлен $(0)=(0,\ldots,0,\ldots)$ называется нулевым многочленом.<br>
+Множество всех многочленов над кольцом $R$ обозначают $M(R)$.<br>
+На множестве $M(R)$ определены две операции $+$, $\cdot$ такие, что для любых ${(a_i),(b_i)\in{M}(R)}$
+$$(a_i)+(b_i)=(c_i):\forall{i}\in\mathbb{N}_0(c_i=a_i+b_i),$$
+$$(a_i)(b_i)=(d_i):\forall{i}\in\mathbb{N}_0\left(d_i=\sum_{k=0}^{i}a_kb_{i-k}\right).$$
+<p id="Theorem7.1"><b>Теорема 7.1:</b><br>
+Алгебра $(M(R);+,\cdot)$ является кольцом с единицей.<br>
+Кольцо $(M(R);+,\cdot)$ является коммутативным, тогда и только тогда, когда кольцо $R$ коммутативно.
+<p><b>Доказательство: </b><br><br>
+Докажем, что алгебра $(M(R);+,\cdot)$ удовлетворяет аксиомам кольца.
+<ol>
+<li>Ассоциотивность и коммутативность операций $+$ и $\cdot$ в алгебре $(M(R);+,\cdot)$ следует из аналогичных свойств одноименных операций кольца $R$.</li>
+<li>Нейтральным относитльно операции $+$, или нулем, в алгебре $(M(R);+,\cdot)$ является нулевой многочлен $(0)=(0,\ldots,0,\ldots)$.</li>
+<li>Противоположным элементу $(a_i)\in{M}(R)$ является элемент ${(b_i)\in{M}(R)}$ такой, что для любого $i\in\mathbb{N}_0$ $b_i=-a_i$.</li>
+<li>Докажем ассоциативность операции $\cdot$. Пусть $(a_i),(b_i),(c_i)\in{M}(R)$, 
+положим $(u_i):=(a_i)(b_i)$, $(v_i):=(u_i)(c_i)$, $(g_i)=:(b_i)(c_i)$, $(h_i)=(a_i)(g_i)$, тогда
+$$
+v_i=\sum_{k=0}^iu_kc_{i-k}=\sum_{k=0}^i\left(\sum_{s=0}^ka_sb_{k-s}\right)c_{i-k}=\sum_{k=0}^i\sum_{s=0}^ka_sb_{k-s}c_{i-k}
+$$
+$$
+h_i=\sum_{k=0}^ia_kg_{i-k}=\sum_{k=0}^ia_k\sum_{s=0}^{i-k}b_sc_{i-k-s}=\sum_{k=0}^i\sum_{s=0}^{i-k}a_kb_sc_{i-k-s}
+$$
+Сумма индексов во всех слагаемых обоих сумм равна $i$ и совпадающих наборов индексов в каждой из сумм нет. 
+При этом количество слагаемых в обоих суммах равно $\sum_{k=0}^ik$. Число представлений числа $i$ в виде суммы трех слагаемых, 
+тоже равно $\sum_{k=1}^ik$. Действительно, если первое слагаемое равно $m$, то второе слагаемое можно выбрать $i-m$ способами, 
+а третье будет определено однозначно, то есть число представлений числа $i$ в виде трех слагаемых равно $\sum_{m=0}^i(i-m)=\sum_{m=0}^im$. Таким образом 
+$$v_i=h_i=\sum_{k_1,k_2,k_3\in\mathbb{N}_0 \\ k_1+k_2+k_3=i}a_{k_1}b_{k_2}c_{k_3}.$$
+</li>
+<li>Докажем дистрибутивность операции $\cdot$ относительно операции $+$. Обозначим $(h_i):=((a_i)+(b_i))(c_i)$, $(u_i):=(a_i)(c_i)$, $(v_i):=(b_i)(c_i)$, 
+тогда
+$$
+h_i=\sum_{k=0}^i(a_k+b_k)c_{i-k}=\sum_{k=0}^i(a_kc_{i-k}+b_kc_{i-k})=\sum_{k=0}^ia_kc_{i-k}+\sum_{k=0}^ib_kc_{i-k}=u_i+v_i
+$$
+</li>
+<li>Нейтральным относительно операции $\cdot$, или единицей, является элемент $(e_i)=(e,0,\ldots,0,\ldots)$. Действительно,
+$$(a_i)(e_i)=\sum_{k=0}^ia_ke_{i-k}=\sum_{k=0}^{i-1}0+a_i=a_i.$$
+$$(e_i)(a_i)=\sum_{k=0}^ie_ka_{i-k}=a_i+\sum_{k=1}^i0=a_i.$$
+</li>
+</ol>
+Таким образом алгебра $(M(R);+,\cdot)$ - кольцо с единицей.<br>
+Предположим что кольцо $R$ коммутативно. Для любых $(a_i),(b_i)\in{M}(R)$ обозначим $(u_i)=(a_i)(b_i)$, $(v_i)=(b_i)(a_i)$, тогда
+$$u_i=\sum_{k=0}^ia_kb_{i-k}=\sum_{k=0}^ib_{i-k}a_k=\sum_{k=0}^ib_ka_{i-k}.$$
+Последнее равенство верно, так как сумма стоящая справа это сумма тех же слагаемых, что стоят слева сложенных в обратном порядке.<br>
+Предположим, что кольцо $(M(R);+,\cdot)$ коммутативно, тогда
+$$
+\forall{a},b\in{R}(a,0,\ldots,0,\ldots)(b,0,\ldots,0,\ldots)=(ab,0,\ldots,0,\ldots)=\\=(b,0,\ldots,0,\ldots)(a,\ldots,0,\ldots)=
+(ba,0,\ldots,0,\ldots)\Rightarrow{a}b=ba.
+$$
+<br>
+Рассмотрим множество многочленов ${\overline{R}:=\{\overline{a}=(a,0,\ldots,0,\ldots)\mid{a}\in{R}\}}$. 
+Существует естествененое биективное отображение между $\overline{R}$ и $R$ причем для любых $a,b\in\overline{R}$
+$\overline{a}+\overline{b}=\overline{a+b}$, $\overline{a}\,\overline{b}=\overline{ab}$.<br>
+Ведем обозначение $x:=(0,e,0,\ldots,0,\ldots)\in{M}(R)$, тогда $x^k=(a_i)\in{M}(R)$ такой, что для любого $i\neq{k}$ $a_i=0$ и $a_k=e$. 
+Докажем это индукцией по $k$.
+<ol type="I">
+<li>При $k=1$ верно по определению $x$.</li>
+<li>Пусть для любого $s\in\mathbb{N}$ утверждение верно для всех $k\in\overline{1,s}$, докажем, что оно верно при $k=s+1$. 
+Обозначим $(a_i):=x$, $(b_i):=x^s$, $(c_i):=x^{s+1}$. Тогда $(c_i)=(a_i)(b_i)$ и так как $a_i$ равно $0$ для всех $i\neq1$, то
+$$c_i=\sum_{m=0}^ia_mb_{i-m}=a_1b_{i-1}.$$
+С другой стороны, $b_i$ по предположению индукции не равно нулю только при $i=s$, следовательно $c_i=a_1b_{i-1}$, не равно $0$ (а единице), 
+только при $i=s+1$.
+</ol>
+В силу введенных обозначений коэфициенты многочлена $(\overline{c}_i):=\overline{a}x^k=x^k\overline{a}$ равны нулю для всех $i\neq{k}$ и 
+$\overline{c_k}=a$.<br>
+Пусть $(a_i)\in{M}(R)$, тогда по определению многочлена существует $n\in\mathbb{N}_0$ такое, что для любого $i>n$ $a_i=0$, следовательно, 
+многочлен $(a_i)$ может быть представлен в виде конечной суммы
+$$
+(a_i)=(a_0,a_1,\ldots,a_n,0\ldots,0,\ldots)=(a_0,0,\ldots,0,\ldots)+(0,a_1,0,\ldots,0,\ldots)+\cdots+(0,\ldots,0,a_n,0,\ldots,0,\ldots)=
+\overline{a}_0+\overline{a}_1x+\overline{a}_2x^{2}+\cdots+\overline{a}_nx^n.
+$$
+В силу существования естественного биективного отображения между $\overline{R}$ и $R$ символы $\overline{a}_i$, заменяют на $a_i$ и 
+обозначают многочлен $(a_i)$ в виде
+$$(a_i)=a(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n.$$
+Где $a_i$ называют коэффициентом при $x^i$, $a_0$ свободным членом. Кольцо многочленов над кольцом $R$ $M(R)$ обозначают так же $R[x]$ и 
+называют кольцом многочленов от одного переменного над кольцом $R$.<br>
+С учетом введенных выше обозначений сумма и произведение многочленов $a(x)=a_0+a_1x+\cdots+a_nx^n$, $b(x)=b_0+b_1x+\cdots+b_mx^m$ таких, 
+что $n\leq{m}$ записывается в следующем виде
+$$
+a(x)+b(x)=(a_0+a_1x+\cdots+c_nx^n)+(b_0+b_1x+\cdots+b_mx^m)=(a_0+b_0)+(a_1+b_1)x+\cdots+(a_n+b_n)x^n+b_{n+1}x^{n+1}+\cdots+b_mx^m.
+$$  
+$$
+a(x)b(x)=(a_0+a_1x+\cdots+a_nx^n)(b_0+b_1x_1+\cdots+b_mx^m)=\\=a_0b_0+a_0b_1x+a_0b_2x^2+\cdots+a_0b_mx^m+\cdots+a_nb_mx^{m+n}=
+a_0b_0+(a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+\cdots+a_nb_mx^{n+m}.
+$$
+<p id="Definition7.2"><b>Определение 7.2:</b><br>
+Степенью ненулевого многочлена $a(x)$ называется число $\deg{(a(x))}=\max{\{i\in\mathbb{N}_0\mid{a}_i\neq0\}}$.<br>
+Если $\deg{(a(x))}=n\in\mathbb{N}_0$, то коэффициент $a_n$ называют старшим коэффициентом многочлена $a(x)$, 
+a слагаемое $a_nx^n$ старшим членом многочлена $a(x)$.<br>
+Степенью нулевого многочлена считают $-\infty$.
+<br><br>
+Таким образом степень многочлена - это функция 
+$$\deg(a(x)):R[x]\to\mathbb{N}_0\cup\{-\infty\}.$$
+<p id="Statement7.1"><b>Утверждение 7.1:</b><br>
+Для любых $a(x),b(x)\in{R}[x]$ таких, что $\deg{(a(x))}=n$, $\deg{(b(x))}=m$
+<ol>
+<li>$\deg{(a(x)+b(x))}\leq\max{\{n,m\}}$,</li>
+<li>$\deg{(a(x)+b(x))}<\max{\{n,m\}}\Leftrightarrow(n=m\in\mathbb{N}_0\,\wedge\,a_n=-b_n)$,</li>
+<li>$\deg{(a(x)b(x))}\leq{n}+m$,</li>
+<li>$\deg{(a(x)b(x))}&lt;n+m\Leftrightarrow(m,n\in\mathbb{N}_0\,\wedge\,a_nb_m=0)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Обозначим $c(x):=a(x)+b(x)$, тогда для любого $i\in\mathbb{N}_0$ $c_i=a_i+b_i$.<br>
+Если $\max{\{n,m\}}=-\infty$, то $a(x)=b(x)=c(x)=0$, следовательно, $\deg{(c(x))}=\max{\{n,m\}}=-\infty$.<br>
+Если $\max{\{n,m\}}=k\in\mathbb{N}_0$, то 
+$$\forall{i}>k(a_i=b_i=0)\Rightarrow\forall{i}&gt;k(c_i=a_i+b_i=0)\Rightarrow\deg{(c(x))}\leq{k}.$$
+</li>
+<li>
+$\Rightarrow)$ Пусть $\deg{(c(x))}<\max{\{n,m\}}$. Докажем от противного, что $n=m$. Предположим, что $m&lt;n$, тогда $n\neq-\infty$ и
+$$c(x)=a_nx^n+\cdots+a_{m+1}x^{m+1}+(a_m+b_m)x^m+\cdots+(a_0+b_0),$$
+где $a_n\neq0$. Следовательно, $\deg{(c(x))}=n=\max{\{n,m\}}$, то есть получено противоречие. Аналогично показывается, 
+что неверно утверждение $m&gt;n$, следовательно, $m=n$.<br>
+Докажем от противного, что $n,m\in\mathbb{N}_0$. Предположим, $m=n=-\infty$, тогда $a(x)=b(x)=c(x)=0$ и $\deg{(c(x))}=-\infty=\max{\{n,m\}}$, 
+то есть получено противоречие.<br>
+Таким образом $m=n\in\mathbb{N}_0$, тогда, $c(x)=(a_n+b_n)x^n+\cdots+(a_0+b_0)$ и так как $\deg{(c(x))}&lt;n$, то $a_n+b_n=0$, то есть $a_n=-b_n$.<br>
+$\Leftarrow)$
+$$
+(\deg{(a(x))}=\deg{(b(x))}=n\,\wedge\,a_n=-b_n)\Rightarrow(c_n=a_n+b_n\,\wedge\,a_n=-b_n)\Rightarrow{c}_n=0\Rightarrow\deg{(c(x))}&lt;n.
+$$
+</li>
+<li>Обозначим $d(x)=a(x)b(x)$, тогда для любого $i\in\mathbb{N}_0$ $d_i=\sum_{k=0}^ia_kb_{i-k}$.<br>
+Если $m=-\infty$ или $n=-\infty$, то $d(x)=0$ и $\deg{(d(x))}=-\infty=n+m$.<br>
+Если $m,n\in\mathbb{N}_0$, то для любого $i&gt;n+m$
+$$
+\forall{k}\in\overline{0,i}(i-k>m\,\vee\,k>n)\Rightarrow\forall{k}\in\overline{0,i}(b_{i-k}=0\,\vee\,a_k=0)\Rightarrow
+\forall{k}\in\overline{0,i}(a_kb_{i-k}=0)\Rightarrow{d}_i=\sum_{k=0}^ia_kb_{i-k}=0,
+$$
+следовательно, $\deg{(d(x))}\leq{n}+m$.
+</li>
+<li>По доказанному в пункте 3 $m,n\in\mathbb{N}_0$, тогда
+$$\deg{(d(x))}&lt;m+n\Leftrightarrow{d}_{n+m}=\sum_{k=0}^{m+n}a_kb_{m+n-k}=a_nb_m=0.$$
+Предпоследнее равенство верно, так как в сумме $\sum_{k=0}^{m+n}a_kb_{m+n-k}$ все слагаемые кроме $a_nb_m$ равны $0$. Действительно, 
+предположим, что $a_sb_t\neq0$ и $s\neq{n}$, $t\neq{m}$, тогда если $s&gt;n$, то $a_s=0$, следовательно, $s\leq{n}$, тогда $t=m+n-s\geq{m}$ и 
+по предположению $t&gt;m$, то есть $b_t=0$, следовательно, $a_sb_t=0$, что противоречит предположению.
+</li>
+</ol>
+<p id="Corollary7.1"><b>Следствие 7.1:</b><br>
+<ol>
+<li>Если $R$ - кольцо без делителей нуля, то 
+$$\forall{a}(x),b(x)\in{R}[x](\deg{(a(x)b(x))}=\deg{(a(x))}+\deg{(b(x))}).$$
+</li>
+<li>Кольцо $R[x]$ не имеет делителей нуля, тогда и только тогда, когда $R$ без делителей нуля.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $\deg{(a(x))}=n$, $\deg{(b(x))}=m$ и кольцо $R$ не содержит делителей нуля. Докажем от противного, что $\deg{(a(x)b(x))}=n+m$. 
+Предположим, что $\deg{(a(x)+b(x))}\neq{n+m}$, тогда по п. 3 утверждения 7.1 $\deg{(a(x)b(x))}&lt;n+m$. 
+Тогда по п. 4 утверждения 7.1 $m,n\in\mathbb{N}_0$ и $a_nb_m=0$, при этом $a_n\neq0$, $b_m\neq0$, следовательно, $a_n$, $b_m$ делители нуля в $R$, 
+что противоречить предположению.  
+</li>
+<li>
+$\Rightarrow)$ Пусть $R[x]$ без делителей нуля, докажем от противного, что $R$ тоже без делителей нуля. Предположим, что $a\in{R}$ делитель нуля, 
+тогда существует $b\neq0$ такой, что $ab=0$, следовательно, существуют 
+$\overline{a},\overline{b}\in{R}[x]$ такие, что $\overline{a}\overline{b}=(ab,0,\ldots,0,\ldots)=0$, то есть $\overline{a}$ делитель нуля в $R[x]$. 
+Получено противоречие.<br>
+$\Leftarrow)$ Пусть $R$ без делителей нуля. Докажем от противного, что $R[x]$ тоже без делителей нуля. Предположим, 
+существуют $a(x),b(x)\in{R}[x]\backslash\{0\}$ такие, что $a(x)b(x)=0$ тогда, по пункту 1 
+$$
+\deg{(a(x))}+\deg{(b(x))}=\deg{0}=-\infty\Rightarrow\deg{(a(x))}=\deg{(b(x))}=-\infty\Rightarrow{a}(x)=b(x)=0,
+$$
+что противоречит предположению.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math6.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.2.html">next</a>
+</body>
+</html>

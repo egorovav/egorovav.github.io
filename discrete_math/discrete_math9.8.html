@@ -1,0 +1,431 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.8</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.10.html">next</a>
+<br>
+
+<h4 id="9.8">9.8 Классы сопряженных элементов.</h4>
+<p id="Definition9.25"><b>Определение 9.25:</b><br>
+Пусть $(G;\cdot)$ - группа, тогда элементы $g,h\in{G}$ называются сопряженными, если существует $t\in{G}$ такое, что $t^{-1}gt=h$.<br>
+Если элементы $g$ и $h$ сопряжены, то обозначают $g\approx{h}$.
+<p id="Note9.5"><b>Замечание 9.5:</b><br>
+<ol>
+<li>Отношение сопряженности "$\approx$" является отношением эквивалентности.
+<ol type="a">
+<li>$$\forall{g}\in{G}(e^{-1}ge=g)\Rightarrow\forall{g}\in{G}(g\approx{g}).$$</li>
+<li>
+$$
+g\approx{h}\Rightarrow\exists{t}\in{G}:t^{-1}gt=h\Rightarrow\exists{s}:=t^{-1}\in{G}:s^{-1}hs=(t^{-1})^{-1}ht^{-1}=tht^{-1}=g\Rightarrow{h}\approx{g}
+$$
+</li>
+<li> 
+$$
+\begin{cases}g\approx{h} \\ h\approx{f}\end{cases}\Rightarrow\begin{cases}\exists{t}\in{G}:t^{-1}gt=h \\ \exists{s}\in{G}:s^{-1}hs=f\end{cases}\Rightarrow
+\exists{r}:=ts\in{G}:\\ r^{-1}gr=(ts)^{-1}g(ts)=s^{-1}t^{-1}gts=s^{-1}hs=f\Rightarrow{g}\approx{f}
+$$
+</ol>
+Таким образом можно говорить о классах сопряженных элементов
+$$[g]_{\approx}:=\{x\in{G}\mid{x}\approx{g}\}=\{t^{-1}gt\mid{t}\in{G}\}.$$
+</li>
+<li>Если $G$ - абелева группа, то 
+$$g\approx{h}\Leftrightarrow\exists{t}\in{G}:t^{-1}gt=gt^{-1}t=g=h.$$
+То есть для любого $g\in{G}$ $[g]_{\approx}=\{g\}$.
+</li>
+<li>С другой стороны
+$$|[g]_{\approx}|=1\Leftrightarrow\forall{t}\in{G}(t^{-1}gt=g)\Leftrightarrow\forall{t}\in{G}(gt=tg)\Leftrightarrow{g}\in{C}(G),$$
+где $C(G)$ - центр группы $G$ (п. 2 <a href="./discrete_math9.4.html#Example9.10">пример 9.10</a>).
+</li>
+</ol>
+<p id="Definition9.26"><b>Определение 9.26:</b><br>
+Пусть $(G;\cdot)$ - группа. Нормализатором множества $M\subset{G}$ в группе $G$ называется множество 
+$$N_{G}(M):=\{g\in{G}\mid{g}M=Mg\}.$$
+<p id="Theorem9.19"><b>Теорема 9.19:</b><br>
+<ol>
+<li>$\forall{M}\subset{G}(N_G(M)&lt;G)$.</li>
+<li>$\forall{g}\in{G}(|[g]_{\approx}|=|G:N_G(\{g\})|)$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Применим критерий быть подгруппой (<a href="./discrete_math9.4.html#Statement9.3">утверждение 9.3</a>)
+$$
+x,y\in{N}_G(M)\Rightarrow(xM=Mx\,\wedge\,yM=My)\Rightarrow
+(xM=Mx\,\wedge\,My^{-1}=y^{-1}M)\Rightarrow(xy^{-1})M=x(y^{-1}M)=x(My^{-1})=(xM)y^{-1}=(Mx)y^{-1}=M(xy^{-1})\Rightarrow{x}y^{-1}\in{N}_G(M).
+$$
+</li>
+<li>Установим при каком условии $x^{-1}gx=y^{-1}gy$.
+$$
+x^{-1}gx=y^{-1}gy\Leftrightarrow(yx^{-1})g=g(yx^{-1})\Leftrightarrow{y}x^{-1}\in{N}_G(\{g\})\Leftrightarrow{N}_G(\{g\})y=N_G(\{g\})x
+$$
+Таким образом 
+$$x^{-1}gx\neq{y}^{-1}gy\Leftrightarrow{N}_G(\{g\})y\neq{N}_G(\{g\})x,$$
+следовательно,
+$$|[g]_{\approx}|=|\{t^{-1}gt\mid{t}\in{G}\}|=|G:N_G(\{g\})|.$$
+</li>
+</ol>
+<p id="Corollary9.17"><b>Следствие 9.17:</b><br>
+$$|G|&lt;\infty\Rightarrow\forall{g}\in{G}(|[g]_{\approx}|\bigl||G|).$$
+<p><b>Доказательство:</b><br>
+Так как $N_G(\{g\})&lt;G$, то по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> 
+$$|G|=|N_G(\{g\})||G:N_G(\{g\})|=|N_G(\{g\})||[g]_{\approx}|.$$
+<p id="Theorema9.20"><b>Теорема 9.20:</b><br> 
+Пусть $(G;\cdot)$ - группа, $p$ - простое число, тогда
+<ol>
+<li>если существует $k\in\mathbb{N}$ такое, что $|G|=p^k$, то $C(G)\neq\{e\}$;</li>
+<li>если $|G|=p^2$, то $G$ - абелева.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем от противного. Предположим, что $|C(G)|=1$. Существует разбиение группы $G$ на классы сопряженных элементов
+$$G=[e]_{\approx}\cup[g_1]_{\approx}\cup[g_2]_{\approx}\cup\cdots\cup[g_t]_{\approx}.$$
+Следовательно,
+$$|G|=|[e]_{\approx}|+\sum_{i=1}^t|[g_i]_{\approx}|,$$
+где $|[e]_{\approx}|=1$.
+Так как $|C(G)|=\{e\}$, то по п. 3 <a href="./discrete_math9.8.html#Note9.5">замечания 9.5</a>
+$$\forall{i}\in\overline{1,t}(g_i\notin{C}(G))\Rightarrow\forall{i}\in\overline{1,t}(|[g_i]_{\approx}|>1).$$
+По п. 2 <a href="./discrete_math9.8.html#Theorem9.19">теоремы 9.19</a> 
+$$
+\forall{i}\in\overline{1,t}(|[g_i]_{\approx}|\bigl|p^{k})\Rightarrow\forall{i}\in\overline{1,t}\,\exists{m}_i>0:|[g_i]_{\approx}|=p^{m_i}\Rightarrow
+{p}^k=|G|=1+\sum_{i=1}^tp^{m_i}.
+$$
+Из последнего равенства следует, что $p|1$, таким образом получено противоречие.
+</li>
+<li>Так как $|G|=p^2$, то по пункту 1 $|C(G)|>1$. С другой стороны, так как $C(G)&lt;G$, то $|C(G)|\bigl|p^2$, следовательно, $|C(G)|\in\{p,p^2\}$.<br>
+Предположим, что $|C(G)|=p$, тогда по следствию 9.16 существует $g\in{C}(G)$ такой, что $C(G)=\langle{g}\rangle$. 
+Так как $|C(G)|=p<p^2=|G|$, то существует $h\in{G}\backslash{C}(G)$, тогда
+$$
+\begin{cases}C(G)&lt;\langle{g},h\rangle \\ C(G)\neq\langle{g},h\rangle \\ \langle{g},h\rangle&lt;G\end{cases}
+\Rightarrow\begin{cases}p\bigl||\langle{g},h\rangle| \\ |\langle{g},h\rangle|&gt;p \\ |\langle{g},h\rangle|\bigl|p^2\end{cases}\Rightarrow
+|\langle{g},h\rangle|=p^2\Rightarrow{G}=\langle{g},h\rangle
+$$
+Тогда, так как $g\in{C}(G)$, то $gh=hg$, следовательно, группа ${|\langle{g},h\rangle|=G}$ - абелева и $|C(G)|=|G|=p^2$. 
+Таким образом, получено противоречие с предположением $|C(G)|=p$, следовательно, $|C(G)|=p^2$, $C(G)=G$ и группа $G$ - абелева.
+</li>
+</ol>
+<p id="Task9.5"><b>Задача 9.5:</b><br>
+Показать, что группа $H:=\langle(1,3),(1,2,3,4)\rangle&lt;S_4$ - самая малая не абелева группа примарного порядка.<br>
+Решение:<br>
+Обозначим $g=(1,3)$, $h=(1,2,3,4)$, тогда $\ord{g}=2$, $\ord{h}=4$,  и по <a href="./discrete_math9.4.html#Theorem9.13">теореме 9.13</a> 
+непосредственно проверяется, что все элементы группы $\langle{g},h\rangle$ исчерпываются следующим списком
+<ol>
+<li>$\varepsilon$,</li>
+<li>$g=(1,3)$,</li>
+<li>$h=(1,2,3,4)$,</li>
+<li>$h^2=(1,3)(2,4)$,</li>
+<li>$h^3=(1,4,3,2)$,</li>
+<li>$h^2g=gh^2=(2,4)$,</li>
+<li>$gh=h^3g=(1,4)(2,3)$,</li>
+<li>$hg=gh^3=(1,2)(3,4)$,</li>
+</ol>
+то есть $|H|=|\langle{g},h\rangle|$=8. Так как $gh\neq{h}g$ и по теореме 9.20 любая группа порядка 4 абелева, 
+то группа $H$ самая малая неабелева группа примарного порядка. 
+<p id="Theorem9.21"><b>Теорема 9.21:</b><br>
+$$\forall{g},h\in{S}_n(g\approx{h}\Leftrightarrow[g]=[h]).$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Обозначим $g:=(\alpha_1,\ldots,\alpha_k)(\beta_1,\ldots,\beta_s)\cdots(\gamma_1,\ldots,\gamma_m)$ - 
+разложение подстановки $g\in{S}_n$ в произведение независимых циклов. Так как $g\approx{h}$, то существует $f\in{S}_n$ такая, что $f^{-1}gf=h$. 
+Так как подстановка $f$ являтеся биективным отображением, то по <a href="./discrete_math9.4.html#Lemma9.1">лемме 9.1</a>
+$$h=(f(\alpha_1),\ldots,f(\alpha_k))(f(\beta_1),\ldots,f(\beta_s))\cdots(f(\gamma_1),\ldots,f(\gamma_m)).$$ 
+Так как все элементы разложения $g=(\alpha_1,\ldots,\alpha_k)(\beta_1,\ldots,\beta_s)\cdots(\gamma_1,\ldots,\gamma_m)$ различны и отображение $f$ биективно, 
+то все элементы в разложении 
+$$h=(f(\alpha_1),\ldots,f(\alpha_k))(f(\beta_1),\ldots,f(\beta_s))\cdots(f(\gamma_1),\ldots,f(\gamma_m))$$ 
+различны. Таким образом, последнее разложение есть разложение подстановки $h$ в произведение независимых циклов с таким же количеством и 
+длинной циклов как и в разложении подстановки $g$.<br>
+$\Leftarrow)$ Пусть $[g]=[h]$. Обозначим
+$$g:=(\alpha_1,\ldots,\alpha_k)(\beta_1,\ldots,\beta_s)\cdots(\gamma_1,\ldots,\gamma_m),$$
+$$h:=(a_1,\ldots,a_k)(b_1,\ldots,b_s)\cdots(c_1,\ldots,c_m).$$
+Пусть подстановка $x\in{S}_n$ такая, что
+$$x=
+\begin{pmatrix}
+\alpha_1,\ldots,&\alpha_k,&\beta_1,\ldots,&\beta_s,\ldots,&\gamma_1,\ldots,&\gamma_m \\
+a_1,\ldots,        &a_k,        &b_1,\ldots,       &b_s,\ldots,      &c_1,\ldots,            &c_m
+\end{pmatrix},$$
+тогда по <a href="./discrete_math9.4.html#Lemma9.1">лемме 9.1</a> $x^{-1}gx=h$, то есть $g\approx{h}$.
+<p id="Example9.21"><b>Пример 9.21:</b><br>
+По теореме 9.21 уравнение $x^{-1}gx=h$, называемое уравнением Коши, разрешимо тогда и только тогда, когда $[g]=[h]$. Рассмотрим, например, 
+подстановки $g=(1,2)(3,4)$ и $h=(1,3)(2,4)$. Так как $[g]=[h]=[2^2]$, то уравнение $x^{-1}gx=h$ разрешимо и множество его решений есть<br>
+<table class="solid">
+<tr><td>N</td><td><table class="collapse"><tr><td>1</td><td>2</td><td>3</td><td>4</td></tr></table></td></tr>
+<tr>
+<td>
+<table class="collapse">
+<tr><td>1</td></tr>
+<tr><td>2</td></tr>
+<tr><td>3</td></tr>
+<tr><td>4</td></tr>
+<tr><td>5</td></tr>
+<tr><td>6</td></tr>
+<tr><td>7</td></tr>
+<tr><td>8</td></tr>
+</table>
+</td>
+<td>
+<table class="collapse">
+<tr><td>1</td><td>3</td><td>2</td><td>4</td></tr>
+<tr><td>3</td><td>1</td><td>2</td><td>4</td></tr>
+<tr><td>1</td><td>3</td><td>4</td><td>2</td></tr>
+<tr><td>3</td><td>1</td><td>4</td><td>2</td></tr>
+<tr><td>2</td><td>4</td><td>1</td><td>3</td></tr>
+<tr><td>2</td><td>4</td><td>3</td><td>1</td></tr>
+<tr><td>4</td><td>2</td><td>1</td><td>3</td></tr>
+<tr><td>4</td><td>2</td><td>3</td><td>1</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br><br>
+Далее везде для простоты обозначений нормализатор $N_G(\{g\})$ множества $\{g\}$ состоящего из одного элемента будем обозначать как $N_G(g)$. 
+<p id="Theorem9.22"><b>Теорема 9.22:</b><br>
+Пусть $g\in{S}_n$, $[g]=[l_1^{k_1},\ldots,l_m^{k_m}]$, тогда
+<ol>
+<li>$$|N_{S_n}(g)|=\prod_{i=1}^mk_i!l_i^{k_i}.$$</li>
+<li>Если $h,f\in{S}_n$ такие, что $f^{-1}gf={h}$, то множество решений уравнения $x^{-1}gx=h$ есть $N_{S_n}(g)f$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как
+$$N_{S_n}(g)=\{x\in{S}_n\mid{x}g=gx\}=\{x\in{S}_n\mid{x}^{-1}gx=g\},$$
+то $|N_{S_n}(g)|$ равно числу решений уравнения $x^{-1}gx=g$. Зафиксируем разложение $g=g_1\cdots{g}_s$ в независимые циклы (включая единичные) такое, 
+что для любого $i\in\overline{1,s}$ $g_i=(\alpha_{i,1},\ldots,\alpha_{i,m_i})$ такие, что
+$m_1\geq{m}_2\geq\ldots\geq{m}_s\geq1$. Назовем такую форму записи нормальной, 
+тогда любая нормальная форма записи $g=g'_1\cdots{g}'_s$ $\forall{i}\in\overline{1,s}$ $g'_i=(\beta_{i,1},\ldots,\beta_{i,m_i})$ подстановки $g$ 
+будет соответствовать одному решению уравнения $x^{-1}gx=g$ такому, что
+$$x=
+\begin{pmatrix}
+\alpha_{1,1},\ldots,&\alpha_{1,m_1},&\alpha_{2,1},\ldots,&\alpha_{2,m_2},\ldots,&\alpha_{s_1},\ldots,&\alpha_{s,m_s} \\
+\beta_{1,1},\ldots, &\beta_{1,m_1},  &\beta_{2,1},\ldots, &\beta_{2,m_2},\ldots,  &\beta_{s_1},\ldots,&\beta_{s,m_s} 
+\end{pmatrix}.$$
+Количество нормальных записей подстановки $g$ равно произведению числа перестановок циклов одинаковой длины между собой, 
+и числу сочетаний сдвигов каждого из циклов, то есть 
+$$|N_{S_n}(g)|=(k_1!\cdots{k}_m!)l_1^{k_1}\cdots{l}_m^{k_m}=\prod_{i=1}^mk_i!l_i^{k_i}.$$ 
+</li>
+<li>Пусть $M$ множество решений уравнения $x^{-1}gx=h$, тогда
+$$
+t\in{M}\Rightarrow{t}^{-1}gt=h\Rightarrow{t}^{-1}gt=f^{-1}gf\Rightarrow(tf^{-1})^{-1}gtf^{-1}=ft^{-1}gtf^{-1}=ff^{-1}gff^{-1}=g\Rightarrow
+{t}f^{-1}\in{N}_{S_n}(g)\Rightarrow{t}\in{N}_{S_n}(g)f
+$$
+С другой стороны, 
+$$
+t\in{N}_{S_n}(g)f\Rightarrow\exists{r}\in{N}_{S_n}(g):t=rf\Rightarrow{t}^{-1}gt=(rf)^{-1}g(rf)=f^{-1}(r^{-1}gr)f=f^{-1}gf=h\Rightarrow{t}\in{M}
+$$
+</li>
+</ol>
+<p id="Corollary9.18"><b>Следствие 9.18:</b><br>
+Число подстановок степени $n$ с цикловой структурой $[l_1^{k_1},\ldots,l_m^{k_m}]$ равно
+$$\frac{n!}{\prod_{i=1}^mk_i!l_i^{k_i}}.$$
+<p><b>Доказательство:</b><br><br>
+Из теоремы 9.21 следует, что множество подстановок с цикловой структурой $[g]$ равно $[g]_{\approx}$. Тогда по 
+<a href="./discrete_math9.8.html#Theorem9.19">теореме 9.19</a>, <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> и теореме 9.22
+$$|[g]_{\approx}|=|S_n:N_{S_n}(g)|=\frac{|S_n|}{|N_{S_n}(g)|}=\frac{n!}{\prod_{i=1}^mk_i!l_i^{k_i}}.$$
+
+<h4 id="9.9">9.9 Конгруэнции на группе.</h4>
+<p id="Definition9.27"><b>Определение 9.27:</b><br>
+Подгруппа $H&lt;G$ называется нормальным делителем группы $G$, если для любого $g\in{G}$ $gH=Hg$.<br>
+Если $H$ нормальный делитель $G$, то пишут $H\triangleleft{G}$.
+<br><br>
+В абелевой группе любая подгруппа является нормальным делителем.
+<p id="Statement9.7"><b>Утверждение 9.7:</b><br>
+Для любой подгруппы $H&lt;G$ следующие утверждения эквивалентны
+<ol>
+<li>$H\triangleleft{G}$,</li>
+<li>$N_G(H)=G$,</li>
+<li>$\forall{g}\in{G}(g^{-1}Hg=H)$,</li>
+<li>$\forall{g}\in{G}\,\forall{h}\in{H}(g^{-1}hg\in{H})$.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+$1)\Rightarrow2)$ Следует из определения 9.26.<br>
+$2)\Rightarrow3)$ $N_G(H)=G\Rightarrow\forall{g}\in{G}(gH=Hg)\Rightarrow\forall{g}\in{G}(g^{-1}Hg=H)$.<br>
+$3)\Rightarrow4)$ Очевидно, так как $g^{-1}Hg:=\{g^{-1}hg\mid{h}\in{H}\}$.<br>
+$4)\Rightarrow1)$ Так как
+$$
+\forall{g}\in{G}\,\forall{h}\in{H}(g^{-1}hg\in{H})\Rightarrow\forall{g}\in{G}(g^{-1}Hg\subset{H})\Rightarrow\forall{g}\in{G}(Hg\subset{g}H),
+$$
+и
+$$
+\forall{g}\in{G}\,\forall{h}\in{H}(ghg^{-1}=(g^{-1})^{-1}hg^{-1}\in{H})\Rightarrow
+\forall{g}\in{G}(gHg^{-1}\subset{H})\Rightarrow\forall{g}\in{G}(gH\subset{H}g),
+$$
+то $gH=Hg$, то есть $H\triangleleft{G}$.
+<p id="Example9.22"><b>Пример 9.22:</b><br>
+<ol>
+<li>Для любой группы $G$ существуют тривиальные или несобственные нормальные делители ${e}\triangleleft{G}$, $G\triangleleft{G}$.</li>
+<li>Так как по определению центра группы для любого $g\in{G}$ верно $gC(G)=C(G)g$, то $C(G)\triangleleft{G}$.</li>
+<li>Пусть подгруппа $H<G$ такая, что $|G:H|=2$, тогда<br>
+если $g\in{H}$, то $gH=H=Hg$<br>
+если $g\notin{H}$, то
+$$H\cup{g}H=H\cup{H}g=H\Rightarrow{g}H=Hg=G\backslash{H}.$$
+Таким образом, для любого $g\in{G}$ $gH=Hg$, следовательно, $H\triangleleft{G}$.
+</li>
+<li>Из пункта 3 в частности следует, что $A_n\triangleleft{S}_n$.</li>
+<li>Для любого $n\geq3$ подгруппа $\langle(1,2)\rangle=\{\varepsilon,(1,2)\}&lt;S_n$ не является нормальным делителем $S_n$, так как, 
+например, $(1,2)(1,3)\neq(1,3)(1,2)$.
+</li>
+<li>Отношение "$\triangleleft$" не транзитивно. Например, $\langle(1,2)(3,4)\rangle\triangleleft{K}_4\triangleleft{S}_4$, 
+но подгруппа $H:=\langle(1,2)(3,4)\rangle$ не является нормальным делителем $S_n$. Например, 
+$(1,2,3)^{-1}(1,2)(3,4)(1,2,3)=(2,3)(1,4)\notin{H}$, следовательно, по п. 4 утверждения 9.7 $H$ не является нормальным делителем $S_n$. 
+</li> 
+</ol>
+<p id="Definition9.28"><b>Определение 9.28:</b><br>
+Пусть $H\triangleleft{G}$, тогда говорят, что элементы $x,y\in{G}$ сравнимы по $H$, если $xy^{-1}\in{H}$.<br>
+Если $x$ и $y$ сравнимы по $H$, то пишут $x\equiv{y}\pod{H}$  или $xH=yH$. 
+<p id="Theorem9.23"><b>Теорема 9.23:</b><br>
+<ol>
+<li>Если $H\triangleleft{G}$, то отношение $\equiv(H)$ является конгруэнцией.</li>
+<li>Если $\rho$ - конгруэнция, то $[e]_{\rho}\triangleleft{G}$ и $\rho=(\equiv([e]_{\rho}))$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем, что $\equiv(H)$ отношение эквивалентности.
+<ul>
+<li><b>рефлексивность.</b> $xx^{-1}=e\in{H}\Rightarrow{x}\equiv{x}\pod{H}$.</li>
+<li><b>симметричность.</b>
+$$
+x\equiv{y}\pod{H}\Rightarrow{x}y^{-1}\in{H}\Rightarrow{y}x^{-1}=(xy^{-1})^{-1}\in{H}\Rightarrow{y}\equiv{x}\pod{H}.
+$$
+</li>
+<li><b>транзитивность.</b>
+$$
+(x\equiv{y}\pod{H}\,\wedge\,y\equiv{z}\pod{H})\Rightarrow(xy^{-1}\in{H}\,\wedge\,yz^{-1}\in{H})\Rightarrow
+{x}yy^{-1}z^{-1}\in{H}\Rightarrow{x}z^{-1}\in{H}\Rightarrow{x}\equiv{z}\pod{H}.
+$$
+</li>
+</ul>
+Так как $H\triangleleft{G}$, то по п. 4 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> для любых $g\in{G}$, $h\in{H}$ 
+$g^{-1}hg\in{H}$, следовательно,
+$$
+(x\equiv{y}\pod{H}\,\wedge\,u\equiv{v}\pod{H})\Rightarrow(xy^{-1}\in{H}\,\wedge\,uv^{-1}\in{H})\Rightarrow
+(xy^{-1}\in{H}\,\wedge\,y(uv^{-1})y^{-1}\in{H})\Rightarrow{x}y^{-1}y(uv^{-1})y^{-1}=xu(v^{-1}y^{-1})=xu(yv)^{-1}\in{H}\Rightarrow
+xu\equiv{y}v\pod{H}.
+$$
+Таким образом, отношение $\equiv(H)$ согласовано с групповой операцией, то есть отоншение $\equiv(H)$ является конгруэнцией.
+</li>
+<li>Так как отношение $\rho$ рефлексивно, симметрично и согласовано с групповой операцией, то
+$$
+x,y\in[e]_{\rho}\Rightarrow(x\rho{e}\,\wedge\,y\rho{e}\,y^{-1}\rho{y}^{-1})\Rightarrow(x\rho{e}\,\wedge{e}\rho{y}^{-1})\Rightarrow
+(x\rho{e}\,\wedge\,y^{-1}\rho{e})\Rightarrow{x}y^{-1}\rho{e}\Rightarrow{x}y^{-1}\in{[e]_{\rho}}
+$$
+Следовательно, по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $[e]_{\rho}&lt;G$.<br>
+Пусть $h\in[e]_{\rho}$, $g\in{G}$, тогда
+\begin{multline*}
+(g^{-1}\rho{g}\,\wedge\,h\rho{e}\,\wedge\,g\rho{g})\Rightarrow(g^{-1}hg)\rho(g^{-1}eg)\Rightarrow(g^{-1}hg)\rho{e}\Rightarrow{g}^{-1}hg\in[e]^{\rho}.
+\end{multline*}
+Следовательно, по п. 4 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $[e]_{\rho}\triangleleft{G}$.<br>
+Так как отношение $\rho$ конгруэнция, то $x\rho{y}$ тогда и только тогда, когда $(xy^{-1})\rho{e}$, следовательно,
+$$xy^{-1}\in[e]_{\rho}\Leftrightarrow{x}[e]_{\rho}=y[e]_{\rho}\Leftrightarrow{x}\equiv{y}\pod{[e]_{\rho}},$$
+то есть $\rho=(\equiv(H))$.
+</ol>
+<p id="Note9.6"><b>Замечание 9.6:</b><br>
+Пусть $H\triangleleft{G}$, тогда $\equiv(H)$ - конгруэнция. Тогда по <a href="./discrete_math9.1.html#Corollary9.2">следствию 9.2</a> 
+существует факторгруппа $G/\equiv(H)$, которую обозначают так же как $G/H$.<br>
+Так как 
+$$
+t\in[g]_{\equiv(H)}\Leftrightarrow{g}\equiv{t}\pod{H}\Leftrightarrow{g}t^{-1}\in{H}\Leftrightarrow{H}g=Ht\Leftrightarrow{t}\in{g}H,
+$$
+то $[g]_{\equiv\pod{H}}=Hg$, следовательно, $G/H=\{Hg\mid{g}\in{G}\}$.
+<p id="Definition9.29"><b>Определение 9.29:</b><br>
+Если $\varphi:(G;\cdot)\to(K;\cdot)$ - гомоморфизм групп, то множество $\ker{\varphi}:=\{g\in{G}\mid\varphi(g)=e_k\}=\varphi^{-1}(e_k)$ 
+называется ядром отображения $\varphi$.
+<p id="Statement9.8"><b>Утверждение 9.8:</b><br>
+Если $\varphi:G\to{K}$ гомоморфизм групп, то $\ker{\varphi}\triangleleft{G}$.
+<p><b>Доказательство:</b><br><br>
+Пусть $x,y\in\ker{\varphi}$, тогда по определению гомоморфизма и п. 4 <a href="./discrete_math9.1.html#Theorem9.1">теоремы 9.1</a>
+$$\varphi(xy^{-1})=\varphi(x)\varphi(y^{-1})=\varphi(x)\varphi(y)^{-1}=e_ke_k^{-1}=e_k\Rightarrow{x}y^{-1}\in\ker{\varphi}.$$
+Следовательно, по утверждению 9.3 $\ker{\varphi}&lt;G$.<br>
+Пусть $x\in\ker{\varphi}$, $g\in{G}$, тогда 
+$$
+\varphi(g^{-1}xg)=\varphi(g^{-1})\varphi(x)\varphi(g)=\varphi(g)^{-1}\varphi(g)=e_k\Rightarrow{g}^{-1}xg\in\ker{\varphi}.
+$$
+Следовательно, по п. 4 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $\ker{\varphi}\triangleleft{G}$.
+<p id="Theorem9.24"><b>Теорема 9.24: Об эпиморфизме групп.</b><br>
+Пусть $\varphi:G\to{K}$ - эпиморфизм групп, тогда
+<ol>
+<li>$G/\ker{\varphi}\cong{K}$.</li>
+<li>Существует единственный изоморфизм $\tau:G/\ker{\varphi}\to{K}$ такой, что $\varphi=\tau\circ\varphi_0$
+где $\varphi_0:G\to{G}/\ker{\varphi}$ - естественный эпиморфизм, т. е. $\varphi_0(g)=g\ker{\varphi}$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+Так как 
+$$
+a\equiv{b}\pod{\ker{\varphi}}\Leftrightarrow{a}b^{-1}\in\ker{\varphi}\Leftrightarrow
+\varphi(ab^{-1})=\varphi(a)\varphi(b^{-1})=\varphi(a)\varphi(b)^{-1}=e_k\Leftrightarrow\varphi(a)=\varphi(b),
+$$
+то отношение $\equiv(\ker{\varphi})$ удовлетворяет условиям <a href="./discrete_math9.1.html#Theorem9.4">теоремы 9.4.</a>
+<p id="Theorem9.25"><b>Теорема 9.25:</b><br>
+Пусть $\varphi:G\to{K}$ гомоморфизм групп, тогда
+<ol>
+<li>$A&lt;G\Rightarrow(\varphi(A)&lt;K\,\wedge\,\varphi^{-1}(\varphi(A))=A\ker{\varphi})$.</li>
+<li>$B&lt;K\Rightarrow\varphi^{-1}(B)&lt;G$.</li>
+<li>$B\triangleleft{K}\Rightarrow\varphi^{-1}(B)\triangleleft{G}$.<br></li>
+Если $\varphi$ - эпиморфизм, то
+</li>
+<li>$B&lt;K\Rightarrow\varphi(\varphi^{-1}(B))=B$.</li>
+<li>$A\triangleleft{G}\Rightarrow\varphi(A)\triangleleft{K}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Докажем, что $\varphi(A)$ подгруппа $K$, действительно,
+$$
+\alpha,\beta\in\varphi(A)\Rightarrow\exists{a},b\in{A}:(\varphi(a)=\alpha\,\wedge\,\varphi(b)=\beta)\Rightarrow
+\alpha\beta^{-1}=\varphi(a)\varphi(b)^{-1}=\varphi(ab^{-1})\in\varphi(A),
+$$
+следовательно, по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $\varphi(A)&lt;K$.<br>
+Докажем, что $\varphi^{-1}(\varphi(A))=A\ker{\varphi}$, действительно,
+$$
+c\in\varphi^{-1}(\varphi(A))\Leftrightarrow\varphi(c)\in\varphi(A)\Leftrightarrow(\exists{a}\in{A}:\varphi(c)=\varphi(a)\Leftrightarrow
+\varphi(a^{-1}c)=\varphi(a)^{-1}\varphi(c)=e_k\Leftrightarrow{a}^{-1}c\in\ker{\varphi}\Leftrightarrow
+{c}\in{a}\ker{\varphi})\Leftrightarrow{c}\in{A}\ker{\varphi}
+$$
+</li>
+<li>Для любых $a,b\in\varphi^{-1}(B)$ $\varphi(a),\varphi(b)\in{B}$ и так как $B&lt;K$, то
+$$\varphi(ab^{-1})=\varphi(a)\varphi(b)^{-1}\in{B}\Rightarrow{a}b^{-1}\in\varphi^{-1}(B).$$
+Таким образом по <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a> $\varphi^{-1}(B)&lt;G$.
+\item Пусть $a\in\varphi^{-1}(B)$, $c\in{G}$, тогда
+$$\varphi(c^{-1}ac)=\varphi(c)^{-1}\varphi(a)\varphi(c),$$
+где $\varphi(a)\in{B}$, $\varphi(c)\in{K}$. Следовательно, так как $B\triangleleft{K}$, то по п. 4 
+<a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a>
+$$\varphi(c^{-1}ac)=\varphi(c)^{-1}\varphi(a)\varphi(c)\in{B}\Rightarrow{c}^{-1}ac\in\varphi^{-1}(B).$$
+Таким образом, по п. 4 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $\varphi^{-1}(B)\triangleleft{G}$.
+</li>
+<li>Так как $\varphi$ сюръективно, то
+$$
+B&lt;K\Rightarrow{B}\subset{K}\Rightarrow(a\in\varphi(\varphi^{-1}(B))\Leftrightarrow\exists{b}\in\varphi^{-1}(B):\varphi(b)=a\Leftrightarrow{a}\in{B})
+$$
+</li>
+<li>Пусть $\alpha\in\varphi(A)$, $\gamma\in{K}$, тогда
+$$
+\exists{a}\in{A}\,c\in{G}:(\varphi(a)=\alpha\,\wedge\,\varphi(c)=\gamma)\Rightarrow
+\gamma^{-1}\alpha\gamma=\varphi^{-1}(c)\varphi(a)\varphi(c)=\varphi(c^{-1}ac)\in\varphi(A),
+$$ 
+где последнее включение верно, так как $A\triangleleft{G}$, то есть $c^{-1}ac\in{A}$. Таким образом, по п. 4 
+<a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $\varphi(A)\triangleleft{K}$.
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math9.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.10.html">next</a>
+</body>
+</html>

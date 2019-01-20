@@ -1,0 +1,209 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 19.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math19.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.4.html">next</a>
+<br>
+
+<h4 id="19.3">19.3 Критерий неприводимости многочленов над конечным полем.</h4>
+
+Полученные в предыдущих разделах результаты дают метод построения полей размерности $p^t$. 
+Но для этого надо уметь строить неприводимые многочлены степени $t$.
+<p id="Theorem19.6"><b>Теорема 19.6: Критерий Батлера (1954).</b><br>
+Пусть $P:=GF(p^t)$, $q:=p^t$, $n:=\deg{f(x)}>0$, тогда многочлен $f(x)$ неприводим тогда и только тогда, когда 
+<ol>
+<li>$(f(x),f'(x))=e$,</li>
+<li>уравнение $z^q-z=0$ имеет в кольце $R:=P[x]/f(x)$ ровно $q$ решений.</li>
+</ol>
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math19.1.html#Task19.1">задаче 19.1</a>
+$$\forall{a}\in{P}(a^q=a)\Rightarrow\forall{a}\in{P}([a]_{f(x)}^q-[a]_{f(x)}=0).$$
+Таким образом, все элементы множества $\overline{P}:=\{[a]_{f(x)}\mid{a}\in{P}\}$ являются решениями уравнения $z^q-z=0$.
+Для любых $a,b\in{P}$ если $a\neq{b}$, то $[a]_{f(x)}\neq[b]_{f(x)}$, следовательно, $|\overline{P}|=q$, 
+то есть уравнение $z^q-z=0$ имеет не менее $q$ решений при любом многочлене $f(x)\in{P}[x]$.<br>
+$\Rightarrow)$ Если многочлен $f(x)$ неприводим, то по <a href="./discrete_math19.1.html#Corollary19.3">следствию 19.3</a> $(f(x),f'(x))=e$.<br>
+Если многочлен $f(x)$ неприводим, то $R$ - поле и по п. 2 <a href="./discrete_math7.2.html#Corollary7.3">следствия 7.3</a> 
+многочлен $z^q-z\in{R}[z]$ имеет не более $q$ корней, следовательно, по доказанному выше уравнение $z^q-z=0$ имеет ровно $q$ корней.<br>
+$\Leftarrow)$ Докажем от противного. Предположим, что многочлен $f(x)$ приводим, то есть существуют $f_1(x),f_2(x)\in{P}[x]$ такие, 
+что $f(x)=f_1(x)f_2(x)$ и при этом $0<\deg{f_1(x)}\leq\deg{f_2(x)}&lt;\deg{f(x)}$. По п. 2 <a href="./discrete_math7.6.html#Theorem7.14">теоремы 7.14</a>
+$$f'(x)=f_1(x)f'_2(x)+f'_1(x)f_2(x)\Rightarrow((f(x),f'(x))=e\Rightarrow(f_1(x),f_2(x))=e).$$
+Тогда по <a href="./discrete_math7.4.html#Lemma7.4">лемме 7.4</a> сущесвтуют многочены $u_1(x),v_1(x)\in{P}[x]$ такие, что $u_1(x)f_1(x)+v_1(x)f_2(x)=e$. 
+Поделим многочлен $u_1(x)$ на многочлен $f_2(x)$, тогда 
+$$
+\exists{q}(x),r(x)\in{P}[x]:(u_1(x)=q(x)f_2(x)+r(x)\,\wedge\,\deg{r(x)}<\deg{f_2(x)})\Rightarrow{r}(x)f_1(x)+(q(x)f_1(x)+v_1(x))f_2(x)=e.
+$$
+Пусть $u(x):=r(x)$, $v(x):=q(x)f_1(x)+v_1(x)$, тогда $u(x)f_1(x)+v(x)f_2(x)=e$ и $\deg{u(x)}<\deg{f_2(x)}$. Тогда 
+$$
+[u(x)f_1(x)]_{f(x)}=[1-v(x)f_2(x)]_{f(x)}\Rightarrow[u(x)f_1(x)]_{f(x)}^2=[u(x)f_1(x)]_{f(x)}[1-v(x)f_2(x)]_{f(x)}=
+[u(x)f_1(x)-u(x)v(x)f_1(x)f_2(x)]_{f(x)}=\\=
+[u(x)f_1(x)]_{f(x)}-[u(x)v(x)f(x)]_{f(x)}=[u(x)f_1(x)]_{f(x)}\Rightarrow[u(x)f_1(x)]_{f(x)}^q=[u(x)f_1(x)]_{f(x)}.
+$$
+Таким образом, $[u(x)f_1(x)]_{f(x)}$ - решение уравнения $z^q-z=0$, при этом $0<\deg{u(x)f_1(x)}&lt;n$, следовательно, $[u(x)f_1(x)]\notin\overline{P}$, 
+то есть уравнение $z^q-z=0$ имеет в $R$ не менее $q+1$ решений, что противоричит условию 2.
+<br><br>
+<u>Применение критерия Батлера.</u><br><br>
+
+Пусть $P:=GF(q)$, $f(x)\in{P}[x]$, $n:=\deg{f(x)}&lt;1$.
+При обозначении классов вычетов по модулю $f(x)$ будем считать, что $[c(x)]\sim[c(x)]_{f(x)}$.
+<ol>
+<li>Находим производную многочлена $f(x)$ и НОД $d(x):=(f(x),f'(x))$, если $d(x)\neq{e}$, то многочлен $f(x)$ приводим.</li>
+<li>Если $d(x)=e$ выясним для каких 
+$$[c(x)]\in{R}:=\{[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]\mid{i}\in\overline{0,n-1},c_i\in{P}\}$$ 
+выполняется равенство $[c(x)]^q=[c(x)]$.
+По <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a> и <a href="./discrete_math19.1.html#Task19.1">задаче 19.1</a>
+$$
+[(c_0+c_1x+\cdots+c_{n-1}x^{n-1})^q]=[c_0^q+c_1^qx^q+\cdots+c_{n-1}^qx^{(n-1)q}]=[c_0+c_1x^q+\cdots+c_{n-1}x^{(n-1)q}],
+$$
+тогда 
+$$
+[c(x)]^q=[c(x)]\Leftrightarrow[c_1(x^q-x)+c_2(x^{2q}-x^2)+\cdots+c_{n-1}(x^{(n-1)q}-x^{n-1})]=[0]
+$$
+Для любого $j\in\overline{1,n-1}$ поделив $x^{jq}-x^j$ на $f(x)$ получим
+$$\exists!a_j(x)\in{P}[x]:x^{jq}-x^j\equiv{a}_j(x)\pmod{f(x)}\,\wedge\,\deg{a_j(x)}&lt;n.$$
+Тогда степень многочлена $c_1a_1(x)+\cdots+c_{n-1}a_{n-1}(x)$ меньше $n$, следовательно,
+$$[c(x)]^q=[c(x)]\Leftrightarrow{c}_1a_1(x)+\cdots+c_{n-1}a_{n-1}(x)=0.$$
+Для любого $j\in\overline{1,n-1}$ обозначим $a_j(x):=a_{0,j}+a_{1,j}x+\cdots+a_{n-1,j}x^{n-1}$. 
+Тогда $[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]^q=[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]$ тогда и только тогда, когда 
+$c^{\downarrow}:=(c_1,\ldots,c_{n-1})^T$ справдлива система равенств
+$$
+\begin{cases}
+c_1a_{0,1}+c_2a_{0,2}+\cdots+c_{n-1}a_{0,n-1}&=0		\\
+c_1a_{1,1}+c_2a_{1,2}+\cdots+c_{n-1}a_{1,n-1}&=0		\\
+\cdots 								\\
+c_1a_{n-1,1}+c_2a_{n-1,2}+\cdots+c_{n-1}a_{n-1,n-1}&=0		\\
+\end{cases}
+$$
+Обозначим
+$$
+A_{n\times{n}-1}:=
+\begin{pmatrix}
+a_{0,1} 	& a_{0,2}	& \cdots	& a_{0,n-1} 	\\
+a_{1,1} 	& a_{1,2}	& \cdots	& a_{1,n-1} 	\\
+\vdots   	& \vdots	&		& \vdots 	\\
+a_{n-1,1}	& a_{n-1,2}	& \cdots	& a_{n-1,n-1}	\\	
+\end{pmatrix},
+$$
+тогда $[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]^q=[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]$ тогда и только тогда, 
+когда $c^{\downarrow}$ является решением СОЛУ $Ax^{\downarrow}=0^{\downarrow}$. По <a href="./discrete_math5.1.html#Theorem5.6">теореме 5.6</a> 
+число решений СОЛУ $Ax^{\downarrow}=0^{\downarrow}$ равно $q^{n-1-\rang{A}}$. Так как коэффициент $c_0$ не связан, 
+то число решений уравнения $[c(x)]^q=[c(x)]$ равно $qq^{n-1-\rang{A}}=q^{n-\rang{A}}$. 
+Тогда по <a href="./discrete_math19.3.html#Theorem19.6">теореме 19.6</a>
+$f(x)$ неприводим тогда и только тогда, когда $q^{n-\rang{A}}=q$ тогда и только тогда, когда $\rang{A}=n-1$.
+</ol>
+<br>
+<u>Алгоритм разложения многочлена на множители.</u>
+<br><br>
+Пусть $P:=GF(q)$, $q:=p^t$, $f(x)\in{P}[x]$, $n:=\deg{f(x)}&gt;1$, $f(x):=\sum_{i=0}^nf_ix^i$.
+<ol type="I">
+<li>Пусть $d(x):=(f(x),f'(x))\neq{e}$, то есть $\deg{d(x)}&gt;0$.
+<ol>
+<li>Если $f'(x)\neq0$, то $0&lt;\deg{d(x)}\leq\deg{f'(x)}&lt;n$, то есть $d(x)$ делитель $f(x)$.</li>
+<li>Если $f'(x)=0$, то $d(x)=f(x)$, следовательно, $d(x)$ не может считаться делителем $f(x)$. Однако, 
+$$
+f'(x)=\sum_{i=1}^nif_ix^{i-1}=0\Rightarrow\forall{i}\in\overline{1,n}(if_i=0)\Rightarrow
+\forall{i}\in\overline{1,n}(f_i\neq0\Rightarrow\exists{k}_i\in\mathbb{N}:i=pk_i)
+$$
+То есть все коэффициенты многочлена $f(x)$ при степенях не делящихся на $p$ равны нулю. По <a href="./discrete_math19.1.html#Task19.1">задаче 19.1</a>
+для любого $i\in\overline{0,n}$ $f_i^{p^t}=f^i$, тогда по <a href="./discrete_math17.1.html#Statement17.7">утверждению 17.7</a>
+$$f(x)=\sum_{j=0}^{k_n}f_{jp}^{p^t}x^{jp}=\left(\sum_{j=0}^{k_n}f_{jp}^{p^{t-1}}x^j\right)^p.$$
+</li>
+</ol>
+</li>
+<li>Пусть $(f(x),f'(x))=e$ и $\rang{A}&lt;n-1$, тогда существует ненулевое решение $c^{\downarrow}:=(c_1,\ldots,c_{n-1})^T$ СОЛУ 
+$Ax^{\downarrow}=0^{\downarrow}$. Тогда для любого $c_0\in{P}$ вычет 
+$[c_0+c_1x+\cdots+c_{n-1}x^{n-1}]$ является решением уравнения $z^q-z=0$ над $P[x]/f(x)$. <a href="./discrete_math19.3.html#Theorem19.7">Теорема 19.7</a>
+дает метод нахождения множителей многочлена $f(x)$ при наличиии решения уравнения $z^q-z=0$ ненулевой степени.
+</li>
+</ol>
+<p id="Lemma19.1"><b>Лемма 19.1:</b><br>
+Пусть для любого $i\in\overline{1,k}$ $a_i(x)\in{P}[x]$, для любых различных $i,j\in\overline{1,k}$ $(a_i(x),a_j(x))=e$, $f(x)\in{P}[x]$ - 
+унитарный многочлен такой, что $f(x)\bigl|\prod_{i=1}^ka_i(x)$, тогда $f(x)=\prod_{i=1}^k(f(x),a_i(x))$.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $k$.<br>
+<ol type="I">
+<li>
+При $k=1$ для любого $a(x)\in{P}[x]$, если $f(x)|a(x)$, то $f(x)=(f(x),a(x))$.<br>
+При $k=2$ по п. 3 <a href="./discrete_math7.4.html#Theorem7.8">теоремы 7.8</a>
+$$
+(a_1(x),a_2(x))=e\Rightarrow\begin{cases}((f(x),a_1(x)),(f(x),a_2(x)))=e \\ (f(x),a_1(x))|f(x) \\ (f(x),a_2(x))|f(x)\end{cases}\Rightarrow
+\prod_{i=1}^2(f(x),a_i(x))\Bigl|f(x),
+$$
+с другой стороны,
+$$
+\exists{u}_1(x),v_1(x),u_2(x),v_2(x)\in{P}[x]:
+\begin{cases}
+(f(x),a_1(x))=f(x)u_1(x)+a_1(x)v_1(x)\\
+(f(x),a_2(x))=f(x)u_2(x)+a_2(x)v_2(x)
+\end{cases}\Rightarrow\\
+\Rightarrow\exists{h}(x)\in{P}[x]:\prod_{i=1}^2(f(x),a_i(x))=f(x)h(x)+a_1(x)a_2(x)v_1(x)v_2(x)\Rightarrow{f}(x)\Bigl|\prod_{i=1}^2(f(x),a_i(x)),
+$$
+где последняя импликация в силу того, что по условию $f(x)|a_1(x)a_2(x)$, таким образом, $f(x)=\prod_{i=1}^n(f(x),a_i(x))$.
+</li>
+<li>Для любого $m>2$ докажем, что из справедливости утверждения при $k\in\overline{1,m}$ следует его справедливость при $k=m+1.$<br>
+Обозначим $b(x)=a_1(x)a_2(x)$, тогда так как $(a_1(x),a_2(x))=e$, то
+$$
+\forall{j}\in\overline{3,k}((a_1(x),a_j(x))=(a_2(x),a_j(x))=e)\Rightarrow
+\forall{j}\in\overline{3,k}((a_1(x)a_2(x),a_j(x))=e)\Rightarrow\forall{j}\in\overline{3,k}((b(x),a_j(x))=e).
+$$
+Тогда по предположинию индукции 
+$$f(x)\Bigl|{b}(x)\prod_{i=3}^ka_i(x)\Rightarrow{f}(x)=(f(x),b(x))\prod_{i=3}^k(f(x),a_i(x)).$$
+Применим пункт I для многочлена $(f(x),b(x))$ тогда по теореме 7.5
+$$
+\bigl((f(x),b(x))|a_1(x)a_2(x)\,\wedge\,(a_1(x),a_2(x))=e\bigr)\Rightarrow
+(f(x),b(x))=\prod_{i=1}^2((f(x),b(x)),a_i(x))=\prod_{i=1}^2(f(x),a_1(x)a_2(x),a_i(x))=
+\prod_{i=1}^2(f(x),a_i(x))\Rightarrow{f}(x)=\prod_{i=1}^k(f(x),a_i(x)).
+$$
+</li>
+</ol>
+<p id="Theorem19.7"><b>Теорема 19.7: Теорема Берлекэмпа (1967).</b><br>
+Пусть $P:=GF(q)$, $f(x)\in{P}[x]$ - унитарный многочлен, $n:=\deg{f(x)}&gt;1$ $[c(x)]$ решение уравнения $z^q-z=0$ в кольце $R:=P[x]/f(x)$ такое, 
+что $0&lt;\deg{c(x)}&lt;n$, тогда
+$$f(x)=\prod_{\alpha\in{P}}(f(x),c(x)-\alpha),$$
+и существует $\beta\in{P}$ такой, что $0&lt;\deg{(f(x),c(x)-\beta)}&lt;n$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math19.1.html#Theorem19.1">теореме 19.1</a>
+$$x^q-x=\prod_{\alpha\in{P}}(x-\alpha)\Rightarrow[c(x)]^n-[c(x)]=\prod_{\alpha\in{P}}([c(x)]-\alpha).$$
+При этом $[c(x)]$ - решение уравниния $z^q-z=0$, следовательно,
+$$[c(x)]^n-[c(x)]=[c(x)^n-c(x)]=[0]\Rightarrow{f}(x)|(c(x)^n-c(x))$$
+и
+$$\forall{\alpha},\beta\in{P}(\alpha\neq\beta\Rightarrow(c(x)-\alpha,c(x)-\beta)=e),$$
+тогда по лемме 19.1
+$$f(x)=\prod_{\alpha\in{P}}(f(x),c(x)-\alpha).$$
+Так как $0&lt;\deg{c(x)}&lt;n$ и $\sum_{\alpha\in{P}}(f(x),c(x)-\alpha)=n&gt;0$, то
+$$
+\forall\alpha\in{P}(0&lt;\deg{(c(x)-\alpha)}&lt;n)\Rightarrow\forall\alpha\in{P}(\deg{(f(x),c(x)-\alpha)}&lt;n)\Rightarrow
+\exists\beta\in{P}:0&lt;\deg{(f(x),c(x)-\beta)}&lt;n.
+$$
+
+<br><br>
+<a href="discrete_math19.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math19.4.html">next</a>
+</body>
+</html>

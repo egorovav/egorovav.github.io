@@ -1,0 +1,200 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 8.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math8.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.1.html">next</a>
+<br>
+
+<h4 id="8.3">8.3 Сравнения первой степени.</h4>
+
+Пусть $R\in\{\mathbb{Z},{P}[x]\}$, $m\in{R}\backslash\{0\}$, $a,b\in{R}$, $z$ - символ неизвестного, тогда запись 
+$$az\equiv{b}\pmod{m}\quad(1)$$
+называется сравнением первой степени.<br>
+Решением сравнения первой степени $(1)$ называется элемент $z_0\in{R}$ такой, что при подстановке его в $(1)$ вместо $z$ запись $(1)$ становится верной.<br>
+Сравнения равносильны, если множества их решений совпадают.<br>
+Элемент $z_0\in{R}$ является решение сравнения $(1)$ тогда и только тогда, когда вычет $[z_0]_m\in{R}/m$ является решением уравнения 
+$$[a]_mz=[b]_m\quad{(2)}$$
+в $R/m$.Так как $[a]_m=[r_m(a)]_m$, $[b]_m=[r_m(b)]_m$, то $(2)$ равносильно, 
+$$[r_m(a)]_mz=[r_m(b)]_m,\quad(2')$$
+следовательно, $(1)$ равносильно 
+$$r_m(a)z\equiv{r}_m(b)\pmod{m}.\quad(1')$$
+Если $z_0$ решение сравнения $(1)$, то для любого $z_1$ такого, что $z_1\equiv{z}_0\pod{m}$ $z_1$ решение сравнения $(1)$. 
+Таким образом множество решений сравнения $(1)$ можно представить в виде непересекающихся классов вычетов по модулю $m$.<br>
+
+Два решения сравнения $(1)$ называются одинаковыми по модулю $m$, если они сравнимы по модулю $m$. 
+Число попарно различных по модулю $m$ решений сравнения $(1)$ (если оно конечно) называестя числом решений сравнения $(1)$.
+<p id="Theorem8.7"><b>Теорема 8.7:</b><br>
+Если $(a,m)=e$, то сравнение $az\equiv{b}\pod{m}$ имеет единственное решение.
+<p><b>Доказательство:</b><br>
+Так как $(a,m)=e$, то теоремам <a href="./discrete_math6.1.html#Theorem6.3">6.3</a>, <a href="discrete_math7.4.html#Theorem7.6">7.6</a>, 
+<a href="./discrete_math8.1.html#Theorem8.1">8.1</a> и п.1 <a href="./discrete_math8.1.html#Corollary8.1">следствия 8.1</a>
+$$
+\exists{u},v\in{R}:ua+vm=e\Rightarrow{u}a-b=(-v)m\Rightarrow{m}|(ua-e)\Rightarrow{u}a\equiv{e}\pod{m}\Rightarrow{a}(ub)\equiv{b}\pod{m}.
+$$
+Таким образом $ub$ - решение сравнения $az\equiv{b}\pod{m}$. Докажем, что это решение едиственно.<br>
+Пусть существует два решения $z_1,z_2\in{R}$ сравнения $az\equiv{b}\pod{m}$. Тогда в следствии транзитивности отношения сравнимости и в силу п. 4 
+<a href="./discrete_math8.1.html#Theorem8.2">теоремы 8.2</a>
+$$
+\begin{cases}az_1\equiv{b}\pod{m} \\ az_2\equiv{b}\pod{m}\end{cases}\Rightarrow{a}z_1\equiv{a}z_2\pod{m}\Rightarrow{z}_1\equiv{z}_2\pod{m}
+$$
+<p id="Theorem8.8"><b>Теорема 8.8:</b><br>
+Для любых $a,m\in{R}$ если $(a,m)=d$, то сравнение 
+$$az\equiv{b}\pmod{m}\quad(1)$$ 
+имеет решение тогда и только тогда, когда $d|b$.<br>
+При этом если $R=\mathbb{Z}$ то сравнение $(1)$ имеет $d$ различных решений.<br>
+Если $R=P[x]$, то сравнение $(1)$ имеет $|P|^d$ различных решений.<br>
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Если сравнение $(1)$ имеет решение, то 
+$$\exists{z}_0\in{R}:az_0\equiv{b}\pod{m}\Rightarrow{m}|(az_0-b).$$
+Так как $d=(a,m)$, то
+$$(d|a\,\wedge\,d|m)\Rightarrow(d|(az_0)\,\wedge\,d|(az_0-b))\Rightarrow{d}|b.$$ 
+$\Leftarrow)$
+Так как $d|a$, $d|b$, $d|m$, то по п. 3 <a href="./discrete_math8.1.html#Theorem8.2">теоремы 8.2</a>
+$$\forall{z}_0\in{R}\left(az_0\equiv{b}\pod{m}\Leftrightarrow\frac{a}{d}z_0\equiv\frac{b}{d}\;\left(\frac{m}{d}\right)\right).$$
+Таким образом сравнение 
+$$\frac{a}{d}z\equiv\frac{b}{d}\;\left(\frac{m}{d}\right)\quad(3)$$
+равносильно сравнению $(1)$. По теореме 8.7 сравнение $(3)$ имеет единственное решение по модулю $m_0:=\frac{m}{d}$, обозначим его $z_0$. 
+Таким образом множество всех решений сравнений $(1)$ и $(3)$ имеет вид 
+$[z_0]_{m_0}:=\{z_0+m_0t\mid{t}\in{R}\}$. Найдем в $[z_0]_{m_0}$ подмножество попарно различных по модулю $m$ элементов максимальной мощности.<br>
+Для случая $R=\mathbb{Z}$ рассмотрим множество $B:=\{z_0+m_0t\mid{t}\in\overline{0,d-1}\}$.<br>
+Для случая $R=P[x]$ $B:=\{z_0(x)+m_0(x)r(x)\mid\deg{(r(x))}&lt;\deg{(d(x))}\}$.<br>
+В обоих случаях верно
+<ol>
+<li>$B\subset[z_0]_{m_0}$,</li>
+<li>Все элементы в $B$ попарно различны по модулю $m$.</li>
+<li>$\forall{z}_1\in[z_0]_{m_0}\exists{z}_2\in{B}:z_1\equiv{z}_2\pod{m}$.</li>
+</ol>
+Первые два пункта очевидны, докажем пункт 3. Пусть $z_1\in[z_0]_{m_0}$, тогда
+$$
+\exists{t}\in{R}:z_1=z_0+m_0t\Rightarrow\exists{q}\in{R}:z_1=z_0+m_0(dq+r_d(t))=z_0+r_d(t)+mq\equiv{z}_0+r_d(t)\pod{m}
+$$
+Так как по определению остатка в случае $R=\mathbb{Z}$ $0\leq{r}_d(t)&lt;d$, а в случае $R=P[x]$ $\deg{(r_d(t)(x))}&lt;\deg{(d(x))}$, 
+то в обоих случаях $z_2:=z_0+r_d(t)\in{B}$. Таким образом для произвольного $z_1\in[z_0]_{m_0}$ найдено $z_2\in{B}$ такое, что $z_1\equiv{z}_2\pod{m}$.<br>
+Из пунктов 1-3 следует, что $B$ является подмножеством максимальной мощности множества $[z_0]_{m_0}$, 
+среди всех подмножеств попарно различных по модулю $m$ элементов. Таким образом число различных решений сравнения $(1)$ равно $|B|$.
+<p id="Note8.3"><b>Замечание 8.3:</b><br>
+$$[r_0]_{m_0}=\bigcup_{r_1\in{B}}[z_1]_m.$$
+<p id="Exapmle8.3"><b>Пример 8.3:</b><br>
+Решим сравнение $534z\equiv616\pod{100}$ над кольцом целых чисел $\mathbb{Z}$.<br>
+Так как $r_{100}(534)=34$, $r_{100}(616)=16$, то исходное сравнение равносильно сравнению $34z\equiv16\pod{100}$. Так как $(34,100)=2$, 
+то исходное сравнение имеет два решения и равносильно сравнению $17z\equiv8\pod{50}$. Так как верно равенство
+$3\cdot17+(-1)\cdot50=1$, то из доказательства <a href="./discrete_math8.3.html#Theorem8.7">теоремы 8.7</a> следует, что $17\cdot3\cdot8\equiv8\pod{50}$. 
+Таким образом $z_0=24$ - решение исходного сравнения. Тогда по <a href="./discrete_math8.3.html#Theorem8.8">теореме 8.8</a> 
+множество различных решений исходного сравнения  есть $\{24+50t\mid{t}\in\{0,1\}\}=\{24, 74\}$. 
+<p id="Example8.4"><b>Пример 8.4:</b><br>
+Решим сравнение 
+$$(x^3+1)z\equiv{x}^4+x^2\pmod{x^4+1}\quad(1)$$
+над кольцом $GF(2)[x]$.<br>
+Так как $x^4+x^2=(x^4+1)+x^2+1$, то сравнение $(1)$ равносильно сравнению 
+$$(x^3+1)z\equiv{x}^2+1\pmod{x^4+1}.\quad(2)$$
+Осуществив последовательность делений по алгоритму Евклида, найдем НОД многочленов $x^3+1$ и $x^4+1$.<br>
+<table>
+<tr valign="top">
+<td style="padding-right: 20px">
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr><td  align="right">$x^4$</td><td  align="right"></td><td  align="right"></td><td  align="right"></td><td  align="right">$+1$</td><td style="border: solid 0 #060; border-left-width:1px;border-bottom-width:1px ">$x^3+1$</td></tr>
+<tr><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x^4$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right"></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right"></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x$</td><td></td><td style="border: solid 0 #060; border-left-width:1px;">$x$</td></tr><tr><td></td><td></td><td></td><td  align="right">$x$</td><td  align="right">$+1$</td></tr>
+</table>
+</td>
+<td>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr><td  align="right">$x^3$</td><td  align="right"></td><td  align="right"></td><td  align="right">$+1$</td><td style="border: solid 0 #060; border-left-width:1px;border-bottom-width:1px ">$x+1$</td></tr>
+<tr><td style="border: solid 0 #060; border-bottom-width:1px" align="right">$x^3$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x^2$</td><td></td><td></td><td style="border: solid 0 #060; border-left-width:1px;">$x^2+x+1$</td></tr><tr><td></td><td  align="right">$x^2$</td><td  align="right"></td><td  align="right">$+1$</td></tr>
+<tr><td></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x^2$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x$</td><td></td></tr>
+<tr><td></td><td></td><td  align="right">$x$</td><td  align="right">$+1$</td></tr>
+<tr><td></td><td></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+1$</td></tr>
+<tr><td></td><td></td><td></td><td>$0$</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+Таким образом, $(x^3+1, x^4+1)=x+1$, тогда, так как $(x+1)|(x^2+1)$, то по <a href="./discrete_math8.3.html#Theorem8.8">теореме 8.8</a> 
+сравнение $(2)$ имеет решение и оно равносильно сравнению 
+$$\frac{x^3+1}{x+1}z\equiv\frac{x^2+1}{x+1}\;\left(\frac{x^4+1}{x+1}\right)$$
+поделив<br>
+<table>
+<tr valign="top">
+<td style="padding-right: 20px">
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr><td  align="right">$x^3$</td><td  align="right"></td><td  align="right"></td><td  align="right">$+1$</td><td style="border: solid 0 #060; border-left-width:1px;border-bottom-width:1px ">$x+1$</td></tr>
+<tr><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x^3$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x^2$</td><td></td><td></td><td style="border: solid 0 #060; border-left-width:1px;">$x^2+x+1$</td></tr><tr><td></td><td  align="right">$x^2$</td><td  align="right"></td><td  align="right">$+1$</td></tr>
+<tr><td></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x^2$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x$</td><td></td></tr>
+<tr><td></td><td></td><td  align="right">$x$</td><td  align="right">$+1$</td></tr>
+<tr><td></td><td></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+1$</td></tr>
+<tr><td></td><td></td><td></td><td>$0$</td></tr>
+</table>
+</td>
+<td>
+<table  border="0" cellspacing="0" cellpadding="0">
+<tr><td  align="right">$x^2$</td><td  align="right"></td><td  align="right">$+1$</td><td style="border: solid 0 #060; border-left-width:1px;border-bottom-width:1px ">$x+1$</td></tr>
+<tr><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x^2$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+x$</td><td></td><td style="border: solid 0 #060; border-left-width:1px;">$x+1$</td></tr><tr><td></td><td  align="right">$x$</td><td  align="right">$+1$</td></tr>
+<tr><td></td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$x$</td><td style="border: solid 0 #060; border-bottom-width:1px " align="right">$+1$</td></tr>
+<tr><td></td><td></td><td>$0$</td></tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+получим сравнение 
+$$(x^2+x+1)z\equiv{x}+1\pmod{x^3+x^2+x+1},\quad(3)$$
+которое по <a href="./discrete_math8.3.html#Theorem8.7">теореме 8.7</a> имеет единственное решение. Для нахождения решения найдем $u(x), v(x)$ такие, что
+$$u(x)(x^2+x+1)+v(x)(x^3+x^2+x+1)=1.$$
+Несложно видеть, что подходят $u(x)=x$ и $v(x)=1$, тогда многочлен $z_0=u(x)(x+1)=x^2+x$ является решением сравнения $(3)$. 
+Поскольку многочленов $r(x)\in{G}F(2)[x]$ таких, что $\deg{(r(x))}<\deg{(x+1)}$ только два $0$ и $1$, то по 
+<a href="./discrete_math8.3.html#Theorem8.8">теореме 8.8</a> сравнение $(1)$ будет иметь два различных решения $z_0$ и $z_0+(x^3+x^2+x+1)=x^3+1$. 
+<p id="Theorem8.9"><b>Теорема 8.9: Китайская теорема об остатаках.</b><br>
+Пусть $m_1,\ldots,m_k\in{R}\backslash\{0\}$ такие, что для любых различных $i,j\in\overline{1,k}$ $(a_i,a_j)=e$, $a_1,\ldots,a_k\in{R}$, 
+тогда система сравнений 
+$$
+\begin{cases}z\equiv{a}_1\pmod{m_1} \\ \cdots \\ z\equiv{a}_k\pmod{m_k}\end{cases}\quad(4)
+$$
+имеет единственное решение $z_0$ по модулю $m=m_1\cdots{m}_k$, при этом множество решений системы есть класс вычетов $[z_0]_m$.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $k$.
+<ol type="I">
+<li>При $k=1$ следует из <a href="./discrete_math8.3.html#Theorem8.7">теоремы 8.7</a>, так как $(e,m_1)=e$.</li>
+<li>Пусть для любого $k\geq2$ утверждение верно для всех $s\in\overline{1,k-1}$ докажем, что оно верно при $s=k$.<br>
+По предположению индукции система сравнений
+$$\begin{cases}z\equiv{a}_1\pmod{m_1} \\ \cdots \\ z\equiv{a}_{k-1}\pmod{m_{k-1}}\end{cases}\quad(5)$$
+имеет одно решение $z_0$ по модулю $m_0=m_1\cdots{m}_{k-1}$ и множество решений системы сравнений $(5)$ имеет вид
+$$[z_0]_{m_0}=\{z_0+m_0t\mid{t}\in{R}\}.$$
+Выясним какие элементы множества $[z_0]_{m_0}$ являются решением сравнения $z\equiv{a}_k\pod{m_k}$.
+$$
+\forall{t}\in{R}(z_0+m_0t\equiv{a}_k\pod{m}_k\Leftrightarrow{m}_0t\equiv{a}_k-z_0\pod{m_k}).
+$$
+Так как для любых различных $i,j\in\overline{1,k}$ $(m_i,m_j)=e$, то ${(m_0,m_k)=e}$, следовательно, 
+по <a href="./discrete_math8.3.html#Theorem8.7">теореме 8.7</a> 
+существует единственное решение сравнения $m_0t\equiv{a}_k-z_0\pod{m_k}$ относительно $t$. Обозначим это решение $[b]_{m_k}$, 
+тогда множество решений системы сравнений $(4)$ имеет вид
+$$
+\{z_0+m_0t\mid{t}\in[b]_{m_k}\}=\{z_0+m_0(b+m_kv)\mid{v}\in{R}\}=\{(z_0+m_0b)+mv\mid{v}\in{R}\}=[z_0+m_0b]_m
+$$
+</li> 
+</ol>
+
+<br><br>
+<a href="discrete_math8.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.1.html">next</a>
+</body>
+</html>

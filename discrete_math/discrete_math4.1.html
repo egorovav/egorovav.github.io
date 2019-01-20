@@ -1,0 +1,231 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 4.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math3.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math4.3.html">next</a>
+<br>
+<h3 id="4">4 МАТРИЦЫ НАД ПОЛЕМ.</h3>
+<h4 id="4.1">4.1 Ранг матриц.</h4>
+Везде далее $P$ - поле.
+<p id="Definition4.1"><b>Определение 4.1:</b><br>
+Рангом ненулевой матрицы называется наибольший порядок ее ненулевых миноров.<br>
+Рангом нулевой матрицы называется целое число 0.<br>
+Ранг матрицы $A$ обозначается как $\rang{A}$.<br>
+<p id="Note4.1"><b>Замечание 4.1:</b><br>
+<ol>
+<li> $A\in(P_{n,n})^*\Leftrightarrow\rang{A}=n$.</li>
+<li> $A\in{P}_{n,n}\Rightarrow\rang{A}^T=\rang{A}$.</li>
+<li> Если матрице $A$ добавить (удалить) нулевую строку, то ее ранг не изменится.</li>
+</ol>
+<p id="Definition4.2"><b>Определение 4.2:</b><br>
+Матрица $A\in{P}_{n,n}$ называется не вырожденной, если она обратима.
+<p id="Definition4.3"><b>Определение 4.3:</b><br>
+Ранговой подматрицей матрицы $A$ называется невырожденная подматрица наибольшего порядка.
+<p id="Theorem4.1"><b>Теорема 4.1:</b><br>
+$$\forall{A},B\in{R}_{m,n}(A\sim{B}\Rightarrow\rang{A}=\rang{B}).$$
+<p><b>Доказательство:</b><br>
+Следует из <a href="./discrete_math3.5.html#Corollary3.6">следствия 3.6</a>.
+<p id="Corollary4.1"><b>Следствие 4.1:</b><br>
+Пусть $A\in{P}_{m,n}$, $B\in{P}_{n,k}$, тогда $\rang{AB}\leq\min\{\rang{A},\rang{B}\}$.
+<p><b>Доказательство:</b><br>
+Обозначим $C:=AB$, тогда
+$$
+C:=AB=
+\begin{pmatrix}
+a_{1,1}\vec{B}_1+a_{1,2}\vec{B}_2+\cdots+a_{1,n}\vec{B}_n\\
+a_{2,1}\vec{B}_1+a_{2,2}\vec{B}_2+\cdots+a_{2,n}\vec{B}_n\\
+\vdots\\
+a_{n,1}\vec{B}_1+a_{n,2}\vec{B}_2+\cdots+a_{n,n}\vec{B}_n
+\end{pmatrix}\Rightarrow
+\binom{B}C\rsim\binom{B}0\Rightarrow\rang{C}\leq\rang\binom{B}C=\rang\binom{B}0=\rang{B}.
+$$
+Таким оброзом для любых матриц $A$, $B$ подходящих размеров $\rang{AB}\leq\rang{B}$, тогда
+$$\rang{C}=\rang{C^T}=\rang{B^TA^T}\leq\rang{A^T}=\rang{A}$$
+<p id="Corollary4.2"><b>Следствие 4.2:</b><br>
+Пусть $A\in(P_{n,n})^*$, $B,C\in{P}_{n,m}$, тогда $\rang{AB}=\rang{B}$ и $\rang{CA}=\rang{C}$.
+<p><b>Доказательство:</b><br>
+Применив два раза следствие 4.1 получим
+$$\rang{AB}\leq\rang{B}=\rang(A^{-1}(AB))\leq\rang{AB}.$$
+<p id="Note4.2"><b></b><br>
+$\rang{A+B}\leq\rang{A}+\rang{B}$. Действительно 
+$$
+\left(\rang(A+B)\leq\rang\binom{A+B}B\wedge\binom{A+B}B\rsim\binom{A}B\right)\Rightarrow
+\rang(A+B)\leq\rang\binom{A}B\leq^?\rang{A}+\rang{B}.
+$$
+Полное доказательство дано в конце главы в <a href="./discrete_math4.3.html#Statement4.5">утверждении 4.5</a>.
+<p id="Definition4.4"><b>Определение 4.4:</b><br>
+Пусть $S=(s_{i,j})_{m\times{n}}$ ненулевая матрица над полем $P$, $r\in\overline{1,\min{\{m,n\}}}$, $1\leq{i}_1&lt;i_2&lt;\cdots&lt;i_r\leq{n}$, 
+тогда матрица $S$ называется ступенчатой типа $(i_1,\ldots,i_r)$, если 
+<ol>
+<li> $\forall{j}\in\overline{1,r}(s_{j,i_j}\neq0)$,</li>
+<li> $(k&gt;r\vee(k\in\overline{1,r}\wedge{t}&lt;i_k))\Rightarrow{s}_{k,t}=0$.</li>
+</ol>
+Нулевая матрица ступенчата и тип ее не определен.<br>
+Множество ступенчатых матриц типа $(i_1,\ldots,i_r)$ обозначают $S_{m,n}(i_1,\ldots,i_r)$.
+<br><br>
+Таким образом, если $S\in{S}_{m,n}(i_1,\ldots,i_r)$, то
+$$S=
+\begin{pmatrix}
+0         & \cdots &0          	& s_{1,i_1} 	& \cdots 	& *             & \cdots & *         	& \cdots & *      \\
+0         & \cdots & 0         	& \cdots      	& 0         	& s_{2,i_2} 	& \cdots & *         	& \cdots & *      \\
+\vdots 	  &        &         	&               &             	&               &        &           	&        & \vdots \\
+0         & \cdots & \cdots 	& \cdots 	& \cdots 	& \cdots 	& 0      & s_{r,i_r} 	& \cdots & *      \\
+0         & \cdots & \cdots 	& \cdots 	& \cdots 	& \cdots 	& \cdots & \cdots	& \cdots & 0      \\
+\vdots    &        &            &               &            	&               &        &              &        & \vdots \\
+0         & \cdots & \cdots 	& \cdots 	& \cdots 	& \cdots 	& \cdots & \cdots 	& \cdots & 0
+\end{pmatrix},$$
+где "*" - здесь и далее некоторый произвольный элемент поля $P$. 
+И так как (см. <a href="./discrete_math3.2.html#Example3.4">пример 3.4</a>)
+$$M_S\begin{pmatrix}1, & \dots, & r \\ i_1, & \ldots, & i_r\end{pmatrix}=
+\begin{vmatrix}
+s_{1,i_1} & *              & \cdots & *            \\ 
+0              & s_{2,i_2} & \cdots & *            \\
+\vdots     & \vdots      & \ddots & \vdots    \\
+0             & 0               & \cdots & a_{r,i_r} \\
+\end{vmatrix}=\prod_{k=1}^rs_{k,i_k}\neq0$$
+то $\rang{S}=r$
+<p id="Theorem4.2"><b>Теорема 4.2:</b><br>
+Любая матрица над полем строчно эквивалентна некоторой ступенчатой.
+<p><b>Доказательство:</b><br>
+Пусть $A\in{P}_{m,n}$, докажем утверждение индукцией по $m$.
+<ol type="I">
+<li> Так как любая матрица состоящая из одной ненулевой строки ступенчатая типа $(1)$, то при $m=1$ утверждение выполняется.</li>
+<li> Фиксируем $k>1$ и предположим, что любая матрица над полем состоящая не более чем из $k$ строк строчно эквивалентна ступенчатой.<br>
+Пусть $A\in{P}_{(k+1),n}$, $A_1^{\downarrow}=A_2^{\downarrow}=\cdots=A_j^{\downarrow}=\cdots=0^{\downarrow}$, $A_j^{\downarrow}\neq0^{\downarrow}$, 
+тогда 
+$$A\rsim{B}=(b_{i,j})_{k+1\times{n}}=
+\begin{pmatrix}
+0         & \cdots & 0         & b_{1,j_1}             & *         & \cdots & *         \\
+0         & \cdots & 0         & b_{2,j_2}             & *         & \cdots & *         \\
+\vdots &           & \vdots & \vdots                   & \vdots &           & \vdots \\
+0         & \cdots & 0         & b_{k+1,j_{k+1}} & *         & \cdots & *         \\
+\end{pmatrix},$$
+где $b_{1,j_1}\neq0$. Для любого $s\in\overline{2,k+1}$, если $b_{s,j_s}\neq0$, то прибавим к $s$-той строке первую умноженную на $-b_{s,j_s}b_{1,j_1}^{-1}$. Получим матрицу $B'\rsim{B}$ у, которой в $j$-том столбце все элементы кроме первого равны 0. По предположению индукции подматрица $B'\begin{pmatrix}2, & \ldots, & k+1 \\ j+1, & \ldots, & n\end{pmatrix}$ строчно эквивалентна некоторой ступенчатой матрице $S=(s_{i,j})_{k\times(n-j)}$, следовательно, и матрица $B'$ строчно эквивалентна некоторой ступенчатой матрице, то есть
+$$B\,\rsim{B}'\,\rsim
+\begin{pmatrix}
+0         & \cdots & 0            & b_{1,j_1} & *           & \cdots & *              \\
+0         & \cdots & 0            & 0               & s_{1,1} & \cdots & s_{1,n-j} \\
+\vdots &            & \vdots   & \vdots       & \vdots   &            & \vdots     \\
+0         & \cdots & 0            & 0               & s_{k,1} & \cdots & s_{k,n-j} \\
+\end{pmatrix} 
+$$
+</li>
+</ol>
+<h4 id="4.2">4.2 Каноническая форма матрицы.</h4>
+<p id="Definition4.5"><b></b><br>
+Ступенчатая типа $(i_1,\ldots,i_r)$ матрица $S\in{P}_{m,n}$ называется специально ступенчатой типа $(i_1,\ldots,i_k)$ , если
+<ol>
+<li> $s_{1,i_1}=\cdots=s_{r,i_r}=e$,</li>
+<li> $(k\in\overline{1,r}\wedge{t}&lt;k)\Rightarrow{s}_{t,i_k=0}$.</li>
+</ol>
+Нулевая матрица специально ступенчата и тип ее не определен.
+<br><br>
+Таким образом специально ступенчатая матрица имеет вид
+$$
+\begin{pmatrix}
+0      & \cdots & 0     & e       & *      & \cdots & *      & 0        & *      & \cdots & *       & 0      & *      & \cdots & *      \\
+0      & \cdots & 0     & \cdots  & \cdots & \cdots & 0      & e        & *      & \cdots & *       & 0      & *      & \cdots & *      \\
+\vdots &        &       &         &        &        &        &          &        &        &         &        &        &        & \vdots \\
+0      & \cdots & \cdots& \cdots  & \cdots & \cdots & \cdots & \cdots 	& \cdots & 0      & 0       & e      & *      & \cdots & *      \\
+0      & \cdots & \cdots& \cdots  & \cdots & \cdots & \cdots & \cdots 	& \cdots & \cdots & \cdots  & \cdots & \cdots & \cdots & 0      \\
+\vdots &        &       &         &        &        &        &          &        &        &         &        &        &        & \vdots \\
+0      & \cdots & \cdots& \cdots  & \cdots & \cdots & \cdots & \cdots 	& \cdots & \cdots & \cdots  & \cdots & \cdots & \cdots & 0      \\
+\end{pmatrix}
+$$
+<p id="Theorem4.3"><b>Теорема 4.3:</b><br>
+Любая матрица над полем строчно эквивалентна некоторой специально ступенчатой.
+<p><b>Доказательство:</b><br>
+Пусть $A\in{P}_{m,n}$ ненулевая матрица, тогда по теореме 4.2 $A\rsim{S}$, где $S=(s_{i,j})_{m\times{n}}$ - ступенчатая матрица типа $(i_1,\ldots,i_r)$. 
+Докажем индукцией по $r$, что матрица $S$ строчно эквивалентна некоторой специально ступенчатой матрице.
+<ol type="I">
+<li> Если $r=1$, то матрица $S$ приводится к специально ступенчатому виду умножением первой строки на $s_{1,i_1}^{-1}$.</li>
+<li> Фиксируем $k&gt;1$ и предположим, что для любого $r\in\overline{1,k-1}$ матрица $S$ строчно эквивалентна некоторой специально ступенчатой матрице. 
+Докажем, что матрица $S$ строчно эквивалентна специально ступенчатой матрице при $r=k$.<br>
+Проведем с матрицей $S$ следующие элементарные преобразования строк.<br>
+<ul>
+<li> Приведем ступенчатую матрицу $S\begin{pmatrix}1, & \ldots, & k-1 \\ 1, & \ldots, & n\end{pmatrix}$ к специально ступенчатому виду. 
+Мы можем это сделать по предположению индукции. Обозначим получившуюся матрицу $U=(u_{i,j})_{m\times{n}}$.
+</li>
+<li> Умножим $k$-тую строку на $u_{k,i_k}^{-1}=s_{k,i_k}^{-1}$. Обозначим получившуюся матрицу $V=(v_{i,j})_{m\times{n}}$, тогда $v_{k,i_k}=e$. 
+Так как данное преобразование не затрагивает элементы матрицы 
+$$U\begin{pmatrix}1, & \ldots, & k-1 \\ 1, & \ldots, & i_k-1 \end{pmatrix}=V\begin{pmatrix}1, & \ldots, & k \\ 1, & \ldots, & i_k-1\end{pmatrix},$$
+то она останется специально ступенчатой.
+</li>
+<li> Для любого $t\in\overline{1,k-1}$ прибавим к $t$-той строке $k$-тую строку умноженную на $-u_{t,i_k}$. 
+Так как данное преобразование не затрагивает элементы матрицы 
+$V\begin{pmatrix}1, & \ldots, & k-1 \\ 1, & \ldots, & i_k-1 \end{pmatrix}$, то она останется специально ступенчатой.
+</li>
+</ul>
+Таким образом получившаяся в результате указанных элементарных строчных преобразований матрица будет специально ступенчатой.
+</li>
+</ol>
+<p id="Corollary4.3"><b>Следствие 4.3:</b><br>
+$$A\in(P_{n,n})^*\Leftrightarrow{A}\rsim{E}.$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Так как $A\in(P_{n,n})^*$, то матрица $A$ строчно эквивалентна некоторой специально ступенчатой матрице $S\in{P}_{n,n}$ ранга $n$. 
+Единственной специально ступенчатой матрицей ранга $n$ в $P_{n,n}$ является единичная матрица.<br>
+$\Leftarrow)$ 
+$$A\rsim{E}\Rightarrow\rang{A}=\rang{E}=n\Rightarrow|A|\neq0\Rightarrow|A|\in{P}^*\Rightarrow{A}\in(P_{n,n})^*.$$
+<p id="Definition4.6"><b>Определение 4.6:</b><br>
+Канонической матрицей называются нулевая матрица и все матрицы вида 
+$K_{m\times{n}}=\left(\begin{array}{ll}E_{r\times{r}} & \Theta_{r\times(n-r)} \\ \Theta_{(m-r)\times{r}} & \Theta_{(m-r)\times(n-r)}\end{array}\right).$ 
+Где $\Theta_{s\times{t}}$ - это нулевая матрица соответствующего размера.
+<p id="Theorem4.4"><b>Теорема 4.4:</b><br>
+Для любой матрицы $A\in{P}_{m,n}$ существует единственная каноническая матрица $K\in{P}_{m,n}$ такая, что $A\rsim{K}$.
+<p><b>Доказательство:</b><br><br>
+Так как матрица $\Theta$ каноническая по опеределению, то при $A=\Theta$ доказано.<br>
+Пусть $A\neq\Theta$, тогда матрица $A$ строчно эквивалентна некоторой специально ступенчатой матрице $S$ типа $(i_1,\ldots,i_r)$, тогда переставляя столбцы $i_1,\ldots,i_r$ на первые места и обнуляя с их помощью все остальные столбцы получим
+$$S\,\csim\left(\begin{array}{ll}E_{r\times{r}} & B_{r\times(n-r)} \\ \Theta_{(m-r)\times{r}} & \Theta_{(m-r)\times(n-r)}\end{array}\right)\csim
+\left(\begin{array}{ll}E_{r\times{r}} & \Theta_{r\times(n-r)} \\ \Theta_{(m-r)\times{r}} & \Theta_{(m-r)\times(n-r)}\end{array}\right).$$
+Докажем единственность от противного. Пусть существуют две канонические матрицы $K_1$, $K_2$ такие, что ${K}_1\neq{K}_2$ и $A\sim{K}_1$, $A\sim{K}$, тогда по теореме 4.1
+$$(A\sim{K}_1\wedge{A}\sim{K}_2)\Rightarrow{K}_1\sim{K}_2\Rightarrow\rang{K}_1=\rang{K}_2\Rightarrow{K}_1=K_2.$$  
+<p id="Definition4.7"><b>Определение 4.7:</b><br>
+Каноническая матрица эквивалентная матрице $A\in{P}_{m,n}$ называется канонической формой матрицы $A$. <br>
+Каноническую матрицу матрицы $A$ обозначают как $K(A)$.
+<p id="Theorem4.5"><b>Теорема 4.5:</b><br>
+Пусть $A,B\in{P}_{m,n}$, тогда следующие утверждения эквивалентны
+<ol>
+<li> $A\sim{B}$.</li>
+<li> $\exists{U}\in(P_{m,m})^*\,\exists{V}\in(P_{n,n})^*:UAV=B$.</li>
+<li> $\rang{A}=\rang{B}$.</li>
+<li> $K(A)=K(B)$.</li>
+</ol>
+<p><b>Доказтельство:</b><br>
+<ul>
+<li>$1)\Rightarrow2)$ Доказано для матриц над кольцом в п. 3 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>.</li>
+<li>$2)\Rightarrow3)$ Так как матрицы $U$ и $V$ обратимы, то по <a href="./discrete_math4.1.html#Corollary4.2">следствию 4.2</a> 
+имеем $\rang{B}=\rang{UAV}=\rang{A}$.</li>
+<li>$3)\Rightarrow4)$ Верно так как ранг матрицы равен числу единиц в канонической форме.</li>
+<li>$4)\Rightarrow1)$ $A\sim{K}(A)=K(B)\sim{B}$.</li>
+</ul>
+<p id="Note4.3"><b>Замечание 4.3:</b><br>
+Если $A,B\in{P}_{m,n}$ и $A\sim{B}$, то по п. 2 теоремы 4.5 существуют матрицы 
+$U\in(P_{m,m})^*$, $V\in(P_{n,n})^*$ такие, что $UAV=B$. При этом матрицы $U$, $V$ можно найти следующим образом.
+$$\begin{pmatrix}A & E \\ E & \Theta\end{pmatrix}\sim\begin{pmatrix}K(A) & U_1 \\ V_1 & \Theta\end{pmatrix}\Rightarrow{K}(A)=U_1AV_1.$$
+$$\begin{pmatrix}B & E \\ E & \Theta\end{pmatrix}\sim\begin{pmatrix}K(B) & U_2 \\ V_2 & \Theta\end{pmatrix}\Rightarrow{K}(B)=U_2BV_1.$$
+Где импликации справедливы по <a href="./discrete_math3.5.html#Theorem3.9">теореме 3.9</a>. Тогда, так как из эквивалентности матриц следует 
+равенство их канонических форм, то 
+$$K(A)=K(B)\Rightarrow{U}_1AV_1=U_2BV_2\Rightarrow{B}=U_2^{-1}U_1AV_1V_2^{-1}.$$
+
+<br><br>
+<a href="discrete_math3.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math4.3.html">next</a>
+</body>
+</html>

@@ -1,0 +1,191 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.3.html">next</a>
+<br>
+
+<h4 id="9.2">9.2 Группы.</h4>
+<p id="Definition9.8"><b>Определение 8.8:</b><br>
+Группоид $(G;*)$ является группой тогда и только тогда, когда 
+<ol>
+<li>операция $*$ ассоциативна;</li>
+<li>существует элемент $e\in{G}$ нейтральный относительно операции $*$;</li>
+<li>для любого элемента $G$ существует симметричный ему относительно операции $*$.</li>
+</ol>
+<br>
+Определение 9.8 эквивалентно <a href="./discrete_math9.1.html#Definition9.2">определению 9.2</a>.
+<p id="Definition9.9"><b>Определение 9.9:</b><br>
+Группа $(G;*)$ называется коммутативной или абелевой, если операция $*$ коммутативна.
+<br><br>
+Введем некоторые общеупотребительные обозначения
+<table class="solid">
+<tr><td colspan="2" align="center">Общая форма</td><td colspan="2" align="center">Аддитивная форма</td>
+<td colspan="2" align="center">Мультипликативная форма</td></tr>
+<tr><td>Название</td><td>Обозначение</td><td>Название</td><td>Обозначение</td><td>Название</td><td>Обозначение</td></tr>
+<tr><td>операция</td><td>$*,\circ,\vartriangle,\ldots$</td><td>сложение</td><td>$+$</td><td>умножение</td><td>$\cdot$</td></tr>
+<tr><td>результат</td><td>$a*b$</td><td>сумма</td><td>$a+b$</td><td>произведение</td><td>$a\cdot{b}$</td></tr>
+<tr><td>нейтральный</td><td>$e,\lambda$</td><td>нуль</td><td>$0,\theta$</td><td>единица</td><td>$1,e,\varepsilon$</td></tr>
+<tr><td>симметричный</td><td>$a'$</td><td>противоположный</td><td>$-a$</td><td>симметричный</td><td>$a^{-1}$</td></tr>
+<tr><td colspan="2" align="center">$\underbrace{a*\cdots*a}_{k}$</td><td>$k$-тое кратное элемента $a$</td><td>$k\cdot{a}$</td>
+<td>$k$-тая степень элемента $a$</td><td>$a^k$</td></tr>
+</table>
+<p id="Example9.6"><b>Пример 9.6:</b></br>
+<ol>
+<li>
+Пусть $(H;\cdot)$ - полугруппа с нейтральным элементом $e$, $H^*$ - множество всех обратимых элементов $H$, то есть 
+$$H^*:=\{h\in{H}\mid\exists{h}'\in{H}:hh'=h'h=e\}.$$ 
+В <a href="./discrete_math2.1.html#Note2.1">замечании 2.1</a> было показано, 
+что множество обратимых элементов замкнуто относительно ассоциативной операции, при этом $e\in{H}^*$. 
+Так им образом группоид $(H^*;\cdot)$ является группой.
+</li>
+<li>
+Пусть $(R;+,\cdot)$ - кольцо, тогда группоид $(R;+)$ является коммутативной (абелевой) группой. 
+Группа $(R;+)$ называется аддитивной группой кольца $(R;+,\cdot)$.<br>
+Группоид $(R;\cdot)$ в общем случае является полугруппой. Если кольцо содержит единицу $e\in{R}$, то группоид $(R;\cdot)$ является полугруппой с единицей, 
+а группоид $(R^*;\cdot)$ является группой. Группа $(R^*;\cdot)$ называется мультипликативной группой кольца $(R;+,\cdot)$.
+</li>
+<li>В <a href="./discrete_math9.1.html#Example9.1">примере 9.1</a> было показано, что для любого $n\in\mathbb{N}$ группоид $(\Gamma_n;\cdot)$ 
+изоморфен группоиду $(\mathbb{Z}/n;+)$, который является аддитивной группой кольца $\mathbb{Z}/n$. Таким образом по пп. 2, 4 
+<a href="./discrete_math9.1.html#Corollary9.1">следствия 9.1</a> $(\Gamma_n;\cdot)$ - абелева группа. 
+Следовательно, для любого $n\in\mathbb{N}$ существует абелева группа порядка $n$.
+</li>
+<li>
+Пусть $\Omega$ - некоторе множество, $S(\Omega)$ - множество биективных отбражений $\Omega$ в себя. 
+Операция композиции $\circ$ заданная на $S(\Omega)$ является ассоциативной. Тождественно отображение является биективным и, следовательно, 
+принадлежит $S(\Omega)$. Тогда для любого $\varphi\in{S}(\Omega)$ существует симмертичный $\varphi^{-1}\in{S}(\Omega)$. 
+Таким образом группоид $(S(\Omega);\circ)$ является группой.
+</li>
+</ol>
+<p id="Theorem9.5"><b>Теорема 9.5:</b><br>
+Пусть $S(\Omega)$ множество биективных отображений на множестве $\Omega$. Операция $\cdot$ такая, 
+что для любых $\varphi,\psi\in\Omega$ $\varphi\cdot\psi=\psi\circ\varphi$, тогда
+<ol>
+<li>группоиды $(S(\Omega);\circ)$, $(S(\Omega);\cdot)$ - группы;</li>
+<li>$(S(\Omega);\circ)\cong(S(\Omega;\cdot))$;</li>
+<li>группоиды $(S(\omega);\circ)$, $(S(\Omega);\cdot)$ коммутативны тогда и только тогда, когда $|\Omega|\leq2$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Группоид $(S(\Omega);\circ)$ является группой так как оперция $\circ$ ассоциативна, тождественное отображение $e$ биективно и 
+нейтрально относительно операции $\circ$. Для любого отображения $\varphi\in{S}(\Omega)$ существует обратное ему $\varphi^{-1}\in{S}(\Omega)$ такое, 
+что $\varphi\circ\varphi^{-1}=\varphi^{-1}\circ\varphi=e$.<br>
+Для того, что бы доказать, что группоид $(S(\Omega);\cdot)$ - группа докажем, что он изоморфен $(S(\Omega);\circ)$.
+</li>
+<li>Рассмотрим отображение $\tau:S(\Omega)\to{S}(\Omega)$ такое, что для любого $\varphi\in{S}(\Omega)$ $\tau(\varphi)=\varphi^{-1}$. 
+Так как $(S(\Omega);\circ)$ - rруппа, то для любого $\varphi\in{S}(\Omega)$ обратный определен однозначно, следоваетльно, 
+отображение $\tau$ биективно, при этом
+$$\tau(\varphi\circ\psi)=(\varphi\circ\psi)^{-1}=\psi^{-1}\circ\varphi^{-1}=\varphi^{-1}\cdot\psi^{-1}.$$
+Таким образом отображение $\tau$ является изоморфизмом группоидов $(S(\Omega);\circ)$, $(S(\Omega);\cdot)$, следовательно, по п. 4 
+<a href="./discrete_math9.1.html#Corollary9.1">следствия 9.1</a> $(S(\Omega;\cdot))$ - группа.
+</li>
+<li><br>
+$\Rightarrow)$ Докажем от противного. Пусть $|\Omega|>2$, тогда существуют попарно различные $a,b,c\in\Omega$. 
+Рассмотрим отображения $\varphi,\psi\in{S}(\Omega)$ такие, что
+$$
+\varphi(x)=\begin{cases}b;x=a \\ a;x=b \\ x;x\notin\{a,b\}\end{cases}, \psi(x)=\begin{cases}c;x=a \\ a;x=c \\ x;x\notin\{a,c\}\end{cases}.
+$$
+Тогда
+$$
+(\varphi\cdot\psi)(a)=(\psi\circ\varphi)(a)=\psi(b)=b\neq{c}=\varphi(c)=(\varphi\circ\psi)(a)=(\psi\cdot\varphi)(a),
+$$
+то есть $\varphi\cdot\psi\neq\psi\cdot\varphi$ и $\varphi\circ\psi\neq\psi\circ\varphi$, следовательно, группы $(S(\Omega);\circ)$, 
+$(S(\Omega);\cdot)$ не абелевы.<br>
+$\Leftarrow)$ Если $|\Omega|=1$, то $|S(\Omega)|=1$ и $S(\Omega)=\{e\}$. 
+Таким образом группы $(S(\Omega);\circ)$, $(S(\Omega);\cdot)$, очевидно, абелевы.<br>
+Если $|\Omega|=2$, то $|\Omega|=2!=2$ и $S(\Omega)=\{e, \varphi\}$. Так как по определению нейтрального элемента $\varphi\circ{e}=e\circ\varphi=\varphi$, 
+то группы $(S(\Omega);\circ)$, $(S(\Omega);\cdot)$ абелевы.
+</li>
+</ol>
+<br>
+Введенная в теореме 9.5 на множестве $S(\Omega)$ операция $\cdot$ называется "произведением".  
+Далее знак произведения $\cdot$ между символами отображений опускается. Вообще операция произведения введена исключительно для удобства обозначений. 
+Операнды в ней стоят в таком же порядке, в каком они применяются к аргументу, в отличии от операции композиции, где порядок обратный. 
+К тому же обозначения получаются менее громоздкие, так как знак операции $\cdot$ принято опускать.
+<p id="Theorem9.6"><b>Теорема 9.6:</b><br>
+Пусть множества $\Omega_1,\Omega_2$ такие, что $|\Omega_1|=|\Omega_2|$, тогда $(S(\Omega_1);\cdot)\cong(S(\Omega_2);\cdot)$.
+<p><b>Доказательство:</b><br><br>
+Так как $|\Omega_1|=|\Omega_2|$, то существует биективное обображение $a:\Omega_1\to\Omega_2$. 
+Рассмотрим отображение $\tau:S(\Omega_1)\to{S}(\Omega_2)$ такое, что
+$$\forall\varphi\in{S}(\Omega_1)(\tau(\varphi)=a^{-1}\varphi{a}).$$
+Отображение $\tau$ задано корректно, так как для любого $\varphi\in{S}(\Omega_1)$ $\tau(\varphi)$ биективно, как композиция биективных, следовательно, 
+$\tau(\varphi)\in{S}(\Omega_2)$. Докажем, что отображение $\tau$ изоморфизм.
+<ol>
+<li> Так как
+$$\forall\psi\in{S}(\Omega_2)\,\exists\varphi:=a\psi{a}^{-1}:\tau(\varphi)=\tau(a\psi{a}^{-1})=a^{-1}a\psi{a}^{-1}a=\psi,$$
+то отображение $\tau$ сюръективно.
+</li>
+<li>Пусть $\varphi,\varphi_1\in{S}(\Omega_1)$, тогда
+$$\tau(\varphi)=\tau(\varphi_1)\Rightarrow\forall{x}\in\Omega_2((a^{-1}\varphi{a})(x)=(a^{-1}\varphi_1{a})(x)).$$
+Так как отображение $a^{-1}:\Omega_2\to\Omega_1$ биективно, то 
+$$\forall{y}\in\Omega_1(\varphi{a}(y)=\varphi_1{a}(y))\Rightarrow\forall{y}\in\Omega_1(\varphi(y)=\varphi_1(y))\Rightarrow\varphi=\varphi_1,$$
+где первая импликация следует из биективности отображения $a$. Таким обрзаом, отображение $\tau$ инъективно.
+</li>
+<li>Для любых $\varphi,\psi\in{S}(\Omega_1)$
+$$\tau(\varphi\psi)=a^{-1}\varphi\psi{a}=a^{-1}\varphi{e}\psi{a}=(a^{-1}\varphi{a})({a}^{-1}\psi{a})=\tau(\varphi)\tau(\psi),$$
+следовательно, $\tau$ - гомоморфизм
+</li>
+</ol>
+Из пунктов 1-3 следует, что отображение $\tau$ является изоморфизмом, то есть $(S(\Omega_1);\cdot)\cong(S(\Omega_2);\cdot)$
+<br><br>
+Таким образом, из теоремы следует, что для любого $n\in\mathbb{N}$, для любого множества $\Omega$ такого, 
+что $|\Omega|=n$ $(S(\Omega);\cdot)\cong(S(\overline{1,n});\cdot)$. Группу $(S(\overline{1,n});\cdot)$ обозначают как $S_n$ и 
+называют симметрической группой подстановок степени $n$.
+<p id="Theorem9.7"><b>Теорема 9.7:</b><br>
+Пусть $(H;\cdot)$ полугруппа, тогда следующие утверждения эквивалентны
+<ol>
+<li>$(H;\cdot)$ - группа,</li>
+<li>для любых $a,b\in{H}$ уравнения $ax=b$, $ya=b$ однозначно разрешимы,</li>
+<li>для любых $a,b\in{H}$ уравнения $ax=b$, $ya=b$ разрешимы.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+$1)\Rightarrow2)$ 
+Если $(H;\cdot)$ группа, то
+$$\forall{a},b\in{H}\,\exists{a}^{-1}\in{H}:a(a^{-1}b)=(aa^{-1})b=eb=b.$$
+То есть элемент $a^{-1}b\in{H}$ является решением уравнения $ax=b$. Докажем, что это решение единственно. 
+Пусть $x_1,x_2\in{H}$ удовлетворяют уравнению $ax=b$, тогда
+$$
+(ax_1=b\,\wedge\,ax_2=b)\Rightarrow{a}x_1=ax_2\Rightarrow{a}^{-1}(ax_1)=a^{-1}(ax_2)\Rightarrow(a^{-1}a)x_1=(a^{-1}a)x_2\Rightarrow{x}_1=x_2.
+$$
+Аналогично доказывается, что элемент $ba^{-1}\in{H}$ является единственным решением уравниния $ya=b$.<br>
+$2)\Rightarrow3)$
+Очевидно.
+<br>
+$3)\Rightarrow1)$
+Если $a\in{H}$, то уравнение $ax=a$ разрешимо, то есть существует $u\in{H}$ такое, что $au=a$. С другой стороны, 
+из разрешимости для любого $b\in{H}$ уравнения $ya=b$ следует, что
+$$\exists{t}\in{H}:ta=b\Rightarrow{b}u=(ta)u=t(au)=ta=b.$$
+Аналогичным образом показывается, что существует $v\in{H}$ такое, что для любого $b\in{H}$ $vb=b$. Таким образом 
+$$\forall{b}\in{H}\begin{cases}bu=b \\ vb=b \end{cases}\Rightarrow\forall{b}\in{H}\begin{cases}buv=bv \\ uvb=ub\end{cases}\Rightarrow{u}v=u=v.$$
+То есть элемент $u=v$ является нейтральным в $(H;\cdot)$.<br>
+Из разрешимости для любых $h_1,h_2\in{H}$ уравнения $h_1x=h_2$ следует, что
+$$
+\forall{a}\in{H}\,\exists{b},c\in{H}:(ab=u\,\wedge\,bc=u)\Rightarrow(ab=u\,\wedge\,{b}a=b(au)=(ba)u=(ba)(bc)=b(ab)c=buc=bc=u),
+$$
+то есть $b=a^{-1}$. Таким образом полугруппа $(H;\cdot)$ является группой.
+
+<br><br>
+<a href="discrete_math9.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.3.html">next</a>
+</body>
+</html>

@@ -1,0 +1,235 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 21.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math21.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.4.html">next</a>
+<br>
+
+<h4 id="21.3">21.3 Модуль последовательностей над кольцом многочленов.</h4>
+
+Определим операцию умножения многочлена $f(x)\in{R}[x]$ на последовательность $u\in{R}^{\infty}$.
+<ol>
+<li>Если $f(x)=x^k$, то последовательность $v:=f(x)u=x^ku$ получается из последовательности $u$ сдвигом влево на $k$ членов, 
+то есть для любого $i\in\mathbb{N}_0$ $v(i)=u(i+k)$.
+<li>Если $f(x)=\sum_{k\geq0}f_kx^k$, то 
+$$v:=f(x)u:=\sum_{i\geq0}f_k(x^ku),$$
+то есть 
+$$\forall{i}\in\mathbb{N}_0\left(v(i):=\sum_{k\geq0}f_ku(i+k)\right),$$
+где сложение последовательностей и умножение последовательности на элемент кольца определены в формулировке 
+<a href="./discrete_math21.1.html#Theorem21.1">теоремы 21.1</a>.
+</ol>
+<p id="Statement21.4"><b>Утверждение 21.4:</b><br>
+Унитарный многочлен $F(x)\in{R}[x]$ является характерестическим многочленом последовательности $u\in{R}^{\infty}$ тогда и только тогда, 
+когда $F(x)u=0$, то есть
+$$L_R(F)=\{u\in{R}^{\infty}\mid{F}(x)u=0\}.$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ 
+Пусть $F(x):=x^m-c_{m-1}x^{m-1}-\cdots-c_1x-c_0$ характеристический многочлен последовательности $u$, тогда для любого $i\in\mathbb{N}_0$
+$$
+u(i+m)=c_{m-1}u(i+m-1)+\cdots+c_1u(i+1)+c_0u(i)\Rightarrow(F(x)u)(i)=\sum_{k\geq0}c_ku(i+k)=0,
+$$
+где последнее равенство в силу того, что $c_m=1$ и для любого $k>m$ $c_k=0$.<br>
+$\Leftarrow)$
+Пусть $F(x):=x^m+f_{m-1}x^{m-1}+\cdots+f_1x+f_0$, тогда для любого $i\in\mathbb{N}_0$
+$$
+\sum_{k\geq0}f_ku(i+k)=(F(x)u)(i)=0\Rightarrow{u}(i+m)=-f_{m-1}u(i+m-1)-\cdots-f_1u(i+1)-f_0u(i),
+$$
+то есть $F(x)$ характеристический многочлен последовательности $u$.
+<p id="Definition21.11"><b>Определение 21.11:</b><br>
+Будем говорить, что многочлен $A(x)\in{R}[x]$ аннулирует последовательность $u\in{R}^{\infty}$, если $A(x)u=0$.
+<p id="Theorem21.2"><b>Теорема 21.2:</b><br>
+Относительно введенной операции внешнего умножения абелева группа $(R^{\infty};+)$ является левым $R[x]$ модулем.
+<p><b>Доказательство:</b><br><br>
+Пусть $A(x),B(x)\in{R}[x]$, $u,v\in{R}^{\infty}$.
+<ol>
+<li>Очевидно, что $(A(x)+B(x))u=A(x)u+B(x)u$.</li>
+<li>Очевидно, что $A(x)(u+v)=A(x)u+B(x)v$.</li>
+<li>Очевидно, что $1u=u$.</li>
+<li>Докажем, что $A(x)(B(x)u)=(A(x)B(x))u$.<br>
+Очевидно, что для любых $k,l\in\mathbb{N}_0$, $a,b\in{R}$ $ax^k(bx^lu)=abx^{k+l}u$, тогда
+$$
+(A(x)B(x))u=\left(\sum_{k,l}a_kb_lx^{k+l}\right)u=\sum_{k,l}a_kb_lx^{k+l}u=\sum_{k}\sum_{l}a_kx^kb_lx^lu=\sum_{k}a_kx^k\sum_{l}b_lx^lu=A(x)(B(x)u),
+$$
+где последнее равенство справедливо в силу того, что многочлен имеет конечное число ненулевых коэффициентов, то есть суммы конечны.
+</li>
+</ol>
+<p id="Corollary21.4"><b>Следствие 21.4:</b><br> 
+Пусть $F(x)\in{R}[x]$ - унтарный многочлен, $u\in{L}_R(F)$, тогда
+<ol>
+<li>$A(x)u\in{L}_R(F)$,</li>
+<li>для любого унитарного $G(x)\in{R}[x]$ $u\in{L}_R(FG)$,</li>
+<li>множество $L_R(F)$ - подмодуль модулей ${}_{R}R^{\infty}$ и ${}_{R[x]}R^{\infty}$</li>
+<li>множество $\alpha{R}^{\infty}$ всех ЛРП над $R$ является подмодулем модулей ${}_{R}R^{\infty}$ и ${}_{R[x]}R^{\infty}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По теореме 21.2
+$$
+u\in{L}_R(F)\Rightarrow{F}(x)u=0\Rightarrow{A}(x)(F(x)u)=0\Rightarrow(A(x)F(x))u=0\Rightarrow
+(F(x)A(x))u=0\Rightarrow{F}(x)(A(x)u)=0\Rightarrow{A}(x)u\in{L}_R(F).
+$$
+</li>
+<li>По теореме 21.2
+$$
+u\in{L}_R(F)\Rightarrow{F}(x)u=0\Rightarrow{G}(x)(F(x)u)=0\Rightarrow(G(x)F(x))u=0\Rightarrow{u}\in{L}_R(GF).
+$$
+</li>
+<li>По п. 1 <a href="./discrete_math21.1.html#Statement21.1">утверждения 21.1</a> $L_R(F)&lt;{}_{R}R^{\infty}$.<br>
+По пункту 1 $L_R(F)$ замкнуто относительно внешнего умножения на многочлен $f(x)\in{R}[x]$, следовательно, $L_R(F)&lt;{}_{R[x]}R^{\infty}$.
+</li>
+<li>Пусть $r\in{R}$, последовательности $u,v\in\alpha{L}_R^{\infty}$ такие, что $u\in{L}_R(F)$, $v\in{L}_R(G)$, тогда по пункту 2 
+$$u,v\in{L}_R(FG)\Rightarrow{u}+v\in{L}_R(FG)\Rightarrow{u}+v\in\alpha{R}^{\infty}.$$ 
+При этом очевидно, что $ru\in{L}_R(F)$, таким образом, $\alpha{R}^{\infty}&lt;{}_RR^{\infty}$.<br>
+По пункту 1 множество $\alpha{R}^{\infty}$ замкнуто относительно операции внешнего умножения на многочлен, 
+следовательно, $\alpha{R}^{\infty}&lt;{}_{R[x]}R^{\infty}$.
+</li>
+</ol>
+<p id="Definintion21.12"><b>Определение 21.12:</b><br>
+Пусть $F(x)\in{R}[x]$, $\deg{F}(x)=m$. Импульсной последовательностью с характеристическим многочленом $F(x)$ называется последовательность 
+$e^F\in{L}_R(F)$ с начальным вектором $e^F(\overline{1,m-1})=(0,\ldots,0,e)$.
+<p id="Definition21.13"><b>Определение 21.13:</b><br>
+Многочлены $A(x),B(x)\in{R}[x]$ называются взаимнопростыми, если существуют многочлены $U(x),V(x)\in{R}[x]$ такие, что 
+$$A(x)U(x)+B(x)V(x)=e.$$
+<p id="Theorem21.3"><b>Теорема 21.3:</b><br>
+Пусть $F(x),G(x)\in{R}[x]$ - унитарные, $\deg{F(x)}=m$.
+<ol>
+<li>$L_R(F)\subset{L}_R(G)\Leftrightarrow{F}(x)|G(x)$.</li>
+<li>Если $F(x),G(x)$ взаимнопросты, то $L_R(FG)=L_R(F)\dotplus{L}_R(G)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>
+$\Rightarrow)$ Разделим $G(x)$ на $F(x)$ c остатком, тогда
+$$\exists{Q}(x),r(x)\in{R}[x]:(G(x)=F(x)Q(x)+r(x)\,\wedge\,\deg{r(x)}&lt;\deg{F(x)}).$$
+Фиксируем $u\in{F}(x)$, так как $L_R(F)\subset{L}_R(G)$, то $u\in{G}(x)$ и по п. 2 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a> 
+$u\in{L}_R(FQ)$, тогда по <a href="./discrete_math21.1.html#Statement21.2">утверждению 21.2</a>
+$$
+(G(x)u=0\wedge(F(x)Q(x))u=0)\Rightarrow{v}:=r(x)u=(G(x)-F(x)Q(x))u=0.
+$$
+Предположим что $0\leq{k}:=\deg{r(x)}&lt;m$ и $r(x):=r_kx^k+\cdots+r_1x+r_0$, тогда
+$$
+\forall{l}\in\overline{0,m-2}(e^F(l)=0)\Rightarrow{v}(m+k-1)=\sum_{l=0}^kr_le^F(m-k-1+l)=r_ke^F(m-1)=r_k=0.
+$$
+Получено противоречие с предположением $0\leq{k}:=\deg{r(x)}$, то есть $\deg{r(x)}=-\infty$, $r(x)=0$, $F(x)|G(x)$.<br>
+$\Leftarrow)$ Следует из п. 2 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a>
+</li>
+<li>По п. 2 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a> $L_R(F)\subset{L}_R(FG)$, $L_R(G)\subset{L}_R(FG)$. 
+Следовательно, так как множество $L_R(FG)$ замкнуто относительно сложения, то $L_R(F)+L_R(G)\subset{L}_R(FG)$.<br>
+С другой стороны, так как многочлены $F(x)$ и $G(x)$ взаимнопросты, то существуют $U(x),V(x)\in{R}[x]$ такие, что $F(x)U(x)+G(x)V(x)=e$. 
+Фиксируем $u\in{L}_R(FG)$, тогда $u=eu=(F(x)U(x)+G(x)V(x))u$, при этом по <a href="./discrete_math21.3.html#Statement21.4">утверждению 21.4</a> и 
+по п. 1 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a>
+$$
+\begin{cases}G(x)((F(x)U(x))u)=U(x)((F(x)G(x))u)=0\Rightarrow
+(F(x)U(x))u\in{L}_R(G)\\F(x)((G(x)V(x))u)=V(x)((F(x)G(x))u)=0\Rightarrow(G(x)V(x))u\in{L}_R(F)\end{cases}
+$$
+то есть ${u}\in{L}_R(F)+L_R(G)$. Таким образом, $L_R(F)+L_R(G)=L_R(FG)$, при этом по <a href="./discrete_math21.3.html#Statement21.4">утверждению 21.4</a> и 
+по п. 1 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a>
+$$u\in{L}_R(F)\cap{L}_R(G)\Rightarrow{u}=(F(x)U(x)+G(x)V(x))u=0,$$
+то есть сумма $L_R(F)+L_R(G)$ - прямая.
+</li>
+</ol>
+<p id="Theorem21.4"><b>Теорема 21.4:</b><br>
+Пусть $P$ - поле, многочлены $F(x),G(x)\in{P}[x]$ унитарны, $D(x):=(F(x),G(x))$, $H(x):=[F(x),G(x)]$, тогда
+<ol>
+<li>$L_P(F)\cap{L}_P(G)=L_P(D)$,</li>
+<li>$L_P(F)+L_P(G)=L_P(H)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math7.4.html#Lemma7.4">лемме 7.4</a> существуют многочлены $U(x),V(x)\in{P}[x]$ такие, что $D(x)=F(x)U(x)+G(x)V(x)$, 
+тогда по <a href="./discrete_math21.3.html#Statement21.4">утверждению 21.4</a> и по п. 1 <a href="./discrete_math21.1.html#Corollary21.3">следствия 21.3</a>
+$$
+u\in{L}_P(F)\cap{L}_P(G)\Rightarrow\begin{cases}F(x)u=0 \\ G(x)u=0\end{cases}\Rightarrow\begin{cases}(F(x)U(x))u=0 \\ (G(x)V(x))u=0\end{cases}\Rightarrow
+{D}(x)u=(F(x)U(x)+G(x)V(x))u=0\Rightarrow{u}\in{L}_P(D),
+$$
+то есть $L_P(F)\cap{L}_P(G)\subset{L}_P(D)$. 
+С другой стороны по п. 1 теоремы 21.3
+$$
+\begin{cases}D|F \\ D|G\end{cases}\Rightarrow
+\begin{cases}L_P(D)\subset{L}_P(F) \\ L_P(D)\subset{L}_P(G)\end{cases}\Rightarrow{L}_P(D)\subset{L}_P(F)\cap{L}_P(G).
+$$
+</li>
+<li>По п. 1 теоремы 21.3
+$$
+\begin{cases}F|H \\ G|H\end{cases}\Rightarrow
+\begin{cases}L_P(F)\subset{L}_P(H) \\ {L}_P(G)\subset{L}_P(H)\end{cases}\Rightarrow{L}_P(F)+L_P(G)\subset{L}_P(H).
+$$
+С другой стороны, по <a href="./discrete_math21.1.html#Corollary21.3">следствию 21.3</a>, пункту 1, 
+<a href="./discrete_math11.5.html#Theorem11.11">теореме 11.11</a>, <a href="./discrete_math7.4.html#Theorem7.9">теореме 7.9</a>, 
+<a href="./discrete_math11.3.html#Statement11.6">утверждению 11.6</a>
+$$
+\dim(L_P(F)+L_P(G))=\dim{L_P(F)}+\dim{L_P(G)}-\dim{L_P(F)\cap{L}_P(G)}=\deg{F(x)}+\deg{G(x)}-\deg{D(x)}=\deg{H(x)}=\dim{L_P(H)}\Rightarrow\\
+\Rightarrow{L}_P(F)+L_P(G)\cong{L}_P(H)\Rightarrow{L}_P(F)+L_P(G)=L_P(H).
+$$
+</li>
+</ol>
+<p id="Theorem21.5"><b>Теорема 21.5:</b><br>
+Пусть многочлен $F(x)\in{R}[x]$ унитарен, $\deg{F(x)}=m$, тогда $L_R(F)$ - циклический $R[x]$-модуль порождаемый последовательностью $e^F$, при этом 
+$$\forall{u}\in{L}_R(F)\exists!\Phi(x)\in{R}[x]:(u=\Phi(x)e^F\,\wedge\,\deg{\Phi(x)}&lt;m)$$
+и если $F(x)=x^m+f_{m-1}x^{m-1}+\cdots+f_1x+f_0$, то 
+$$
+\Phi(x)=\sum_{k=0}^{m-1}(f_mu(k)+f_{m-1}u(k-1)+\cdots+f_{m-k}u(0))x^{m-k-1}=u(0)x^{m-1}+\sum_{k=1}^{m-1}(u(k)+f_{m-1}u(k-1)+\cdots+f_{m-k}u(0))x^{m-k-1}.
+$$
+<p><b>Доказательство:</b><br><br>
+Матрица размера $m\times{m}$ составленная из начальных векторов последовательностей $e^F,xe^F,\ldots,x^{m-1}e^F$ имеет треугольный вид, 
+тогда по п. 2 <a href="./discrete_math21.1.html#Statement21.3">утверждения 21.3</a> система $e^F,xe^F,\ldots,x^{m-1}e^F$ является базисом  $L_R(F)$. 
+Тогда для любого $u\in{L}_P(F)$ существует единственный набор $\varphi_0,\ldots,\varphi_{m-1}\in{R}$ такой, что 
+$$u=\varphi_0e^F+\varphi_1xe^F+\cdots+\varphi_{m-1}x^{m-1}e^F=(\varphi_0+\varphi_1x+\cdots+\varphi_{m-1}x^{m-1})e^F.$$
+Следовательно, существует единственный многочлен $\Phi(x)\in{R}[x]$ такой, что $u=\Phi(x)e^F$ и $\deg{\Phi(x)}&lt;m$.<br>
+Докажем, что многочлен
+$$\Phi(x)=u(0)x^{m-1}+\sum_{k=1}^{m-1}(u(k)+f_{m-1}u(k-1)+\cdots+f_{m-k}u(0))x^{m-k-1}$$
+удовлетворяет условию $\Phi(x)e^F=u$. Обозначим $v:=\Phi(x)e^F\in{L}_P(F)$, тогда достаточно доказать, 
+что для любого $i\in\overline{1,m-1}$ $v(i)=u(i)$. Фиксируем $i\in\overline{0,m-1}$, тогда
+$$
+v(i)=(\Phi(x)e^F)(i)=\sum_{k=0}^{m-1}(f_mu(k)+\cdots+f_{m-k}u(0))e^F(i+m-k-1)=
+\sum_{k=0}^{m-1}\sum_{s=0}^kf_{m-k+s}u(s)e^F(i+m-k-1)=\sum_{s=0}^{m-1}\sum_{k=s}^{m-1}f_{m-k+s}u(s)e^F(i+m-k-1)=\\=
+\sum_{s=0}^{m-1}u(s)\sum_{k=s}^{m-1}f_{m-k+s}e^F(i+m-k-1)=\sum_{s=0}^{m-1}u(s)(f_{s+1}e^F(i)+f_{s+2}e^F(i+1)+\cdots+f_me^F(i+m-s-1)).
+$$
+<ol>
+<li>Если $s&gt;i$, то $i&lt;i+1&lt;\ldots&lt;i+m-s-1&lt;m-1$, следовательно, $e^F(i)=\cdots=e^F(i+m-s-1)=0$ и $s$-тое слагаемое суммы равно 0.
+<li>Если $s=i$, то только $f_me^F(m-1)=1\neq0$ и $s$-тое слагаемое равно $u(i)$.
+<li>Если $s&lt;i$, то 
+$$
+e^F(i-s-1)=\cdots=e^F(i-1)=0\Rightarrow\sum_{k=s}^{m-1}f_{m-k+s}e^F(i+m-k-1)=\sum_{k=0}^mf_ke^F(i+k-s-1)=(F(x)e^F)(i-s-1)=0
+$$
+где последнее равенство в силу того, что $F(x)e^F\in{L}_P(F)$.
+</li>
+</ol>
+Таким образом, все слагаемые кроме $s$-того, равного $u(i)$, равны 0, то есть $v(i)=u(i)$.
+<p id="Definition21.14"><b>Определение 21.14:</b><br>
+Если $F(x)=x^m+f_{m-1}x^{m-1}+\cdots+f_1x+f_0$, $u\in{L}_R(F)$, то многочлен
+$$\Phi(x):=\sum_{k=0}^{m-1}(u(k)+f_{m-1}u(k-1)+\cdots+f_{m-k}u(0))x^{m-k-1}$$
+называется генератором линейной рекуррентной последовательности $u$ относительно характеристического многочлена $F(x)$.
+
+<br><br>
+<a href="discrete_math21.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math21.4.html">next</a>
+</body>
+</html>

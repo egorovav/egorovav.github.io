@@ -1,0 +1,275 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.10</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.8.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.13.html">next</a>
+<br>
+
+<h4 id="9.10">9.10 Теорема об изоморфизме.</h4>
+<p id="Theorem9.26"><b>Теорема 9.26: Первая теорема об изоморфизме.</b><br>
+Пусть $\varphi:G\to{K}$ - гомоморфизм групп, $A&lt;G$, тогда 
+<ol>
+<li>$A\cap\ker{\varphi}\triangleleft{A}$.</li>
+<li>$\varphi(A)\cong{A}/A\cap\ker{\varphi}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $a\in{A}$, $b\in{A}\cap\ker{\varphi}$, тогда так как $A$ - группа, то
+$$(a\in{A}\,\wedge\,b\in{A})\Rightarrow{a}^{-1}ba\in{A}.$$
+С другой стороны, по <a href="./discrete_math9.8.html#Statement9.8">утверждению 9.8</a> $\ker{\varphi}\triangleleft{G}$, следовательно,
+$$(a\in{G}\,\wedge\,b\in\ker{\varphi}\Rightarrow{a}^{-1}ba\in\ker{\varphi}\Rightarrow{a}^{-1}ba\in{A}\cap\ker{\varphi}.$$
+Таким образом по п. 4 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $A\cap\ker{\varphi}\triangleleft{A}$.
+</li>
+<li>Рассмотрим отображение $\psi:A\to\varphi(A)$ такое, что для любого $a\in{A}$ $\psi(a)=\varphi(a)$. 
+Так как отображение $\psi$ является эпиморфизмом групп, то по <a href="./discrete_math9.8.html#Theorem9.24">теореме 9.24</a> 
+$\varphi(A)\cong{A}/\ker{\psi}$. Доказажем, что $\ker{\psi}=A\cap\ker{\varphi}$, действительно
+$$
+\ker{\psi}=\{a\in{A}\mid\psi(a)=e_k\}=\{a\in{G}\mid{a}\in{A}\,\wedge\,\varphi(a)=e_k\}=
+\{a\in{G}\mid{a}\in{A}\,\wedge\,a\in\ker{\varphi}\}=A\cap\ker{\varphi}.
+$$
+</li>
+</ol>
+<p id="Corollary9.19"><b>Следствие 9.19:</b><br>
+Пусть $H\triangleleft{G}$, $A&lt;G$, тогда
+<ol>
+<li>$H\triangleleft{A}H$,</li>
+<li>$A\cap{H}\triangleleft{A}$,</li>
+<li>$AH/H\cong{A}/A\cap{H}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как $H\triangleleft{G}$, то $AH=HA$, следовательно, $AH\triangleleft{G}$.</li>
+<li>Пусть $\varphi_0:G\to{G}/H$ - естественный эпиморфизм групп, то есть $\varphi_0(g)=Hg=gH$, тогда $\ker{\varphi_0}=H$. 
+Тогда по п. 1 теоремы 9.26 $A\cap{H}\triangleleft{A}$.
+</li>
+<li>Покажем, что $\varphi_0(A)=\varphi_0(AH)$, действительно, так как $A\subset{A}H$, то $\varphi_0(A)\subset\varphi_0(AH)$. С другой стороны,
+$$
+c\in{A}H\Rightarrow\exists{a}\in{A}\,h\in{H}:c=ah\Rightarrow
+\varphi_0(c)=\varphi_0(ah)=ahH=aH=\varphi_0(a)\Rightarrow\varphi_0(AH)\subset\varphi_0(A).
+$$
+Таким образом, $\varphi_0(A)=\varphi_0(AH)$, тогда по п. 2 теоремы 9.26
+$$\varphi_0(A)\cong{A}/A\cap\ker{\varphi_0}=A/A\cap{H},$$
+$$\varphi_0(AH)\cong{A}H/AH\cap\ker{\varphi_0}=AH/AH\cap{H}=AH/H,$$
+то есть $A/A\cap{H}\cong{A}H/H$
+</li>
+</ol>
+<p id="Theorem9.27"><b>Теорема 9.27: Вторая теорема об изоморизме.</b><br>
+Пусть $\varphi:G\to{K}$ - гомоморфизм групп, $H\triangleleft{G}$, тогда
+<ol>
+<li>$\varphi(H)\triangleleft\varphi(G)$,</li>
+<li>$H\ker{\varphi}\triangleleft{G}$,</li>
+<li>$\varphi(G)/\varphi(H)\cong{G}/H\ker{\varphi}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Так как отображение $\varphi':G\to\varphi(G)$ такое, что для любого $a\in{G}$ $\varphi'(a)=\varphi(a)$ является эпиморфизмом и $H\triangleleft{G}$, 
+то по п. 5 <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25</a> $\varphi(H)\triangleleft\varphi(G)$.
+</li>
+<li>Рассмотрим отображение $\psi:G\to\varphi(G)/\varphi(H)$ такое, что
+$$\forall{g}\in{G}(\psi(g)=\varphi(g)\varphi(H)=\varphi(gH)=\varphi(\varphi_0(g))),$$
+где $\varphi_0:G\to{G}/H$ - естественный эпиморфизм. Так как $\psi=\varphi\circ\varphi_0$ и $\varphi$, $\varphi_0$ - эпиморфизмы, 
+то $\psi$ - эпиморфизм, тогда по <a href="./discrete_math9.8.html#Statement9.8">утверждению 9.8</a> $\ker{\psi}\triangleleft{G}$. Осталось доказать, что  
+$\ker{\psi}=H\ker{\varphi}$, действительно,
+$$
+g\in\ker{\psi}\Leftrightarrow\psi(g)=\varphi(g)\varphi(H)=e\varphi(H)=\varphi(H)\Leftrightarrow
+\varphi(g)\in\varphi(H)\Leftrightarrow{g}\in\varphi^{-1}(\varphi(H))=H\ker{\varphi}.
+$$
+Где последнее равенство по п. 1 <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25.</a>
+</li>
+<li>Следует из пункта 2 и п. 1 <a href="./discrete_math9.8.html#Theorem9.24">теоремы 9.24</a>.</li>
+</ol>
+<p id="Corollary9.20"><b>Следствие 9.20:</b><br>
+Пусть $H\triangleleft{G}$, $N\triangleleft{G}$, $N&lt;H$, тогда 
+<ol>
+<li>$H/N\triangleleft{G}/N$,</li>
+<li>$G/H\cong{G}/N\Bigl/H/N$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Пусть $\varphi:G\to{G}/N$ - естественный эпиморфизм, тогда по пn. 1, 3 теоремы 9.27 $\varphi(H)\triangleleft\varphi(G)$ и 
+$\varphi(G)/\varphi(H)\cong{G}/H\ker{\varphi}$. И так как $\varphi(G)=G/N$, $\varphi(H)=\{hN\mid{h}\in{H}\}=H/N$ и
+$H\ker{\varphi}=HN=H$, то утверждение доказано. 
+
+<h4 id="9.11">9.11 Простые группы.</h4>
+<p id="Definition9.30"><b>Определение 9.30:</b><br>
+Группа $G\neq\{e\}$ называется простой, если она не имеет собственных нормальных делителей, то есть
+$$H\triangleleft{G}\Rightarrow{H}\in\{\{e\},G\}$$
+<br> 
+Из определения и <a href="./discrete_math9.8.html#Theorem9.23">теоремы 9.23</a> следует, что группа $G$ проста тогда и только тогда, 
+когда она не имеет нетривиальных конгруэнций. 
+<p id="Theorem9.28"><b>Теорема 9.28:</b><br>
+Если группа $G$ абелева, то она проста тогда и только тогда, когда $|G|$ - простое число.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Докажем от противного, предположим, что группа $G$ простая и $|G|$ составное число или бесконечность.
+Так как $G$ простая, то $G\neq\{e\}$, значит существует $g\in{G}\backslash\{e\}$. Так как группа $G$ абелева, 
+то $\langle{g}\rangle\triangleleft{G}$. Так как группа $G$ простая и $\langle{g}\rangle\neq\{e\}$, то $\langle{g}\rangle=G$.
+<ol>
+<li>Пусть $\ord{g}=\infty$, обозначим $H:=\langle{g}^2\rangle$, тогда 
+$$
+\ord{g}\neq2\Rightarrow{g}^2\neq{e}\Rightarrow\langle{g}^2\rangle\neq\{e\}\Rightarrow{H}=G\Rightarrow{g}\in{H}=\langle{g}^2\rangle\Rightarrow\\
+\Rightarrow\exists{s}\in\mathbb{N}:g=g^{2s}\Rightarrow{g}^{2s-1}=e\Rightarrow\ord{g}<\infty.
+$$
+Таким образом получено противоречие.
+</li>
+<li>Пусть $\ord{g}=mn$, где $m,n\in\mathbb{N}$, $m&gt;1$, $n&gt;1$, тогда аналогично пункту 1 и по п. 3 
+<a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$
+\exists{s}\in\mathbb{N}:g=g^{ms}\Rightarrow\ord{g}=\ord{g}^{ms}\Rightarrow{m}n=\frac{mn}{(mn,ms)}\Rightarrow{m}(n,s)=1\Rightarrow{m}=1.
+$$
+Таким образом, получено противоречие с условием $m&gt;1$.
+</li>
+</ol>
+Из пунктов 1, 2 следует, что $G$ конечна и $|G|$ простое число.<br> 
+$\Leftarrow)$ Пусть $|H|=p$ - простое число. По <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> $|H|\bigl|p$, следовательно, 
+$|H|\in{1,p}$, тогда $H\in\{\{e\},G\}$.
+<p id="Note9.7"><b>Замечание 9.7:</b><br>
+Таким образом проверка абелевой группы на простоту сводиться к проверке простоты ее порядка. Сложнее обстоит дело с неабелевыми группами, 
+в этой области получено несколько результатов, который будут преведены без доказательства. 
+<ul>
+<li><b>Теорема Галуа.</b> Группа $A_n$ - проста тогда и только тогда, когда $n=3$ или $n\geq{5}$.<br>
+Доказательство можно найти в "Алгебра" Глухов М. М., Елизаров В. П., Нечаев А. А. том 1, стр 294. 
+В частности группа $A_4$ не проста так как $K_4\triangleleft{A}_4$.
+</li>
+<li><b>Теорема Бернсайда.</b> Любая группа порядка $p^aq^b$, где $p,q$ - простые, ${a,b\in\mathbb{N}}$ не проста.</li>
+<li><b>Теорема Фейта-Томсона.</b> Любая неабелева группа нечетного порядка не проста.</li>
+</ul>
+<p id="Task9.6"><b>Задача 9.6:</b><br>
+Доказать, что если группа $G$ не абелева и $|G|<60$, то $G$ - не проста.<br>
+Решение:<br>
+
+<h4 id="9.12">9.12 Силовские подгруппы.</h4>
+<p id="Definition9.31"><b>Определение 9.31:</b><br>
+Пусть $p$ - простое,  тогда подруппа $H$ конечной группы $G$ называется $p$-подгруппой или примарной подгруппой группы $G$, 
+если существует $k\in\mathbb{N}$ такое, что $|H|=p^k$.<br>
+Если при этом $p^{k+1}\nmid|G|$, то $H$ называется силовской $p$-подгруппой группы $G$.
+<p id="Lemma9.3"><b>Лемма 9.3: Лемма Коши.</b><br>
+Пусть $A$ конечная абелева группа, $p$ - простое число, $p\bigl||A|$, тогда существует подгруппа $B&lt;A$ такая, что $|B|=p$.  
+<p><b>Доказательство:</b><br><br>
+Обозначим $m:=|A|$ и докажем утверждение индукцией по $m$.
+<ol type="I">
+<li>При $m=2$, $p=2$, $B=A$.</li>
+<li>Для любого $n\geq2$ докажем, что из истинности утверждения при ${m\leq{n}}$ следует его истинность при при $m=n+1$.<br>
+Так как $|\langle{x}\rangle|=\ord{x}$, то достаточно доказать, что существует $x\in{A}$ такой, что $\ord{x}=p$, 
+тогда $B=\langle{x}\rangle$. Так как $|A|\geq{p}>1$, то существует $b\in{A}\backslash\{e\}$. 
+По <a href="./discrete_math9.6.html#Statement9.5">утверждению 9.5</a> 
+$k:=\ord{g}&lt;\infty$.
+<ol type="a">
+<li>Если $p|k$, то по п. 3 <a href="./discrete_math9.6.html#Theorem9.16">теоремы 9.16</a>
+$$\ord{b}^{\frac{k}{p}}=\frac{k}{\left(k,\frac{k}{p}\right)}=\frac{k}{\frac{k}{p}}=p.$$
+Таким образом, можно положить $x:=b^{k/p}$.
+</li>
+<li>Если $p\nmid{k}$, то $(p,k)=1$. Обозначим $C:=\langle{b}\rangle$, тогда так как группа $A$ абелева, то $C\triangleleft{A}$ и 
+по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> ${|A/C|=\frac{m}{k}&lt;m}$. 
+С другой стороны, так как $(p,k)=1$ и $p|m$, то $p|\frac{m}{k}$, тогда по предположению индукции существует подгруппа 
+$B&lt;A/C$ такая, что $|B|=p&gt;1$. Фиксируем $aC\in{B}\backslash\{C\}$, так как по 
+<a href="./discrete_math9.6.html#Corollary9.14">следствию 9.14</a> $(\ord{(aC)})|p$, то $\ord{aC}=p$. 
+Тогда так как группа $A$ абелева, то
+$$
+(aC)^{\ord{a}}=a^{\ord{a}}C=C\Rightarrow(\ord{(aC)})|\ord{a}\Rightarrow{p}|\ord{a}.
+$$
+Тогда аналогично подпункту (a) можно положить $x:=a^{(\ord{a})/p}$.
+</li>
+</ol>
+</li>
+</ol>
+<p id="Theorem9.29"><b>Теорема 9.29: Первая теорема Силова.</b><br> 
+Пусть $G$ - конечная группа, $p$ - простое число, $t\in\mathbb{N}$, $p^t\bigl||G|$, тогда существует подгруппа $H&lt;G$ такая, что $|H|=p^t$.
+<p><b>Доказательство:</b><br><br>
+Если группа $G$ абелева, то утверждение следует из леммы 9.3.
+Это будет понятно в ходе последнего этапа доказательства. Далее будем предполагать, что $G$ не абелева.
+Докажем индукцией по $n:=|G|$
+<ol type="I">
+<li>При $n=2$, $t=1$, $H:=G$.</li>
+<li>При $n&gt;2$ рассмотрим два случая
+<ol>
+<li>Пусть в группе $G$ существует собственная подгруппа $H$ такая, что $(|G:H|,p)=1$, тогда, 
+так как по <a href="./discrete_math9.6.html#Corollary9.12">следствию 9.12</a> $|G|=|G:H||H|$, то $p^t\bigl||H|$. Так как при этом $|H|&lt;|G|$, 
+то по предположению индукции существует подгруппа $A&lt;H&lt;G$ такая, что $|A|=p^t$.
+</li>
+<li>Пусть для любой собственной подгруппы $H&lt;G$ $(|G:H|,p)\neq1$, то есть $p\bigl||G:H|$. 
+Обозначим центр группы $G$ множество $C(G)$ как $\{h_1,\ldots,h_u\}$. Разложим $G$ в объединение классов сопряженных элементов
+$$G=[h_1]_{\approx}\cup\ldots\cup[h_u]_{\approx}\cup[g_1]_{\approx}\cup\ldots\cup[g_k]_{\approx}.$$
+Где $g_1,\ldots,g_k\notin{C}(G)$, так как $G$ не абелева, то $k&gt;0$. При этом по п. 3 <a href="./discrete_math9.8.html#Note9.5">замечания 9.5</a> 
+для любого $j\in\overline{1,k}$ $|[g_j]_{\approx}|&gt;1$, тогда по п. 2 <a href="./discrete_math9.8.html#Theorem9.19">теоремы 9.19</a> 
+$|G:N_G(g_j)|=|[g_j]_{\approx}|&gt;1$, то есть $N_G(g_j)\neq{G}$. При этом если предположить, что $N_G(g_j)=\{e\}$, то 
+$$|G:N_G(g_j)|=|[g_j]|_{\approx}=n\Rightarrow[g_j]_{\approx}=G\Rightarrow{e}\in[g_j]_{\approx}\Rightarrow{g}_j=e\in{C}(G),$$
+где последнее противоречит выбору $g_j$. Таким образом, для любого $j\in\overline{1,k}$ $N_G(g_j)$ - собственная подгруппа группы $G$. 
+Тогда в рамках данного пункта 
+$$
+\forall{j}\in\overline{1,k}(p\bigl||G:N_G(g_j)|)\Rightarrow\forall{j}\in\overline{1,k}(p\bigl||[g_j]_{\approx}|)\Rightarrow
+\exists{x}\in\mathbb{N}:n=u+px\Rightarrow{p}|u.
+$$
+Тогда, так как $C(G)$ абелева группа, то по <a href="./discrete_math9.10.html#Lemma9.3">лемме 9.3</a> существует группа $B&lt;C(G)$ такая, что $|B|=p$. 
+Если $t=1$, то $B$ искомая группа. Пусть $t&gt;1$, тогда
+$$B&lt;C(G)\Rightarrow\forall{g}\in{G}(gB=Bg)\Rightarrow{B}\triangleleft{G},$$
+следовательно, можем рассмотреть фактор группу $G/B$. Так как $|G/B|=\frac{n}{p}&lt;n$ и $p^{t-1}\left|\frac{n}{p}\right.$, 
+то по предположению индукции существует подгруппа $H'&lt;G/B$ такая, что $|H'|=p^{t-1}$. Пусть 
+${\varphi:G\to{G}/B}$ - естественный эпиморфизм, обозначим $H:=\varphi^{-1}(H')$, 
+тогда по п. 2 <a href="./discrete_math9.8.html#Theorem9.25">теоремы 9.25</a>
+$H&lt;G$ и так как по <a href="./discrete_math9.6.html#Corollary9.11">следствию 9.11</a> все смежные классы равномощны, то $|H|=|H'||B|=p^t$.
+</li>
+</ol>
+</li>
+</ol>
+<p id="Theorem9.30"><b>Теорема 9.30:</b><br>
+Любые две силовские $p$-подгруппы группы $G$ сопряжены в $G$, то есть для любых силовских $p$-подгрупп $H_1$, $H_2$ существует $g\in{G}$ такой, 
+что $g^{-1}H_1g=H_2$.
+<p><b>Доказательство:</b><br><br>
+Без доказательства.
+<p id="Theorem9.31"><b>Теорема 9.31:</b><br>
+Если $S_p$ число силовских $p$-подгрупп группы $G$, то $S_p\bigl||G|$ и $S_p\equiv1\pod{p}$.
+<p><b>Доказательство:</b><br><br>
+Без доказательства.
+<p id="Example9.23"><b>Пример 9.23:</b><br>
+Докажем, что группа порядка 30 не может быть простой.<br>
+Действительно, так как $|G|=30 = 2\cdot3\cdot5$, то по <a href="./discrete_math9.10.html#Theorem9.29">теореме 9.29</a> сущетсвует $H&lt;G$ такая, 
+что $|H|=5$. По теореме 9.31 $S_5|30$, $S_5\equiv1\pod{5}$, следовательно, $S_5\in\{1,6\}$.
+<ol>
+<li>Пусть $S_5=1$. Для любого $g\in{G}$ 
+$$\forall{h}_1,h_2\in{H}(g^{-1}h_1gg^{-1}h_2g=g^{-1}h_1h_2g\in{g}^{-1}Hg),$$ 
+тогда по <a href="./discrete_math9.4.html#Corollary9.7">следствию 9.7</a> $g^{-1}Hg&lt;G$ при этом
+$$g^{-1}h_1g=g^{-1}h_2g\Leftrightarrow{h}_1g=h_2g\Leftrightarrow{h}_1=h_2,$$ 
+то есть $|g^{-1}Hg|=|H|=5$. Тогда, так как $S_5=1$, то для любого $g\in{G}$ $g^{-1}Hg=H$, следовательно, 
+по п. 3 <a href="./discrete_math9.8.html#Statement9.7">утверждения 9.7</a> $H\triangleleft{G}$, то есть группа $G$ не простая.
+</li>
+<li>Пусть $S_5=6$, то есть существует шесть подгрупп $H_1,\ldots,H_6$ группы $G$ порядка 5. Так как 5 - простое число, 
+то по <a href="./discrete_math9.6.html#Corollary9.16">следствию 9.16</a> для любого $i\in\overline{1,6}$ и 
+для любого $g\in{H}_i\backslash\{e\}$ $\ord{g}=5$. Так как для любого $i\in\overline{1,6}$ подгруппа $H_i$ циклическая порядка 5, то  
+$$\forall{i},j\in\overline{1,6}(i\neq{j}\Rightarrow{H}_i\cap{H}_j=\{e\})\Rightarrow\left|\bigcup_{i=1}^6H_i\right|=25.$$
+Таким образом, группа $G$ содержит 24 элемента порядка 5. При этом $S_3\equiv1\pod{p}$ и $S_3|30$, то есть $S_3\in\{1,10\}$.<br>
+Если $S_3=1$, то аналогично пункту 1 группа $G$ не простая.<br>
+Если $S_3=10$, то аналогично доказанному выше группа $G$ содержит 10 подгрупп $F_1,\ldots,F_{10}$ порядка 3, 
+причем $\left|\bigcup_{i=1}^{10}F_i\right|=21$. Тогда группа $G$ содержит 20 элементов порядка 3, учитывая что выше было показано, 
+что группа $G$ содержит 24 элемента порядка 5 и $20 + 24 &gt;  30 = |G|$, то получено противоречие. 
+</li>
+</ol>
+Таким образом, для группы порядка 30 либо $S_5=1$ и тогда группа содержит нормальный делитель порядка 5, 
+либо $S_3=1$ и тогда группа содержит нормальный делитель порядка 3.
+
+
+<br><br>
+<a href="discrete_math9.8.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.13.html">next</a>
+</body>
+</html>

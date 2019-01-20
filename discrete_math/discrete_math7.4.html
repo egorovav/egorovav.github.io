@@ -1,0 +1,405 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 7.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math7.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.5.html">next</a>
+<br>
+
+<h4 id="7.4">7.4 Многочлены над полем.</h4>
+Из <a href="./discrete_math7.1.html#Theorem7.1">теоремы 7.1</a> следует, что кольцо многочленов над полем - это коммутативное кольцо с единицей. 
+Из <a href="./discrete_math7.2.html#Theorem7.2">теоремы 7.2</a> следует, что в кольце многочленов над полем можно разделить с остатком любой многочлен 
+на любой ненулевой.
+<p id="Definition7.7"><b>Определение 7.7:</b><br>
+Пусть $S$ - коммутативное кольцо с единицей, тогда элементы $a,b\in{S}$ называются ассоциированными, 
+если существует $u\in{S}^*$ такой, что $a=ub$. 
+<p id="Note7.1"><b>Замечание 7.1:</b><br>
+<ol>
+<li>Отношение ассоциированности является отношение эквивалентности. Действительно,
+<ul>
+<li><b>Рефлексивность:</b> Для любого $a\in{S}$ $a=ea$, где $e$ - единица кольца $S$ обратимый элемент.</li>
+<li><b>Симметричность:</b> Если существует $u\in{S}^*$ такой, что $a=ub$, то существует $v:=u^{-1}\in{S}^*$ такой, что $b=va$.</li>
+<li><b>Транзитивность:</b> Если существуют $u,v\in{S}^*$ такие, что $a=ub$ и $b=vc$, то $a=u(vc)=(uv)c$, где $uv\in{S}^*$.</li>
+</ul>
+</li>
+<li> Так как $\mathbb{Z}^*=\{-1,1\}$, то для любых $a,b\in\mathbb{Z}$ $a$ ассоциирован с $b$ тогда и только тогда, когда $|a|=|b|$.</li>
+</ol>
+<p id="Statement7.2"><b>Утверждение 7.2:</b><br>
+Если $P$ - поле, то для любых $a(x),b(x)\in{P}[x]$ следующие утверждения эквивалентны
+<ol>
+<li>многочлены $a(x)$, $b(x)$ ассоциированны,</li>
+<li>$a(x)|b(x)\,\wedge\,b(x)|a(x)$,</li>
+<li>$a(x)|b(x)\,\wedge\,\deg{a(x)}=\deg{(b(x))}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+$1)\Rightarrow2)$ Если $a(x),b(x)$ ассоциированы, то существует $u(x)\in{P}[x]^*$ такой, что $a(x)=u(x)b(x)$, $b(x)=u^{-1}(x)a(x)$, 
+следовательно, $b(x)|a(x)$ и $a(x)|b(x)$.<br>
+$2)\Rightarrow3)$ Так как нулевой многочлен делит только нулевой, то $a(x)=0$ тогда и только тогда, когда $b(x)=0$. 
+Так что $\deg{(a(x))}=-\infty$ тогда и только тогда, когда $\deg{(b(x))}=-\infty$.<br>
+Пусть $a(x)\neq0$, $b(x)\neq0$, тогда $\deg{(a(x))},\deg{(b(x))}\in\mathbb{N}_0$ и по <a href="./discrete_math7.1.html#Corollary7.1">следствию 7.1</a>
+$$
+\exists{c}(x)\in{P}[x]\backslash\{0\}:(b(x)=a(x)c(x))\Rightarrow\deg{(b(x))}=\deg{(a(x))}+\deg{(c(x))}
+$$
+$$
+\exists{d}(x)\in{P}[x]\backslash\{0\}:(a(x)=b(x)d(x))\Rightarrow\deg{(a(x))}=\deg{(b(x))}+\deg{(d(x))}
+$$
+Складывая полученные равенства получим
+$$
+\deg{(c(x))}+\deg{(d(x))}=0\Rightarrow\deg{(c(x))}=\deg{(d(x))=0}\Rightarrow\deg{(a(x))}=\deg{(d(x))}.
+$$
+$3)\Rightarrow1)$ Так как $\deg{(a(x))}=\deg{(b(x))}$, то $a(x)=0$ тогда и только тогда, когда $b(x)=0$. 
+Если $a(x)=b(x)=0$, то $a(x)$, $b(x)$ ассоциированы так как $1\in{P}[x]^*$ $0=1\cdot0$.<br>
+Пусть $a(x)\neq0$, $b(x)\neq0$, тогда 
+$$
+a(x)|b(x)\Rightarrow\exists{c}(x)\in{P}[x]\backslash\{0\}:a(x)=c(x)b(x)\Rightarrow\deg{(b(x))}=\deg{(a(x))}+\deg{(c(x))}\Rightarrow
+\deg{(c(x))}=0\Rightarrow{c}(x)=c\in{P}^*\Rightarrow{a}(x)=cb(x)
+$$
+Последнее равенство означает, что $a(x),b(x)$ ассоциированы, так как $c\in{P}[x]^*$, обратным к многочлену $c$ является многочлен $c^{-1}$.
+<p id="Task7.3"><b>Задача 7.3:</b><br>
+Доказать, что $P[x]^*=P^*$.<br>
+Решение: Нулевой многочлен очевидно не является обратимым.<br>
+Многочлен $c(x)=c\in{P}$ такой, что $\deg{c(x)}=0$ является обратимым, так как многочлен $d(x):=c^{-1}\in{P}$ является для него обратным. <br>
+Предположим, что существует многочлен $b(x)\in{P}[x]^*$ такой, что ${\deg{(b(x))}>0}$, тогда существует многочлен $d(x)\in{P}[x]\backslash\{0\}$ такой, 
+что $b(x)d(x)=e$, тогда по <a href="./discrete_math7.1.html#Corollary7.1">следствию 7.1</a> $\deg{b(x)}+\deg{(d(x))}=0$, следовательно, 
+$\deg{(b(x))}=0$, что противоречит предположению.
+<p id="Definition7.8"><b>Определение 7.8:</b><br>
+Ненулевой многочлен называется унитарным, если его старший коэффициент равен единице.
+<p id="Statement7.3"><b>Утверждение 7.3:</b><br>
+Любой ненулевой многочлен $a(x)\in{P}[x]$ имеет единственный ассоциированный с ним унитарный многочлен.
+<p><b>Доказательство:</b><br>
+$$
+a(x)\neq0\Rightarrow\deg{(a(x))}=n\in\mathbb{N}_0\Rightarrow({a}(x)=a_nx^n+\cdots+a_1x+a_0\,\wedge\,a_n\neq0)
+$$
+Так как $a_n\neq0$, то $a_n\in{P}^*$, тогда многочлен 
+$$a^*(x):=a_n^{-1}a(x)=x^n+a_n^{-1}a_{n-1}x^{n-1}+\cdots+a_n^{-1}a_1x+a_n^{-1}a_0$$
+является унитарным ассоциированным с $a(x)$.<br>
+Пусть многочлен $b(x)$ унитарный и ассоциированный с $a(x)$. Тогда в силу транзитивности отношений ассоциированности $b(x)$ ассоциирован с $a^*(x)$. 
+Тогда существует $u\in{P}^*$ такой, что $ua^*(x)=b(x)$. Тогда старший коэффициент многочлена $ua^*(x)$ равен $u$, 
+а старший коэффициент многочлена $b(x)$ равен $e$, следовательно, $u=e$ и $b(x)=a^*(x)$.
+<p id="Definition7.9"><b>Определение 7.9:</b><br>
+Наибольшим общим делителем (НОД) многочленов $a_1(x),\ldots,a_n(x)\in{P}[x]$ называется многочлен $d(x)\in{P}[x]$ такой, что
+<ol>
+<li>$d(x)|a_1(x),d(x)|a_2(x),\ldots,d(x)|a_n(x)$,</li>
+<li>для любого $d_1(x)\in{P}[x]$, если $d_1(x)|a_1(x),d_1(x)|a_2(x),\ldots,d_1(x)|a_n(x)$, то $d_1(x)|d(x)$.</li>
+</ol>
+Множество наибольших общих делителей многочленов $a_1(x),\ldots,a_n(x)$ обозначают $\gcd\{a_1(x),\ldots,a_n(x)\}$.
+<p id="Statement7.4"><b>Утверждение 7.4:</b><br>
+<ol>
+<li>$\gcd\{0,\ldots,0\}=\{0\}$.</li>
+<li>Если многочлены $a_1(x),\ldots,a_n(x)\in{P}[x]$ не все равны нулю и <br>
+$b(x)\in\gcd\{a_1(x),\ldots,a_n(x)\}$, тогда $b(x)\neq0$ и 
+$$\gcd\{a_1(x),\ldots,a_n(x)\}=\{ub(x)\mid{u}\in{P}^*\}.$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Пусть $d(x)\in\gcd\{0,\ldots,0\}$, тогда
+$$0|0\Rightarrow0|d(x)\Rightarrow{d}(x)=0\Rightarrow\gcd\{0,\ldots,0\}\subset\{0\}.$$
+С другой стороны, $0|0$ и для любого $d_1(x)\in{P}[x]$
+$$d_1(x)|0\Rightarrow{d}_1(x)|0\Rightarrow{0}\in\gcd\{0,\ldots,0\}.$$
+То есть $\gcd\{0,\ldots,0\}=\{0\}$.
+</li>
+<li>Пусть $d(x)\in\gcd\{a_1(x),\ldots,a_n(x)\}$, тогда
+$$
+\begin{cases}b(x)|d(x) \\ d(x)|b(x) \end{cases}\Rightarrow\begin{cases}\exists{u}(x)\in{P}[x]:b(x)=d(x)u(x) \\ \exists{v}(x)\in{P}[x]:d(x)=b(x)v(x)\end{cases}\Rightarrow
+{b}(x)=(b(x)v(x))u(x)=b(x)(v(x)u(x))\Rightarrow{v}(x)u(x)=e\Rightarrow{u}(x)=v^{-1}(x)\Rightarrow{v}(x)\in{P}[x]^*
+$$
+Таким образом 
+$$\gcd\{a_1(x),\ldots,a_n(x)\}\subset\{b(x)v(x)\mid{v}(x)\in{P}[x]^*\}=\{vb(x)\mid{v}\in{P}^*\}.$$
+С другой стороны,
+$$
+\forall{v}\in{P}^*(b(x)|a(x)\Rightarrow\exists{c}(x)\in{P}[x]:a(x)=b(x)c(x)\Rightarrow\exists{c_1}(x):=v^{-1}c(x):a(x)=vb(x)c_1(x)\Rightarrow{v}b(x)|a(x)).
+$$
+$$
+\forall{v}\in{P}^*(d(x)|b(x)\Rightarrow\exists{c}(x)\in{P}[x]:b(x)=d(x)c(x)\Rightarrow\exists{c}_1(x):=vc(x):vb(x)=d(x)vc(x)\Rightarrow{d}(x)|vb(x)).
+$$
+Таким образом 
+$$
+\forall{v}\in{P}^*(vb(x)\in\gcd\{a_1(x),\ldots,a_n(x)\}\Rightarrow\gcd\{a_1(x),\ldots,a_n(x)\}=\{vb(x)\mid{v}\in{P}^*\}).
+$$
+</li>
+</ol>
+
+Из утверждений 7.3, 7.4 следует, что если многочлены $a_1(x),\ldots,a_n(x)$ не все равны нулю, 
+то в множетсве $\gcd\{a_1(x),\ldots,a_n(x)\}$ содержится единственный унитарный многочлен. Нулевой или унитарный НОД обозначают $(a_1(x),\ldots,a_n(x))$.
+<p id="Lemma7.2"><b>Лемма 7.2:</b><br>
+Если $a(x),b(x)\in{P}[x]$, $b(x)\neq0$, $r(x)$ - остаток от деления $a(x)$ на $b(x)$, то из существования НОД $(b(x),r(x))$ 
+следует существование НОД $(a(x),b(x))$, и в случае существования $(a(x),b(x))=(b(x),r(x))$.
+<p><b>Доказательство:</b><br>
+Так как в кольце многочленов над полем любой многочлен делится на любой не нулевой, то существуют $q(x),r(x)\in{P}[x]$ такие, 
+что $a(x)=b(x)q(x)+r(x)$ и $\deg{(r(x))}<\deg{(b(x))}$. Пусть существует $d(x):=(b(x),r(x))$, тогда
+$$(d(x)|b(x)\,\wedge\,d(x)|r(x)\Rightarrow{d}(x)|a(x).$$
+Если $d_1(x)|b(x)$, $d_1(x)|a(x)$, то так как $r(x)=a(x)-b(x)q(x)$, то $d_1|r(x)$. Тогда так как $d(x)=(b(x),r(x))$, то $d_1(x)|d(x)$, 
+то есть $d(x)\in\gcd\{a(x),b(x)\}$. И так как $d(x)$ унитарный или нулевой, то $d(x)=(a(x),b(x))$. 
+<p id="Lemma7.3"><b>Лемма 7.3:</b><br>
+$$\forall{a}(x),b(x)\in{P}[x](\gcd\{a(x),b(x)\}\neq\varnothing).$$
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Если $a(x)|b(x)$, тогда
+<ul>
+<li>$a(x)|a(x)$, $a(x)|b(x)$</li>
+<li>$\forall{d}(x)\in{P}[x]((d(x)|a(x)\,\wedge{d}(x)|b(x))\Rightarrow{d}(x)|a(x))$</li>
+</ul>
+Таким образом $a(x)\in\gcd\{a(x),b(x)\}$.
+<li>Если $b(x)|a(x)$, то аналогично доказывается, что $b(x)\in\gcd\{a(x),b(x)\}$.</li>
+<li>Если $a(x)\nmid{b}(x)$, $b(x)\nmid{a}(x)$, то $b(x)\neq0$, тогда поделим $a(x)$ на $b(x)$ с остатком, 
+потом поделим делитель на остаток, и т. д. пока остаток не будет равен нулю<br>
+$a(x)=b(x)q_1(x)+r_1(x),\,\deg{(r_1(x))}<\deg{(b(x))}$,<br>
+$b(x)=r_1(x)q_2(x)+r_2(x),\,\deg{(r_2(x))}<\deg{(r_1(x))}$,<br>
+$r_1(x)=r_2(x)q_3(x)+r_3(x),\,\deg{(r_3(x))}<\deg{(r_2(x))}$,<br>
+$\cdots$<br>
+$r_{n-1}(x)=r_n(x)q_{n+1}(x)+r_{n+1}(x),\,\deg{(r_{n+1}(x))}=0$.<br>
+Тогда если $r_n^{(m)}\in{P}^*$ старший коэффициент многочлена $r_n(x)$, то по лемме 7.2
+$$
+(r_n^{(m)})^{-1}r_n(x)=(r_n(x),0)=(r_{n-1}(x), r_n(x))=\cdots=(r_1(x),r_2(x))=(b(x),r_1(x))=(a(x),b(x)).
+$$
+</ol>
+<p id="Theorem7.5"><b>Теорема 7.5:</b><br>
+Для любых $a_1(x),\ldots,a_n(x)\in{P}[x]$ $\gcd\{a_1(x),\ldots,a_n(x)\}\neq\varnothing$ при этом 
+$(a_1(x),\ldots,a_n(x))=(\ldots((a_1(x),a_2(x)),a_3(x)),\ldots{a}_n(x))$.
+<p><b>Доказательство:</b><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ утверждение следует из <a href="./discrete_math7.4.html#Lemma7.2">леммы 7.2</a>.</li>
+<li>Пусть для любого $t\geq2$ утверждение верно при $n\in\overline{2,t}$ докажем, что оно верно при $n=t+1$.<br>
+По предположению индукции $\gcd\{a_1(x),\ldots,a_t(x)\}\neq\varnothing$, тогда существует $d_0:=(a_1(x),\ldots,a_t(x))$. 
+Обозначим $d(x):=(d_0(x),a_{t+1}(x))=((a_1(x),\ldots,a_t(x)),a_{t+1}(x))$, тогда 
+$$
+(d(x)|d_0\,\wedge\,d(x)|a_{t+1}(x))\Rightarrow(\forall{i}\in\overline{1,t}(d(x)|a_i(x)\,\wedge\,d(x)|a_{t+1}(x))\Rightarrow
+\forall{i}\in\overline{1,t+1}(d(x)|a_i(x)).
+$$
+И для любого $d_1(x)\in{P}[x]$
+$$\forall{i}\in\overline{1,t+1}(d_1(x)|a_i(x))\Rightarrow{d}_1(x)|d_0(x)\,\wedge\,d_1(x)|a_{t+1}(x)\Rightarrow{d}_1(x)|d(x).$$
+Таким образом $d(x)=(a_1(x),\ldots,a_{t+1}(x))$. Так как по предположению индукции $(a_1(x),\ldots,a_t(x))=(\ldots((a_1(x),a_2(x)),a_3(x)),\ldots,a_t(x))$, то 
+$$
+(a_1(x),\ldots,a_{t+1}(x))=d(x)=((a_1(x),\ldots,a_t(x)),a_{t+1}(x))=\\=(\ldots((a_1(x),a_2(x)),a_3(x)),\ldots{a}_{t+1}(x)).
+$$
+</li>
+</ol>
+<p id="Lemma7.4"><b>Лемма 7.4:</b><br>
+$$\forall{a}(x),b(x)\in{P}[x]\,\exists{u}(x),v(x)\in{P}[x]:(a(x),b(x))=u(x)a(x)+v(x)b(x).$$
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $n$ числу шагов в  алгоритме Евклида для многочленов $a(x), b(x)$.
+<ol type="I">
+<li>При $n=1$ существуют многочлены $q_1(x),q_2(x),r(x)\in{P}[x]$ такие, что $a(x)=b(x)q_1(x)+r(x)$,  $b(x)=r(x)q_2(x)$. 
+Тогда если обозначить как $r_m\in{P}^*$ старший коэффициент многочлена $r(x)$, то 
+$$
+(a(x),b(x))=(b(x),r(x))=r_m^{-1}r(x)=r_m^{-1}(a(x)-b(x)q_1(x))=r_m^{-1}a(x)-(r_m^{-1}q_1(x))b(x).
+$$
+Таким образом $u(x)=r_m^{-1}$, $v(x)=r_m^{-1}q_1(x)$.
+<li>Пусть при любом $k\geq1$ для любых многочленов, у которых алгоритм Евклида состоит не более чем из $k$ шагов, утверждение верно, докажем, 
+что оно верно для многочленов $a(x),b(x)$, алгоритм Евклида которых состоит из $k+1$ шагов. 
+Тогда если $a(x)=b(x)q(x)+r(x)$ первый шаг алгоритма Евклида для многочленов $a(x),b(x)$, 
+то алгоритм Евклида для многочленов $b(x),r(x)$ состоит из $k$ шагов. Тогда по предположению индукции существуют многочлены $u'(x),v'(x)\in{P}[x]$ такие, что 
+$$
+(a(x),b(x))=(b(x),r(x))=u'(x)b(x)+v'(x)r(x)=u'(x)b(x)+v'(x)(a(x)-b(x)q(x))=v'(x)a(x)+(u'(x)-v'(x)q(x)).
+$$
+Таким образом $u(x)=v'(x)$, $v(x)=u'(x)-v'(x)q(x)$.
+</li>
+</ol>
+<p id="Theorem7.6"><b>Теорема 7.6:</b><br>
+$$
+\forall{a}_1(x),\ldots,a_n(x)\in{P}[x]\,\exists{u}_1(x),\ldots,u_n(x)\in{P}[x]:(a_1(x),\ldots,a_n(x))=u_1(x)a_1(x)+\cdots+u_n(x)a_n(x).
+$$
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ утверждение следует из леммы 7.4.</li>
+<li>Пусть при любом $t\geq2$ утверждение верно при $n\in\overline{2,t}$, докажем, что оно верно при $n=t+1$.<br>
+По предположению индукции 
+$$\exists{u}'_1(x),\ldots,u'_t(x)\in{P}[x]:(a_1(x),\ldots,a_t(x))=u'_1(x)a_1(x)+\cdots+u'_t(x)a_t(x).$$
+По лемме 7.4 существуют $u(x),v(x)\in{P}[x]$
+$$((a_1(x),\ldots,a_t(x)),a_{t+1})=u(x)(a_1(x),\ldots,a_t(x))+v(x)a_{t+1}(x).$$
+Тогда по <a href="./discrete_math7.4.html#Theorem7.5">теореме 7.5</a>
+$$
+(a_1(x),\ldots,a_{t+1}(x))=((a_1(x),\ldots,a_t(x)),a_{t+1}(x))=u(x)(a_1(x),\ldots,a_t(x))+v(x)a_{t+1}(x)=
+(u(x)u'_1(x))a_1(x)+\cdots+(u(x)u'_t(x))a_t(x)+v(x)a_{t+1}(x).
+$$
+Таким образом для любого $i\in\overline{1,t}$ $u_i(x)=u(x)u'_i(x)$ и $u_{t+1}(x)=v(x)$.
+</li>
+</ol>
+<p id="Lemma7.5"><b>Лемма 7.5:</b><br>
+$$\forall{a}(x)\in{P}[x]\,\forall{b}(x)\in{P}[x]\backslash\{0\}(a(x)|b(x)\Rightarrow\deg{(a(x))}\leq\deg{(b(x))}).$$
+<p><b>Доказательство:</b><br><br>
+Так как
+$$b(x)\neq0\Rightarrow{a}(x)\neq0\Rightarrow\deg{(a(x))},\deg{(b(x))}\in\mathbb{N}_0,$$ 
+то по определению делимости и п.1 <a href="./discrete_math7.1.html#Corollary7.1">следствия 7.1</a>
+$$
+\exists{q}(x)\in{P}[x]\backslash\{0\}:a(x)=q(x)b(x)\Rightarrow\deg{(b(x))}=\deg{(a(x))}+\deg{(q(x))}\Rightarrow\deg{(b(x))}\geq\deg{(a(x))}
+$$
+<p id="Definition7.10"><b>Определение 7.10:</b><br>
+Многочлены $a_1(x),\ldots,a_n(x)\in{P}(x)$ называются взаимнопростыми в совокупности, если $(a_1(x),\ldots,a_n(x))=e$.
+<p id="Theorem7.7"><b>Теорема 7.7:</b><br>
+$$(a_1(x),\ldots,a_n(x))=e\Leftrightarrow\exists{u}_1,\ldots,u_n(x)\in{P}[x]:u_1(x)a_1+\cdots+u_n(x)a_n(x)=e.$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Следует из <a href="./discrete_math7.4.html#Theorem7.6">теоремы 7.6</a>.<br>
+$\Leftarrow)$ Обозначим $d(x):=(a_1(x),\ldots,a_n(x))$, тогда
+$$
+\forall{i}\in\overline{1,n}(d(x)|a_i(x))\Rightarrow\forall{i}\in\overline{1,n}(d(x)|(u_i(x)a_i(x)))\Rightarrow
+{d}(x)|(u_1(x)a_1(x)+\cdots+u_n(x)a_n(x))\Rightarrow{d}(x)|e\Rightarrow(d(x)\neq0\,\wedge\,\deg{(d(x))}\leq\deg{(e)}=0)\Rightarrow\deg{(d(x))}=0
+$$
+Так как многочлен $d(x)$ по определению НОД $(a_1(x),\ldots,a_n(x))$ является унитарным, то $d(x)=e$.
+<p id="Lemma7.6"><b>Лемма 7.6:</b><br>
+$$\forall{a}(x)\in{P}[x]\backslash\{0\}(\forall{b}(x),c(x)\in{P}[x](a(x)b(x)=a(x)c(x)\Rightarrow{b}(x)=c(x)))$$
+<p><b>Доказательство:</b><br><br>
+Так как по п. 2 <a href="./discrete_math7.1.html#Corollary7.1">следствия 7.1</a> в кольце $P[x]$ нет делителей нуля, то
+$$a(x)b(x)=a(x)c(x)\Rightarrow{a}(x)(b(x)-c(x))=0\Rightarrow{b}(x)-c(x)=0\Rightarrow{b}(x)=c(x).$$
+<p id="Note7.2"><b>Замечание 7.2:</b><br>
+Заметим, что так как по <a href="./discrete_math7.1.html#Theorem7.1">теореме 7.1</a> кольцо $P[x]$ коммутативно и по 
+п.2 <a href="./discrete_math7.1.html#Corollary7.1">следствия 7.1</a> 
+не содержит делителей нуля, то  
+$$\forall{a}(x),b(x),c(x)\in{P}[x](a(x)c(x)|b(x)c(x)\Rightarrow{a}(x)|b(x)).$$
+Действительно,
+$$a(x)c(x)|b(x)c(x)\Rightarrow\exists{q}(x)\in{P}[x]:b(x)c(x)=(a(x)c(x))q(x)=(a(x)q(x))c(x)$$
+тогда по лемме 7.6 $b(x)=a(x)q(x)$, то есть $a(x)|b(x)$.
+<p id="Theorem7.8"><b>Теорема 7.8:</b><br>
+Для любых $a(x),b(x),c(x)\in{P}[x]$
+<ol>
+<li>$(a(x),b(x))=(a(x),c(x))=e\Rightarrow(a(x),b(x)c(x))=e$,</li>
+<li>$((a(x),b(x))=e\,\wedge\,a(x)|(b(x)c(x)))\Rightarrow{a}(x)|c(x)$,</li>
+<li>$((a(x),b(x))=e\,\wedge\,a(x)|c(x)\,\wedge\,b(x)|c(x))\Rightarrow(a(x)b(x))|c(x)$,</li>
+<li>$(a(x),b(x))=c(x)\Rightarrow\left(\frac{a(x)}{c(x)},\frac{b(x)}{c(x)}\right)=e$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>По <a href="./discrete_math7.4.html#Theorem7.7">теореме 7.7</a>
+$$(a(x),b(x))=e\Rightarrow\exists{u}(x),v(x)\in{P}[x]:u(x)a(x)+v(x)b(x)=e,$$
+$$(a(x),c(x))=e\Rightarrow\exists{u}'(x),v'(x)\in{P}[x]:u'(x)a(x)+v'(x)c(x)=e.$$
+Перемножая равенства получим
+$$
+e=u'(x)u(x)(a(x))^2+u'(x)a(x)v(x)b(x)+v'(x)c(x)u(x)a(x)+v'(x)c(x)v(x)b(x)=a(x)[u'(x)u(x)a(x)+u'(x)v(x)b(x)+v'(x)c(x)u(x)]+v'(x)v(x)b(x)c(x)
+$$
+Таким образом по <a href="./discrete_math7.4.html#Theorem7.7">теореме 7.7</a> $(a(x),b(x)c(x))=e$.
+</li>
+<li>
+По определению делимости 
+$$a(x)|(b(x)c(x))\Rightarrow\exists{q}(x)\in{P}[x]:(b(x)c(x)=a(x)q(x).$$
+По <a href="./discrete_math7.4.html#Theorem7.7">теореме 7.7</a>
+$$(a(x),b(x))=e\Rightarrow\exists{u}(x),v(x)\in{P}[x]:u(x)a(x)+v(x)b(x)=e).$$
+Тогда
+$$
+({u}(x)b(x)c(x)+v(x)a(x)c(x)=c(x)\,\wedge\,b(x)c(x)=a(x)q(x))\Rightarrow{u}(x)a(x)q(x)+v(x)a(x)c(x)=c(x)\Rightarrow
+{a}(x)(u(x)q(x)+v(x)c(x))=c(x)\Rightarrow{a}(x)|c(x)
+$$
+</li>
+<li>По определению делимости
+$$(a(x)|c(x)\,\wedge\,{b}(x)|c(x))\Rightarrow\exists{p}(x),p(x)\in{P}[x]:c(x)=p(x)a(x)=q(x)b(x).$$
+По <a href="./discrete_math7.4.html#Theorem7.7">теореме 7.7</a>
+$$(a(x),b(x))=e\Rightarrow\exists{u}(x),v(x)\in{P}[x]:u(x)a(x)+v(x)b(x)=e.$$
+Тогда
+$$
+{u}(x)a(x)c(x)+v(x)b(x)c(x)=c(x)\Rightarrow{u}(x)a(x)p(x)b(x)+v(x)b(x)a(x)p(x)=c(x)\Rightarrow{a}(x)b(x)(u(x)q(x)+v(x)p(x))=c(x)\Rightarrow(a(x)b(x))|c(x)
+$$
+</li>
+<li>По <a href="./discrete_math7.4.html#Lemma7.4">лемме 7.4</a>
+$$(a(x),b(x))=c(x)\Rightarrow\exists{u}(x),v(x)\in{P}[x]:u(x)a(x)+v(x)b(x)=c(x),$$ 
+тогда
+$$
+u(x)\frac{a(x)}{c(x)}c(x)+v(x)\frac{b(x)}{c(x)}c(x)=c(x)\Rightarrow{c}(x)\left(u(x)\frac{a(x)}{c(x)}+v(x)\frac{b(x)}{c(x)}\right)=c(x)\Rightarrow
+{u}(x)\frac{a(x)}{c(x)}+v(x)\frac{b(x)}{c(x)}=e\Rightarrow\left(\frac{a(x)}{c(x)},\frac{b(x)}{c(x)}\right)=e
+$$
+</li>
+</ol>
+<p id="Definition7.11"><b>Определение 7.11:</b><br>
+Многочлен $k(x)\in{P}[x]$ называется наименьшим общим кратным многочленов $a_1(x),\ldots,a_n(x)\in{P}[x]$, если 
+<ol>
+<li>$a_1(x)|k(x),\ldots,a_n(x)|k(x)$</li>
+<li>$\forall{k}_1(x)\in{P}(x)((a_1(x)|k_1(x),\ldots,a_n(x)|k_1(x))\Rightarrow{k}(x)|k_1(x))$</li>
+</ol>
+Множество всех наименьших общих кратных многочленов $a_1(x),\ldots,a_n(x)$ обозначают $\lcm\{a_1(x),\ldots,a_n(x)\}$.
+<p id="Statement7.5"><b>Утверждение 7.5:</b><br>
+Пусть $a_1(x),\ldots,a_n(x)\in{P}[x]$, тогда
+<ol>
+<li>$\exists{i}\in\overline{1,n}:a_i=0\Rightarrow\lcm\{a_1(x),\ldots,a_n(x)\}=\{0\}$,</li>
+<li>$(\forall{i}\in\overline{1,n}(a_i\neq0)\,\wedge\,b(x)\in\lcm\{a_1(x),\ldots,a_n(x)\})\Rightarrow(b(x)\neq0\,\wedge\,\lcm\{a_1(x),\ldots,a_n(x)\}=
+\{ub(x)\mid{u}\in{P}^*\})$.
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Если $d(x)\in\lcm\{a_1(x),\ldots,a_n(x)\}$, то $a_i(x)|d(x)$, то есть $0|d(x)$. Так как нулевой многочлен делит, лишь нулевой, 
+то ${\lcm\{a_1(x),\ldots,a_n(x)\}\subset\{0\}}$.<br>
+С другой стороны, любой многочлен делит нулевой, следовательно, для любого $i\in\overline{1,n}$ $a_i(x)|0$. И если $d_1(x)\in{P}[x]$ такой, 
+что $a_i(x)|d_1(x)$, то $d_1(x)=0$, то есть $0|d_1(x)$.
+Таким образом, 
+$$0\in\lcm\{a_1(x),\ldots,a_n(x)\}\Rightarrow\{0\}=\lcm\{a_1(x),\ldots,a_n(x)\}.$$
+</li>
+<li>Если для любого $i\in\overline{1,n}$ $a_i(x)\neq0$, то многочлен $p(x)=\prod_{i=1}^na_i(x)\neq0$. 
+И так как для любого $i\in\overline{1,n}$ $a_i(x)|p(x)$, то $b(x)|p(x)$, следовательно, $b(x)\neq0$.<br>
+Для любого $u\in{P}^*$, очевидно, $ub(x)\in\lcm\{a_1(x),\ldots,a_n(x)\}$, значит $\{ub(x)\mid{u}\in{P}^*\}\subset\lcm\{a_1(x),\ldots,a_n(x)\}$.<br>
+Пусть $d(x)\in\lcm\{a_1(x),\ldots,a_n(x)\}$, тогда $b(x)|d(x)$ и $d(x)|b(x)$, следовательно, $d(x)=b(x)q(x)$ и по 
+<a href="./discrete_math7.4.html#Lemma7.5">лемме 7.5</a> $\deg{(d(x))}=\deg{(b(x))}$, 
+то есть $\deg{(q(x))}=0$. Таким образом $q(x)=u\in{P}^*$, следовательно,
+$\lcm\{a_1(x),\ldots,a_n(x)\}\subset\{ub(x)\mid{u}\in{P}^*\}$ и в итоге получаем $\lcm\{a_1(x),\ldots,a_n(x)\}=\{ub(x)\mid{u}\in{P}^*\}$.
+</li>
+</ol>
+<p id="Theorem7.9"><b>Теорема 7.9:</b><br>
+<ol>
+<li>Если $a(x),b(x)\in{P}[x]\backslash\{0\}$, то $\lcm\{a(x),b(x)\}\neq\varnothing$ и $$[a(x),b(x)]=\frac{a^*(x)b^*(x)}{(a(x),b(x))}.$$ 
+Где $a^*(x)$ и $b^*(x)$ унитарные многочлены ассоциированные с $a(x)$ и $b(x)$ соответственно.
+<li>
+<li>Для любых $a_1(x),\ldots,a_n(x)\in{P}[x]$ $\lcm\{a_1(x),\ldots,a_n(x)\}\neq\varnothing$, 
+при этом $[a_1(x),\ldots,a_n(x)]=[\ldots[[a_1(x),a_2(x)],a_3(x)],\ldots{a}_n(x)]$.
+</li>
+</ol>
+<p><b>Доказательство:</b></br>
+<ol>
+<li>Заметим, что в силу пп. 1, 2 <a href="./discrete_math7.4.html#Statement7.2">утверждения 7.2</a> 
+и транзитивности отношиния делимости с точки зрения отношения делимости любой многочлен эквивалентен ассоцированному с ним. То есть
+$$\forall{c}(x)\in{P}[x]((c(x)|a(x)\Leftrightarrow{c}(x)|a^*(x))\,\wedge(a(x)|c(x)\Leftrightarrow{a}^*(x)|c(x))).$$
+Обозначим $d(x):=(a(x),b(x))$ и многочлен $\displaystyle{k}(x):=\frac{a^*(x)b^*(x)}{d(x)}$ такой, что $a^*(x)b^*(x)=d(x)k(x)$, тогда 
+$$
+d(x)|b(x)\Rightarrow{d}(x)|b^*(x)\Rightarrow\exists{q}(x)\in{P}[x]:b^*(x)=d(x)q(x)\Rightarrow
+{a}^*(x)d(x)q(x)=d(x)k(x)\Rightarrow{k}(x)=a^*(x)q(x)\Rightarrow{a}(x)|k(x),
+$$
+где предпоследняя импликация по <a href="./discrete_math7.4.html#Lemma7.6">лемме 7.6.</a>
+Аналогично показывается, что $b(x)|k(x)$.<br>
+Пусть $k_1(x)\in{P}(x)$ такой, что $a(x)|k_1(x)$ и $b(x)|k_1(x)$, тогда 
+$$
+(a^*(x)|k_1(x)\,\wedge\,b^*(x)|k_1(x))\Rightarrow(a^*(x)b^*(x))|k_1(x)\Rightarrow{k}(x)|k_1(x) 
+$$
+Таким образом $k\in\lcm\{a_1(x),\ldots,a_n(x)\}$. Унитарность многочлена $k(x)$  следует из унитарности многочленов $a^*(x)b^*(x)$ и $(a(x),b(x))$, 
+следовательно, $k(x)=[a(x),b(x)]$.
+</li>
+<li>Докажем утврерждение индукцией по $n$.
+<ol type="I">
+<li>При $n=2$ утверждение следует из пункта 1.</li>
+<li>Пусть для любого $t\geq2$ утверждение верно при $n\in\overline{2,t}$, докажем, что оно верно при $n=t+1$.<br>
+Обозначим $k(x)=[[a_1(x),\ldots,a_t(x)],a_{t+1}(x)]$, тогда
+$$
+([a_1(x),\ldots,a_t(x)]|k(x)\,\wedge\,a_{t+1}(x)|k(x))\Rightarrow\forall{i}\in\overline{1,t+1}(a_i(x)|k(x)).
+$$
+С другой стороны, для любого $k_1(x)\in{P}(x)$
+$$
+\forall{i}\in\overline{1,t+1}(a_i(x)|k_1(x))\Rightarrow([a_1(x),\ldots,a_t(x)]|k_1(x)\,\wedge\,a_{t+1}(x)|k_1(x))\Rightarrow{k}(x)|k_1(x)
+$$
+Таким образом $k(x)=[a_1(x),\ldots,a_{t+1}(x)]$. Тогда по предположению индукции
+$$
+[a_1(x),\ldots,a_{t+1}(x)]=k(x)=[[a_1(x),\ldots,a_t(x)],a_{t+1}(x)]=[\ldots[[a_1(x),a_2(x)],a_3(x)],\ldots,a_{t+1}(x)].
+$$
+</li>
+</ol>
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math7.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math7.5.html">next</a>
+</body>
+</html>

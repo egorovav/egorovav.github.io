@@ -1,0 +1,244 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 16.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math15.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math16.3.html">next</a>
+<br>
+
+<h3 id="16">16 Квадратичные формы.</h3>
+<h4 id="16.1">16.1 Многочлены от нескольких переменных.</h3>
+<p id="Definition16.1"><b>Определение 16.1:</b><br>
+Пусть $R$ - кольцо с единицей, тогда кольцом многочленов от двух переменных над кольцом $R$ называется кольцо многочленов над кольцом $R[x]$.<br>
+Кольцо многочленов от двух переменных над кольцом $R$ обозначают $R[x,y]$. 
+<br><br>
+Элементом кольца многочленов от двух переменных является последовательность вида $a(x,y)=(a_0(x),a_1(x),\ldots,a_k(x),...)$, 
+где для любого $i\in\mathbb{N}_0$ $a_i(x)\in{R}[x]$ и существует $n\in\mathbb{N}$ такое, что для любого 
+$i&gt;n$ $a_i(x)=\overline{0}$. Если обозначить
+$$x:=\bigl((0,e,0,\ldots),(0,\ldots),\ldots\bigr)\in{R}[x,y],$$
+$$y:=\bigl((0,\ldots),(0,e,0,\ldots),(0,\ldots),\ldots\bigr)\in{R}[x,y],$$
+$$\forall{a}\in\mathbb{R}(\overline{a}:=\bigl((a,0,\ldots),(0,\ldots),\ldots)\bigr)\in{R}[x,y]).$$
+тогда если $m=\max{\{\deg{a_j(x)}\mid{i}\in\overline{1,n}\}}$, то многочлен $a(x,y)$ можно записать в виде $a(x,y):=a_0(x)+a_1(x)y+\cdots+a_n(x)y^n$, 
+где для любого $j\in\overline{1,n}$ $a_i(x)=\overline{a}_{0,j}+\overline{a}_{1,j}x+\cdots+\overline{a}_{m,j}x^m\in{R}[x,y]$. 
+Так же как и в случае записи многочлена от одной переменной (<a href="./discrete_math7.1.html#7.1">раздел 7.1</a>) черточки над $a_{i,j}$ опускают, 
+отождествляя $\overline{a}_{i,j}$ с элементом $a_{i,j}\in{R}$ стоящим на $i$-том месте в $j$-той последовательности многочлена $a(x,y)$. 
+Тогда можно записать
+$$a(x,y)=\sum_{j\geq0}\left(\sum_{i\geq0}a_{i,j}x^i\right)y^j=\sum_{j\geq0}\sum_{i\geq0}a_{i,j}x^iy^j.$$
+Последнее выражение называется канонической записью многочлена $a(x,y)$. Поскольку для любого $i,j\in\mathbb{N}_0$ элемент $a_{i,j}\in{R}$ - 
+это элемент стоящий на $i$-том месте в $j$ - той последовательности многочлена $a(x,y)$, а многочлнены $x,y\in{R}[x,y]$ - 
+суть константы от $a(x,y)$ не зависящие, то каноническая форма записи многочлена от двух переменных определена однозначно.<br>
+В силу сказанного выше можно ввести операцию умножения многочлена $a(x)\in{R}[x,y]$ на элемент кольца $a\in{R}$ такую, что $aa(x):=\overline{a}a(x)$, 
+тогда, очевидно, что для любого $a\in{R}$ $ax=xa$, $ay=ya$, $xy=yx$. 
+При этом для любых многочленов $a(x,y)=\sum_{i\geq0}\sum_{j\geq0}a_{i,j}x^iy^j$, $b(x,y)=\sum_{i\geq0}\sum_{j\geq0}b_{i,j}x^iy^j$
+$$a(x,y)+b(x,y)=\sum_{i\geq0}\sum_{j\geq0}(a_{i,j}+b_{i,j})x^iy^j,$$
+$$
+a(x,y)b(x,y)=\left(\sum_{i_1\geq0}\sum_{j_1\geq0}a_{i_1,j_1}x^{i_1}y^{j_1}\right)\left(\sum_{i_2\geq0}\sum_{j_2\geq0}b_{i_2,j_2}x^{i_2}y^{j_2}\right)=
+\sum_{i_1,i_2,j_1,j_2\geq0}a_{i_1,j_1}b_{i_2,j_2}x^{i_1+i_2}y^{j_1+j_2}=\sum_{i,j\geq0}\left(\sum_{r=0}^i\sum_{s=0}^ja_{r,s}b_{i-r,j-s}\right)x^iy^j
+$$
+Аналогично, индуктивным методом, строится кольцо многочленов от произвольного числа переменных.
+<p id="Definition16.2"><b>Определение 16.2:</b><br>
+Если $R[x_1,\ldots,x_{n-1}]$ кольцо многочленов от $n-1$ переменных над кольцом $R$ с единицей, 
+то кольцо $$R[x_1,\ldots,x_{n-1},x_n]:=R[x_1,\ldots,x_{n-1}][x_n]$$ называется кольцом многочленов от $n$ переменных над кольцом $R$.
+<br><br>
+Аналогичным образом определяется каноническая форма записи многочлена от $n$ переменных.<br>
+Для любых двух многочленов от $n$ переменных 
+$$a(x_1,\ldots,x_n)=\sum_{(i_1,\ldots,i_n)\in\mathbb{N}_0^n}a_{i_1,\ldots,i_n}x_1^{i_1}\cdots{x}_n^{i_n},$$ 
+$$b(x_1,\ldots,x_n)=\sum_{(i_1,\ldots,i_n)\in\mathbb{N}_0^n}b_{i_1,\ldots,i_n}x_1^{i_1}\cdots{x}_n^{i_n}$$
+$$a(x_1,\ldots,x_n)+b(x_1,\ldots,x_n)=\sum_{(i_1,\ldots,i_n)\in\mathbb{N}_0^n}(a_{i_1,\ldots,i_n}+b_{i_1,\ldots,i_n})x_1^{i_1}\cdots{x}_n^{i_n},$$
+$$
+a(x_1,\ldots,x_n)b(x_1,\ldots,x_n)=\\=\sum_{(i_1,\ldots,i_n)\in\mathbb{N}_0^n}\left(\sum_{r_1=0}^{i_1}\ldots
+\sum_{r_n=0}^{i_n}a_{r_1,\ldots,r_n}b_{i_1-r_1,\ldots,i_n-r_n}\right)x_1^{i_1}\cdots{x}_n^{i_n}.
+$$
+<p id="Definition16.3"><b>Определение 16.3:</b><br>
+Если каноническая запись многочлена $a(x_1,\ldots,x_n)$ содержит одно слагаемое, то есть $a(x_1,\ldots,x_n)=ax_1^{i_1}\cdots{x}_n^{i_n}$, 
+$a\neq0$ то степенью многочлена называется число 
+$\deg(ax_1^{i_1}\cdots{x}_n^{i_n}):=i_1+\cdots+i_n$.<br>
+Степенью ненулевого многочлена $a(x_1,\ldots,x_n)$ называется число $\deg{a(x_1,\ldots,x_n)}$ равное максимальной из степеней его одночленов.<br>
+Степенью нулевого многочлена от $n$ переменных называют минус бесконечность ($\deg{\overline{0}}=-\infty$)
+<p id="Statement16.1"><b>Утверждение 16.1:</b><br>
+<ol>
+<li>кольцо $R[x_1,\ldots,x_n]$ коммутативно тогда и только тогда, когда кольцо $R$ коммутативно,</li>
+<li>кольцо $R[x_1,\ldots,x_n]$ с делителями нуля тогда и только тогда, когда кольцо $R$ с делителями нуля.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Доказывается аналогично <a href="./discrete_math7.1.html#Theorem7.1">теореме 7.1</a>.</li>
+<li>Доказывается аналогично п. 2 <a href="./discrete_math7.1.html#Corollary7.1">следствия 7.1</a>.</li>
+</ol>
+<p id="Definition16.4"><b>Определение 16.4:</b><br>
+Пусть $a(x)\in{R}[x_1,\ldots,x_n]$, $\vec{b}:=(b_1,\ldots,b_n)\in{R}^n$, тогда элемент кольца $R$
+$$a(b_1,\ldots,b_n):=a(\vec{b}):=\sum_{(i_1,\ldots,i_n)\in\mathbb{N}_0^n}a_{i_1,\ldots,i_n}b_1^{i_1}\cdots{b}_{n}^{i_n}$$
+называется значением многочлена $a(x_1,\ldots,x_n)$ на наборе $\overline{b}$.
+<br><br>
+Если кольцо $R$ коммутативно, то аналогично <a href="./discrete_math7.2.html#Lemma7.1">лемме 7.1</a> показывается, 
+что значение суммы многочленов на наборе $\vec{b}$ равно сумме значений многочленов на наборе $\overline{b}$ и 
+значение произведение многочленов равно произведению значений многочленов.
+
+<h4 id="16.2">16.2 Общие свойства квадратичной формы.</h4>
+
+<p id="Definition16.5"><b>Определение 16.5:</b><br>
+Квадратичной формой над полем $P$ называется многочлен $f(x_1,\ldots,x_n):=f(\vec{x})\in{P}[x_1,\ldots,x_n]$ вида
+$$
+f(\vec{x})=a_{1,1}x_1^2+a_{1,2}x_1x_2+\cdots+a_{1,n}x_1x_n+x_{2,2}x_2^2+\cdots+a_{n,n}x_n^2=
+\sum_{i=1}^n\sum_{j=1}^na_{i,j}x_ix_j=\sum_{i,j=1:i&lt;j}^n(a_{i,j}+a_{j,i})x_ix_j+\sum_{i=1}^na_{i,i}x_i^2.
+$$
+<br>
+Далее везде будем рассматривать квадратичные формы только над полями таким, что $e+e\neq0$. 
+Тогда для любых $i,j\in\overline{1,n}$ можно положить $b_{i,j}=(a_{i,j}+a_{j,i})(2e)^{-1}$. Тогда для любых $i,j\in\overline{1,n}$ 
+$a_{i,j}+a_{j,i}=b_{i,j}+b_{j,i}$, следовательно, квадратичная форма $f(\vec{x})$ может быть записана в виде 
+$$f(\vec{x})=\sum_{i,j=1}^nb_{i,j}x_ix_j=\sum_{i,j=1}^na_{i,j}x_ix_j.$$
+Тогда матрица $B_f:=(b_{i,j})_{n,n}$ называется матрицей квадратичной формы $f(\vec{x})$. 
+<p id="Note16.1"><b>Замечание 16.1:</b><br>
+<ol>
+<li>Так как для любых $i,j\in\overline{1,n}$ $b_{i,j}=b_{j,i}$ то $B_f=B_f^T$.</li>
+<li>Для любых квадратичных форм $f(x_1,\ldots,x_n)$, $g(x_1,\ldots,x_n)$
+$$f(\vec{x})=g(\vec{x})\Leftrightarrow{B}_f=B_g.$$
+</li>
+<li>Для любой квадратичной формы $f(\vec{x})$
+$$f(\vec{x})=\vec{x}B_f\vec{x}^T.$$
+</li>
+<li>Таким образом, матрица квадратичной формы это матрица, которая удовлетворяет двум условиям $f(\vec{x})=\vec{x}A\vec{x}^T$ и $A=A^T$. 
+Несложно видеть, что такая матрица единственна.
+</li>
+</ol>
+<p id="Defintion16.6"><b>Определение 16.6:</b><br>
+Говоря, что квадратичная форма $g(\vec{y})\in{P}[y_1,\ldots,y_n]$ получена из квадратичной формы $f(\vec{x})\in{P}[x_1,\ldots,x_n]$ 
+невырожденной заменой переменных $x^{\downarrow}=Cy^{\downarrow}$, если $C\in(P_{n,n})^*$ и 
+$$\forall\vec{y}\in{P}^n\left(f(\vec{C}_1\vec{y}^T,\ldots,\vec{C}_n\vec{y}^T)=g(\vec{y})\right).$$
+<p id="Statement16.2"><b>Утверждение 16.2:</b><br>
+Пусть $C\in(P_{n,n})^*$, тогда квадратичная форма $g(\vec{y})$ получена из квадратичной формы $f(\vec{x})$ 
+невырожденной заменой переменных $x^{\downarrow}=Cy^{\downarrow}$ тогда и только тогда, когда $B_g=C^TB_fC$.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Фиксируем $\vec{y}\in{P}^n$, тогда
+$$
+\forall\vec{x}\in{P}^n(f(\vec{x})=\vec{x}B_f\vec{x}^T)\Rightarrow
+{g}(y)=f\left(\vec{C}_1y_1^{\downarrow},\ldots,\vec{C}_ny^{\downarrow}\right)=(Cy^{\downarrow})^TB_f(Cy^{\downarrow})=\vec{y}(C^TB_fC)y^{\downarrow}.
+$$
+При этом, так как $B_f$ - матрица квадратичной формы, то
+$$B_f=B_f^T\Rightarrow(C^TB_fC)^T=C^TB_f^T(C^T)^T=C^TB_fC,$$
+то есть матрица $C^TB_fC$ симметрична. Таким обрзом, матрица $C^TB_fC$ являтеся матрицой квадратичной формы $g(\vec{y})$.<br>
+$\Leftarrow)$ Фиксируем $\vec{y}\in{P}^n$, тогда
+$$
+g(\vec{y})=\vec{y}B_fy^{\downarrow}=\vec{y}(C^TB_fC)y^{\downarrow}=(Cy^{\downarrow})^TB_f(Cy^{\downarrow})=
+f\left(\vec{C}_1y^{\downarrow},\ldots,\vec{C}_ny^{\downarrow}\right).
+$$
+<p id="Definition16.7"><b>Определение 16.7:</b><br> 
+Две квадратичные формы называются эквивалентными, если одна может быть получена из другой невырожденной заменой переменных.<br>
+Если квадратичаные формы $f(x_1,\ldots,x_n)$ и $g(y_1,\ldots,y_n)$ эквивалентны, то обозначают $f(\vec{x})\sim{g}(\vec{y})$. 
+<p id="Statement16.3"><b>Утверждение 16.3:</b><br>
+Отношение эквивалентности квадратичных форм являтеся отношением эквивалентности.
+<p><b>Доказательство:</b><br>
+<ul>
+<li><b>рефлексивность.</b> Квадратичная форма $f(\vec{x})$ эквивалентна сама себе, так как $x^{\downarrow}=Ex^{\downarrow}$ и 
+$f(\vec{E}_1x^{\downarrow},\ldots,\vec{E}_nx^{\downarrow})=f(x_1,\ldots,x_n)$.
+</li>
+<li><b>симметричность.</b> Для любой обратимой матрицы $A\in{P}_{n,n}$
+$$(A^{-1})^TA^T=(AA^{-1})^T=E\Rightarrow(A^{-1})^T=(A^T)^{-1}.$$
+Тогда если $g(\vec{y})$ получена из $f(\vec{x})$ заменой $\vec{x}=Cy^{\downarrow}$, то 
+$$B_g=C^TB_fC\Rightarrow(C^T)^{-1}B_gC^{-1}=(C^{-1})^TB_gC^{-1}=B_f,$$
+следовательно, по утверждению 16.2 $f(\vec{x})$ получена из $g(\vec{y})$ заменой $y^{\downarrow}=C^{-1}x^{\downarrow}$
+</li>
+<li><b>транзитивность.</b> Пусть $h(\vec{z})$ получена из $g(\vec{y})$ заменой, $y^{\downarrow}=Dz^{\downarrow}$, 
+а $g(\vec{y})$ получена из $f(\vec{x})$ заменой $x^{\downarrow}=Cy^{\downarrow}$, 
+тогда по <a href="./discrete_math16.1.html#Statement16.2">утверждению 16.2</a>
+$$B_h=D^TB_gD=D^TC^TB_fCD=(CD)^TB_f(CD).$$
+Так как $C,D\in(P_{n,n})^*$, то $CD\in(P_{n,n})^*$, следовательно, $h(\vec{z})$ получена из $f(\vec{x})$ заменой $x^{\downarrow}=(CD)z^{\downarrow}$
+</li>
+</ul>
+<p id="Definition16.8"><b>Определение 16.8:</b><br>
+Квадратичную форму вида 
+$$f(x_1,\ldots,x_n)=b_{1,1}x_1^2+b_{2,2}x_2^2+\cdots+b_{n,n}x_n^2$$ 
+назовем канонической.
+<p id="Theorem16.1"><b>Теорема 16.1:</b><br>
+Любая квадратичная форма над полем харктеристики больше 2 (т. е. $2e\neq0$) эквивалентна некоторой канонической.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $n$.
+<ol type="I">
+<li>При $n=1$ любая квадратичная форма имеет вид $a_{1,1}x_1^2$.</li>
+<li>Для любого $n\geq1$ докажем, что если утверждение верно при $n\in\overline{1,m}$, то оно верно при $n=m+1$.<br>
+Если $f(\vec{x})=0$, то $f(\vec{x})=0x_1^2+\cdots+0x_n^2$, то есть $f(\vec{x})$ каноническая.<br>
+Пусть $f(\vec{x})\neq0$, то есть существуют $i,j\in\overline{1,n}$ такие, что $b_{i,j}\neq0$.
+<ol type="a">
+<li>Пусть $i=j$, б. о. о. будем считать, что $b_{1,1}\neq0$, тогда 
+$$
+f(x_1,\ldots,x_n)=b_{1,1}x_1^2+2b_{1,2}x_1x_2+\cdots+2b_{1,n}x_1x_n+f_1(x_2,\ldots,x_n)=
+b_{1,1}^{-1}(b_{1,1}^2x_1^2+2b_{1,2}b_{1,1}x_1x_2+\cdots+2b_{1,n}b_{1,1}x_1x_n)+f_1(x_2,\ldots,x_n)=\\=
+b_{1,1}^{-1}(b_{1,1}x_1^2+b_{1,2}x_2+\cdots+b_{1,n}x_n)^2+f_2(x_1,\ldots,x_n)
+$$
+Рассмотрим квадратичную форму $g(\vec{y}):=b_{1,1}^{-1}y_1^2+f_2(y_2,\ldots,y_n)$. 
+Квадратичная форма $f(\vec{x})$ получается из $g(\vec{y})$ заменой переменных
+$$
+y^{\downarrow}=\begin{pmatrix}b_{1,1} & b_{1,2} & \cdots & b_{1,n} \\ 0 & e & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 
+0 & 0 & \cdots & 0\end{pmatrix}x^{\downarrow},
+$$
+так как определитель матрицы перехода равен $b_{1,1}\neq0$, то она обратима, то есть $f(\vec{x})\sim{g}(\vec{y})$.<br>
+По предположению индукции существует каноническая квадратичная форма $$h(z_2,\ldots,z_n):=c_2z_2^2+\cdots+{c}_nz_n^2$$ такая, 
+что $f_2(x_2,\ldots,x_n)\sim{h}(z_2,\ldots,z_n)$ при замене переменных
+$$\begin{pmatrix}y_2 \\ \vdots \\ y_n\end{pmatrix}=D\begin{pmatrix}z_2 \\ \vdots \\ z_n\end{pmatrix},$$
+где $D\in(P_{n-1,n-1})^*$. Следовательно, каноническая квадратичная форма $t(z_1,\ldots,z_n):=b_{1,1}^{-1}z_1^2+c_2z_2^2+\cdots+c_nz_n^2$ 
+получается их квадратичной формы $g(\vec{y})$ заменой переменных
+$$y^{\downarrow}=\begin{pmatrix}e & 0  & \cdots & 0 \\ 0 & & \\ \vdots & & D &  \\ 0 & &\end{pmatrix}z^{\downarrow},$$
+то есть $f(\vec{x})\sim{g}(\vec{y})\sim{h}(\vec{z})$.
+</li>
+<li>Пусть $i\neq{j}$, б. о. о. будем считать, что $b_{1,2}\neq0$ и для любого $k\in\overline{1,n}$ $b_{k,k}=0$ тогда 
+$$f(x_1,\ldots,x_n)=2b_{1,2}x_1x_2+f_1(x_1,\ldots,x_n)$$
+где квадратичная форма $f_1(x_1,\ldots,x_n)$ такая, что у неё коэффициенты при $x_1x_2$, $x_2x_1$ и $x_{k,k}$ для любого $k\in\overline{1,n}$ равны 0. 
+Произведем замену переменных $x^{\downarrow}=Cy^{\downarrow}$ такую, что $x_1=y_1+y_2$, $x_2=y_1-y_2$ и для любого 
+$i\in\overline{3,n}$ $x_i=y_i$. Тогда
+$$C=
+\begin{pmatrix}
+e 	& e 	& 0 		& \cdots 	& 0		\\
+e 	& -e 	& 0 		& \cdots 	& 0 		\\
+0 	& 0 	& e 		&            	& 0 		\\
+\vdots & \vdots & 		& \ddots 	& \vdots 	\\
+0 	& 0 	& \cdots 	& \cdots	& e 		\\
+\end{pmatrix}
+$$
+Так как  $|C|=2e\neq0$, то $C\in(P_{n,n})^*$, то есть замена переменных не вырождена и
+$$f(\vec{x})\sim{g}(\vec{y})=2b_{1,2}y_1^2-2b_{1,2}y_2^2+g_1(y_1,\ldots,y_n),$$
+где квадратичная форма $g_1(y_1,\ldots,y_n)$ такая, что коэффициент при $y_1^2$ равен 0. Так как $b_{1,2}\neq0$, 
+то по пункту (a) квадратичная форма $g(\vec{y})$ эквивалентна некоторой канонической. 
+</li>
+</ol>
+</li>
+</ol>
+<p id="Note16.2"><b>Замечание 16.2:</b><br>
+Условие $2e\neq0$ существенно, например, квадратичная форма $f(x_1,x_2)=x_1x_2$ над полем $GF(2)$ не эквивалентна никакой какнонической.
+<p id="Definition16.9"><b>Определение 16.9:</b><br>
+Рангом квадратичной формы будем называть ранг матрицы этой формы.
+<p id="Statement16.4"><b>Утверждение 16.4:</b><br>
+Ранги эквивалентных квадратичных форм равны.
+<p><b>Доказательство:</b><br><br>
+Пусть $f(\vec{x})\sim{g}(\vec{y})$ и $x^{\downarrow}=Cy^{\downarrow}$. Так как $C\in(P_{n,n})^*$, то
+$$\rang{g}=\rang{B_g}=\rang{C^TB_fC}=\rang{B_f}=\rang{f}.$$
+
+<br><br>
+<a href="discrete_math15.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math16.3.html">next</a>
+</body>
+</html>

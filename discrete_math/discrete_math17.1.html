@@ -1,0 +1,244 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 17.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}",
+	ord:  "{\\operatorname{ord}}",
+	dprod:"{\\dot{\\times}}",
+	Ord:  "{\\operatorname{Ord}}",
+	typ:  "{\\operatorname{typ}}",
+	diag: "{\\operatorname{diag}}",
+	Char: "{\\operatorname{Char}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math16.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.3.html">next</a>
+<br>
+
+<h3 id="17">17 Элементы теории колец.</h3>
+<h4 id="17.1">17.1 Подкольца и операции над ними.</h4>
+
+<p id="Definition17.1"><b>Определение 17.1:</b><br>
+Непустое подмножество $S$ кольца $(R;+,\cdot)$ называется его подкольцом,  если оно замкнуто относительно операций $+$ и $\cdot$ и 
+является кольцом относительно них.<br>
+Если $S$ подкольцо кольца $R$, то обозначают $S&lt;R$.
+<p id="Note17.1"><b>Замечание 17.1:</b><br>
+<ol>
+<li>Подкольца $R&lt;R$ и $\{0\}&lt;R$ называются несобственными подкольцами кольца $R$, все остальные подкольца называются собственными.</li>
+<li>Если $S$ подкольцо кольца $R$, то $(S;+)$ подгруппа группы $(R;+)$, следовательно, нули кольца и любого его подкольца по 
+п.1 <a href="./discrete_math9.4.html#Statement9.2">утверждения 9.2</a> совпадают.
+<li>С другой  стороны, если $R$ кольцо и $(G;+)&lt;(R;+)$, то из этого не следует, что $G$ подкольцо кольца $R$. Например, пусть $R:=\mathbb{R}_{2,2}$, 
+$G:=\{\left(\begin{smallmatrix}a & b \\ c & 0\end{smallmatrix}\right)\mid{a},b,c\in\mathbb{R}\}$, тогда $(G;+)&lt;(R;+)$, 
+но $G$ не является подкольцом кольца $R$ так как $G$ не замкнуто относительно умножения. 
+</li>
+</ol>
+<p id="Statement17.1"><b>Утверждение 17.1:</b><br>
+Пусть $R$ - кольцо, $S\subset{R}$, $S\neq\varnothing$, тогда
+$$S&lt;R\Leftrightarrow\forall{s}_1,s_2\in{S}(s_1-s_2\in{S}\,\wedge\,s_1s_2\in{S}).$$
+<p><b></b><br><br>
+$\Rightarrow)$ Следует из определения 17.1.<br>
+$\Leftarrow)$ По <a href="./discrete_math9.4.html#Statement9.3">утверждению 9.3</a>
+$$\forall{s}_1,s_2\in{S}(s_1-s_2\in{S})\Rightarrow(S;+)&lt;(R;+).$$
+При этом так как группа $(R;+)$ абелева, то группа $(S;+)$ тоже абелева.<br>
+Так как для любых $s_1,s_2\in{S}$ $s_1s_2\in{S}$, то $(S;\cdot)$ - полугруппа.<br>
+Дистрибутивность операции $\cdot$ относительно операции $+$ в $(S;+,\cdot)$ следует из аналогичной дистрибутивности в кольце $(R;+,\cdot)$.<br>
+Таким образом, $(S;+,\cdot)$ - кольцо, и, следовательно, $(S;+,\cdot)<(R;+,\cdot)$.
+<p id="Corollary17.1"><b>Следствие 17.1:</b><br>
+Пусть $R$ - кольцо, $S\subset{R}$, $S\neq\varnothing$, $|R|&lt;\infty$, тогда
+$$S&lt;R\Leftrightarrow\forall{s}_1,s_2\in{S}(s_1+s_2\in{S}\,\wedge\,s_1s_2\in{S}).$$
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Следует из <a href="./discrete_math17.1.html#Definition17.1">определения 17.1</a>.<br>
+$\Leftarrow)$ Фиксируем $s_1,s_2\in{S}$ и рассмотрим последовательность элементов из $S$: $0s_2,1s_2,2s_2,\ldots,ks_2,\ldots$. 
+Так как $S$ конечно, то в этой последовательности есть два одинаковых элемента. Пусть $u,v\in\mathbb{N}_0$ такие, что $u&lt;v$ и 
+$us_2=vs_2$, тогда 
+$$
+(v-u-1)s_2+s_2=(v-u)s_2=0\Rightarrow(v-u-1)s_2=-s_2\Rightarrow{s}_1-s_2=s_1+(v-u-1)s_2\in{S}.
+$$
+Таким образом, утверждение следует из утверждения 17.1.
+<p id="Note17.2"><b>Замечание 17.2:</b><br>
+<ol>
+<li>Если $T&lt;S$, и $S&lt;R$, то $T$ кольцо и $T\subset{R}$, следовательно, $T&lt;S$.</li>
+<li>Нули кольца и любого его подкольца совпадают, однако про единицу кольца нельзя сказать того же.
+Например, обозначим $R:=\mathbb{R}_{2,2}$ и рассмотрим некотрые подкольца кольца $R$.
+<ol type="a">
+<li>Пусть 
+$$S_1:=\left\{\begin{pmatrix}a & 0 \\ 0 & b\end{pmatrix}\Bigl|{a},b\in\mathbb{R}\right\},$$
+тогда $S_1&lt;R$ и $e_R=e_{S_1}=E$.
+</li>
+<li>Пусть 
+$$S_2:=\left\{\begin{pmatrix}a & 0 \\ 0 & 0\end{pmatrix}\Bigl|{a}\in\mathbb{R}\right\},$$
+тогда $S_2&lt;R$ и $e_{S_2}=\left(\begin{smallmatrix}1 & 0 \\ 0 & 0\end{smallmatrix}\right)\neq{E}=e_R$.
+</li>
+<li>Пусть 
+$$S_3:=\left\{\begin{pmatrix}a & b \\ 0 & 0\end{pmatrix}\Bigl|{a},b\in\mathbb{R}\right\},$$
+тогда $S_3&lt;R$, при этом кольцо $S_3$ не имеет единицы.
+</li>
+</ol>
+</li>
+</ol>
+<p id="Statement17.2"><b>Утверждение 17.2:</b><br>
+Пусть $S,R$ - кольца с единицей такие, что $S&lt;R$, $R$ не содержит делителей нуля, $e_S\neq0$, тогда $e_R=e_S$. 
+<p><b>Доказательство:</b><br><br>
+В кольце $R$ справедливо равенство $e_Se_R=e_S$, а в кольце $S$ $e_Se_S=e_S$, тогда
+$$(e_S-e_R)e_S=e_Se_S-e_Re_S=0$$
+Так как $e_S\neq0$ и в кольце $R$ не делителей нуля, то из последнего равенства следует, что $e_S-e_R=0$.
+<p id="Statement17.3"><b>Утверждение 17.3:</b><br>
+Пусть $R$ - конечное кольцо, существует $a\in{R}\backslash\{0\}$ такое, что $a$ не является делителем нуля, тогда
+<ol>
+<li>$R$ - кольцо с единицей,</li>
+<li>если элемент $b\in{R}\backslash\{0\}$ не является делителем нуля, то $b\in{R}^*$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Обозначим $Ra:=\{ra\mid{r}\in{R}\}$, тогда так как
+$$\forall{r}_1,r_2\in{R}(r_1a=r_2a\Rightarrow(r_1-r_2)a=0\Rightarrow{r}_1-r_2=0\Rightarrow{r}_1=r_2),$$
+то все элементы в $Ra$ различны. Следовательно, $|Ra|=|R|$ при этом $Ra\subset{R}$, тогда в силу конечности $R$ $R=Ra$. 
+Аналогично можно показать, что $aR=R$.<br>
+Так как $Ra=R$, то существует $e_1\in\mathbb{R}$ такой, что $e_1a=a$, тогда
+$$\forall{c}\in{R}(c(e_1a)=ca\Rightarrow(ce_1-c)a=0\Rightarrow{c}e_1-c=0\Rightarrow{c}e_1=c).$$
+Аналогично из равенства $aR=R$ следует, что существует $e_2\in{R}$ такое, что  для любого $c\in{R}$ $e_2c=c$. 
+Тогда $e_1=e_2e_1=e_2$ и для любого $c\in{R}$ $e_1c=ce_1=c$.
+</li>
+<li>Пусть $b\in{R}\backslash\{0\}$ и $b$ не является делителем нуля, тогда по пункту 1 
+$$
+bR=Rb=R\Rightarrow\exists{u},v\in{R}:bu=vb=e\Rightarrow\begin{cases}vbu=v(bu)=v \\ vbu=(vb)u=u\end{cases}\Rightarrow
+{b}u=ub=e\Rightarrow{u}=v\Rightarrow{b}^{-1}=u
+$$
+</li>
+</ol>
+<p id="Corollary17.2"><b>Следствие 17.2:</b><br>
+Пусть $R$ - коммутативное кольцо, $1&lt;|R|&lt;\infty$, тогда $R$ - поле тогда и только тогда, когда $R$ не содержит делителей нуля.
+<p><b>Доказательство:</b><br><br>
+$\Rightarrow)$ Если $R$ - поле, то $R^*=R\backslash\{0\}$, тогда по <a href="./discrete_math2.1.html#Statement2.3">утверждению 2.3</a>
+в $R$ нет делителей нуля.<br>
+$\Leftarrow)$ Так как $R$ не содержит делителей нуля и $|R|&gt;1$, то по утверждению 17.3 $R$ - кольцо с единицей и $R\backslash\{0\}=R^*$, 
+то есть $R$ - поле.
+<p id="Statement17.4"><b>Утверждение 17.4:</b><br>
+$$\forall\alpha\in{A}(S_{\alpha}&lt;R)\Rightarrow\bigcap_{\alpha\in{A}}S_{\alpha}&lt;R.$$
+<p><b>Доказательство:</b><br>
+$$
+s_1,s_2\in\bigcap_{\alpha\in{A}}S_{\alpha}\Rightarrow\forall\alpha\in{A}(s_1,s_2\in{S}_{\alpha})\Rightarrow
+\forall\alpha\in{A}(s_1s_2\in{S}_{\alpha})\Rightarrow{s}_1s_2\in\bigcap_{\alpha\in{A}}S_{\alpha}
+$$
+Аналогично показывается, что 
+$$\forall{s}_1,s_2\in\bigcap_{\alpha\in{A}}S_{\alpha}\left(s_1-s_2\in\bigcap_{\alpha\in{A}}S_{\alpha}\right),$$
+тогда по <a href="./discrete_math17.1.html#Statement17.1">утверждению 17.1</a> $\bigcap_{\alpha\in{A}}S_{\alpha}&lt;R$.
+<p id="Definition17.2"><b>Определение 17.2:</b><br>
+Подкольцом кольца $R$ порожденным множеством $S$ называется кольцо 
+$$[S]_R:=\bigcap_{S\subset{T}&lt;R}T.$$
+<p id="Statement17.5"><b>Утверждение 17.5:</b><br>
+Пусть $R$ - кольцо, $S\subset{R}$, $S\neq\varnothing$, тогда 
+$$[S]_R:=\biggl\{\sum_{j=1}^nc_js_{1,j}\cdots{s}_{k_j,j}\Bigl|{n}\in\mathbb{N},k_j\in\mathbb{N},c_j\in\mathbb{Z},s_{i,j}\in{S}\biggr\}$$
+<p><b>Доказательство:</b><br><br>
+Обозначим 
+$$T:=\biggl\{\sum_{j=1}^nc_js_{1,j}\cdots{s}_{k_j,j}\Bigl|{n}\in\mathbb{N},k_j\in\mathbb{N},c_j\in\mathbb{Z},s_{i,j}\in{S}\biggr\},$$
+тогда, очевидно, что для любых $t_1,t_2\in{T}$, $t_1t_2\in{T}$, и $t_1-t_2\in{T}$, следовательно, 
+по <a href="./discrete_math17.1.html#Statement17.1">утверждению 7.1</a> $T&lt;R$ и тогда $[S]_R\subset{T}$.
+С другой стороны,  так как $[S]_R$ кольцо, то оно замкнуто относительно операций $+$ и $\cdot$, при этом $S\subset[S]_R$, следовательно, 
+для любого $t\in{T}$ $t\in[S]_R$, то есть $T\in[S]_R$.<br>
+Таким образом, $T=[S]_R$.
+<p id="Task17.1"><b>Задача 17.1:</b><br>
+Привести пример когда $S_1,S_2&lt;R$, но $S_1+S_2$ не является подкольцом кольца $R$.<br>
+Решение:<br>
+Пусть $R:=\mathbb{R}_{n,n}$, 
+$$
+S_1:=\left\{\begin{pmatrix}a & b \\ 0 & 0\end{pmatrix}\Bigl|a,b\in\mathbb{R}\right\},
+S_2:=\left\{\begin{pmatrix}a & 0 \\ b & 0\end{pmatrix}\Bigl|a,b\in\mathbb{R}\right\}.
+$$
+Тогда $S_1,S_2&lt;R$, но 
+$$S_1+S_2=\left\{\begin{pmatrix}a & b \\ c & 0\end{pmatrix}\Bigl|a,b,c\in\mathbb{R}\right\}$$
+не является подкольцом кольца $R$, так как например,
+$$\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}\begin{pmatrix}0 & 1 \\ 1 & 0\end{pmatrix}=\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}.$$
+
+<h4 id="17.2">17.2 Характеристика кольца.</h4>
+
+<p id="Definition17.3"><b>Определение 17.3:</b><br>
+Характеристикой кольца $R$ называется минимальное $t\in{N}$ такое, что для любого $r\in{R}$ $tr=0$. Если такого числа не существует, 
+то характеристикой кольца является число 0.<br>
+Харастеристику кольца $R$ обозначают как $\Char{R}$.
+<p id="Example17.1"><b>Пример 17.1:</b><br>
+<ol>
+<li>$\Char{\mathbb{Z}}=0$,</li>
+<li>$\Char{\mathbb{Z}/n}=n$.</li>
+</ol>
+<p id="Note17.3"><b>Замечание 17.3:</b><br>
+Пусть $R$ - кольцо.
+<ol>
+<li>Из определений <a href="./discrete_math9.6.html#Definition9.22">9.22</a>, 17.3 следует, что если $\exp{(R;+)}&lt;\infty$, 
+то $\Char{R}=\exp{(R;+)}$ и если $\exp{(R;+)}=\infty$, то $\Char{R}=0$.
+</li>
+<li>Будем называть порядком элемента $a\in{R}$ его порядок в группе $(R;+)$.</li>
+</ol>
+<p id="Statement17.6"><b>Утверждение 17.6:</b><br>
+<ol>
+<li>Если $R$ кольцо с единицей, то 
+$$\Char{R}=\begin{cases}\ord{e},&\ord{e}&lt;\infty \\ 0,&\ord{e}=\infty\end{cases}.$$
+</li>
+<li>Если $R$ кольцо с единицей и без делителей нуля, то $\Char{R}$ либо 0, либо простое число.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Пусть $t:=\ord{e}<\infty$, тогда 
+$$\forall{r}\in{R}(tr=t(er)=(te)r=0),$$
+следовательно, по определению характеристики кольца $t\geq\Char{R}$. С другой стороны $(\Char{R})e=0$ и 
+по определению порядка элемента $\Char{e}\geq{t}$, таким образом $\Char{R}=t$.<br>
+Если $\ord{e}=\infty$, то для любого $n\in\mathbb{N}$ $ne\neq0$, тогда $\Char{R}=0$.
+</li>
+<li>Предположим, что $n:=\Char{R}$ составное число. То есть существуют $n_1,n_2\in\mathbb{N}\backslash\{1\}$ такие, что $n=n_1n_2$, тогда
+$$ee=e\Rightarrow0=ne=(n_1n_2)e=(n_1e)(n_2e).$$
+Так как по пункту 1 $\ord{e}=\Char{R}=n$ и $n_1&lt;n$, $n_2&lt;n$, то $n_1&lt;\ord{e}$, $n_2&lt;\ord{e}$, следовательно, $n_1e\neq0$ и $n_2e\neq0$. 
+Таким образом, получено противоречие с отсутствием делителей нуля в кольце $R$.
+</li>
+</ol>
+<p id="Corollary17.3"><b>Следствие 17.3:</b><br>
+Если $P$ - поле, то $\Char{P}$ либо 0 либо простое число.
+<p><b>Доказательство:</b><br><br>
+Так как поле содержит единицу и не содержит делителей нуля, то утверждение следует из утверждения 17.6.
+<p id="Corollary17.4"><b>Следствие 17.4:</b><br>
+Пусть $S,R$ - кольца c единицей такие, что $S&lt;R$, $e_S\neq0$, $R$ не содержит делителей нуля, тогда $\Char{R}=\Char{S}$.
+<p><b>Доказательство:</b><br><br>
+По <a href="./discrete_math17.1.html#Statement17.2">утверждению 17.2</a> $e_R=e_S$, тогда по утверждению 17.6 $\Char{R}=\ord{e}_R=\ord{e}_S=\Char{S}$.
+<p id="Statement17.7"><b>Утверждение 17.7:</b><br>
+Пусть $R$ коммутативное кольцо $\Char{R}=p$ - простое число, тогда для любых $a,b\in{R}$, $t\in\mathbb{N}$
+$$(a+b)^{p^t}=a^{p^t}+b^{p^t}.$$ 
+<p><b>Доказательство:</b><br><br>
+Докажем утверждение индукцией по $t$.
+<ol type="I">
+<li>Так как кольцо $R$ коммутативно, то по <a href="./discrete_math1.html#Theorem1.1">теореме 1.1</a>
+$$(a+b)^p=\sum_{i=0}^pC_p^ia^ib^{p-i}.$$
+Фиксируем $i\in\overline{1,p-1}$, обозначим $d:=(p-1)\cdots(p-i-1)$. Тогда $C_p^i=\frac{pd}{i!}\in\mathbb{N}$, следовательно $i!|(pd)$ и 
+по пп. 1, 2 <a href="./discrete_math6.1.html#Theorem6.7">теоремы 6.7</a>
+$$
+i\in\overline{1,p-1}\Rightarrow\forall{j}\in\overline{1,i}((j,p)=1)\Rightarrow(i!,p)=1\Rightarrow{i}!|d\Rightarrow{p}|C_p^i\Rightarrow
+\exists{h}\in{R}:C_p^ia^ib^{p-i}=ph=0.
+$$
+Таким образом, для любого $i\in\overline{1,n-1}$ $C_p^ia^ib^{p-i}=0$, следовательно, $(a+b)^p=a^p+b^p$.
+</li>
+<li>Для любого $s\geq1$ докажем, что если утверждение верно при $t\in\overline{1,s}$, то оно верно при $t=s+1$.<br>
+По предположению индукции и пункту I. имеем 
+$$(a+b)^{p^{s+1}}=((a+b)^{p^s})^p=(a^{p^s}+b^{p^s})^p=a^{p^{s+1}}+b^{p^{s+1}}.$$
+</li>
+</ol>
+
+<br><br>
+<a href="discrete_math16.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math17.3.html">next</a>
+</body>
+</html>

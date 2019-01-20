@@ -1,0 +1,427 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 4.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math5.1.html">next</a>
+<br>
+
+<h4 id="4.3">4.3 Линейная зависимость векторов.</h4>
+Везде в данном разделе $P$ - поле с единицей $e$, $P^n:=P_{1,n}$ - множество вектор-строк длины $n$, 
+$P^{(n)}:=P_{n,1}$ - множество вектор-столбцов длины $n$, $L_n\in\{P^n,P^{(n)}\}$.
+<p id="Definition4.8"><b>Определение 4.8:</b><br>
+Множество $L_n$ с операциями сложения векторов и умножения векторов на элемент поля $P$ называется $n$-мерных арифмерическим пространством над полем $P$.<br>
+Нулевой относительно операции сложения вектор обозначают $\theta$.
+<p id="Definition4.9"><b>Определение 4.9:</b><br>
+Конечная не пустая система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ называется линейно зависимой (ЛЗ), если существуют $c_1,\ldots,c_k\in{P}$ 
+не все равные нулю такие, что $c_1\alpha_1+\cdots{c}_k\alpha_k=\theta$.<br>
+В противном случае система векторов $\alpha_1,\ldots,\alpha_k$ называется линейно независимой (ЛНЗ).<br>
+Пустая система векторов считается линейно независимой. 
+<p id="Note"><b>Замечание 4.4:</b><br>
+Система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ линейно независима тогда и только тогда, когда
+$$c_1\alpha_1+\cdots+c_k\alpha_k=\theta\Leftrightarrow{c}_1=\cdots=c_k=0.$$
+<p id="Example4.1"><b>Пример 4.1:</b><br>
+<ol>
+<li> Пусть $P=GF(2)$, $\alpha_1=\binom{1}0$, $\alpha_2=\binom{1}1$, тогда
+$$c_1\alpha_1+c_2\alpha_2=\theta\Leftrightarrow\begin{cases}c_1+c_2=0 \\\quad c_2=0\end{cases}\Leftrightarrow{c}_1=c_2=0.$$
+Таким образом система векторов $\alpha_1,\alpha_2\in{G}F(2)^{(2)}$ линейно независима.
+</li>
+<li> Пусть $P=\mathbb{R}$, $\alpha_1=\binom{1}0$, $\alpha_2=\binom{1}1$, $\alpha_3=\binom{2}2$, 
+тогда $0\alpha_1+\alpha_2+\left(-\frac12\right)\alpha_3=\theta$, следовательно, система векторов 
+$\alpha_1,\alpha_2,\alpha_3\in\mathbb{R}^3$ линейно зависима.
+</li>
+<li> Система векторов содержащая нулевой вектор $\theta$ всегда линейно зависима. Действительно, 
+пусть $\alpha_1,\ldots,\alpha_{t-1},\theta,\alpha_{t+1},\ldots,\alpha_k\in{L}_n$, тогда существуют 
+$c_1=\cdots=c_{t-1}=c_{t+1}=\cdots=c_k=0$ и $c_t=e$ такие, что $c_1\alpha_1+\cdots+c_k\alpha_k=\theta.$
+</li>
+<li> Если система вектров содержит одинаковые вектора, то она линейно зависима. Действительно, 
+пусть система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ такая, что сущесвтуют $t,s\in\overline{1,k}$ такие, что $t\neq{s}$ и
+$\alpha_t=\alpha_s$. Тогда существуют $c_1,\ldots,c_k\in{P}$ такие, что для любых $i\notin\{s,t\}$ $\alpha_i=0$, $\alpha_t=e$, $\alpha_s=-e$, 
+тогда $c_1\alpha_1+\cdots+c_k\alpha_k=\alpha_t-\alpha_s=0$.  
+</li>
+</ol>
+<p id="Definition4.10"><b>Определение 4.10:</b><br>
+Будем говорить, что вектор $\beta\in{L}_n$ линейно выражается через (ЛВЧ) систему векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$, 
+если существуют $b_1,\ldots,b_k\in{P}$ такие, что $\beta=b_1\alpha_1+\cdots+b_k\alpha_k$.
+<p id="Theorem4.6"><b>Теорема 4.6: Критерий линейной зависимости.</b><br>
+<ol>
+<li> Если $k>1$, то система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ линейно зависима, тогда и только тогда, когда существует $i\in\overline{1,k}$ такое,
+ что $\alpha_i$ линейно выражается через 
+$\alpha_1,\ldots,\alpha_{i-1},\alpha_{i+1},\ldots,\alpha_k$.
+</li>
+<li> Если $k=1$, то система векторов $\alpha_1$ линейно зависима тогда и только тогда, когда $\alpha_1=0$. </li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+$\Rightarrow)$ Если система векторов $\alpha_1,\ldots,\alpha_k$ линейно зависима, то 
+$$
+\exists{c}_1,\ldots,c_k\in{P}: (\exists{i}\in\overline{1,k}:c_i\neq0\,\wedge\,{c}_1\alpha_1+\cdots+c_n\alpha_n=0)\Rightarrow<br>
+\Rightarrow(-c_i)\alpha_i=\sum_{j\in\overline{1,k}\backslash{i}}c_j\alpha_j\Rightarrow\alpha_i=\sum_{j\in\overline{1,k}\backslash{i}}c_j\alpha_jc^{-1}.
+$$
+то есть $\alpha_i$ ЛВЧ $\{\alpha_1,\ldots,\alpha_k\}\backslash\alpha_i$.<br>
+$\Leftarrow)$ Без ограничения общности будем считать, что вектор $\alpha_k$ ЛВЧ $\alpha_1,\ldots,\alpha_{k-1}$, тогда
+$$\exists{b}_1,\ldots,b_k\in{P}:\alpha_k=\sum_{j=1}^{k-1}b_j\alpha_j\Rightarrow{b}_1\alpha_1+\cdots+b_{k-1}\alpha_{k-1}+(-e)\alpha_k=0.$$ 
+И так как $-e\neq0$, то элементы $b_1,\ldots,b_{k-1},-e\in{P}$ реализуют определение линейной независимости системы векторов $\alpha_1,\ldots,\alpha_k$.
+</li>
+<li> Система векторов состоящая из одного вектора $\alpha_1$ линейно зависима, тогда и только тогда, когда существует $c\neq0$ такой, что $c\alpha_1=\theta$,
+ это возможно тогда и только тогда, когда $\alpha_1=\theta$.
+</li>
+</ol>
+<p id="Note4.5"><b>Замечание 4.5:</b><br>
+В п. 1 теоремы 4.6 нельзя потребовать, чтобы любой вектор выражался через остальные, так как например, если $\alpha\neq0$, 
+то система $\alpha,\theta$ линейно зависима и при этом $\theta$ ЛВЧ $\alpha$, но $\alpha$ не ЛВЧ $\theta$.
+<p id="Corollary4.4"><b>Следствие 4.4:</b><br>
+Система из двух векторов $\alpha,\beta$ линейно зависима тогда и только тогда, когда существует $c\in{P}$ такой, что $\alpha=c\beta$ или $\beta=c\alpha$.
+<p><b>Доказательство:</b><br>
+Следует из <a href="./discrete_math4.3.html#Theorem4.6">теоремы 4.6</a> при $k=2$.
+
+<p id="Statement4.1"><b>Утверждение 4.1:</b><br>
+Если подсистема системы векторов ЛЗ, то и вся система ЛЗ.
+<p><b>Доказательство:</b><br>
+Пусть подсистема $\alpha_{i_1},\ldots,\alpha_{i_s}$ системы векторов $\alpha_1,\ldots,\alpha_k$ ЛЗ, тогда существуют $c_{i_1},\ldots,c_{i_s}$ 
+не все равные нулю такие, что выполняется равенство $c_{i_1}\alpha_1+\cdots+c_{i_s}\alpha_s=\theta$. Тогда сущесвуют
+$$\{c'_t\in{P}|t\in\overline{1,k}\wedge(t\in\{i_1,\ldots,i_s\}\Rightarrow{c'_t=c_t})\wedge(t\notin\{i_1,\ldots,i_s\}\Rightarrow{c}_t=0)\}$$ 
+такие, что 
+$$\sum_{j=1}^kc'_j\alpha_j=\sum_{j=1}^sc_{i_j}\alpha_{i_j}+\sum_{j\in\overline{1,k}\backslash\{j_1,\ldots,j_s\}}0\alpha_j=0.$$
+И так как один из $c'_{i_1},\ldots,c'_{i_s}$ не равен 0, то элементы $c'_1,\ldots,c'_k$ реализуют определение линейной зависимости для системы 
+векторов $\alpha_1,\ldots,\alpha_k$.
+<p id="Corollary"><b>Следствие 4.5:</b><br>
+Любая подсистема ЛНЗ системы ЛНЗ.
+<p><b>Доказательство:</b><br><br>
+Докажем от противного. Предположим, что ЛНЗ система $\alpha_1,\ldots,\alpha_k$, содержит ЛЗ подсистему, 
+но тогда по утверждению 4.1 система $\alpha_1,\ldots,\alpha_k$ ЛЗ. Получено противоречие.
+<p id="Statement4.2"><b>Утверждение 4.2:</b><br>
+Пусть система векторов $\alpha_1,\ldots,\alpha_k$ такая, что ${k>1}$ и $\alpha_1\neq\theta$, тогда система $\alpha_1,\ldots,\alpha_k$ ЛЗ 
+тогда и только тогда, когда существует $i\in\overline{2,k}$ такое, что $\alpha_i$ ЛВЧ 
+$\alpha_1,\ldots,\alpha_{i-1}$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Если система векторов $\alpha_1,\ldots,\alpha_k$ ЛЗ, то существует $c_1,\ldots,c_k\in{P}$ такие, 
+что $c_1\alpha_1+\cdots{c}_k\alpha_k=\theta$. Тогда существует $i\in\overline{1,k}$ такое, что $c_i\neq0$ и для любого $j&gt;i$ $c_j=0$, 
+при этом $i\neq1$, так как $\alpha_1\neq\theta$. Тогда $c_1\alpha_1+\cdots+c_i\alpha_i=0$ и 
+$\alpha_i=c_1\alpha_1(-c_i)^{-1}+\cdots+c_{i-1}\alpha_{i-1}(-c_i)^{-1}$.<br>
+$\Leftarrow)$ Следует из п. 1 теоремы 4.6.
+<p id="Statement4.3"><b>Утверждение 4.3:</b><br>
+Пусть система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ ЛНЗ, ${\beta\in{L}_n}$, тогда система векторов $\alpha_1,\ldots,\alpha_k,\beta$ ЛЗ 
+тогда и только тогда, когда $\beta$ ЛВЧ $\alpha_1,\ldots,\alpha_k$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Если система векторов $\alpha_1,\ldots,\alpha_k,\beta$ ЛЗ, то существуют не все равные нулю $c_1,\ldots,c_k,b\in{P}$ такие, 
+что $c_1\alpha_1+\cdots+c_k\alpha_k+b\beta=0$.
+Если $b=0$, то $c_1\alpha_1+\cdots+c_k\alpha_k=0$ и один из элементов $c_1,\ldots,c_k$ не равен нулю, тогда $\alpha_1,\ldots,\alpha_k$ ЛЗ, 
+чего не может быть по условию, следовательно, $b\neq0$. Тогда 
+$\beta=c_1\alpha_1(-b)^{-1}+\cdots+c_k\alpha_k(-b)^{-1}$.<br>
+$\Leftarrow)$ Следует из п.1 теоремы 4.6.
+<p id="Statement4.4"><b>Утверждение 4.4:</b><br>
+Если система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$ ЛНЗ и вектор $\beta\in{L}_n$ ЛВЧ $\alpha_1,\ldots,\alpha_k$, то $\beta$ ЛВЧ 
+$\alpha_1,\ldots,\alpha_k$ единственным образом.
+<p><b>Доказательство:</b><br><br>
+Пусть $c_1,\ldots,c_k,b_1,\ldots,b_k\in{P}$ такие, что 
+$$\beta=c_1\alpha_1+\cdots+c_k\alpha_k=b_1\alpha_1+\cdots+b_k\alpha_k,$$
+тогда $(c_1-b_1)\alpha_1+\cdots+(c_k-b_k)\alpha_k=\theta$.
+Так как $\alpha_1,\ldots,\alpha_k$ ЛНЗ, то такое возможно только если для любого $i\in\overline{1,k}$ $c_i=b_i$.
+<p id="Definition4.12"><b>Определение 4.12:</b><br>
+Подсистема $T$ конечной системы векторов ${\alpha_1,\ldots,\alpha_k\in{L}_n}$ называется ее максимальной линейно не зависимой подсистемой (МЛНП), если 
+<ol>
+<li> подсистема $T$ линейно не зависима,</li>
+<li> для любого $i\in\overline{1,k}$ система $\{T,\alpha_i\}$ линейно зависима.</li>
+</ol>
+<p id="Definition4.13"><b>Определение 4.13:</b><br>
+Базисом конечной системы векторов называется ее упорядоченная МЛНП.
+<p id="Theorem4.7"><b>Теорема 4.7:</b>
+Любая ЛНЗ подсистема конечной системы векторов может быть дополнена до МЛНП.
+<p><b>Доказательство:</b><br><br>
+Пусть $T$ ЛНЗ подсистема системы $\alpha_1,\ldots,\alpha_k\in{L}_n$. Среди всех ЛНЗ подсистем системы $\alpha_1,\ldots,\alpha_k$ содержащих $T$ выберем подсистему $S$ содержащую максимальное колличество векторов. Тогда для любого ${i\in\overline{1,k}}$ либо $\alpha_i\in{S}$ и тогда система $\{S,\alpha_i\}$ содержит два одинаковых вектора и, следовательно, ЛЗ, либо система $\{S,\alpha_i\}$ содержит больше векторов чем $S$ и, следовательно, ЛЗ по выбору $S$. Таким образом система $S$ ЛНЗ и для любого $i\in\overline{1,k}$ система $\{S,\alpha_i\}$ ЛЗ. Следовательно, система $S$ содержит систему $T$ и является МЛНП.
+<p id="Corollary4.6"><b>Следствие 4.6:</b><br>
+Любая конечная система векторов имеет базис.
+<p><b>Доказательство:</b><br>
+Следует из теоремы 4.7.
+<br><br>
+
+Вопросы, ответы на которые будут получены до конца раздела.<br>
+Пусть дана система векторов $\alpha_1,\ldots,\alpha_k\in{L}_n$
+<ol>
+<li>Как выястнить выражается ли вектор $\beta\in{L}_n$ через систему $\alpha_1\ldots,\alpha_k$?</li>
+<li>Как выразить вектор $\beta$ через систему $\alpha_1,\ldots,\alpha_k$?</li>
+<li>Является ли система $\alpha_1,\ldots,\alpha_k$ ЛНЗ?</li>
+<li>Как найти базис системы $\alpha_1,\ldots,\alpha_k$?</li>
+<li>Как выяснить является ли данная подсистема базисом?</li>
+<li>Как дополнить ЛНЗ подсистему до МЛНП.</li>
+</ol>
+
+<p id="Theorem4.8"><b>Теорема 4.8:</b><br>
+Пусть $A=(A_1^{\downarrow},\ldots,A_k^{\downarrow})\in{P}_{n,k}$, $B=(B_1^{\downarrow},\ldots,B_k^{\downarrow})\in{P}_{n,k}$ такие, 
+что $A\rsim{B}$, $c_1,\ldots,c_k\in{P}$, тогда
+$$c_1A_1^{\downarrow}+\cdots+c_kA_k^{\downarrow}=\theta\Leftrightarrow{c}_1B_1^{\downarrow}+\cdots+c_kB_k^{\downarrow}=\theta.$$
+<p><b>Доказательство:</b><br>
+Так как по п. 3 <a href="./discrete_math3.5.html#Statement3.10">утверждения 3.10</a>
+$$A\rsim{B}\Rightarrow\exists{U}\in(P_{n,n})^*:B=UA\Rightarrow\forall{i}\in\overline{1,k}(B_i^{\downarrow}=UA_i^{\downarrow})$$
+то, так как матрица $U$ не является делителем нуля в силу обратимости
+$$
+c_1A_1^{\downarrow}+\cdots+c_kA_k^{\downarrow}=\theta\Leftrightarrow{U}(c_1A_1^{\downarrow}+\cdots+c_kA_k^{\downarrow})=\theta\Leftrightarrow
+{c}_1(UA_1^{\downarrow})+\cdots+c_k(UA_k^{\downarrow})=\theta\Leftrightarrow{c}_1B_1^{\downarrow}+\cdots+c_kB_k^{\downarrow}=\theta.
+$$
+<p id="Theorem4.9"><b>Теорема 4.9:</b><br>
+Пусть $A\in{P}_{n,m}$, $A\neq0$, $S=(s_{i,j})_{n,m}$ ступенчатая матрица типа $(i_1,\ldots,i_r)$, $A\rsim{S}$, тогда 
+<ol>
+<li> Если $j\in\overline{2,m}$, то $A_j^{\downarrow}$ ЛВЧ $A_1^{\downarrow},\ldots,A_{j-1}^{\downarrow}$, тогда и только тогда, 
+когда $j\notin\{i_1,\ldots,i_r\}$.</li>
+<li> Если матрица $S$ специальная ступенчатая, то для любого $j\in\overline{1,m}$ $A_j^{\downarrow}=\sum_{t=1}^rs_{t,j}A_{i_t}^{\downarrow}$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> 
+$\Rightarrow)$ Предположим, что существует $j\in\{i_1,\ldots,i_r\}$ такое, что $A_j^{\downarrow}$ ЛВЧ $A_1^{\downarrow},\ldots,A_{j-1}^{\downarrow}$. 
+Следовательно, существуют $c_1,\ldots,c_{j-1}\in{P}$ такие, что 
+$c_1A_1^{\downarrow}+\cdots+c_{j-1}A_{j-1}^{\downarrow}=A_j$. Так как $A\rsim{S}$, следовательно по теореме 4.8, 
+$c_1S_1^{\downarrow}+\cdots+c_{j-1}S_{j-1}^{\downarrow}=S_j$, но это не возможно, так как существует $t\in\overline{1,r}$ такое, 
+что $j=i_t$, следовательно, по определению ступенчатой матрицы типа $(i_1,\ldots,i_r)$ $s_{t,j}=s_{t,i_t}\neq0$ в то время как для любого 
+$k\in\overline{1,i_t-1}$ $s_{t,k}=0$. Получено противоречие.<br>
+$\Leftarrow)$ Пусть $j\in\{i_1,\ldots,i_r\}$, следовательно существует $t\in\overline{1,r}$ такое, что $i_t<j<i_{t+1}$. Докажем, 
+что $A_j^{\downarrow}$ ЛВЧ $A_{i_1}^{\downarrow},\ldots,A_{i_t}^{\downarrow}$. Из <a href="./discrete_math4.3.html#Theorem4.8">теоремы 4.8</a> следует, 
+что для этого достаточно доказать, 
+что $S_j^{\downarrow}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_t}^{\downarrow}$. Докажем индукцией по $t$.
+<ol type="I">
+<li> При $t=1$ $S_j^{\downarrow}=s_{1,i_1}^{-1}s_{1,j}S_{1,i_1}^{\downarrow}$, то есть $S_j^{\downarrow}$ ЛВЧ $\{S_{i_1}^{\downarrow}\}$.</li>
+<li> Фиксируем $u\in\overline{1,r}$ и предположим, что для любого $k\in\overline{1,u}$ $S_j^{\downarrow}$ такой, 
+что $i_k<j<i_k+1$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_k}^{\downarrow}$. Докажем, что $S_j^{\downarrow}$ такой, что
+$u+1<j<u+2$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_{u+1}}^{\downarrow}$.<br>
+Действительно, $S_j^{\downarrow}=(s_{u+1,i_{u+1}})^{-1}s_{u+1,j}S_{i_{u+1}}^{\downarrow}+V^{\downarrow}$. 
+Где вектор $V^{\downarrow}=(v_1,\ldots,v_n)$ такой, что для любого $p>u$ $v_p=0$, следовательно, 
+по предположению индукции $V^{\downarrow}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_u}$.<br>
+(Не совсем точно, вектор $V^{\downarrow}$ может не принадлежать матрице $S$ тогда предположение индукции для него не будет работать, 
+на самом деле можно усилить предпложение индукции и распространить его на все вектора с $n-u$ нулями в конце).<br>
+ Таким образом $S_j^{\downarrow}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_{u+1}}^{\downarrow}$.   
+</li>
+</ol>
+</li>
+<li> Так как по опрделению специальной ступенчатой матрицы для любого $t\in\overline{1,r}$ $s_{t,i_t}=e$ и для любых $p\neq{t}$ $s_{p,{i_t}}=0$, 
+то для любого $j\in\overline{1,m}$ 
+$S_j^{\downarrow}=\sum_{t=1}^rs_{t,j}S_{i_t}^{\downarrow}$. Так как $A\rsim{S}$, то по <a href="./discrete_math4.3.html#Theorem4.8">теореме 4.8</a> 
+$A_j^{\downarrow}=\sum_{t=1}^rs_{t,j}A_{i_t}^{\downarrow}$.
+</li>
+</ol>
+ 
+<p id="Corollary4.7"><b>Следствие 4.7:</b><br>
+Если матрица $A\in{P}_{n,m}$ строчно эквивалентна матрице $S$ ступенчатой типа $(i_1,\ldots,i_r)$, то система векторов 
+$A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ является базисом системы столбцов матрицы $A$.
+<p><b>Доказательство:</b><br><br>
+По п. 1 теоремы 4.9 для всех $t\in\overline{2,r}$ $A_{i_t}^{\downarrow}$ ЛНВЧ $A_{i_1}^{\downarrow},\ldots,A_{i_{t-1}}^{\downarrow}$, 
+тогда по утверждению 4.2 система векторов $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ ЛНЗ. 
+С другой стороны, по п. 1 теоремы 4.9 для любого $j\notin\{i_1,\ldots,i_r\}$ $A_j^{\downarrow}$ ЛВЧ $A_{i_1},\ldots,A_{i_r}^{\downarrow}$, 
+то есть система $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow},A_j^{\downarrow}$ ЛЗ. Таким образом система векторов 
+$A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ МЛНП системы столбцов матрицы $A$. 
+<p id="Corollary4.8"><b>Следствие 4.8:</b><br>
+Все ступенчатые матрицы строчно эквивалентные одной и той же матрице $A$ имеют один и тот же тип. 
+И среди них существует только одна специально ступенчатая матрица.
+<p><b>Доказательство:</b><br>
+Тип ступенчатой матрицы эквивалентной матрице $A$ определяется однозначно, так как по <a href="./discrete_math4.3.html#Theorem4.8">теореме 4.8</a>.
+<ul>
+<li> $A_{i_1}^{\downarrow}$ - первый не нулевой столбец,</li>
+<li> $A_{i_2}^{\downarrow}$ - первый столбец ЛНВЧ $\{A_{i_1}^{\downarrow}\}$,</li>
+<li> $A_{i_3}^{\downarrow}$ - первый столбец ЛНВЧ $A_{i_1}^{\downarrow},A_{i_2}^{\downarrow}$,</li>
+<li> и т. д.</li>
+</ul>
+Так как по следствию 4.7 система $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ ЛНЗ и для любого $j\in\overline{1,m}$ $A_j^{\downarrow}$ ЛВЧ 
+$A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$, то по <a href="./discrete_math4.3.html#Statement4.4">утверждению 4.4</a> 
+$A_j^{\downarrow}$ ЛВЧ $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ единственным образом. Следовательно, по п. 2 
+<a href="./discrete_math4.3.html#Theorem4.9">теоремы 4.9</a> элементы специально ступенчатой матрицы строчно эквивалентной матрице $A$ определены однозначно.  
+<p id="Corollary4.9"><b>Следствие 4.9:</b><br>
+Система векторов $A_1^{\downarrow},\ldots,A_k^{\downarrow}\in{P}^{(n)}$ ЛНЗ тогда и только тогда, когда $\rang(A_1^{\downarrow},\ldots,A_k^{\downarrow})=k$.
+<p><b>Доказательство:</b><br><br>
+Система векторов $A_1^{\downarrow},\ldots,A_k^{\downarrow}$ ЛНЗ тогда и только тогда, когда $A_1\neq\theta$ и 
+для любого $j\in\overline{2,k}$ $A_j$ ЛНВЧ $A_1^{\downarrow},\ldots,A_{j-1}^{\downarrow}$ тогда и только тогда, когда 
+$A=(A_1^{\downarrow},\ldots,A_k^{\downarrow})\rsim{S}\in{S}(1,\ldots,k)$ тогда и только тогда, когда $\rang{A}=k$. 
+<p id="Corollary4.10"><b>Следствие 4.10:</b><br>
+Если система векторов $A_1^{\downarrow},\ldots,A_k^{\downarrow}$ ЛНЗ, то $k\leq{n}$.
+<p><b>Доказательство:</b><br><br>
+$n\geq\rang{(A_1^{\downarrow},\ldots,A_k^{\downarrow})}=k$.
+<p id="Corollary4.11"><b>Следствие 4.11:</b><br>
+Матрица $A\in{P}_{n,n}$ обратима тогда и только тогда, когда система $A_1^{\downarrow},\ldots,A_n^{\downarrow}$ ЛНЗ.
+<p><b>Доказательство:</b><br><br>
+Так как
+$$A\in(P_{n,n})^*\Leftrightarrow|A|\neq0\Leftrightarrow\rang{A}=n,$$
+то утверждение следует из <a href="./discrete_math4.3.html#Corollary4.9">следствия 4.9</a>.
+<p id="Corollary4.12"><b>Следствие 4.12:</b><br>
+Любые два базиса системы столбцов матрицы $A$ равномощны. Число векторов в базисе системы столбцов матрицы $A$ равно $\rang{A}$.
+<p><b>Доказательство:</b><br><br>
+Пусть $A=(A_1^{\downarrow},\ldots,A_m^{\downarrow})\neq0$, $A_{j_1}^{\downarrow},\ldots,A_{j_s}^{\downarrow}$ - базис системы векторов 
+$A_1^{\downarrow},\ldots,A_m^{\downarrow}$. Обозначим $\{j_{s+1},\ldots,j_m\}:=\overline{1,m}\backslash\{j_1,\ldots,j_s\}$. Тогда 
+$A\csim{A'}:=(A_{j_1}^{\downarrow},\ldots,A_{j_s}^{\downarrow},A_{j_{s+1}}^{\downarrow},\ldots,A_{j_m}^{\downarrow})$. 
+В матрице $A'$ первые $s$ столбцов не нулевые и каждый из них ЛНВЧ предыдущие, а каждый из столбцов 
+$A_{s+1}^{\downarrow},\ldots,A_{j_m}^{\downarrow}$ выражается через первые $s$, тогда
+$$A'\rsim{S}\in{S}(1,\ldots{s})\Rightarrow\rang{A}=\rang{A}'=\rang{S}=s.$$
+<p id="Note4.6"><b>Замечание 4.6:</b><br>
+Следствия 4.9 - 4.12 справедливы так же для векторов сторок. 
+<p id="Definition4.13"><b>Определение 4.13:</b><br>
+Рангом конечной системы столбцов (строк) называется число векторов в ее базисе.
+<p id="Corollary4.13"><b>Следствие 4.13:</b><br>
+Если $A\in{P}_{m,n}$, то $\rang{A}=\rang(A_1^{\downarrow},\ldots,A_n^{\downarrow})=\rang(\vec{A}_1,\ldots,\vec{A}_m)$.
+<p><b>Доказательство:</b><br>
+Следует из <a href="./discrete_math4.3.html#Corollary4.12">следствия 4.12</a>.
+<br><br>
+Подведем итоги раздела.<br>
+Пусть $A_1^{\downarrow},\ldots,A_m^{\downarrow}\in{P}^{(n)}$, $B^{\downarrow}\in{P}^{(n)}$, тогда
+<ol>
+<li> Система $A_1^{\downarrow},\ldots,A_m^{\downarrow}$ ЛНЗ тогда и только тогда, когда ${\rang(A_1^{\downarrow},\ldots,A_m^{\downarrow})=m}$.</li>
+<li> Вектор $B^{\downarrow}$ ЛВЧ систему векторов $A_1^{\downarrow},\ldots,A_m^{\downarrow}$ тогда и только тогда, 
+когда $(A_1^{\downarrow},\ldots,A_m^{\downarrow},B^{\downarrow})\rsim{S}\in{S}(i_1,\ldots,i_r)$, где $r\neq{m}+1$.
+</li>
+<li> Если $(A_1^{\downarrow},\ldots,A_m^{\downarrow},B^{\downarrow})\rsim{S}=(s_{i,j})_{m,n}\in{S}(i_1,\ldots,i_r)$ где $S$ - 
+специально ступенчатая матрица и $r\neq{m}+1$, то $B^{\downarrow}=\sum_{t=1}^rs_{t,m+1}A_{i_t}^{\downarrow}$.
+</li>
+<li> Базис $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ системы столбцов $A_1^{\downarrow},\ldots,A_m^{\downarrow}$ можно найти следующим образом
+<ul>
+<li>$A_{i_1}^{\downarrow}$ - первый ненулевой вектор,</li>
+<li>$A_{i_2}^{\downarrow}$ - первый вектор ЛНВЧ $\{A_{i_1}^{\downarrow}\}$,</li>
+<li>$A_{i_3}^{\downarrow}$ - первый вектор ЛНВЧ $A_{i_1}^{\downarrow},A_{i_2}^{\downarrow}$,</li>
+<li>и т. д.</li>
+</ul>
+<li> Если $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ базис системы столбцов матрицы 
+$A=(A_1^{\downarrow},\ldots,A_m^{\downarrow})$ и $A\rsim{S}\in{S}(i_1,\ldots,i_r)$ где $S$ - специально ступенчатая матрица. 
+Вектор $A_j$ такой, что $i_u\leq{j}&lt;i_{u+1}$, то $A_j=\sum_{t=1}^us_{t,j}A_{i_t}$.
+</li>
+<li> Подсистема $A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow}$ является базисом системы 
+$A_1^{\downarrow},\ldots,A_m^{\downarrow}$ тогда и только тогда, когда 
+$\rang(A_{i_1}^{\downarrow},\ldots,A_{i_r}^{\downarrow})=r=\rang(A_1^{\downarrow},\ldots,A_m^{\downarrow})$.
+</li>
+<li> Для того, чтобы дополнить ЛНЗ подсистему $A_{i_1}^{\downarrow},\ldots,A_{i_t}^{\downarrow}$ до базиса, надо привести матрицу 
+$(A_{i_1}^{\downarrow},\ldots,A_{i_t}^{\downarrow}A_{i_t+1}^{\downarrow},\ldots,A_{i_m}^{\downarrow})$ к ступенчатой матрице 
+$S\in{S}(1,\ldots,t,j_{t+1},\ldots,j_r)$, тогда подсистема 
+$A_{i_1}^{\downarrow},\ldots,A_{i_t}^{\downarrow},A_{j_{t+1}}^{\downarrow},\ldots,A_{j_r}^{\downarrow}$ будет базисом системы 
+$A_1^{\downarrow},\ldots,A_m^{\downarrow}$. 
+</li>
+</ol>
+
+<h4 id="4.4">4.4 Подпространства арифметических пространств.</h4>
+Везде далее в данном разделе $P$ - поле, $L_n\in\{P^n,P^{(n)}\}$.
+<p id="Definition4.14"><b>Определение 4.14:</b><br>
+Не пустое подмножество $K\subset{L}_n$ называется подпространством пространства $L_n$, 
+если для любых $\alpha,\beta\in{K}$ и для любого $c\in{P}$ $\alpha+\beta\in{L}_n$, $c\alpha\in{L}_n$.<br>
+Если $K$ подпространство $L_n$, то пишут $K&lt;L_n$. 
+<p id="Example4.2"><b>Пример 4.2:</b><br>
+<ol>
+<li> $L_n&lt;L_n$, $\{\theta\}&lt;L_n$.</li>
+<li> Если $\alpha_1,\ldots,\alpha_n\in{L}_n$, $K:=\{c_1\alpha_1+\cdots+c_n\alpha_n\mid\forall{i}\in\overline{1,k}(c_i\in{P})\}$, то $K&lt;L_n$.</li>
+</ol>
+В разделе 4.3 речь шла о конечных подмножествах $L_n$ в то время как подпространство пространства $L_n$ может быть бесконечно. 
+Поэтому результаты полученные в разделе 4.3 не применимы на прямую к подпространствам $K&lt;L_n$.
+<p id="Definition4.15"><b>Определение 4.15:</b><br>
+Пусть $K$ подпространство $L_n$ и $K\neq\{\theta\}$, тогда базисом $K$ называется конечная упорядоченная система векторов $T$ из $K$ такая, что  
+<ol>
+<li> система $T$ ЛНЗ,</li>
+<li> для любого $\beta\in{K}$ система $\{T,\beta\}$ ЛЗ.</li>
+</ol>
+Базисом подпространства $\{\theta\}$ называют пустое множество.
+<p id="Theorem4.10"><b>Теорема 4.10:</b><br>
+Пусть $K&lt;L_n$, тогда
+<ol>
+<li> существует базис $K$,</li>
+<li> любые два базиса $K$ равномощны,</li>
+<li> любая ЛНЗ конечная система векторов из $K$ может быть дополнена до базиса.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Если $K=\{\theta\}$, то существует базис $K$ равный $\varnothing$.<br>
+Пусть $K\neq\{\theta\}$, тогда существует $\beta\in{K}$ такой, что $\beta\neq\theta$, 
+то есть существует как минимум одна конечная ЛНЗ система $\{\beta\}\subset{K}$. 
+При этом по <a href="./discrete_math4.3.html#Corollary4.10">следствию 4.10</a> мощность любой конечной ЛНЗ системы из $P^{(n)}$ не превосходит $n$, 
+то есть ограничена, следовательно, среди всех конечных ЛНЗ систем из $K$ можем выбрать систему с максимальным количеством векторов 
+(если их несколько то одну из них). Эта система и будет базисом подпространства $K$.
+</li>
+<li>Пусть $\beta_1,\ldots,\beta_m\in{K}$, $\gamma_1,\ldots,\gamma_s\in{K}$ два базиса подпростраства $K$. 
+Тогда системы $\beta_1,\ldots,\beta_m$ и $\gamma_1,\ldots,\gamma_s$ являются базисами конечной системы векторов 
+$\beta_1,\ldots,\beta_m,\gamma_1,\ldots,\gamma_s$, следовательно, по 
+<a href="./discrete_math4.3.html#Corollary4.12">следствию 4.12</a> системы $\beta_1,\ldots,\beta_m$ и $\gamma_1,\ldots,\gamma_s$ равномощны.
+</li>
+<li> Пусть $\beta_1,\ldots,\beta_m$ конечная ЛНЗ подсистема $K$. По пункту 1 в подпространстве $K$ существует базис 
+$\alpha_1,\ldots,\alpha_k$. Рассмотрим конечную систему $\beta_1,\ldots,\beta_m,\alpha_1,\ldots,\alpha_k$. 
+По <a href="./discrete_math4.3.html#Theorem4.7">теореме 4.7</a> ЛНЗ подсистема $\beta_1,\ldots,\beta_m$ может быть дополнена до базиса конечной системы 
+$\beta_1,\ldots,\beta_m,\alpha_1,\ldots,\alpha_k$. Полученная система $\beta_1,\ldots,\beta_r$ будет базисом подпространства $K$, 
+так как она ЛНЗ и любой вектор системы $\alpha_1,\ldots,\alpha_k$, базиса $K$, ЛВЧ $\beta_1,\ldots,\beta_r$. 
+Тогда любой вектор из $K$ ЛВЧ $\beta_1,\ldots,\beta_r$, действительно, пусть $\gamma\in{K}$, тогда существуют $a_1,\ldots,a_k\in{P}$ такие, что
+$$\gamma=\sum_{i=1}^ka_i\alpha_i=\sum_{i=1}^ka_k\left(\sum_{j=1}^rb_{i,j}\beta_j\right)=
+\sum_{j=1}^r\left(\left(\sum_{i=1}^ka_kb_{i,j}\right)\beta_j\right)$$
+</li>
+</ol>
+<p id="Definition4.16"><b>Определение 4.16:</b><br>
+Размерностью подпространства $K$ пространства $L_n$ называют число векторов в базисе $K$.<br>
+Размерность подпространства $K$ обозначают $\dim{K}$
+<p id="Corollary4.14"><b>Следствие 4.14:</b><br>
+Пусть $\alpha_1,\ldots,\alpha_t\in{K}$ ЛНЗ система, $\dim{K}=m$, тогда $t\leq{m}$. При этом если $t=m$, то $\alpha_1,\ldots,\alpha_t$ - базис $K$.
+<p><b>Доказательство:</b><br><br>
+По теореме 4.10 мощность любой ЛНЗ системы из $K$ меньше либо равна мощности базиса равной $\dim{K}=m$, поэтому $t\leq{m}$.<br>
+Любая ЛНЗ система $T$ мощности $m=\dim{K}$ является базисом, так как если предположить противное, то существует $\beta\in{K}$ такое, 
+что $\{T,\beta\}$ ЛНЗ и $|\{T,\beta\}|=m+1$.  
+<p id="Theorem4.11"><b>Теорема 4.11:</b><br>
+Пусть $|P|=q$, $K&lt;L_n$, $\dim{K}=t>0$, тогда
+<ol>
+<li> $|K|=q^t$,</li>
+<li> число упорядоченных ЛНЗ систем из $s$ векторов подпространства $K$ равно $Q_s=\prod_{i=0}^{s-1}(q^t-q^i)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li> Пусть $\alpha_1,\ldots,\alpha_t$ - базис $K$, 
+$$M:=\{\alpha_1c_1+\cdots+\alpha_tc_t\mid\forall{i}\in\overline{1,t}(c_i\in{P})\}\subset{L}_n.$$ 
+Так как $K<L_n$, то $M\subset{K}$ и так как для любого $\beta\in{K}$ $\beta$ ЛВЧ 
+$\alpha_1,\ldots,\alpha_t$, то $K\subset{M}$, то есть $K=M$.<br>
+Пусть $b_1,\ldots,b_t,c_1,\ldots,c_t\in{P}$ такие, что 
+$$\alpha_1b_1+\cdots+\alpha_tb_t=\alpha_1c_1+\cdots+\alpha_tc_t,$$ 
+тогда $\alpha_1(b_1-c_1)+\dots+\alpha_t(b_t-c_t)=\theta$. Так как система $\alpha_1\ldots,\alpha_t$ ЛНЗ, 
+то такое возможно только при $b_i=c_i$ для любого $i\in\overline{1,t}$. То есть все элементы множества $M$ различны, следовательно $|K|=|M|=q^t$.
+</li>
+<li> Докажем индукцией по $s$.<br>
+<ol type="I">
+<li> При $s=1$ $Q_1$ число ЛНЗ систем состоящих из одного вектора. Так как система состоящая из одного вектора ЛНЗ тогда и только тогда, 
+когда  этот вектор не нулевой, то $Q_1=q^t-1$.
+</li>
+<li> Фиксируем $w\in\overline{1,t-1}$ и докажем, что если $Q_w=\prod_{i=0}^{w-1}(q^t-q^i)$, то $Q_{w+1}=\prod_{i=0}^w(q^t-q^i)$.<br>
+Так как система векторов $\alpha_1,\ldots,\alpha_w,\alpha_{w+1}$ ЛНЗ тогда и только тогда, 
+когда система $\alpha_1,\ldots,\alpha_w$ ЛНЗ и $\alpha_{w+1}$ ЛНВЧ $\alpha_1,\ldots,\alpha_w$, то $Q_{w+1}=Q_w\tau$. Где $\tau$ - 
+число векторов из $K$ ЛНВЧ ЛНЗ систему мощности $w$. Аналогично пункту 1 можно показать, 
+что число векторов ЛВЧ ЛНЗ систему векторов мощности $w$ равно $q^w$, тогда $\tau=|K|-q^{w}=q^t-q^w$. 
+Следовательно, 
+$$Q_{w+1}=Q_w(q^t-q^w)=(q^t-q^w)\prod_{i=0}^{w-1}(q^t-q^i)=\prod_{i=0}^w(q^t-q^i).$$
+</ol>
+</ol>
+<p id="Corollary4.15"><b>Следствие 4.15:</b><br>
+$$|P|=q\Rightarrow|(P_{n,n})^*|=\prod_{i=0}^{n-1}(q^n-q^i).$$
+<p><b>Доказательство:</b><br>
+Так как
+$$A\in(P_{n,n})^*\Leftrightarrow|A|\neq0\Leftrightarrow\rang{A}=n$$
+то система столбцов матрицы $A$ ЛНЗ. Таким образом утверждение следует из теоремы 4.11.
+<p id="Statement4.5"><b>Утверждение 4.5:</b><br>
+$$\forall{A},B\in{P}_{n,n}(\rang(A+B)\leq\rang{A}+\rang{B}).$$
+<p><b>Доказательство:</b><br><br>
+$$
+\rang(A+B)=\rang\{A_1^{\downarrow}+B_1^{\downarrow},\ldots,A_n^{\downarrow}+B_n^{\downarrow}\}\leq
+\rang\{A_1^{\downarrow}+B_1^{\downarrow},\ldots,A_n^{\downarrow}+B_n^{\downarrow},A_1^{\downarrow},\ldots,A_n^{\downarrow}\}=
+\rang(A_1^{\downarrow}+B_1^{\downarrow},\ldots,A_n^{\downarrow}+B_n^{\downarrow},A_1^{\downarrow},\ldots,A_n^{\downarrow})=
+\rang\{A_1^{\downarrow},\ldots,A_n^{\downarrow},B_1^{\downarrow},\ldots,B_n^{\downarrow}\}.
+$$
+Пусть $A_{i_1},\ldots,A_{i_s},B_{j_1},\ldots,B_{j_t}$ - 
+базис системы $A_1^{\downarrow},\ldots,A_n^{\downarrow},B_1^{\downarrow},\ldots,B_n^{\downarrow}$. Так как любая подсистема ЛНЗ системы ЛНЗ, то система 
+$A_{i_1}^{\downarrow},\ldots,A_{i_s}$ ЛНЗ, следовательно, $s\leq\rang\{A_1^{\downarrow},\ldots,A_n^{\downarrow}\}=\rang{A}$. 
+Аналогично показывается, что $t\leq\rang\{B_1^{\downarrow},\ldots,B_n^{\downarrow}\}=\rang{B}$. Таким образом
+$$\rang(A+B)=s+t\leq\rang{A}+\rang{B}.$$
+
+<br><br>
+<a href="discrete_math4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math5.1.html">next</a>
+</body>
+</html>

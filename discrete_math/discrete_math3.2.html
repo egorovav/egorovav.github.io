@@ -1,0 +1,217 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 3.2</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="discrete_math3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.3.html">next</a>
+<br>
+
+<h4 id="3.2">3.2 Определитель матрицы над коммутативным кольцом.</h4>
+Везде далее в этом разделе $R$ - коммутативное кольцо с единицей.<br>
+Для любого $a\in{R}$ $(-1)a:=-a$, $1a:=a$. 
+<p id="Definition3.6"><b>Определение 3.6:</b><br>
+Определителем квадратной матрицы $A=(a_{i,j})_{n\times{n}}$ порядка $n$ над кольцом $R$ называется элемент $|A|\in{R}$ такой, что
+$$|A|:=\sum_{(i_1,\ldots,i_n)\in\mathcal{P}(\overline{1,n})}\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{n,i_n}.$$
+Суммирование в последнем выражении ведется по всем перестановкам (см. <a href="./discrete_math1.html#Definition1.2">определение 1.2</a>) 
+элементов множества $\overline{1,n}$. Таким образом всего слагаемых в сумме $n!$ (см. <a href="discrete_math1.html#Theorem1.2">теорему 1.2</a>).
+Выражение $\delta(i_1,\ldots,i_n)$ обозначает функцию четности (см. <a href="discrete_math1.html#Definition1.4">определение 1.4</a>) 
+перестановки $(i_1,\ldots,i_n)$.
+<p id="Example3.2"><b>Пример 3.2:</b><br>
+Чтобы найти определитель квадратной матрицы порядка 2 $A=\begin{pmatrix}a_{1,1} & b_{1,2} \\ a_{2,1} & a_{2,2}\end{pmatrix}$ 
+выпишем все перестановки множества $\{1,2\}$ и соответствующие им слагаемые<br>
+<table class="solid" align="center">
+<tr><td>№</td><td><b>$(i_1,i_2)$</b></td><td><b>$\delta(i_1,i_2)$</b></td><td><b>$a_{1,i_1}a_{2,i_2}$</b></td></tr>
+<tr><td><b>1</b></td><td>$(1,2)$</td><td>$1$</td><td>$a_{1,1}a_{2,2}$</td></tr>
+<tr><td><b>2</b></td><td>$(2,1)$</td><td>$-1$</td><td>$a_{1,2}a_{2,1}$</td></tr>
+</table>
+<br>
+Таким образом $\displaystyle|A|=\sum_{(i_1,i_2)\in\mathcal{P}(\overline{1,2})}\delta(i_1,i_2)a_{1,i_1}a_{2,i_2}=a_{1,1}a_{2,2}-a_{1,2}a_{2,1}$.
+<p id="Exapmle3.3"><b>Пример 3.3:</b><br>
+Чтобы найти определитель квадратной матрицы порядка 3 $A=(a_{i,j})_{3\times3}$ выпишем все перестановки множества $\{1,2,3\}$ 
+и соответствующие им слагаемые<br>
+<table class="solid" align="center">
+<tr><td>№</td><td><b>$(i_1,i_2,i_3)$</b></td><td><b>$J(i_1,i_2,i_3)$</b></td><td><b>$\delta(i_1,i_2,i_3)$</b></td><td><b>$a_{1,i_1}a_{2,i_2}a_{3,i_3}$</b></td></tr>
+<tr><td><b>1</b></td><td>$(1,2,3)$</td><td>$0$</td><td>$1$</td><td>$a_{1,1}a_{2,2}a_{3,3}$</td></tr>
+<tr><td><b>2</b></td><td>$(1,3,2)$</td><td>$1$</td><td>$-1$</td><td>$a_{1,1}a_{2,3}a_{3,2}$</td></tr>
+<tr><td><b>3</b></td><td>$(2,1,3)$</td><td>$1$</td><td>$-1$</td><td>$a_{1,2}a_{2,1}a_{3,3}$</td></tr>
+<tr><td><b>4</b></td><td>$(2,3,1)$</td><td>$2$</td><td>$1$</td><td>$a_{1,2}a_{2,3}a_{3,1}$</td></tr>
+<tr><td><b>5</b></td><td>$(3,1,2)$</td><td>$2$</td><td>$1$</td><td>$a_{1,3}a_{2,1}a_{3,2}$</td></tr>
+<tr><td><b>6</b></td><td>$(3,2,1)$</td><td>$3$</td><td>$-1$</td><td>$a_{1,3}a_{2,2}a_{3,1}$</td></tr>
+</table>
+<br>
+Таким образом 
+$$|A|=a_{1,1}a_{2,2}a_{3,3}-a_{1,1}a_{2,3}a_{3,2}-a_{1,2}a_{2,1}a_{3,3}+a_{1,2}a_{2,3}a_{3,1}+a_{1,3}a_{2,1}a_{3,2}-a_{1,3}a_{2,2}a_{3,1}.$$
+<p id="Example3.4"><b>Пример 3.4:</b><br>
+Пусть матрица $A=(a_{i,j})_{n\times{n}}$ такая, что для любых $i,j\in\overline{1,n}$ таких, что $j&lt;i$ $a_{i,j}=0$. То есть матрица $A$ такая, 
+что все ее элементы стоящие ниже главной диагонали равны 0.
+$$A=
+\begin{pmatrix}
+a_{1,1} & a_{1,2} & \cdots & a_{1,n-2} & a_{1,n-1} & a_{1,n}\\
+0 & a_{2,2} & \cdots & a_{2,n-2} & a_{2,n-1} & a_{2,n}\\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots\\
+0 & 0 & \cdots & a_{n-2,n-2} & a_{n-2,n-1} & a_{n-2,n}\\
+0 & 0 & \cdots & 0 & a_{n-1,n-1} & a_{n-1,n}\\
+0 & 0 & \cdots & 0 & 0 & a_{n,n}
+\end{pmatrix}$$
+Тогда 
+$$a_{1,i_1}a_{2,i_2}\cdots{a}_{n,i_n}\neq0\Leftrightarrow\begin{cases}a_{1,i_1}\neq0 \\ a_{2,i_2}\neq0 \\ \cdots \\ a_{n-2,i_{n-2}}\neq0 \\ 
+a_{n-1,i_{n-1}}\neq0 \\ a_{n,i_n}\neq0\end{cases}\Leftrightarrow
+\begin{cases}i_1\in\overline{1,n} \\ i_2\in\overline{2,n} \\ \cdots \\ i_{n-2}\in\{n-2,n-1,n\} \\ i_{n-1}\in\{n-1,n\} \\ i_n=n\end{cases}.$$
+Так как $\{i_1,\ldots,i_n\}=\{1,\ldots,n\}$, то для любых $s\neq{t}$ $i_s\neq{i}_t$ тогда из последней системы включений следует цепочка импликаций
+$$i_n=n\Rightarrow{i}_{n-1}=n-1\Rightarrow\cdots\Rightarrow{i}_2=2\Rightarrow{i}_1=1.$$
+Таким образом 
+$$a_{1,i_1}a_{1,i_2}\cdots{a}_{n,i_n}\neq0\Leftrightarrow(i_1,\ldots,i_n)=(1,\ldots,n),$$ 
+следовательно $|A|=\delta(1,\ldots,n)a_{1,1}a_{2,2}\cdots{a}_{n,n}=a_{1,1}a_{2,2}\cdots{a}_{n,n}$.
+<br>
+Везде далее при вычислении определителя выражение $(i_1,\ldots,i_n)\in\mathcal{P}(\overline{1,n})$ под знаком суммы опускается.
+<p id="Statement3.1"><b>Утверждение 3.1: Свойство определителя №1.</b><br>
+Если матрица $B=(b_{i,j})_{n\times{n}}$ получена из матрицы $A=(a_{i,j})_{n\times{n}}$ умножением всех элементов некоторой строки на $r\in{R}$, 
+то $|B|=r|A|$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\vec{B}_k=r\vec{A}_k$, тогда
+$$
+|B|=\sum\delta(i_1,\ldots,i_n)b_{1,i_1}\cdots,b_{k-1,i_{k-1}}b_{k,i_k}b_{k+1,i_{k+1}}\cdots{b}_{n,i_n}=
+\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{k-1,i_{k-1}}ra_{k,i_k}a_{k+1,i_{k+1}}\cdots{a_{n,i_n}}=
+r\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{n,i_n}=r|A|.$$
+<p id="Statement3.2"><b>Утверждение 3.2: Свойство определеителя №2.</b><br>
+Пусть $s$-тая строка матрицы $A=(a_{i,j})_{n\times{n}}$ представима в виде суммы двух строк $\vec{A}_s=\vec{A}'_s+\vec{A}''_s$. 
+Матрица $A'$ получена из матрицы $A$ заменой $s$-той строки на $\vec{A}'_s$. 
+Матрица $A''$ получена из матрицы $A$ заменой $s$-той строки на $\vec{A}''_s$.
+То есть 
+$$A'=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_{s-1} \\ \vec{A}'_s \\ \vec{A}_{s+1} \\ \vdots \\ \vec{A}_n \end{pmatrix},\quad
+A''=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_{s-1} \\ \vec{A}''_s \\ \vec{A}_{s+1} \\ \vdots \\ \vec{A}_n \end{pmatrix}.$$
+Тогда $|A|=|A'|+|A''|$.
+<p><b>Доказательство:</b><br><br>
+Пусть $\vec{A}'_s:=(a'_{s,1},\ldots,a'_{s,n})$, $\vec{A}''_s:=(a''_{s,1},\ldots,a''_{s,n})$, тогда для любого 
+$j\in\overline{1,n}$ $a_{s,j}=a'_{s,j}+a''_{s,j}$. Тогда
+$$
+|A|=\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{s-1,i_{s-1}}a_{s,i_s}a_{s+1,i_{s+1}}\cdots{a}_{n,i_n}=
+\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{s-1,i_{s-1}}(a'_{s,i_s}+a''_{s,i_s})a_{s+1,i_{s+1}}\cdots{a}_{n,i_n}=$$
+$$=\sum\delta(i_1,\ldots,i_n)(a_{1,i_1}\cdots{a}_{s-1,i_{s-1}}a'_{s,i_s}a_{s+1,i_{s+1}}\cdots{a}_{n,i_n}+
+{a}_{1,i_1}\cdots{a}_{s-1,i_{s-1}}a''_{s,i_s}a_{s+1,i_{s+1}}\cdots{a}_{n,i_n})=$$
+$$=\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{s-1,i_{s-1}}a'_{s,i_s}a_{s+1,i_{s+1}}\cdots{a}_{n,i_n}+
+\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{s-1,i_{s-1}}a''_{s,i_s}a_{s+1,i_{s+1}}\cdots{a}_{n,i_n}=|A'|+|A''|.
+$$
+<p id="Statement3.3"><b>Утверждение 3.3: Свойство определителя №3.</b><br>
+Определитель матрицы с двумя равными строками равен нулю.
+<p><b>Доказательство:</b><br><br>
+Пусть $A=(a_{i,j})_{n\times{n}}$ и $\vec{A}_s=\vec{A}_t$, то есть для любого $i\in\overline{1,n}$ $a_{s,i}=a_{t,i}$. Тогда
+$$
+|A|=\sum\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{n,i_n}
+=\sum_{(i_1,\ldots,i_n)\in\mathcal{P}_1}\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a}_{n,i_n}+
+\sum_{(i_1,\dots,i_n)\in\mathcal{P}_2}\delta(i_1,\ldots,i_n)a_{1,i_1}\cdots{a_{n,i_n}},
+$$
+где $\mathcal{P}_1\subset\mathcal{P}(\overline{1,n})$ множество перестановок элементов множества $\overline{1,n}$ таких, 
+что $i_s&lt;i_t$, $\mathcal{P}_2\subset\mathcal{P}(\overline{1,n})$ множество перестановок элементов множества 
+$\overline{1,n}$ таких, что $i_s>i_t$. Зададим отображение $\varphi\colon\mathcal{P}_1\to\mathcal{P}_2$ такое, 
+что $\varphi(i_1,\ldots,i_s,\ldots,i_t,\dots,i_n)=(i_1,\ldots,i_{s-1},i_t,i_{s+1},\ldots,i_{t-1},i_s,i_{t+1},\ldots,i_n)$. 
+Таким образом при отображении $\varphi$ элементы стоящие на местах $s$ и $t$ меняются местами. Отображение $\varphi$ - биекция, 
+оно естественным образом определяет взаимнооднозначное соответствие между слагаемыми двух сумм. 
+При таком соответствии слагаемому из первой суммы
+$$\delta_1:=\delta(i_1,\ldots,i_s,\ldots,i_t,\ldots,i_n)a_{1,i_1}\cdots{a}_{s,i_s}\cdots{a}_{t,i_t}\cdots{a}_{n,i_n}$$ 
+соответствует слагаемое из второй суммы
+$$\delta_2:=\delta(i_1,\ldots,i_t,\ldots,i_s,\ldots,i_n)a_{1,i_1}\cdots{a}_{s,i_t}\cdots{a}_{t,i_s}\cdots{a}_{n,i_n}.$$
+Так как по условию $a_{s,i_t}=a_{t,i_t}$, $a_{s,i_s}=a_{t,i_s}$  и по определению $\delta$-функции 
+$\delta(i_1,\ldots,i_s,\ldots,i_t,\ldots,i_n)=-\delta(i_1,\dots,i_t,\ldots,i_s,\ldots,i_n)$, то $\delta_1=-\delta_2$. 
+Таким образом значение определителя равно 0.
+<p id="Statement3.4"><b>Утверждение 3.4: Свойство определителя №4.</b><br>
+Если к какой либо строке матрицы прибавить другую строку умноженную на элемент кольца, то определитель матрицы не изменится.
+<p><b>Доказательство:</b><br><br>
+Пусть матрица $B$ получена из матрицы $A$ прибавлением к $s$-той строке $t$-той строки умноженной на $r$, то есть
+$$A=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n\end{pmatrix},\quad
+{B}=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_s+r\vec{A}_t \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n\end{pmatrix}.$$
+Тогда по свойствам <a href="./discrete_math3.2.html#Statement3.2">2</a>, <a href="./discrete_math3.2.html#Statement3.1">1</a> и 
+<a href="./discrete_math3.2.html#Statement3.3">3</a> определителя 
+$$|B|=\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n\end{vmatrix} + 
+\begin{vmatrix}\vec{A}_1 \\ \vdots \\ r\vec{A}_t \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n\end{vmatrix}=
+|A|+r\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n\end{vmatrix}=|A|$$
+<p id="Statement3.5"><b>Утверждение 3.5: Свойство определителя №5.</b><br>
+Если матрица $B$ получена из матрицы $A$ перестановкой двух строк, то $|B|=-|A|$.
+<p><b>Доказательство:</b><br><br>
+Пусть 
+$$A=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_n \end{pmatrix},\quad
+{B}=\begin{pmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_n \end{pmatrix}.$$
+Тогда применив три раза свойство <a href="./discrete_math3.2.html#Statement3.4">4</a> и один раз свойство 
+<a href="./discrete_math3.2.html#Statement3.1">1</a> определителя получим
+$$|B|=\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_t \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_n\end{vmatrix}=
+\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_t+\vec{A}_s \\ \vdots \\ \vec{A}_s \\ \vdots \\ \vec{A}_n \end{vmatrix}=
+\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_t+\vec{A}_s \\ \vdots \\ -\vec{A}_t \\ \vdots \\ \vec{A}_n \end{vmatrix}=
+\begin{vmatrix}\vec{A}_1 \\ \vdots \\ \vec{A}_s \\ \vdots \\ -\vec{A}_t \\ \vdots \\ \vec{A}_n\end{vmatrix}=-|A|$$
+<p id="Statement3.6"><b>Утверждение 3.6: Свойство определителя №6.</b><br>
+Если матрица $B$ получена из матрицы $A$ перестановкой произвольного числа строк, 
+то определитель матрицы $B$ равен определителю матрицы $A$ умноженному на четность перестановки.
+<p><b>Доказательство:</b><br><br>
+Пусть 
+$$A=\begin{pmatrix}\vec{A}_1 \\ \vec{A}_2 \\ \vdots \\ \vec{A}_n \end{pmatrix},\quad{B}=
+\begin{pmatrix}\vec{A}_{i_1} \\ \vec{A}_{i_2} \\ \vdots \\ \vec{A}_{i_n}\end{pmatrix}.$$
+Пусть перестановка $(1,\ldots,n)$ получается из перестановки $(i_1,\ldots,i_n)$ с помощью $t$ транспозиций. 
+Тогда матрица $B$ получается из матрицы $A$ с помощью $t$ перестановок двух строк и по <a href="./discrete_math1.html#Theorem1.3">теореме 1.3</a> 
+$$\delta(i_1,\ldots,i_n)=(-1)^t\delta(1,\ldots,n)=(-1)^t$$
+И так как при каждой перестановке двух строк определитель меняет знак, то $|B|=(-1)^t|A|=\delta(i_1,\ldots,i_n)|A|$.
+<p id="Statement3.7"><b>Утверждение 3.7: Свойство определителя №7.</b><br>
+$$\forall{A}\in{R}_{n,n}(|A^T|=|A|).$$
+<p><b>Доказательство:</b><br><br>
+Пусть $A=(a_{i,j})_{n\times{n}}$, $A^T=(b_{i,j})_{n\times{n}}$, тогда для любых $i,j\in\overline{1,n}$ $b_{i,j}=a_{j,i}$ и
+$$|A^T|=\sum\delta(i_1,\ldots,i_n)b_{1,i_1}\cdots{b}_{n,i_n}=\sum\delta(i_1,\ldots,i_n)a_{i_1,1}\cdots{a}_{i_n,n}.$$
+Рассмотрим произведение $a_{i_1,1}\cdots{a}_{i_n,n}$. Так как $\{i_1,\ldots,i_n\}=\{1,\ldots,n\}$, то существует перестановка $(j_1,\ldots,j_n)$ такая, 
+что $a_{i_1,1}\cdots{a}_{i_n,n}=a_{1,j_1}\cdots{a}_{n,j_n}$. При этом таблица 
+$\begin{pmatrix}1, & \ldots, & n \\ j_1, & \ldots, & j_n\end{pmatrix}$ получается из таблицы 
+$\begin{pmatrix}i_1, & \ldots, & i_n \\ 1, & \ldots, & n\end{pmatrix}$ перестановкой столбцов, тогда по утверждению 1.1 
+$\delta(i_1,\ldots,i_n)=\delta(j_1,\ldots,j_n)$. Таким образом 
+$$|A^T|=\sum_{(j_1,\ldots,j_n)\in{P}}\delta(j_1,\ldots,j_n)a_{1,j_1}\cdots{a}_{n,j_n},$$
+где $P\subset\mathcal{P}(\overline{1,n})$. Осталось проверить нет ли в сумме одинаковых слагаемых. Предположим, 
+что существуют две перестановки $(i_1,\ldots,i_n)$ и $(i'_1,\ldots,i'_n)$ такие, что упорядочивание чисел первой строки в таблицах 
+$\begin{pmatrix}i_1, & \ldots, & i_n \\ 1, & \ldots, & n\end{pmatrix}$, $\begin{pmatrix}i'_1, & \ldots, & i'_n \\ 1, & \ldots, & n\end{pmatrix}$ 
+дают одну и ту же таблицу $\begin{pmatrix}1, & \ldots, & n \\ j_1, & \ldots, & j_n\end{pmatrix}$. Зафиксируем $k\in\overline{1,n}$, 
+тогда в последней таблице под числом $i_k$ стоит число $k$ и под числом $i'_k$ тоже стоит число $k$, 
+но во второй строке таблицы число $k$ встречается только один раз, следовательно, $i_k=i'_k$.
+Тогда в силу произвола выбора $k\in\overline{1,n}$ $(i_1,\ldots,i_n)=(i'_1,\ldots,i'_n)$. Таким образом $P=\mathcal{P}(\overline{1,n})$
+<p id=Corollary3.2><b>Следствие 3.2:</b><br>
+Свойства 1-6 определителя матрицы справедливы и для столбцов.
+<p><b>Доказательство:</b><br><br>
+Утверждение спарведливо так как для любого $i\in\overline{1,n}$ $A_i^{\downarrow}=\overrightarrow{(A^T)}_i$ и $|A|=|A^T|$.
+<p id="Theorem3.6"><b>Теорема 3.6:</b><br>
+$$\forall{A},B\in{R}_{n,n}(|AB|=|A||B|).$$
+<p><b>Доказательство:</b><br><br>
+Пусть $A=(a_{i,j})_{n\times{n}}$, $B=(b_{i,j})_{n\times{n}}$, $C=(c_{i,j})_{n\times{n}}:=AB$, тогда для любых 
+$i,j\in\overline{1,n}$ $c_{i,j}=\vec{A}_iB_j^{\downarrow}$, следовательно
+$$
+\vec{C}_i=\left(\vec{A}_iB_1^{\downarrow},\vec{A}_iB_2^{\downarrow},\ldots,\vec{A}_iB_n^{\downarrow}\right)=
+\left(\sum_{s=1}^na_{i,s}b_{s,1},\sum_{s=1}^na_{i,s}b_{s,2},\ldots,\sum_{s=1}^na_{i,s}b_{s,n}\right)=
+\sum_{s=1}^n(a_{i,s}b_{s,1},a_{i,s}b_{s,2},\ldots,a_{i,s}b_{s,n})=\sum_{s=1}^na_{i,s}(b_{s,1},\ldots,b_{s,n})=\sum_{s=1}^na_{i,s}\vec{B}_s.
+$$
+Таким образом
+$$|C|=\begin{vmatrix}\vec{C}_1 \\ \vdots \\ \vec{C}_i \\ \vdots \\ \vec{C}_n \end{vmatrix}=
+\begin{vmatrix}\sum_{j_1=1}^{n}a_{i,j_1}\vec{B}_{j_1} \\ \vdots \\ \sum_{j_i=1}^{n}a_{i,j_i}\vec{B}_{j_i} \\ \vdots \\ \sum_{j_n=1}^na_{n,j_n}\vec{B}_{j_n}\end{vmatrix}.$$
+Применив к последнему определителю $n$ раз свойство 2 и $n$ раз свойство 1 получим
+$$
+|C|=\sum_{j_1=1}^n\begin{vmatrix}a_{1,j_1}\vec{B}_{j_1} \\ \vdots \\ \sum_{j_i=1}^na_{i,j_i}\vec{B}_{j_i} \\ \vdots \\ 
+\sum_{j_n=1}^na_{n,j_n}\vec{B}_{j_n}\end{vmatrix}=
+\sum_{j_1=1}^n\sum_{j_2=1}^n\cdots\sum_{j_n=1}^n\begin{vmatrix}a_{1,j_1}\vec{B}_{j_1} \\ \vdots \\ a_{i,j_i}\vec{B}_{j_i} \\ \vdots 
+\\ a_{n,j_n}\vec{B}_{j_n}\end{vmatrix}=\\=
+\sum_{j_1=1}^n\sum_{j_2=1}^n\cdots\sum_{j_n=1}^na_{1,j_1}\cdots{a}_{n,j_n}\begin{vmatrix}\vec{B}_{j_1} \\ \vdots \\ \vec{B}_{j_i} \\ \vdots 
+\\ \vec{B}_{j_n}\end{vmatrix}
+$$
+В последнем выражении суммирование ведется по всем возможным наборам $(j_1,\ldots,j_n)\in(\overline{1,n})^n$, однако, если для некоторых $k,s\in\overline{1,n}$ $j_k=j_s$, то определитель стоящий в соответствующем слагаемом берется от матрицы содержащей две одинаковые строки $\vec{B}_{j_k}$ и $\vec{B}_{j_s}$. Следовательно, по свойству 3 определитель в таком слагаемом равен нулю. Поэтому суммирование можно производить только по таким наборам $(j_1,\ldots,j_n)\in(\overline{1,n})^n$, в которых нет одинаковых чисел, то есть по множеству всех перестановок элементов множества $\overline{1,n}$. Тогда по свойству 6 определителя
+$$
+|C|=\sum_{(j_1,\ldots,j_n)\in\mathcal{P}(\overline{1,n})}a_{1,j_1}\cdots{a}_{n,j_n}\begin{vmatrix}\vec{B}_{j_1} \\ \vdots \\ \vec{B}_{j_i} \\ \vdots 
+\\ \vec{B}_{j_n}\end{vmatrix}=
+\sum_{(j_1,\ldots,j_n)\in\mathcal{P}(\overline{1,n})}(a_{1,j_1}\cdots{a}_{n,j_n}\delta(j_1,\ldots,j_n)|B|)=
+|B|\sum_{(j_1,\ldots,j_n)\in\mathcal{P}(\overline{1,n})}\delta(j_1,\ldots,j_n)a_{1,j_1}\cdots{a}_{n,j_n}=|B||A|=|A||B|.
+$$
+
+<br><br>
+<a href="discrete_math3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math3.3.html">next</a>
+</body>
+</html>

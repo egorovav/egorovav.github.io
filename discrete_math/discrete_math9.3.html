@@ -1,0 +1,308 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Discrete math 9.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: 
+{extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {fonts: "STIXGeneral, 'Arial Unicode MS'"}, 
+Macros: { 
+	rsim: "{\\stackrel{row}{\\sim}}", 
+	csim: "{\\stackrel{col}{\\sim}}",
+	rang: "{\\operatorname{rang}}",
+	lcm:  "{\\operatorname{lcm}}",
+	sgn:  "{\\operatorname{sgn}}",
+	mob:  "{\\operatorname{mob}}"
+}
+}
+});
+</script>
+<!--script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"-->
+<script type="text/javascript" async src="../../../../MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<a href="discrete_math9.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.4.html">next</a>
+<br>
+<h4 id="9.3">9.3 Группы подстановок.</h4>
+<p id="Definition9.10"><b>Определение 9.10:</b><br>
+Пусть множество $G\subset{S}(\Omega)$ такое, что группоид $(G;\cdot)$ является группой. Тогда говорят, 
+что $(G;\cdot)$ является группой подстановок на множестве $\Omega$. 
+<p id="Theorem9.8"><b>Теорема 9.8: Теорема Кэли.</b><br>
+Любая группа определенная на множестве $G$ изоморфна некоторой группе подстановок на множестве $G$.
+<p><b>Доказательство:</b><br><br>
+Для любого $g\in{G}$ определим отображение $\hat{g}:G\to{G}$ такое, что для любого $x\in{G}$ $\hat{g}(x)=xg$. 
+Для любого $g\in{G}$ отображение $\hat{g}$ сюръективно, так как
+$$\forall{y}\in{G}\,\exists{y}g^{-1}\in{G}:\hat{g}(yg^{-1})=(yg^{-1})g=y(gg^{-1})=y.$$
+Для любого $g\in{G}$ отображение $\hat{g}$ инъективно, так как
+$$
+\hat{g}(x)=\hat{g}(y)\Rightarrow{x}g=yg\Rightarrow(xg)g^{-1}=(yg)g^{-1}\Rightarrow{x}(gg^{-1})=y(gg^{-1})\Rightarrow{x}=y.
+$$
+Таким образом для любого $g\in{G}$ $\hat{g}\in{S}(G)$.<br>
+Рассмотрим отображение $\psi:G\to{S}(G)$ такое, что для любого $g\in{G}$ ${\psi(g)=\hat{g}}$. Обображение $\psi$ инъективно так как
+$$
+\psi(g)=\psi(h)\Rightarrow\hat{g}=\hat{h}\Rightarrow\forall{x}\in{G}(xg=xh)\Rightarrow{e}g=eh\Rightarrow{g}=h.
+$$
+Для любого $x\in{G}$
+$$
+\psi(gh)(x)=\widehat{gh}=x(gh)=(xg)h=\hat{h}(xg)=\hat{h}(\hat{g}(x))=\\=(\hat{g}\hat{h})(x)=(\psi(g)\psi(h))(x),
+$$
+таким образом, отображение $\psi$ является мономорфизмом, а отображение $\psi':G\to\psi(G)$ такое, 
+что для любого $x\in{G}$ $\psi'(x)=\psi(x)$ является изоморфизмом группоидов $(G;\cdot)$ и $(\psi(G);\cdot)$. 
+При этом по п.4 <a href="./discrete_math9.1.html#Corollary9.1">следствия 9.1</a> группоид $(\psi(G);\cdot)$ является группой, 
+то есть группой подстановок, так как $\psi(G)\subset{S}(G)$.
+<p id="Corollary9.3"><b>Следствие 9.3:</b><br>
+Число попарно не изоморфных групп порядка $n$ равно числу числу попарно не изоморфных групп подстановок порядка $n$ на множестве $\overline{1,n}$.
+<p><b>Доказательство:</b><br><br>
+Пусть $G=\{g_1,\ldots,g_n\}$ - множество мощности $n$, $(G;\cdot)$ - группа порядка $n$. Определим отображение $\varphi:G\to\overline{1,n}$ такое, 
+что $\varphi(g_i)=i$, определим операцию $*$ на множестве $\overline{1,n}$ такую, что
+$$\forall{i},j\in\overline{1,n}(i*j=k\Leftrightarrow{g}_ig_j=g_k).$$
+Оборажение $\varphi$ является биективным и
+$$\forall{g_i,g_j}\in{G}(\exists{g}_k\in{G}:\varphi(g_ig_j)=\varphi(g_k)=k=i*j=\varphi(g_i)*\varphi(g_j)),$$
+то есть $\varphi$ - изоморфизм группоидов $(G;\cdot)$ и $(\overline{1,n};*)$. Следовательно, 
+по теореме 9.8 существует группа подстановок на множестве {1,n} порядка $n$ изоморфная $(G;\cdot)$. 
+Зафиксируем множество попарно не изоморфных групп порядка $n$ (это множество конечно с силу конечного числа таблиц Кэли размера $n\times{n}$) 
+максимальной мощности. Тогда в силу транзитивности отношения изоморфности (<a href="./discrete_math9.1.html#Theorem9.2">теорема 9.2</a>) 
+существует множество попарно не изоморфных групп подстановок на множестве $\overline{1,n}$ мощности $n$. Верно и обратное, 
+если существует множество попарно не изоморфных групп подстановок на множестве $\overline{1,n}$, 
+то существует множество попрно не изоморфных групп порядка $n$ такой же мощности.
+<br><br>
+Пусть $\Omega=\{\alpha_1,\ldots,\alpha_n\}$ множество мощности $n$. Подстановку $g\in{S}(\Omega)$ будем обозначать как
+$$g:=\begin{pmatrix}\alpha_1,&\ldots,&\alpha_n\\g(\alpha_1),&\ldots,&g(\alpha_n)\end{pmatrix}:=\left(\left.\begin{matrix}\alpha_i \\ 
+g(\alpha_i)\end{matrix}\right|i\in\overline{1,n}\right):=\left(\left.\begin{matrix}\alpha \\ g(\alpha)\end{matrix}\right|\alpha\in\Omega\right)$$
+<p id="Definition9.11"><b>Определение 9.11:</b><br>
+Элемент $\alpha\in\Omega$ называется мобильным элементном подстановки $g\in{S}(\Omega)$, если $g(\alpha)\neq\alpha$.<br>
+Элемент $\alpha\in\Omega$ называестя неподвижным элементом подстановки $g\in{S}(\Omega)$, если $g(\alpha)=\alpha$.<br>
+Множество мобильных элементов подстановки $g\in{S}(\Omega)$ обозначают как $\mob{g}:=\{\alpha\in\Omega\mid{g}(\alpha)\neq\alpha\}$.<br>
+Подстановки $g,h\in{S}(\Omega)$ называются независимыми, если $\mob{g}\cap\mob{h}=\varnothing$.  
+<p id="Example9.7"><b>Пример 9.7:</b><br>
+Множество мобильных элементов тождественной подстановки пусто, следовательно, она независима с любой другой подстановкой.
+<p id="Task9.1"><b>Задача 9.1:</b><br>
+<ol>
+<li>$\alpha\in\mob{g}\Leftrightarrow{g}(\alpha)\in\mob{g}$,</li>
+<li>$\mob{g}=\mob{g^{-1}}$,</li>
+<li>$\mob{g}=\varnothing\Leftrightarrow{g}=\varepsilon$</li>
+</ol>
+Решение:<br>
+<ol>
+<li>В силу биективности отображения $g$
+ $$(\alpha=g(\alpha)\Leftrightarrow{g}(\alpha)=g(g(\alpha)))\Rightarrow(\alpha\notin\mob{g}\Leftrightarrow{g}(\alpha)\notin\mob{g}).$$
+ Где последнее утверждение  эквивалентно доказываемому.
+</li>
+<li>В силу биективности отображение $g$
+ $$\alpha\in\mob{g}\Leftrightarrow\alpha\neq{g}(\alpha)\Leftrightarrow{g}^{-1}(\alpha)\neq\alpha\Leftrightarrow\alpha\in\mob{g^{-1}}.$$
+</li>
+<li>$\mob{g}=\varnothing\Leftrightarrow\forall\alpha\in\Omega(\alpha=g(\alpha))\Leftrightarrow{g}=\varepsilon.$</li>
+</ol>
+<p id="Task9.2"><b>Задача 9.2:</b><br>
+Пусть $g,h$ - независимые подстановки из $S(\Omega)$. Доказать, что
+<ol>
+<li>$(\alpha\in\mob{g}\,\wedge\,\beta\in\mob{h})\Rightarrow((gh)(\alpha)=g(\alpha)\,\wedge\,(gh)(\beta)=h(\beta))$,</li>
+<li>$\mob{(gh)}=\mob{g}\cup\mob{h}$,</li>
+<li>$gh=hg$,</li>
+<li>$gh=\varepsilon\Leftrightarrow{g}=h=\varepsilon$,</li>
+<li>для любых $k,s\in\mathbb{N}_0$ подстановки $g^{k},h^{s}$ независимы.</li>
+</ol>
+Решение:<br>
+<ol>
+<li>Докажем, что $(gh)(\alpha)=g(\alpha)$ 
+$$\alpha\in\mob{g}\Rightarrow(g(\alpha)\in\mob{g}\,\wedge\,g(\alpha)\notin\mob{h})\Rightarrow(gh)(\alpha)=h(g(\alpha))=g(\alpha).$$
+Аналогично доказывается, что $(gh)(\beta)=h(\beta)$.
+<li>Из пункта 1 следует
+$$
+\forall\alpha\in\Omega((\alpha\in\mob{g}\,\vee\,\alpha\in\mob{h})\Rightarrow\alpha\in\mob{(gh)})\Rightarrow(\mob{g}\cup\mob{h})\subset\mob{(gh)}.
+$$
+Обратное включение докажем от противного. Если элемент $\alpha$ неподвижен и для $g$ и для $h$, по он, очевидно, неподвижен и для $gh$.
+<li><br>
+$\Rightarrow)$ Докажем от противного. Предположим, без ограничения общности, что $g\neq\varepsilon$, то есть, что существует $\alpha\in\mob{g}$. 
+Тогда по пункту 2 $\alpha\in\mob{(gh)}$, то есть $gh\neq\varepsilon$.<br>
+$\Leftarrow)$ Очевидно.
+<li><br>
+$\Rightarrow)$ По определению независимых подстановок $\mob{g}\cap\mob{h}=\varnothing$, следовательно,
+$$
+(g=h\,\wedge\,\mob{g}\cap\mob{h}=\varnothing)\Rightarrow(\mob{g}=\mob{h}\,\wedge\,\mob{g}\cap\mob{h}=\varnothing)\Rightarrow
+\mob{g}=\mob{h}=\varnothing\Rightarrow{g}=h=\varepsilon.
+$$
+$\Leftarrow)$ Очевидно.
+<li>Очевидно, что для любых $k\in\mathbb{N}_0$ и $g\in{S}(\Omega)$, если $\alpha\in\Omega$ неподвижен в $g$, то он неподвижен в $g^{k}$, 
+следовательно, $\mob{g^k}\subset\mob{g}$. Тогда
+$$
+\forall{k},s\in\mathbb{N}_0(\mob{g^k}\cap\mob{h^s}\subset\mob{g}\cap\mob{h}=\varnothing)\Rightarrow
+\forall{k},s\in\mathbb{N}_0(\mob{g^k}\cap\mob{h^s}=\varnothing),
+$$
+то есть подстановки $g^k$ и $h^s$ независимы.
+</ol>
+<p id="Definition9.12"><b>Определение 9.12:</b><br>
+Подстановка $g\in{S}(\Omega)$ называется циклом длины ${k\in\mathbb{N}}$, если $g\neq\varepsilon$ и 
+$$\exists(\beta_1,\ldots,\beta_n)\in\mathcal{P}(\Omega):g=
+\begin{pmatrix}
+\beta_1,&\beta_2,&\ldots,&\beta_{k-1},&\beta_k&,\beta_{k+1},&\ldots,&\beta_n \\ 
+\beta_2,&\beta_3,&\ldots,&\beta_k,&\beta_1,&\beta_{k+1},&\ldots,&\beta_n
+\end{pmatrix}.$$
+При этом упорядоченный набор $(\beta_1,\beta_2,\ldots,\beta_n)$ как и любой его циклический сдвиг называется цикловой формной подстановки $g$.
+<p id="Theorem9.9"><b>Теорема 9.9:</b><br>
+Любая не тождественная подстановка $g\in{S}(\Omega)$ либо цикл, либо раскладывается в произведение независимых циклов, 
+при этом такое разложение единственно с точностью до перестановки сомножителей.
+<p><b>Доказательство:</b><br><br>
+Докажем индукцией по $m=|\mob{g}|$ существование разложения подстановки $g$ в произведение независимых циклов. 
+<ol type="I">
+<li>При $m=2$ $\mob{b}=\{\beta_1,\beta_2\}$, тогда 
+$$g(x)=\begin{cases}x=\beta_1,&g(x)=\beta_2 \\ x=\beta_2,&g(x)=\beta_1 \\ x\notin\{\beta_1,\beta_2\},&g(x)=x \end{cases}.$$
+Действительно, если, например, $g(\beta_1)=\beta\notin\{\beta_1,\beta_2\}$, то по п. 1 
+<a href="./discrete_math9.3.html#Task9.1">задачи 9.1</a> $\beta\in\mob{g}$. 
+Таким образом $g(x)=(\beta_1,\beta_2)$ - цикл длины 2.
+</li>
+<li>Для любого $t&gt;2$ покажем, что если утверждение верно при $m\in\overline{2,t}$, то оно верно и при $m=t+1$.<br>
+Так как $g\neq\varepsilon$, то существует $\alpha\in\mob{g}$. Рассмотрим последовательность 
+$$\alpha,g(\alpha),\ldots,g^i(\alpha),\ldots\quad(1)$$
+Так как $|\Omega|<\infty$, то существует $k\in\mathbb{N}$ такое, что $\alpha,g(\alpha),\ldots,g^{k-1}(\alpha)$ попарно различны и 
+cуществует $s\in\overline{0,k-1}$ такое, что $g^k=g^s$. Предположим, что $s&gt;0$, тогда 
+$$g^k(\alpha)=g^s(\alpha)\Rightarrow{g}^{-1}(g^k(\alpha))=g^{-1}(g^s(\alpha))\Rightarrow{g}^{k-1}(\alpha)=g^{s-1}(\alpha),$$
+что противоречит утверждению о попарной различности элементов $\alpha,g(\alpha),\ldots,g^{k-1}(\alpha)$ 
+</li>
+</ol>
+Таким образом последовательность $(1)$ имеет вид 
+$$\alpha,g(\alpha),\ldots,g^{k-1}(\alpha),\alpha,\ldots\quad(2)$$
+Обозначим $\Delta:=\{\alpha,g(\alpha),\ldots,g^{k-1}(\alpha)\}$ и $h_1:=(\alpha,g(\alpha),\ldots,g^{k-1}(\alpha))\in{S}(\Omega)$ - 
+цикл длинны $k$, тогда
+$$
+\begin{cases}\beta\in\Delta\Rightarrow{h}_1(\beta)=g(\beta) \\ \beta\notin\Delta\Rightarrow{h}_1(\beta)=
+\beta\end{cases}\Rightarrow(h_1^{-1}g)(\beta)=\begin{cases}\beta,& \beta\in\Delta \\ g(\beta),&\beta\notin\Delta.\end{cases}
+$$
+Следовательно, $\mob{(h_1^{-1}g)}=\mob{g}\backslash\Delta$.<br>
+Если $\mob{(h_1^{-1}g)}=\varnothing$, то $h_1^{-1}g=\varepsilon$, следовательно, $g=h_1$. То есть $g$ - цикл длинны $k$.<br>
+Если $\mob{(h_1^{-1}g)}\neq\varnothing$, тогда, так как $\Delta\subset\mob{g}$, то $2\leq|mob{(h_1^{-1}g)}|=|\mob{g}|-|\Delta|$. 
+Следовательно, по предположению индукции существуют попарно независимые циклы 
+$h_2,h_3,\ldots,h_s\in{S}(\Omega)$ такие, что $h_1^{-1}g=h_2,h_3,\ldots,h_s$, тогда $g=h_1,\ldots,h_s$. Осталось доказать, 
+что для любого $i\in\overline{2,s}$ циклы $h_1$ и $h_i$ независимы. Действительно, так как для любых 
+$i,j\in\overline{2,s}$ циклы $h_i$, $h_j$ независимы, то по п. 2 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a>
+$$
+\mob{g}\backslash\Delta=\mob{(h_1^{-1}g)}=\bigcup_{j=2}^s\mob{h_j}\Rightarrow\Delta\cap\left(\bigcup_{j=2}^s\mob{h_j}\right)=\varnothing\Rightarrow
+\forall{i}\in\overline{2,s}(\Delta\cap\mob{h_i}=\varnothing).
+$$
+Так как $h_1=(\alpha,g(\alpha),\ldots,g^{k-1}(\alpha))$, то $\mob{h_1}=\Delta$, то есть для любого $i\in\overline{2,s}$ 
+$\mob{h_1}\cap\mob{h_i}=\varnothing$. Таким образом существование разбиения доказано, докажем от противного его единственность.<br>
+Предположим, что существуют два разложения $h_1\cdots{h}_s=f_1\cdots{f}_t$ подстановки $g\in{S}(\Omega)$ в произведение независимых циклов. Тогда
+$$\mob{g}=\bigcup_{i-1}^s\mob{h}_i=\bigcup_{j=1}^t\mob{f_j}.$$
+Так как $g\neq\varepsilon$, то существует $\alpha\in\mob{g}$, тогда существуют $\mu\in\overline{1,s},\eta\in\overline{1,t}$ такие, 
+что $\alpha\in\mob{h_{\mu}}$, $\alpha\in\mob{g_{\eta}}$. Так как по п. 3 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a>
+$$\forall{i},j\in\overline{1,s}(i\neq{j}\Rightarrow{h}_ih_j=h_jh_i),$$
+$$\forall{i},j\in\overline{1,t}(i\neq{j}\Rightarrow{f}_if_j=f_jf_i),$$
+то можем переставить множители в разложениях так чтобы циклы $h_{\mu}$, $f_{\eta}$ встали на первые места. 
+То есть далее без ограничения общности будем считать, что $\mu=\eta=1$. Покажем, что $f_1=h_1$, действительно по п.1 
+<a href="./discrete_math9.3.html#Task9.1">задачи 9.1</a>, п.1 <a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a>
+$$
+(\alpha\in\mob{h_1}\,\wedge\,\alpha\in\mob{f_1})\Rightarrow{h}_1(\alpha)=g(\alpha)=f_1(\alpha)\in\mob{h_1}\cap\mob{f_1}\Rightarrow
+{h}_1^2(\alpha)=h_1(h_1(\alpha))=h_1(g(\alpha))=g(g(\alpha))=f_1(g(\alpha))=f_1(f_1(\alpha))=f_1^2(\alpha).
+$$
+Таким образом, понятно, что 
+$$\forall{j}\in\mathbb{N}(h_1^j(\alpha)=f_1^j(\alpha)).$$
+Так как $h_1$, $f_1$ - циклы и $\alpha\in\mob{h_1}$, $\alpha\in\mob{f_1}$, то
+$$\exists{k}\in\mathbb{N}:h_1=(\alpha,h_1(\alpha),\ldots,h_1^{k-1}(\alpha)),$$
+$$\exists{u}\in\mathbb{N}:f_1=(\alpha,f_1(\alpha),\ldots,f_1^{u-1}(\alpha)).$$
+Где $k$ и $u$ наименьшие натуральные такие, что $h_1^k(\alpha)=\alpha$, $f_1^u(\alpha)=\alpha$. Но по доказанному
+$$\forall{j}\in\mathbb{N}(h_1^j=\alpha\Leftrightarrow{f}_1^j=\alpha),$$
+следовательно, $k=u$, то есть $h_1=f_1$. Докажем индукцией по $s+t$, что разложения $g=h_1\cdots{h}_s=f_1\cdots{f}_s$ одинаковы с точностью до перестановки множителей.
+<ol type="I">
+<li>При $s+t=2$ $s=t=1$ - доказано.</li>
+<li>Для любого $v\geq2$ докажем, что если утверждение верно для любого $s+t\in\overline{2,v}$, то оно верно при $s+t=v+1$.<br>
+Если $s=1$ и $t&gt;1$, то $f_2f_3\cdots{f}_t=h_1f_1^{-1}=\varepsilon$, тогда по п. 4 
+<a href="./discrete_math9.3.html#Task9.2">задачи 9.2</a> для любого $j\in\overline{2,t}$ $f_j=\varepsilon$, 
+чего не может быть так как $f_j$ - цикл. Таким образом, если $s=1$, то $t=1$. Аналогично, если $t=1$, то $s=1$. Таким образом, 
+осталось рассмотреть случай $s&gt;1$, $t&gt;1$. Рассмотрим подстановку $g_1:=h_2h_3\cdots{h}_s=f_2f_3\cdots{f}_s$. 
+Так как $(t-1)+(s-1)&lt;s+t$, то по предположению индукции $s-1=t-1$ и 
+$$
+\exists(i_2,i_3,\ldots,i_s)\in\mathcal{P}(\overline{2,s}):\forall{j}\in\overline{2,s}(h_j=f_{i_j})\Rightarrow\\
+\exists(1,i_2,i_3,\ldots,i_s)\in\mathcal{P}(\overline{1,s}):\forall{j}\in\overline{1,s}(h_j=h_{i_j}).
+$$
+</li>
+</ol>
+<p id="Example9.8"><b>Пример 9.8:</b><br>
+$$g=\begin{pmatrix}0&1&2&3&4&5&6&7&8&9 \\ 1&4&9&8&6&2&5&3&7&0\end{pmatrix}=(0,1,4,6,5,2,9)(3,8,7)$$
+<p id="Definition9.13"><b>Определение 9.13:</b><br>
+Транспозицией называется цикл длины два.
+<p id="Corollary9.4"><b>Следствие 9.4:</b><br>
+Пусть $2\leq|\Omega|<\infty$, $g\in{S}(\Omega)$, тогда подстановка $g$ представима в виде произведения транспозиций.  
+<p><b>Доказательство:</b><br><br>
+Если $g=\varepsilon$, то для любых $\alpha_1,\alpha_2\in\Omega$ $g=(\alpha_1,\alpha_2)(\alpha_1,\alpha_2)$.<br>
+Если $g\neq\varepsilon$, то по теореме 9.9 подстановка $g$ представима в виде произведения циклов, значит достаточно доказать, 
+что любой цикл представим в виде произведения транспозиций. Докажем индукцией по $n$, что 
+$(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\alpha_2)\cdots(\alpha_1,\alpha_n)$. 
+<ol>
+<li>При $n=2$ очевидно.</li>
+<li>Для любого $k\geq2$ докажем, что если утверждение верно для $n\in\overline{2,k}$, то оно верно для $n=k+1$.<br>
+Обозначим $g:=(\alpha_1,\ldots,\alpha_k)$, тогда для любого 
+$$\forall{i}\in\overline{1,k-1}(g(\alpha_i)=\alpha_{i+1})\,\wedge\,{g}(\alpha_k)=\alpha_1.$$ 
+Следовательно, 
+$$\forall{i}\in\overline{1,k-1}((g(\alpha_1,\alpha_{k+1}))(\alpha_i)=\alpha_{i+1}),$$
+$$(g(\alpha_1,\alpha_{k+1}))(\alpha_k)=(\alpha_1,\alpha_{k+1})(g(\alpha_k))=(\alpha_1,\alpha_{k+1})(\alpha_1)=\alpha_{k+1},$$
+и 
+$$(g(\alpha_1,\alpha_{k+1}))(\alpha_{k+1})=(\alpha_1,\alpha_{k+1})(\alpha_{k+1})=\alpha_1.$$ 
+То есть 
+$$(g(\alpha_1,\alpha_{k+1})):=(\alpha_1,\ldots,\alpha_k)(\alpha_1,\alpha_{k+1})=(\alpha_1,\ldots,\alpha_{k},\alpha_{k+1})$$ 
+и утверждеине следует из предположения индукции.
+</li>
+</ol>
+Пусть $g\in{S}(\Omega)$, тогда по теореме 9.9 существует разложение $g$ в произведение независимых циклов 
+$g=(\alpha_1,\ldots,\alpha_k)(\beta_1,\ldots,\beta_r)\cdots(\gamma_1,\ldots,\gamma_m)$. Тогда 
+$\mob{g}=\{\alpha_1,\ldots,\alpha_k,\beta_1,\ldots,\beta_r,\ldots,\gamma_1,\ldots,\gamma_m\}$, 
+то есть запись подстановки в виде произведения циклов является не полной так как она содержит только мобильные точки.
+<p id="Definition9.14"><b>Определение 9.14:</b><br>
+Назовем неподвижные точки подстановки ее единичными циклами.
+<br><br>
+Обозначим $\{\delta_1,\ldots,\delta_s\}:=\Omega\backslash\mob{g}$, тогда 
+$$g=(\alpha_1,\ldots,\alpha_k)(\beta_1,\ldots,\beta_r)\cdots(\gamma_1,\ldots,\gamma_m)(\delta_1)\cdots(\delta_s)$$ 
+- произведение независимых циклов и единичных циклов.
+<p id="Definition9.15"><b>Определение 9.15:</b><br>
+Цикловой структурой подстановки $g$ называется таблица вида
+$$[g]=[l_1^{k_1},\ldots,l_t^{k_t}],$$
+где $l_i\in\mathbb{N}$, $k_i\in\mathbb{N}_0$. Данная запись означает, что для любого $i\in\overline{1,t}$ в разложении подстановки $g$ 
+в произведение независимых циклов содержится $k_i$ циклов длины $l_i$ и циклов длинна, которых отлична от $l_1,\ldots,l_t$ в разложении нет.
+<br><br>
+Рассмотрим случай $\Omega=\overline{1,n}$, $S(\Omega)=S_n$.
+<p id="Definition9.16"><b>Определение 9.16:</b><br> 
+Подстановка $g=\begin{pmatrix}1,&2,\ldots,&n \\ i_1,&i_2,\ldots,&i_n\end{pmatrix}\in{S}_n$ называется четной, 
+если перестановка $(i_1,\ldots,i_n)\in\mathcal{P}(\overline{1,n})$ четна 
+(<a href="./discrete_math1.html#Definition1.4">определение 1.4</a>) и нечетной в противном случае. 
+<p id="Theorem9.10"><b>Теоерма 9.10:</b><br>
+Четность подстановки $g\in{S}_n$ соответствует четности числа транспозиций в её представлении в виде произведения транспозиций. 
+<p><b>Доказательство:</b><br><br>
+Пусть $g=\begin{pmatrix}1,\ldots,&k,\ldots,&s,\ldots,&n \\ i_1,\ldots,&i_k,\ldots,&i_s,\ldots,&i_n\end{pmatrix}\in{S}_n$, $h=(i_k,i_s)$, тогда 
+$gh=\begin{pmatrix}1,\ldots,&k,\ldots,&s,\ldots,&n \\ i_1,\ldots,&i_s,\ldots,&i_k,\ldots,&i_n\end{pmatrix}$. Перестановки 
+$$(i_1,\ldots,i_s,\ldots,i_k,\ldots,i_n)\in\mathcal{P}(\overline{1,n}),$$ 
+$$(i_1,\ldots,i_k,\ldots,i_s,\ldots,i_n)\in\mathcal{P}(\overline{1,n})$$ 
+получаются друг из друга с помощью одной транспозиции, следовательно, по <a href="./discrete_math1.html#Theorem1.3">теореме 1.3</a> 
+они имееют разную четность. Следовательно, подстановки $g,gh\in{S}_n$ имеет разную четность. По 
+<a href="./discrete_math9.3.html#Corollary9.4">следствию 9.4</a>
+существует разложение подстановки $g$ в произведение траспозиций $g=\varepsilon(\gamma_1,\gamma'_1)\cdots(\gamma_v,\gamma'_v)$. 
+Умножение на каждую из траспозиций меняет четность результата. Следовательно, так как тождественная подстановка $\varepsilon$ чётаная, 
+то четность подстановки $g$ соответствует чётности числа $v$.
+<p id="Corollary9.5"><b>Следствие 9.5:</b><br>
+Четность цикла длины $k\neq1$ соответствует четности числа $k-1$.
+<p><b>Доказательство:</b><br><br>
+Из доказательства <a href="./discrete_math9.3.html#Corollary9.4">следствия 9.4</a> следует, что 
+$$(\alpha_1,\alpha_2,\ldots,\alpha_k)=(\alpha_1,\alpha_2)(\alpha_1,\alpha_3)\cdots(\alpha_1,\alpha_k).$$
+Тогда по теореме 9.10 четность подстановки $(\alpha_1,\ldots,\alpha_k)$ соответствует четности числа $k-1$.
+<p id="Corollary9.6"><b>Следствие 9.6: Теорема о декременте.</b><br>
+Если подстановка $g\in{S}_n$ представима в виде $g=f_1\cdots{f}_m$, где $f_i$ - цикл длинны $l_i$, то четность подстановки $g$ соответствует четности числа $(l_1+\cdots+l_m)-m$.
+<p><b>Доказательство:</b><br><br>
+Из доказательства <a href="./discrete_math9.3.html#Corollary9.4">следствия 9.4</a> следует, 
+что для любого $i\in\overline{1,m}$ цикл $f_i$ раскладывается в произведение $l_i-1$ траспозиций. 
+Тогда вся подстановка $g$ раскладывается в произведение 
+$$(l_1-1)+\cdots+(l_m-1)=(l_1+\cdots+l_m)-m$$ 
+транспозиций и результат следует из теоремы 9.10. 
+<p id="Definition9.17"><b>Определение 9.17:</b><br>
+Если $g=f_1\cdots{f}_m$ разложение подстановки $g\in{S}(\Omega)$ в произведение независимых циклов длин $l_1,\ldots,l_m$ соответственно, то число 
+$$d(g):=(l_1+\cdots+l_m)-m$$
+называется декрементом подстановки $g$.
+<br><br>
+Таким образом понятие четности подстановок можно распространить на подстановки над произвольным множеством $\Omega$. 
+Под четностью подстановки в этом случае понимают четность ее декремента. Множество всех четных подстановок над множеством $\Omega$ обозначают как 
+$A(\Omega)$. Множество четных подстановок из $S_n$ обозначают $A_n:=A(\overline{1,n})$.
+
+<br><br>
+<a href="discrete_math9.2.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./discrete_math9.4.html">next</a>
+</body>
+</html>
