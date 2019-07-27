@@ -262,8 +262,8 @@ $$\partial_{\alpha{u}+\beta{v}}f(x_0)=\sum_{i=1}^n\left(\frac{\partial{f}}{\part
 То есть производная по направлению - <a href="./math_analysis12.3.1.html#Definition12.3.1">линейный оператор</a>.<br>
 Так как $\frac{\partial{f}}{\partial{v}}(x_0)=(\grad{f}(x_0),v)$, то по <a href="./math_analysis9.html#Statement9.1">неравенству Коши - Буняковского</a> 
 при $\|v\|=1$ имеем
-$$\left|\frac{\partial{f}}{\partial{v}}(x_0)\right|\leq\|\grad{f(x_0)}\|\|v\|=\|\grad{f(x_0)}\|\Rightarrow\|\frac{\partial{f}}{\partial{v}}(x_0)\|=
-\Leftrightarrow{v}=\frac{\grad{f(x_0)}}{\|\grad {f(x_0)}\|}$$
+$$\left|\frac{\partial{f}}{\partial{v}}(x_0)\right|\leq\|\grad{f(x_0)}\|\|v\|=\|\grad{f(x_0)}\|\Rightarrow
+\left(\left|\frac{\partial{f}}{\partial{v}}(x_0)\right|=\|\grad{f(x_0)}\|\Leftrightarrow{v}=\frac{\grad{f(x_0)}}{\|\grad {f(x_0)}\|}\right)$$
 Таким образом вектор $\displaystyle{v}_{max}:=\frac{\grad{f(x_0)}}{\|\grad{f(x_0)}\|}$ является направлением наибольшего возрастания функции $f(x)$ в точке 
 $x_0$, а вектор $\displaystyle{v}_{min}:=-\frac{\grad{f(x_0)}}{\|\grad{f(x_0)}\|}$ направление наибольшего убывания.<br>
 На данном свойстве градиента основан метод градиентного спуска поиска внутренних локальных экстремумов. Допустим надо найти локальный минимум функции $f(x)$,
