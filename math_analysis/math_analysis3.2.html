@@ -164,7 +164,7 @@ $$\forall{r}\in\mathbb{Q}(\exists{m}\in\mathbb{Z}, \exists{n}\in\mathbb{N}:(r=m*
 <li>Следует из замкнутости множества $\mathbb{Q}$ относительно операций сложения и умножения. Так как любое замкнутое
 относительно операций подмножество алгебраического поля является его подполем. Доказательство в курсе алгебры.</li>
 <li>Следует из аксиом действительных чисел.</li>
-<li>$X:=\{r\in\mathbb{Q}\:|\:r&gt0\wedge{r}^2&lt2\}$, $Y:=\{r\in\mathbb{Q}\:|\:r^2&gt2\}$<br>
+<li>$X:=\{r\in\mathbb{R}\:|\:r&gt0\wedge{r}^2&lt2\}$, $Y:=\{r\in\mathbb{R}\:|\:r^2&gt2\}$<br>
 Множества $X$ и $Y$ не пусты так как $1\in{X}$, $2\in{Y}$.<br>
 $$\forall{x}&gt0,\forall{y}&gt0(x^2&lty^2\Leftrightarrow{x}^2-y^2&lt0\Leftrightarrow(x-y)(x+y)&lt0\Leftrightarrow{x}-y&lt0\Leftrightarrow{x}&lty)
 \Rightarrow\forall{x}\in{X},\forall{y}\in{Y}(x&lty)$$
@@ -188,17 +188,25 @@ $$c_1^2=\left(c-\frac\Delta{3c}\right)\left(c-\frac\Delta{3c}\right)=c^2-\frac{2
 $(c_1^2&gt2\wedge{c}_1&ltc)\Rightarrow(c_1^2&gt2\wedge{c}_1\in{X})\Rightarrow(c_1^2&gt2\wedge{c}_1^2&lt2)$
 </li>
 </ol>
-Следовательно, $c^2=2$. Так как $$\forall{x}\in\mathbb{R},\forall{y}\in\mathbb{R}(x^2=y^2\Leftrightarrow{x}^2-y^2=0\Leftrightarrow
-(x-y)(x+y)=0\Leftrightarrow(x=y\vee{x}=-y)$$
-то существует единственное $c\in\mathbb{R}$ такое, что $c&gt0$ и $c^2=2$.<br>
+Следовательно, $c^2=2$. 
 Докажем от противного, что $c$ не является рациональным числом.<br>
 Предположим, что существуют $m\in\mathbb{Z}$, $n\in\mathbb{N}$ такие, что $(m,n)=1$ и $c=\frac{m}{n}$, тогда
 $$c^2=\frac{m^2}{n^2}=2\Rightarrow{m}^2=2n^2\Rightarrow\exists{k}\in\mathbb{Z}:m=2k\Rightarrow{m}^2=4k^2=2n^2\Rightarrow{n}^2=2k^2$$
-Таким образом $m$ и $n$ четные и, следовательно, $(m,n)\neq1$, то есть число $c$ не рационально и в силу его единственности можно
-утверждать, что множество рациональных чисел не удовлетворяет <a href="./math_analysis3.1.html#IV">аксиоме полноты</a>.  
+Таким образом $m$ и $n$ четные и, следовательно, $(m,n)\neq1$, то есть число $c$ не рационально.
+Рассмотрим множества $A:=\{a\in\mathbb{Q}\:|\:a&ltc\}$, $B:=\{b\in\mathbb{Q}\:|\:b&gtc\}$, тогда 
+$$\forall{a}\in{A},\forall{b}\in{B}(a\leq{b}).$$
+Предположим, что существует $d\in\mathbb{Q}$ такое, что
+$$\forall{a}\in{A},\forall{b}\in{B}(a\leq{d}\leq{b}).$$
+Тогда в силу того, что $c\notin\mathbb{Q}$, $d\in{A}$ или $d\in{B}$. Если $d\in{A}$, <a href="./math_analysis3.3.html#Corollary3.3.2">существует</a> 
+$e\in\mathbb{Q}$ такое, что $d&lt{e}&lt{c}$, то есть $e\in{A}$ и $e&gt{d}$. 
+Получено противоречие, то есть $d\notin{A}$, Аналогично показывается, что $d\notin{B}$, что приводит к противоречию с 
+$c\notin\mathbb{Q}$.
+Cледовательно, множество рациональных чисел не удовлетворяет <a href="./math_analysis3.1.html#IV">аксиоме полноты</a>.  
 </li>
 </ol>
-
+Так как $$\forall{x}\in\mathbb{R},\forall{y}\in\mathbb{R}(x^2=y^2\Leftrightarrow{x}^2-y^2=0\Leftrightarrow
+(x-y)(x+y)=0\Leftrightarrow(x=y\vee{x}=-y)$$
+то существует единственное $c\in\mathbb{R}$ такое, что $c&gt0$ и $c^2=2$.<br>
 Единственное положительное число, квадрат которого равен числу $a$ обозначают, как $\sqrt{a}$ или $a^\frac1{2}$. Таким образом найденное 
 в доказанном утверждении число $c$ равно $\sqrt2$.<br><br>
 
