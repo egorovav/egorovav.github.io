@@ -116,7 +116,7 @@ $D_x,D_t\subset\mathbb{R}^n$; $D_x,D_t\in{G}(m,H)$; $x=\varphi(t)\colon{D}_t\to{
 \begin{cases}x_1=\varphi_1(t_1,\ldots,t_n)\\\qquad\cdots\\x_n=\varphi(t_1,\ldots,t_n)\end{cases}$; $S_x\subset{D}_x$, $S_t\subset{D}_t$ такие, что
 $\mu^*(S_x)=\mu^*(S_t)=0$; $D_x\backslash{S}_x$, $D_t\backslash{S}_t$ открыты в $\mathbb{R}^n$; 
 $\varphi(t)\colon{D}_x\backslash{S}_x\to{D}_x\backslash{S}_t$ - <a href="./math_analysis12.4.2.html#Definition12.4.7">диффеоморфизм гладкости 1</a>.
-$$\det{\varphi'(t)}=J(t)=\frac{\partial(x_1,\ldots,x_n)}{\partial(t_1,\ldots,t_n)}=
+$$\det{\varphi'(t)}=|J(t)|=\left|\frac{\partial(x_1,\ldots,x_n)}{\partial(t_1,\ldots,t_n)}\right|=
 \begin{vmatrix}
 \frac{\partial{x}_1}{\partial{t}_1} & \cdots & \frac{\partial{x}_1}{\partial{t}_n}\\
 \vdots & \ddots & \vdots\\
@@ -125,8 +125,8 @@ $$\det{\varphi'(t)}=J(t)=\frac{\partial(x_1,\ldots,x_n)}{\partial(t_1,\ldots,t_n
 $$
 функция $f(x)\colon{D}_x\to\mathbb{R}$ такая, что $f(x)\in\mathcal{R}(D_x)$, тогда
 <ol>
-<li>$f(\varphi(t))|J(t)|\in\mathcal{R}(D_t\backslash{S}_t)$,</li>
-<li>$\displaystyle\int_{D_x}f(x)\,dx=\int_{D_t\backslash{S}_t}f(\varphi(t))|J(t)|\,dt$.</li>
+<li>$f(\varphi(t))|\det{\varphi'(t)}|\in\mathcal{R}(D_t\backslash{S}_t)$,</li>
+<li>$\displaystyle\int_{D_x}f(x)\,dx=\int_{D_t\backslash{S}_t}f(\varphi(t))|\det{\varphi'(t)}|\,dt$.</li>
 </ol>
 <p><b>Доказательство:</b><i>Зорич т. 2, стр. 164 - 177.</i>
 <br><br>
