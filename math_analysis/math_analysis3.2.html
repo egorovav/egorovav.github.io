@@ -86,7 +86,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-
 <a href="./math_analysis1.html#bool">импликации</a> равен $1$, то она истинна вне зависимости от первого аргумента.
 </ol>
 </li>
-<li>Доказываем индукцией по $m$. Пусть $E:=\{m\in{E}\:|\:\forall{n}\in\mathbb{N}(n&gtm\Rightarrow{n}-m\in\mathbb{N}\}$ докажем, что $E=\mathbb{N}$.
+<li>Доказываем индукцией по $m$. Пусть $E:=\{m\in\mathbb{N}\:|\:\forall{n}\in\mathbb{N}(n&gtm\Rightarrow{n}-m\in\mathbb{N}\}$ докажем, что $E=\mathbb{N}$.
 <ol>
 <li>$\forall{n}\in\mathbb{N}(n&gt1\Rightarrow{n}\neq1\Rightarrow^{(3)}n-1\in\mathbb{N})\Rightarrow1\in{E}$</li>
 <li>$k\in{E}\Rightarrow\forall{n}\in\mathbb{N}(n&gtk\Rightarrow{n}-k\in\mathbb{N})$
@@ -162,14 +162,15 @@ $$\forall{r}\in\mathbb{Q}(\exists{m}\in\mathbb{Z}, \exists{n}\in\mathbb{N}:(r=m*
 <p><b>Доказательство:</b>
 <ol>
 <li>Следует из замкнутости множества $\mathbb{Q}$ относительно операций сложения и умножения. Так как любое замкнутое
-относительно операций подмножество алгебраического поля является его подполем. Доказательство в курсе алгебры.</li>
+относительно операций подмножество алгебраического поля является его подполем. Доказательство в курсе алгебры 
+(п. 3 <a href="../discrete_math/discrete_math18.1.html#Corollary18.1">следствия 18.1 DM</a>).</li>
 <li>Следует из аксиом действительных чисел.</li>
 <li>$X:=\{r\in\mathbb{R}\:|\:r&gt0\wedge{r}^2&lt2\}$, $Y:=\{r\in\mathbb{R}\:|\:r^2&gt2\}$<br>
 Множества $X$ и $Y$ не пусты так как $1\in{X}$, $2\in{Y}$.<br>
 $$\forall{x}&gt0,\forall{y}&gt0(x^2&lty^2\Leftrightarrow{x}^2-y^2&lt0\Leftrightarrow(x-y)(x+y)&lt0\Leftrightarrow{x}-y&lt0\Leftrightarrow{x}&lty)
 \Rightarrow\forall{x}\in{X},\forall{y}\in{Y}(x&lty)$$
 Следовательно, по <a href="./math_analysis3.1.html#IV">аксиоме полноты</a> 
-$$\exists{c}\in\mathbb{R}:\forall{x}\in{X},\forall{y}\in{Y}(x\leq{c}\leq{y}))$$
+$$\exists{c}\in\mathbb{R}:\forall{x}\in{X},\forall{y}\in{Y}(x\leq{c}\leq{y})$$
 По пункту 1 следствий из <a href="./math_analysis3.1.html#Statement3.1.4">аксиом порядка</a> либо $c^2&lt2$, либо $c^2&gt2$, либо $c^2=2$.
 <ol>
 <li>Докажем, что $c^2&lt2$ невозможно.<br>
@@ -179,13 +180,13 @@ $$1\in{X}\Rightarrow1\leq{c}\Rightarrow{c}\leq{c}^2\Rightarrow\begin{cases}1\leq
 $$c_1^2=\left(c+\frac\Delta{3c}\right)\left(c+\frac\Delta{3c}\right)=c^2+\frac{2\Delta}{3}+\left(\frac\Delta{3c}\right)^2=
 c^2+\frac\Delta{3}\left(2+\frac\Delta{3c^2}\right)&ltc^2+\frac\Delta{3}3=2$$
 Таким образом приходим к противоречию
-$(c_1^2&lt2\wedge{c}_1&gtc)\Rightarrow(c_1^2&lt2\wedge{c}_1\in{Y})\Rightarrow(c^2_1&lt2\wedge{c}_1^2&gt2)$
+$(c_1^2&lt2\wedge{c}_1&gtc)\Rightarrow(c_1\in{X}\wedge{c}_1\not\in{X})$
 </li>
 <li>Докажем, что $c^2&gt2$ невозможно.<br>
 Предположим $c^2&gt2$, обозначим: $\Delta:=c^2-2&gt0$, $c_1:=c-\frac\Delta{3c}&ltc$, тогда
 $$c_1^2=\left(c-\frac\Delta{3c}\right)\left(c-\frac\Delta{3c}\right)=c^2-\frac{2\Delta}{3}+\left(\frac\Delta{3c}\right)^2&gtc^2-\frac{2\Delta}{3}&gtc^2-\Delta=2$$
 Таким образом приходим к противоречию и в этом случае
-$(c_1^2&gt2\wedge{c}_1&ltc)\Rightarrow(c_1^2&gt2\wedge{c}_1\in{X})\Rightarrow(c_1^2&gt2\wedge{c}_1^2&lt2)$
+$(c_1^2&gt2\wedge{c}_1&ltc)\Rightarrow(c_1\in{Y}\wedge{c}_1\not\in{Y})$
 </li>
 </ol>
 Следовательно, $c^2=2$. 
@@ -197,7 +198,7 @@ $$c^2=\frac{m^2}{n^2}=2\Rightarrow{m}^2=2n^2\Rightarrow\exists{k}\in\mathbb{Z}:m
 $$\forall{a}\in{A},\forall{b}\in{B}(a\leq{b}).$$
 Предположим, что существует $d\in\mathbb{Q}$ такое, что
 $$\forall{a}\in{A},\forall{b}\in{B}(a\leq{d}\leq{b}).$$
-Тогда в силу того, что $c\notin\mathbb{Q}$, $d\in{A}$ или $d\in{B}$. Если $d\in{A}$, <a href="./math_analysis3.3.html#Corollary3.3.2">существует</a> 
+Тогда в силу того, что $c\notin\mathbb{Q}$, $d\in{A}$ или $d\in{B}$. Если $d\in{A}$, то <a href="./math_analysis3.3.html#Corollary3.3.2">существует</a> 
 $e\in\mathbb{Q}$ такое, что $d&lt{e}&lt{c}$, то есть $e\in{A}$ и $e&gt{d}$. 
 Получено противоречие, то есть $d\notin{A}$, Аналогично показывается, что $d\notin{B}$, что приводит к противоречию с 
 $c\notin\mathbb{Q}$.

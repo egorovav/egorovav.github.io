@@ -35,10 +35,10 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-
 <h4 id="14.4">14.4 Изометричность евклидовых пространств.</h4>
 <p id="Definition14.10"><b>Определение 14.10:</b><br> 
 Изометрией евклидовых пространств $(L_{\mathbb{P}},S)$ и $(K_{\mathbb{P}},F)$ называется изоморфизм векторных пространств 
-$\sigma:L_{\mathbb{P}}\to{K}_{\mathbb{P}}$ такой, что для любых $\alpha,\beta\in{L}_{\mathbb{P}}$ $S(\alpha,\beta)=F(\sigma(\alpha),\sigma(\beta))$.
+$\sigma:L_{\mathbb{P}}\to{K}_{\mathbb{P}}$ такой, что для любых $\alpha,\beta\in{L}_{\mathbb{P}}$ $S(\alpha,\beta)=S(\sigma(\alpha),\sigma(\beta))$.
 <p id="Note14.6"><b>Замечание 14.6:</b><br>
-Из определения следутет, что для любого $\alpha\in{L}_{\mathbb{P}}$ 
-$$\|\sigma(\alpha)\|=\sqrt{F(\sigma(\alpha),\sigma(\alpha))}=\sqrt{S(\alpha,\alpha)}=\|\alpha\|.$$ 
+Из определения следует, что для любого $\alpha\in{L}_{\mathbb{P}}$ 
+$$\|\sigma(\alpha)\|=\sqrt{S(\sigma(\alpha),\sigma(\alpha))}=\sqrt{S(\alpha,\alpha)}=\|\alpha\|.$$ 
 То есть изометрия евклидова пространства сохраняет норму векторов.
 <p id="Theorem14.4"><b>Теорема 14.4:</b><br>
 Конечномерные евклидовы пространства $(L_{\mathbb{P}},S)$ и $(K_{\mathbb{P}},F)$ изометричны тогда и только тогда, когда $\dim{L}_{\mathbb{P}}=\dim{K}_{\mathbb{P}}$.
@@ -126,7 +126,7 @@ $$
 </li>
 </ol>
 <p id="Definition14.12"><b>Определение 14.12:</b><br>
-Пусть $(L_{\mathbb{P}},S)$ - евклидово пространство, $K<L_{\mathbb{P}}$, вектора $\alpha\in{L}_{\mathbb{P}}$, $\beta\in{K}$, 
+Пусть $(L_{\mathbb{P}},S)$ - евклидово пространство, $K&ltL_{\mathbb{P}}$, вектора $\alpha\in{L}_{\mathbb{P}}$, $\beta\in{K}$, 
 $\gamma\in{K}^{\perp}$ такие, что $\alpha=\beta+\gamma$, тогда
 <ol>
 <li>вектор $\beta$ называется ортогональной проекцией вектора $\alpha$ на подпространство $K_{\mathbb{P}}$,</li>
