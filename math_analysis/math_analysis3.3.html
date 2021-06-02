@@ -28,7 +28,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-
 Покажем от противного, что число $n$ - максимум множества $E$. Предположим, что $n$ не максимум $E$, тогда<br>
 $\exists{m}\in{E}:m&gtn\Rightarrow(m-n\in\mathbb{Z}\wedge{m}-n&gt0)\Rightarrow{m}-n\in\mathbb{N}\Rightarrow1\leq{m}-n$,<br>
 где последнее неравенство следует из пункта 5 <a href="./math_analysis3.2.html#Statement3.2.3">утверждения 3.2.3</a>, тогда<br>
-$(s-1&ltn\wedge1\leq{m}-n\Rightarrow{s}&ltn+1\wedge{n}+1\leq{m}\Rightarrow{s}&lt{m}\Rightarrow{s}\neq\sup{E}$<br>
+$(s-1&ltn\wedge1\leq{m}-n)\Rightarrow({s}&ltn+1\wedge{n}+1\leq{m})\Rightarrow{s}&lt{m}\Rightarrow{s}\neq\sup{E}$<br>
 Получено противоречие с определением $s$.<br>
 
 <p id="Corollary3.3.1"><b>Следствие 3.3.1:</b> 
@@ -168,7 +168,7 @@ $\forall{a},b\in\overline{\mathbb{R}}(a\neq{b}\Rightarrow\exists{U}(a), \exists{
 <li>Пусть даны две окрестности $(a_1,b_1), (a_2,b_2)$ точки $y\in\mathbb{R}$.<br>
 $x\in(a_1,b_1)\cap(a_2,b_2)\Leftrightarrow(a_1&ltx&ltb_1\wedge{a}_2&ltx&ltb_2)\Leftrightarrow\max\{a_1,a_2\}&ltx&lt\min\{b_1,b_2\}$<br>
 $(a_1&lty&ltb_1\wedge{a}_2&lty&ltb_2)\Rightarrow\max\{a_1,a_2\}&lty&lt\min\{b_1,b_2\}\Rightarrow\max\{a_1,a_2\}&lt\min\{b_1,b_2\}$<br>
-Таким образом интервал $(\max\{a_1,a_2\},\min\{d_1,b_2\})$ является окрестностью точки $y$.
+Таким образом интервал $(\max\{a_1,a_2\},\min\{b_1,b_2\})$ является окрестностью точки $y$.
 </li>
 <li>По пункту 2 $(c,d):=U_1(a)\cap{U}_2(a)$ будет окрестностью точки $a$, то есть $c&lta&ltd$. 
 По пункту 3 <a href="#Corollary3.3.1">следствия</a> из принципа Архимеда существуют $r_1,r_2\in\mathbb{Q}$ такие что $c&ltr_1&lta&ltr_2&ltd$,
