@@ -26,7 +26,7 @@ $$\forall{V}(f(a))(\exists{U}(a):x\in{U}_E(a)(f(x)\in{V}(f(a)))).$$
 <br><br>
 
 <p id="Definition5.5.2"><b>Определение 5.5.2: Определение непрерывности в точке по Коши.</b><br>
-Будем говорить, что функция $f(x):E\to\mathbb{R}$ непрерывна в точке $a\in\mathbb{R}$ по множеству $E$, если 
+Будем говорить, что функция $f(x):E\to\mathbb{R}$ непрерывна в точке $a\in{E}$ по множеству $E$, если 
 $$\forall\varepsilon&gt0(\exists\delta&gt0:\forall{x}\in{E}(|x-a|&lt\delta\Rightarrow|f(x)-f(a)|&lt\varepsilon)).$$
 
 <br><br>
@@ -97,8 +97,8 @@ $$\forall\varepsilon&gt0\:\exists{U}(a):\forall{x}'\in{U}_E(a),\forall{x}''\in{U
 <ul>
 <li>$\Rightarrow)$<br>
 Фиксируем $\varepsilon&gt0$, тогда по <a href="#Statement5.5.3">утверждению 5.5.3</a> из непрерывности функции $f(x)$ в точке $a$ следует
-$$\lim_{E\ni{x}\to{a}}f(x)=f(a)\Rightarrow\exists{U}(a):\forall{x}\in\mathring{U}_E(a)(|f(x)-f(a)|&lt\frac{\varepsilon}{2})\Rightarrow
-\forall{x}',x''\in{U}_E(a)(|f(x')-f(x'')|\leq|f(x')-f(a)|+|f(x'')-f(a)|&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon)$$ 
+$$\lim_{E\ni{x}\to{a}}f(x)=f(a)\Rightarrow\exists{U}(a):\forall{x}\in\mathring{U}_E(a)\left(|f(x)-f(a)|&lt\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{x}',x''\in{U}_E(a)\left(|f(x')-f(x'')|\leq|f(x')-f(a)|+|f(x'')-f(a)|&lt\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon\right)$$ 
 </li>
 <li>$\Leftarrow)$<br>
 Фиксируем $\varepsilon&gt0$. Так как для любой окрестности $U(a)$ $a\in{U}(a)$, и если $x\in{U}(a)$, то $x\in\mathring{U}(a)$, тогда по условию имеем
@@ -205,7 +205,7 @@ $$\exists{V}(f(a)):\forall{U}(a)(\exists{x}\in{U}_E(a):f(x)\notin{V}(f(a)))\sim
 <p id="Statement5.5.5"><b>Утверждение 5.5.5: Критерий наличия устранимой точки разрыва (УТР).</b><br>
 Пусть точка $a\in\mathring{E}$ конечная точка разрыва функции $f(x):E\to\mathbb{R}$, тогда
 <ol>
-<li>Точка $a$ является УТР тогда и только тогда, когда существует конечный предел $\displaystyle{A}=\lim_{E\ni{x}\to}f(x)$</li>
+<li>Точка $a$ является УТР тогда и только тогда, когда существует конечный предел $\displaystyle{A}=\lim_{E\ni{x}\to{a}}f(x)$</li>
 <li>Если дополнительно известно, что $a\in{E}\cap\mathring{E}$, то точка $a$ является УТР тогда и только тогда, когда односторонние пределы 
 $f(a+0)$ и $f(a-0)$ существуют и равны по значению.</li>
 </ol>
@@ -307,7 +307,7 @@ M^+_a=\left\{r=\frac{m}{n}\in\mathbb{Q}\:|\:a&ltr&lta+1\wedge{n}&ltN\right\}$$
 Множества $M^-_a$ и $M^+_a$ конечны, так как $n\in\overline{1,N}$, $m\in\overline{[a-1],([a]+1)N}$. Значит множества $M^-_a$, $M^+_a$
 имеют максимум и минимум, следовательно
 $$\max{M}^-_a&lta\wedge\min{M}^+_a&gta\Rightarrow\exists{U}(a):=(\max{M}^-_a,\min{M}^+_a):\forall{r}=\frac{m}{n}\in\mathbb{Q}\cap{U}(a)(n\geq{N})\Rightarrow
-\forall{r}\in{U}_{\mathbb{Q}}(a)(\mathcal{R}(r)=\frac1{n}\leq\frac1{N}&lt\varepsilon)$$ 
+\forall{r}\in{U}_{\mathbb{Q}}(a)\left(\mathcal{R}(r)=\frac1{n}\leq\frac1{N}&lt\varepsilon\right)$$ 
 $$\forall{x}\in{U}(a)\backslash\mathbb{Q}(\mathcal{R}(x)=0&lt\varepsilon)\Rightarrow\forall{x}\in{U}(a)(\mathcal{R}(x)&lt\varepsilon)\Rightarrow
 \lim_{x\to{a}}\mathcal{R}(x)=0$$
 Следовательно, функция Римана $\mathcal{R}(x)$ непрерывна в тех точках где она принимает значение ноль.

@@ -133,7 +133,7 @@ $$\Rightarrow\exists{U}(a):=U^*(a)\cap{U}'(a):\forall{x}\in\mathring{U}_E(a)(f(x
 
 <p id="Example5.3.1"><b>Пример 5.3.1: Контрпример к условию (2) теоремы.</b><br>
 ${E}:=\mathbb{R},a=0,f(x)=x\sin\frac1{x},b:=\displaystyle\lim_{E\ni{x}\to{a}}f(x)=0$<br>
-$\displaystyle{Y}:=\mathbb{R},F(y):=\begin{cases}\ln|y|,y\neq0\\0,\quad\;\;{y}=0\end{cases},\lim_{Y\ni{y}\to{b}}F(Y)=-\infty$<br>
+$\displaystyle{Y}:=\mathbb{R},F(y):=\begin{cases}\ln|y|,y\neq0\\0,\quad\;\;{y}=0\end{cases},\lim_{Y\ni{y}\to{b}}F(y)=-\infty$<br>
 Первое условие теоремы выполнено, но не выполнено второе так как по пункту 1 
 <a href="./math_analysis3.3.html#Corollary3.3.2">следствия из принципа Архимеда</a> для любого $\varepsilon&gt0$ существует $n\in\mathbb{N}$
 такое, что $\frac1{\pi{n}}&lt\varepsilon$ и $f(\frac1{\pi{n}})=\frac1{\pi{n}}\sin{\pi{n}}=0$. Следовательно, любая окрестность $a=0$
@@ -269,7 +269,7 @@ $s\in\mathring{E},i\in\mathring{E}$, тогда
 Фиксируем окрестность $V(+\infty):=(a,+\infty)$, где $a\in\mathbb{R}$.<br>
 Функция $f(x)$ не ограничена сверху на $E$, следовательно, она не ограничена сверху и на $E\backslash\{s\}$, 
 тогда существует $x_0\in{E}\backslash\{s\}$ такое, что $f(x_0)&gta$.
-$$(s=\sup{E}\wedge{x}_0\neq{s})\Rightarrow{x}_0&lts\Rightarrow\exist{U}(s):=(x_0,+\infty):\forall{x}\in\mathring{U}_E(s)(x&gtx_0)\Rightarrow
+$$(s=\sup{E}\wedge{x}_0\neq{s})\Rightarrow{x}_0&lts\Rightarrow\exists{U}(s):=(x_0,+\infty):\forall{x}\in\mathring{U}_E(s)(x&gtx_0)\Rightarrow
 \forall{x}\in\mathring{U}_E(s)(f(x)\geq{f}(x_0)&gta)\Rightarrow\forall{x}\in\mathring{U}_E(f(x)\in{V}(+\infty)).$$
 </li>
 </ul>
@@ -323,7 +323,7 @@ $\displaystyle\lim_{n\to\infty}x_n=a$ и $\displaystyle\lim_{n\to\infty}f(x_n)=A
 <p>Как и для случая последовательности можно доказать, для множества $P\subset\overline{\mathbb{R}}$ частичных пределов функции что
 <ol>
 <li>$\mathring{E}\neq\varnothing\Rightarrow{P}\neq\varnothing$</li>
-<li>$P\neq\varnothing\Rightarrow(\exists{i}:=\inf{P}\wedge\exists{s}:=\sup{E})$</li>
+<li>$P\neq\varnothing\Rightarrow(\exists{i}:=\inf{P}\wedge\exists{s}:=\sup{P})$</li>
 <li>$(s\in{P}\wedge{i}\in{P})$</li>
 <li>$(s=\max{P}\wedge{i}=\min{P})$</li>
 </ol>

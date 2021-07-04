@@ -48,7 +48,7 @@ $$\exists{U}'(a),\exists{k}\in\mathbb{R}:\forall{x}\in\mathring{U}{}'_E(a)(|\bet
 Фиксируем $\varepsilon&gt0$. Тогда
 $$\alpha(x)=o(1),E\ni{x}\to{a}\Rightarrow\lim_{E\ni{x}\to{a}}\alpha(x)=0\Rightarrow
 \exists{U}''(a):\forall{x}\in\mathring{U}{}''_E(a)\left(|\alpha(x)|&lt\frac\varepsilon{k}\right)\Rightarrow$$
-$$\Rightarrow\exists{U}(a):=U'(a)\cap{U}''(a):\forall{x}\in\mathring{U}_E(a)\left(|\alpha(x)\beta(x)|=|\alpha(x)||\beta(x)|&lt\frac\varepsilon{k}k=\varepsilon\right)
+$$\Rightarrow\exists{U}(a):=U'(a)\cap{U}''(a):\forall{x}\in\mathring{U}_E(a)\left(|\alpha(x)\beta(x)|\leq|\alpha(x)||\beta(x)|&lt\frac\varepsilon{k}k=\varepsilon\right)
 \Rightarrow\lim_{E\ni{x}\to{a}}(\alpha(x)\beta(x))=0\Rightarrow\alpha(x)\beta(x)=o(1),E\ni{x}\to{a}$$
 </li>
 <li>
@@ -60,7 +60,7 @@ $$\beta(x)=o(1),E\ni{x}\to{a}\Rightarrow\lim_{E\ni{x}\to{a}}=0\Rightarrow\exists
 то
 $$\exists{U}(a):=U'(a)\cap{U}''(a):\forall{x}\in{E}\left(x\in\mathring{U}(a)\Rightarrow
 \left(|\alpha(x)|&lt\frac\varepsilon{2}\wedge|\beta(x)|&lt\frac\varepsilon{2}\right)\right)
-\Rightarrow\forall{x}\in\mathring{U}_E(a)\left(|\alpha(x)\pm\beta(x)|\leq|\alpha(x)|\pm|\beta(x)|&lt\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon\right)
+\Rightarrow\forall{x}\in\mathring{U}_E(a)\left(|\alpha(x)\pm\beta(x)|\leq|\alpha(x)|+|\beta(x)|&lt\frac\varepsilon{2}+\frac\varepsilon{2}=\varepsilon\right)
 \Rightarrow$$ $$\Rightarrow\lim_{E\ni{x}\to{a}}(\alpha(x)\pm\beta(x))=0\Rightarrow\alpha(x)\pm\beta(x)=o(1),E\ni{x}\to{a}$$
 </li>
 </ol>
