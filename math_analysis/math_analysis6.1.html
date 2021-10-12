@@ -196,7 +196,7 @@ $y=f(x_0)+f'(x_0)(x-x_0)$. Нетрудно видеть, в частности,
 <p id="Example6.1.2"><b>Пример 6.1.2:</b> Рассмотрим функцию 
 $f(x)=\begin{cases}x^2\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$<br>
 Так как функция $\sin{x}$ ограничена на $\mathbb{R}$, то по <a href="./math_analysis5.2.html#Statement5.2.1">свойству 1 бесконечно малых</a> имеем
-$$f'(x_0)=\lim_{h\to0}\frac{f(0+h)-f(0)}{h}=\lim_{h\to{0}}\frac{h^2\sin\frac1{h}}{h}=\lim_{h\to0}(h\sin{\frac1{h}})=0$$
+$$f'(x_0)=\lim_{h\to0}\frac{f(0+h)-f(0)}{h}=\lim_{h\to{0}}\frac{h^2\sin\frac1{h}}{h}=\lim_{h\to0}\left(h\sin{\frac1{h}}\right)=0$$
 Таким образом касательная к графику функции $f(x)$ в точке $x_0$ имеет вид $y=f(0)=0$. Поскольку для любого $k\in\mathbb{N}$ 
 $f(\frac1{\pi{k}})=(\frac1{\pi{k}})^2\sin(\pi{k})=0$, то, в частности, функция $f(x)$ имеет счетное число точек пересечения с графиком функции.
 
@@ -217,7 +217,7 @@ $y(x)=\begin{cases}|x|^\alpha\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$
   <ul>
    <li>
     При $\alpha=0$ $y(x)=\begin{cases}\sin{\frac1{x}}, & x\neq0\\0, & x=0\end{cases}$ и $\displaystyle\lim_{x\to0}y(x)\neq{y}(0)=0$, так как 
-    $$\exists\varepsilon=1:\forall\delta&gt0\exists{n}\in\mathbb{N}:(0&ltx=\frac2{\pi{n}}&lt\delta\wedge|y(x)|=1\geq\varepsilon)$$
+    $$\exists\varepsilon=1:\forall\delta&gt0\exists{n}\in\mathbb{N}:\left(0&ltx=\frac2{\pi{n}}&lt\delta\wedge|y(x)|=1\geq\varepsilon\right)$$
     <a href="./math_analysis5.5.1.html#Statement5.5.3">Следовательно</a>, точка 0 точка разрыва функции $y(x)$. 
    </li>
    <li>
@@ -232,8 +232,8 @@ $y(x)=\begin{cases}|x|^\alpha\sin\frac1{x}, & x\neq0\\0, & x=0\end{cases}$
 <br>
 <li>
  Найдем правую и левую производные функции $y(x)$ в точке 0.
- $$y'_+(0)=\lim_{x\to0+}\frac{y(x)-y(0)}{x-0}=\lim_{x\to0+}\frac{|x|^\alpha\sin\frac1{x}}{x}=\lim_{x\to0+}(\sgn{x}|x|^{\alpha-1}\sin{\frac1{x}})=
- \lim_{x\to{0}+}(|x|^{\alpha-1}\sin{\frac1{x}})$$
+ $$y'_+(0)=\lim_{x\to0+}\frac{y(x)-y(0)}{x-0}=\lim_{x\to0+}\frac{|x|^\alpha\sin\frac1{x}}{x}=\lim_{x\to0+}\left(\sgn{x}|x|^{\alpha-1}\sin{\frac1{x}}\right)=
+ \lim_{x\to{0}+}\left(|x|^{\alpha-1}\sin{\frac1{x}}\right)$$
  Аналагично $\displaystyle{y}'_-(0)=-\lim_{x\to0-}(|x|^{\alpha-1}\sin{\frac1{x}})$. Таким образом
  <ul>
   <li>При $\alpha=1$ производной в точке 0 не существует, так как ни левой ни правой производной не существует по доказанному в пункте 1.</li>

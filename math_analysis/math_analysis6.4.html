@@ -1,4 +1,4 @@
-﻿<html>
+﻿ <html>
 <head>
 <meta charset="utf-8" />
 <title>Mathematical analysis 6.4</title>
@@ -175,7 +175,7 @@ $$(f(x_m)&ltf(x_M)\wedge{f}(a)=f(b))\Rightarrow\{x_m,x_M\}\neq\{a,b\}\Rightarrow
 <ol>
 <li>
 Пусть $[a,b]=[0,1]$, $f(x)=\begin{cases}x, & 0\leq{x}&lt1\\0, & x=1\end{cases}$, тогда выполнены все условия теоремы 6.4.1 кроме первого.
-Так как для любого $x\in(0,1)$ существует производная $f'(x)=1$ и $f(1)=f(0)=1$, но $f(x)\notin{C}[a,b]$. Точка $x=1$ является точкой разрыва
+Так как для любого $x\in(0,1)$ существует производная $f'(x)=1$ и $f(1)=f(0)=0$, но $f(x)\notin{C}[a,b]$. Точка $x=1$ является точкой разрыва
 так как $\lim_{x\to1}f(x)=1\neq0=f(1)$.
 </li>
 <br>
@@ -305,8 +305,8 @@ $$\forall{x}_1,x_2\in\Delta(a,b)(x_1&ltx_2\Rightarrow{f}(x_1)\leq{f}(x_2))$$
 <p><b>Доказательство:</b>
 <ul>
 <li>$\Rightarrow)$<br>
-$$\exists{c}\in\mathbb{R}:f(x)\equiv{c}\Rightarrow\forall{x},x_0\in[a,b](f(x)-f(x_0)=c-c=0)\Rightarrow\forall{x},x_0\in[a,b](x\neq{x}_0\Rightarrow
-\frac{f(x)-f(x_0)}{x-x_0}=0)\Rightarrow(\exists{f}'(x_0)=\lim_{[a,b]\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}\Rightarrow{f}'(x_0)=0)$$
+$$\exists{c}\in\mathbb{R}:f(x)\equiv{c}\Rightarrow\forall{x},x_0\in[a,b](f(x)-f(x_0)=c-c=0)\Rightarrow\forall{x},x_0\in[a,b]\left(x\neq{x}_0\Rightarrow
+\frac{f(x)-f(x_0)}{x-x_0}=0\right)\Rightarrow(\exists{f}'(x_0)=\lim_{[a,b]\ni{x}\to{x}_0}\frac{f(x)-f(x_0)}{x-x_0}\Rightarrow{f}'(x_0)=0)$$
 </li>
 <li>$\Leftarrow)$<br>
 Для любого $x\in(a,b]$ $f(x)\in{C}[a,x]$ и $f(x)$ дифференцируема на $(a,x)$, тогда по <a href="#Theorem6.4.3">теореме Лагранжа</a>
