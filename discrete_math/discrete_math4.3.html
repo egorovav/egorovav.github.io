@@ -193,15 +193,15 @@ $c_1A_1^{\downarrow}+\cdots+c_{j-1}A_{j-1}^{\downarrow}=A_j$. Так как $A\r
 $c_1S_1^{\downarrow}+\cdots+c_{j-1}S_{j-1}^{\downarrow}=S_j$, но это не возможно, так как существует $t\in\overline{1,r}$ такое, 
 что $j=i_t$, следовательно, по определению ступенчатой матрицы типа $(i_1,\ldots,i_r)$ $s_{t,j}=s_{t,i_t}\neq0$ в то время как для любого 
 $k\in\overline{1,i_t-1}$ $s_{t,k}=0$. Получено противоречие.<br>
-$\Leftarrow)$ Пусть $j\in\{i_1,\ldots,i_r\}$, следовательно существует $t\in\overline{1,r}$ такое, что $i_t<j<i_{t+1}$. Докажем, 
+$\Leftarrow)$ Пусть $j\in\{i_1,\ldots,i_r\}$, следовательно существует $t\in\overline{1,r}$ такое, что $i_t&ltj&lti_{t+1}$. Докажем, 
 что $A_j^{\downarrow}$ ЛВЧ $A_{i_1}^{\downarrow},\ldots,A_{i_t}^{\downarrow}$. Из <a href="./discrete_math4.3.html#Theorem4.8">теоремы 4.8</a> следует, 
 что для этого достаточно доказать, 
 что $S_j^{\downarrow}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_t}^{\downarrow}$. Докажем индукцией по $t$.
 <ol type="I">
 <li> При $t=1$ $S_j^{\downarrow}=s_{1,i_1}^{-1}s_{1,j}S_{1,i_1}^{\downarrow}$, то есть $S_j^{\downarrow}$ ЛВЧ $\{S_{i_1}^{\downarrow}\}$.</li>
 <li> Фиксируем $u\in\overline{1,r}$ и предположим, что для любого $k\in\overline{1,u}$ $S_j^{\downarrow}$ такой, 
-что $i_k<j<i_k+1$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_k}^{\downarrow}$. Докажем, что $S_j^{\downarrow}$ такой, что
-$u+1<j<u+2$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_{u+1}}^{\downarrow}$.<br>
+что $i_k&ltj&lti_{k+1}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_k}^{\downarrow}$. Докажем, что $S_j^{\downarrow}$ такой, что
+$i_{u+1}&ltj&lti_{u+2}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_{u+1}}^{\downarrow}$.<br>
 Действительно, $S_j^{\downarrow}=(s_{u+1,i_{u+1}})^{-1}s_{u+1,j}S_{i_{u+1}}^{\downarrow}+V^{\downarrow}$. 
 Где вектор $V^{\downarrow}=(v_1,\ldots,v_n)$ такой, что для любого $p>u$ $v_p=0$, следовательно, 
 по предположению индукции $V^{\downarrow}$ ЛВЧ $S_{i_1}^{\downarrow},\ldots,S_{i_u}$.<br>
@@ -379,7 +379,7 @@ $$\gamma=\sum_{i=1}^ka_i\alpha_i=\sum_{i=1}^ka_k\left(\sum_{j=1}^rb_{i,j}\beta_j
 <ol>
 <li> Пусть $\alpha_1,\ldots,\alpha_t$ - базис $K$, 
 $$M:=\{\alpha_1c_1+\cdots+\alpha_tc_t\mid\forall{i}\in\overline{1,t}(c_i\in{P})\}\subset{L}_n.$$ 
-Так как $K<L_n$, то $M\subset{K}$ и так как для любого $\beta\in{K}$ $\beta$ ЛВЧ 
+Так как $K&ltL_n$, то $M\subset{K}$ и так как для любого $\beta\in{K}$ $\beta$ ЛВЧ 
 $\alpha_1,\ldots,\alpha_t$, то $K\subset{M}$, то есть $K=M$.<br>
 Пусть $b_1,\ldots,b_t,c_1,\ldots,c_t\in{P}$ такие, что 
 $$\alpha_1b_1+\cdots+\alpha_tb_t=\alpha_1c_1+\cdots+\alpha_tc_t,$$ 
