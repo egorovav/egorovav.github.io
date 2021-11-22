@@ -1,4 +1,4 @@
-﻿<html>
+﻿ <html>
 <head>
 <meta charset="utf-8" />
 <title>Mathematical analysis 7.2.1.</title>
@@ -135,7 +135,7 @@ $\sum_{n=1}^\infty{b}_n$.
 <tr><td></td><td></td><td>$\dots$</td><td></td><td></td></tr>
 <tr><td>$2^na_{2^{n+1}}$</td><td>$\leq$</td><td>$\sum_{k=2^n+1}^{2^{n+1}}a_k$</td><td>$\leq$</td><td>$2^na_{2^n}$</td></tr>
 </table> 
-Сложим первые $n+1$ неравенство полученной цепочки, тогда
+Сложим первые $n+1$ неравенств полученной цепочки, тогда
 $$\forall{n}\in\mathbb{N}\left(\sum_{k=1}^{n+1}(2^{k-1}a_{2^k})\leq\sum_{k=2}^{2^{n+1}}a_k\leq\sum_{k=1}^{n+1}(2^{k-1}a_{2^{k-1}})\right)
 \Leftrightarrow\forall{n}\in\mathbb{N}\left(\frac1{2}(S_{n+2}^{(b)}-a_1)\leq{S}_{2^{n+1}}^{(a)}-a_1\leq{S}_{n+1}^{(b)}\right)$$
 Из полученных неравенств следует, что последовательность $\{S_n^{(a)}\}$ частичных сумм ряда $\sum_{n=1}^\infty{a}_n$ ограничена тогда и только тогда,
@@ -182,7 +182,7 @@ $$\forall{n}\in\mathbb{N}\left(\left(1+\frac1{n}\right)^{n+1}\geq{e}\right)\Righ
 \forall{n}\in\mathbb{N}\left(1+\frac1{n}\geq{e}^{\frac1{n+1}}\right)\Rightarrow
 \forall{n}\in\mathbb{N}\left(\ln\left(1+\frac1{n}\right)\geq\frac1{n+1}\right)$$
 Таким образом доказано, что 
-$$n\in\mathbb{N}\left(\frac1{n+1}\leq\ln\frac{n+1}{n}\leq\frac1{n}\right)\Leftrightarrow
+$$\forall{n}\in\mathbb{N}\left(\frac1{n+1}\leq\ln\frac{n+1}{n}\leq\frac1{n}\right)\Leftrightarrow
 \forall{n}\in\mathbb{N}\left(0\leq\frac1{n}-\ln\frac{n+1}{n}\leq\frac1{n}-\frac1{n+1}=\frac1{n(n+1)}\right)$$
 В <a href="#Example7.2.1">примере 7.2.1</a> было показано, что ряд $\sum_{n=1}^\infty\frac1{n(n+1)}$ сходится, следовательно, по 
 <a href="#Theorem7.2.2">теореме сравнения для знакопостонянных рядов</a> сходится и ряд $\sum_{n=1}^\infty(\frac1{n}-\ln\frac{n+1}{n})$, 

@@ -59,7 +59,7 @@ $\sum_{n=1}^\infty{a}_n$.
 сходится.
 </li>
 <br>
-<li>если существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $\frac{a_n}{a_{n+1}}-1\leq1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
+<li>если существует $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $\frac{a_n}{a_{n+1}}\leq1$, то ряд $\sum_{n=1}^\infty{a}_n$ расходится.</li>
 </ol>
 <p><b>Доказательство:</b> Если для любого $n\in\mathbb{N}$ положить $c_n=1$, то ряд $\sum_{n=1}^\infty\frac1{c_n}$ расходится, значит можем применить схему 
 Куммера, тогда $K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}=\frac{a_n}{a_{n+1}}-1$ и утверждение следует из утверждения схемы Куммера.
@@ -93,7 +93,7 @@ $$\lim_{n\to\infty}\frac{a_{n+1}}{a_n}=q\Rightarrow
 Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$, тогда
 <ol>
 <li>
-если существуют $\delta&gt0$, $\exists{n}_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $n\left(\frac{a_n}{a_{n+1}}-1\right)\geq1+\delta$, 
+если существуют $\delta&gt0$, ${n}_0\in\mathbb{N}$ такие, что для любого $n&gtn_0$ $n\left(\frac{a_n}{a_{n+1}}-1\right)\geq1+\delta$, 
 то ряд $\sum_{n=1}^\infty{a}_n$ сходится,
 </li>
 <li>
@@ -109,7 +109,7 @@ $$K_n=c_n\frac{a_n}{a_{n+1}}-c_{n+1}=n\frac{a_n}{a_{n+1}}-n-1=n\left(\frac{a_n}{
 
 <p id="Corollary7.2.9"><b>Следствие 7.2.9: Предельная форма признака Раабе.</b><br>
 Если ряд $\sum_{n=1}^\infty{a}_n$ такой, что для любого $n\in\mathbb{N}$ $a_n&gt0$ и 
-$\displaystyle\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)$, тогда
+$\displaystyle\lim_{n\to\infty}\left(n\left(\frac{a_n}{a_{n+1}}-1\right)\right)=p$, тогда
 <ol>
 <li>если $p&gt1$, то ряд $\sum_{n=1}^\infty{a}_n$ сходится,</li>
 <br>

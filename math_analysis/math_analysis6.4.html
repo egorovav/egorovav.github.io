@@ -413,7 +413,7 @@ $\infty^0$, $0^\infty$, $1^\infty$, $0\cdot\infty$ сводятся к этим 
 </ol>
 <p><b>Доказательство:</b> Чтобы рассматривать предел отношения $\frac{f(x)}{g(x)}$ при $x\to{a}+0$, покажем для корректности, что $g(x)\neq0$ в некоторой 
 окрестности точки $a$. Действительно, производная $g'(x)$ не равна нулю на интервале $(a,b)$, <a href="#Corollary6.4.3">следовательно</a>, 
-функция $f(x)$ стро гмонотонна, а <a href="./math_analysis5.5.5.html#Statement5.5.9">значит</a> инъективна, поэтому существует не более одного
+функция $f(x)$ строгомонотонна, а <a href="./math_analysis5.5.5.html#Statement5.5.9">значит</a> инъективна, поэтому существует не более одного
 значения $c\in(a,b)$ такого, что $g(c)=0$. Следовательно, существует $c_1\in(a,b)$ такое, что для любого $x\in(a,c_1)$ $g(x)\neq0$. Всюду далее
 ограничимся аргументами $x\in(a,c_1)$. 
 <ol type="I">
@@ -439,7 +439,7 @@ $$\lim_{x\to{a}+0}|g(x)|=+\infty\Rightarrow\lim_{x\to{a}+0}\frac{g(y)}{g(x)}=0\R
 {c}_4\in(a,c_3):\forall{x}\in(a,c_4)\left(\frac{g(y)}{g(x)}&lt1\right)\Rightarrow\forall{x}\in(a,c_4)\left(\frac{g(x)-g(y)}{g(x)}&gt0\right)\quad(5)$$
 
 $$(a&lty&ltc_3\wedge{c}_4&ltc_3)\Rightarrow^{(4)}\forall{x}\in(a,c_4)\left(\frac{f(x)-f(y)}{g(x)-g(y)}&ltp\right)\Rightarrow
-\forall{x}\in(a,c_4)\left(\frac{f(x)-f(y)}{g(x)}=\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)}&lt^{(5)}p\frac{g(x)-g(y)}{g(x)}\right)\Leftrightarrow$$ 
+\forall{x}\in(a,c_4)\left(\frac{f(x)-f(y)}{g(x)}=\frac{f(x)-f(y)}{g(x)-g(y)}\frac{g(x)-g(y)}{g(x)}&lt^{(5)}p\frac{g(x)-g(y)}{g(x)}\right)\Rightarrow$$ 
 $$\Rightarrow\forall{x}\in(a,c_4)\left(\frac{f(x)}{g(x)}-\frac{f(y)}{g(x)}&ltp\left(1-\frac{g(y)}{g(x)}\right)\right)\Rightarrow
 \forall{x}\in(a,c_4)\left(\frac{f(x)}{g(x)}&lt\frac{f(y)}{g(x)}+p-p\frac{g(y)}{g(x)}\right)\Rightarrow$$ 
 $$\Rightarrow\lim_{x\to{a}+0}\frac{f(x)}{g(x)}\leq\lim_{x\to{a}+0}\left(\frac{f(y)}{g(x)}+p-p\frac{g(y)}{g(x)}\right)=p&ltq\Rightarrow

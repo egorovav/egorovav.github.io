@@ -35,9 +35,9 @@ $$=a_nB_n+\sum_{k=1}^{n-1}((a_k-a_{k+1})B_k)$$
 <li>$\forall{k}\in\overline{1,n-1}(a_{k+1}\geq{a}_k)$,</li>
 <br>
 <li>$\exists{B}\in\mathbb{R}:\forall{k}\in\overline{1,n}(|B_k|\leq{B})$,</li>
+</ol>
 тогда
 $$\left|\sum_{k=1}^n(a_kb_k)\right|\leq{B}(|a_1|+2|a_n|).$$
-</ol>
 <p><b>Доказательство:</b> Так как для любого $k\in\overline{1,n}$ $a_{k+1}\geq{a}_k$, то $|a_{k+1}-a_k|=a_{k+1}-a_k$, тогда
 $$\left|\sum_{k=1}^n(a_kb_k)\right|=\left|a_nB_n+\sum_{k=1}^{n-1}((a_k-a_{k+1})B_k)\right|\leq|a_n||B_n|+\sum_{k=1}^{n-1}(|a_k-a_{k+1}||B_k|)=
 |a_n||B_n|+\sum_{k=1}^{n-1}((a_{k+1}-a_k)|B_k|)\leq$$ $$\leq|a_n|B+B(a_n-a_1)\leq|a_n|B+B(|a_n|+|a_1|)=B(|a_1|+2|a_n|)$$
