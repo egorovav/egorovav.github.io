@@ -64,8 +64,8 @@ $$\int\limits_a^b(\alpha{f}(x)+\beta{g}(x))dx=\lim_{n\to\infty}\sigma(\alpha{f}+
 \alpha\lim_{n\to\infty}\sigma(f,P_n,\xi_n)+\beta\lim_{n\to\infty}\sigma(g,P_n,\xi_n)=\alpha\int\limits_a^bf(x)dx+\beta\int\limits_a^bg(x)dx.$$
 </li>
 <li>
-$$\forall{x}\in[a,b](f(x)\geq0)\Rightarrow\forall{P}:=\{x_1,x_2,\dots,x_n\}(\forall{i}\in\overline{1,n}(M_i:=\sup_{x\in\Delta_i}f(x)\geq0))\Rightarrow
-\forall{P}(S(f,P)=\sum_{i=1}^n(M_i\Delta{x}_i)\geq0)\Rightarrow\int\limits_a^bf(x)dx=\int\limits_a^{b*}f(x)dx=\inf_{(P)}S(f,P)\geq0$$
+$$\forall{x}\in[a,b](f(x)\geq0)\Rightarrow\forall{P}:=\{x_1,x_2,\dots,x_n\}\left(\forall{i}\in\overline{1,n}\left(M_i:=\sup_{x\in\Delta_i}f(x)\geq0\right)\right)\Rightarrow
+\forall{P}\left(S(f,P)=\sum_{i=1}^n(M_i\Delta{x}_i)\geq0\right)\Rightarrow\int\limits_a^bf(x)dx=\int\limits_a^{b*}f(x)dx=\inf_{(P)}S(f,P)\geq0$$
 </li>
 <li>
 $$\forall{x}\in[a,b](f(x)\geq{g}(x))\Rightarrow\forall{x}\in[a,b](f(x)-g(x)\geq0)\Rightarrow\int\limits_a^bf(x)dx-\int\limits_a^bg(x)dx=^{(1)}
@@ -236,7 +236,7 @@ $S_{ср}:=\frac1{b-a}\int\limits_a^bf(x)dx$.
 <p id="Statement8.3.1"><b>Утверждение 8.3.1:</b> $\displaystyle{f}(x)\in\mathcal{R}[a,b]\Rightarrow{F}(x):=\int\limits_a^xf(t)dt\in{C}[a,b]$.
 <p><b>Доказательство:</b> Функция $f(x)$ интегрируема на отрезке $[a,b]$, следовательно, он ограничена на нем, то есть существует 
 $\displaystyle{K}:=\sup_{x\in[a,b]}|f(x)|$, <a href="#Task8.3.1">следовательно</a>
-$$\forall{x}\in[a,b]\left(|F(x)-F(y)|=\left|\int\limits_a^xf(t)dt-\int\limits_a^yf(t)dt\right|=
+$$\forall{x},y\in[a,b]\left(|F(x)-F(y)|=\left|\int\limits_a^xf(t)dt-\int\limits_a^yf(t)dt\right|=
 \left|\int\limits_a^xf(t)dt-\left(\int\limits_a^xf(t)dt+\int\limits_x^yf(t)dt\right)\right|=\left|\int\limits_x^yf(t)dt\right|\leq
 \int\limits_x^y|f(t)|dt\leq\int\limits_x^yKdt\leq{K}|x-y|\right)\Rightarrow$$
 $$\Rightarrow\forall\varepsilon&gt0\:\exists\delta:=\frac{\varepsilon}{K}:\left(|x-y|&lt\delta\Rightarrow|F(x)-F(y)|\leq{K}|x-y|&ltK\frac{\varepsilon}{K}=

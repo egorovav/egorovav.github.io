@@ -36,7 +36,7 @@ $\int\limits_{\omega_1}^{\omega_2}f(x)dx$ не будет зависеть от 
 </li>
 <li>
 <p id="Definition8.5.6"><b>Определение 8.5.6:</b> Если функция $f(x):[a,b]\backslash\{\omega\}\to\mathbb{R}$ такая, что $\omega\in(a,b)$, для любых
-$c\in[a,\omega)$, $d\in[a,\omega)$ $f(x)\in\mathcal{R}[a,c]$, $f(x)\in\mathcal[d,b]$ и функция $f(x)$ не ограничена на любой окрестности точки $\omega$,
+$c\in[a,\omega)$, $d\in(\omega,b]$ $f(x)\in\mathcal{R}[a,c]$, $f(x)\in\mathcal{R}[d,b]$ и функция $f(x)$ не ограничена на любой окрестности точки $\omega$,
 то несобственный интеграл $\int\limits_a^bf(x)dx$ считают сходящимся, если сходятся оба несобственных интеграла $\int\limits_a^\omega{f}(x)dx$ и
 $\int\limits_\omega^bf(x)dx$ при этом $\int\limits_a^bf(x)dx:=\int\limits_a^\omega{f}(x)dx+\int\limits_\omega^bf(x)dx$.
 
@@ -68,7 +68,7 @@ $$\int\limits_{-1}^1\frac{dx}{x}=\int\limits_{-1}^0\frac{dx}{x}+\int\limits_0^1\
 <p id="Example8.5.12"><b>Пример 8.5.12:</b> Исследуем сходимость несобственного интеграла от функции 
 $f(x)=\begin{cases}\ln{x}, & 0&ltx\leq1\\\frac1{x^2}, & -1\leq{x}&lt0\end{cases}$ на множестве $[-1,1]\backslash\{0\}$.<br>
 В соответствии с <a href="#Definition8.5.6">определением 8.5.6</a> данный интеграл расходится так как расходится несобственный интеграл от функции 
-$\displaystyle\frac{dx}{x^2}$ на промежутке $[-1,0)$.<br>
+$\displaystyle\frac1{x^2}$ на промежутке $[-1,0)$.<br>
 (При этом несобственный интеграл $\int\limits_0^1f(x)dx=\int\limits_0^1\ln{x}dx=(x\ln{x}-x)|_0^1=-1-\lim_{x\to0}(x\ln{x})=-1$ сходится, но в рамках
 определения 8.5.6 это не имеет значения.)
 </li>
@@ -114,7 +114,7 @@ $(0,a]$ расходится. Из чего можно сразу сделать
 $\int\limits_0^{+\infty}f(x)dx$.
 </li>
 <li>
-Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac{n+1}{n+1}}^{\frac{n}{n+1}}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.<br>
+Рассмотрим ряд $\displaystyle\sum_{n=1}^\infty{a}_n:=\sum_{n=1}^\infty\int\limits_{\frac{n}{n+1}}^{\frac{n+1}{n+2}}\frac{dx}{x^2\sqrt[3]{x-2}\ln{x}}$.<br>
 Так как функция $f(x)$ непрерывна, возрастает и положительна на интервале $(a,1)$, <a href="./math_analysis8.3.html#Corollary8.3.2">то</a>
 $$a_n=\int\limits_{\frac{n}{n+1}}^{\frac{n+1}{n+2}}f(x)dx\geq\left(\frac{n+1}{n+2}-\frac{n}{n+1}\right)f\left(\frac{n}{n+1}\right)=
 \frac1{(n+1)(n+2)}\frac1{\left(\frac{n}{n+1}\right)^2\ln\frac{n}{n+1}}\sqrt[3]{\frac{n}{n+1}-2}\sim\frac1{(n+1)(n+1)}\frac1{\ln\frac{n}{n+1}},n\to\infty$$

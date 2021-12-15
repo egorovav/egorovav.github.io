@@ -62,7 +62,7 @@ $$f_n(x)\UniformConv{f}(t),t\in{E}\Leftrightarrow\exists\lim_{n\to\infty}\left(\
 $\Rightarrow)$
 $$\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\,\forall{t}\in{E}\left(|f_n(t)-f(t)|<\frac{\varepsilon}{2}\right)\Rightarrow
 \forall{n}>n_0\left(r_n\leq\frac{\varepsilon}{2}<\varepsilon\right)\Rightarrow\lim_{n\to\infty}r_n=0.$$
-$\Leftarrow$
+$\Leftarrow)$
 $$\lim_{n\to\infty}r_n=0\Rightarrow\exists{n}_0\in\mathbb{N}\colon\forall{n}>n_0\left(\sup_{t\in{E}}|f_n(t)-f(t)|<\varepsilon\right)\Rightarrow
 \forall{n}>n_0\,\forall{t}\in{E}(|f_n(t)-f(t)|<\varepsilon)\Rightarrow{f}_n(x)\UniformConv{f}(t),t\in{E}.$$
 
@@ -187,10 +187,10 @@ $\displaystyle\sum_{n=1}^{\infty}\frac1{n^\alpha}$ <a href="./math_analysis7.2.1
 </li>
 <li>
 При $0<\alpha\leq1$ применим призрак Дирихле положив $\displaystyle{a}_n(x):=\frac1{n^\alpha}$, $b_n(x):=\sin{nx}$. Последовательность $a_n(x)$ монотонна и 
-сходится к нулю при этм не зависит от $x$, следовательно, $a_n(x)\UniformConv0,x\in\mathbb{R}$.
+сходится к нулю при этом не зависит от $x$, следовательно, $a_n(x)\UniformConv0,x\in\mathbb{R}$.
 С другой стороны, для любого $x\in\mathbb{R}$ такого, что $x\notin2\pi\mathbb{Z}:=\{2\pi{k}\mid{k}\in\mathbb{Z}\}$ верно
 $$\left|\sum_{k=1}^nb_k(x)\right|=\left|\sum_{k=1}^n\sin{kx}\right|=\left|\frac1{2\sin\frac{x}{2}}\sum_{k=1}^n\left(2\sin{kx}\sin\frac{x}{2}\right)\right|=
-\left|\frac1{1\sin\frac{x}{2}}\sum_{k=1}^n\left(\cos\frac{(2k-1)x}{2}-\cos\frac{(2k+1)x}{2}\right)\right|=
+\left|\frac1{2\sin\frac{x}{2}}\sum_{k=1}^n\left(\cos\frac{(2k-1)x}{2}-\cos\frac{(2k+1)x}{2}\right)\right|=
 \frac{\cos\frac{x}{2}-\cos\frac{(2n+1)x}{2}}{2\sin\frac{x}{2}}\leq\frac1{\sin\frac{x}{2}}$$
 Следовательно, для любого множества $E\subset{R}$ такого, что $(E\cup\mathring{E})\cap2\pi\mathbb{Z}=\varnothing$ верно
 $$\forall{t}\in{E}\left(\left|\sum_{k=1}^nb_k(t)\right|<{M}:=\frac1{\inf_{t\in{E}}\sin\frac{t}{2}}\right)$$
@@ -221,7 +221,7 @@ $\displaystyle\sum_{n=1}^{\infty}a_n(x)=\sum_{n=1}^{\infty}\frac{x^2}{(1+x^2)^n}
 $\displaystyle\sum_{k=1}^n(aq^k)=q\sum_{k=1}^n(aq^{k-1})=\frac{aq(1-q^n)}{1-q}$. Положив $\displaystyle{q}:=\frac1{1+x^2}$, $a:=x^2$, получим,
 что для любого $t\neq0$ сумма ряда равна 
 $$\lim_{n\to\infty}\sum_{k=1}^n(aq^k)=\lim_{n\to\infty}\frac{aq(1-q^n)}{1-q}=\frac{aq}{1-q}=\frac{t^2}{\left(1-\frac1{1+t^2}\right)(1+t^2)}=1.$$
-Тогда для любого $t\neq0$ $\displaystyle|S(t)-S_n(t)|=|1-(1-q^n)|=q^n=\frac1{(1+x^2)^n}$. Тогда при $\varepsilon:=\frac1{2}$ для любого $n\in\mathbb{N}$
+Тогда для любого $t\neq0$ $\displaystyle|S(t)-S_n(t)|=|1-(1-q^n)|=q^n=\frac1{(1+t^2)^n}$. Тогда при $\varepsilon:=\frac1{2}$ для любого $n\in\mathbb{N}$
 и для любого $t\in\mathbb{R}$ такого, что $\displaystyle0<{t}<\sqrt{\sqrt[n]{2}-1}$ выполняется неравенство $|S(t)-S_n(t)|\geq\varepsilon$.
 </i>
 
