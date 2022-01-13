@@ -45,9 +45,9 @@ $$\forall{x},y\in{X}\,\forall\alpha,\beta\in{P}(L(\alpha{x}+\beta{y})=\alpha{L}(
 <br><br>
 <p>Далее будем рассматривать случай: $X=\mathbb{R}^n$, $Y=\mathbb{R}^m$, $P=\mathbb{R}$.
 
-<p id=Statement12.3.2><b>Утверждение 12.3.2:</b> При фиксации <a href="https://en.wikipedia.org/wiki/Vector_space#Basis_and_dimension">базисов</a> в
+<p id=Statement12.3.2><b>Утверждение 12.3.2:</b> При фиксации <a href="../discrete_math/discrete_math11.1.html#Definition11.9">базисов</a> в
 $\mathbb{R}^n$ и $\mathbb{R}^m$ существует биективное отображение между множеством $\mathcal{L}(X,Y)$ и множеством матриц размера $m\times{n}$.
-<p><b>Доказательство:</b> См. курс алгебры или Зорич т. 1, стр. 499.
+<p><b>Доказательство:</b> См. <a href="../discrete_math/discrete_math11.3.html#Statement11.5">курс алгебры</a> или Зорич т. 1, стр. 499.
 
 <br><br>
 
@@ -66,7 +66,7 @@ $m\times{n}$. В дальнейшем используются обе формы
 <p id=Statement12.3.3><b>Утверждение 12.3.3:</b> Пусть линейным отображениям $L_1\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$, 
 $L_2\in\mathcal{L}(\mathbb{R}^m,\mathbb{R}^k)$ соответствуют матрицы $A_{m\times{n}}$ и $B_{k\times{m}}$ соответственно, тогда отображение 
 $L_3:=L_2\circ{L}_1\colon\mathbb{R}^n\to\mathbb{R}^k$ является линейным оператором из $\mathbb{R}^n$ в $\mathbb{R}^k$, которому соответствует матрица $BA$.
-<p><b>Доказательство:</b> См. Зорич т. 1, стр. 500.
+<p><b>Доказательство:</b> См. <a href="../discrete_math/discrete_math12.1.html#Corollary12.1">курс алгебры</a> или Зорич т. 1, стр. 500.
 
 <br><br>
 
@@ -103,7 +103,7 @@ $L(h)=O(h)$ при $h\to0$ по $\mathbb{R}^n$.
 <h5 id=12.3.2>12.3.2 Дифференциал функции в точке.</h5>
 
 <p id=Definition12.3.3><b>Определение 12.3.3:</b> Пусть $E\subset\mathbb{R}^n$, $x\in{E}\cap\mathring{E}$, тогда функция $f(x)\colon{E}\to\mathbb{R}^m$
-дифференцируема в точке $x$ по множеству $E$, если существуют $L(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R^m})$ и $\alpha(h)\colon{E}\to\mathbb{R}^m$
+дифференцируема в точке $x$ по множеству $E$, если существуют $L(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$ и $\alpha(h)\colon{E}\to\mathbb{R}^m$
 такие, что $\alpha(h)=o(h)$ при $h\to0$ по всем $h$ таким, что $x+h\in{E}$ и
 $$\forall{h}\in\mathbb{R}^n(x+h\in{E}\Rightarrow{f}(x+h)-f(x)=L(x)(h)+\alpha(h))$$
 Линейное отображение $L(x)\sim{d}f(x)\sim{D}f(x)\sim{f}'(x)$ называют в этом случае дифференциалом функции $f(x)$ в точке $x$ или производной функции
@@ -111,7 +111,7 @@ $f(x)$ в точке $x$.
 
 <br><br>
 
-<p>Определить производную так же как в случае функции одной переменной $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$ нельзя, так как в случае многих
+<p>Определить производную так же как в случае функции одной переменной $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$ невозможно, так как в случае многих
 переменных $h$ это вектор и делить на него нельзя.
 
 <br><br>
@@ -158,7 +158,8 @@ $df(x)=(df^{(1)}(x),\ldots,df^{(m)}(x))$
 <br><br>
 <p id=Statement12.3.7><b>Утверждение 12.3.7:</b> Пусть $E\subset\mathbb{R}^n$, $x\in{i}ntE$, функция $f(x)\colon{E}\to\mathbb{R}$
 дифференцируема в точке $x=(x_1,\ldots,x_n)$, тогда для любого $k\in\overline{1,n}$ существует конечный предел 
-$\displaystyle{a}_k(x):=\lim_{\substack{\mathbb{R}\ni{t}\to0\\x+te_k\in{E}}}\frac{f(x_1,\ldots,x_{k-1},x_k,x_{k+1},\ldots,x_n)}{t}$.<br>
+$\displaystyle{a}_k(x):=\lim_{\substack{\mathbb{R}\ni{t}\to0\\x+te_k\in{E}}}\frac{f(x_1,\ldots,x_{k-1},x_k+t,x_{k+1},\ldots,x_n)-f(x_1,\ldots,x_n)}{t}=
+\lim_{\substack{\mathbb{R}\ni{t}\to0\\x+te_k\in{E}}}\frac{f(x+te_k)-f(x)}{t}$.<br>
 При этом $f'(x)=L(x)=(L^{(1)}(x),\ldots,L^{(n)}(x))=(a_1(x),\ldots,a_n(x))$.
 <p><b>Доказательство:</b>Из дифференцируемости функции $f(x)$ в точке $x$ следует существование отображения $L(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})$
 такого, что 
@@ -211,14 +212,14 @@ $$
 
 <br><br>
 <p>Матрица $J(x)$ имеет размер $m\times{n}$ и называется матрицей Якоби. Если $m=n$, то матрица Якоби квадратная и можно вычислить ее 
-<a href="https://en.wikipedia.org/wiki/Determinant">определитель</a> $|J(x)|$ который называют якобианом функции $f(x)$.<br>
+<a href="../discrete_math/discrete_math3.2.html#Definition3.6">определитель</a> $|J(x)|$ который называют якобианом функции $f(x)$.<br>
 Итак значение частной производной $\displaystyle\frac{\partial{f}(x)}{\partial{x}_i}$ в точке $(x_1,\ldots,x_{i-1},x,x_{i+1},\ldots,x_n)$ равно значению 
 производной $\frac{dg}{dt}$ в точке $x$, где $g(t)$ функция одной переменной такая, что для любого $t\in\mathbb{R}$ 
 $g(t)=f(x_1,\ldots,x_{i-1},t,x_{i+1},\ldots,x_n)$.
 
 <br><br>
 
-<p id=Statement12.3.10><b>Утверждение 12.3.10:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\mathbb{R}$, $x\in{i}ntE$, тогда
+<p id=Statement12.3.10><b>Утверждение 12.3.10:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x\in{i}ntE$, тогда
 <ol>
 <li>из дифференцируемости функции $f(x)$ в точке $x$ следует непрерывность функции $f(x)$ в точке $x$,</li>
 <li>из непрерывности функции $f(x)$ в точке $x$ не следует дифференцируемость функции $f(x)$ в точке $x$,</li>

@@ -52,7 +52,7 @@ $$x\in\varliminf{A}_n\Leftrightarrow\exists{n}\in\mathbb{N}\colon\forall{k}\geq{
 $$x\in\varlimsup{A}_n\Leftrightarrow
 \exists{M}\subset\mathbb{N}\colon\left(cardM=card\mathbb{N}\wedge{x}\in\bigcap_{\alpha\in{M}}A_{\alpha}\right)\Leftrightarrow
 \forall{n}\in\mathbb{N}\,\exists{k}\geq{n}\colon{x}\in{A}_k\Leftrightarrow\forall{n}\in\mathbb{N}\left(x\in\bigcup_{k=n}^{\infty}A_k\right)\Leftrightarrow
-x\in\bigcap_{n=1}^{\infty}\left(\bigcup_{k=n}^{\infty}A_k\right).$$
+{x}\in\bigcap_{n=1}^{\infty}\left(\bigcup_{k=n}^{\infty}A_k\right).$$
 </li>
 </ol>
 <br><br>
@@ -70,12 +70,12 @@ $A_n\subset{A}_{n+1}$ тогда говорят, что последовател
 <ol>
 <li>
 $$\left(x\in\varlimsup{A}_n\Rightarrow\exists{k}\in\mathbb{N}\colon{x}\in{A}_k\Rightarrow\forall{n}\geq{k}(x\in{A}_n)\Rightarrow
-({x}\in\bigcup_{n=1}^{\infty}\wedge{x}\in\varliminf{A}_n)\right)\Rightarrow
+\left({x}\in\bigcup_{n=1}^{\infty}\wedge{x}\in\varliminf{A}_n\right)\right)\Rightarrow
 \left(\varlimsup{A}_n\subset\bigcup_{n=1}^{\infty}A_n\wedge\varlimsup{A}_n\subset\varliminf{A}_n\right).$$
 Так как по <a href="#Statement14.1.6">утверждению 14.1.6</a> $\varliminf{A}_n\subset\varlimsup{A}_n$, то $\varliminf{A}_n=\varlimsup{A}_n$. И так как 
 последовательность $\{A_n\}$ возрастает, то 
 $$\left(x\in\bigcup_{n=1}^{\infty}A_n\Rightarrow\exists{k}\in\mathbb{N}\colon{x}\in{A}_k\Rightarrow\forall{n}\geq{k}(x\in{A}_n)\Rightarrow
-x\in\varlimsup{A}_n\right)\Rightarrow\bigcup_{n=1}^{\infty}A_n\subset\varlimsup{A}_n\Rightarrow\lim{A}_n=\varlimsup{A}_n=\bigcup_{n=1}^{\infty}A_n.$$
+{x}\in\varlimsup{A}_n\right)\Rightarrow\bigcup_{n=1}^{\infty}A_n\subset\varlimsup{A}_n\Rightarrow\lim{A}_n=\varlimsup{A}_n=\bigcup_{n=1}^{\infty}A_n.$$
 </li>
 <li>
 Докажем от противного, что $\varlimsup{A}_n\subset\bigcap_{n=1}^{\infty}A_n$. Действительно, если $x\notin\bigcap_{n=1}^{\infty}A_n$, то сущесвует
@@ -134,7 +134,7 @@ $$\bigcup_{k=n}^{\infty}A_k=\begin{cases}\left[0,1+\frac1{n}\right]&,n-четн�
 возрастает, то 
 $$\exists{s}\in\mathbb{N}\colon\forall{k}\geq{s}(n_k\geq{t})\Rightarrow\forall{k}\geq{s}(x\in{A}_{n_k})\Rightarrow
 {x}\in\bigcap_{k=s}^{\infty}A_{n_k}\Rightarrow{x}\in\bigcup_{n=1}^{\infty}\left(\bigcap_{k=n}^{\infty}A_{n_k}\right)\Rightarrow
-x\in\varliminf{A}_{n_k}.$$
+{x}\in\varliminf{A}_{n_k}.$$
 То есть $\varliminf{A}_n\subset\varliminf{A}_{n_k}$. С другой стороны
 $$x\in\varliminf{A}_{n_k}\Rightarrow\exists{s}\in\mathbb{N}\colon\forall{k}\geq{s}(x\in{A}_{n_k})\Rightarrow{x}\in\varlimsup{A}_n.$$
 Таким образом $\varliminf{A}_n\subset\varliminf{A}_{n_k}\subset\varlimsup{A}_n$.
@@ -161,7 +161,7 @@ $A_n\cap{B}_n=\varnothing$, следовательно, $\varlimsup(A_n\cap{B}_n
 </li>
 <li>
 $$(x\in\varliminf{A}_n\Rightarrow\exists{k}\in\mathbb{N}\colon\forall{n}\geq{k}(x\in{A}_n\subset{A}_n\cup{B}_n)\Rightarrow
-{x}\in\varliminf(A_n\cup{B}_n)\Rightarrow\varliminf{A}_n\subset\varliminf(A_n\cup{B}_n)$$
+{x}\in\varliminf(A_n\cup{B}_n))\Rightarrow\varliminf{A}_n\subset\varliminf(A_n\cup{B}_n)$$
 Аналогично, доказывается, что $\varliminf{B}_n\subset\varliminf(A_n\cup{B}_n)$.<br>
 Обратное включение не верно, это подтверждает пример из пункта 5 для него $\varliminf{A}_n=\varliminf{B}_n=\varliminf{A}_n\cup\varliminf{B}_n=\varnothing$,
 но при этом для любого $n\in\mathbb{N}$ $A_n\cup{B}_n=[0,2]$, то есть $\varliminf(A_n\cup{B}_n)=[0,2]$.
@@ -213,15 +213,7 @@ $$A=\bigsqcup_{i=1}^nA_i\Rightarrow{F}(A)=\sum_{i=1}^nF(A_i).$$
 потребовать для любых $A_1,A_2\in{S}$ условия $F(A_1\sqcup{A}_2)=F(A_1)+F(A_2)$.<br>
 В приведенном выше <a href="#Example14.1.7">примере 14.1.7</a> первые две функции являются аддитивными, а третья нет.
 <br><br>
-<p id=Statement14.1.8><b>Утверждение 14.1.8: Простейшие свойства аддитивных функций.</b><br>
-Пусть $F$,$F_1$,$F_2$ аддитивные функции множеств на классе $S$, тогда
-<ol>
-<li>Семейство аддитивных функций заданных на $S$ есть векторное пространство относительно операций сложения и умножения на скаляр определенных как<br>
-$\forall\alpha\in\mathbb{R}\,\forall{A}\in{S}((\alpha{F})(A):=\alpha{F}(A)\wedge(F_1+F_2)(A):=F_1(A)+F_2(A)).$
-</li>
-<li>$\varnothing\in{S}\Rightarrow{F}(\varnothing)=0$.</li>
-<li>$(A,B,B\backslash{A}\in{S}\wedge{A}\subset{B})\Rightarrow{F}(B\backslash{A})=F(B)-F(A)$.</li>
-</ol>
+<p id=Statement14.1.8><b>Утверждение 14.1.8: 
 <p><b>Доказательство:</b>
 <ol>
 <li>

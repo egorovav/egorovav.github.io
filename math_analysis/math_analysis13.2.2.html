@@ -83,7 +83,8 @@ $$\exists\varepsilon:=\frac12\colon\forall{B}>0\,\exists{b}':=B\,\exists{b}'':=2
 <li>$f(x,y)\in{C}\{[a,\omega)\times[c,d]\}$,</li>
 </ol>
 тогда $F(y):=\int_a^{\omega}f(x,y)\,dx\in{C}[c,d]$.
-<p><b>Доказательство:</b> Фиксируем $y_0\in[c,d]$, обозначим $\varphi(x):=f(x,y_0)$, тогда по пункту 1 условий несобственный интеграл сходится.
+<p><b>Доказательство:</b> Фиксируем $y_0\in[c,d]$, обозначим $\varphi(x):=f(x,y_0)$, тогда по пункту 1 условий несобственный интеграл 
+$\int_a^{\omega}\varphi(x)\,dx$ сходится.
 Фиксируем $b\in[a,\omega)$, тогда множество $P_b:=[a,b]\times[c,d]$ компакт в $\mathbb{R}^2$. Так как $f(x,y)\in{C}\{[a,\omega)\times[c,d]\}$, то
 $f(x,y)\in{C}(P_b)$. Тогда по <a href="./math_analysis5.5.3.html#Theorem5.5.4">теореме Кантора</a> функция $f(x,y)$ равномерно непрерывна на $P_b$.
 Тогда
@@ -157,7 +158,7 @@ $\frac{d}{dy}\int_a^{\omega}f(x,y)\,dx=\int_a^{\omega}\frac{\partial{f}}{\partia
 
 <br><br>
 <p id=Definition13.2.2><b>Определение 13.2.2: Равномерная сходимость по параметру в точке.</b><br>
-Пусть $Y\in\mathbb{R}$, $y_0\in{i}nt{Y}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, тогда говорят, что несобственный интеграл 
+Пусть $Y\subset\mathbb{R}$, $y_0\in{i}nt{Y}$, $f(x,y)\colon[a,\omega)\times{Y}\to\mathbb{R}$, тогда говорят, что несобственный интеграл 
 $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно при значении параметра $y=y_0$, если существует окрестность $U(y_0)\subset{Y}$ такая, что интеграл
 $\int_a^{\omega}f(x,y)\,dx$ сходится равномерно по $y\in{U}(y_0)$.
 
@@ -222,7 +223,7 @@ $D:=[0,+\infty)\times[0,+\infty)$, тогда
 под знаком интеграла по $y$. Тогда для любого $y>0$
 $$F'(y)=-\int_0^{+\infty}\sin{x}e^{-xy}\,dx=\frac1{y}\int_0^{+\infty}\sin{x}\,d(e^{-xy})=
 \frac1{y}(\sin{x}e^{-xy})|_0^{+\infty}-\frac1{y}\int_0^{+\infty}\cos{x}e^{-xy}\,dx=
--\frac1{y^2}(\cos{x}e^{-xy})|0^{+\infty}+\frac1{y^2}\int_0^{+\infty}\sin{x}e^{-xy}\,dx=-\frac1{y^2}-\frac1{y^2}F'(y)\Rightarrow$$
+-\frac1{y^2}(\cos{x}e^{-xy})|_0^{+\infty}+\frac1{y^2}\int_0^{+\infty}\sin{x}e^{-xy}\,dx=-\frac1{y^2}-\frac1{y^2}F'(y)\Rightarrow$$
 $$\Rightarrow{F}'(y)=-\frac1{y^2+1}\Rightarrow{F}(y)=\int{F}'(y)\,dy=-\int\frac{dy}{y^2+1}=-\arctg{y}+C\qquad(8)$$
 Для нахождения константы $C$ рассмотрим функцию $F(y)$ при $y\to0$. Покажем, что существует предел $\lim_{y\to+\infty}F(y)=0$.<br>
 Фиксируем $\varepsilon>0$. Функция $\frac{\sin{x}}{x}$, доопределенная единицей в точке 0, непрерывна на отрезке $[0,1]$, следовательно, она достигает на

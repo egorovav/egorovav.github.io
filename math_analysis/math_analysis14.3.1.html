@@ -111,7 +111,7 @@ $\mu^*(A)=0$.<br>
 <p>Далее везде в разделе 14.3 рассматривается функция $f(x)\colon{A}\to\mathbb{R}$, где $A\in{G}(m,H)$, 
 $H=\{[a,b)=[a_1,b_1)\times\cdots\times[a_n,b_n)\mid\forall{k}\in\overline{1,n}(a_k,b_k\in\mathbb{R},a_k<{b}_k)\}$ - полукольцо $n$-мерных полуоткрытых
 параллелепипедов, $m([a,b)):=\prod_{k=1}^n(b_k-a_k)$. Мера Жордана множества $A\in{G}(m,H)$ обозначается $\overline{\mu}(A)$. Продолжение меры $m$ с $H$
-на $R(H)$ обозначается $R(H)$.
+на $R(H)$ обозначается $\mu(A)$.
 <br><br>
 <p id=Definition14.3.3><b>Определение 14.3.3:</b> Пусть $A\subset\mathbb{R}^n$, тогда характеристической функцией множества $A$ называется функция 
 $\chi_A(x)\colon\mathbb{R}^n\to\mathbb{R}$ такая, что $\chi_A(x)=\begin{cases}1,x\in{A}\\0,x\notin{A}\end{cases}$.
@@ -163,7 +163,7 @@ $$\exists\int_{I_1}f(x)\chi_A(x)\,dx\Leftrightarrow\exists\int_If(x)\chi_A(x)\,d
 для любого $n\in\mathbb{N}$
 $$\sigma(f_{\chi_A},P'_n,\xi'_n)=\sum_{(P'_n)}\left(f_{\chi_A}(\xi'_k)\mu(I'_k)\right)=\sum_{(P_n)}\left(f_{\chi_A}(\xi_k)\mu(I_k)\right)=
 \sigma(f_{\chi_A},P_n,\xi_n).$$
-Тогда по пункту б <a href="#Statement14.3.1">утверждения 14.3.1</a>
+Тогда по пункту 6 <a href="#Statement14.3.1">утверждения 14.3.1</a>
 $$\lim_{n\to\infty}\lambda(P_n)=0\Rightarrow\lim_{n\to\infty}\lambda(P'_n)=0\Rightarrow\int_{I_1}f_{\chi_A}(x)\,dx=
 \lim_{n\to\infty}\sigma(f_{\chi_A},P'_n,\xi'_n)=\lim_{n\to\infty}\sigma(f_{\chi_A},P_n,\xi_n)=A.$$
 <br><br>
@@ -178,7 +178,7 @@ $I$.
 $f(x)=f_{\chi_A}(x)$, то $f(x)$ ограничена на $A$.<br>
 Так же из критерия Лебега следует, что функция $f_{\chi_A}(x)$ непрерывна почти всюду на $I$, следовательно, она непрерывна почти всюду на $A$, 
 следовательно, он непрерывна почти во всех внутренних точках $A$, следовательно, функция $f(x)$ также непрерывна почти во всех внутренних точках $A$,
-и так как $A\subset{i}ntA\cup\partial{A}$ и $\mu^*(\partial{A})=0$, то $f(x)$ непрерывна почти всюду на $A$.
+и так как $A\subset{i}ntA\cup\partial{A}$ и $\mu^*(\partial{A})=0$, то $f(x)$ непрерывна почти всюду на $A$.<br>
 $\Leftarrow)$<br>
 Так как $A\in{G}(m,H)$, то $A$ ограничено, следовательно, существует числовой промежуток $I\subset\mathbb{R}^n$ такой, что $A\subset{I}$. Функция $f(x)$
 ограничена на $A$, следовательно, функция $f_{\chi_A}(x)$ ограничена на $I$. Функция $f(x)$ непрерывна почти всюду на $A$, следовательно, функция 

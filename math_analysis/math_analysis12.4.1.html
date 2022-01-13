@@ -51,7 +51,7 @@ $\displaystyle\frac{d\varphi}{dt}(x_i^0)=\frac{\partial{f}}{\partial{x}_i}(x_0)$
 $\newcommand{\grad}{\operatorname{grad}}$
 
 <br><br>
-<p id=Definition12.4.2><b>Определение 12.4.2:</b> Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\mathbb{R}$ такая, что для любого 
+<p id=Definition12.4.2><b>Определение 12.4.2:</b> Пусть $E\subset\mathbb{R}^n$, функция $f(x)\colon{E}\to\mathbb{R}$ такая, что для любого 
 $i\in\overline{1,n}$ в точке $x_0\in{i}ntE$ существуют частные производные $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)$, тогда градиентом 
 функции $f(x)$ в точке $x_0$ называется вектор 
 $\displaystyle\nabla{f}(x_0):=\grad{f}(x_0):=\left(\frac{\partial{f}}{\partial{x}_1}(x_0),\ldots,\frac{\partial{f}}{\partial{x}_n}(x_0)\right)$ 
@@ -60,7 +60,7 @@ $\displaystyle\nabla{f}(x_0):=\grad{f}(x_0):=\left(\frac{\partial{f}}{\partial{x
 <p id=Corollary12.4.1><b>Следствие 12.4.1:</b> Пусть $E\subset\mathbb{R}^n$, $f(x)\colon{E}\to\mathbb{R}$, $x_0$ точка внутреннего локального экстремума
 функции $f(x)$, тогда
 <ol>
-<li>из дифференцируемости функции $f(x)$ в точке $x_0$ следует, что $f'(x)=0$;</li>
+<li>из дифференцируемости функции $f(x)$ в точке $x_0$ следует, что $f'(x_0)=0$;</li>
 <li>градиент функции $f(x)$ в точке $x_0$ либо не существует, либо равен 0.</li>
 </ol>
 <p><b>Доказательство:</b> 
@@ -89,7 +89,7 @@ $\displaystyle\frac{\partial{f}}{\partial{x}_i}(x_0)\neq0$, а это проти
 <p> Таким образом локальные экстремумы следует искать только среди критических точек первого рода.
 <br><br>
 <p id=Definition12.4.4><b>Определение 12.4.4:</b> Квадратичной формой над векторным пространством $\mathbb{R}^n$ будем называть функцию 
-$f(x)=f(x_1,\ldots,x_n)\colon\mathbb{R}^n\to\mathbb{R}$ такую, что для любого $x\in\mathbb{R}^n$ $\f(x)=\sum_{i,j=1}^n(a_{ij}x_ix_j)$, где для любых
+$f(x)=f(x_1,\ldots,x_n)\colon\mathbb{R}^n\to\mathbb{R}$ такую, что для любого $x\in\mathbb{R}^n$ $f(x)=\sum_{i,j=1}^n(a_{ij}x_ix_j)$, где для любых
 $i,j\in\overline{1,n}$ $a_{ij}\in\mathbb{R}$ и $a_{ij}=a_{ji}$. <br>
 Квадратная матрица $A:=(a_{ij})_{n\times{n}}$ называется матрицей квадратичной формы.<br>
 Значение квадратичной формы c матрицей $A$ на векторе $x$ обозначают $(Ax)x$.
@@ -130,7 +130,7 @@ a_{k,1} & \cdots & a_{k,k}
 <li>квадратичная форма $(Ax)x$ отрицательно определена тогда и только тогда, когда для всех нечетных $i\in\overline{1,n}$ $\Delta_i<0$,
 а для всех четных $\Delta_i>0$.</li>
 </ol>
-<p><b>Доказательство:</b> Доказывается в курсе алгебры параграф 16.3 теорема 4.
+<p><b>Доказательство:</b> Доказывается в курсе алгебры параграф 16.3 <a href="../discrete_math/discrete_math16.3.html#Theorem16.4">теорема 4</a>.
 
 <br><br>
 <p id=Example12.4.1><b>Пример 12.4.1:</b> Рассмотрим случай $n=2$ квадратичной формы $(Ax)x=f(x,y)$ над $\mathbb{R}^2$.<br>

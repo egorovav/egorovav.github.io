@@ -21,8 +21,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-
 Пусть $E\subset\mathbb{R}^n$, функции $f(x),g(x)\colon{E}\to\mathbb{R}^m$ дифференцируемы в точке 
 $x\in{E}\cap\mathring{E}$, тогда для любых $\lambda,\mu\in\mathbb{R}$ функция $\lambda{f}+\mu{g}\colon{E}\to\mathbb{R}$ дифференцируема в точке $x$ и
 $(\lambda{f}+\mu{g})'(x)=\lambda{f}'(x)+\mu{g}'(x)$.
-<p><b>Доказательство:</b> <a href="./math_analysis12.3.1.html#Statement12.3.1">Так как</a> множество линейных операторов $\mathcal{L}(\mathbb{R})$ 
-является векторным пространством над $\mathbb{R}$, то $\lambda{f}'+\mu{g}'\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^n)$ и
+<p><b>Доказательство:</b> <a href="./math_analysis12.3.1.html#Statement12.3.1">Так как</a> множество линейных операторов $\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$ 
+является векторным пространством над $\mathbb{R}$, то $\lambda{f}'+\mu{g}'\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^m)$ и
 $$
 (\lambda{f}+\mu{g})(x+h)-(\lambda{f}+\mu{g})(x)=\lambda{f}(x+h)+\mu{g}(x+h)-\lambda{f}(x)-\mu{g}(x)=\lambda(f(x+h)-f(x))+\mu(g(x+h)-g(x))=
 \lambda{f}'(x)(h)+o(h)+\mu{g}'(x)(h)+o(h)
@@ -50,7 +50,7 @@ $$=f'(x)(h)g(x)+o(h)+f(x)g'(x)(h)+(f'(x)\circ{g}'(x))(h^2)+o(h)+o(h)=f'(x)(h)g(x
 
 <p id=Statement12.3.13><b>Утверждение 12.3.13: Производная композиции.</b><br>
 Пусть $X\subset\mathbb{R}^n$, $Y\subset\mathbb{R}^m$, функция $f(x)\colon{X}\to{Y}$ дифференцируема в точке $x\in{X}\cap\mathring{X}$, 
-функция $g(y)\colon{Y}\to\mathbb{R}^k$ дифференцируема в точке $y:=f(x)\in{Y}\cap\mathbb{Y}$, тогда существует производная 
+функция $g(y)\colon{Y}\to\mathbb{R}^k$ дифференцируема в точке $y:=f(x)\in{Y}\cap\mathring{Y}$, тогда существует производная 
 $(g\circ{f})'(x)=g'(y)\circ{f}'(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R}^k)$.
 <p><b>Доказательство:</b> Так как функции $f(x)$, $g(x)$ дифференцируемы в точках $x$ и $y=f(x)$ соответственно, то 
 $$f(x+h)-f(x)=f'(x)(h)+o(h),h\to0,x+h\in{X}\Rightarrow\exists\lim_{\substack{h\to0\\x+h\in{X}}}(f(x+h)-f(x))=0$$
@@ -135,7 +135,7 @@ $$f^{-1}(y+t)-f^{-1}(y)=h=(f'(x))^{-1}(t)+o(h)=(f'(x))^{-1}(t)+o(O(t))=(f'(x))^{
 <br><br>
 
 <p id=Theorem12.3.2><b>Теорема 12.3.2: Теорема о среднем.</b><br>
-Пусть $G$ <a href="./math_analysis12.2.html#Definition12.2.4">область</a> в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$; $x,h\in\mathbb{R}^n$ такие, что 
+Пусть $G$ <a href="./math_analysis12.2.html#Definition12.2.5">область</a> в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$; $x,h\in\mathbb{R}^n$ такие, что 
 <ol>
 <li>$[x,x+h]=\{x+th\mid{t}\in[0,1]\}\subset{G}$,</li>
 <li>$f(x)\in{C}[x,x+h]$,</li>
@@ -167,7 +167,7 @@ $\displaystyle{f}'(y)=\left(\frac{\partial{f}(x)}{\partial{x}_1}(y),\ldots,\frac
 
 <br><br>
 
-<p id=Corollary12.3.3><b>Следствие 12.3.3:</b> Пусть $G$ выпуклая область в $\mathbb{R}^n$, функция $f(x)\colon{G}\to\mathbb{R}$ такая, что для любого 
+<p id=Corollary12.3.3><b>Следствие 12.3.3:</b> Пусть $G$ <a href="#Statement12.2.5">выпуклая область</a> в $\mathbb{R}^n$, функция $f(x)\colon{G}\to\mathbb{R}$ такая, что для любого 
 $y\in{G}$ существует производная $f'(y)=0$, тогда существует $k\in\mathbb{R}$ такое, что $f(x)\equiv{k}$.
 <p><b>Доказательство:</b> По определению выпуклости для любых $y_1,y_2\in{G}$ $[y_1,y_2]\subset{G}$. Тогда по теореме о среднем
 $$\forall{y}_1,y_2\in{G}(\exists\xi\in(y_1,y_2)\colon{f}(y_1)-f(y_2)=f'(\xi)(y_2-y_1)=0)\Rightarrow\forall{y}_1,y_2\in{G}(f(y_1)=f(y_2))$$
@@ -223,7 +223,7 @@ $$f(x+h)-f(x)=\sum_{n=1}^n\left(\frac{\partial{f}(x)}{\partial{x}_i}(x)h_i\right
 
 <br><br>
 <p id=Corollary12.3.4><b>Следствие 12.3.4: Достаточные условия дифференцируемости функции в области.</b><br>
-Пусть $G$ область в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$ такакя, что 
+Пусть $G$ область в $\mathbb{R}^n$, $f(x)\colon{G}\to\mathbb{R}$ такая, что 
 $$\forall{i}\in\overline{1,n}\left(\forall{y}\in{G}\,\exists\frac{\partial{f}(x)}{\partial{x}_i}(y)\wedge
 \frac{\partial{f}(x)}{\partial{x}_i}\in{C}(G)\right)$$
 тогда функция $f(x)$ дифференцируема на $G$.
@@ -249,7 +249,7 @@ $\displaystyle{g}(t)=\begin{cases}t^2\sin\frac1{t^2}&,t\neq0\\\quad0&,t=0\end{ca
 Дифференцируемость функции $g(t)$ в точке 0 обосновывается аналогично дифференцируемости функции $t^2\sin\frac1{t}$ в точке 0, которая была доказана
 в <a href="./math_analysis6.1.html#Task6.1.1">задаче 6.1.1</a>.<br>
 Итак, функция $f(x,y)$ дифференцируема в точке $(0,0)$, однако
-$$\frac{\partial{f}(x,y)}{\partial{x}}=\left((x^2+y^2\sin\frac1{x^2+y^2})\right)'_x=
+$$\frac{\partial{f}(x,y)}{\partial{x}}=\left(x^2+y^2\sin\frac1{x^2+y^2}\right)'_x=
 2x\sin\frac1{x^2+y^2}-(x^2+y^2)\cos\frac1{x^2+y^2}\frac{2x}{(x^2+y^2)^2}=2x\sin\frac1{x^2+y^2}-\frac{2x}{x^2+y^2}\cos\frac1{x^2+y^2}.$$
 Следовательно, предела функции $\frac{\partial{f}(x,y)}{\partial{x}}$ при $(x,y)\to(0,0)$ не существует, так как не существует, например,
 предела функции $\displaystyle2x\sin\frac1{x^2}-\frac1{x}\cos\frac2{x^2}$ при $x\to0$, то есть предела функции $\frac{\partial{f}(x,y)}{\partial{x}}$ 

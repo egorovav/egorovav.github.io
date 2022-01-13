@@ -24,7 +24,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-
 <table>
 <tr><td>1.</td><td>$\forall{A}\in{M}(\mu(A)\geq0)$</td><td>(аксиома не отрицательности),</td></tr>
 <tr><td>2.</td><td>функция $\mu$ аддитивна на $M$</td><td>(аксиома аддитивности),</td></li>
-<tr><td>3.</td><td>$\forall{A},B\in{M}(A\subset{B}\Rightarrow\mu{A}\leq\mu{B})$</td><td>(аксиома монотонности).</td></li>
+<tr><td>3.</td><td>$\forall{A},B\in{M}(A\subset{B}\Rightarrow\mu(A)\leq\mu(B))$</td><td>(аксиома монотонности).</td></li>
 </table>
 Говорят, что мера $\mu$ $\sigma$-аддитивна, если функция $\mu(A)$ $\sigma$-аддитивна.
 <br><br>
@@ -107,7 +107,7 @@ $\sigma$-<a href="./math_analysis14.1.1.html#Definition14.1.6">алгебре м
 <li>$M_1\subset{M}_2$,</li>
 <li>$\forall{A}\in{M}_1(\mu_1(A)=\mu_2(A))$.</li>
 </ol>
-<br><br>
+<br><br> 
 <p>При изучении возможности продолжения меры $\mu$ с класса множеств $M_1$ на класс множеств $M_2$ обычно рассматривают два вопроса
 <ol>
 <li>существует ли хотя бы одно продолжение меры $\mu$ с класса $M_1$ на класс $M_2$,</li>
@@ -194,7 +194,7 @@ $\begin{multline}
 любого $X\in{H}$ $\mu(X)=m(X)$, то есть $\mu$ есть продолжение меры $m$ с класса $H$ на класс $R(H)$. Докажем, что такое продолжение единственно.<br>
 Пусть $\mu'$ продолжение меры $m$ на $R(H)$, тогда 
 $$\forall{X}\in{R}(H)\left(\exists{n}\in\mathbb{N}\,\exists{C}_1,\ldots,C_n\in{H}\colon\bigsqcup_{k=1}^nC_k=X\right)\Rightarrow
-\forall{X}\in{R}(H)\left(\mu'(X)=\sum_{k=1}^n\mu'(C_k)\wedge\forall{k}\in\overline{1,n}(\mu'(C_k)=m(C_k)=\mu(C_k)))\right)\Rightarrow
+\forall{X}\in{R}(H)\left(\mu'(X)=\sum_{k=1}^n\mu'(C_k)\wedge\forall{k}\in\overline{1,n}(\mu'(C_k)=m(C_k)=\mu(C_k))\right)\Rightarrow
 \mu'(X)=\sum_{k=1}^n\mu(C_k)=\mu(X).$$
 Пусть теперь мера $m$ $\sigma$-аддитивна на $H$, покажем, что мера $\mu$ $\sigma$-аддитивна на $R(H)$.<br>
 Пусть для любого $k\in\mathbb{N}$ $A_k\in{R}(H)$, $A:=\bigsqcup_{k=1}^{\infty}A_k\in{R}(H)$, тогда существует $n\in\mathbb{N}$ и $B_i,\ldots,B_n\in{H}$

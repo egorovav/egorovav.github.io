@@ -35,11 +35,11 @@ $$s(f,P):=\sum_{i,j}(m_{i,j}\mu(X_i\times{Y}_j))=\sum_i\mu(X_i)\left(\sum_j(m_{i
 S(f,P):=\sum_{i,j}(M_{i,j}\mu(X_i\times{Y}_j))=\sum_i\mu(X_i)\left(\sum_j(M_{i,j}\mu(Y_j))\right).$$
 Для любого фиксированного $y\in{Y}$ положим $f_y(x)\colon{X}\to\mathbb{R}$ такая, что для любого $x\in{X}$ $f_y(x)=f(x,y)$.<br>
 $$G_*(y):=\sup_{(P_X)}{s(f_y,P_X)}:=\int_{*X}f(x,y)\,dx\colon{Y}\to\mathbb{R},\quad
-G^*(y):=\inf_{(P_X)}{S(f_y,P_X)}:=\int_X^*f(x,y)\colon{Y}\to\mathbb{R},$$
+G^*(y):=\inf_{(P_X)}{S(f_y,P_X)}:=\int_X^*f(x,y)\,dx\colon{Y}\to\mathbb{R},$$
 тогда для любого $y\in{Y}$ $G_*(y)\leq{G}^*(y)$.<br>
 Для любого фиксированного $x\in{X}$ положим $f_x(y)\colon{Y}\to\mathbb{R}$ такая, что для любого $y\in{Y}$ $f_x(y):=f(x,y)$.
-$$J_*(x):=\sup_{(P_Y)}{s(f_x,P_Y)}:=\int_{*Y}f(x,y)\,dx\colon{X}\to\mathbb{R},\quad
-J^*(x):=\inf_{(P_Y)}{S(f_x,P_Y)}:=\int_Y^*f(x,y)\,dx\colon{X}\to\mathbb{R},$$
+$$J_*(x):=\sup_{(P_Y)}{s(f_x,P_Y)}:=\int_{*Y}f(x,y)\,dy\colon{X}\to\mathbb{R},\quad
+J^*(x):=\inf_{(P_Y)}{S(f_x,P_Y)}:=\int_Y^*f(x,y)\,dy\colon{X}\to\mathbb{R},$$
 тогда для любого $x\in{X}$ $J_*(x)\leq{J}^*(x).$<br>
 Если $A\subset\mathbb{R}^n$, то символ "$A\in{G}(m,H)$" следует понимать как фразу "множество $A$ измеримо по Жордану на полукольце промежутков из 
 $\mathbb{R}^n$". При этом в рамках одного доказательства символ $H$ может применяться для обозначения полуколец числовых промежутков разной размерности.<br>
@@ -48,7 +48,7 @@ $\mathbb{R}^n$". При этом в рамках одного доказател
 $\int_{*A}g_1(z)\,dz\leq\int_{*A}g_2(z)\,dz$ и $\int_A^*g_1(z)\,dz\leq\int_A^*g_2(z)\,dz$.<br>
 Если $s\in\mathbb{N}$ и для любого $k\in\overline{1,s}$ $\alpha_k\geq0$, функции $g_k(z)\colon\mathbb{Z}\to\mathbb{R}$ ограничены, то
 $$\inf_{z\in\mathbb{Z}}\sum_{k=1}^s(\alpha_kg_k(z))=\sum_{k=1}^s\left(\alpha_k\inf_{z\in\mathbb{Z}}g_k(z)\right),\quad
-\sup_{z\in\mathbb{Z}}\sum_{k=1}^s(\alpha_kg_k(z))=\int_{k=1}^s\left(\alpha_k\sup_{z\in\mathbb{Z}}g_k(z)\right).$$
+\sup_{z\in\mathbb{Z}}\sum_{k=1}^s(\alpha_kg_k(z))=\sum_{k=1}^s\left(\alpha_k\sup_{z\in\mathbb{Z}}g_k(z)\right).$$
 Если функция $g(x,y)\colon{A}\times{B}\to\mathbb{R}$ ограничена, то
 $$\inf_{(x,y)\in{A}\times{B}}g(x,y)=\inf_{x\in{A}}\left(\inf_{y\in{B}}g(x,y)\right),\quad
 \sup_{(x,y)\in{A}\times{B}}g(x,y)=\sup_{x\in{A}}\left(\sup_{y\in{Y}}g(x,y)\right)$$
