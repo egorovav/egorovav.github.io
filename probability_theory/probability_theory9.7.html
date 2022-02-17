@@ -1,0 +1,316 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 9.7</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory9.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory10.1.html">next</a>
+
+<h5 id="9.7">9.7 Пуассоновский процесс.</h5>
+
+<p id="Definition9.18"><b>Определение 9.18:</b>
+Случайный процесс $\{\xi_t\}$ называется Пуассоновским с интенсивностью $\lambda>0$, если 
+<ol>
+<li>$\xi_0=0$;</li>
+<li>
+для любых $t_0,t_1,\ldots,t_n\in[0,\infty)$ таких, что $t_0&ltt_1&lt\ldots&ltt_n$ случайные величины
+$\xi_{t_1}-\xi_{t_0},\xi_{t_2}-\xi_{t_1},\ldots,\xi_{t_n}-\xi_{t_{n-1}}$ независимы;
+</li>
+<li>
+для любых $s\in[0,\infty)$, $t\in(s,\infty)$ случайная величина $\xi_t-\xi_s$ имеет Пуассоновское распределение с параметром $\lambda(t-s)$, то есть 
+$$P\{\xi_t-\xi_s=k\}=\frac{(\lambda(t-s))^k}{k!}e^{-\lambda(t-s)}.$$
+</li>
+</ol>
+<br>
+<p id="Theorem9.22"><b>Теорема 9.22:</b>
+Пуассоновский процесс является цепью Маркова с непрерывным временем и матрицей переходных вероятносей $\{p_{i,j}(t)\}$, где для любых $j\geq{i}$
+$$p_{i,j}(t)=\frac{(\lambda{t})^{j-i}}{(j-i)!}e^{-\lambda{t}}.$$
+<p><b>Доказательство:</b><br>
+Пусть $t_0,\ldots,t_n\in[0,\infty)$ такие, что $t_0&ltt_1,\ldots,t_n$. Б. о. о. будем считать, что $t_0\neq0$ и положим $t_{-1}=0$, тогда
+\begin{multline*}
+P\{\xi_{t_n}=k_n/\xi_{t_0}=k_0,\ldots,\xi_{t_{n-1}}=k_{n-1}\}=\frac{P\{\xi_{t_0}-\xi_0=k_0,\ldots,\xi_{t_n}=k_n\}}{P\{\xi_{t_0}-\xi_0=k_0,\ldots,\xi_{t_{n-1}}=k_{n-1}\}}=\\=
+\frac{P\{\xi_{t_0}-\xi_0=k_0,\xi_{t_1}-\xi_{t_0}=k_1-k_0,\ldots,\xi_{t_n}-\xi_{t_{n-1}}=k_n-k_{n-1}\}}{P\{\xi_{t_0}-\xi_0=k_0,\xi_{t_1}-\xi_{t_0}=
+k_1-k_0,\ldots,\xi_{t_{n-1}}-\xi_{t_{n-2}}=k_{n-1}-k_{n-2}\}}=
+\frac{\prod_{i=0}^nP\{\xi_{t_i}-\xi_{t_{i-1}}=k_i-k_{i-1}\}}{\prod_{i=0}^{n-1}P\{\xi_{t_i}-\xi_{t_{i-1}}=k_i-k_{i-1}\}}=P\{\xi_{t_n}-\xi_{t_{n-1}}=k_n-k_{n-1}\}.
+\end{multline*}
+С другой стороны
+$$
+P\{\xi_{t_n}=k_n/\xi_{t_{n-1}}=k_{n-1}\}=\frac{P\{\xi_{t_{n-1}}=k_{n-1},\xi_{t_n}=k_n\}}{P\{\xi_{t_{n-1}}=k_{n-1}\}}=
+\frac{P\{\xi_{t_{n-1}}-\xi_0=k_{n-1},\xi_{t_n}-\xi_{t_{n-1}}=k_n-k_{n-1}\}}{P\{\xi_{t_{n-1}}-\xi_0=k_{n-1}\}}=P\{\xi_{t_n}-\xi_{t_{n-1}}=k_n-k_{n-1}\}.
+$$
+Таким образом,
+$$P\{\xi_{t_n}=k_n/\xi_{t_0}=k_0,\ldots,\xi_{t_{n-1}}=k_{n-1}\}=P\{\xi_{t_n}=k_n/\xi_{t_{n-1}}=k_{n-1}\},$$
+то есть Пуассоновский процесс является цепью Маркова, при этом
+$$
+p_{j,i}(t)=P\{\xi_{s+t}=j/\xi_s=i\}=P\{\xi_{s+t}-\xi_s=j-i\}=\frac{(\lambda{t})^{j-i}}{(j-i)!}e^{-\lambda{t}}.
+$$
+<br>
+<p id="Note9.5"><b>Замечание 9.5:</b>
+При $j&lti$ $p_{i,j}(t)$ можно положить тождественно равным некоторой константе $c\geq0$. 
+<br><br>
+<p id="Task9.3"><b>Задача 9.3:</b>
+Найти матрицу $\Lambda$ для Пуассоновского процесса.<br>
+
+Для любого $i\in\mathbb{N}$
+$$\lambda_{i,i}=\lim_{t\to0}\frac{p_{i,i}(t)-1}{t}=\lim_{t\to0}\frac{e^{-\lambda{t}}-1}{t}=\lim_{x\to0}\frac{e^x-1}{-x/\lambda}=-\lambda,$$
+где $x:=-\lambda{t}$ и последнее равенство следует из примера 5.4.15 MA.
+
+Для любых $i,j\in\mathbb{N}$ таких, что $j>i$
+$$
+\lambda_{i,j}=\lim_{t-\to0}\frac{p_{i,j}(t)}{t}=\lim_{t\to0}\frac{(\lambda{t})^{j-i}e^{-\lambda{t}}}{(j-i)!t}=
+\lim_{t\to0}\frac{\lambda^{j-i}t^{j-i-1}e^{-\lambda{t}}}{(j-i)!}.
+$$
+
+Таким образом,
+$$
+\begin{cases}
+0, 		&	j-i<0,j-i>1		\\
+-\lambda, 	&	j-i=0			\\
+\lambda,	&	j-i=1
+\end{cases}
+$$
+<br>
+<p id="Definition9.19"><b>Определение 9.19:</b>
+Потоком событий будем называть последовательность моментов времени, в которые происходят некоторые события.
+<br><br>
+<p id="Definition9.20"><b>Определение 9.20:</b>
+Поток событий называется Пуассоновским, если 
+<ol>
+<li>вероятность $P_n(t)$ того, что в промежутке $[s,s+t]$ произойдет $n$ событий не зависит от $s$;</li>
+<li>если $\xi_1$ число событий в промежутке $[t_1,s_1]$, $\xi_2$ число событий в промежутке $[t_2,s_2]$ и $[t_1,s_1]\cap[t_2,s_2]=\varnothing$, 
+то случайные величины $\xi_1$ и $\xi_2$ независимы;
+</li>
+<li>вероятность того, что за время $\Delta{t}$ произойдёт два и более событий есть $o(\Delta{t})$ при $\Delta{t}\to0$.</li>
+</ol>
+<br>
+<p id="Statement9.5"><b>Утверждение 9.5:</b>
+Существует $\lambda\geq0$ такое, что 
+$$P_n(t)=\frac{(\lambda{t})^n}{n!}e^{-\lambda{t}}.$$
+<p><b>Доказательство:</b><br>
+Обозначим $\xi_t$ - число событий на промежутке $[0,t]$, тогда для любого $P_{n}(t)=P\{\xi_t=n\}$. По свойствам 1, 2 для любых $s,t\in[0,\infty]$
+$$P_0(s+t)=P\{\xi_s=0,\xi_t=0\}=P\{\xi_s=0\}P\{\xi_t=0\}=P_0(s)P_0(t).$$
+Следовательно, функция $P_0(t)$ <i>(непрерывность?)</i> является показательной 
+(см. например Г. М. Фихтенгольц "Курс дифференциального и интегрального исчисления." 1962 г. стр. 158), то есть сущетсвует $\lambda\geq0$ такое, что 
+$P_0(t)=e^{-\lambda{t}}$. Тогда при $t\to0$
+$$P_1(t)=1-P_0(t)-\sum_{n=2}^{\infty}P_n(t)=1-e^{\lambda{t}}+o(t).$$
+Следовательно,
+$$
+P_n(t+\Delta{t})=P_n(t)P_0(\Delta{t})+P_{n-1}(t)P_1(\Delta{t})+o(\Delta{t}),\Delta{t}\to0
+$$
+Раскладывая $e^{-\lambda\Delta{t}}$ в ряд Тэйлора при $\Delta{t}\to0$ имеем
+$$P_0(\Delta{t})=e^{-\lambda\Delta{t}}=1-\lambda\Delta{t}+o(\Delta{t}),$$
+$$P_1(\Delta{t})=1-e^{-\lambda\Delta{t}}+o(\Delta{t})=\lambda\Delta{t}+o(\Delta{t}).$$
+Тогда
+$$
+\frac{P_n(t+\Delta{t})-P_n(t)}{\Delta{t}}=\frac{P_n(t)(1-\lambda\Delta{t})+P_{n-1}(t)\lambda\Delta{t}-P_n(t)+o(\Delta{t})}{\Delta{t}}=
+-\lambda{P}_n(t)+\lambda{P}_{n-1}(t)+\frac{o(\Delta{t})}{\Delta{t}}.
+$$
+Переходя к пределу при $\Delta{t}\to0$ имеем
+$$P'_n(t)=-\lambda{P}_n(t)+\lambda{P}_{n-1}(t).$$
+Обозначим $Q_n(t):=e^{-\lambda{t}}P_n(t)$, тогда $Q_0(t)\equiv1$ и
+$$
+Q'_n(t)=\lambda{e}^{-\lambda{t}}P_n(t)+e^{-\lambda{t}}P'_n(t)=\lambda{Q}_{n-1}(t)\Rightarrow
+{Q}'_1(t)=\lambda{Q}_0(t)=\lambda\Rightarrow\exists{c}\in\mathbb{R}:Q_1(t)=\lambda{t}+c.
+$$
+Так как для любого $n\in\mathbb{N}$ $Q_n(0)=P_n(0)=0$, то $c=0$ и $Q_1(t)=\lambda{t}$, тогда аналогично
+$$
+Q'_2(t)=\lambda^2t\Rightarrow{Q}_2(t)=\frac{(\lambda{t})^2}{2}\Rightarrow{Q}_3(t)=\frac{(\lambda{t})^3}{3!}\Rightarrow\ldots
+\Rightarrow{Q}_n(t)=\frac{(\lambda{t})^n}{n!}\Rightarrow{P}_n(t)=\frac{(\lambda{t})^n}{n!}e^{-\lambda{t}}.
+$$
+<br>
+<u>Марковское свойство показательного распределения.</u><br>
+<p id="Theorem9.23"><b>Теорема 9.23:</b>
+Если случайная величина $\xi$ имеет показательное распределение ($F_{\xi}(x)=1-e^{-\lambda{x}}$ при $x>0$), то для любого $\tau>0$
+$$P\{\xi-\tau&ltt/\xi>\tau\}=1-e^{-\lambda{t}}.$$
+<p><b>Доказательство:</b><br>
+$$
+P\{\xi-\tau&ltt/\xi&gt\tau\}=\frac{P\{\tau<\xi&ltt+\tau\}}{P\{\xi>\tau\}}=\frac{F_{\xi}(t+\tau)-F_{\xi}(\tau)}{1-F_{\xi}(\tau)}=
+\frac{1-e^{-\lambda(t+\tau)}-1+e^{-\lambda\tau}}{e^{-\lambda\tau}}=1-e^{-\lambda\tau}
+$$
+<br>
+
+<p id="Theorem9.24"><b>Теорема 9.24:</b>
+Если случайная величина $\xi$ такая, что для любого $\tau>0$
+$$P\{\xi-\tau&ltt/\xi>\tau\}=1-e^{-\lambda{t}},$$
+то $\xi$ имеет показательное распределение.
+<p><b>Доказательство:</b><br>
+Обозначим $\overline{F}(t):=1-F_{\xi}(t)$, тогда
+$$
+P\{\xi-\tau&ltt/\xi>\tau\}=\frac{F_{\xi}(\tau+t)-F_{\xi}(\tau)}{1-F_{\xi}(\tau)}=\frac{\overline{F}(\tau)-\overline{F}(\tau+t)}{\overline{F}(\tau)}\Rightarrow
+\frac{\overline{F}(\tau+t)-\overline{F}(\tau)}{t}=\overline{F}(\tau)\frac{e^{-\lambda{t}}-1}{t}.
+$$
+Переходя к пределу при $t\to0$ имеем (по <a href="../math_analysis/math_analysis5.4.2.html#Example5.4.15">примеру 5.4.15 MA</a>)
+$$\overline{F}'(\tau)=-\lambda\overline{F}(\tau)\Rightarrow\overline{F}(t)=e^{-\lambda{t}}\Rightarrow{F}_{\xi}(t)=1-e^{-\lambda{t}}.$$
+<br>
+
+<h5 id="9.8">9.8 Траектория цепи Маркова.</h5>
+
+<p id="Theorem9.25"><b>Теорема 9.25:</b>
+Пусть $\{\xi_t\}$ стохастическая <i>(?)</i> цепь Маркова с непрерывным временем, $\xi_0=i$, $\eta$ - время первого выхода из $i$-того состояния, тогда 
+$$P\{\eta>s/\xi_0=i\}=e^{\lambda_{i,i}s},$$
+если $-\infty<\lambda_{i,i}<0$ и $p_{i,i}(t)\equiv1$, если $\lambda_{i,i}=0$.
+<p><b>Доказательство:</b><br>
+Обозначим 
+$$T_0:=\left\{t_{n,k}=\frac{ks}{2^n}\mid{n}\in\mathbb{N},k\in\overline{1,2^n}\right\},\Lambda_n:=\{t_{n,k}\mid{k}\in\overline{1,2^n}\}$$
+тогда $\Lambda_n\subset\Lambda_{n+1}$ и по <a href="./probability_theory1.6.html#Theorem1.4">теореме 1.4</a>
+$$T_0=\varlimsup_{n\to\infty}\Lambda_n=\bigcup\Lambda_n.$$
+Тогда из стохастичности <i>(?)</i> цепи Маркова и непрерывности вероятностной меры (<a href="./probability_theory1.6.html#Theorem1.5">теорема 1.5</a>) следует
+\begin{multline*}
+P\{\eta>s/\xi_0=i\}=P\{\xi_t=i\mid0\leq{t}\leq{s}\}=P\{\xi_{t_{n,k}}=i\mid{t}_{n,k}\in{T}_0\}=\lim_{n\to\infty}P\{\xi_{t_{n,k}}=i\mid{t}_{n,k}\in\Lambda_n\}=\\=
+\lim_{n\to\infty}\prod_{k=1}^{2^n}p_{i,i}(t_{n,k}-t_{n,k-1})=\lim_{n\to\infty}\prod_{n=1}^{2^n}p_{i,i}\left(\frac{s}{2^n}\right)=
+\lim_{n\to\infty}p_{i,i}^{2^n}\left(\frac{s}{2^n}\right).
+\end{multline*}
+Прологорифмировав последнее выражение и воспользововашись оценкой $\ln(1+x)\sim\ln{x},x\to0$ <i>(обоснование?)</i> имеем
+$$
+\ln\left(P\{\eta>s/\xi_0=i\}\right)=\lim_{n\to\infty}2^n\ln{p}_{i,i}\left(\frac{s}{2^n}\right)=
+\lim_{n\to\infty}2^n\ln\left(1+p_{i,i}\left(\frac{s}{2^n}\right)-1\right)=\lim_{n\to\infty}\frac{p_{i,i}(s/2^n)-1}{s/2^n}s=\lambda_{i,i}s.
+$$
+Проэкспоненциировав последнее выражение получим доказываемый результат.
+<br><br>
+<p id="Theorem9.26"><b>Теорема 9.26: Теорема о первом разрыве траектории.</b><br>
+Если у консервативной, стохастической <i>(?)</i> цепи Маркова $-\infty<\lambda_{i,i}<0$, $\xi_0=i$, то траектория с вероятностью 1 претерпевает разрыв, 
+при этом с вероятностью $-\lambda_{i,j}/\lambda_{i,i}$ следующим после состояния $i$ будет состояние $j$.
+<p><b>Доказательство:</b><br>
+Для любых $n\in\mathbb{N}$, $u\in\mathbb{R}^+$ обозначим
+$$A_{n,u}^{(j)}:=\left\{\omega\mid\exists{k}\in\overline{2,n}:\xi_s(\omega)=\begin{cases}i,0\leq{s}\leq(k-1)t/n \\ j,0\leq{k}t/n\leq{s}&ltkt/n+u\end{cases}\right\}.$$
+Тогда
+$$
+P\left(A_{n,u}^{(j)}\right)=\sum_{k=2}^ne^{\lambda_{i,i}(k-1)t/n}p_{i,j}\left(\frac{t}{n}\right)e^{\lambda_{j,j}u}=
+e^{\lambda_{j,j}u}p_{i,j}\left(\frac{t}{n}\right)\sum_{k=1}^{n-1}e^{\lambda_{i,i}kt/n}=
+p_{i,j}\left(\frac{t}{n}\right)e^{\lambda_{j,j}u}\frac{-e^{\lambda_{i,i}t}+e^{\lambda_{i,i}t/n}}{1-e^{\lambda_{i,i}t/n}}
+$$
+Так как $e^x+1\sim{x}$, $e^x\sim1$ при $x\to0$, то при $n\to\infty$
+$$
+P(A_{n,u}^{(j)})\sim\frac{p_{i,j}(t/n)}{t/n}e^{\lambda_{j,j}u}\frac{1-e^{\lambda_{i,i}t}}{-\lambda_{i,i}}\sim-\frac{\lambda_{i,j}}{\lambda_{i,i}}e^{\lambda_{j,j}u}(1-e^{\lambda_{i,i}t}).
+$$
+Обозначим
+$$A_u^{(j)}=\varlimsup_{n\to\infty}A_{n,u}^{(j)}=\bigcap_{k=2}^{\infty}\bigcup_{n=k}^{\infty}A_{n,u}^{(j)},$$
+тогда, так как
+$$\bigcup_{n=k+1}^{\infty}A_{n,u}^{(j)}\subset\bigcup_{n=k}^{\infty}A_{n,u}^{(j)},$$
+то
+$$
+P\left(A_u^{(j)}\right)=\lim_{k\to\infty}P\left(\bigcup_{n=k}^{\infty}A_{n,u}^{(j)}\right)\geq\lim_{k\to\infty}P\left(A_{k,u}^{(j)}\right)=
+-\frac{\lambda_{i,j}}{\lambda_{i,i}}e^{\lambda_{j,j}u}(1-e^{\lambda_{i,i}t})
+$$
+Обратное неравество 
+$$P(A_u^{(j)})\leq-\frac{\lambda_{i,j}}{\lambda_{i,i}}e^{\lambda_{j,j}u}(1-e^{\lambda_{i,i}t}),$$
+предлагается доказать в качестве упражнения, тогда
+$$P(A_u^{(j)})=-\frac{\lambda_{i,j}}{\lambda_{i,i}}e^{\lambda_{j,j}u}(1-e^{\lambda_{i,i}t}).$$ 
+Так как функция стоящая справа возрастает, то для $A_u^{(j)}\subset{A}_v^{(j)}$ при $u&ltv$. Тогда обозначив $A^{(j)}:=\bigcap_u{A}_u^{(j)}$ имеем
+$$P(A^{(j)})=P\left(\bigcap_{u}A_u^{(j)}\right)=P\left(\lim_u{A}_u^{(j)}\right)=\lim_{u\to0}P\left(A_u^{(j)}\right).$$
+Обозначим $B$ множестов элементарных исходов при которых на отрезке $[0,t]$ происходит скачок. Тогда по теореме 9.25 
+$$P\left\{B/\xi_0=i\right\}=1-e^{\lambda_{i,i}t},$$
+следовательно, искомая вероятность равна
+\begin{multline*}
+P\left\{A^{(j)}/(\xi_0=i)\cap{B}\right\}=\frac{P\{A^{(j)}\cap(\xi_0=i)\cap{B}\}}{P\{(\xi_0=i)\cap{B}\}}=
+\frac{P\{\xi_0=i\}P\left\{A^{(j)}\cap{B}/\xi_0=i\right\}}{P\{\xi_0=i\}P\left\{B/\xi_0=i\right\}}=\frac{P\left\{A^{(j)}/\xi_0=i\right\}}{P\left\{B/\xi_0=i\right\}}=\frac{\lim_{u\to0}P\left(A_u^{(j)}\right)}{1-e^{\lambda_{i,i}t}}=\\=
+-\frac{\lambda_{i,j}}{\lambda_{j,j}}\frac{(1-e^{\lambda_{i,i}})\lim_{u\to0}e^{\lambda_{j,j}u}}{1-e^{\lambda_{i,i}t}}=-\frac{\lambda_{i,j}}{\lambda_{i,i}}
+\end{multline*}
+<br>
+
+<h5 id="9.9">9.9 Процесс гибели и размножения.</h5>
+
+<p id="Definition9.21"><b>Определение 9.21:</b>
+Цепь Маркова с непрерывным временем называется процессом гибели и размножения если 
+<ol>
+<li>
+Существует последовательность чисел $\{\lambda_n\}$ из $\mathbb{R}$ такая, 
+что для любого $n\in\mathbb{N}_0$ вероятность перехода из состояния $n$ в состояние $n+1$ равно $\lambda_n\Delta{t}+o(\Delta{t})$ при $\Delta{t}\to0$.
+</li><li>
+Существует последовательность $\{\mu_n\}$ из $\mathbb{R}$ такая, 
+что $\mu_0=0$ и для любого $n\in\mathbb{N}$ вероятность перехода из состояния $n$ в состояние $n-1$ равно $\mu_n\Delta{t}+o(\Delta{t})$ при $\Delta{t}\to0$.
+</li><li>
+Для любого $n\in\mathbb{N}_0$ вероятность того, 
+что цепь останется в состоянии $n$ в течении времени $\Delta{t}$ равна $1-(\lambda_n+\mu_n)\Delta{t}+o(\Delta{t})$ при $\Delta{t}\to0$.
+</li><li>
+Для любого $n\in\mathbb{N}_0$ вероятность перехода из состояния в $n$ в состояние отличное от $n-1$, $n+1$ за время $\Delta{t}$ равна 
+$o(\Delta{t})$ при $\Delta{t}\to0$. 
+</li>
+</ol>
+<br>
+<p id="Note9.6"><b>Замечание 9.6:</b>
+Из определения следует, что числа $\lambda_n$, $\mu_n$ это интенсивности перехода из состояния $n$ в $n+1$ и из состояния $n$ в $n-1$ соответственно. 
+То есть процесс гибели и размножения это цепь Маркова с непрерывным временем, у которой не равны нулю только интенсивности перехода между соседними состояниями.
+<br><br>
+<p id="Definition9.22"><b>Определение 9.22:</b>
+Последовательность $\{P_n\}$ из $[0,1]$ называется стационарным распределением процесса гибели и 
+размножения если для любого $n\in\mathbb{N}_0$ $P_n(t):=P\{\xi_t=n\}\equiv{P}_n$.
+<br><br>
+<p id="Theorem9.27"><b>Теорема 9.27:</b>
+Если процесс гибели и размножения имеет стационарное распределение, то 
+$$P_0\left(1+\sum_{n=1}^{\infty}\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_n}\right)=1.$$
+<p><b>Доказательство:</b><br>
+Из <a href="#Definition9.21">определения 9.21</a> следует, что для любого $n\in\mathbb{N}$ при $\Delta{t}\to0$
+$$
+P_n(t+\Delta{t})=P_{n-1}(t)(\lambda_{n-1}\Delta{t}+o(\Delta{t}))+P_n(t)(1-(\lambda_n+\mu_n)\Delta{t}+o(\Delta{t}))+
+P_{n+1}(t)(\mu_{n+1}\Delta{t}+o(\Delta{t}))+o(\Delta{t}),
+$$ 
+тогда 
+$$\frac{P_n(t+\Delta{t})-P_n(t)}{\Delta{t}}=\lambda_{n-1}P_{n-1}(t)-(\lambda_n+\mu_n)P_n(t)+\mu_{n+1}P_{n+1}(t)+\frac{o(\Delta{t})}{\Delta{t}}.$$
+Переходя к пределу при $\Delta{t}\to0$ имеем
+$$P_n'(t)=\lambda_{n-1}P_{n-1}(t)-(\lambda_n+\mu_n)P_n(t)+\mu_{n+1}P_{n+1}(t).$$
+Так как $P_n(t)\equiv{P}_n$ для любого $n\in\mathbb{N}_0$, то 
+$$\lambda_{n-1}P_{n-1}-(\lambda_n+\mu_n)P_n+\mu_{n+1}P_{n+1}=0$$
+Аналогично при $n=0$ можно получить $-\lambda_0P_0+\mu_1P_1=0$ отсюда следует, что $P_1=P_0\lambda_0/\mu_1$ и 
+$$
+\lambda_0P_0-(\lambda_1+\mu_1)P_1+\mu_2P_2=0\Rightarrow\lambda_0P_0-(\lambda_1+\mu_1)P_0\frac{\lambda_0}{\mu_1}+\mu_2P_2=0\Rightarrow
+\lambda_0P_0-\frac{\lambda_0\lambda_1}{\mu_1}P_0-{\lambda_0}P_0+\mu_2P_2=0\Rightarrow{P}_2=\frac{\lambda_0\lambda_1}{\mu_1\mu_2}P_0
+$$
+Таким образом доказана база индукции, предположим далее, что
+$$P_{n-1}=\frac{\lambda_0\cdots\lambda_{n-2}}{\mu_1\cdots_{n-1}}P_0,P_n=\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_n}P_0,$$
+тогда
+\begin{multline*}
+\lambda_{n-1}\frac{\lambda_0\cdots\lambda_{n-2}}{\mu_1\cdots\mu_{n-1}}P_0-(\lambda_n+\mu_n)\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_{n}}P_0+\mu_{n+1}P_{n+1}=0\Rightarrow\\\Rightarrow
+\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_{n-1}}P_0-\frac{\lambda_0\cdots\lambda_n}{\mu_1\cdots\mu_n}P_0-\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_{n-1}}P_0+\mu_{n+1}P_{n+1}=0\Rightarrow
+P_{n+1}=\frac{\lambda_0\cdots\lambda_{n}}{\mu_1\cdots\mu_{n+1}}P_0
+\end{multline*}
+Таким обрзом, для любого $n\in\mathbb{N}$
+$$P_n=\frac{\lambda_0\cdots\lambda_{n-1}}{\mu_1\cdots\mu_n}P_0.$$
+Так как $P_n:=P\{\xi_t=n\}$, и в любой момент времени цепь Маркова находится в некором состоянии, то $\sum_{n=0}^{\infty}P_n=1$, отсюда следует доказываемое равенство.
+<br><br>
+<p id="Definition9.23"><b>Определение 9.23:</b>
+Процесс размножения и гибели у которого для любого $n\in\mathbb{N}_0$ $\mu_n=0$ называется процессом чистого размножения.
+<br><br>
+<p id="Note9.7"><b>Замечание 9.7:</b>
+Если у процесса чистого размножения для любого $n\in\mathbb{N}_0$ $\lambda_n=\lambda$, то этот процесс является пуассоновским процессом с интенсивность $\lambda$.
+<br><br>
+<p id="Task9.4"><b>Задача 9.4:</b>
+Выписать прямую и обратную систему ДУК для процесса размножения и гибели.
+$$
+\Lambda=
+\begin{pmatrix}
+-\lambda_0	& \lambda_0 			& 0				& 0				& \cdots 	\\
+\mu_1		& -(\lambda_1+\mu_1) 	& \lambda_1			& 0				& \cdots	\\
+0		& \mu_2			& -(\lambda_2+\mu_2)	& \lambda_2 			&		\\
+0		& 0				& \mu_3			& -(\lambda_3+\mu_3)	& \ddots 	\\
+\vdots 	& \vdots 			& \ddots 			& \ddots 			& \ddots	
+\end{pmatrix},
+$$
+$$
+\Pi(t)=
+\begin{pmatrix}
+p_{0,0}(t)	& p_{0,1}(t) 			& 0				& 0				& \cdots 	\\
+p_{1,0}(t)	& p_{1,1}(t) 			& p_{1,2}(t)			& 0				& \cdots	\\
+0		& p_{2,1}(t)			& p_{2,2}(t)			& p_{2,3}(t) 			&		\\
+0		& 0				& p_{3,2}(t)			& p_{3,3}(t)			& 	 	\\
+\vdots 	& \vdots 			& \ddots 			& \ddots 			& \ddots	
+\end{pmatrix},
+$$
+Прямая система ДУК $\Pi'(t)=\Pi(t)\Lambda$.<br>
+Обратная система ДУК $\Pi'(t)=\Lambda\Pi(t)$.<br>
+С начальным условием $\Pi(0)=0$.<br>
+
+
+<br><br>
+<a href="./probability_theory9.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory10.1.html">next</a>

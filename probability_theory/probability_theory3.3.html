@@ -1,0 +1,230 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 3.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.5.html">next</a>
+<br>
+
+<h5 id="3.3">3.3 Случайные векторы и их распределения.</h5>
+
+<p id="Definition3.10"><b>Определение 3.10:</b>
+Пусть $\xi_1,\ldots,\xi_n$ - случайные величины заданные на $(\Omega,\mathfrak{A},P)$. Тогда отображение $\overline\xi(\omega):\Omega\to\mathbb{R}^n$ такое, 
+что для любого $\omega\in\Omega$
+$$\overline\xi(\omega):=(\xi_1(\omega),\ldots,\xi_n(\omega))$$
+называется $n$-мерным случайным вектором или $n$-мерной случайной величиной.
+<br><br>
+Случайный вектор $\overline\xi:\Omega\to\mathbb{R}^n$ заданный на $(\Omega,\mathfrak{A},P)$ индуцирует на $(\mathbb{R}^n,\mathcal{B}^n)$ 
+вероятностную меру $P_{\overline\xi}$ такую, что для любого $B\in\mathcal{B}^n$ 
+$$P_{\overline\xi}(B):=P(\{\omega\in\Omega\mid\xi(\omega)\in{B}\}).$$
+<br>
+<p id="Definition3.11"><b>Определение 3.11:</b>
+Пусть $\overline\xi$ случайный вектор заданный на $(\Omega,\mathfrak{A},P)$, 
+тогда функция $F_{\overline\xi}(x_1,\ldots,x_n):\mathbb{R}^n\to\mathbb{R}$ такая, что для любого $x_1,\ldots,x_n\in\mathbb{R}$
+$$F_{\overline\xi}(x_1,\ldots,x_n):=P_{\overline\xi}(\{\omega\in\Omega\mid\xi_1(\omega)&ltx_1,\ldots,\xi_n(\omega)&ltx_n\})$$
+называется функцией распределения случайного вектора $\overline\xi$. 
+<br><br>
+<p id="Definition3.12"><b>Определение 3.12:</b>
+Будем говорить, что многомерная случайная величина $\overline\xi$ абсолютно непрерывна, 
+если существует неотрицательная функция $p_{\overline\xi}(u_1,\ldots,u_n)$ такая, что для любых $x_1,\ldots,x_n\in\mathbb{R}^n$
+$$F_{\overline\xi}(x_1,\ldots,x_n)=\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_n}p_{\overline\xi}(u_1,\ldots,u_n)du_1\cdots{d}u_n.$$
+При этом функция $p_{\overline\xi}(u_1,\ldots,u_n)$ назывется плотностью распределения многомерной случайной величины $\overline\xi$.
+<br><br>
+<p id="Definition3.13"><b>Определение 3.13:</b>
+Пусть $\overline\xi=(\xi_1,\ldots,\xi_n)$ - многомерная случайная величина, $m\in\overline{1,n}$, $i_1,\ldots,i_m\in\overline{1,n}$, 
+тогда многомерная случайная величина $\overline\xi_1:=(\xi_{i_1},\ldots,\xi_{i_m})$ называется подвектором вектора $\overline\xi$. 
+Распределение многомерной случайной величины $\overline\xi_1$ называется частным или маргинальным распределением многомерной случайной величины $\overline\xi$.
+<br><br>
+<p id="Theorem3.8"><b>Теорема 3.8:</b>
+Пусть случайный вектор $\overline\xi_1=(\xi_1,\ldots,\xi_m)$ является подвектором вектора $\overline\xi=(\xi_1,\ldots,\xi_m,\xi_{m+1},\ldots,\xi_n)$, тогда
+<ol>
+<li>
+$$
+F_{\overline\xi_1}(x_1,\ldots,x_m)=F_{\overline\xi}(x_1,\ldots,x_m,\infty,\ldots,\infty):=
+\lim_{x_{m+1}\to\infty}\ldots\lim_{x_n\to\infty}F_{\overline\xi}(x_1,\ldots,x_n).
+$$
+</li>
+<li>Если $\overline\xi$ абсолютно непрерывна и $p_{\overline\xi}$ её плотность распределения, то $\overline\xi_1$ тоже абсолютно непрерывна и её плотность распределения равна
+$$p_{\overline\xi_1}(u_1,\ldots,u_m):=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi}(u_1,\ldots,u_n)du_{m+1}\cdots{d}u_n.$$
+</ol>
+<p><b>Доказательство:</b>
+<ol> 
+<li> 
+$$
+F_{\overline\xi_1}(x_1,\ldots,x_m)=P\{\xi_1&ltx_1,\ldots,x_m&ltx_m\}=
+P\{\xi_1&ltx_1,\ldots,\xi_m&ltx_m,\xi_{m+1}&lt\infty,\ldots,\xi_n<\infty\}=
+F_{\overline\xi}(x_1,\ldots,x_m,\infty,\ldots,\infty).
+$$
+</li>
+<li>Покажем, что функция 
+$$p_{\overline\xi_1}(x_1,\ldots,x_m):=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi}(u_1,\ldots,u_n)du_{m+1}\cdots{d}u_n.$$
+является плотностью распределения вектора $\overline\xi_1$. Действительно
+<ol type="a">
+<li>
+$$
+F_{\overline\xi_1}(x_1,\ldots,x_m)=F_{\overline\xi}(x_1,\ldots,x_m,\infty,\ldots,\infty)=
+\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_m}\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi}(u_1,\ldots,u_n)du_1\cdots{d}u_n=
+\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_m}p_{\overline\xi_1}(u_1,\ldots,u_m)du_1\cdots{d}u_m
+$$
+</li>
+<li>
+Так как для любого $(x_1,\ldots,x_n)\in\mathbb{R}^n$ $p_{\overline\xi}(x_1,\ldots,x_n)\geq0$, то для любого $(x_1,\ldots,x_m)\in\mathbb{R}^m$
+$$
+p_{\overline\xi_1}(x_1,\ldots,x_m)=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi}(u_1,\ldots,u_n)du_{m+1}\cdots{d}u_n\geq0
+$$
+</li>
+<li>
+$$
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi_1}(u_1,\ldots,u_m)du_1\cdots{d}u_m=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline\xi}(u_1,\ldots,u_n)du_1\cdots{d}u_n=1
+$$
+</li>
+</ol>
+</li>
+</ol>
+<br>
+Таким образом, функция распределения многомерной случайной величины одназначно определяет все частные распеределния этой случайной величины. Обратное не верно.
+<br><br>
+<p id="Example3.3"><b>Пример 3.3:</b>
+Пусть $\overline\xi=(\xi_1,\xi_2)$ случайный вектор с плотностью распределения $p_{\overline\xi}(x_1,x_2)=\frac1{2\pi}e^{-(x_1+x_2)/2}$
+тогда, так как (<a href="../math_analysis/math_analysis13.3.1.html#13.3.1">13.3.1 MA</a>)
+$\int\limits_0^{\infty}e^{-u^2}du=\frac{\sqrt{\pi}}{2},$
+то
+$$
+p_{\overline\xi_1}(x_1)=\int\limits_{-\infty}^{\infty}p_{\overline\xi}(x_1,x_2)dx_2=\int\limits_{-\infty}^{\infty}e^{-(x_1^2+x_2^2)/2}dx_2=
+\frac{e^{-x_1^2/2}}{2\pi}\int\limits_{-\infty}^{\infty}e^{-x_2^2/2}dx_2=\frac1{\sqrt{2\pi}}e^{x_1^2/2}\sim{N}(0,1).
+$$
+Аналогично
+$$
+p_{\overline\xi_2}(x_2)=\frac1{\sqrt{2\pi}}e^{-x_1^2/2}dx_1\sim{N}(0,1)
+$$
+Проверим, что функция 
+$$
+F_{\overline\eta}(x_1,x_2):=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\min(x_1,x_2)}e^{-u^2/2}du
+$$
+является функцией распределения некоторой двумерной случайной величины. Действительно
+<ol>
+<li>Функция $F_{\overline\eta}(x_1,x_2)$ неубывает по каждой из переменных, так как функция $e^{-u^2/2}$ неотрицательна.
+</li>
+<li>Функция $F_{\overline\eta}(x_1,x_2)$ непрерывна слева по каждой из переменных.
+</li>
+<li> 
+$$\lim_{x_1,x_2\to\infty}F_{\overline\eta}(x_1,x_2)=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{-u^2/2}du=1.$$
+</li>
+<li>
+$$\lim_{x_1\to-\infty}F_{\overline\eta}(x_1,x_2)=\lim_{x_2\to-\infty}F_{\overline\eta}(x_1,x_2)=0.$$
+</li>
+<li>Пусть $a_1,a_2,b_1,b_2\in\mathbb{R}$ такие, что $a_1\leq{b}_1$, $a_2\leq{b}_2$ докажем, что 
+$$\Delta_{[a_1,b_1]}^{(1)}\Delta_{[a_2,b_2]}^{(2)}F_{\overline\eta}(x_1,x_2)\geq0.$$
+Рассмотрим случай $a_1\leq{a}_2\leq{b}_1\leq{b}_2$ (остальные случаи взаимного расположения концов отрезков рассматриваются аналогично).
+\begin{multline*}
+\Delta_{[a_1,b_1]}^{(1)}\Delta_{[a_2,b_2]}^{(2)}F_{\overline\eta}(x_1,x_2)=\Delta_{[a_1,b_1]}^{(1)}(F_{\overline\eta}(x_1,b_2)-F_{\overline\eta}(x_1,a_2))=
+F_{\overline\eta}(b_1,b_2)-F_{\overline\eta}(a_1,b_2)-F_{\overline\eta}(b_1,a_2)+F_{\overline\eta}(a_1,a_2)=\\=
+\frac1{\sqrt{2\pi}}\left(\int\limits_{-\infty}^{b_1}e^{-u^2/2}du-\int\limits_{-\infty}^{a_1}e^{-u^2/2}du-\int\limits_{-\infty}^{a_2}e^{-u^2/2}du+\int\limits_{-\infty}^{a_1}e^{-u^2/2}du\right)=
+\frac1{\sqrt{2\pi}}\left(\int\limits_{-\infty}^{b_1}e^{-u^2/2}du-\int\limits_{-\infty}^{a_2}e^{-u^2/2}du\right)=\frac1{\sqrt{2\pi}}\int\limits_{a_2}^{b_1}e^{-u^2/2}du\geq0,
+\end{multline*}
+где последнее равенство в силу того, что $a_2\leq{b}_2$ и функция $e^{-u^2/2}$ неотрицательна.
+</li>
+</ol>
+Таким образом, из <a href="./probability_theory2.1.html#Theorem2.3">теоремы 2.3</a> следует, 
+что функция $F_{\overline\eta}(x_1,x_2)$ является функцией распределения некоторой двумерной случайной величины $\overline\eta$. При этом 
+$$
+F_{\overline\eta_1}(x_1)=F_{\overline\eta}(x_1,\infty)=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{x_1}e^{-u^2/2}du\sim{N}(0,1)
+$$
+$$
+F_{\overline\eta_2}(x_2)=F_{\overline\eta}(\infty,x_2)=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{x_2}e^{-u^2/2}du\sim{N}(0,1)
+$$
+Таким образом, частные распределения случайных величин $\overline\xi$, $\overline\eta$ совпадают, а распределения самих случайных величин различны.
+<br>
+
+<h5 id="3.4">3.4 Алгебра порождаемая случайной величиной.</h5>
+
+Пусть $\xi(\omega)$ - случайная величина определенная на вероятностном прострастве $(\Omega,\mathfrak{A},P)$. 
+При доказательстве <a href="./probability_theory3.1.html#Theorem3.1">теоремы 3.1</a> было показано, что для любой последовательности $\{B_k\}$ из $\mathcal{B}$
+$$\xi^{-1}\left(\bigcup_{k=1}^{\infty}B_k\right)=\bigcup_{k=1}^{\infty}\xi^{-1}(B_k)$$
+и для любого $B$ из $\mathcal{B}$ $\xi^{-1}(\overline{B})=\overline{\xi^{-1}(B)},$ следовательно множество
+$\mathfrak{A}_{\xi}:=\{\xi^{-1}(B)\mid{B}\in\mathcal{B}\}\subset\mathfrak{A}$ является $\sigma$-алгеброй.
+<br><br>
+<p id="Definition3.14"><b>Определение 3.14:</b>
+Пусть $\xi$ - случайная величина на $(\Omega,\mathfrak{A},P)$, тогда $\sigma$-алгебра $\mathfrak{A}_{\xi}:=\xi^{-1}(\mathcal{B})$ называется 
+$\sigma$-алгеброй порожденной случайной величиной $\xi$.
+<br><br>
+<p id="Example3.4"><b>Пример 3.4:</b>
+<ol>
+<li>Для любого $A\in\mathfrak{A}$, если $\xi(\omega)\equiv{I}_A(\omega)$, то $\xi^{-1}(\mathcal{B})=\{\varnothing,\Omega,A,\overline{A}\}.$
+</li>
+<li>Пусть $\Omega=[-1,1]$, $\mathfrak{A}=\{B\in\mathcal{B}\mid{B}\in[-1,1]\}$, $P(A):=\lambda(A)/2$, где $\lambda(A)$ мера Лебега множества $A\in\mathfrak{A}$. 
+Функция $\xi(\omega):\Omega\to\mathbb{R}$ такая, что для любого 
+$\omega\in[-1,1]$ $\xi(\omega)=\omega^2$. Так как для любого $\omega\in[-1,1]$ $\xi(\omega)=\xi(-\omega)$, 
+то в множество $\xi^{-1}(\mathcal{B})$ входят только симметричные множества. Таким образом, 
+$\mathfrak{A}_{\xi}\neq\mathfrak{A}$.
+</ol>
+<br>
+<p id="Theorem3.9"><b>Теорема 3.9:</b>
+Пусть $\xi$ случайная величина на $(\Omega,\mathfrak{A},P)$, тогда случайная величина $\eta(\omega)$ $\mathfrak{A}_{\xi}$-измерима тогда и только тогда, когда существует борелевская функция 
+$\varphi(x):\mathbb{R}\to\mathbb{R}$ такая, что $\eta(\omega)\equiv\varphi(\xi(\omega))$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$
+<ol>
+<li>Пусть $\eta$ индикаторная случайная величина, то есть существует множество $A\in\mathfrak{A}_{\xi}$, такое $\eta(\omega)\equiv{I}_A(\omega)$. 
+Тогда существует $B\in\mathcal{B}$ такое, что $A=\xi^{-1}(B)$. Положим
+$$
+\varphi(x)\equiv{I}_B(x)\equiv\begin{cases}1,&x\in{B}\\0,&x\notin{B}\end{cases},
+$$
+тогда 
+$$
+\varphi(\xi(\omega))\equiv{I}_{B}(\xi(\omega))\equiv\begin{cases}1,&\xi(\omega)\in{B}\\0,&\xi(\omega)\notin{B}\end{cases}\equiv
+\begin{cases}1,&\omega\in\xi^{-1}(B)=A\\0,&\omega\notin\xi^{-1}(B)=A\end{cases}\equiv{I}_A(\omega)\equiv\eta(\omega)
+$$
+</li>
+<li>Пусть $\eta$ простая случайная величина, тогда существуют множества $A_1,\ldots,A_n\in\mathfrak{A}_{\xi}$ и числа $x_1,\ldots,x_n\in\mathbb{R}$ такие, что для любых неравных $k,s\in\overline{1,n}$ $A_kA_s=\varnothing$, 
+$\bigcup_{k=1}^nA_k=\Omega$ и
+$$\eta(\omega)\equiv\sum_{k=1}^nx_kI_{A_k}(\omega).$$
+Для любого $k\in\overline{1,n}$ существует $B_k\in\mathcal{B}$ такое, что $A_k=\xi^{-1}(B_k)$. Положим
+$$\varphi(x)\equiv\sum_{k=1}^nx_kI_{B_k}(x).$$ 
+Фиксируем $\omega\in\Omega$, тогда
+$$
+\exists{k}_0\in\overline{1,n}:\omega\in{A}_{k_0}\Rightarrow\begin{cases}\eta(\omega)=x_{k_0} \\ \xi(\omega)\in\xi(A_{k_0})=B_{k_0}\end{cases}\Rightarrow
+\begin{cases}\eta(\omega)=x_{k_0} \\ \varphi(\xi(\omega))=x_{k_0}\end{cases}.
+$$
+</li>
+<li>Пусть $\eta$ неотрицательная случайная величина. Тогда по <a href="./probability_theory3.1.html#Theorem3.3">теореме 3.3</a> 
+существует последовательность простых случайных величин $\{\eta_n\}$ таких, 
+что $\eta(\omega)\equiv\lim_{n\to\infty}\eta_n(\omega)$. По п. 2 для любого 
+$n\in\mathbb{N}$ существует функция $\varphi_n(x)$ такая, что $\eta_n(\omega)\equiv\varphi(\xi(\omega))$. Положим $\varphi(x)=\lim_{n\to\infty}\varphi_n(x),$
+если предел существует при данном $x$ и $\varphi(x)=0$, если предела не существует, тогда для любого $\omega\in\Omega$
+$$
+\varphi(\xi(\omega))=\lim_{n\to\infty}\varphi_n(\xi(\omega))=\lim_{n\to\infty}\eta_n(\omega)=\eta(\omega)
+$$
+</li>
+<li>Пусть $\eta$ произвольная случайная величина. Обозначим 
+$$\eta^+(\omega)\equiv\max{(\eta(\omega),0)},\,\eta^-(\omega)\equiv-\min{(0,\eta(\omega))},$$ 
+тогда случайные величины $\eta^+$, $\eta^-$ неорицательны и $\eta(\omega)\equiv\eta^+(\omega)-\eta^-(\omega)$.
+По п. 3 существуют функции $\varphi^+(x),\varphi^-(x)$ такие, что $\eta^+(\omega)\equiv\varphi^+(\xi(\omega))$, $\eta^-(\omega)\equiv\varphi^-(\xi(\omega))$. 
+Следовательно, искомая борелевская функция есть $\varphi(x)\equiv\varphi^+(x)-\varphi^-(x)$.
+</li>
+</ol>
+$\Leftarrow)$ Так как очевидно, что $\xi(\omega)$ случайная величина на $\mathfrak{A}_{\xi}$, 
+то по <a href="./probability_theory3.1.html#Theorem3.2">теореме 3.2</a> $\eta(\omega)\equiv\varphi(\xi(\omega))$ тоже случайная величина на $\mathfrak{A}_{\xi}$, 
+то есть $\eta$ $\mathfrak{A}_{\xi}$-измерима.
+<br><br>
+<p id="Task3.1"><b>Задача 3.1:</b>
+Доказать, что функция $\varphi(x)$ введенная в п. 3 доказательства необходимости является борелевской.
+
+
+<br><br>
+<a href="./probability_theory3.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.5.html">next</a>
+</body>
+</html>

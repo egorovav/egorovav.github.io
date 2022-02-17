@@ -1,0 +1,251 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 15.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory14.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory16.1.html">next</a>
+<br>
+
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\tr}{\operatorname{tr}}$
+$\newcommand{\rang}{\operatorname{rang}}$
+
+<h4 id="15">15. Метод наименьших квадратов.</h4>
+
+<h5 id="15.1">15.1 Оценки наименьших квадратов.</h5>
+
+Пусть $n,m\in\mathbb{N}$ такие, что $n>m$, 
+$$
+\begin{cases}
+a_1=c_{1,1}\theta_1+\cdots+c_{1,m}\theta_m \\
+a_2=c_{2,1}\theta_1+\cdots+c_{2,m}\theta_m \\
+\cdots \\
+a_n=c_{n,1}\theta_1+\cdots+c_{n,m}\theta_m
+\end{cases}
+$$
+система линейных уравнений относительно неизвестных $\theta_1,\ldots,\theta_m$. Так как по условию $n>m$, то получить точное решение невозможно. 
+Задача состоит в том чтобы по измерениям $y_1,\ldots,y_n$ величин $a_1,\ldots,a_n$ оценить параметры $\theta_1,\ldots,\theta_m$. 
+Далее будем считать, что для любого $i\in\overline{1,m}$ $y_i=a_i+\varepsilon_i$, 
+где величина $\varepsilon_i$ называется ошибкой измерений, причем выполняются следующие условия:
+<ol>
+<li>Отсутствие систематической ошибки: $\forall{i}\in\overline{1,n}(E\varepsilon_i=0)$.
+</li><li>Равноточность измерений: $\forall{i}\in\overline{1,n}(D\varepsilon_i=\sigma^2)$.
+</li><li>Отсутствие корреляции ошибок: $\forall{i,j}\in\overline{1,n}(i\neq{j}\Rightarrow{E}\varepsilon_i\varepsilon_j=0)$.
+</li>
+</ol>
+Для оценки параметров $\theta_1,\ldots,\theta_n$ в методе наименьших квадратов (МНК) используются оценки наименьших квадратов (ОНК) 
+$\tilde\theta_1,\ldots,\tilde\theta_m$. В качестве ОНК принимают такие значения параметров, которые минимизируют функцию
+$$\psi(\theta_1,\ldots,\theta_m):=\sum_{i=1}^n\left(y_i-\sum_{j=1}^mc_{i,j}\theta_j\right)^2.$$
+<br> 
+
+<p id="Statement15.1"><b>Утверждение 15.1:</b>
+Обозначим $C:=(c_{i,j})_{n\times{m}}$, $\vec\varepsilon=(\varepsilon_1,\ldots,\varepsilon_n)$ - вектор ошибок измерений, 
+$\vec\theta:=(\theta_1,\ldots,\theta_m)$ - вектор оцениваемых параметров, $A^{\downarrow}:=C\theta^{\downarrow}$, 
+$\vec{Y}:=\vec{A}+\vec\varepsilon$ - вектор измерений, $\tilde\theta:=(\tilde\theta_1,\ldots,\tilde\theta_m)$ - вектор ОНК. 
+Тогда, если матрица $C^TC$ невырождена, то 
+$$\tilde\theta^{\downarrow}=(C^TC)^{-1}C^TY^{\downarrow}.$$
+<p><b>Доказательство:</b><br>
+Согласно введенным обозначениям
+$$\psi(\theta_1,\ldots,\theta_m)=(Y^{\downarrow}-C\theta^{\downarrow})^T(T^{\downarrow}-C\theta^{\downarrow}).\quad(*)$$
+Согласно <a href="../math_analysis/math_analysis12.4.1.html#Statement12.4.1">утверждению 12.4.1 MA</a>,
+вектор $\tilde\theta$ параметров минимизирующий функцию $\psi(\theta_1,\ldots,\theta_m)$ можно найти как решение системы
+$$\left\{\frac{\partial\psi}{\partial\theta_j}=0,\,j\in\overline{1,m}\right.$$
+Продифференцировав $(*)$ получим
+\begin{multline*}
+\frac{\partial\psi}{\partial\theta_j}=
+\left(-C\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)^T(Y^{\downarrow}-C\theta^{\downarrow})-(Y^{\downarrow}-C\theta^{\downarrow})^T\left(C\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)=
+-\left(C\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)^T(Y^{\downarrow}-C\theta^{\downarrow})-\left(\left(C\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)^T(Y^{\downarrow}-C\theta^{\downarrow})\right)^T=\\=
+-2\left(C\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)^T(Y^{\downarrow}-C\theta^{\downarrow})=0\Rightarrow\left(\frac{\partial\theta^{\downarrow}}{\partial\theta_j}\right)^T(C^TY^{\downarrow}-C^TC\theta^{\downarrow})=0,
+\end{multline*}
+где второе равенство в силу п. 3 <a href="../discrete_math/discrete_math3.1.html#Theorem3.4">теоремы 3.4 DM</a> ($(AB)^T=B^TA^T$), 
+а третье в силу скалярности слагаемых. 
+Так как для любого $j\in\overline{1,m}$ вектор $\partial\theta^{\downarrow}/\partial\theta_j$ состоит из единицы на $j$-том месте и нулей на остальных местах, то 
+$$
+\left\{\frac{\partial\psi}{\partial\theta_j}=0,\,j\in\overline{1,m}\right.\Leftrightarrow{C}^TY^{\downarrow}-C^TC\theta^{\downarrow}=0\Leftrightarrow
+{C}^TC\theta^{\downarrow}=C^TY^{\downarrow}.
+$$
+Следовательно, если матрица $C^TC$ невырожденная, то ОНК можно найти по формуле
+$$\tilde\theta^{\downarrow}=(C^TC)^{-1}C^TY^{\downarrow}.$$
+<br>
+<p id="Note15.1"><b>Замечание 15.1:</b>
+Далее везде будем считать, что матрица $C^TC$ невырождена.
+<br><br>
+<p id="Theorem15.1"><b>Теорема 15.1:</b>
+<ol>
+<li>Оценки наименьших квадратов $\tilde\theta$ являются несмещенными оценками, 
+то есть в обозначениях утверждения 15.1 $E\tilde\theta^{\downarrow}=\theta^{\downarrow}$.
+</li><li>
+Если в обозначениях утверждения 15.1 положить $\tilde{A}:=C\tilde\theta^{\downarrow}$, то $E\tilde{A}^\downarrow=A^{\downarrow}$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>По утверждению 15.1 
+$$
+\tilde\theta^{\downarrow}=(C^TC)^{-1}C^TY^{\downarrow}=(C^TC)^{-1}C^T(C\theta^{\downarrow}+\varepsilon^{\downarrow})=
+\theta^{\downarrow}+(C^TC)^{-1}C^T\varepsilon^{\downarrow}.
+$$
+Так как по условию отсутствия систематической ошибки $E\varepsilon^{\downarrow}=0$, то
+$$E\tilde\theta=\theta^{\downarrow}+(C^TC)^{-1}C^TE\varepsilon^{\downarrow}=\theta^{\downarrow}.$$
+</li><li>По п. 1
+$$E\tilde{A}^{\downarrow}=CE\tilde\theta^{\downarrow}=C\theta^{\downarrow}=A^{\downarrow}$$
+</li>
+</ol>
+<br>
+<p id="Statement15.2"><b>Утверждение 15.2:</b>
+В обозначениях <a href="#Statement15.1">утверждения 15.1</a>
+<ol>
+<li>$\cov(\tilde\theta^{\downarrow},\tilde\theta)=\sigma^2(C^TC)^{-1}$;</li>
+<li>$\cov(\tilde{A}^{\downarrow},\tilde{A})=\sigma^2C(C^TC)^{-1}C^T$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Из доказательства <a href="#Theorem15.1">теоремы 15.1</a> следует, что 
+$$\tilde\theta^{\downarrow}-\theta^{\downarrow}=(C^TC)^{-1}C^T\varepsilon^{\downarrow},$$
+тогда
+$$
+\cov(\tilde\theta^{\downarrow},\tilde\theta)=E[(\tilde\theta^{\downarrow}-\theta^{\downarrow})(\tilde\theta^{\downarrow}-\theta^{\downarrow})^T]=
+E[(C^TC)^{-1}C^T\varepsilon^{\downarrow}((C^TC)^{-1}C^T\varepsilon^{\downarrow})^T]=
+(C^TC)^{-1}C^TE(\varepsilon^{\downarrow}\vec\varepsilon)C((C^TC)^{-1})^T.
+$$
+Так как по условиям отсутствия сиситематической ошибки ($E\varepsilon_i=0$) и равноточности измерений ($D\varepsilon_i=\sigma^2$) 
+$$E\varepsilon_i^2=E\varepsilon_i^2-(E\varepsilon_i)^2=D\varepsilon_i=\sigma^2,$$
+и по условию отсутствия корреляции ошибок $E\varepsilon_i\varepsilon_j=0$ при $i\neq{j}$, то
+$$E\varepsilon^{\downarrow}\vec\varepsilon=\sigma^2I_{n\times{n}}.$$
+Так как матрица $C^TC$ симметрична, то симметрична и её взаимная матрица 
+(см. <a href="../discrete_math/discrete_math3.3.html#Theorem3.8">теорему 3.8 DM</a>), тогда матрица $(C^TC)^{-1}$ так же симметрична, следовательно,
+$$\cov(\tilde\theta^{\downarrow},\tilde\theta)=(C^TC)^{-1}C^T\sigma^2I_{n\times{n}}C(C^TC)^{-1}=\sigma^2(C^TC)^{-1}.$$
+</li><li>По п. 1
+$$\tilde{A}^{\downarrow}-A^{\downarrow}=C\tilde\theta^{\downarrow}-C\theta^{\downarrow}=C(C^TC)^{-1}C^T\varepsilon^{\downarrow},$$
+тогда аналогично п. 1
+$$
+\cov(\tilde{A}^{\downarrow},\tilde{A})=E[(\tilde{A}^{\downarrow}-A^{\downarrow})(\tilde{A}^{\downarrow}-A^{\downarrow})^T]=
+C(C^TC)^{-1}E(\varepsilon^{\downarrow}\vec\varepsilon)C(C^TC)^{-1}C^T=\sigma^2C(C^TC)^{-1}C^T
+$$
+</li>
+</ol>
+<br>
+<p id="Note15.2"><b>Замечание 15.2:</b>
+На диагонали матрицы $\cov(\tilde\theta^{\downarrow},\tilde\theta)$ стоят дисперсии ОНК. Из п. 2 утверждения 15.2 следует, 
+что они пропорциональны дисперсии ошибок измерений, следовательно, минимизация дисперсий ОНК сводится к минимизации дисперсии ошибок измерений $\sigma^2$
+<br>
+
+<h5 id="15.2">15.2 Дисперсия ошибки измерений.</h5>
+
+<p id="Theorem15.2"><b>Теорема 15.2:</b>
+В обозначениях утверждения 15.1 положим $\tilde{A}^{\downarrow}:=C\tilde\theta$, $\tilde\varepsilon^{\downarrow}:=Y^{\downarrow}-\tilde{A}^{\downarrow}$, 
+тогда величина
+$$\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{n-m}$$
+является несмещённой оценкой для дисперсии ошибки измерений $\sigma^2$.
+<p><b>Доказательство:</b><br>
+По <a href="#Statement15.1">утверждению 15.1</a>
+\begin{multline*}
+\tilde\varepsilon^{\downarrow}=Y^{\downarrow}-\tilde{A}^{\downarrow}=C\theta^{\downarrow}+\varepsilon^{\downarrow}-C\tilde\theta^{\downarrow}=
+C\theta^{\downarrow}+\varepsilon^{\downarrow}-C(C^TC)^{-1}C^TY^{\downarrow}=
+C\theta^{\downarrow}+\varepsilon^{\downarrow}-C(C^TC)^{-1}C^T(C\theta^{\downarrow}+\varepsilon^{\downarrow})=\\=
+C\theta^{\downarrow}+\varepsilon^{\downarrow}-C\theta^{\downarrow}-C(C^TC)^{-1}C^T\varepsilon^{\downarrow}=
+\varepsilon^{\downarrow}(I-C(C^TC)^{-1}C^T).
+\end{multline*}
+Обозначим $F:=(f_{i,j})_{n\times{n}}:=I-C(C^TC)^{-1}C^T$, тогда, так как матрица $(C^TC)^{-1}$ симметрична 
+(см. доказательство <a href="#Statement15.2">утверждения 15.2</a>), то
+$$F^T=(I-C(C^TC)^{-1}C^T)^T=I-(C^T)^T(C^TC)^{-1}C^T=F$$
+и 
+\begin{multline*}
+F^2=(I-C(C^TC)^{-1}C^T)(I-C(C^TC)^{-1}C^T)=I-2C(C^TC)^{-1}C^T+C(C^TC)^{-1}C^TC(C^TC)^{-1}C^T=\\=
+I-2C(C^TC)^{-1}C^T-C(C^TC)^{-1}C^T=I-C(C^TC)^{-1}C^T=F.
+\end{multline*}
+Следовательно,
+$$
+\tilde\varepsilon\tilde\varepsilon^{\downarrow}=\vec\varepsilon{F}^TF\varepsilon^{\downarrow}=\vec\varepsilon{F}^2\varepsilon^{\downarrow}=
+\vec\varepsilon{F}\varepsilon^{\downarrow}=\sum_{i=1}^nf_{i,i}\varepsilon_i^2+\sum_{i\neq{j}}f_{i,j}\varepsilon_i\varepsilon_j,
+$$
+тогда в силу равноточности измерений и отсутствия корреляции ошибок
+$$
+E\tilde\varepsilon\tilde\varepsilon^{\downarrow}=\sum_{i=1}^nf_{i,i}E\varepsilon_i^2+\sum_{i\neq{j}}f_{i,j}E\varepsilon_i\varepsilon_j=
+\sigma^2\sum_{i=1}^nf_{i,i}=\sigma^2\tr{F},
+$$
+где $\tr$ - функция "след матрицы" равная сумме диагональных элементов квадратной матрицы. 
+Нетрудно видеть, что для любых квадратных матриц $A:=(a_{i,j})_{n\times{n}}$, $B:=(b_{i,j})_{n\times{n}}$ $\tr(A+B)=\tr{A}+\tr{B}$ и
+$$\tr(AB)=\sum_{i=1}^n\sum_{j=1}^na_{i,j}b_{j,i}=\sum_{j=1}^n\sum_{i=1}^nb_{j,i}a_{i,j}=\tr(BA).$$
+Тогда 
+$$
+\tr{F}=\tr(I-C(C^TC)^{-1}C^T)=\tr{I}-\tr(C(C^TC)^{-1}C^T)==n-\tr(C^TC(C^TC)^{-1})=n-m,
+$$
+следовательно,
+$$E\tilde\varepsilon\tilde\varepsilon^{\downarrow}=\sigma^2(n-m)\Rightarrow{E}\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{n-m}=\sigma^2$$
+<br>
+<p id="Note15.3"><b>Замечание 15.3: Доверительный интервал для $\sigma^2$.</b><br>
+Будем считать, что ошибка измерений распределена нормально, 
+то есть $\varepsilon^{\downarrow}\sim{N}(0^{\downarrow},\sigma^2I_{n\times{n}})$. 
+Обозначим $\Sigma_{\varepsilon}$ ковариционную матрицу оценки ошибки измерений $\tilde\varepsilon^{\downarrow}:=F\varepsilon^{\downarrow}$, 
+тогда в обозначениях теоремы 15.2
+$$
+\Sigma_{\varepsilon}=E\tilde\varepsilon^{\downarrow}\tilde\varepsilon=E(F\varepsilon^{\downarrow}\vec\varepsilon{F})=
+F(\sigma^2I_{n\times{b}})F=\sigma^2F^2=\sigma^2F.
+$$
+Тогда так как $F=F^T$ и нормальное распределение устойчиво относительно линейного преобразования (википедия), 
+то $\tilde\varepsilon^{\downarrow}\sim{N}(0^{\downarrow},\sigma^2F)$, следовательно, $(\tilde\varepsilon^{\downarrow}/\sigma)\sim{N}(0,F)$. 
+Так как $F^2=F$, то многочлен $x(x-1)$ аннулирует матрицу $F$, следовательно, только <i>(?)</i> числа 0 и 1 являются собственными значениями матрицы $F$. 
+Так как $\tr{F}=n-m$ равен сумме собственных значений матрицы (википедия), то матрица $F$ имеет среди харакристических чисел $n-m$ единиц, 
+следовательно <i>(?)</i>, $\rang{F}=n-m$. Тогда из доказательства <a href="./probability_theory12.6.html#Theorem12.7">теоремы 12.7</a> <i>(?)</i> следует, что 
+$$\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{\sigma^2}\sim\chi_{n-m}^2.$$
+Пусть $\alpha$ коэффициент надежности, $a$ и $b$ квантили распределения $\chi_{n-m}^2$ уровня $\alpha/2$ и $1-\alpha/2$ соотвественно, тогда из равенства
+$$P\left\{a<\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{\sigma^2}&ltb\right\}=1-\alpha$$ 
+находим доверительный интервал для $\sigma^2$ с коэффициентом надежности $\alpha$
+$$\left(\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{b},\frac{\tilde\varepsilon\tilde\varepsilon^{\downarrow}}{a}\right)$$
+<br>
+<h5 id="15.3">15.3 Оптимальность оценок наименьших квадратов.</h5>
+
+<p id="Definition15.1"><b>Определение 15.1:</b>
+Оценки вида $\tilde\theta^{\downarrow}:=BY^{\downarrow}$ для вектора параметров $\theta^{\downarrow}$, будем называть линейными.
+<br><br>
+<p id="Lemma15.1"><b>Лемма 15.1:</b>
+В обозначениях теоремы 15.1 оценка $\tilde\theta^{\downarrow}:=BY^{\downarrow}$ является несмещённой тогда и только тогда, когда $BC=I_{n\times{n}}$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть для любого $\theta^{\downarrow}$ $E\tilde\theta^{\downarrow}=\theta^{\downarrow}$, тогда для любого $\theta^{\downarrow}$
+$$
+EBY^{\downarrow}=EB(C\theta^{\downarrow}+\varepsilon^{\downarrow})=BC\theta^{\downarrow}+BE\varepsilon^{\downarrow}=BC\theta^{\downarrow}=\theta^{\downarrow},
+$$
+следовательно, $BC=I$.<br>
+$\Leftarrow)$ Пусть $BC=I$, тогда
+$$
+E\tilde\theta^{\downarrow}=EBY^{\downarrow}=EB(C\theta^{\downarrow}+\varepsilon^{\downarrow})=BC\theta^{\downarrow}+BE\varepsilon^{\downarrow}=\theta^{\downarrow}.
+$$
+<br>
+<p id="Theorem15.3"><b>Теорема 15.3:</b>
+Оценки наименьших квадратов являются оптимальными в смысле минимума дисперсии в классе линейных оценок.
+<p><b>Доказательство:</b><br>
+Пусть $\tilde\theta^{\downarrow}=BY^{\downarrow}$, тогда ковариационная матрица оценки $\tilde\theta^{\downarrow}$ имеет вид
+$$
+\Sigma=E((\tilde\theta^{\downarrow}-\theta^{\downarrow})(\tilde\theta^{\downarrow}-\theta^{\downarrow})^T)=
+E((BY^{\downarrow}-\theta^{\downarrow})(BY^{\downarrow}-\theta^{\downarrow})^T)=
+E((BC\theta^{\downarrow}+B\varepsilon^{\downarrow}-\theta^{\downarrow})(BC\theta^{\downarrow}+B\varepsilon^{\downarrow}-\theta^{\downarrow})^T)=
+E(B\varepsilon^{\downarrow}\vec\varepsilon{B}^T)=\sigma^2BB^T
+$$
+Так как оптимальная оценка по определению несмещена, то по лемме 15.1 $BC=I$, следовательно, учитывая, что матрица $(C^TC)^{-1}$ симметрична 
+(см. доказательство <a href="#Statement15.2">утверждения 15.2</a>) имеем
+\begin{multline*}
+(B-(C^TC)^{-1}C^T)(B-(C^TC)^{-1}C^T)^T=(B-(C^TC)^{-1}C^T)(B^T-C(C^TC)^{-1})=\\=
+BB^T-BC(C^TC)^{-1}-(C^TC)^{-1}C^TB^T+(C^TC)^{-1}C^TC(C^TC)^{-1}=BB^T-2(C^TC)^{-1}+(C^TC)^{-1}C^TC((C^TC)^{-1})^T
+\end{multline*}
+откуда 
+$$BB^T=(B-(C^TC)^{-1}C^T)(B-(C^TC)^{-1}C^T)^T+\mathcal{F}(C),$$
+где $\mathcal{F}$ некоторая функция зависящая только от $C$ и не зависящая от $B$.
+Первое слагаемое в последнем выражении обращается в нуль тогда и только тогда, когда $B=(C^TC)^{-1}C^T$. 
+С другой стороны, по <a href="#Theorem15.1">теореме 15.1</a> ОНК выражаются в виде $(C^TC)^{-1}C^TY^{\downarrow}$, 
+то есть $BB^T$ достигает минимума <i>(поэлементного?)</i>, если в качестве $\tilde\theta^{\downarrow}$ выступают ОНК.
+
+
+<br><br>
+<a href="./probability_theory14.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory16.1.html">next</a>

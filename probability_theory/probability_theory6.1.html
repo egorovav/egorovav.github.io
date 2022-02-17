@@ -1,0 +1,342 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 6.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory6.3.html">next</a>
+
+<h4 id="6">6 Характеристические функции.</h4>
+
+<h5 id="6.1">6.1 Определение и простейшие свойства характеристической функции.</h5>
+
+Пусть $(\Omega,\mathfrak{A},P)$ измеримое пространство, $\xi$ случайная величина на нем с функцией распределения $F_{\xi}(x)$. 
+Так как для любого $t\in\mathbb{R}$
+$$
+\left|\int\limits_{-\infty}^{\infty}\cos(t\xi)dF_{\xi}(x)\right|\leq\int\limits_{-\infty}^{\infty}|\cos(t\xi)dF_{\xi}(x)
+|\leq\int\limits_{-\infty}^{\infty}dF_{\xi}(x)=1
+$$
+то для для любого $t\in\mathbb{R}$ определено математическое ожидание $E\cos(t\xi)$ и аналогично определено $E\sin(t\xi)$. 
+Следовательно, для любой случайной величины $\xi$ можно определить комплекснозначную функцию 
+$$Ee^{it\xi}=E\cos(t\xi)+iE\sin(t\xi).$$
+По поводу равенства $e^{ix}=\cos{x}+i\sin{x}$ для любого $x\in\mathbb{R}$ 
+см. <a href="../math_analysis/math_analysis7.5.4.html#7.5.4">7.5.4 MA</a>, свойства комплексных чисел 
+<a href="../math_analysis/math_analysis7.5.1.html#7.5.1">см. 7.5.1 MA</a>.
+<br><br>
+<p id="Definition6.1"><b>Определение 6.1:</b>
+Характеристической функцией случайной величины $\xi$ (или распределения случайной величины) называется комплекснозначная функция вещественного переменного 
+$$\varphi_{\xi}(t):=Ee^{it\xi}:=\cos(t\xi)+i\sin(t\xi)$$
+<br>
+Из определения 6.1 следует, что для любого $t\in\mathbb{R}$
+$$\varphi_{\xi}(t)=\int\limits_{-\infty}^{\infty}e^{itx}dF_{\xi}(x)=\int\limits_{-\infty}^{\infty}\cos(tx)dF_{\xi}(x)+i\int\limits_{-\infty}^{\infty}\sin(tx)dF_{\xi}.$$
+Если случайная величина $\xi$ абсолютно непрерывна, то 
+$$\varphi_{\xi}(t)=\int\limits_{-\infty}^{\infty}e^{itx}p_{\xi}(x)dx.$$
+Если случайная величина $\xi$ дискретна, то для любого $t\in\mathbb{R}$
+$$\xi\sim\begin{pmatrix}x_1, & \ldots, & x_n \\ p_1, & \ldots, & p_n\end{pmatrix}\Rightarrow\varphi_{\xi}(t)=\sum_{k=1}^ne^{itx_k}p_k.$$
+<br>
+<p id="Theorem6.1"><b>Теорема 6.1: Свойства характеристической функции.</b><br>
+Пусть $\varphi(t)$ характеристическая функция случайной величины $\xi$, а $F(x)$ ее функция распределения, тогда
+<ol>
+<li>$\forall{t}\in\mathbb{R}(|\varphi(t)|\leq\varphi(0)=1)$;
+</li>
+<li>$\forall{t}\in\mathbb{R}(\varphi(-t)=\overline{\varphi(t)})$;
+</li>
+<li>функция $\varphi(t)$ равномерно непрерывна на $\mathbb{R}$;
+</li>
+<li>если случайные величины $\xi_1$ и $\xi_2$ независимы, то 
+$$\varphi_{\xi_1+\xi_2}(t)=\varphi_{\xi}(t)\varphi_{\xi_2}(t);$$
+</li>
+<li>$\forall{a},b\in\mathbb{R}(\eta:=a\xi+b\Rightarrow\varphi_{\eta}(t)=e^{itb}\varphi(at))$;
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Для любого $t\in\mathbb{R}$
+$$
+|\varphi(t)|=\left|\int\limits_{-\infty}^{\infty}e^{itx}dF(x)\right|\leq\int\limits_{-\infty}^{\infty}|e^{itx}dF(x)|=
+\int\limits_{-\infty}^{\infty}\cos^2x+\sin^2xdF(x)=\int\limits_{-\infty}^{\infty}dF(x)=\varphi(0)=1.
+$$
+</li>
+<li>Так как $\cos{x}$ четная функция, а $\sin{x}$ нечетная, то для любого $t\in\mathbb{R}$
+$$
+\varphi(-t)=Ee^{-it\xi}=E\cos(-t\xi)+iE\sin(-t\xi)=E\cos(t\xi)-iE\sin(t\xi)=\overline{\varphi(t)}.
+$$
+</li>
+<li>Определение равномерной непрерывности функции $f(x):X\to{Y}$ дано в <a href="../math_analysis/math_analysis11.2.html#Definition11.2.4">определении 11.2.4 MA</a>. 
+В условиях данной теоремы  $X=\mathbb{R}$, $Y=\mathbb{C}$. То есть необходимо доказать, что
+$$\forall\varepsilon>0\,\exists\delta=\delta(\varepsilon)>0:\forall{t},s\in\mathbb{R}(|s-t|<\delta\Rightarrow|\varphi(s)-\varphi(t)|<\varepsilon).$$
+Фиксируем $\varepsilon>0$, так как интеграл $\int_{-\infty}^{\infty}dF(x)$ сходится, то существует $A>0$ такое, что $\int_{|x|&gtA}dF(x)<\varepsilon/4$. 
+Б. о. о. будем считать, что $s&ltt$, тогда 
+$$
+\varphi(t)-\varphi(s)=\int\limits_{-\infty}^{\infty}e^{isx}(e^{i(t-s)x}-1)dF(x)=
+\int\limits_{|x|\leq{A}}e^{isx}(e^{i(t-s)x}-1)dF(x)+\int\limits_{|x|&gt{A}}e^{isx}(e^{i(t-s)x}-1)dF(x)
+$$
+Обозначим первое слагаемое $J_1$, а второе $J_2$, тогда, так как $|e^{ix}|=1$ для любого $x\in\mathbb{R}$, то
+$$|J_2|\leq\int\limits_{|x|&gtA}|e^{i(t-s)x}-1|dF(x)\leq2\int\limits_{|x|&gtA}dF(x)<2\frac{\varepsilon}{4}=\frac{\varepsilon}{2},$$
+$$
+|J_1|\leq\int\limits_{|x|\leq{A}}\sqrt{(\cos((t-s)x)-1)^2+\sin^2((t-s)x)}dF(x).
+$$
+Обозначив $\alpha:=(t-s)x$, преобразуем подкоренное выражение, воспользовашись формулой $1-\cos\alpha=2\sin^2\frac{\alpha}{2}$.
+$$(\cos\alpha-1)^2-\sin^2\alpha=\cos^2\alpha-2\cos\alpha+1+\sin^2\alpha=2-2\cos\alpha=4\sin^2\frac{\alpha}{2},$$
+тогда
+$$|J_1|\leq2\int\limits_{|x|\leq{A}}\left|\sin\frac{(t-s)x}{2}\right|dF(x)\leq2|t-s|\frac{A}{2}\int\limits_{|x|\leq{A}}dF(s)\leq{A}|t-s|.$$
+Положив $\delta:=\frac{\varepsilon}{2A}$, получим
+$$|t-s|<\delta\Rightarrow|\varphi(t)-\varphi(s)|\leq|J_1|+|J_2|&lt{A}\frac{\varepsilon}{2A}+\frac{\varepsilon}{2}=\epsilon.$$
+</li>
+<li>Так как функция $\exp(itx)$ борелевская <i>(?)</i>, то по <a href="./probability_theory3.5.html#Theorem3.15">теореме 3.15</a> случайные величины $\exp(it\xi_1)$, 
+$\exp(it\xi_2)$ независимы. Тогда по <a href="./probability_theory4.1.html#Theorem4.8">теореме 4.8</a>
+$$\varphi_{\xi_1+\xi_2}(t)=Ee^{it(\xi_1+\xi_2)}=E\left(e^{it\xi_1}e^{it\xi_2}\right)=Ee^{it\xi_1}Ee^{it\xi_2}=\varphi_{\xi_1}(t)\varphi_{\xi_2}(t).$$
+Индукцией по $n$ можно так же доказать, что для любых независимых в совокупности случайных величин $\xi_1,\ldots,\xi_n$
+$$\varphi_{\xi_1+\cdots+\xi_n}(t)=\prod_{k=1}^n\varphi_{\xi_k}(t).$$
+</li>
+<li>$$\varphi_{\eta}(t)=Ee^{it(a\xi+b)}=E\left(e^{ita\xi}e^{itb}\right)=e^{itb}Ee^{ita\xi}=e^{itb}\varphi(at).$$
+</li>
+</ol>
+<br>
+Свойства 1-3 используются для проверки является ли данная функция характеристической для некоторой случайной величины.
+<br><br>
+<p id="Example6.1"><b>Пример 6.1:</b>
+<ol>
+<li>Функция $\varphi(t)=t$ не является характерестической, так как $\varphi(0)\neq1$, то есть она не удовлетворяет свойству 1.
+</li>
+<li>Функция $\varphi(t)=1/(1+t^2)$ удовлетворяет свойствам 1-3, однако нельзя утверждать, что она характеристическая.
+</li>
+<li>Функция $\varphi(t)=\cos{t}=\frac12e^{it}+\frac12e^{-it}$ является характеристической функцией случайной величины 
+$\xi\sim\left(\begin{smallmatrix}1, & -1 \\ 1/2, & 1/2\end{smallmatrix}\right)$ по определению.
+</li>
+<li>Аналогично характеристическая функция случайной величины $\left(\begin{smallmatrix}2, & -2 \\ 1/2, & 1/2\end{smallmatrix}\right)$ равна $\varphi(t)=\cos(2t)$.
+</li>
+<li>Функция $\varphi(t)=\cos^2t=\cos{t}\cos{t}$, по п. 3 и свойству 4 является характеристической функцией 
+случайной величины $\xi+\eta\sim\left(\begin{smallmatrix}2, & 0, & -2 \\ 1/4, & 1/2 & 1/4\end{smallmatrix}\right)$, 
+где $\xi,\eta\sim\left(\begin{smallmatrix}1, & -1 \\ 1/2, & 1/2\end{smallmatrix}\right)$
+</li>
+<li>Функция $\varphi(t)=\cos(t^2)$ не является характеристической, так как она не равномерно непрерывна 
+(п. 1 <a href="../math_analysis/math_analysis5.5.3.html#Task5.5.5">задачи 5.5.5 MA</a>).
+</ol>
+<br>
+Приведем примеры нахождения характеристических функций для основных распределений.
+<p id="Example6.2"><b>Пример 6.2:</b>
+<ol>
+<li>Пусть $\xi\sim\left(\begin{smallmatrix}1, & 0 \\ p, & q\end{smallmatrix}\right)$, тогда
+$$\varphi(t)=e^{it1}p+e^{et0}q=q+pe^{it}=1+p(e^{it}-1).$$
+</li>
+<li>Пусть $\xi\sim{B}(n,p)$, тогда как было показано в <a href="./probability_theory5.1.html#5.1">разделе 5.1</a> 
+$\xi$ представима в виде суммы $n$ независимых случайных величин
+$\xi=\xi_1+\cdots+\xi_n$, где для любого $k\in\overline{1,n}$ $\xi_k\sim\left(\begin{smallmatrix}1, & 0 \\ p, & q\end{smallmatrix}\right)$, тогда по п. 4 теоремы 6.1
+$$\varphi(t)=\prod_{k=1}^n\varphi_{\xi_k}(t)=(q+pe^{it})^n.$$
+</li>
+<li>Пусть $\xi$ дискретна и для любого $k\in\mathbb{N}$ $P(\xi=k)=q^{k-1}p$, где $p,q>0$ и $p+q=1$, что соответствует геометрическому распределению. Тогда 
+$$\varphi(t)=\sum_{k=1}^{\infty}e^{itk}q^{k-1}p=pe^{it}\sum_{k=1}^{\infty}(qe^{it})^{k-1}=\frac{pe^{it}}{1-qe^{it}}.$$
+Ряд в предпоследнем выражении сходится по п. 3 <a href="../math_analysis/math_analysis7.5.3.html#Theorem7.5.3">теоремы 7.5.3 MA</a>, 
+так как сходится ряд $\sum_{k=1}^{\infty}|qe^{it}|^{k-1}$. 
+Последний в свою очередь сходится в соответствии с <a href="../math_analysis/math_analysis7.1.html#Example7.1.1">примером 7.1.1 MA</a> так как $|qe^{it}|\leq{q}<1$.
+</li>
+<li>Пусть $\xi\sim\Pi(\lambda)$, то есть $\xi$ дискретна и для любого $k\in\mathbb{N}_0$
+$$P(\xi=k)=\frac{\lambda^ke^{-\lambda}}{k!}.$$
+Тогда используя разложение функции $\exp$ в ряд Тэйлора получим
+$$\varphi(t)=\sum_{k=0}^{\infty}e^{itk}\frac{\lambda^k}{k!}e^{-\lambda}=e^{-\lambda}\sum_{k=0}^{\infty}\frac{(\lambda{e}^{it})^k}{k!}=
+e^{-\lambda}e^{\lambda{e}^{it}}=e^{\lambda(e^{it}-1)}.$$
+</li>
+<li> Пусть $\xi\sim{N}(0,1)$, то есть $\xi$ абсолютно непрерывна и ее плотность распределения равна
+$$p(x)=\frac1{\sqrt{2\pi}}e^{-x^2/2}.$$
+Тогда 
+$$
+\varphi(x)=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{-x^2/2+itx}dx=
+\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{-\frac12(x^2-2itx+(it)^2)}e^{(it)^2/2}dx=
+e^{-t^2/2}\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{-\frac12(x-it)^2}dx.
+$$
+Если сделать в интеграле замену $y:=x-it$, то он будет приведен к интегралу Пуассона, который равен $\sqrt{2\pi}$, следовательно,
+$$\varphi(t)=e^{-t^2/2}.$$
+</li>
+<li>Пусть $\xi\sim{R}[-a,a]$ распределена равномерно на отрезке $[-a,a]$, тогда
+$$\varphi(t)=\int\limits_{-a}^ae^{itx}\frac1{2a}dx=\frac1{2ait}\left.e^{itx}\right|_{-a}^a=\frac{e^{ita}-e^{-ita}}{2iat}=\frac{\sin(at)}{at}.$$
+</li>
+<li>Пусть $\xi\sim\Gamma(\alpha,\beta)$, то есть $\xi$ абсолютно непрерывна и ее плотность распределения для любого $x\geq0$ равна
+$$p(x)=\frac{x^{\alpha-1}e^{-x/\beta}}{\Gamma(\alpha)\beta^{\alpha}}$$
+и равна 0 при $x<0$. Положив $\lambda:=\alpha$, $\alpha:=1/\beta$ выражение для $p(x)$ можно переписать в следующем виде.
+$$p(x)=\frac{\alpha^{\lambda}x^{\lambda-1}}{\Gamma(\lambda)}e^{-\alpha{x}},$$
+тогда
+$$
+\varphi(t)=\frac{\alpha^{\lambda}}{\Gamma(\lambda)}\int\limits_0^{\infty}e^{-\alpha{x}+itx}x^{\lambda-1}dx=
+\frac{\alpha^{\lambda}}{(\alpha-it)^{\lambda}\Gamma(\lambda)}\int\limits_0^{\infty}e^{-x(\alpha-it)}\left((\alpha-it)x\right)^{\lambda-1}d\left((\alpha-it)x\right).
+$$
+Сделаем замену $y:=(\alpha-it)x$, тогда
+$$\varphi(t)=\left(\frac{\alpha}{\alpha-it}\right)^{\lambda}\frac1{\Gamma(\lambda)}\int\limits_0^{\infty}y^{\lambda-1}e^{-y}dy=
+\left(\frac{\alpha}{\alpha-it}\right)^{\lambda}.$$
+Если вернуться к первоначальным обозначениям $\beta:=1/\alpha$, $\alpha:=\lambda$, то 
+$$\varphi(t)=(1-it\beta)^{-\alpha}.$$
+Так как при $\alpha=1$, $\beta=1/\lambda$, гамма-распределение вырождается в покзательное, 
+то характеристическая функция показательного распределения с параметром $\lambda$ равна
+$$\varphi(t)=\frac{\lambda}{\lambda-it}.$$
+Так как при $\alpha=n/2$, $\beta=2$ гамма-распределение вырождается в хи-квадрат-распределение с $n$ степенями свободы, то его характериситическая функция равна
+$$\varphi(t)=(1-2it)^{-n/2}.$$
+</li>
+<li>Пусть $\xi\sim{N}(\mu,\sigma^2)$, тогда $\eta:=(\xi-\mu)/\sigma\sim{N}(0,1)$. Так как в п. 5 было показано, 
+что характеричитическая функция распределения $N(0,1)$ равна $e^{-t^2/2}$, то по п. 5 теоремы 6.1 
+$$\varphi_{\xi}(t)=\varphi_{\sigma\eta+\mu}(t)=e^{it\mu}\varphi_{\eta}(\sigma{t})=e^{it\mu}e^{-\sigma^2t^2/2}.$$
+</li>
+<li>Пусть $\xi\sim{K}(1,0)$, то есть $\xi$ абсолютно непрерывна и ее плоность распределения равна
+$$p(x)=\frac1{\pi(1+x^2)}.$$
+$$
+\varphi(t)=\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{e^{itx}}{1+x^2}dx=
+\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{\cos(tx)}{1+x^2}dx+\frac{i}{\pi}\int\limits_{-\infty}^{\infty}\frac{\sin(tx)}{1+x^2}dx.
+$$
+Во втором слагаемом подинтегральная функция нечетная, следовательно, слагаемое равно нулю. В первом слагаемом подинтегральная функция по $t$ четная, 
+значит и $\varphi(t)$ четная, поэтому далее будем рассматривать случай $t>0$.
+Так как интеграл во втором слагаемом удовлетворяет предпосылкам <a href="../math_analysis/math_analysis13.2.2.html#Theorem13.2.3">теоремы 13.2.3 MA</a>, 
+то можно продифференцировать второе слагаемое по $t$, получим
+$$\varphi'(t)=-\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{x\sin(tx)}{1+x^2}dx.$$
+Так как по <a href="../math_analysis/math_analysis13.2.2.html#Example13.2.8">примеру 13.2.8 MA</a>
+$$\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{\sin(tx)}{x}dx=1,$$
+то
+$$\varphi'(t)+1=\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{\sin(tx)}{x}dx-\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{x\sin(tx)}{1+x^2}dx=\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{\sin(tx)}{x(1+x^2)}dx.$$
+Тогда дифференцируя по $t$ получим
+$$\varphi''(t)=\frac1{\pi}\int\limits_{-\infty}^{\infty}\frac{\cos(tx)}{1+x^2}dx=\varphi(t).$$
+Таким образом, $\varphi''(t)=\varphi(t)$, общее решение этого дифференциального уравнения есть $C_1e^t+C_2e^{-t}$ (?). 
+Так как рассматривается случай $t>0$  и по п. 1 теоремы 6.1 $|\varphi(t)|\leq1$ для любого $t\in\mathbb{R}$, то $C_1=0$. 
+Так как $\varphi(0)=1$, то $C_1=1$, следовательно, для любого $t>0$ $\varphi(t)=e^{-t}$ и в силу четности функции $\varphi(t)$ 
+для любого $t\in\mathbb{R}$ $\varphi(t)=e^{-|t|}$.
+</li>
+</ol>
+
+<h5 id="6.2">6.2 Формула Тэйлора для характеристической функции.</h5>
+
+<p id="Theorem6.2"><b>Теорема 6.2:</b>
+Для любого $n\in\mathbb{N}$, если $E(|\xi|^n)<\infty$, 
+то характериситическая функция $\varphi(t)$ случайной величины $\xi$ по крайней мере $n$ раз дифференцируема и при этом 
+$$\forall{k}\in\overline{0,n}\left(\varphi^{(k)}(0)=i^kE(\xi^k)\right).$$
+<p><b>Доказательство:</b><br>
+При $k=0$ $\varphi^{(0)}(0)=\varphi(0)=1=E1=E\xi^{0}$.<br>
+При $k\in\mathbb{N}$ докажем индукцией по $k$.
+<ol type="I">
+<li>Пусть $k=1$, так как
+$$|(e^{itx})'_t|=|ixe^{itx}|=|x||e^{itx}|=|x|\Rightarrow\forall{x},t\in\mathbb{R}\left(|(e^{itx})'_t|\leq|x|\right)$$
+и интеграл
+$$\int\limits_{-\infty}^{\infty}|x|dF(x)=E|\xi|<\infty$$
+сходится равномерно по $t$, так как от него не зависит, 
+то по мажорнтному признаку Вейерштрасса (<a href="../math_analysis/math_analysis13.2.1.html#Statement13.2.4">утверждение 13.2.4 MA</a> cформулирвано правда про интеграл 
+Римана от действительнозначной функции) интеграл
+$$\int\limits_{-\infty}^{\infty}(e^{itx})'_tdF(x)$$
+сходится равномерно по $t$ и, следовательно, можно применить <a href="../math_analysis/math_analysis13.2.2.html#Theorem13.2.3">теорему 13.2.3 MA</a> 
+(обратно про интеграл Римана), то есть продифференцировать под знаком интеграла, 
+тогда
+$$\varphi'(t)=\int\limits_{-\infty}^{\infty}(e^{itx})'_tdF(x)=i\int\limits_{-\infty}^{\infty}xe^{itx}dF(x)\Rightarrow\varphi'(0)=
+i\int\limits_{-\infty}^{\infty}xdF(x)=iE\xi.$$
+<i> 
+В лекциях по поводу обоснования возможности дифференцирвания под знаком интеграла в $\int_{-\infty}^{\infty}e^{itx}dF_{\xi}(x)$ приводится следующее 
+$$
+\left|\left(\int\limits_{-\infty}^{\infty}e^{itx}dF_{\xi}(x)\right)'\right|=
+\left|i\int\limits_{-\infty}^{\infty}xe^{itx}dF_{\xi}(x)\right|\leq\int_{-\infty}^{\infty}|x||e^{itx}|dF_{\xi}(x)=
+\int\limits_{-\infty}^{\infty}|x|dF_{\xi}(x)=E|\xi|<\infty
+$$
+где предпоследнее равенство в силу того, что функция модуля борелевская, и для любой борелевской функции $g(x)$
+$$E(g(\xi))=\int\limits_{-\infty}^{\infty}g(x)dF_{\xi}(x).$$
+Более точное доказательство приведено, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 356, п. 5 теоремы 1.
+</i>
+</li>
+<li> Шаг индукции следует из равенства $((ix)^ke^{itx})'_t=(ix)^{k+1}e^{itx}$.
+</li>
+</ol>
+<br>
+<p id="Example6.3"><b>Пример 6.3:</b>
+Из теоремы 6.2 при $n=2$ следует, что, если $E(|\xi|^2)<\infty$, то $\varphi'_{\xi}(0)=iE\xi$, $\varphi''_{\xi}(0)=-E(\xi^2)$. Тогда
+$$
+D\xi=E(\xi^2)-(E\xi)^2=-\varphi''_{\xi}(0)-\left(\frac{\varphi'_{\xi}(0)}{i}\right)^2=-\varphi''_{\xi}(0)+(\varphi'_{\xi}(0))^2
+$$
+Пусть $\xi\sim\Pi(\lambda)$, тогда из п. 4 <a href="#Example6.2">примера 6.2</a> следует, 
+что $\varphi_{\xi}(t)=\exp{(\lambda(e^{it}}-1))$, тогда
+$$
+\varphi'_{\xi}(0)=\left.e^{\lambda(e^{it}-1)}\lambda{e}^{it}i\right|_{t=0}=i\lambda
+$$
+$$
+\varphi''_{\xi}(t)=(\varphi_{\xi}(t)\lambda{e}^{it}i)'=i\lambda(\varphi'_{\xi}(t)e^{it}+\varphi_{\xi}(t)ie^{it})\Rightarrow
+\varphi''_{\xi}(0)=i\lambda(i\lambda+i)=-\lambda^2-\lambda.
+$$
+Следовательно,
+$$
+E\xi=\frac{\varphi'_{\xi}(0)}{i}=\frac1{i}i\lambda=\lambda.
+$$
+$$
+D\xi=-(-\lambda^2-\lambda)+(i\lambda)^2=\lambda.
+$$
+<br>
+<p id="Theorem6.3"><b>Теорема 6.3:</b>
+Для любой случайной величины $\xi$ и любого $n\in\mathbb{N}$
+$$\left|\varphi^{(2n)}_{\xi}(t)\right|<\infty\Rightarrow\forall{k}\in\overline{1,2n}\left(E(|\xi|^k)<\infty\right).$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев~А.~Н. 2004 г. "Вероятность - 1" стр. 356, п. 6 теоремы 1.
+<br><br>
+<p id="Theorem6.4"><b>Теорема 6.4: Формула Тэйлора для характеристической функции.</b><br>
+Пусть $n\in\mathbb{N}$ и $E(|\xi|^n)<\infty$, тогда
+$$\varphi_{\xi}(t)=\sum_{k=0}^n\frac{(it)^k}{k!}E(\xi^k)+\varepsilon_k(t)\frac{(it)^n}{n!},$$
+где для любого $t\in\mathbb{R}$ $|\varepsilon_n(t)|\leq{3}E(|\xi|^n)$ и $\varepsilon_n(t)\to0$ при $t\to0$.
+<p><b>Доказательство:</b><br>
+Из <a href="./probability_theory6.1.html#Theorem6.2">теоремы 6.2</a> следует, что если $E(|\xi|^n)<\infty$, то для любого $k\in\overline{1,n}$ $E(|\xi|^k)<\infty$. 
+Исходя из определения функции $e^{z}$ над $\mathbb{C}$ (<a href="../math_analysis/math_analysis7.5.4.html#Definition7.5.12">определение 7.5.12 MA</a>) и 
+формулы Тэйлора с остаточным членом в форме Маклорена 
+(<a href="../math_analysis/math_analysis6.5.html#Corollary6.5.2">следствие 6.5.2 MA</a>) для любого $y\in\mathbb{R}$ имеем 
+$$e^{iy}=\sum_{k=0}^{n-1}\frac{(iy)^k}{k!}+\frac{(iy)^n}{n!}(\cos{(\theta_1y)}+i\sin{(\theta_2y))},$$
+где $\theta_1,\theta_2\in[0,1]$. Подставляя $t\xi$ вместо $y$ имеем
+\begin{multline*}
+e^{it\xi}=\sum_{k=0}^{n-1}\frac{(it)^k}{k!}\xi^k+\frac{(it)^n}{n!}\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi})]+\xi^n-\xi^n\bigr)=
+\sum_{k=0}^n\frac{(it)^k}{k!}\xi^{k}+\frac{(it)^n}{n!}\xi^n(\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1)\Rightarrow\\
+\Rightarrow{E}(e^{it\xi})=\varphi_{\xi}(t)=\sum_{k=0}^n\frac{(it)^k}{k!}\xi^k+\frac{(it)^n}{n!}E\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1]\bigr).
+\end{multline*}
+Обозначим
+$$\varepsilon_n(t)=E\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1]\bigr),$$
+тогда, так как для любого $t\in\mathbb{R}$ $|\xi|^n|\cos{(\theta_1t\xi)}|\leq|\xi|^n$ и $|\xi|^n|\sin(\theta_2t\xi)|\leq|\xi|^n$, 
+то по п. п. 4, 5 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>
+$$
+|\varepsilon_n(t)|\leq|E(\xi^n\cos{(\theta_1t\xi)})|+|E(i\xi^n\sin{(\theta_2t\xi)})|-|E(\xi^n)|\leq
+{E}\bigl(|\xi|^n|\cos{(\theta_1t\xi)}|\bigr)+E\bigl(|\xi|^n|\sin{(\theta_1t\xi)}|\bigr)-E\bigl(|\xi|^n\bigr)\leq3E\bigl(|\xi|^n\bigr).
+$$
+Так как для любого $t\in\mathbb{R}$ $|\xi^n\cos(\theta_1t\xi)|\leq|\xi|^n$ и $E(|\xi|^n)<\infty$, 
+то по <a href="./probability_theory4.1.html#Theorem4.6">теореме 4.6</a> существует предел
+$$\lim_{t\to0}E\bigl(\xi^n\cos{(\theta_1t\xi})\bigr)=E\left(\lim_{t\to0}[\xi^n\cos{(\theta_1t\xi)}]\right)=E(\xi^n).$$
+Аналогично $\lim_{t\to0}E(\xi^n\sin{(\theta_2t\xi)})=0$, следовательно, существует предел $\lim_{t\to0}\varepsilon_n(t)=E(\xi^n)+0-E(\xi^n)=0$.
+<br><br>
+<p id="Theorem6.5"><b>Теорема 6.5: Ряд Тэйлора для характеристической функции.</b><br>
+Пусть случайная величина $\xi$ такая, что
+<ol>
+<li>$\forall{n}\in\mathbb{N}\bigl(E(|\xi|)^n<\infty\bigr)$,
+</li>
+<li>$$\exists{R}\in\mathbb{R}\backslash\{0\}:\varlimsup_{n\to\infty}\frac{\bigl(E(|\xi|^n)\bigr)^{1/n}}{n}=\frac1{R},$$
+</li>
+</ol>
+тогда 
+$$\forall{t}\in\left[-\frac{R}{3},\frac{R}{3}\right]\left(\varphi_{\xi}(t)=\sum_{k=0}^{\infty}\frac{(it)^k}{k!}E(\xi^k)\right).$$
+<p><b>Доказательство:</b><br>
+Для любого $n\in\mathbb{N}$ обознчим $a_n:=(i)^nE(|\xi|^n)/n!$.
+Так как по формуле Стирлинга (<a href="../math_analysis/math_analysis7.5.4.html#Theorem7.5.6">теорема 7.5.6 MA</a>) $n!\sim{n}^n\sqrt{2\pi{n}}/n^n$, 
+при $n\to\infty$ и по <a href="../math_analysis/math_analysis4.3.html#Example4.3.4">примеру 4.3.4 MA</a> $\sqrt[n]{n}\to$ при $n\to\infty$, то
+\begin{multline*}
+\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\varlimsup_{n\to\infty}\left|\frac{E(|\xi|^n)i^n}{n!}\right|^{1/n}=
+\varlimsup_{n\to\infty}\left(\frac{E(|\xi|^n)e^n}{\sqrt{2\pi{n}}n^n}\right)^{1/n}=\\=
+e\varlimsup_{n\to\infty}\frac{(E(|\xi|^n)^{1/n}}{n\sqrt[n]{\sqrt{2\pi{n}}}}={e}\varlimsup_{n\to\infty}\frac{E(|\xi|^n)^{1/n}}{n}=\frac{e}{R}.
+\end{multline*}
+Таким образом, 
+$$\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}<\infty,$$
+следовательно по формуле Коши-Адамара (<a href="../math_analysis/math_analysis7.5.3.html#Theorem7.5.4">теорема 7.5.4 MA</a>) 
+ряд $\sum_{k=0}^{\infty}(it)^kE(|\xi|^k)/k!$ сходится в круге радиуса $r$
+$$r=1/\varlimsup_{n\to\infty}\sqrt[n]{|a_n|}=\frac{R}{e}>\frac{R}{3}.$$
+Так как для любого $n\in\mathbb{N}$ $|E(\xi^n)|\leq{E}(|\xi|^n)$, то ряд  $\sum_{k=0}^{\infty}(it)^kE(\xi^k)/k!$ так же сходится в круге радиуса $r$.
+Фиксируем $t\in[-r,r]$, тогда по теореме 6.4 
+$$\varphi_{\xi}(t)=\sum_{k=0}^n\frac{(it)^k}{k!}E(\xi^k)+R_n(t),$$
+где
+$$|R_n(t)|=\left|\frac{(it)^n}{n!}\varepsilon_n(t)\right|\leq\frac{|t|^n}{n!}3E(|\xi|^n).$$
+Последнее выражение стремится к нулю при $n\to\infty$, так как стремится к нулю общий член ряда $\sum_{n=0}^{\infty}(it)^nE(|\xi|^n)/n!$, то есть 
+$\lim_{n\to\infty}R_n(t)=0$ и $\varphi_{\xi}(t)=\sum_{n=0}^{\infty}(it)^nE(\xi^n)/n!$.
+
+<br><br>
+<a href="./probability_theory5.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory6.3.html">next</a>

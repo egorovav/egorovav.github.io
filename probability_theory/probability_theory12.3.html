@@ -1,0 +1,284 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 12.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.6.html">next</a>
+<br>
+
+$\newcommand{\cov}{\operatorname{cov}}$
+
+<h5 id="12.3">12.3 Оптимальные оценки.</h5>
+
+<p id="Definition12.7"><b>Определение 12.7:</b>
+Пусть $\theta\in\Theta$, $\xi\sim{F}(x;\theta)$, $(x_1,\ldots,x_n)$ выборка над $\xi$, 
+$F_{\tau}:=\{\tilde\theta=\tilde\theta(x_1,\ldots,x_n):E\tilde\theta=\tau(\theta)\wedge{D}\tilde\theta<\infty\}$ - класс оценок параметрической функции 
+$\tau(\theta)$. Тогда говорят, что $\tilde\theta^*\in{F}_{\tau}$ не хуже $\tilde\theta\in{F}_{\tau}$ в смысле критерия максимальности дисперсии, 
+если $D\tilde\theta^*\leq{D}\tilde\theta$ для любого $\theta\in\Theta$.
+<br>
+Говорят, что $\tilde\theta^*\in{F}_{\tau}$ лучше $\tilde\theta\in{F}_{\tau}$ в смысле критерия максимальности дисперсии, 
+если $D\tilde\theta^*&ltD\tilde\theta$ для любого $\theta\in\Theta$.
+<br>
+Наилучшая в смысле критерия максимальности дисперсии оценка называется оптимальной оценкой функции $\tau(\theta)$ в классе $F_{\tau}$.
+<br><br>
+<p id="Theorem12.3"><b>Теорема 12.3:</b>
+Пусть $\tilde\theta_1$, $\tilde\theta_2$ две оптимальные оценки функции $\tau(\theta)$ в классе $F_{\tau}$, тогда $\tilde\theta_1=\tilde\theta_2(P_\text{пн})$.
+<p><b>Доказательство:</b><br>
+Рассмотрим оценку $\tilde\theta_3:=(\tilde\theta_1+\tilde\theta_2)/2$. Для неё выполняется $E\tilde\theta_3=\tau(\theta)$ и 
+$$D\tilde\theta_3=\frac14(D\tilde\theta_1+D\tilde\theta_2+2\cov(\tilde\theta_1,\tilde\theta_2))<\infty,$$
+то есть $\tilde\theta_3\in{F}_{\tau}$.
+
+Фиксируем $\theta\in\Theta$ и обозначим $c:=D\tilde\theta_1=D\tilde\theta_2$, тогда из <a href="./probability_theory4.3.html#Theorem4.15">теоремы 4.15</a> следует
+$$
+D\tilde\theta=\frac{2c+2\cov(\tilde\theta_1,\tilde\theta_2)}{4}\Rightarrow|D\tilde\theta|\leq\frac{c+|\cov(\tilde\theta_1,\tilde\theta_2)|}{2}\leq
+\frac12\left(c+\sqrt{D\tilde\theta_1D\tilde\theta_2}\right)=c.
+$$
+Таким образом, при любом $\theta\in\Theta$ $D\tilde\theta_3=D\tilde\theta_1=D\tilde\theta_2$, то есть оценка $\tilde\theta_3$ оптимальная. При этом
+$$D\tilde\theta_3=c=\frac{c+\cov(\tilde\theta_1,\tilde\theta_2)}{2}\Rightarrow\cov(\tilde\theta_1,\tilde\theta_2)=c=\sqrt{D\tilde\theta_1D\tilde\theta_2}.$$
+То есть неравенство 
+$$\left(E((\tilde\theta_1-E\tilde\theta_1)(\tilde\theta_2-E\tilde\theta_2))\right)^2\leq{E(\tilde\theta_1-E\tilde\theta_1)^2E(\tilde\theta_2-E\tilde\theta_2)^2}$$
+обращается в равенство, следовательно, по <a href="./probability_theory12.1.html#Lemma12.1">лемме 12.1</a>
+(или по <a href="./probability_theory4.3.html#Statement4.1">утверждению 4.1</a>) существуют $A,B\in\mathbb{R}$ такие, что 
+$$\tilde\theta_1=A\tilde\theta_2+B(P_\text{пн}).\quad(*)$$ 
+Взяв матожидание от $(*)$ получим 
+\begin{multline*}
+\tau(\theta)=A\tau(\theta)+B\Rightarrow{B}=\tau(\theta)(1-A)\Rightarrow
+\tilde\theta_1=A\tilde\theta_2+\tau(\theta)(1-A)\Rightarrow\tilde\theta_1-\tau(\theta)=A(\tilde\theta_2-\tau(\theta))\Rightarrow\\
+\Rightarrow{A}E(\tilde\theta_2-\tau(\theta))^2=E((\tilde\theta_1-\tau(\theta))(\tilde\theta_2-\tau(\theta)))=\cov(\tilde\theta_1,\tilde\theta_2)=c>0\Rightarrow{A}>0
+\end{multline*} 
+Взяв дисперсию от $(*)$ получим $c=A^2c$ и так как $A>0$, то $A=1$. Тогда $\tau(\theta)=\tau(\theta)+B$, то есть $B=0$. Таким образом, $\tilde\theta_1=\tilde\theta_2(P_\text{пн})$
+<br><br>
+<p id="Theorem12.4"><b>Теорема 12.4: Свойство линейности оптимальных оценок.</b>
+Пусть $\tilde\theta_1^*$, $\tilde\theta_2^*$ оптимальные оценки для функций $\tau_1(\theta)$, $\tau_2(\theta)$, 
+тогда для любых $a_1,a_2\in\mathbb{R}$ оценка $\tilde\theta^*:=a_1\tilde\theta_1^*+a_2\tilde\theta_2^*$ является 
+оптимальной оценкой для фунукции $\tau(\theta):=a_1\tau_1(\theta)+a_2\tau_2(\theta)$.
+<p><b>Доказательство:</b><br>
+Пусть $\psi=\psi(x_1,\ldots,x_n)$ произвольная статистика такая, что $E\psi=0$ для любого $\theta\in\Theta$. 
+
+Докажем, что $\cov(\tilde\theta_1^*,\psi)=\cov(\tilde\theta_2^*,\psi)=0$. Фиксируем $\lambda\in\mathbb{R}$ и положим для 
+$i\in\{1,2\}$ $\tilde\theta_i:=\tilde\theta_i^*+\lambda\psi$. Тогда для $i\in\{1,2\}$ $E\tilde\theta_i=E\tilde\theta_i^*=\tau_i(\theta)$ и 
+$$D\tilde\theta_i=D\tilde\theta_i^*+\lambda^2D\psi+2\lambda\cov(\tilde\theta_i^*,\psi)\geq{D}\tilde\theta_i^*,$$
+где последнее неравенство в силу оптимальности $\tilde\theta_i^*$. Тогда
+$$\lambda^2D\psi+2\lambda\cov(\tilde\theta_i^*,\psi)\geq0.\quad(*)$$
+Решив уравнение
+$$\lambda^2D\psi+2\lambda\cov(\tilde\theta_i^*,\psi)=0,$$
+получим, что неравенство $(*)$ обращается в равенство при $\lambda=0$ или при $\lambda=\lambda':=-2\cov(\tilde\theta_i^*,\psi)/D\psi$. 
+При этом если $\cov(\tilde\theta_i^*,\psi)\neq0$, то для любого $\lambda\in(0,\lambda')$ неравенство $(*)$ нарушается, следовательно, 
+$\cov(\tilde\theta_i^*,\psi)=0$.
+
+Фиксируем оценку $\tilde\theta=\tilde\theta(x_1,\ldots,x_n)\in{F}_{\tau}$ и обозначим
+$$\psi=\psi(x_1,\ldots,x_n):=\tilde\theta-(a_1\tilde\theta_1^*+a_2\tilde\theta_2^*)=\tilde\theta-\tilde\theta^*.$$
+Так как $E\psi=E\tilde\theta-E\tilde\theta^*=0$, то по доказанному
+$$\cov(\tilde\theta^*,\psi)=\cov(a_1\tilde\theta_1^*+a_2\tilde\theta_2^*,\psi)=a_1\cov(\tilde\theta_1^*,\psi)+a_2\cov(\tilde\theta_2^*,\psi)=0.$$
+Тогда
+$$\cov(\tilde\theta^*,\psi)=\cov(\tilde\theta^*,\tilde\theta-\tilde\theta^*)=\cov(\tilde\theta,\tilde\theta^*)-D\tilde\theta^*=0,$$
+следовательно,
+$$D\tilde\theta^*=\cov(\tilde\theta^*,\tilde\theta)\leq\sqrt{D\tilde\theta^*D\tilde\theta}\Rightarrow{D}\tilde\theta^*\leq{D}\tilde\theta.$$
+В силу произвола выбора оценки $\tilde\theta\in{F}_{\tau}$ оценка $\tilde\theta^*$ является оптимальной.
+<br><br>
+
+<h5 id="12.4">12.4 Метод моментов оценки параметров.</h5>
+
+Пусть случайная величина $\xi\sim{F}(x;\theta_1,\ldots,\theta_n)$ такая, что для всех $k\in\overline{1,n}$ определены начальные моменты
+$$\mu_k:=\int\limits_{-\infty}^{\infty}x^kdF(x;\theta_1,\ldots,\theta_n).$$
+Для любого $k\in\overline{1,n}$ начальный момент $k$-того порядка можно рассматривать как функцию от $\theta_1,\ldots,\theta_n$. 
+Пусть система уравнений относително переменных $\theta_1,\ldots,\theta_n$
+$$
+\begin{cases}
+\mu_1=\mu_1(\theta_1,\ldots,\theta_n) \\
+\mu_2=\mu_2(\theta_1,\ldots,\theta_n) \\
+\cdots \\
+\mu_n=\mu_n(\theta_1,\ldots,\theta_n)
+\end{cases}
+$$
+имеет решение $\tilde\theta_1(\mu_1,\ldots,\mu_n),\ldots,\tilde\theta_n(\mu_1,\ldots,\mu_n)$. 
+Tогда подставив вместо $\mu_1,\ldots,\mu_n$ эмпирические моменты $A_1,\ldots,A_n$ сответствующих порядков
+$$A_k=\frac1{n}\sum_{i=1}^nx_i^k$$
+получим оценки $\tilde\theta_1(A_1,\ldots,A_n),\ldots,\tilde\theta_n(A_1,\ldots,A_n)$, 
+которые называются оценками для параметров $\theta_1,\ldots,\theta_n$ полученными по методу моментов. 
+<br>
+
+<h5 id="12.5">12.5 Метод максимального правдоподобия.</h5>
+
+<p id="Definition12.8"><b>Определение 12.8:</b>
+Пусть $\xi\sim{p}(x;\theta)$, $(x_1,\ldots,x_n)$ - выборка над $\xi$,
+$$L(x_1,\ldots,x_n;\theta):=\prod_{i=1}^np(x_i;\theta)$$
+- функция правдоподобия. Тогда оценка $\tilde\theta=\tilde\theta(x_1,\ldots,x_n)$ называется оценкой максимального правдоподобия (ОМП), 
+если функция правдоподобия $L(x_1,\ldots,x_n;\theta)$ достигает максимума в точке 
+$\theta=\tilde\theta$ при любом фиксированном $(x_1,\ldots,x_n)$. 
+
+Если оценка максимального правдоподобия $\tilde\theta$ является внутренней точкой параметрического пространства $\Theta$ и $L(x_1,\ldots,x_n;\theta)$ 
+дифференцируема в $\tilde\theta$, то $\tilde\theta$ удовлетворяет уравнению 
+$$\frac{\partial{L}(x_1,\ldots,x_n;\theta)}{\partial\theta}=0\left(\text{или }\frac{\partial\ln{L}(x_1,\ldots,x_n;\theta)}{\partial\theta}=0\right),$$
+которое в данном случае называется уравнением максимального правдоподоподобия (УМП).
+
+Если распределение случайной величины зависит от нескольких параметров $\xi\sim{p}(x;\theta_1,\ldots,\theta_m)$, 
+то говорят о системе уравнений максимального правдоподобия (СУМП)
+$$
+\begin{cases}
+\frac{\partial{L}(x_1,\ldots,x_n;\theta_1,\ldots,\theta_m)}{\partial\theta_1}=0 \\
+\frac{\partial{L}(x_1,\ldots,x_n;\theta_1,\ldots,\theta_m)}{\partial\theta_2}=0 \\
+\cdots \\
+\frac{\partial{L}(x_1,\ldots,x_n;\theta_1,\ldots,\theta_m)}{\partial\theta_m}=0
+\end{cases}
+$$
+<br>
+<p id="Theorem12.5"><b>Теорема 12.5:</b>
+Если распределение $p(x;\theta)$ и эффективная оценка $\tilde\theta$ параметра $\theta$ удовлетворяют условиям регулярности 
+(<a href="./probability_theory12.1.html#Theorem12.1">теорема 12.1</a>), 
+то оценка максимального правдоподобия параметра $\theta$ совпадает с оценкой $\tilde\theta$.
+<p><b>Доказательство:</b><br>
+Так как оценка $\tilde\theta$ эффективная, то по <a href="./probability_theory12.1.html#Theorem12.2">теореме 12.2</a> 
+функция правдоподобия $L(\overline{x};\theta)$ представима в виде
+$$e^{A(\theta)\tilde\theta+B(\theta)}H(\overline{x}).$$
+Тогда уравнение максимального праводоподобия имеет вид
+$$
+\frac{\partial\ln{L}(\overline{x};\theta)}{\partial\theta}=\frac{\partial(A(\theta)\tilde\theta+B(\theta)+\ln{H}(\overline{x}))}{\partial\theta}=
+A'(\theta)\tilde\theta+B'(\theta)=0.
+$$
+Так как оценка $\tilde\theta$ эффективная, то она несмещённая, 
+тогда из решения <a href="./probability_theory12.1.html#Task12.3">задачи 12.3</a> следует, что $B'(\theta)=-A'(\theta)\theta$. 
+Подставив это выражение в УМП получим $A'(\theta)(\tilde\theta-\theta)=0$.
+
+Полученное при доказательстве <a href="./probability_theory12.1.html#Theorem12.1">теоремы 12.1</a> равенство
+$$
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)\frac{\partial{p}(\overline{x};\theta)}
+{\partial\theta}dx_1\cdots{d}x_n=1+b'(\theta)
+$$
+для несмещённой оценки $\tilde\theta$ эквивалентно равенству
+$$
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)\frac{\partial\ln{L}(\overline{x};\theta)}
+{\partial\theta}L(\overline{x};\theta)dx_1\cdots{d}x_n=1.
+$$
+Подставив сюда $A'(\theta)(\tilde\theta-\theta)$ вместо $\partial\ln{L}(\overline{x};\theta)/\partial\theta$ получим $A'(\theta)D\tilde\theta=1$, 
+то есть $A'(\theta)>0$. Тогда, единственным решением УМП $A'(\theta)(\tilde\theta-\theta)=0$ является $\tilde\theta$
+<br><br>
+<p id="Theorem12.6"><b>Теорема 12.6: Теорема о существовании ОМП. Теорема Дюге.</b><br>
+Пусть случайная величина $\xi\sim{p}(x;\theta)$ такакя, что
+<ol>
+<li>Параметрическое пространство $\Theta\subset\mathbb{R}$ конечный или бесконечный интервал.
+</li><li>Для любого $\theta\in\Theta$ существует производная 
+$$\frac{\partial^3\ln{p}(x;\theta)}{\partial\theta^3}.$$  
+</li><li>Интеграл $\int_{-\infty}^{\infty}p(x;\theta)dx=1$ можно дважды дифференцировать по $\theta$.
+</li><li>Существует функция $H(x)$ такая, что для любого $\theta\in\Theta$
+$$\left|\frac{\partial^3\ln{p}(x;\theta)}{\partial\theta^3}\right|<{H}(x).$$
+</li><li>Существует $M\in\mathbb{R}$ такое, что $\int_{-\infty}^{\infty}H(x)p(x;\theta)dx=M$ для любого $\theta\in\Theta$.
+</li><li>Для любого $\theta\in\Theta$ существует и положительна информация по Фишеру $I(\theta)$.
+</ol>
+Тогда уравнение максимального правдоподобия имеет решение, которое является состоятельной оценкой параметра $\theta$.
+<p><b>Доказательство:</b><br>
+Рассмотрим производную $\partial\ln{L}(\overline{x};\theta)/\partial\theta$ как функцию от $\theta$. Тогда в силу условия 2 и равенства 
+$$\ln{L}(x_1,\ldots,x_n;\theta)=\sum_{i=1}^n\ln{p}(x_i;\theta)$$
+можно записать формулу Тэйлора
+$$
+\frac{\partial\ln{L}(\overline{x};\theta)}{\partial\theta}=\sum_{i=1}^n\frac{\partial\ln{p}(x_i;\theta)}{\partial\theta}+
+\sum_{i=1}^n\frac{\partial^2\ln{p}(x_i;\theta)}{\partial\theta^2}(\theta-\theta_0)+
+\sum_{i=1}^n\frac{\partial^3\ln{p}(x_i;\theta)}{\partial\theta^3}\frac{(\theta-\theta_0)^2}{2}+o(\theta-\theta_0)^2,\,\theta\to\theta_0,\quad(*)
+$$
+где $\theta_0$ - истинное значение параметра.
+Пусть $(X_1,\ldots,X_n)$ выборка над $\xi$. Для любого $i\in\overline{1,n}$ рассмотрим случайные величины 
+$$\xi_i:=\frac{\partial\ln{p}(X_i;\theta_0)}{\partial\theta}.$$
+Тогда для любого $i\in\overline{1,n}$
+$$
+E\xi_i=\int\limits_{-\infty}^{\infty}\frac{\partial\ln{p}(x_i;\theta_0)}{\partial\theta}p(x_i;\theta_0)dx_i=
+\int\limits_{-\infty}\frac{\partial{p}(x_i;\theta_0)}{\partial\theta}\frac1{p(x_i;\theta_0)}p(x_i;\theta_0)dx_i=
+\int\limits_{-\infty}^{\infty}\frac{\partial{p}(x_i;\theta_0)}{\partial\theta}dx_i=0.
+$$
+Следовательно, по теореме Хинчина (теорема 7.8)
+$$B_0:=\frac1{n}\sum_{i=1}^n\xi_i\xrightarrow[n\to\infty]{P}0.$$
+$$
+\frac{\partial\ln{p}(x;\theta)}{\partial\theta}=\frac{\partial{p}(x;\theta)}{\partial\theta}\frac1{p(x;\theta)}\Rightarrow
+\frac{\partial^2\ln{p}(x;\theta)}{\partial\theta^2}=\frac{\partial^2p(x;\theta)}{\partial\theta^2}\frac1{p(x;\theta)}-\left(\frac{\partial{p}(x;\theta)}{\partial\theta}\right)^2\frac1{p^2(x;\theta)}
+$$
+Для любого $i\in\overline{1,n}$ рассмотрим случайные величины
+$$\eta_i:=\frac{\partial^2\ln{p}(X_i,\theta_0)}{\partial\theta^2}.$$
+Тогда для любого $i\in\overline{1,n}$
+$$
+E\eta_i=\int\limits_{-\infty}^{\infty}\frac{\partial^2\ln{p}(x_i;\theta_0)}{\partial\theta^2}p(x_i;\theta_0)dx_i=
+\int\limits_{-\infty}^{\infty}\frac{\partial^2p(x_i;\theta_0)}{\partial\theta^2}dx_i-\int\limits_{-\infty}^{\infty}\left(\frac{\partial{p}(x_i;\theta_0)}{\partial\theta}\right)^2\frac1{p(x_i;\theta_0)}dx_i=
+-\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(x_i;\theta_0)}{\partial\theta}\right)^2p(x_i;\theta_0)dx_i=-I(\theta_0)
+$$
+Следовательно, по теореме Хинчина (<a href="./probability_theory7.1.html#Theorem7.8">теорема 7.8</a>)
+$$B_1:=\frac1{n}\sum_{i=1}^n\eta_i\xrightarrow[n\to\infty]{P}-I(\theta_0).$$
+Обозначим
+$$\gamma(x):=\frac{1}{H(x)}\left(\frac{\partial^3\ln{p(x,\theta)}}{\partial\theta^3}+o(1)\right),\theta\to\theta_0.$$
+Сущеcтвует окрестность $\Delta$ точки $\theta_0$ такая, что для любого $\theta\in\Delta$ $|\gamma(x)|\leq1$ (в силу условия 4). Тогда по условию 5
+$$
+E\left(\gamma(x)H(x)\right)=\int\limits_{-\infty}^{\infty}\gamma(x)H(x)p(x,\theta_0)dx\Rightarrow
+\left|E\left(\gamma(x)H(x)\right)\right|\leq\int\limits_{-\infty}^{\infty}H(x)p(x,\theta_0)dx=M<\infty
+$$
+Обозначим
+$$B_2:=\frac1{n}\sum_{i=1}^n\gamma(x_i)H(x_i),$$
+тогда по теореме Хинчина (<a href="./probability_theory7.1.html#Theorem7.8">теорема 7.8</a>)
+$$B_2\xrightarrow[n\to\infty]{P}M.$$
+Умножив равенство $(*)$ на $1/n$ получим в качестве УМП 
+$$B_0+(\theta-\theta_0)B_1+\frac{(\theta-\theta_0)^2}{2}B_2=0.$$
+Фиксируем $\delta>0$ такое, что $\theta_0\pm\delta\in\Delta$, обозначим событие $A:=\{|B_0|\geq\delta^2\}$, тогда
+$$B_0\xrightarrow[n\to\infty]{P}0\Rightarrow\forall\varepsilon>0\,\exists{n}_0=n_0(\varepsilon,\delta):P(A)<\frac{\varepsilon}{3}.$$
+Обозначим событие $B:=\{B_1\geq-J(\theta_0)/2\}$, тогда
+$$B_1\xrightarrow[n\to\infty]{P}-J(\theta_0)\Rightarrow\forall\varepsilon>0\,\exists{n}_1=n_1(\varepsilon,\delta):P(B)<\frac{\varepsilon}{3}.$$
+Обозначим событие $C:=\{|B_2|\geq2M\}$, тогда
+$$B_2\xrightarrow[n\to\infty]{P}M\Rightarrow\forall\varepsilon>0\,\exists{n}_2=n_2(\varepsilon,\delta):P(C)<\frac{\varepsilon}{3}.$$
+Обозначим, $n_3:=\max\{n_0,n_1,n_2\}$, тогда
+$$P(\overline{A}\overline{B}\overline{C})=P(\overline{A\cup{B}\cup{C}})=1-P(A\cup{B}\cup{C})\geq1-P(A)-P(B)-P(C)>1-\varepsilon.$$
+Значения левой части УМП на концах  промежутка $(\theta_0-\delta,\theta_0+\delta)$ равны
+$$B_0+\delta{B_1}+\frac{\delta^2}{2}B_2,B_0-\delta{B_1}+\frac{\delta^2}{2}B_2.$$
+По доказаному, знак этих выражений при $n>n_3$ и достаточно малых $\delta$ определяется вторым слагаемым с вероятностью большей $1-\varepsilon$.
+Таким образом, для любого $n>n_3$ левая часть УМП $B_0+(\theta-\theta_0)B_1+(\theta-\theta_0)^2B_2/2$ с вероятностью большей $1-\varepsilon$ 
+принимает разныем знаки на концах промежутка $(\theta_0-\delta,\theta_0+\delta)$ при достаточно малых $\delta$. 
+Следовательно, в силу непрерывности функций $B_0$, $B_1$, $B_2$ для любого $n>n_3$ на промежутке $(\theta_0-\delta,\theta+\delta)$ 
+существует решение УМП с верятностью $1-\varepsilon$ для любого $\varepsilon>0$. Обозначим это решение $\tilde\theta$, тогда
+$$P\{|\tilde\theta-\theta_0|>\delta\}\xrightarrow[n\to\infty]{}0,$$
+то есть оценка $\tilde\theta$ состоятельна.
+<br><br>
+<p id="Lemma12.2"><b>Лемма 12.2:</b>
+$$\left(\xi_n\xrightarrow[n\to\infty]{d}\xi\,\wedge\,\eta_n\xrightarrow[n\to\infty]{d}a\neq0\right)\Rightarrow
+\frac{\xi_n}{\eta_n}\xrightarrow[n\to\infty]{d}\frac{\xi}{a}$$
+<p><b>Доказательство:</b><br>
+Без доказательства.
+<br><br>
+<p id="Corollary12.3"><b>Следствие 12.3:</b>
+При выполнение условий <a href="#Theorem12.6">теоремы 12.6</a> оценка максимального правдоподобия $\tilde\theta$ является ассимптотически нормальной, то есть
+$$\sqrt{n}(\tilde\theta-\theta_0)\xrightarrow[n\to\infty]{d}N\left(0,\frac1{J(\theta_0)}\right),$$
+где $\theta_0$ - истинное значение параметра $\theta$.
+<p><b>Доказательство:</b><br>
+В обозначениях доказательства <a href="#Theorem12.6">теоремы 12.6</a> УМП
+$$B_0+(\theta-\theta_0)B_1+\frac{(\theta-\theta_0)^2}{2}B_2=0,$$
+тогда
+$$(\theta-\theta_0)\sqrt{nJ(\theta_0)}=\frac{B_0}{\sqrt{nJ(\theta_0)}}\left(-\frac{B_1}{nJ(\theta_0)}-\frac{\theta-\theta_0}{2nJ(\theta_0)}B_2\right)^{-1},$$
+где 
+$$B_0:=\frac1{n}\sum_{i=1}^{n}\xi_i,\xi_i:=\frac{\partial\ln{P(x_i,\theta_0)}}{\partial\theta}.$$
+Пусть $\tilde\theta$ - решение УМП, тогда
+$$
+(\tilde\theta-\theta_0)\sqrt{nJ(\theta_0)}=
+\frac{\frac1{n}\sum_{i=1}^{n}\xi_i}{\sqrt{nJ(\theta_0)}}\left(-\frac{B_1}{J(\theta_0)}-\frac{\tilde\theta-\theta_0}{2J(\theta_0)}B_2\right)^{-1}.
+$$
+Так как $\xi_i$ независимые одинаково распределенные случайные величины такие, что $E\xi_i=0$, $D\xi_i=J(\theta_0)$, 
+то по <a href="./probability_theory7.3.html#Theorem7.12">теореме 7.12</a>
+$$\frac1{\sqrt{nJ(\theta_0)}}\frac1{n}\sum_{i=1}^{n}\xi_i\xrightarrow[n\to\infty]{d}N(0,1).$$
+По доказанному в <a href="#Theorem12.6">теореме 12.6</a>
+$$
+\begin{cases}
+B_1\xrightarrow[n\to\infty]{P}-J(\theta_0) \\
+B_2\xrightarrow[n\to\infty]{P}M<\infty \\
+\tilde\theta\xrightarrow[n\to\infty]{P}\theta
+\end{cases}\Rightarrow
+-\frac{B_1}{J(\theta_0)}-\frac{\tilde\theta-\theta_0}{2J(\theta_0)}B_2\xrightarrow[n\to\infty]{P}1
+$$
+Тогда по лемме 12.2 и <a href="./probability_theory7.1.html#Theorem7.2">теореме 7.2</a>
+$$\sqrt{n}(\tilde\theta-\theta_0)\xrightarrow[n\to\infty]{d}N\left(0,\frac1{J(\theta_0)}\right)$$
+
+
+<br><br>
+<a href="./probability_theory12.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.6.html">next</a>

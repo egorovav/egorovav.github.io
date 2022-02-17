@@ -1,0 +1,348 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 12.6</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory12.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory13.1.html">next</a>
+<br>
+
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\rang}{\operatorname{rang}}$
+
+<h5 id="12.6">12.6 Метод $\chi^2$ оценки параметров.</h5>
+
+<p id="Definition12.9"><b>Определение 12.9:</b>
+Пусть $\xi\sim{F(x,\theta_1,\ldots,\theta_m)}$ случайная величина с множеством значений $S=\bigsqcup_{i=1}^{r}S_i$. 
+Для любого $i\in\overline{1,r}$ $\nu_i$ - число элементов выборки $(X_1,\ldots,X_n)$, 
+значение которых попало в подмножество $S_i$ и $p_i:=p_i(\theta_1,\ldots,\theta_m):=P(\xi\in{S}_i)$. Тогда статистика
+$$\chi^2:=\sum_{i=1}^{r}\frac{(\nu_i-np_i)^2}{np_i},$$
+называется статистикой хи-квадрат.
+<br><br>
+<p id="Theorem12.7"><b>Теорема 12.7: Теорема Пирсона.</b><br>
+Статистика $\chi^2$ сходится по распределению к случайной величине с распределением $\chi_{r-1}^2$.
+$$\chi^2\xrightarrow[n\to\infty]{d}\chi_{r-1}^2$$
+<p><b>Доказательство:</b><br>
+В обозначениях определения 12.9 положим для любого $i\in\overline{1,n}$, $k\in\overline{1,r}$
+$$
+\eta_k^{(i)}:=\begin{cases}1, & X_i\in{S}_k \\ 0, & X_i\notin{S}_k;\end{cases}
+$$
+$\overline{\eta}_i:=(\eta_1^{(i)},\ldots,\eta_r^{(i)})$, $\overline{\nu}:=(\nu_1,\ldots,\nu_r)$. Тогда $\overline{\nu}=\sum_{i=1}^n\overline{\eta}_i,$
+где $\overline{\eta}_i$ - независимы и одинаково распределены. Тогда по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>
+$$\varphi_{\overline{\nu}}(t_1,\ldots,t_r)=\prod_{i=1}^n\varphi_{\overline{\eta}_i}(t_1,\ldots,t_r)=\varphi_{\overline{\eta}_1}^n(t_1,\ldots,t_n),$$
+где
+$$
+\varphi_{\overline{\eta}_1}=E\exp(i\overline{t}\eta_1^{\downarrow})=E\exp\left(i\sum_{k=1}^rt_k\eta_k^{(1)}\right)=p_1e^{it_1}+\cdots+p_re^{it_r},
+$$
+следовательно,
+$$\varphi_{\overline{\nu}}(t_1,\ldots,t_r)=\left(p_1e^{it_1}+\cdots+p_re^{it_r}\right)^n.\quad(*)$$
+Положим для любого $k\in\overline{1,r}$
+$$\xi_k:=\frac{\nu_k-np_k}{\sqrt{np_k}},$$
+тогда $\chi^2=\sum_{k=1}^r\xi_k^2$ и
+\begin{multline*}
+\varphi_{\overline\xi}(t_1,\ldots,t_r)=E\exp(i\overline{t}\xi^{\downarrow})=E\exp\left(i\sum_{k=1}^rt_k\xi_k\right)=
+E\exp\left(\sum_{k=1}^rt_k\frac{\nu_k-np_k}{\sqrt{np_k}}\right)=\exp\left(-i\sum_{k=1}^rt_k\sqrt{np_k}\right)E\exp\left(i\sum_{k=1}^r\frac{\nu_kt_k}{\sqrt{np_k}}\right)=\\=
+\exp\left(-i\sum_{k=1}^rt_k\sqrt{np_k}\right)\varphi_{\overline\nu}\left(\frac{t_1}{\sqrt{np_1}},\ldots,\frac{t_r}{\sqrt{np_r}}\right)=
+\exp\left(-i\sum_{k=1}^rt_k\sqrt{np_k}\right)\left(p_1\exp\frac{it_1}{\sqrt{np_1}}+\cdots+p_r\exp\frac{it_r}{\sqrt{np_r}}\right)^n,
+\end{multline*}
+где предпоследнее равенство в силу п. 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>, а последнее в силу  $(*)$. 
+Прологорифмируем полученное равенство
+$$
+\ln\varphi_{\overline\xi}(t_1,\dots,t_r)=-i\sum_{k=1}^rt_k\sqrt{np_k}+n\ln\left(p_1\exp\frac{it_1}{\sqrt{np_1}}+\cdots+p_r\exp\frac{it_r}{\sqrt{np_r}}\right).
+$$
+Воспользуемся разложением
+$$\exp\frac{it_k}{\sqrt{np_k}}=1+i\frac{t_k}{\sqrt{np_i}}-\frac{t_k^2}{2np_k}+o\left(\frac1{n}\right),n\to\infty,$$
+тогда, учитывая что $\sum_{k=1}^rp_r=1$, получим
+$$
+\ln\varphi_{\overline\xi}(t_1,\ldots,t_r)=
+-i\sum_{k=1}^rt_k\sqrt{np_k}+n\ln\left(1+i\sum_{k=1}^r\frac{p_kt_k}{\sqrt{np_k}}-\sum_{k=1}^r\frac{t_k^2}{2n}+o\left(\frac1{n}\right)\right).
+$$
+Воспользовавшись разложением 
+$$\ln(1+x)=x-\frac{x^2}{2}+o(x^2),x\to0,$$
+получим
+$$
+\ln\varphi_{\overline\xi}(t_1,\ldots,t_r)=-i\sum_{k=1}^rt_k\sqrt{np_k}+n\left(i\sum_{k=1}^r\frac{p_kt_k}{\sqrt{np_k}}-
+\sum_{k=1}^r\frac{t_k^2}{2n}+\frac12\left(\sum_{k=1}^r\frac{p_kt_k}{\sqrt{np_k}}\right)^2+o\left(\frac1{n}\right)\right)=
+-\frac12\sum_{k=1}^rt_k^2+\frac12\left(\sum_{k=1}^r\sqrt{p_k}t_k\right)^2+o(1),n\to\infty.
+$$
+Таким образом, 
+$$\lim_{n\to\infty}\varphi_{\overline\xi}(t_1,\ldots,t_r)=e^{-Q(t_1,\ldots,t_r)/2},\quad(**)$$
+где $Q$ - квадратичная форма 
+$$
+Q=
+\begin{pmatrix}
+1-p_1			& -\sqrt{p_1p_2}	& \cdots 			&	-\sqrt{p_1p_r}	\\
+-\sqrt{p_2p_1}	& 1-p_2		& \cdots 			&	-\sqrt{p_2p_r}	\\
+\vdots 		& 			& \ddots 			&	\vdots 		\\
+-\sqrt{p_rp_1}	& -\sqrt{p_rp_2}	& \cdots			&	1-p_r 			\\
+\end{pmatrix}
+$$
+то есть $Q=E-q^{\downarrow}\overline{q}$, где $\overline{q}=(\sqrt{q_1},\ldots,\sqrt{q_r})$. Тогда
+$$
+Q^2=(E-q^{\downarrow}\overline{q})(E-q^{\downarrow}\overline{q})=
+E-q^{\downarrow}\overline{q}-q^{\downarrow}\overline{q}+q^{\downarrow}\overline{q}q^{\downarrow}\overline{q}=E-q^{\downarrow}\overline{q}=Q,
+$$
+то есть многочлен $x^2-x$ аннулирует матрицу $Q$, следовательно, собственными значениями матрицы $Q$ могут быть только числа 1 и 0 <i>(?)</i>, 
+поэтому квадратичная форма неотрицательно определена. Тогда по п. 5 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a> и 
+<a href="./probability_theory8.1.html#Theorem8.1">теореме 8.1</a> 
+$\exp(-Q(t_1,\ldots,t_r)/2)$ - характеристическая функция нормального распределения $N(\overline{0},Q)$. 
+Следовательно, по $(**)$ и <a href="./probability_theory6.3.html#Theorem6.14">теореме 6.14</a>
+$$\overline\xi\xrightarrow[n\to\infty]{d}\overline{\xi}_0:=(\xi_1^{(0)},\ldots,\xi_r^{(0)})\sim{N}(\overline{0},Q).$$
+Так как $\|\overline{q}\|=\sum_{k=1}^r(\sqrt{p_k})^2=1\neq0$
+, то по <a href="../discrete_math/discrete_math14.1.html#Theorem14.2">теореме 14.2 DM</a> существутет ортонормированная матрица $C$ с последней строкой $\overline{q}$. 
+Положим $u^{\downarrow}:=Ct^{\downarrow}$, тогда 
+$$u_r=\overline{q}t^{\downarrow}=\sum_{k=1}^r\sqrt{p_k}t_k.$$
+Так как ортогональное предобразование не меняет суммы квадратов (<i>(?)</i> см. например Г. Крамер "Математические методы статистики" 1975 г. стр. 455), то 
+$$Q(u_1,\ldots,u_r)=\sum_{k=1}^ru_k^2-\left(\sum_{k=1}^r\sqrt{p_k}t_k\right)^2=\sum_{k=1}^ru_k^2-u_r=\sum_{k=1}^{r-1}u_k^2.$$
+Таким образом, $\rang{Q}=r-1$ и
+$$\chi^2=\sum_{k=1}^r\xi^2=\overline\xi\xi^{\downarrow}\xrightarrow[n\to\infty]{d}\overline{\xi}_0\xi_0^{\downarrow}=\sum_{k=1}^{r-1}\xi_1^{(0)}\sim\chi^2_{r-1},$$
+где сходимость следует из доказанного выше и <a href="#Task12.4">задачи 12.4</a>
+<br><br>
+<p id="Task12.4"><b>Задача 12.4:</b>
+Доказать, что если $f(x)$ - непрерывная функция, то
+$$\xi_n\xrightarrow[n\to\infty]{P}\xi\Rightarrow{f}(\xi_n)\xrightarrow[n\to\infty]{P}f(\xi).$$
+<br>
+<p id="Definition12.10"><b>Определение 12.10:</b>
+Пусть $\xi\sim{F}(x;\theta_1,\ldots,\theta_m)$, тогда для любого $k\in\overline{1,m}$ значение $\tilde\theta_k=\tilde\theta_k(x_1,\ldots,x_n)$, 
+которое минимизирует статистику $\chi^2$ для $\xi$ называется оценкой параметра $\theta_k$ по методу $\chi^2$.
+<br><br>
+<p id="Note12.3"><b>Замечание 12.3: Метод $\chi^2$ оценки параметров.</b><br>
+Если $F(x;\theta_1,\ldots,\theta_m)$ дифференцируема по $\theta_i$ для любого $i\in\overline{1,m}$, 
+то оценки  $\tilde\theta_1,\ldots,\tilde\theta_m$ параметров $\theta_1,\ldots,\theta_m$ по методу $\chi^2$ находят из системы уравнений
+$$\left\{\frac{\partial\chi^2}{\partial\theta_i}=0,i\in\overline{1,m}\right..$$
+Продифференцировав по $\theta_i$ для любого $i\in\overline{1,m}$ получим
+$$
+\frac{\partial\chi^2}{\partial\theta_i}=\sum_{k=1}^r\frac1{n^2p_k^2}\left(2(\nu_k-np_k)(-n)\frac{\partial{p}_k}{\partial\theta_i}np_k-(\nu_k-np_k)^2n\frac{\partial{p}_k}{\partial\theta_i}\right)=
+-2\sum_{k=1}^r\frac{\nu_i-np_k}{p_k}\frac{\partial{p}_k}{\partial\theta_i}-\sum_{k=1}^r\frac{(\nu_k-np_k)^2}{np_k}\frac{\partial{p}_k}{\partial\theta_i}=0
+$$
+Так как дисперсия распределения в полиномиальной схеме из $n$ независимых испытаний равна $npq$ 
+(п. 3 <a href="./probability_theory4.6.html#Example4.3">пример 4.3</a>), 
+то из неравенства Чебышева (п. 3 <a href="./probability_theory4.3.html#Theorem4.14">теоремы 4.14</a>) следует, что
+$$P\{|\nu_k-np_k|>c\sqrt{n}\}\leq\frac{np_k(1-p_k)}{c^2n}=\frac{p_k(1-p_k)}{c^2}.$$
+То есть величина $\nu_k-np_k$ имеет по вероятности порядок $\sqrt{n}$, следовательно, второе слагаемое в пределе при $n\to\infty$ не зависит от $n$, 
+поэтому при больших $n$ им можно пренебречь. Тогда
+$$
+\sum_{k=1}^r\frac{\nu_k-np_k}{p_k}\frac{\partial{p}_k}{\partial\theta_i}=
+\sum_{k=1}^r\frac{\nu_k}{p_k}\frac{\partial{p}_k}{\partial\theta_i}-n\sum_{k=1}^r\frac{\partial{p}_k}{\partial\theta_i}=
+\sum_{k=1}^r\frac{\nu_k}{p_k}\frac{\partial{p}_k}{\partial\theta_i}=0,
+$$
+где второе равенство в силу того, что $\sum_{k=1}^r\partial{p}_k/\partial\theta_i=\left(\sum_{k=1}^rp_k\right)'_{\theta_i}=0$.
+Таким обрзом, для нахождения оценок параметров $\theta_1,\ldots,\theta_m$ по методу $\chi^2$ 
+(который при данном упрощении называется видоизменённым методом $\chi^2$)  имеем следующую систему уравнений
+$$\left\{\sum_{k=1}^r\frac{\nu_k}{p_k}\frac{\partial{p}_k}{\partial\theta_i}=0,i\in\overline{1,m}\right..$$
+<br>
+<p id="Theorem12.8"><b>Теорема 12.8:</b>
+Пусть $\xi\sim{F}(x;\theta_1,\ldots,\theta_m)$ случайная величина с множеством значений $\Theta=\bigsqcup_{k=1}^rS_k$, где $r&gtm$. 
+Для любого $k\in\overline{1,r}$ обозначим $p_k(\theta_1,\ldots,\theta_m):=P(\xi\in{S}_k)$ такие, что
+<ol>
+<li>$\Theta$ - область;
+</li><li>существует $c>0$ такое, что для любого $k\in\overline{1,r}$ $p_k(\theta_1,\ldots,\theta_m)\geq{c}$;
+</li><li>для любого $k\in\overline{1,r}$, $i,j\in\overline{1,m}$ существуют и непрерывны производные
+$$\frac{\partial{p}_k(\theta_1,\ldots,\theta_m)}{\partial\theta_i},\frac{\partial^2p_k(\theta_1,\ldots,\theta_m)}{\partial\theta_i\partial\theta_j};$$
+</li><li>ранг матрицы 
+$$B:=\left\|\frac{\partial{p}_k(\theta_1,\ldots,\theta_m)}{\partial\theta_i}\right\|$$
+равен $m$.
+</li>
+</ol>
+Тогда система уравнений
+$$\left\{\frac{\nu_i}{p_k}\frac{\partial{p}_k(\theta_1,\ldots,\theta_m)}{\partial\theta_i}=0,k\in\overline{1,m}\right.$$
+имеет единственное решение, которое является состоятельной оценкой параметров $\theta_1,\ldots,\theta_m$. 
+При этом если $\tilde\theta_1,\ldots,\tilde\theta_m$ является решением системы, то
+$$
+\tilde\chi^2:=\sum_{k=1}^r\frac{(\nu_k-np_k(\tilde\theta_1,\ldots,\tilde\theta_m))^2}{np_k(\tilde\theta_1,\ldots,\tilde\theta_m)}\xrightarrow
+[n\to\infty]{d}\chi_{r-m-1}^2
+$$
+<p><b>Доказательство:</b><br>
+Доказательство например в Г. Крамер "Математические методы статистики" 1975 г. стр. 463.
+<br>
+
+<h5 id="12.7">12.7 Доверительные интервалы.</h5>
+
+<p id="Definition12.11"><b>Определение 12.11:</b>
+Пусть $(X_1,\ldots,X_n)$ выборка над случайной величиной $\xi\sim{F}(x;\theta)$, $\theta\in\Theta$; 
+$\tilde\theta_1(X_1,\ldots,X_n),\tilde\theta_2(X_1,\ldots,X_n)\in\Theta$ такие, 
+что $P\{\tilde\theta_1<\theta<\tilde\theta_2\}=1-\alpha$, $0<\alpha<1$, тогда говорят, что 
+$(\tilde\theta_1,\tilde\theta_2)$ - доверительный интервал для параметра $\theta$ с коэффициентом доверия $1-\alpha$.
+<br><br>
+<p id="Note12.4"><b>Замечание 12.4:</b>
+Основные характеристики доверительного интрервала: длина - $\tilde\theta_2-\tilde\theta_1$ и коэффициент доверия - $1-\alpha$.
+<br><br>
+<p id="Definition12.12"><b>Определение 12.12:</b>
+Пусть $\xi\sim{F}(x)$, $p\in(0,1)$, тогда решение уравнения $F(x)=p$ называется квантилью уровня $p$ функции $F(x)$.
+<br>
+То есть если $x_p$ квантиль уровня $p\in(0,1)$ функции распределения $F(x)$, то $F(x_p):=P\{\xi&ltx_p\}=p$.
+<br><br>
+<p id="Example12.5"><b>Пример 12.5:</b>
+Пусть $\xi\sim{N}(\mu,\sigma^2)$, где $\mu$ не известно, а $\sigma^2$ известно. Дана выборка $(X_1,\ldots,X_n)$ и коэффициент доверия $1-\alpha$. Найдём доверительный интервал для параметра $\mu$.
+
+Из <a href="./probability_theory11.1.html#Task11.1">задачи 11.1</a> и <a href="./probability_theory11.1.html#Theorem11.4">теоремы 11.4</a> следует, что
+$$\overline{x}:=\frac1{n}\sum_{i=1}^nX_i\sim{N}\left(\mu,\frac{\sigma^2}{n}\right),$$
+тогда
+$$\frac{\overline{x}-\mu}{\sigma}\sqrt{n}\sim{N}(0,1).$$
+Находим по таблицам стандартного нормального распределения квантиль $t_{1-\alpha/2}=-t_{\alpha/2}$, тогда
+\begin{multline*}
+P\left\{\left|\frac{\overline{x}-\mu}{\sigma}\sqrt{n}\right|&ltt_{1-\alpha/2}\right\}=1-\alpha\Rightarrow
+{P}\left\{\frac{-\sigma{t}_{1-\alpha/2}}{\sqrt{n}}<\overline{x}-\mu<\frac{\sigma{t}_{1-\alpha/2}}{\sqrt{n}}\right\}=1-\alpha\Rightarrow
+P\left\{\overline{x}-\frac{\sigma{t}_{1-\alpha/2}}{\sqrt{n}}<\mu<\overline{x}+\frac{\sigma{t}_{1-\alpha/2}}{\sqrt{n}}\right\}=1-\alpha.
+\end{multline*}
+Следовательно, в качестве доверительного интервала для параметра $\mu$ с коэффициентом доверия $1-\alpha$ для выборки $(X_1,\ldots,X_2)$ можно взять интервал
+$$(\tilde\theta_1,\tilde\theta_2):=\left(\overline{x}-\frac{\sigma{t}_{1-\alpha/2}}{\sqrt{n}},\overline{x}+\frac{\sigma{t}_{1-\alpha/2}}{\sqrt{n}}\right).$$
+Заметим, что для разных выборок $(X_1,\ldots,X_n)$ численные значения $\tilde\theta_1$, $\tilde\theta_2$ могут отличаться и 
+чем больше объем выборки при фиксированном $\alpha$, тем уже будет доверительный интервал.
+<br><br>
+<p id="Example12.6"><b>Пример 12.6:</b>
+Пусть $\xi\sim{N}(\mu,\sigma^2)$, где $\mu$ известно, а $\sigma^2$ не известно. 
+Дана выборка $(X_1,\ldots,X_n)$ и коэффициент доверия $1-\alpha$. Найдем доверительный интервал для параметра $\sigma^2$.
+<br>
+Обозначим
+$$S_0^2:=\frac1{n}\sum_{i=1}^n(X_i-\mu)^2,$$
+тогда 
+$$\frac{nS_0^2}{\sigma^2}=\sum_{i=1}^n\left(\frac{X_i-\mu}{\sigma}\right)^2,$$
+где справа стоит сумма независимых случайных величин с распеределением $N(0,1)$, следовательно,
+$$\frac{nS_0^2}{\sigma^2}\sim\chi^2_n.$$
+Находим по таблицам квантили $\chi^2_{\alpha/2,n}$ и $\chi^2_{1-\alpha/2,n}$ распределения $\chi^2_n$ уровня $\alpha/2$ и $1-\alpha/2$ соответственно. Тогда
+$$
+P\left\{\chi^2_{\alpha/2,n}<\frac{nS_0^2}{\sigma^2}<\chi^2_{1-\alpha/2,n}\right\}=1-\alpha\Rightarrow
+P\left\{\frac{nS_0^2}{\chi^2_{1-\alpha/2,n}}<\sigma^2<\frac{nS_0^2}{\chi^2_{\alpha/2,n}}\right\}=1-\alpha.
+$$
+Следовательно, в качестве доверительного интервала для параметра $\sigma^2$ с коэффициентов доверия $1-\alpha$ для выборки $(X_1,\ldots,X_n)$ можно взять интервал
+$$(\tilde\theta_1,\tilde\theta_2):=\left(\frac{nS_0^2}{\chi^2_{1-\alpha/2}},\frac{nS_0^2}{\chi^2_{\alpha/2,n}}\right).$$
+<br>
+<p id="Theorem12.9"><b>Теорема 12.9: Теорема Фишера.</b><br>
+Пусть $(X_1,\ldots,X_n)$ выборка над $\xi\sim{N}(\mu,\sigma^2)$, тогда статистики
+$$\overline{x}:=\frac1{n}\sum_{i=1}^nX_i,\,S^2:=\frac1{n}\sum_{i=1}^n(X_i-\overline{x})^2$$
+независимы и при этом
+$$\overline{x}\sim{N}\left(\mu,\frac{\sigma^2}{n}\right),\,\frac{nS^2}{\sigma^2}\sim\chi_{n-1}^2.$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Г. Крамер "Математические методы статистики" 1975 г. стр. 419.
+<br><br>
+<p id="Example12.7"><b>Пример 12.7:</b>
+Найдем доверительный интервал с коэффициентов доверия $1-\alpha$ для параметра $p$ биномиального распределения $B(n,p)$ при известном $n$. 
+Пусть $\nu$ - число успехов, тогда для любого $k\in\overline{0,n}$
+$$p_k:=p(\nu=k):=\binom{n}{k}p^k(1-p)^{n-k}.$$
+Разбиваем интервал $(0,1)$ на $r+1$ промежутков $0&ltp_1&lt\cdots&ltp_r&lt1$, 
+для  каждого $p_i$ по таблицам биномиального распределения находим максимальное $s_i$ и минимальное $t_i$, такие что
+$$P(\nu\leq{s}_i):=\sum_{k=0}^{s_i}\binom{n}{k}p_i^k(1-p_i)^{n-k}\leq\frac{\alpha}{2}$$
+$$P(\nu\geq{t}_i):=\sum_{k=t_i}^n\binom{n}{k}p_i^k(1-p_i)^{n-k}\leq\frac{\alpha}{2}.$$
+Если $\nu$ число успехов, $s:=\max\{s_i|s_i\leq\nu,i\in\overline{1,r}\}$, $t:=\min\{t_i|t_i\geq\nu,i\in\overline{1,r}\}$, 
+тогда интервал $(p_s,p_t)$ является доверительным интервалом для параметра $p$ с коэффициентом доверия $1-\alpha$.
+<br><br>
+<p id="Definition12.13"><b>Определение 12.13:</b>
+Статистика $G(x_1,\ldots,x;\theta)$ называется центральной, если 
+<ol>
+<li>распределение $G(x_1,\ldots,x_n;\theta)$ не зависит от $\theta$;
+</li><li>функция $G(x_1,\ldots,x_n;\theta)$ непрерывна и строго монотонна по $\theta$ при фиксированных $x_1,\ldots,x_n$.
+</li>
+</ol>
+<br>
+<p id="Example12.8"><b>Пример 12.8:</b>
+Пусть $\xi\sim{N}(\mu,\sigma^2)$, где $\sigma^2$ известно, а $\mu$ нет. Тогда статистика 
+$$G(x_1,\ldots,x_n;\mu):=\frac{\overline{x}-\mu}{\sigma}\sqrt{n}$$
+являтеся центральной, так как распределение $G(x_1,\ldots,x_n;\mu)\sim{N}(0,1)$ не зависит от $\mu$.
+<br><br>
+<p id="Note12.3"><b>Замечание 12.3: Построение доверительных интеравалов с помощью центральной статистик.</b><br>
+Пусть $(X_1,\ldots,X_n)$ выборка над случайной величиной $\xi\sim{F}(x;\theta)$.
+Пусть $p_G(y)$ плотность распределения статистики $G(X_1,\ldots,X_n;\theta)$, тогда сущетсвуют $y_1&lty_2$ такие, что
+$$\int\limits_{y_1}^{y_2}p_G(y)dy=P\{y_1&ltG(X_1,\ldots,X_n;\theta)&lty_2\}=1-\alpha.$$
+Так как функция $G(x_1,\ldots,x_n;\theta)$ непрерывна и монотонна по $\theta$, то для любых $x_1,\ldots,x_n$ существуют, 
+$\theta_1(x_1,\ldots,x_n)$, $\theta_2(x_1,\ldots,x_n)$ такие, что $\theta_1<\theta_2$ и $G(x_1,\ldots,x_n;\theta_1)=y_1$, 
+$G(x_1,\ldots,x_n;\theta_2)=y_2$ (<a href="../math_analysis/math_analysis5.5.5.html#Statement5.5.9">утверждение 5.5.9 MA</a>) и 
+тогда $P\{\theta_1<\theta<\theta_2\}=1-\alpha$.
+<br><br>
+<p id="Statement12.1"><b>Утверждение 12.1:</b>
+Пусть $\xi\sim{F}(x;\theta)$ такая, что
+<ol>
+<li>$F(x;\theta)$ строго монотонна и непрерывна по $x$ при фиксированном $\theta$;</li>
+<li>$F(x;\theta)$ строго монотонна и непрерывна по $\theta$ при фиксированном $x$;</li>
+</ol>
+тогда статистика 
+$$G(X_1,\ldots,X_n;\theta):=-\sum_{i=1}^n\ln{F}(X_i;\theta)$$
+является центральной.
+<p><b>Доказательство:</b>
+<ol>
+<li>$G(x_1,\ldots,x_n;\theta)$ непрерывна и строгомонотонна по $\theta$. Это следует из условия 2 а так же непрерывности и монотонности функции $\ln{x}$.
+</li><li>Обозначим $\eta:=F(\xi)$, тогда если $F(x)$ непрерывна и строго монотонна, то по 
+<a href="../math_analysis/math_analysis5.5.5.html#Theorem5.5.5">теореме 5.5.5 MA</a> и 
+<a href="../math_analysis/math_analysis5.5.5.html#Statement5.5.9">утверждению 5.5.9 MA</a> 
+существует непрерывная и возрастающая функция $F^{-1}(x)$ определенная на $(0,1)$, следовательно для любого $x\in(0,1)$
+$$F_{\eta}(x)=P(\eta\leq{x})=P(\xi\leq{F}^{-1}(x))=F(F^{-1}(x))=x,$$
+то есть для любого $i\in\overline{1,n}$ $\eta=F(X_i;\theta)\sim{R}(0,1)$.
+<br>
+Обознчим плотность распределения $G$ как $p_G(y)$, функцию распределения равномерной плотности $R(0,1)$ как $\Phi_R(y)$ где
+$$\Phi_R(y):=\begin{cases}0, & y\leq{0} \\ y, & 0&lty\leq1 \\ 1, & y&gt1 \end{cases}.$$
+Тогда для любого $i\in\overline{1,n}$
+$$
+P\{-\ln{F}(X_i;\theta)&lty\}=P\{\ln{F}(X_i;\theta)&gt-y\}=P\{F(X_i;\theta)>e^{-y}\}=1-\Phi_R(e^{-y})=1-e^{-y},
+$$
+то есть $-\ln{F}(X_i;\theta)\sim\Gamma(1,1)$ для любого $i\in\overline{1,n}$ и для любого $\theta$.
+Так как $\Gamma(\alpha,\beta_1)*\Gamma(\alpha,\beta_2)=\Gamma(\alpha,\beta_1+\beta_2)$ 
+(см. например Феллер В. "Введение в теорию вероятностей и её приложения" 1984 г. стр. 62), то $G(X_1,\ldots,X_n;\theta)\sim\Gamma(1,n)$, 
+то есть распределение $G$ не зависит от $\theta$.
+</li>
+</ol>
+<br>
+<p id="Example12.9"><b>Пример 12.9: Доверительный интервал для разности математических ожиданий двух нормальных распределений.</b><br>
+Пусть $\xi_1\sim{N}(\mu_1,\sigma_1)$, $\xi_2\sim{N}(\mu_2,\sigma_2)$, где $\mu_1$, $\mu_2$ неизвестны. Рассмотрим два случая.
+<ol>
+<li>Пусть $\sigma_1$ и $\sigma_2$ известны.<br>
+Найдем доверительный интервал для параметра $\mu_1-\mu_2$ с коэффициентом доверия $1-\alpha$.<br>
+Пусть $(X_1,\ldots,X_{n_1})$ выборка над $\xi_1$, $(Y_1,\ldots,Y_{n_2})$ выборка над $\xi_2$. Если $\xi\sim{p}(x)$, $\eta:=a\xi+b$, 
+то плотность случайной величины $\eta$ (если она существует) равна
+$$\frac1{|a|}p\left(\frac{y-b}{a}\right).$$
+Доказательство этого факта можно найти например в Г. Крамер "Математические методы статистики" 1975 г. стр. 189. 
+Тогда согласно <a href="./probability_theory4.3.html#Theorem4.11">теореме 4.11</a>, если $\xi\sim{N}(\mu,\sigma^2)$, то 
+$$
+\overline{x}=\frac1{n_1}\sum_{i=1}^{n_1}X_i\sim\frac{\sqrt{n_1}}{\sqrt{2\pi}\sigma_1}\exp-\frac{(n_1x-n_1\mu_1)^2}{2n_1\sigma_1^2}=
+\frac1{\sqrt{2\pi}\sigma_1/\sqrt{n_1}}\exp-\frac{(x-\mu_1)^2}{2\sigma_1^2/n_1}\sim{N}\left(\mu_1,\frac{\sigma_1^2}{n_1}\right),
+$$
+и если $\xi\sim{N}(\mu,\sigma^2)$, то
+$$-\xi\sim\frac1{\sqrt{2\pi}\sigma}\exp-\frac{(-x-\mu)^2}{2\sigma^2}=\frac1{\sqrt{2\pi}\sigma}\exp-\frac{(x-(-\mu))^2}{2\sigma^2}\sim{N}(-\mu,\sigma^2).$$
+Тогда
+$$\overline{x}-\overline{y}\sim{N}\left(\mu_1-\mu_2,\frac{\sigma_1^2}{n}+\frac{\sigma_2^2}{n}\right)$$
+и
+$$\frac{\overline{x}-\overline{y}-(\mu_1-\mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}\sim{N}(0,1).$$
+Находим по таблицам $t_{1-\alpha/2}$ квантиль уровня $1-\alpha/2$ распределения $N(0,1)$, тогда
+$$
+P\left\{-t_{1-\alpha/2}&lt\frac{\overline{x}-\overline{y}-(\mu_1-\mu_2)}{\sqrt{\sigma_1^2/n_1+\sigma_2^2/n_2}}&ltt_{1-\alpha/2}\right\}=1-\alpha
+$$
+тогда разрешая неравенство относительно $\mu_1-\mu_2$ находим искомый доверительный интервал
+$$
+\left(t_{1-\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}+\overline{x}-\overline{y},-t_{1-\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+
+\frac{\sigma_2^2}{n_2}}+\overline{x}-\overline{y}\right)
+$$
+</li><li>Пусть $\sigma_1$ и $\sigma_2$ неизвестны, при этом для упрощения будем считать, что $\sigma_1=\sigma_2=\sigma$.<br>
+По теореме Фишера (<a href="#Theorem12.9">теорема 12.9</a>)
+$$\frac{n_1S_x^2}{\sigma^2}\sim\chi_{n_1-1}^2,\,\frac{n_2S_y^2}{\sigma}\sim\chi_{n_2-1}^2,$$
+тогда
+$$\frac{n_1S_x^2}{\sigma^2}+\frac{n_2S_y^2}{n_2}\sim\chi_{n_1+n_2-2}.$$
+В предыдущем пункте было доказано, что
+$$\frac{\overline{x}-\overline{y}-(\mu_1-\mu_2)}{\sqrt{\sigma^2/n_1+\sigma^2/n_2}}\sim{N}(0,1).$$
+В Г. Крамер "Математические методы статистики" 1975 г. стр. 264 показано, что если $\xi\sim{N}(0,1)$, $\eta\sim\chi_n^2$, $\xi$ и $\eta$ независимы, то 
+$$\frac{\xi}{\sqrt{\eta/n}}\sim{S}t_n.$$
+$$
+\tilde\theta:=\frac{\overline{x}-\overline{y}-(\mu_1-\mu_2)}{\sigma\sqrt{1/n_1+1/n_2}}:\sqrt{\frac{n_1S_x^2+n_2S_y^2}{\sigma^2(n_1+n_2-2)}}=
+\frac{\overline{x}-\overline{y}-(\mu_1-\mu_2)}{\sqrt{n_1+n_2}}\sqrt{\frac{(n_1+n_2-2)n_1n_2}{n_1S_x^2+n_2S_y^2}}\sim{S}t_{n_1+n_2-2}.
+$$
+Таким образом, если $t_{1-\alpha/2}$ квантиль распределения Стьюдента $St_{n_1+n_2-2}$ уровня $1-\alpha/2$, то
+$$P\{-t_{1-\alpha/2}&lt\tilde\theta&ltt_{1-\alpha/2}\}=1-\alpha.$$
+Разрешая неравенство относительно $\mu_1-\mu_2$ найдем искомый доверительный интервал
+$$
+\left(\overline{x}-\overline{y}-t_{1-\alpha/2}\sqrt{\frac{(n_1+n_2)(n_1S_1^2+n_2S_2^2)}{n_1n_2(n_1+n_2-2)}},
+\overline{x}-\overline{y}+t_{1-\alpha/2}\sqrt{\frac{(n_1+n_2)(n_1S_1^2+n_2S_2^2)}{n_1n_2(n_1+n_2-2)}}\right)
+$$
+</li>
+</ol>
+
+ 
+<br><br>
+<a href="./probability_theory12.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory13.1.html">next</a>

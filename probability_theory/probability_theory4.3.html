@@ -1,0 +1,368 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 4.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.6.html">next</a>
+<br>
+
+<h5 id="4.3">4.3 Распределение функциональной случайной величины.</h5>
+
+Рассмотрим многомерную случайную величину $\overline\xi=(\xi_1,\ldots,\xi_n)$ с функцией распределения $F_{\overline\xi}(x_1,\ldots,x_n)$ и 
+плотностью распределения $p_{\overline\xi}(x_1,\ldots,x_n)$. Пусть для любого 
+$k\in\overline{1,m}$ заданы функции $f_k(u_1,\ldots,u_n):\mathbb{R}^n\to\mathbb{R}$. Рассмотрим случайную величину 
+$$\overline\eta:=(\eta_1,\ldots,\eta_m):=(f_1(\xi_1,\ldots,\xi_n),\ldots,f_m(\xi_1,\ldots,\xi_n)).$$
+Задача состоит в поиске функции распределения $F_{\overline\eta}(y_1,\ldots,y_m)$ случайной величины $\overline\eta$ 
+при известной функции $F_{\overline\xi}(x_1,\ldots,x_n)$, а также поиске плотности распределения 
+$p_{\overline\eta}(y_1,\ldots,y_m)$ при существовании плотности $p_{\overline\xi}(x_1,\ldots,x_n)$.<br>
+Если $\overline\xi$ абсолютно непрерывна, то для любого $B\in\mathcal{B}$
+$$P(\xi\in{B})=\int\limits_Bp_{\overline\xi}(x_1,\ldots,x_n)dx_1\cdots{d}x_n.$$
+Следовательно,
+$$
+F_{\overline\eta}(y_1,\ldots,y_m)=P(\eta_1&lty_2,\ldots,\eta_m&lty_m)=P(f_1(x_1,\ldots,x_n)&lty_1,\ldots,f_m(x_1,\ldots,x_n)&lty_m)=
+\int\limits_Bp_{\overline\xi}(x_1,\ldots,x_n)dx_1\cdots{d}x_n,
+$$
+где $B=\{\overline{x}\in\mathbb{R}^n\mid{f}_1(\overline{x})&lty_1,\ldots,f_m(\overline{x})&lty_m\}$.
+Если случайная величина $\xi$ дискретна, то $p_{\overline\xi}(x_1,\ldots,x_n)=P(\xi_1=x_1,\ldots,\xi_n=x_n)$ и интеграл можно заменить суммой
+$$F_{\overline\eta}(y_1,\ldots,y_m)=\sum_{(x_1,\ldots,x_n)\in{I}}p_{\overline\xi}(x_1,\ldots,x_n),$$
+где $I=\{(x_1,\ldots,x_n)\in\mathbb{R}^n\mid{P}(\xi_1=x_1,\ldots,\xi_n=x_n)\neq0\}\cap{B}$.<br>
+Рассмотрим случай при $n=2$, $m=1$, $f_1(u_1,u_2)=u_1+u_2$.
+
+<p id="Theorem4.9"><b>Теорема 4.9:</b>
+Пусть $\overline\xi=(\xi_1,\xi_2)$, $p_{\overline\xi}(x_1,x_2)$ плотность распределения $\overline\xi$, 
+тогда существует $p_{\eta}(y)$ плотность распределения случайной величины $\eta:=\xi_1+\xi_2$ и
+$$p_{\eta}(z)=\int\limits_{-\infty}^{\infty}p_{\overline\xi}(z-x,x)dx.$$
+<p><b>Доказательство:</b><br>
+Пусть $F_{\eta}(y)$ функция распределения случайной величины $\eta$, тогда
+$$
+F_{\eta}(y)=P(\eta&lty)=P(\xi_1+\xi_2&lty)=\iint\limits_Bp_{\overline\xi}(x_1,x_2)dx_1dx_2,
+$$
+где 
+$$B=\{(x_1,x_2)\in\mathbb{R}^2\mid{x}_1+x_2&lty\}.$$
+Тогда по теореме Фубини (<a href="../math_analysis/math_analysis14.3.3.html#Theorem14.3.4">теорема 14.3.4 MA</a>)
+$$
+F_{\eta}(y)=\int\limits_{-\infty}^{\infty}dx_2\int\limits_{-\infty}^{y-x_2}p_{\overline\xi}(x_1,x_2)dx_1=
+\int\limits_{-\infty}^{\infty}dx_2\int\limits_{-\infty}^yp_{\overline\xi}(z-x_2,x_2)dx_2=
+\int\limits_{-\infty}^y\int\limits_{-\infty}^{\infty}p_{\overline\xi}(z-x_2,x_2)dx_2.
+$$
+Так как функция $q(z):=\int_{-\infty}^{\infty}p_{\overline\xi}(z-x_2,x_2)dx_2$ неотрицательна, 
+то она является плотностью распределения случайной величины $\eta$.
+<br><br>
+<p id="Corollary4.1"><b>Следствие 4.1: Формула свертки.</b><br>
+Если случайные величины $\xi_1$ и $\xi_2$ независимы, то плотность распределения их суммы равна
+$$p_{\xi_1+\xi_2}(z)=\int\limits_{-\infty}^{\infty}p_{\xi_1}(z-x)p_{\xi_2}(x)dx.$$
+<p><b>Доказательство:</b><br>
+Следует из теорем <a href="./probability_theory3.5.html#Theorem3.14">3.14</a> и 4.9.
+<br><br>
+Если случайная величина $\overline\xi=(\xi_1,\xi_2)$ дискретна, то для любого $(x_1,x_2)\in\mathbb{R}^2$ $p_{\overline\xi}(x_1,x_2)=(\xi_1=x_1,\xi_2=x_2)$. 
+Следовательно, интегралы в результатах теоремы 4.9 и следствия 4.1 можно заменить суммами. Тогда для произвольных $\xi_1$, $\xi_2$
+$$p_{\xi_1+\xi_2}(z)=\sum_{x_2}p_{\overline\xi}(z-x_2,x_2)$$
+и если случайные величины $\xi_1$ и $\xi_2$ незвисимы, то
+$$p_{\xi_1+\xi_2}(z)=\sum_{x_2}p_{\xi_1}(z-x_2)p_{\xi_2}(x_2).$$
+<br>
+<p id="Theorem4.10"><b>Теорема 4.10:</b>
+Если случайные величины $\xi_1$ и $\xi_2$ имеют пуассоновское распределение в параметрами $\lambda_1$ и $\lambda_2$ соответственно, 
+то их сумма имеет пуассоновское распределение с параметром $\lambda_1+\lambda_2$.
+<p><b>Доказательство:</b><br>
+Для любого $k\in\mathbb{N}$
+$$P(\xi_1=k)=\frac{\lambda_1^ke^{-\lambda_1}}{k!},\,P(\xi_2=k)=\frac{\lambda_2^ke^{-\lambda_2}}{k!},$$
+для $B\in\mathcal{B}$ не пересекающихся с $\mathbb{N}$ $P(\xi_1\in{B})=P(\xi_2\in{B})=0$. Следовательно, 
+по <a href="#Theorem4.9">теореме 4.9</a> и биному Ньютона (<a href="../discrete_math/discrete_math1.html#Theorem1.1">теорема 1.1 DM</a>) 
+для любого $m\in\mathbb{N}$
+\begin{multline*}
+p_{\xi_1+\xi_2}(m)=P(\xi_1+\xi_2=m)=\sum_{k=0}^mP(\xi_1=k)P(\xi_2=m-k)=\\=
+\sum_{k=0}^m\frac{\lambda_1^ke^{-\lambda_1}\lambda_2^{m-k}e^{-\lambda_2}}{k!(m-k)!}=\frac{e^{-(\lambda_1+\lambda_2)}}{m!}\sum_{k=0}^m\frac{m!}{k!(m-k)!}\lambda_1^k\lambda_2^{m-k}=
+\frac{(\lambda_1+\lambda_2)^m}{m!}e^{-(\lambda_1+\lambda_2)}=\Pi(\lambda_1+\lambda_2).
+\end{multline*}
+<br>
+Таким образом, сверткой двух пуассоновских распределений с параметрами $\lambda_1$, $\lambda_2$ является пуассоновское распределение с параметром $\lambda_1+\lambda_2$. Данное выражение обозначают как
+$$\Pi(\lambda_1)*\Pi(\lambda_2)=\Pi(\lambda_1+\lambda_2).$$
+<br>
+<p id="Theorem4.11"><b>Теорема 4.11:</b>
+$$N(\mu_1,\sigma_1^2)*N(\mu_2,\sigma_2^2)=N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2).$$
+<p><b>Доказательство:</b><br>
+Пусть $\xi_1\sim{N}(\mu_1,\sigma_1^2)$, $\xi_2\sim{N}(\mu_2,\sigma_2^2)$, то есть 
+$$p_{\xi_1}(x)=\frac1{\sqrt{2\pi}\sigma_1}e^{-(x-\mu_1)^2/2\sigma_1^2},$$
+$$p_{\xi_2}(x)=\frac1{\sqrt{2\pi}\sigma_2}e^{-(x-\mu_2)^2/2\sigma_2^2}.$$
+Тогда по <a href="#Theorem4.9">теореме 4.9</a>
+\begin{multline*}
+p_{\xi_1+\xi_2}(z)=\int\limits_{-\infty}^{\infty}p_{\xi_1}(x)p_{\xi_2}(z-x)dx=
+\frac1{2\pi\sigma_1\sigma_2}\int\limits_{-\infty}^{\infty}e^{-\frac12\left((x-\mu_1)^2/\sigma_1^2+(z-x-\mu_2)^2/\sigma_2^2\right)}dx=\frac1{2\pi\sigma_1\sigma_2}
+\int\limits_{-\infty}^{\infty}e^{-(x^2\sigma_2^2-2x\mu_1\sigma_2^2+\mu_1^2\sigma_2^2+z^2\sigma_1^2+x^2\sigma_1^2+\mu_2^2\sigma_1^2+2x\mu_2\sigma_1^2-2zx\sigma_1^2-2z\mu_2\sigma_1^2)/2\sigma_1^2\sigma_2^2}dx=\\=
+\frac1{2\pi\sigma_1\sigma_2}e^{-(\mu_1^2\sigma_1^2+z^2\sigma_1^2+\mu_2^2\sigma_1^2-2z\mu_2\sigma_1^2)/2\sigma_1^2\sigma_2^2}
+\int\limits_{-\infty}^{\infty}e^{-\left(x^2(\sigma_1^2+\sigma_2^2)-2x(\mu_1\sigma_2^2+z\sigma_1^2-\mu_2\sigma_1^2)\right)/2\sigma_1^2\sigma_2^2}dx
+\end{multline*}
+Обозначим 
+$$A:=\frac1{2\pi\sigma_1\sigma_2}e^{-(\mu_1^2\sigma_2^2+z^2\sigma_1^2+\mu_2^2\sigma_1^2-2z\mu_2\sigma_1^2)/2\sigma_1^2\sigma_2^2},$$
+$$B:=\frac{\sigma_1^2+\sigma_2^2}{\sigma_1^2\sigma_2^2},\,C:=\frac{\mu_1\sigma_2^2+z\sigma_1^2-\mu_2\sigma_1^2}{\sigma_1^2\sigma_2^2},$$
+тогда
+$$
+p_{\xi_1+\xi_2}(z)=A\int\limits_{-\infty}^{\infty}e^{-\frac12(x^2B-2xC)}dx=A\int\limits_{-\infty}^{\infty}e^{-\frac12\left(x\sqrt{B}-\frac{C}{\sqrt{B}}\right)^2+\frac{C^2}{2B}}dx=
+Ae^{\frac{C^2}{2B}}\int\limits_{-\infty}^{\infty}e^{-\frac12\left(x\sqrt{B}-\frac{C}{\sqrt{B}}\right)^2}dx.
+$$
+Сделав замену $t:=x\sqrt{B}-\frac{C}{\sqrt{B}}$ приведем интеграл к интегралу Пуассона. Тогда
+$$
+p_{\xi_1+\xi_2}(z)=Ae^{\frac{C^2}{2B}}\frac1{\sqrt{B}}\int\limits_{-\infty}^{\infty}e^{-t^2/2}dt=\frac{A\sqrt{2\pi}}{\sqrt{B}}e^{\frac{C^2}{2B}}=
+\frac{\sqrt{2\pi}}{2\pi\sigma_1\sigma_2}\frac{\sigma_1\sigma_2}{\sqrt{\sigma_1^2+\sigma_2^2}}e^{-D/2\sigma_1^2\sigma_2^2},
+$$
+где 
+\begin{multline*}
+D=\mu_1^2\sigma_2^2+z^2\sigma_1^2+\mu_2^2\sigma_1^2-2z\mu_2\sigma_1^2-\frac{(\mu_1\sigma_2^2+z\sigma_1^2-\mu_2\sigma_1^2)^2}{\sigma_1^2+\sigma_2^2}=\\=
+\left(\mu_1^2\sigma_1^2\sigma_2^2+z^2\sigma_1^4+\mu_2^2\sigma_1^4-2z\mu_2\sigma_1^4+\mu_1^2\sigma_2^4+z^2\sigma_1^2\sigma_2^2+\mu_2^2\sigma_1^2\sigma_2^2-2z\mu_2\sigma_1^2\sigma_2^2-
+\mu_1^2\sigma_2^4-z^2\sigma_1^4-\mu_2^2\sigma_1^4-2z\mu_1\sigma_1^2\sigma_2^2+2\mu_1\mu_2\sigma_1^2\sigma_2^2+2z\mu_2\sigma_1^4\right)/(\sigma_1^2+\sigma_2^2)=\\=
+\frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}(\mu_1^2+z^2+\mu_2^2-2z\mu_2-2z\mu_1+2\mu_1\mu_2)=\frac{\sigma_1^2\sigma_2^2}{\sigma_1^2+\sigma_2^2}(z-\mu_1-\mu_2)^2.
+\end{multline*}
+Таким образом, 
+$$p_{\xi_1+\xi_2}(z)=\frac1{\sqrt{2\pi}\sqrt{\sigma_1^2+\sigma_2^2}}e^{-(z-(\mu_1+\mu_2))^2/(2(\sigma_1^2+\sigma_2^2))}\sim{N}(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2).$$
+
+<h5 id="4.4">4.4 Вычисление математического ожидания.</h5>
+
+Заметим, что по определению интеграла Лебега заданного на измеримом пространстве $(\Omega,\mathfrak{A},P)$ для любого $A\in\mathfrak{A}$
+$$\int\limits_A\xi(\omega)dP:=\int\limits_{\Omega}I_A(\omega)\xi(\omega)dP.$$
+<br>
+<p id="Theorem4.12"><b>Теорема 4.12: О замене переменной в интеграле Лебега.</b><br>
+Пусть случайная величина $\xi$ задана на $(\Omega,\mathfrak{A},P)$, тогда
+для любой борелевской функции $g(x):\mathbb{R}\to\mathbb{R}$, для любого $B\in\mathbb{B}$
+$$\int\limits_Bg(x)dP_\xi=\int\limits_{\xi^{-1}(B)}g(\xi(x))dP$$
+<p><b>Доказательство:</b><br>
+Заметим, что интеграл Лебега стоящий в правой части доказываемого равенства определен на измеримом прострастве $(\Omega,\mathfrak{A},P)$, 
+а интеграл стоящий слева на измеримом пространстве $(\mathbb{R},\mathcal{B},P_{\xi})$, где для любого $B\in\mathcal{B}$ $P_\xi(B)=P(\xi^{-1}(B))$.
+<ol>
+<li>Пусть функция $g(x)$ индикаторная, то есть существует $A\in\mathcal{B}$ такое, что $g(x)\equiv{I}_A(x)$, тогда
+$$
+\int\limits_Bg(x)dP_{\xi}=\int\limits_{\mathbb{R}}I_B(x)g(x)dP_{\xi}=\int\limits_{\mathbb{R}}I_B(x)I_A(x)dP_{\xi}=
+\int\limits_{\mathbb{R}}I_{AB}(x)dP_{\xi}=P_{\xi}(AB)=P(\xi^{-1}(AB))=P(\xi^{-1}(A)\xi^{-1}(B)),
+$$
+где последнее равенство в силу того, что $\mathcal{B}_{\xi}$ - алгебра. С другой стороны, 
+$$
+\int\limits_{\xi^{-1}(B)}g(\xi(\omega))dP=\int\limits_{\Omega}I_{\xi^{-1}(B)}(\omega)I_{\xi^{-1}(A)}(\omega)dP=
+\int\limits_{\Omega}I_{\xi^{-1}(A)\xi^{-1}(B)}dP=P(\xi^{-1}(A)\xi^{-1}(B))
+$$
+</li>
+<li>Пусть $g(x)$ простая, то есть принимает конечное число значений. Тогда существуют $x_1,\ldots,x_n\in\mathbb{R}$ и $A_1,\ldots,A_n\in\mathcal{B}$ такие, что 
+$$g(x)=\sum_{k=1}^nx_kI_{A_k}(x).$$
+Тогда утверждение следует из п. 1 и линейности интеграла.
+</li>
+<li>Пусть $g(x)$ неотрицательна, тогда, так как $g(x)$ борелевская, то есть измеримая на $(\mathbb{R},\mathcal{B},P_{\xi})$, 
+то $g(x)$ - это случайнач величина на $(\mathbb{R},\mathcal{B},P_{\xi})$. 
+Тогда по <a href="./probability_theory3.1.html#Theorem3.3">теореме 3.3</a> существует неубывающая последовательность простых функций $\{g_n(x)\}$ такая, 
+что $\lim_{n\to\infty}g_n=g$. 
+Следовательно, утверждение следует из п. 2 и перестановочности интеграла с операцией предела.
+</li>
+<li>Пусть $g(x)$ произвольная борелевская функция, тогда существуют неотрицательные борелевские функции $g^+(x)$, $g^-(x)$ такие, 
+что $g=g^+-g^-$. Следовательно, утверждение следует из п. 3 и линейности интеграла. 
+</li>
+</ol>
+<br>
+Так как по <a href="./probability_theory2.1.html#Theorem2.1">теореме 2.1</a> 
+вероятностная мера $P_{\xi}$ однозначно востанавливается по ее функции распределения $F_{\xi}(x)$, то обозначают
+$$(L-S)\int\limits_{-\infty}^{\infty}g(x)dF_{\xi}(x):=\int\limits_{\mathbb{R}}g(x)dP_{\xi}=\int\limits_{\Omega}g(\xi(\omega))dP.$$
+<br>
+<p id="Theorem4.13"><b>Теорема 4.13:</b>
+Пусть $a,b\in\mathbb{R}$ $g(x)$ непрерывна на $[a,b]$, тогда 
+$$(L-S)\int\limits_a^bg(x)dF_{\xi}(x)=(R-S)\int\limits_a^bg(x)dF_{\xi}(x).$$
+Если $a,b\in\overline{\mathbb{R}}$, то для выполнения равенства необходимо еще потребовать 
+$$(R-S)\int\limits_{-\infty}^{\infty}|g(x)|dF_{\xi}(x)<\infty.$$
+<p><b>Доказательство:</b><br>
+Здесь в левой части равенсва стоит интеграл Лебега, а в правой интеграл Стилтьеса (<a href="../math_analysis/math_analysis8.2.html#8.2.1">8.2.1 MA</a>).  
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 253.
+<br><br>
+Далее везде при использовании интеграла по порождающей функции имеется ввиду интеграл Стилтьеса при этом обозначиние $(R-S)$ опускается.<br>
+
+Таким образом, если функция $g(x)$ непрерывна и $\int_{-\infty}^{\infty}|g(x)|dF_{\xi}(x)<\infty$ то математическое ожидание от случайной величины $g(\xi)$ 
+можно вычислить как
+$$E(g(\xi))=(R-S)\int\limits_{-\infty}^{\infty}g(x)dF_{\xi}(x).$$
+При этом если $\xi$ абсолютно непрерывна, то по <a href="../math_analysis/math_analysis8.2.3.html#Statement8.2.10">утверждению 8.2.10 MA</a>
+$$E(g(x))=\int\limits_{-\infty}^{\infty}g(x)p_{\xi}(x)dx.$$
+При подстановке в данные равенства $g(x)\equiv{x}$ получаются соответствующие формулы для вычисления математического ожидания $E\xi$ случайной величины $\xi$.<br>
+В случае дискретной случайной величины.
+$$\xi\sim\begin{pmatrix}x_1, & \ldots, & x_n, & \ldots \\ p_1, & \ldots, & p_n, & \ldots \end{pmatrix}$$
+Для любого $k\in\mathbb{N}$ $p_k=F_{\xi}(x_k+0)-F_{\xi}(x_k)$, следовательно, при условии $\sum_{k=1}^{\infty}|x_k|p_k<\infty$ существует математическое ожидание
+$$E\xi=\int\limits_{-\infty}^{\infty}xdF_{\xi}(x)=\sum_{k=1}^{\infty}x_kp_k.$$
+<br>
+<p id="Example4.2"><b>Пример 4.2:</b>
+<ol>
+<li>Пусть $\xi\sim\Pi(\lambda)$, то есть $\xi$ дискретна и для любого $k\in\mathbb{N}_0$
+$$p_k=P(\xi=k)=\frac{\lambda^k}{k!}e^{-\lambda}.$$
+Тогда 
+$$
+E\xi=\sum_{k=0}^{\infty}k\frac{\lambda^ke^{-\lambda}}{k!}=\lambda{e}^{-\lambda}\sum_{k=1}^{\infty}\frac{\lambda^{k-1}}{(k-1)!}=\lambda{e}^{-\lambda}e^{\lambda}=\lambda.
+$$
+</li>
+<li>Пусть $\xi\sim{N}(\mu,\sigma^2)$, то есть $\xi$ абсолютно непрерывна и 
+$$p_{\xi}(x)=\frac1{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}.$$
+Тогда 
+$$
+E\xi=\int\limits_{-\infty}^{\infty}xp_{\xi}(x)dx=\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}xe^{-(x-\mu)^2/(2\sigma^2)}dx,
+$$
+сделаем замену $t:=\frac{x-\mu}{\sigma}$, тогда $x=\sigma{t}+\mu$, $dx=\sigma{d}t$, следовательно
+$$
+E\xi=\frac{\sigma}{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}(\sigma{t}+\mu)e^{-t^2/2}dt=
+\frac{\sigma}{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}te^{-t^2/2}dt+\frac{\mu}{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{-t^2/2}dt=\mu.
+$$
+Здесь предпоследнее равенство в силу того, что функция $te^{-t^2/2}$ нечетная, 
+поэтому интеграл по симметричному относительно нуля промежутку равен нулю 
+(п. п. 1, 5 <a href="../math_analysis/math_analysis8.3.html#Theorem8.3.1">теоремы 8.3.1 MA</a>).
+</li>
+<li>Пусть $\xi\sim{K}(0,1)$, то есть $\xi$ абсолютно непрерывна и 
+$$p_{\xi}(x)=\frac1{\pi(1+x^2)}.$$
+Обозначим как $F_+(x)$ функцию распределения случайной величины $\xi^+:=\max(0,\xi)$, тогда для любого $x\in\mathbb{R}$
+$$F_+(x)=P(\xi^+&ltx)=\begin{cases}0,&x\leq0 \\ P(\max(0,\xi)&ltx),&x>0\end{cases}.$$
+Тогда для любого $x>0$
+$$
+F_+(x)=P(\max(0,\xi)&ltx)=P(\xi\leq0)P(\max(0,\xi)&ltx/\xi\leq0)+P(\xi>0)P(\max(0,\xi)&ltx/\xi>0)=F_{\xi}(0)P(\{\omega\mid0&ltx\})+(1-F_{\xi}(0))F_{\xi}(x).
+$$
+Так как функция $p_{\xi}(x)$ четная и $\int_{-\infty}^{\infty}p_{\xi}(x)dx=P_{\xi}(\mathbb{R})=1$, то 
+$$F_{\xi}(0)=\int\limits_{-\infty}^0p_{\xi}(x)dx=\frac12,$$ 
+следовательно
+$$\forall{x}>0\left(F_+(x)=\frac12+\frac12{F}_{\xi}(x)\right).$$
+Следовательно, случайная величина $\xi^+$ абсолютно непрерывна и ее плотность равна
+$$p_+(x)=F_+'(x)=\begin{cases}0,&x\leq0 \\ \frac12p_{\xi}(x),& x>0\end{cases}.$$
+Тогда
+$$
+E\xi^+=\int\limits_{-\infty}^{\infty}xdF_+(x)=\int\limits_0^{\infty}xdF_+(x)=\int\limits_0^{\infty}x\frac{p_{\xi}(x)}{2}dx=\frac1{2\pi}\int\limits_0^{\infty}\frac{x}{1+x^2}dx
+$$
+Так как ряд $\sum_{n=1}^{\infty}\frac{n}{1+n^2}$ расходится по признаку Гаусса 
+(<a href="../math_analysis/math_analysis7.2.3.html#Corollary7.2.11">следствие 7.2.11 MA</a>), 
+то по <a href="../math_analysis/math_analysis8.5.html#Corollary8.5.3">следствию 8.5.3 MA</a> расходится интеграл $\int_1^{\infty}\frac{x}{1+x^2}dx$, 
+то есть $E\xi^+=\infty$.<br>
+Аналогично показывается, что $E\xi^-=\infty$ и, так как $\xi=\xi^+-\xi^-$, то математическое ожидание случайной величины $\xi$ не определено.
+</ol>
+<br>
+<p id="Task4.2"><b>Задача 4.2:</b>
+Для всех распределений введенных в разделах <a href="./probability_theory2.1.html#2.3">2.3</a>, 
+<a href="./probability_theory2.1.html#2.4">2.4</a> и не рассмотренных в примере 4.2 вычислить математическое ожидание или доказать, что оно не определено.
+
+<h5 id="4.5">4.5 Неравенства связанные с математическим ожиданием.</h5>
+
+<p id="Theorem4.14"><b>Теорема 4.14: Неравенства Чебышева.</b><br>
+<ol>
+<li>Если случайная величина $\xi$ неотрицательна, то для любого $\varepsilon>0$
+$$P(\xi\geq\varepsilon)\leq\frac{E\xi}{\varepsilon}.$$
+</li>
+<li>Для любой случайной величины $\xi$, для любого $\varepsilon>0$
+$$P(\xi\geq\varepsilon)\leq\frac{E(\xi^2)}{\varepsilon^2}.$$
+</li>
+<li>Если случайная величина $\xi$ такая, что $|E\xi|<\infty$, то для любого $\varepsilon>0$
+$$P(|\xi-E\xi|\geq\varepsilon)\leq\frac{E((\xi-E\xi)^2)}{\varepsilon^2}.$$
+</li>
+<li>Если фукнкция $g(x)$ - борелевская, неотрицательная, четная, неубывающая на $[0,\infty)$, то для любой случайной величины $\xi$ и любого $\varepsilon>0$
+$$P(|\xi|\geq\varepsilon)\leq\frac{E(g(\xi))}{g(\varepsilon)}.$$
+</li>
+<li>Для любой случайной величины $\xi$, $r>0$, $\varepsilon>0$
+$$P(|\xi-E\xi|\geq\varepsilon)\leq\frac{E(|\xi-E\xi|^r)}{\varepsilon^r}.$$ 
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Обозначим $A:=\{\omega\in\Omega\mid\xi(\omega)\geq\varepsilon\}$, тогда
+$$\begin{cases}\xi(\omega)I_A(\omega)=\xi(\omega)=\varepsilon,&\omega\in{A} \\ \xi(\omega)I_A(\omega)=0,&\omega\notin{A}\end{cases}\Rightarrow
+\xi(\omega)\geq\xi(\omega)I_A(\omega)\geq\varepsilon{I}_A(\omega).$$
+Тогда по п. 4 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>
+$$E\xi\geq{E}(\varepsilon{I}_A)=\varepsilon{E}I_A=\varepsilon{P}(A).$$
+</li>
+<li>Фиксируем $\varepsilon>0$. Так как случайная величина $\xi^2$ неотрицательна, то по п. 1
+$$
+\frac{E(\xi^2)}{\varepsilon^2}\geq{P}(\xi^2\geq\varepsilon^2)=P(\xi\geq\varepsilon)+P(\xi\leq-\varepsilon)\geq{P}(\xi\geq\varepsilon).
+$$
+</li>
+<li>Следует из п. 2 при $\xi:=\xi-E\xi$.
+</li>
+<li>Обозначим $A:=\{\omega\in\Omega\mid|\xi(\omega)|\geq\varepsilon\}$, тогда, так как $g(x)$ неубывает, 
+то для любого $\omega\in{A}$ $g(\xi(\omega))\geq{g}(\varepsilon)$, следовательно
+$$
+E(g(\xi))=E(g(\xi)I_A+g(\xi)I_{\overline{A}})\geq{E}(g(\xi)I_A)\geq{g}(\varepsilon)EI_{A}=g(\varepsilon)P(A).
+$$
+</li>
+<li>Следует из п. 4 при $g(x)=|x|^r$.
+</li>
+</ol>
+<br>
+<p id="Theorem4.15"><b>Теорема 4.15: Неравенство Коши-Буняковского.</b><br>
+Пусть случайные величины $\xi$ и $\eta$ такие, что $E|\xi|<\infty$, $E|\eta|<\infty$, тогда $E|\xi\eta|<\infty$ и 
+$$E|\xi\eta|\leq\sqrt{E(\xi^2)E(\eta^2)}.$$
+<p><b>Доказательство:</b>
+Пусть $E(\xi^2)=0$, тогда, так как случайная величина $\xi^2$ неотрицательна, то по п. п. 3, 1 <a href="./probability_theory4.1.html#Theorem4.5">теоремы 4.5</a>
+$$\xi^2=0(P_{\text{пн.}})\Rightarrow\xi=0(P_{\text{пн.}})\Rightarrow\xi\eta=0(P_{\text{пн.}})\Rightarrow{E}|\xi\eta|=0.$$
+Аналогично рассматривается случай $E(\eta^2)=0$.<br>
+Пусть $E(\xi^2)>0$ и $E(\eta^2)>0$, тогда можно определить случайные величины
+$$\tilde\xi:=\frac{\xi}{\sqrt{E(\xi^2)}},\,\tilde\eta:=\frac{\eta}{\sqrt{E(\eta^2)}}.$$
+Тогда 
+$$E(\tilde\xi^2)=E\frac{\xi^2}{E(\xi^2)}=1,\,E(\tilde\eta^2)=1,$$
+следовательно, по п. 4 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>
+$$
+\begin{cases}
+\forall\omega\in\Omega(\tilde\xi(\omega)+\tilde\eta(\omega))^2\geq0 \\
+\forall\omega\in\Omega(\tilde\xi(\omega)-\tilde\eta(\omega))^2\geq0
+\end{cases}\Rightarrow\forall\omega\in\Omega(2|\tilde\xi\tilde\eta|\leq\tilde\xi^2+\tilde\eta^2)\Rightarrow
+{E}|\tilde\xi\tilde\eta|\leq1\Rightarrow{E}\left|\frac{\xi\eta}{\sqrt{E(\xi^2)E(\eta^2)}}\right|\leq1\Rightarrow{E}|\xi\eta|\leq\sqrt{E(\xi^2)E(\eta^2)}.
+$$
+<br>
+<p id="Statement4.1"><b>Утверждение 4.1:</b>
+$$E|\xi\eta|=\sqrt{E(\xi^2)E(\eta^2)}\Leftrightarrow\exists{c}\in\mathbb{R}:\xi=c\eta(P_{\text{пн.}})$$
+<i>(Вероятно ошибка в условии. Возможно в левой части эквивалентности должно стоять $(E(\xi\eta))^2=E(\xi^2)E(\eta^2)$)</i>
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть $u,v\in\mathbb{R}$ такие, что $u\sqrt{E(\xi^2)}+v\sqrt{E(\eta^2)}=0$, тогда
+$$
+E((u|\xi|+v|\eta|)^2)=u^2E(\xi^2)+2uvE|\xi\eta|+v^2E(\eta^2)=
+u^2+2uv\sqrt{E(\xi^2)E(\eta^2)}+v^2E\eta^2=\left(u\sqrt{E(\xi^2)}+v\sqrt{E(\eta^2)}\right)^2=0.
+$$
+Тогда по п. 3 <a href="./probability_theory4.1.html#Theorem4.5">теоремы 4.5</a> $u|\xi|+v|\eta|=0(P_{\text{пн.}})$, следовательно, $\xi$ и $\eta$ линейно связаны.<br>
+<i>(Последнее утверждение не верно, так как функция модуля не линейна, например, если $f(0)=f(1)=1,g(0)=-1,g(1)=1$, то $|f|-|g|=0$, однако, 
+очевидно не существует такого $c\in\mathbb{R}$, что $f=cg$)</i><br>
+$\Leftarrow)$ 
+$$\sqrt{E(\xi^2)E(\eta^2)}=\sqrt{c^2E(\eta^2)E(\eta^2)}=|c|E(\eta^2)=E(|c||\eta^2|)=E|\xi\eta|.$$
+<br>
+<p id="Theorem4.16"><b>Теорема 4.16: Неравенство Гёльдера.</b><br>
+Пусть $p,q\in\mathbb{R}$ такие, что $p>1$, $q>1$, $\frac1{p}+\frac1{q}=1$, $E|\xi|^p<\infty$, $E|\eta|^q<\infty$, тогда
+$$E|\xi\eta|\leq\left(E(|\xi|^p)\right)^{1/p}\left(E(|\eta|^q)\right)^{1/q}.$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 240.
+<br><br>
+<p id="Theorem4.17"><b>Теорема 4.17:</b>
+Пусть $p\in\mathbb{R}$ такое, что $p\geq1$, $E(|\xi|^p)<\infty$, $E(|\eta|^p)<\infty$, тогда
+$$\left(E((\xi+\eta)^p)\right)^{1/p}\leq\left(E(|\xi|^p)\right)^{1/p}+\left(E(|\eta|^p)\right)^{1/p}.$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 240.
+<br><br>
+<p id="Theorem4.18"><b>Теорема 4.18: Неравенство Иенсена.</b><br>
+Пусть $E|\xi|<\infty$, $g(x)$ борелевская выпуклая книзу функция, тогда
+$$E(g(\xi))\geq{g}(E\xi).$$
+<p><b>Доказательство:</b><br>
+Так как $g(x)$ выпукла книзу, то (см. <a href="../math_analysis/math_analysis6.6.2.html#6.6.2">6.6.2 MA</a>, 
+здесь наблюдается расхождение в терминологии с курсом математического анализа, 
+там такая функция называется выпуклой вверх) для любого $x_0\in\mathbb{R}$ существует $k(x_0):=g'(x_0)\in\mathbb{R}$ такое, что 
+$$g(x)\geq{g}(x_0)+(x-x_0)k(x_0).$$
+Подставляя $x_0:=E\xi$, $x:=\xi$ для любого $\omega\in\Omega$ получим
+$$g(\xi(\omega))\geq{g}(E\xi)+(\xi(\omega)-E\xi)k(E\xi).$$
+Взяв матожидание от обоих частей неравенства получим
+$$E(g(\xi))\geq{E}(g(E\xi))+k(E\xi)(E\xi-E\xi)=g(E\xi).$$
+<br>
+<p id="Theorem4.19"><b>Теорема 4.19: Неравенство Ляпунова для мометнов.</b><br>
+Для любой случайной величины $\xi$ и любых $s,t\in\mathbb{R}$ таких, что $0&lts&ltt$
+$$\bigl(E(|\xi|^s)\bigr)^{\frac1{s}}\leq\bigl(E(|\xi|^t)\bigr)^{\frac1{t}}.$$
+<p><b>Доказательство:</b><br>
+Так как для любого $r>1$ функция $g(x):=|x|^r$ выпукла книзу, то по теореме 4.18
+$$E(g(\xi))\geq{g}(E\xi)\Rightarrow{E}(|\xi|^{\frac{t}{s}})\geq|E\xi|^{\frac{t}{s}}.$$
+Подставив $|\xi|^s$ вместо $\xi$ получим
+$$E\left(\bigl||\xi|^s\bigr|^{\frac{t}{s}}\right)\geq|E(|\xi|^{s})|^{\frac{t}{s}}\Rightarrow{E}(|\xi|^t)\geq(E(|\xi|^s))^{\frac{t}{s}}\Rightarrow
+(E(|\xi|^t))^{\frac1{t}}\geq(E(|\xi|^s))^{\frac1{s}}.$$
+<br>
+Из неравенств Иенсена и Ляпунова вытекает следующая цепочка неравенств
+$$E|\xi|\leq(E(|\xi|^2))^{\frac12}\leq(E(|\xi|^3))^{\frac13}\leq\ldots\leq(E(|\xi|^n))^\frac1{n}\leq\ldots$$
+
+
+<br><br>
+<a href="./probability_theory4.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.6.html">next</a>

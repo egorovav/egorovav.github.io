@@ -1,0 +1,307 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 13.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory13.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory14.1.html">next</a>
+<br>
+
+
+<h5 id="13.5">13.5 Критерий согласия.</h5>
+
+<p id="Example13.14"><b>Пример 13.14:</b>
+<ol>
+<li>Пусть случайная величина $\xi$ принимает $N$ значений $E_1,\ldots,E_N$ с вероятностями $\overline{p}=(p_1,\ldots,p_N)$ соотвественно. 
+Построим критерий для проверки гипотезы $H_0$: 
+$\overline{p}=\overline{p}^{(0)}=(p_1^{(0)},\ldots,p_N^{(0)})$ против альтернативы $H_1$: $\overline{p}\neq\overline{p}^{(0)}$. 
+Обозначим $\nu_i$ число элементов выборки равных $E_i$. 
+Поскольку по теореме Пирсона (<a href="./probability_theory12.6.html#Theorem12.7">теорема 12.7</a>) при верной $H_0$
+$$\chi^2:=\sum_{i=1}^N\frac{(\nu_i-np_i^{(0)})^2}{np_i^{(0)}}\xrightarrow[n\to\infty]{d}\chi_{N-1}^2,$$
+то в для  проверки гипотезы $H_0$ можно использовать следующий критерий
+$$\begin{cases}\chi^2\leq{c}\Rightarrow{H}_0 \\ \chi^2>c\Rightarrow{H}_1\end{cases},$$
+где при известной ошибке первого рода $\alpha$ значение $c$ находится из соотношения $\alpha=P(H_1/H_0)$ по таблице распределения $\chi_{N-1}^2$.
+</li><li>Пусть теперь случайная величина $\xi$ принимает счетное число значений $\{y_i\}$ с вероятностями $\overline{p}=(p_1,\ldots,p_N,\ldots)$ соответственно. 
+Построим критерий для проверки гипотезы $H_0$:
+$\overline{p}=\overline{p}^{(0)}=(p_1^{(0)},\ldots,p_N^{(0)},\ldots)$ против альтернативы $\overline{p}\neq\overline{p}^{(0)}$.
+<br>
+Разобьём множество значений случайной величины $\xi$ на $N+1$ подмножеств $E_1:=\{y_1\}$, ..., $E_N:=\{y_N\}$, $E_{N+1}=\{y_{N+1},y_{N+2},\ldots\}$. 
+Тогда для любого $i\in\overline{1,N}$ $P(E_i)=p_i$ и $p(E_{N+1})=1-p_1-\ldots-p_N$. Далее критерий строится аналогично пункту 1. 
+<br>
+Критерий работает хорошо, если $P(E_i)$ примерно равны и объем выборки достаточно велик чтобы для любого $i\in\overline{1,N+1}$ выполнялось условие $nP(E_i)\sim8-10$. 
+</li><li>Пусть $\xi$ непрерывная случайная величина с функцией распределения $p(x)$. 
+Построим критерий для проверки гипотезы $H_0$: $p(x)=p_0(x)$ против альтернативы $H_1$: $p(x)\neq{p}_0(x)$. 
+Разобьём множество действительных чисел на подмножества $S_1,\ldots,S_n$ так чтобы вероятности 
+$$p_i^{(0)}:=P(x\in{S}_i):=\int\limits_{S_i}p_0(x)dx$$
+были примерно равны. Далее критерий строится аналогично пункту 1.
+</li>
+</ol>
+<br>
+<h5 id="13.6">13.6 Критерий проверки однородности выборки.</h5>
+
+<p id="Example13.15"><b>Пример 13.15:</b>
+Пусть $H_1,\ldots,H_s$, $s$ независимых выборок объёма $n_1,\ldots,n_s$ соответственно. 
+Каждый элемент выборки может обладать одним из $r$ признаков $E_1,\ldots,E_r$. 
+Для любого $i\in\overline{1,r}$, $j\in\overline{1,s}$ обозначим $p_{i,j}$ вероятность того, что элемент выборки $H_j$ обладает признаом $E_i$. 
+Построим критерий для проверки гипотезы 
+$$H_0:\forall{i}\in\overline{1,s}\,\forall{j,k}\in\overline{1,r}(p_{i,j}=p_{i,k}).$$
+Для любых $i\in\overline{1,r}$, $j\in\overline{1,s}$ обозначим $\nu_{i,j}$ - число элементов выборки $H_j$ обладающих признаком $E_i$. 
+Для любого $j\in\overline{1,s}$ рассмотрим статсистику $\chi_j^2$
+$$\chi_j^2:=\sum_{i=1}^r\frac{(\nu_{i,j}-n_jp_{i,j})^2}{n_jp_{i,j}}.$$
+Обозначим $n:=\sum_{j=1}^sn_j$ и при верной $H_0$ для любого $i\in\overline{1,r}$ $p_i:=p_{i,j}$ где $j\in\overline{1,s}$. Тогда $\sum_{i=1}^rp_i=1$, 
+следовательно, общее число оцениваемых параметров $m=r-1$. 
+Оценим параметры $p_1,\ldots,p_{r-1}$ видоизмененным методом $\chi^2$ (<a href="./probability_theory12.6.html#Note12.3">замечание 12.3</a>). 
+Согласно видоизмененному методу $\chi^2$ оценки находятся как решение системы уравнений
+$$\left\{\sum_{j=1}^s\sum_{i=1}^r\frac{\nu_{i,j}}{p_i}\frac{\partial{p}_i}{\partial{p}_l}=0,\,l\in\overline{1,r-1}\right..$$
+Аналогично тому как это сделано в <a href="./probability_theory12.6.html#Note12.3">замечании 12.3</a> имеем
+$$\frac{\partial{p}_i}{\partial{p}_l}=\begin{cases}0, & i\neq{l} \\ 1, & i\neq{l},i\neq{r} \\ -1, & i=r\end{cases},$$
+тогда система приводится к виду
+$$\left\{\sum_{j=1}^s\left(\frac{\nu_{l,j}}{p_l}-\frac{\nu_{r,j}}{p_r}\right)=0,\,l\in\overline{1,r-1}\right.$$
+Обозначив $\nu_{l\cdot}:=\sum_{j=1}^s\nu_{l,j}$ получим
+$$
+\left\{\frac{l\cdot}{p_l}-\frac{\nu_{r\cdot}}{p_r}=0,\,l\in\overline{1,r-1}\right.\Rightarrow\left\{c:=\frac{\nu_{r\cdot}}{p_r}=\frac{\nu_{l\cdot}}{p_l},\,l\in\overline{1,r-1}\right.\Rightarrow
+\forall{l\in\overline{1,r}}\,(\nu_{l\cdot}=cp_l).
+$$
+Так как $\sum_{l=1}^r\nu_{l\cdot}=\sum_{j=1}^sn_j=n$ и $\sum_{l=1}^rp_l=1$, то $c=n$, 
+следовательно, для любого $l\in\overline{1,r}$ в качестве оценки параметра $p_l$ берем $\nu_{l\cdot}/n$. 
+Тогда по теореме Пирсона (<a href="./probability_theory12.6.html#Theorem12.7">теорема 12.7</a>)
+$$\chi^2:=\sum_{j=1}^s\chi_j^2=\sum_{j=1}^s\sum_{i=1}^r\frac{(\nu_{i,j}-n_j\nu_{i\cdot}/n)^2}{\nu_{i\cdot}}\xrightarrow[n\to\infty]{d}\chi_{(r-1)(s-1)}^2.$$
+Таким образом, критерий для оценки гипотезы $H_0$ выглядит следующим образом
+$$\begin{cases}\chi^2\leq{c}\Rightarrow{H}_0 \\ \chi^2>c\Rightarrow\overline{H}_0\end{cases}$$
+где при известной ошибке первого рода $\alpha$ значение $c$ находится по таблицам распределения $\chi_{(r-1)(s-1)}^2$
+<br><br>
+
+<h5 id="13.7">13.7 Критерий согласия Колмогорова.</h5>
+
+<p id="Lemma13.2"><b>Лемма 13.2:</b>
+Пусть $F(x)$ функция (возрастающая?) распределения непрерывной случайной величины $\xi$, $(x_1,\dots,x_n)$ - выборка над случайной величиной 
+$\xi$, $(x_{(1)},\ldots,x_{(n)})$ - вариационный ряд этой выборки, $F_n(x)$ - эмприческая функция распределения случайной величины $\xi$ 
+(см. <a href="./probability_theory11.1.html#Definition11.3">определение 11.3</a>). Тогда распределение статистики
+$$\mathcal{D}_n:=\sup_x|F_n(x)-F(x)|,$$
+не зависит от вида функции $F(x)$.
+<p><b>Доказательство:</b><br>
+При доказательстве п. 2 <a href="./probability_theory12.6.html#Statement12.1">утверждения 12.1</a> было показано, что $\eta:=F(\xi)\sim{R}[0,1]$. 
+Положим $y:=F(x)$ и для любого $i\in\overline{1,n}$ $y_i:=F(x_i)$ наблюдения над случайной величиной $\eta$. 
+Так как функция $F(x)$ неубывает, то совокупность $(y_{(1)}:=F(x_{(1)}),\ldots,y_{(n)}:=F(x_{n}))$ будет вариационным рядом построенным по выборке $y_1,\ldots,y_n$. 
+Тогда 
+$$\mathcal{D}_n=\sup_x|F_n(x)-F(x)|=\sum_{0&lty&lt1}|F_n(F^{-1}(y))-y|,$$
+где в силу возрастания функции $F(x)$
+$$
+G_n(y):=F_n(F^{-1}(y))=\frac1{n}\sum_{k=1}^ne(F^{-1}(y)-x_{(k)})=\frac1{n}\sum_{k=1}^ne(F(F^{-1}(y))-F(x_{(k)}))=\frac1{n}\sum_{k=1}^ne(y-y_{(k)}).
+$$
+Таким образом
+$$\mathcal{D}_n=\sup_{0&lty&lt1}|G_n(y)-y|,$$
+где $G_n(y)$ - эмпирическая функция распределения для равномерного распределения.
+<br><br>
+<p id="Theorem13.1"><b>Теорема 13.1: Колмогоров.</b><br>
+$$P\{\sqrt{n}\mathcal{D}_n&ltz\}\xrightarrow[n\to\infty]{d}K(z).$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 520.
+<br><br>
+<p id="Note13.3"><b>Замечание 13.3:</b>
+Пусть $F_{\xi}(x)$ функция распределения случайной величины $\xi$, 
+тогда <a href="./probability_theory12.1.html#Theorem12.1">теорема 12.1</a> позволяет построить критерий для проверки гипотезы $H_0$: $F_{\xi}(x)=F(x)$. 
+Действительно, положим
+$$\begin{cases}\mathcal{D}_n&ltc\Rightarrow{H}_0 \\ \mathcal{D}_n\geq{c}\Rightarrow\overline{H}_0\end{cases},$$
+тогда при известной ошибке первого рода значение $c$ можно определить по таблицам распределения $K(z)$.
+<br><br>
+<p id="Note13.4"><b>Замечание 13.4: Доверительная область для неизвестной функции распределения</b><br>
+Пусть $(x_1,\ldots,x_n)$ выборка над случайной величиной $\xi$ с неизвестной функцией распределения $F(x)$. 
+Обозначим $k_{1-\alpha}$ квантиль уровня $1-\alpha$ для распределения $K(z)$, 
+тогда по <a href="./probability_theory12.1.html#Theorem12.1">теореме 12.1</a>
+\begin{multline*}
+P\{\sqrt{n}\mathcal{D}_n&ltk_{1-\alpha}\}=1-\alpha\Rightarrow{P}\{\sqrt{n}\sup_x|F_n(x)-F(x)|&ltk_{1-\alpha}\}=
+1-\alpha\Rightarrow\forall{x}\in\mathbb{R}(P\{|F_n(x)-F(x)|&ltk_{1-\alpha}/\sqrt{n}\}=1-\alpha)\Rightarrow\\\Rightarrow
+\forall{x}\in\mathbb{R}(P\{F_n(x)-k_{1-\alpha}/\sqrt{n}&ltF(x)&ltF_n(x)+k_{1-\alpha}/\sqrt{n}\}=1-\alpha)
+\end{multline*}
+Таким образом, построена доверительная область, 
+которая с заданной вероятностью $1-\alpha$ содержит значения функции распределения $F(x)$ для любого $x\in\mathbb{R}$.
+<br>
+<img src="images/image4_1.jpg">
+<br>
+
+<h5 id="13.8">13.8 Последовательный анализ Вальда.</h5>
+
+<p id="Theorem13.2"><b>Теорема 13.2:</b>
+Пусть $\xi$ случайная величина с плотностью распределения $p(x)$. Согласно гипотезе $H_0$ - $p(x)=p_0(x)$, 
+согласно гипотезе $H_1$ - $p(x)=p_1(x)$, где $p_0(x)$ и $p_1(x)$ различны на множестве более мощном чем множество меры нуль. 
+Дана последовательность $\{x_i\}$ из $\mathbb{R}$ и константы $A,B\in\mathbb{R}$ такие, что $0&ltA&ltB$. 
+Для различения гипотез используем следующий процесс:
+<ul>
+<li>1.
+$$
+\begin{cases}
+\frac{p_1(x_1)}{p_0(x_1)}&gtB 		& \Rightarrow{H}_1 \\ 
+\frac{p_1(x_1)}{p_0(x_1)}&ltA 		& \Rightarrow{H}_0 \\ 
+A\leq\frac{p_1(x_1)}{p_0(x_1)}\leq{B}	& \Rightarrow(2)
+\end{cases}
+$$
+</li><li>2.
+$$
+\begin{cases}
+\frac{p_1(x_1)p_1(x_2)}{p_0(x_1)p_0(x_2)}&gtB 		& \Rightarrow{H}_1 \\ 
+\frac{p_1(x_1)p_1(x_2)}{p_0(x_1)p_0(x_2)}&ltA 		& \Rightarrow{H}_0 \\ 
+A\leq\frac{p_1(x_1)p_1(x_2)}{p_0(x_1)p_0(x_2)}\leq{B} 	& \Rightarrow(3)
+\end{cases}
+$$
+</li><li>$\cdots$
+</li><li>k.
+$$
+\begin{cases}
+\frac{p_1(x_1)\cdots{p}_1(x_k)}{p_0(x_1)\cdots{p}_0(x_k)}&gtB 			& \Rightarrow{H}_1 \\ 
+\frac{p_1(x_1)\cdots{p}_1(x_k)}{p_0(x_1)\cdots{p}_0(x_k)}&ltA 			& \Rightarrow{H}_0 \\ 
+A\leq\frac{p_1(x_1)\cdots{p}_1(x_k)}{p_0(x_1)\cdots{p}_0(x_k)}\leq{B}	& \Rightarrow(k+1)
+\end{cases}
+$$
+</li><li>$\cdots$
+</li>
+</ul>
+Пусть $\nu$ - число шагов необходимых для принятия решения, тогда 
+$$P\{\nu<\infty\}=1.$$
+<p><b>Доказательство:</b><br>
+Утверждение теоремы эквивалентно утверждению 
+$$P\{\nu=\infty\}:=\lim_{n\to\infty}P\{\nu&gtn\}=0.$$
+Так как $\{\nu&gtn+1\}\subset\{\nu&gtn\}$, то $P\{\nu&gtn+1\}\leq{P}\{\nu&gtn\}$, следовательно, $P\{\nu&gtn\}$ невозрастающая ограниченная снизу последовательность, 
+тогда по п. 2 <a href="../math_analysis/math_analysis4.3.html#Theorem4.3.2">теоремы 4.3.2 MA</a> предел $\lim_{n\to\infty}P\{\nu&gtn\}$ существует, 
+докажем, что он равен нулю. 
+По <a href="../math_analysis/math_analysis4.4.html#Statement4.4.4">утверждению 4.4.4 MA</a> достаточно показать, что существует $m\in\mathbb{N}$ 
+что $\lim_{k\to\infty}P\{\nu&gtkm\}=0$.
+
+Для любого $i\in\mathbb{N}$ обозначим 
+$$\xi_i:=\ln\frac{p_1(x_i)}{p_0(x_i)},$$
+тогда
+\begin{multline*}
+P\{\nu&gtkm\}=P\{\ln{A}\leq\xi_1\leq\ln{B},\ln{A}\leq\xi_1+\xi_2\leq\ln{B},\ldots,\ln{A}\leq\xi_1+\cdots+\xi_{km}\leq\ln{B}\}\leq\\\leq
+{P}\left\{\ln{A}\leq\sum_{i=1}^m\xi_i\leq\ln{B},\ln{A}\leq\sum_{i=1}^m\xi_i+\sum_{i=m+1}^{2m}\xi_i\leq\ln{B},\cdots,\ln{A}\leq
+\sum_{j=1}^k\sum_{i=(k-1)m+1}^{km}\xi_{(k-1)j+i}\leq\ln{B}\right\}.
+\end{multline*}
+Для любого $j\in\overline{1,k}$ обозначим 
+$$\eta_j:=\sum_{i=(k-1)m+1}^{km}\xi_i,$$
+тогда
+$$
+P\{\nu&gtkm\}\leq{P}\{\ln{A}\leq\eta_1\leq\ln{B},\ln{A}\leq\eta_1+\eta_2\leq\ln{B},\ldots,\ln{A}\leq\eta_1+\cdots+\eta_k\leq\ln{B}\}.
+$$
+Положим $c:=|\ln{A}|+|\ln{B}|$, тогда
+$$
+\ln{A}\leq\eta_1\leq\ln{B}\Rightarrow-|\ln{A}|-|\ln{B}|\leq\eta_1\leq|\ln{A}|+|\ln{B}|\Rightarrow|\eta_1|\leq|\ln{A}|+|\ln{B}|=c
+$$
+$$
+\begin{cases}\ln{A}\leq\eta_1 & \leq\ln{B} \\ \ln{A}\leq\eta_1+\eta_2&\leq\ln{B}\end{cases}\Rightarrow
+\begin{cases}\eta_2\geq\ln{A}-\ln{B} \\ \eta_2\leq\ln{B}-\ln{A}\end{cases}\Rightarrow
+|\eta_2|\leq|\ln{B}-\ln{A}|\leq|\ln{A}|+|\ln{B}|=c.
+$$
+Аналогичным образом для любого $i\in\overline{2,k-1}$ показывается, что 
+$$\begin{cases}\ln{A}\leq\eta_1+\cdots+\eta_i & \leq\ln{B} \\ \ln{A}\leq\eta_1+\cdots+\eta_i+\eta_{i+1} & \leq\ln{B}\end{cases}\Rightarrow|\eta_i|\leq{c},$$
+следовательно,
+$$P\{\nu&gtkm\}\leq{P}\{|\eta_1|\leq{c},\ldots,|\eta_k|\leq{c}\}.$$
+Так как случайные величины $\xi_1,\cdots,\xi_{km}$ независимы и одинаково распределены <i>(?)</i>, 
+то случайные величины $\eta_1,\ldots,\eta_k$ так же независимы и одинаково распределены, тогда
+$$P\{\nu>km\}\leq\prod_{i=1}^kP\{|\eta_i|\leq{c}\}=P^k\{|\eta_1|\leq{c}\}.$$
+Покажем, что существует $m\in\mathbb{N}$ такое, что $P\{|\eta_1|\leq{c}\}<1$.
+
+По п. 6 <a href="../probability_theory/probability_theory4.6.html#Theorem4.20">теоремы 4.20</a> $D\eta_1=D(\xi_1+\cdots+\xi_m)=mD\xi_1$. Предположим, что $D\xi_1=0$, 
+тогда по п. 4 <a href="../probability_theory/probability_theory4.6.html#Theorem4.20">теоремы 4.20</a> 
+$$
+\xi_1=E\xi_1(P_{\text{пн}})\Rightarrow{p}_0(x)\exp{E\xi_1}=p_1(x)(P_{\text{пн}})\Rightarrow
+\exp{E\xi_1}\int\limits_{-\infty}^{\infty}p_0(x)dx=\int\limits_{-\infty}^{\infty}p_1(x)dx=1\Rightarrow\exp{E\xi_1}=1\Rightarrow{p}_0(x)=p_1(x)(P_{\text{пн}}),
+$$
+а это противоречит условию. Следовательно, $D\xi_1>0$, тогда существует натуральное $m$ такое, что $D\eta_1=mD\xi_1&gt4c^2$. 
+Предположим, что при этом $P\{|\eta_1|\leq{c}\}=1$. Обозначим через $p_{\eta}(x)$ плотность распределения случайной величины $\eta_1$, тогда
+$$
+P\{|\eta_1|\leq{c}\}\Rightarrow{P}\{-c\leq\eta_1\leq{c}\}\Rightarrow-c\leq{E}\eta_1\leq{c}\Rightarrow
+\forall{x}\in[-c,c](|x-E\eta_1|\leq|x|+|E\eta_1|\leq2c)\Rightarrow
+{D}\eta_1=\int\limits_{-c}^c(x-E\eta_1)^2p_{\eta}(x)dx\leq4c^2\int\limits_{-c}^cp_{\eta}(x)dx\leq4c^2,
+$$
+что противоречит выбору $m$. 
+
+Следовательно, при $\eta_1=\xi_1+\cdots+\xi_m$
+$$\lim_{k\to\infty}P\{\nu&gtkm\}\leq\lim_{k\to\infty}P^k\{|\eta_1|\leq{c}\}=0.$$
+<br>
+
+<p id="Corollary13.1"><b>Следствие 13.1:</b>
+В условиях теоремы 13.2 $$E\nu<\infty.$$
+<p><b>Доказательство:</b><br>
+Докажем, что сходится ряд $\sum_{n=1}^{\infty}P(\nu&gtn)$. Выберем $m\in\mathbb{N}$ так же как это делалось при доказательстве 
+теоремы 13.2, тогда в обозначениях теоремы 13.2 имеем
+$$
+\forall{n}\in\mathbb{N}(P\{\nu>n+1\}\leq{P}(\nu>n))\Rightarrow\sum_{k=m}^{\infty}P\{\nu>n\}\leq\sum_{k=1}^{\infty}mP\{\nu>km\}=
+m\sum_{k=1}^{\infty}P\{\nu>km\}\leq{m}\sum_{k=1}^{\infty}P^k\{|\eta_1|\leq{c}\}<\infty
+$$
+Таким образом, ряд $\sum_{n=1}^{\infty}P\{\nu>n\}$ сходится по п. 1 
+<a href="../math_analysis/math_analysis7.1.html#Theorem7.1.1">теоремы 7.1.1 MA</a> так как сходится его $m$-тый остаток, 
+но этот ряд в свою очередь является перестановкой и группировкой членов ряда представляющего $E\nu$. Действительно
+$$
+E\nu:=\sum_{n=1}^{\infty}nP\{\nu=n\}=\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}P\{\nu=n\}=1+\sum_{n=1}^{\infty}P\{\nu>n\},
+$$
+следовательно, $E\nu<\infty$ по <a href="../math_analysis/math_analysis7.3.1.html#Theorem7.3.1">теореме 7.3.1 MA</a> и 
+<a href="../math_analysis/math_analysis7.2.1.html#Corollary7.2.1">следствию 7.2.1 MA</a>.
+<br><br>
+<p id="Corollary13.2"><b>Следствие 13.2: Тождество Вальда.</b><br>
+В обозначениях теоремы 13.2
+$$E\sum_{i=1}^{\nu}\xi_i=E\nu{E}\xi_1.$$
+<p><b>Доказательство:</b><br>
+Для любого $k\in\mathbb{N}$ положим
+$$\eta_k:=\begin{cases}1, & k\leq\nu \\ 0, & k>\nu\end{cases},$$
+тогда $\eta_k$ зависит от $\xi_1,\ldots,\xi_{k-1}$ и не зависит от $\xi_i$ при $i\geq{k}$, тогда
+$$
+E\sum_{k=1}^{\nu}\xi_k=E\sum_{k=1}^{\infty}\xi_k\eta_k=\sum_{k=1}^{\infty}E(\xi_k\eta_k)=E\xi_1\sum_{k=1}^{\infty}E\eta_k=
+E\xi_1\sum_{k=1}^{\infty}P\{\eta_k=1\}=E\xi_1\sum_{k=1}^{\infty}\sum_{i=k}^{\infty}P\{\nu=i\}=E\xi_1\sum_{n=1}^{\infty}nP\{\nu=n\}=E\xi_1E\nu
+$$
+<br>
+<p id="Theorem13.3"><b>Теорема 13.3:</b>
+Пусть в условиях <a href="#Theorem13.2">теоремы 13.2</a> $\alpha:=P(H_1/H_0)$ - вероятность ошибки первого рода, 
+$\beta:=P(H_0/H_1)$ - вероятность ошибки второго рода, тогда
+$$B\leq\frac{1-\beta}{\alpha};\,A\geq\frac{\beta}{1-\alpha}.$$
+<p><b>Доказательство:</b><br>
+Пусть $W_n^{(0)}\subset\mathbb{R}^n$ - область значений, при которых на $n$-том шаге принимается гипотеза $H_0$, 
+$W_n^{(1)}\subset\mathbb{R}^{n}$ - область значений, при которых на $n$-том шаге принимается гипотеза $H_1$. Тогда
+$$\alpha:=P(H_1/H_0)=\sum_{n=1}^{\infty}\int\limits_{W_n^{(1)}}p_0(x_1)\cdots{p}_0(x_n)dx_1\cdots{d}x_n.$$
+Следовательно, если $(x_1,\ldots,x_n)\in{W}_n^{(1)}$, то
+\begin{multline*}
+\frac{p_1(x_1)\cdots{p}_1(x_n)}{p_0(x_1)\cdots{p}_n(x_n)}>B\Rightarrow{p}_0(x_1)\cdots{p}_0(x_n)<\frac1{B}p_1(x_1)\cdots{p}_1(x_n)\Rightarrow\\\Rightarrow
+\alpha\leq\frac1{B}\sum_{n=1}^{\infty}\int\limits_{W_n^{(1)}}p_1(x_1)\cdots{p}_1(x_n)dx_1\cdots{d}x_n=\frac1{B}P(H_1/H_1)=\frac1{B}(1-P(H_0/H_1))=
+\frac{1-\beta}{B}\Rightarrow{B}\leq\frac{1-\beta}{\alpha}
+\end{multline*}
+Аналогично из равенства
+$$\beta:=P(H_0/H_1)=\sum_{n=1}^{\infty}\int\limits_{W_n^{(0)}}p_1(x_1)\cdots{p}_1(x_n)dx_1\cdots{d}x_n$$
+получим неравенство 
+$$A\geq\frac{\beta}{1-\alpha}$$
+<br>
+<p id="Note13.5"><b>Замечание 13.5:</b>
+Сумма ошибок первого и второго рода $\alpha+\beta$ критерия Вальда не превосходит суммы $\alpha'+\beta'$, где $\alpha'$ и $\beta'$ находятся из равеств 
+$$\frac{\beta'}{1-\alpha'}=A;\,\frac{1-\beta'}{\alpha'}=B$$
+откуда
+$$\alpha'=\frac{1-A}{B-A};\,\beta'=\frac{A(B-1)}{B-A}.$$
+<p id="Note13.6"><b>Замечание 13.6:</b>
+Найдем среднее значение числа испытаний необоходимых для принятия решения. Для любого $i\in\mathbb{N}$ положим
+$$\xi_i:=\ln\frac{p_1(x_i)}{p_0(x_i)}.$$
+Так как случайная практике $p_0(x)$ и $p_1(x)$ обычно близки, то значения величин $\xi_i$ малы, следовательно, можно считать, 
+что в момент принятия решения значение $\sum_{i=1}^{\nu}\xi_i$ равно $\ln{A}$ при верной $H_0$  и $\ln{B}$ при верной $H_1$. То есть при верной $H_0$
+$$\sum_{i=1}^{\nu}\xi_i\sim\begin{pmatrix}\ln{A} & \ln{B} \\ 1-\alpha & \alpha\end{pmatrix},$$
+а при верной $H_1$
+$$\sum_{i=1}^{\nu}\xi_i\sim\begin{pmatrix}\ln{A} & \ln{B} \\ \beta & 1-\beta\end{pmatrix}.$$
+Тогда 
+$$E\left(\sum_{i=1}^{\nu}\xi_i/H_0\right)\approx\alpha\ln{B}+(1-\alpha)\ln{A},$$
+с другой стороны по следствию 13.2
+$$E\left(\sum_{i=1}^{\nu}\xi_i/H_0\right)=E(\nu/H_0)E(\xi_1/H_0),$$
+следовательно,
+$$
+E(\nu/H_0)=\frac{E\left(\sum_{i=1}^{\nu}\xi_i/H_0\right)}{E(\xi_1/H_0)}\approx\frac{\alpha\ln{B}+(1-\alpha)\ln{A}}{E(\xi_1/H_0)}=(?)
+=\frac1{E(\xi_1/H_0)}\left(\alpha\ln\frac{1-\beta}{\alpha}+(1-\alpha)\ln\frac{\beta}{1-\alpha}\right)
+$$
+Аналогично при верной $H_1$
+$$E(\nu/H_1)=\frac1{E(\xi_1/H_1)}\left(\beta\ln\frac{\beta}{1-\alpha}+(1-\beta)\ln\frac{1-\beta}{\alpha}\right)$$
+
+
+<br><br>
+<a href="./probability_theory13.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory14.1.html">next</a>

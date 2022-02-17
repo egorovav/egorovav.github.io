@@ -1,0 +1,364 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 7.4</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory7.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory8.1.html">next</a>
+
+$\newcommand{\UniformConv}{\substack{ \\ \longrightarrow\\ \longrightarrow \\ n\to\infty}}$
+
+<h5 id="7.4">7.4 ЦПТ в стандартной схеме серий.</h5>
+
+<p id="Definition7.8"><b>Определение 7.8:</b>
+Схемой последовательно возрастающих серий случайных величин называется последовательность случайных величин $\{\xi_{kn}\}$ такая, 
+что $n\in\mathbb{N}$ и для любого $n\in\mathbb{N}$ $k\in\overline{1,n}$:
+$$
+\begin{matrix}
+\xi_{11}	&		&		&		\\
+\xi_{12}	& \xi_{22}	&		&		\\
+\xi_{13}	& \xi_{23}	& \xi_{33}	&		\\
+\cdots		& \cdots	& \cdots	& \cdots	\\
+\xi_{1n}	& \xi_{2n}	& \cdots	& \xi_{nn}	\\
+\cdots		& \cdots	& \cdots	& \cdots	\\
+\end{matrix}
+$$
+Схема серий называется стандартной, если
+<ol>
+<li>для любого $n\in\mathbb{N}$ случайные величины $\xi_{1n},\ldots,\xi_{nn}$ независимы;
+</li><li>для любых $n\in\mathbb{N}$, $k\in\overline{1,n}$ $E\xi_{kn}=0$;
+</li><li>для любого $n\in\mathbb{N}$ $\sum_{k=1}^nD\xi_k=1$;
+</li>
+</ol>
+<br>
+Для случайных величин стандартной схемы серий положим
+$$\tilde{S}_n=S_n=\sum_{k=1}^n\xi_{kn},\,B_n^2=\sum_{k=1}^n\xi_{kn}=1,$$
+и
+$$L_n(\tau)=\sum_{k=1}^n\int\limits_{|x|>\tau}x^2dF_{nk}(x).$$
+<br>
+<p id="Theorem7.16"><b>Теорема 7.16:</b>
+Если в стандартной схеме серий выполнено условие Линденберга, т. е.
+$$\forall\tau>0\,(L_n(\tau)\xrightarrow[n\to\infty]{}0),$$
+то
+$$P(S_n&ltx)\UniformConv\Phi(x).$$
+<p><b>Доказательство:</b><br>
+Так как при доказательстве <a href="./probability_theory7.3.html#Theorem7.14">теоремы 7.14</a> 
+не используется вид функции распределения случайных величин $\{\xi_k\}$, 
+а используется только их матожидания $\mu_k$, сумма дисперссий $B_n^2$ и независимость случайных величин входящих в сумму $S_n$, 
+то стандартную схему серий можно рассматривать как последовательность случайных величин, 
+в которой случайные величины $\xi_{1n},\ldots,\xi_{nn}$ входящие в сумму $S_n$ с ростом $n$ меняются сохраняя при этом необходимые ($\mu_{kn}=0$, $B_n^2=1$, 
+независимость $\xi_{1n},\ldots,\xi_{nn}$) характеристики. 
+Тогда доказательство теоремы аналогично доказательству <a href="./probability_theory7.3.html#Theorem7.14">теоремы 7.14</a>. 
+Доказательство, например, в Боровков А. А.1999 г. "Теория вероятностей" стр. 164.
+<br><br>
+<p id="Statement7.4"><b>Утверждение 7.4:</b>
+В стандартной схеме последовательно возрастающих серий случайных величин $\{\xi_{kn}\}$ 
+$$\forall\tau>0\,(L_n(\tau)\xrightarrow[n\to\infty]{}0)\Rightarrow\max_{1\leq{k}\leq{n}}D\xi_{kn}\xrightarrow[n\to\infty]{}0.$$
+<p><b>Доказательство:</b><br>
+Фиксируем $\varepsilon>0$.
+$$
+\max_{1\leq{k}\leq{n}}D\xi_{kn}=\max_{1\leq{k}\leq{n}}\int\limits_{-\infty}^{\infty}x^2dF_{kn}(x)=
+\max_{1\leq{k}\leq{n}}\left(\int\limits_{|x|\leq\sqrt\varepsilon/2}^{\infty}x^2dF_{kn}(x)+\int\limits_{|x|>\sqrt\varepsilon/2}x^2dF_{kn}(x)\right)\leq
+\max_{1\leq{k}\leq{n}}\left(\frac{\varepsilon}{4}+\int\limits_{|x|>\sqrt\varepsilon/2}x^2dF_{kn}(x)\right)\leq\frac{\varepsilon}{4}+L_n\left(\frac{\sqrt\varepsilon}{2}\right).
+$$
+Так как $L_n(\sqrt\varepsilon/2)\to0$ при $n\to\infty$, то существует $n_0\in\mathbb{N}$ такое, что $L_n(\sqrt\varepsilon/2)<\varepsilon/2$, тогда
+$$\forall{n}&gtn_0\left(\max_{1\leq{k}\leq{n}}D\xi_{kn}<\frac{\varepsilon}{4}+\frac{\varepsilon}{2}<\varepsilon\right).$$
+<br>
+Как было показано ранее для произвольной последовательности независимых случайных величин $\{\xi_k\}$
+$$L_n(\tau)\xrightarrow[n\to\infty]{}0\Rightarrow{P}(\max_{1\leq{k}\leq{n}}|\xi_k-\mu_k|>\tau{B}_n)\xrightarrow[n\to\infty]{}0.$$
+В случае стандартной схемы серий ($\mu_k=0$, $B_n=1$)
+$$L_n(\tau)=\sum_{k=1}^n\int\limits_{|x|>\tau}x^2dF_{kn}(x)\xrightarrow[n\to\infty]{}0\Rightarrow{P(\max_{1\leq{k}\leq{n}}|\xi_{kn}|>\tau)}\xrightarrow[n\to\infty]{}0.$$
+<br>
+<p id="Definition7.9"><b>Определение 7.9:</b>
+Случайные величины $\{\xi_{kn}\}$ в стандартной схеме серий называются ассимптотически малыми, если
+$$\forall\varepsilon>0\,\left(\max_{1\leq{k}\leq{n}}P(|\xi_{kn}|>\varepsilon)\xrightarrow[n\to\infty]{}0\right).$$
+<br>
+<p id="Statement7.5"><b>Утверждение 7.5:</b>
+Если в стандартной схеме серий $\{\xi_{kn}\}$ для любого ${\tau>0}$ $L_n(\tau)\to0$ при $n\to\infty$, то случайные величины $\{\xi_{kn}\}$ ассимптотическии малы.
+<p><b>Доказательство:</b><br>
+Так как по <a href="#Statement7.4">утверждению 7.4</a>
+$$\forall\tau>0\,(L_n(\tau)\xrightarrow[n\to\infty]{}0)\Rightarrow\max_{1\leq{k}\leq{n}}D\xi_{kn}\xrightarrow[n\to\infty]{}0$$
+и по п. 3 <a href="./probability_theory4.3.html#Theorem4.14">теоремы 4.14</a>
+$$\max_{1\leq{k}\leq{n}}P(|\xi_{kn}|>\varepsilon)\leq\max_{1\leq{k}\leq{n}}\frac{D\xi_{kn}}{\varepsilon^2},$$
+то $\max\limits_{1\leq{k}\leq{n}}P(|\xi_{kn}|>\varepsilon)\to0$ при $n\to\infty$.
+<br><br>
+Условие Линденберга не является необходимым для сходимости 
+${P(S_n&ltx)\UniformConv\Phi(x)}$.
+<br>
+<p id="Example7.3"><b>Пример 7.3:</b>
+Пусть в стандартной схеме последовательно возрастающих серий для любого $n\in\mathbb{N}$ $\xi_{1n}=\eta\sim{N}(0,1)$ и 
+для любого $k\in\overline{2,n}$ $\xi_{kn}\equiv0$. Тогда $S_n:=\sum_{k=1}^n\xi_{kn}=\xi_{1n}=\eta\sim{N}(0,1)$, то есть
+$$P(S_n&ltx)\UniformConv\Phi(x),$$
+но условие Линденберга не выполняется так как 
+$$\max_{1\leq{k}\leq{n}}P(|\xi_{kn}|>\varepsilon)=P(|\eta|>\varepsilon)$$ 
+не стремится к нулю при $n\to\infty$.
+<br><br>
+<p id="Theorem7.17"><b>Теорема 7.17: Теорема Линденберга-Феллера.</b><br>
+Пусть $\{\xi_{kn}\}$ стандартная схема серий такая, что
+<ol>
+<li>
+$$\forall\varepsilon>0\left(\max_{1\leq{k}\leq{n}}P(|\xi_{kn}|>\varepsilon)\xrightarrow[n\to\infty]{}0\right),$$
+</li><li>
+$$P(S_n&ltx)\UniformConv\Phi(x),$$
+</li>
+</ol>
+тогда для любого $\tau>0$ $L_n(\tau)\to0$ при $n\to\infty$.
+<p><b>Доказательство:</b><br>
+Доказательство, напремер, в Боровков А. А.1999 г. "Теория вероятностей" стр. 167.
+<br><br>
+<p id="Note7.4"><b>Замечание 7.4:</b>
+Центральная предельная теорема в стандартной схеме серий используется для оценки вероятностей вида $P(A\leq{S}_n\leq{B})$ при достаточно больших $n$.
+<br><br>
+Введем некоторые обозначения: пусть $\{\xi_{kn}\}$ схема последовательно возрастающих серий такая, что для любых $n\in\mathbb{N}$ $k\in\overline{1,n}$
+$$\xi_{kn}\sim\begin{pmatrix}1, & 0 \\ p_n, & q_n\end{pmatrix},$$
+где $q_n:=1-p_n$.
+<br>
+<p>Для любого $n\in\mathbb{N}$ обозначим $\mu_n:=\sum_{k=1}^n\xi_{kn}$ число успехов в $n$-той серии, $F_n(x)$ - функция распределения $\mu_n$. 
+Тогда для любого $n\in\mathbb{N}$, $k\in\overline{1,n}$ 
+$$P(\mu_n=k)=\binom{n}{k}p_n^kq_n^{n-k},$$
+$$F_n(x)=\sum_{k&ltx}\binom{n}{k}p_n^kq_n^{n-k}.$$
+Зафиксируем $\lambda>0$ и обозначим функцию распределения Пуассона с параметром $\lambda$ (<a href="./probability_theory2.1.html#2.4">2.4</a> п. 5) как
+$$\Pi(x):=\sum_{k&ltx}\frac{\lambda^ke^{-\lambda}}{k!}$$ 
+<br>
+<p id="Theorem7.18"><b>Теорема 7.18:</b>
+Если $p_n\to0$, $np_n\to\lambda$ при $n\to\infty$, то $\{F_n(x)\}$ сходится в основном к $\Pi(x)$, то есть
+$$\forall{k}\in\overline{1,n}\left(P(\mu_n=k)\xrightarrow[n\to\infty]{}\frac{\lambda^ke^{-\lambda}}{k!}\right).$$
+<i>Доказательство теоремы не имеет отношения к ЦПТ. Возожно теорема более уместна в конце 6 главы.</i>
+<p><b>Доказательство:</b><br>
+Для любого $z\in\mathbb{C}$ такого, что $|z|<1/2$ докажем вспомогательное неравенство $|\ln(1+z)-z|\leq|z|^2$.
+\begin{multline*}
+\ln(1+z)=\sum_{k=1}^{\infty}\frac{z^k}{k}(-1)^{k-1}\Rightarrow|\ln(1+z)-z|=\left|\sum_{k=2}^{\infty}\frac{z^k}{k}(-1)^{k-1}\right|\leq\sum_{k=1}^{\infty}\frac{|z|^k}{k}=\\=
+\frac{|z|^2}{2}\sum_{k=2}^{\infty}2\frac{|z|^{k-2}}{k}\leq\frac{|z|^2}{2}\sum_{k=2}^{\infty}|z|^{k-2}=\frac{|z|^2}{2}\frac1{1-|z|}\leq|z|^2,
+\end{multline*}
+где в последнем неравенстве использована формула для суммы геометрической прогрессии 
+(<a href="../math_analysis/math_analysis7.1.html#Example7.1.1">пример 7.1.1 MA</a>).
+
+Для любого $n\in\mathbb{N}$ обозначим $\varphi_n(t)$ - характеристическая функция $\mu_n$. Для любого $n\in\mathbb{N}$ $\mu_n\sim{B}(n,p)$ 
+(<a href="./probability_theory2.1.html#2.4">2.4</a> п. 6), тогда по п. 2 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a>
+$$\varphi_n(t)=\bigl(q_n+p_ne^{it}\bigr)^n.$$
+Обозначим $\varphi(t)$ - характеристическая функция $\Pi(x)$, тогда по п. 4 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a>
+$$\varphi(t)=\exp{\bigl(\lambda(e^{it}-1)\bigr)}.$$
+Так как $p_n\to0$ при $n\to\infty$, то существуте $n_0\in\mathbb{N}$ такое, что для любого $n&gtn_0$ $|p_n(e^{it}-1)|<1/2$. Тогда для любого $n&gtn_0$
+\begin{multline*}
+|\ln\varphi_n(t)-\ln\varphi(t)|=|n\ln{\bigl(q_n+p_ne^{it}\bigr)}-\lambda(e^{it}-1)|=
+|n\ln{\bigl(1+p_n(e^{it}-1)\bigr)}-np_n(e^{it}-1)+np_n(e^{it}-1)-\lambda(e^{it}-1)|\leq\\\leq
+{n}|\ln{\bigl(1+p_n(e^{it}-1)\bigr)}-p_n(e^{it}-1)|+|e^{it}-1||np_n-\lambda|\leq
+{n}p_n^2|e^{it}-1|^2+|e^{it}-1||np_n-\lambda|.
+\end{multline*}
+Так как $p_n\to0$, $np_n\to\lambda$ при $n\to\infty$, то последнее выражение стермится к нулю при $n\to\infty$, то есть
+$$\ln{\varphi_n(t)}\xrightarrow[n\to\infty]{}\ln{\varphi(t)}\Rightarrow\varphi_n(t)\xrightarrow[n\to\infty]{}\varphi(t),$$
+тогда по <a href="./probability_theory6.3.html#Theorem6.14">теореме 6.14</a> $\{F_n(x)\}$ сходится в основном к $\Pi(x)$. Следовательно,
+$$
+P(\mu_n=k)=F_n(k+0)-F_n(k)\xrightarrow[n\to\infty]{}\Pi(k+0)-\Pi(k)=\frac{\lambda^ke^{-\lambda}}{k!}.
+$$
+
+<h5 id="7.5">7.5 Локальная предельная теорема.</h5>
+
+Везде далее в этом разделе $\xi$ - дискретная случайная величина.
+<br><br>
+<p id="Definition7.10"><b>Определение 7.10:</b>
+Распределение дискретной случайной величины $\xi$ называется решётчатым, если 
+$$\exists{a}\in\mathbb{R},\,\exists{h}>0:\stackrel{\circ}{\forall}\omega\in\mathbb{R}\,\exists{k}\in\mathbb{Z}:\xi(\omega)=a+kh.$$ 
+При этом $h$ называется шагом решётчатого распределения.<br>
+Шаг распределения $h$ называется максимальным, если для любого другого шага $h_1$ $h_1&lth$.
+<br><br>
+Здесь $\stackrel{\circ}{\forall}$ означает "почти для всех".
+<br><br>
+<p id="Example7.4"><b>Пример 7.4:</b>
+Распределение Пуассона является решётчатым ($a=0$, $k=1$), так как для любой случайной величины $\xi\sim\Pi(\lambda)$, $\xi(\mathbb{R})=\mathbb{N}_0$. 
+<br><br>
+<p id="Theorem7.19"><b>Теорема 7.19:</b>
+Распределение дискретной случайной величины $\xi$ решётчато тогда и только тогда, 
+когда существует $t_0\in\mathbb{R}\backslash\{0\}$ такое, что $|\varphi_{\xi}(t_0)|=1$.
+<p><b>Доказательство:</b><br>
+Обозначим $F(x)$ - функция распределения, $\varphi(t)$ - характеристическая функция случайной величины $\xi$.<br>
+$\Rightarrow)$ Пусть распределение дискретной случайной величины $\xi$ решётчато, то есть
+$$\exists{a}\in\mathbb{R},\,\exists{h}>0:\stackrel{\circ}{\forall}\omega\in\mathbb{R}(\exists{k}\in\mathbb{Z}:\xi(\omega)=a+kh).$$
+Обозначим для любого $k\in\mathbb{Z}$ $p_k:=P(\xi=a+kh)$, тогда
+$$\varphi(t)=Ee^{it\xi}=\sum_{k=-\infty}^{\infty}p_ke^{it(a+kh)}=e^{ita}\sum_{k=-\infty}^{\infty}p_ke^{itkh}.$$
+Положим $t_0:=2\pi/h$, тогда
+$$
+\varphi(t_0)=e^{i\frac{2\pi}{h}a}\sum_{k=-\infty}^{\infty}e^{2\pi{k}i}=e^{i\frac{2\pi}{h}a}\sum_{k=-\infty}^{\infty}p_k=e^{i\frac{2\pi}{h}a}\Rightarrow
+|\varphi(t_0)|=\left|e^{i\frac{2\pi}{h}a}\right|=1.
+$$
+$\Leftarrow)$
+Пусть существует $t_0\in\mathbb{R}\backslash\{0\}$ такое, что $|\varphi(t_0)|=1$. Тогда существует $\theta\in\mathbb{R}$ такое, что $\varphi(t_0)=e^{i\theta}$, 
+следовательно,
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}e^{it_0x}dF=e^{i\theta}\Rightarrow\int\limits_{-\infty}^{\infty}e^{i(t_0x-\theta)}dF(x)=
+\int\limits_{-\infty}^{\infty}\cos{(t_0x-\theta)}dF(x)+i\int\limits_{-\infty}^{\infty}\sin{(t_0x-\theta)}dF(x)=1\Rightarrow
+\int\limits_{-\infty}^{\infty}\cos{(t_0x-\theta)}dF(x)=1=\int\limits_{-\infty}^{\infty}dF(x)\Rightarrow\\\Rightarrow
+\int\limits_{-\infty}^{\infty}(1-\cos{(t_0x-\theta)})dF(x)=2\int\limits_{-\infty}^{\infty}\sin^2{\frac{t_0x-\theta}{2}}dF(x)=
+2\sum_{s\in\xi(\mathbb{R})}\left(\sin^2{\frac{t_0s-\theta}{2}}P(\xi=s)\right)=0,
+\end{multline*}
+где множество $\xi(\mathbb{R})$ всех значений случайной величины $\xi$ счётно.
+Тогда для любого $s\in\xi(\mathbb{R})$ либо $P(\xi=s)=0$, либо 
+$$\sin\frac{t_0s-\theta}{2}=0\Rightarrow\exists{k}\in\mathbb{Z}:\frac{t_0s-\theta}{2}=\pi{k}\Rightarrow{s}=\frac{\theta}{t_0}+\frac{2\pi}{t_0}k.$$
+Таким образом, почти для всех $\omega\in\mathbb{R}$ $\xi(\omega)=a+kh$, где $a:=\theta/t_0$, ${h:=2\pi/t_0}$.
+<br><br>
+<p id="Theorem7.20"><b>Теорема 7.20:</b>
+Пусть $h$ - шаг распределения случайной величины $\xi$, тогда $h$ максимальный шаг распределения тогда и только тогда, когда 
+$$\forall{t}\in\mathbb{R}\left(0<|t|<\frac{2\pi}{h}\Rightarrow|\varphi(t)|<1\right).$$
+<p><b>Доказательство:</b><br>
+Обозначим $\varphi(t)$ - характеристическая функция случайной величины $\xi$.<br>
+$\Rightarrow)$ Докажем от противного. Предположим что существует $t_1\in\mathbb{R}$ такое, что $0&ltt_1&lt2\pi/h$ и $|\varphi(t_1)|=1$. 
+Тогда из доказательства теоремы 7.19 следует, что $2\pi/t_1$ шаг распределения при этом 
+$h&lt2\pi/t_1$, то есть $h$ не максимальный шаг. Получено противоречие.<br>
+$\Leftarrow)$ Докажем от противного пусть существует шаг распределения $h_1$ такой, что $h&lth_1$. 
+Тогда $0<2\pi/h_1<2\pi/h$ и по теореме 7.19 $|\varphi(2\pi/h_1)|=1$. Получено противоречие.
+<br><br>
+<p id="Corollary7.4"><b>Следствие 7.4:</b>
+$$\forall\varepsilon>0\,\exists{c}>0:\forall{t}\in\mathbb{R}\left(\varepsilon\leq|t|\leq\frac{2\pi}{h}-\varepsilon\Rightarrow|\varphi_{\xi}(t)|\leq{e}^{-c}\right).$$
+<p><b>Доказательство:</b><br>
+Следует из непрерывности функции $e^x$.
+<br><br>
+Введём некоторые обозначения.<br>
+$\{\xi_n\}$ - последовательность независимых одинаково распределённых случайных величин с решётчатым распределением. 
+Для любого $n\in\mathbb{N}$ $F(x)$ - функция распределения $\xi_n$, $\mu:=E\xi_n$, $\sigma^2:=D\xi_n$, 
+$S_n:=\sum_{k=1}^n\xi_n$, тогда $ES_n=n\mu$, $B_n^2:=DS_n=n\sigma^2$. Если $a$, $h$ параметры решётчатого распределения $\xi_n$, 
+то $S_n$ имеет решётчатое распределение с параметрами $an$, $h$. Для любого $n\in\mathbb{N}$,
+$k\in\mathbb{Z}$ обозначим
+$$z_{nk}:=\frac{an+kh-n\mu}{\sigma\sqrt{n}},\,P_n(k):=P(S_n=an+kh).$$
+<br>
+<p id="Theorem7.21"><b>Теорема 7.21: Локальная предельная теорема.</b><br>
+Пусть $\{\xi_n\}$ последовательность одинаково распределённых случайных величин с решётчатым распределеним, $h$ - максимальный шаг, $0<\sigma^2<\infty$, тогда 
+$$\frac{B_n}{h}P_n(k)-\frac1{\sqrt{2\pi}}e^{-z_{nk}^2/2}\xrightarrow[n\to\infty]{}0,$$
+причём сходимость равномерна по $k\in\mathbb{Z}$.
+<p><b>Доказательство:</b>
+<ol type="I">
+<li>Формула обращения.<br>
+Обозначим $\varphi(t)$ - характеристическая функция $\xi_n$ для любого $n\in\mathbb{N}$. Тогда $\varphi^n(t)$ - характериситическая функция $S_n$. 
+Фиксируем $m\in\mathbb{Z}$, тогда
+$$
+\varphi^n(t)=Ee^{itS_n}=\sum_{k=-\infty}^{\infty}P_n(k)e^{it(an+kh)}\Rightarrow
+\varphi^n(t)e^{-itan-itmh}=\sum_{k=-\infty}^{\infty}(P_n(k)e^{it(k-m)h}).
+$$
+Так как 
+$$\left|\sum_{k=-\infty}^{\infty}(P_n(k)e^{it(k-m)}h)\right|\leq\sum_{k=-\infty}^{\infty}P_n(k)=1,$$
+то ряд сходится равномерно, следовательно, по <a href="../math_analysis/math_analysis10.2.3.html#Statement10.2.10">утверждению 10.2.10 MA</a> 
+возможно его почленное интегрирование
+$$\int\limits_{-\pi/h}^{\pi/h}e^{it(k-m)h}dt=\sum_{k=-\infty}^{\infty}\left(P_n(k)\int\limits_{-\pi/h}^{\pi/h}e^{it(k-m)h}dt\right).$$
+Для любого $k\neq{m}$
+$$
+\int\limits_{-\pi/h}^{\pi/h}e^{it(k-m)h}dt=\left.\frac{e^{it(k-m)h}}{ih(k-m)}\right|_{-\pi/h}^{\pi/h}=
+\frac{e^{i\pi(k-m)}-e^{i\pi(k-m)}}{ih(k-m)}=\frac{2\sin{(\pi(k-m))}}{h(k-m)}=0,
+$$
+если $k=m$, то 
+$$\int\limits_{-\pi/h}^{\pi/h}e^{it(k-m)h}dt=\int\limits_{-\pi/h}^{\pi/h}dt=\frac{2\pi}{h}.$$
+Таким образом, получаем формулу обращения:
+$$\int\limits_{-\pi/h}^{\pi/h}\varphi^n(t)e^{-itan-itmh}dt=\frac{2\pi}{h}P_n(m).$$
+</li><li>Преобразование формулы обращения.<br>
+Для любого $n\in\mathbb{N}$, $m\in\mathbb{Z}$
+$$
+z_{nm}:=\frac{an+mh-n\mu}{\sigma\sqrt{n}}\Rightarrow{m}h=\sigma\sqrt{n}z_{mn}-an+n\mu\Rightarrow
+\frac{2\pi}{h}P_n(m)=\int\limits_{-\pi/h}^{\pi/h}\varphi^n(t)e^{-itan-it\sigma\sqrt{n}z_{nm}+itan-itn\mu}dt=
+\int\limits_{-\pi/h}^{\pi/h}\varphi^n(t)e^{-it\sigma\sqrt{n}z_{nm}-itn\mu}dt
+$$
+Обозначим $z:=z_{nm}$, $\tilde\varphi(t):=\varphi(t)e^{it\mu}$ - характеристическая функция случайной величины $\xi_k-\mu$, тогда
+$$\frac{2\pi}{h}P_n(m)=\int\limits_{-\pi/h}^{\pi/h}\tilde\varphi^n(t)e^{it\sigma\sqrt{n}z}dt.$$
+Сделаем замену переменной $x:=\sigma\sqrt{n}t$, $t=x/(\sigma\sqrt{n})=x/B_n$, тогда $dt=dx/B_n$, следовательно,
+$$\frac{2\pi{B}_n}{h}P_n(m)=\int\limits_{-B_n\pi/h}^{B_n\pi/h}\tilde\varphi^{n}\left(\frac{x}{B_n}\right)e^{ixz}dx.$$
+По п. 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> $\tilde\varphi(x/B_n)$ - характеристическая функция случайной величины $(\xi_n-\mu)/B_n$. 
+Тогда по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> $\tilde\varphi^n(x/B_n)$ - характеристическая функция случайной величины 
+$\frac1{B_n}\sum_{k=1}^n(\xi_k-\mu)$.
+</li><li>Фиксируем $\varepsilon\in(0,\pi/h)$, $A>0$, тогда
+$$
+\frac{2\pi{B}_n}{h}P_n(m)=\int\limits_{-A}^A\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{ixz}dx+\int\limits_{A<|x|<\varepsilon{B_n}}\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{ixz}dx+
+\int\limits_{\varepsilon{B}_n&lt|x|&lt\pi{B_n}/h}\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{ixz}dx.
+$$
+Так как по п. 5 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a>
+$e^{-t^2/2}$ - характеристическая функция для распределения $N(0,1)$ с плотностью $e^{-x^2/2}/\sqrt{2\pi}$, 
+то по <a href="./probability_theory6.3.html#Theorem6.8">теореме 6.8</a>
+$$e^{-z^2/2}=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}e^{izx}e^{-x^2/2}dx=\int\limits_{-\infty}^{\infty}e^{-izx-x^2/2}dx,$$
+где последнее равенство в силу чётности функции $e^{-z^2/2}$, следовательно,
+$$\sqrt{2\pi}e^{-z^2/2}=\int\limits_{-A}^Ae^{-izx-x^2/2}dx+\int\limits_{|x|>A}e^{-izx-x^2/2}dx.$$
+Тогда для любого $n\in\mathbb{N}$
+\begin{multline*}
+2\pi\left(\frac{B_n}{h}P_n(m)-\frac1{\sqrt{2\pi}e^{-z^2/2}}\right)=\frac{2\pi{B}_n}{h}-\sqrt{2\pi}e^{-z^2/2}=\\=
+\int\limits_{-A}^A\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{izx}dx+\int\limits_{A<|x|<\varepsilon{B}_n}\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{izx}dx+
+\int\limits_{\varepsilon{B}_n<|x|<\pi{B}_n/h}\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{izx}dx-\int\limits_{-A}^Ae^{izx-x^2/2}dx-\int\limits_{|x|>A}e^{izx-x^2/2}dx=\\=
+\int\limits_{-A}^Ae^{izx}\left(\tilde\varphi^n\left(\frac{x}{B_n}\right)-e^{-x^2/2}\right)dx+\int\limits_{\varepsilon{B}_n<|x|<\pi{B}_n/h}\tilde\varphi^n\left(\frac{x}{B_n}\right)e^{izx}dx-
+\int\limits_{|x|>A}e^{izx-x^2/2}dx.
+\end{multline*}
+Обозначим слагаемые в последнем выражении как $I_1(n,A)$, $I_2(n,A)$, $I_3(n,A)$, $I_4(n,A)$ соответственно.
+</li><li>Оценка $I_1(n,A)$.<br>
+Так как случайные величины $\{\xi_n\}$ независимы, одинаково распределены и $0<\sigma^2<\infty$, 
+то по <a href="./probability_theory7.3.html#Theorem7.12">теореме 7.12</a> последовательность функций распределения случайных величин 
+$\frac1{B_n}\sum_{k=1}^n(\xi_k-\mu)$ сходится равномерно к функции распределения $N(0,1)$. 
+Тогда по <a href="./probability_theory6.3.html#Theorem6.13">теореме 6.13</a> последовательность $\tilde\varphi^n(x/B_n)$ характерестических функций случайных величин 
+$\frac1{B_n}\sum_{k=1}^n(\xi_k-\mu)$ сходится равномерно к функции 
+$e^{-x^2/2}$. Тогда по <a href="../math_analysis/math_analysis13.1.1.html#Statement13.1.1">утверждению 13.1.1 MA</a> существует предел
+$$\lim_{n\to\infty}|I_1(n,A)|\leq\int\limits_{-A}^A\lim_{n\to\infty}\left|\tilde\varphi^n\left(\frac{x}{B_n}\right)-e^{-x^2/2}\right|dx=0.$$
+</li><li>Оценка $I_2(n,A)$.<br>
+Так как $|e^{izx}|=1$, то
+$$|I_2(n,A)|\leq\int\limits_{A&lt|x|&lt\varepsilon{B}_n}\left|\tilde\varphi^n\left(\frac{x}{B_n}\right)\right|dx.$$
+Так как $\tilde\varphi(t)$ - характеристическая функция случайной величины $\xi_n-\mu$, и $E(\xi-\mu)=0$, $0&ltD(\xi_n-\mu)=\sigma^2&lt\infty$, 
+то по <a href="./probability_theory6.1.html#Theorem6.5">теореме 6.5</a>
+$$\tilde\varphi(t)=1-\frac{\sigma^2t^2}{2}+o(t^2)=1-\frac{\sigma^2t^2}{4}-\frac{\sigma^2t^2}{4}+o(t^2),t\to0.$$
+Следовательно, при достаточно малых $t\in\mathbb{R}$, 
+применив разложение функции $e^x$ в ряд Тэйлора (<a href="../math_analysis/math_analysis7.5.4.html#Definition7.5.12">определение 7.5.12 MA</a>), получим
+$$\tilde\varphi(t)<1-\frac{\sigma^2t^2}{4}&lte^{-\sigma^2t^2/4}.$$
+Следовательно, при достаточно больших $n\in\mathbb{N}$
+$$
+\left|\tilde\varphi\left(\frac{x}{B_n}\right)\right|&lte^{-\sigma^2x^2/4B_n^2}\Rightarrow\left|\tilde\varphi^n\left(\frac{x}{B_n}\right)\right|&lte^{-n\sigma^2x^2/4B_n^2}=e^{-x^2/4}\Rightarrow
+\Rightarrow|I_2(n,A)|<\int\limits_{A&lt|x|<\varepsilon{B}_n}e^{-x^2/4}dx=2\int\limits_A^{\varepsilon{B}_n}e^{-x^2/4}dx<2\int\limits_A^{\infty}e^{-x^2/4}dx.
+$$
+Интеграл в последнем выражении сходится, так как это интеграл Пуассона (<a href="../math_analysis/math_analysis13.3.1.html#13.3.1">13.3.1 MA</a>), следовательно, 
+$$\lim_{n\to\infty}\lim_{A\to\infty}|I_2(n,A)|=0.$$
+</li><li>Оценка $I_3(n,A)$.<br>
+По <a href="#Corollary7.4">следствию 7.4</a>
+$$\exists{c}>0:\left(\varepsilon\leq|t|\leq\frac{2\pi}{h}\Rightarrow|\varphi(t)|&lte^{-c}\right).$$
+Так как $0<\varepsilon<\pi/h$, то
+$$\varepsilon\leq|t|\leq\frac{\pi}{h}\Rightarrow|\tilde\varphi(t)|=|\varphi(t)|&lte^{-c}.$$
+Так как
+$$\varepsilon\leq\left|\frac{x}{B_n}\right|\leq\frac{\pi}{h}\Leftrightarrow\varepsilon{B}_n\leq|x|\leq\frac{B_n\pi}{h},$$
+то
+$$
+\varepsilon{B}_n\leq|x|\leq\frac{B_n\pi}{h}\Rightarrow\left|\tilde\varphi^n\left(\frac{x}{B_n}\right)\right|&lte^{-nc}\Rightarrow
+{I}_3(n,A)\leq\int\limits_{\varepsilon{B}_n&lt|x|&ltB_n\pi/h}\left|\tilde\varphi^n\left(\frac{x}{B_n}\right)\right|dx<\int\limits_{\varepsilon{B}_n&lt|x|&ltB_n\pi/h}e^{-nc}dx=
+2e^{-nc}B_n\left(\frac{\pi}{h}-\varepsilon\right)\xrightarrow[n\to\infty]{}0.
+$$
+</li><li>Оценка $I_4(n,A)$.<br>
+$$
+|I_4(n,A)|=\left|\int\limits_{|x|&gtA}e^{-izx-x^2/2}dx\right|\leq\int\limits_{|x|>A}e^{-x^2/2}dx=2\int\limits_A^{\infty}e^{-x^2/2}dx\xrightarrow[A\to\infty]{}0.
+$$
+</li>
+</ol>
+<br>
+В схеме Бернулли $n$ независимых испытаний с вероятностью успеха $p$ рассматривается последовательность случайных величин $\{\xi_i\}$ такая, 
+что для любого $i\in\mathbb{N}$ $\xi_i=1$, если в $i$-том испытании успех и $\xi_i=0$ в противном случае. Если $q=1-p$, 
+то по п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a> для любого $i\in\mathbb{N}$ $\mu:=E\xi_i=p,\,D\xi_i=pq$. 
+Обозначим $\tilde{S}_n:=\sum_{i=1}^n\xi_i$ - число успехов в $n$ испытаниях, тогда
+$$P_n(k):=P(\tilde{S}_n=k)=\binom{n}{k}p^kq^{n-k},\,E\tilde{S}_n=np,B_n^2:=\,D\tilde{S}_n=npq.$$
+Случайная величина $\tilde{S}_n$ решётчата с параметрами $a=0$, $h=1$. Тогда справедлива следующая теорема.
+<br><br>
+<p id="Theorem7.22"><b>Теорема 7.22: Теорема Муавра-Лапласа.</b><br>
+Если в схеме Бернулли $n$ независимых испытаний в вероятностью успеха $p$ выполняется $0&ltp&lt1$, то
+$$\sqrt{npq}P_n(k)-\frac1{\sqrt{2\pi}}e^{-x^2/2}\xrightarrow[n\to\infty]{}0,$$
+где $x=(k-np)/\sqrt{npq}$. При этом сходимость равномерна по $k\in\overline{1,n}$.
+<p><b>Доказательство:</b><br>
+Так как $0&ltp&lt1$, то $0<\sigma^2:=B_n^2=pq&lt\infty$. В обозначениях теоремы 7.21 при $a=0$, $h=1$, $\mu=p$, $\sigma=pq$
+$$z_{nk}:=\frac{an-kh-n\mu}{\sigma\sqrt{n}}=\frac{k-np}{\sqrt{npq}}=x.$$
+Следовательно, утверждение теоремы следует из теоремы 7.21.
+<br><br>
+<p id="Corollary7.5"><b>Следствие 7.5:</b>
+Если в схеме Бернулли $n$ независимых испытаний в вероятностью успеха $p$ выполняется $0&ltp&lt1$, то
+$$\frac{\sqrt{npq}P_n(k)\sqrt{2\pi}}{e^{-x^2/2}}\xrightarrow[n\to\infty]{}1,$$
+где $x=(k-np)/\sqrt{npq}$. При этом сходимость равномерна по $k$, для которых $x$ находится в каком-либо интервале.
+<p><b>Доказательство:</b><br>
+Следует из теоремы 7.22.
+<br>
+
+<br><br>
+<a href="./probability_theory7.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory8.1.html">next</a>

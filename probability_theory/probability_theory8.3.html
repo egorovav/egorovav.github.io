@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 8.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory8.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.1.html">next</a>
+
+$\newcommand{\rang}{\operatorname{rang}}$
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\diag}{\operatorname{diag}}$
+
+<h5 id="8.3">8.3 Частные распределения нормального вектора.</h5>
+
+<p id="Theorem8.3"><b>Теорема 8.3:</b>
+Если $\overline\xi=(\xi_1,\ldots,\xi_n)\sim{N}(\overline\mu,\Sigma)$ нормальный случайный вектор, $B\in\mathbb{R}_{n,n}$ невырожденная матрица, 
+то $\eta^{\downarrow}:=B\xi^{\downarrow}\sim{N}(B\mu^{\downarrow},B\Sigma{B}^T)$.
+<p><b>Доказательство:</b><br>
+Пусть $y^{\downarrow}:=Bx^{\downarrow}$, тогда $x^{\downarrow}=B^{-1}y^{\downarrow}$, следовательно,
+$$
+\left|\frac{\partial(x_1,\ldots,x_n)}{\partial(y_1,\ldots,y_n)}\right|=|\det(B^{-1})|=|\det{B}|^{-1}=\frac1{\sqrt{(\det{B})^2}}=
+\frac{|\det{\Sigma}|^{1/2}}{\sqrt{\det{B}\det{\Sigma}\det({B}^T)}}=\frac{|\det\Sigma|^{1/2}}{\sqrt{\det(B\Sigma{B}^T)}}.
+$$
+$$
+-\frac12(x^{\downarrow}-\mu^{\downarrow})^T\Sigma^{-1}(x^{\downarrow}-\mu^{\downarrow})=-\frac12(B^{-1}y^{\downarrow}-\mu^{\downarrow})^T\Sigma^{-1}(B^{-1}y^{\downarrow}-\mu^{\downarrow})=
+-\frac12(y^{\downarrow}-B\mu^{\downarrow})(B^{-1})^T\Sigma^{-1}B^{-1}(y^{\downarrow}-B\mu^{\downarrow})=(y^{\downarrow}-B\mu^{\downarrow})(B^T\Sigma{B})^{-1}(y^{\downarrow}-B\mu^{\downarrow}).
+$$
+Тогда по <a href="../math_analysis/math_analysis14.3.4.html#Theorem14.3.5">теореме 14.3.5 MA</a>
+\begin{multline*}
+p_{\overline\eta}(y_1,\ldots,y_n)=
+\frac{|\det\Sigma|^{-1/2}}{(2\pi)^{n/2}}\exp\left(-\frac12(y^{\downarrow}-B\mu^{\downarrow})^T(B\Sigma{B}^T)^{-1}(y^{\downarrow}-B\mu^{\downarrow})\right)\left|\frac{\partial(x_1,\ldots,x_n)}{\partial(y_1,\ldots,y_n)}\right|=\\=
+\frac{|\det\Sigma|^{-1/2}}{(2\pi)^{n/2}}\exp\left(-\frac12(y^{\downarrow}-B\mu^{\downarrow})^T(B\Sigma{B}^T)^{-1}(y^{\downarrow}-B\mu^{\downarrow})\right)\frac{|\det\Sigma|^{1/2}}{\sqrt{\det(B\Sigma{B}^T)}}=
+\frac{|\det(B^T\Sigma{B})|^{-1/2}}{(2\pi)^{n/2}}\exp\left(-\frac12(y^{\downarrow}-B\mu^{\downarrow})^T(B\Sigma{B}^T)^{-1}(y^{\downarrow}-B\mu^{\downarrow})\right),
+\end{multline*}
+то есть $\overline\eta\sim{N}(B\mu^{\downarrow},B\Sigma{B}^T)$
+<br><br>
+<p id="Task8.2"><b>Задача 8.2:</b>
+Доказать, что в условиях теоремы квадратичная форма $B\Sigma{B}^T$ положительно определена.
+<br><br>
+<p id="Theorem8.4"><b>Теорема 8.4:</b>
+Если случайный вектор $\overline\xi$ имеет норальное распределение $(\overline\mu,\Sigma)$, 
+то для любых его подвекторов $\xi_1=(\xi_1,\ldots,\xi_m)$, $\xi_2=(\xi_{m+1},\ldots,\xi_n)$ выполняется $\xi_1\sim(\overline\mu_1,\Sigma_{11})$, 
+$\xi_2\sim(\overline\mu_2,\Sigma_{22})$.
+<p><b>Доказательство:</b><br>
+Найдём матрицу $T\in\mathbb{R}_{n-m,n-m}$ такую, что случайные вектора $\eta_1^{\downarrow}:=\xi_1^{\downarrow}+T\xi_2^{\downarrow}$ и $\eta_2^{\downarrow}:=\xi_2^{\downarrow}$ не коррелированы. Так как $E\eta_1^{\downarrow}=\mu_1^{\downarrow}+T\mu_2^{\downarrow}$, $E\eta_2^{\downarrow}=\mu_2^{\downarrow}$, то
+\begin{multline*}
+\cov{(\overline\eta_1,\eta_2^{\downarrow})}=E\left((\overline\eta_1-E\overline\eta_1)(\eta_2^{\downarrow}-E\eta_2^{\downarrow})\right)=
+E\left(\bigl(\xi_1^{\downarrow}+T\xi_2^{\downarrow}-\mu_1^{\downarrow}-T\mu_2^{\downarrow}\bigr)^T(\xi_2^{\downarrow}-\mu_2^{\downarrow})\right)=
+E\left(\bigl(\xi_1^{\downarrow}-\mu_1^{\downarrow}+T(\xi_2^{\downarrow}-\mu_2^{\downarrow})\bigr)^T(\xi_2^{\downarrow}-\mu_2^{\downarrow})\right)=\\=
+E\left((\overline\xi_1-\overline\mu_1)(\xi_2^{\downarrow}-\mu_2^{\downarrow})\right)+TE\left((\overline\xi_2-\overline\mu_2)(\xi_2^{\downarrow}-\mu_2^{\downarrow})\right)=
+\cov{(\overline\xi_1,\xi_2^{\downarrow})}+T\cov{(\overline\xi_2,\xi_2^{\downarrow})}=\Sigma_{12}+T\Sigma_{22}.
+\end{multline*}
+Тогда из условия $\cov{(\overline\eta_1,\eta_2^{\downarrow})}=0$ получаем $T=-\Sigma_{12}\Sigma_{22}^{-1}$. Следовательно
+$$
+\eta^{\downarrow}:=\binom{\eta_1^{\downarrow}}{\eta_2^{\downarrow}}=
+\begin{pmatrix}E_{m\times{m}} & -\Sigma_{12}\Sigma_{22} \\ 0 & E_{(n-m)\times(n-m)}\end{pmatrix}\binom{\xi_1^{\downarrow}}{\xi_2^{\downarrow}},
+$$
+тогда по теореме 8.3 $\eta^{\downarrow}:=B\xi^{\downarrow}\sim{N}(B\mu^{\downarrow},B\Sigma{B}^T)$, где 
+$$B:=\begin{pmatrix}E_{m\times{m}} & -\Sigma_{12}\Sigma_{22} \\ 0 & E_{(n-m)\times(n-m)}\end{pmatrix}.$$
+Так как по п. 3 <a href="../discrete_math/discrete_math3.1.html#Theorem3.4">теоремы 3.4 DM</a> для любых $A,B\in\mathbb{R}_{n,n}$ $(AB)^T=B^TA^T$ и 
+$(A^{-1})^T=(A^T)^{-1}$, то
+\begin{multline*}
+B\Sigma{B}^T=
+\begin{pmatrix}E_{m\times{m}} & -\Sigma_{12}\Sigma_{22} \\ 0 & E_{(n-m)\times(n-m)}\end{pmatrix}\begin{pmatrix}\Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}\end{pmatrix}
+\begin{pmatrix}E_{m\times{m}} & 0 \\ \left(-\Sigma_{12}\Sigma_{22}^{-1}\right)^T & E_{(n-m)\times(n-m)}\end{pmatrix}=\\=
+\begin{pmatrix}\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} & 0 \\ \Sigma_{21} & \Sigma_{22}\end{pmatrix}\begin{pmatrix}E_{m\times{m}} & 0 \\ -\Sigma_{22}^{-1}\Sigma_{21} & E_{(n-m)\times(n-m)}\end{pmatrix}=
+\begin{pmatrix}\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} & 0 \\ 0 & \Sigma_{22}\end{pmatrix},
+\end{multline*}
+следовательно, по <a href="../probability_theory/probability_theory8.1.html#Theorem8.2">теореме 8.2</a> 
+$\overline\eta_2=\overline\xi_2\sim{N}(\overline\mu_2,\Sigma_{22})$ - нормальный вектор. 
+Аналогично доказывается, что $\overline\xi_1\sim{N}(\overline\mu_1,\Sigma_{11})$ - нормальный вектор.
+<br>
+
+<h5 id="8.4">8.4 Условное распределение нормального вектора.</h5>
+
+<p id="Definition8.3"><b>Определение 8.3:</b>
+Пусть $\overline\xi=(\xi_1,\ldots,\xi_n)$ случайный вектор с плотностью распределения $p(x_1,\ldots,x_n)$, 
+$\overline\xi_1:=(\xi_1,\ldots,\xi_m)$, $\overline\xi_2:=(\xi_{m+1},\ldots,\xi_n)$. 
+Сущетсвуют плотности распределений векторов $\overline\xi_1$ и 
+$\overline\xi_2$ $p_1(x_1,\ldots,x_m)$ и $p_2(x_{m+1},\ldots,x_n)$ соответственно. Для любого 
+$\overline{z}_2:=(z_{m+1},\ldots,z_n)\in\mathbb{R}^{n-m}$ будем называть плотность
+$$p_1(x_1,\ldots,x_m/\overline\xi_2=\overline{z}_2):=\frac{p(x_1,\ldots,x_m,z_{m+1},\ldots,z_n)}{p_2(z_{m+1},\ldots,z_n)}$$
+плотностью распределения вектора $\overline\xi_1$ при условии, что произошло событие $\overline\xi_2=\overline{z}_2$.
+<br><br>
+<p id="Theorem8.5"><b>Теорема 8.5:</b>
+Пусть $\overline\xi\sim{N}(\overline\mu,\Sigma)$ нормально распределённый случаый вектор, $\overline\xi_1:=(\xi_1,\ldots,\xi_m)$, $\xi_2:=(\xi_{m+1},\ldots,\xi_n)$, 
+$\overline\mu_1:=E\overline\xi_1$, $\overline\mu_2:=E\overline\xi_2$, тогда
+$$p_1(x_1,\ldots,x_m/\overline\xi_2=\overline{z}_2)=h(x_1,\ldots,x_n,\nu_1^{\downarrow},\Sigma_1),$$ 
+где $\nu_1^{\downarrow}=\mu_1^{\downarrow}+\Sigma_{12}\Sigma_{22}^{-1}(z_2^{\downarrow}-\mu_2^{\downarrow})$, $\Sigma_1=\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}$.
+<p><b>Доказательство:</b><br>
+Обозначим
+$$
+\eta^{\downarrow}:=\binom{\eta_1^{\downarrow}}{\eta_2^{\downarrow}}:=
+\begin{pmatrix}E_{m\times{m}} & -\Sigma_{12}\Sigma_{22}^{-1}\\ 0 & E_{(n-m)\times(n-m)}\end{pmatrix}\binom{\xi_1^{\downarrow}}{\xi_2^{\downarrow}},
+$$
+тогда из доказательства теоремы 8.4 следует, что вектора $\eta_1^{\downarrow}=\xi_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\xi_2^{\downarrow}$, 
+$\eta_2^{\downarrow}=\xi_2^{\downarrow}$ не коррелированы и, следовательно, 
+по <a href="../probability_theory/probability_theory8.1.html#Theorem8.2">теореме 8.2</a> независимы. 
+При этом $\eta_2^{\downarrow}\sim{N}(\mu_2^{\downarrow},\Sigma_{22})$, $\eta_1^{\downarrow}\sim{N}(E\eta_1,\Sigma_1)$, где
+$$E
+\eta_1=E(\xi_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\xi_2^{\downarrow})=E\xi_1-\Sigma_{12}\Sigma_{22}^{-1}E\xi_2^{\downarrow}=
+\mu_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\mu_2^{\downarrow},
+$$
+$$\Sigma_1:=\cov{(\overline\eta_1,\eta_1^{\downarrow})}=\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}.$$
+Положим
+$$y^{\downarrow}:=Bx^{\downarrow}:=\begin{pmatrix}E_{m\times{m}} & -\Sigma_{12}\Sigma_{22}^{-1}\\ 0 & E_{(n-m)\times(n-m)}\end{pmatrix}x^{\downarrow},$$
+тогда по <a href="../math_analysis/math_analysis14.3.3.html#Theorem14.3.4">теореме 14.3.4 MA</a> и независимости $\overline\eta_1$, $\overline\eta_2$
+$$
+p_{\overline\xi}(x_1,\ldots,x_n)=p_{\overline\eta}(y_1,\ldots,y_n)|B|=p_{\overline\eta}(y_1,\ldots,y_n)=
+p_{\overline\eta_1}(y_1,\ldots,y_m)p_{\overline\eta_2}(y_{m+1},\ldots,y_n)=
+h(y_1,\ldots,y_m,\mu_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\mu_2^{\downarrow},\Sigma_1)h(y_{m+1},\ldots,y_n,\mu_2^{\downarrow},\Sigma_{22}).
+$$
+Так как 
+$$
+y_1^{\downarrow}-\left(\mu_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\mu_2^{\downarrow}\right)=
+x_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}x_2^{\downarrow}-\mu_1^{\downarrow}+\Sigma_{12}\Sigma_{22}^{-1}\mu_2^{\downarrow}=
+x_1^{\downarrow}-\left(\mu_1^{\downarrow}+\Sigma_{12}\Sigma_{22}^{-1}(x_2^{\downarrow}-\mu_2^{\downarrow})\right),
+$$
+то 
+$$
+p_{\overline\xi_1}(x_1,\ldots,x_m/\overline\xi_2=\overline{z}_2)=\frac{p_{\overline\xi}(x_1,\ldots,x_m,z_{m+1},\ldots,z_n)}{p_{\overline\xi_2}(z_{m+1},\ldots,z_n)}=
+\frac{p_{\overline\eta_1}(y_1,\ldots,y_m)p_{\overline\eta_2}(z_{m+1},\ldots,z_m)}{p_{\overline\eta_2}(z_{m+1},\ldots,z_m)}=
+h(y_1,\ldots,y_m,\mu_1^{\downarrow}-\Sigma_{12}\Sigma_{22}^{-1}\mu_2^{\downarrow},\Sigma_1)=h(x_1,\ldots,x_m,\nu_1^{\downarrow},\Sigma_1).
+$$
+<br>
+<p id="Definition8.4"><b>Определение 8.4:</b>
+В обозначениях <a href="#Theorem8.5">теоремы 8.5</a> величина 
+$$\nu_1^{\downarrow}=\mu_1^{\downarrow}+\Sigma_{12}\Sigma_{22}^{-1}(z_2^{\downarrow}-\mu_2^{\downarrow})$$ 
+называется условным математическим ожиданием для $\xi_1^{\downarrow}$ при условии, что $\overline\xi_2=\overline{z}_2$.
+<br>
+Функция $\nu_1^{\downarrow}(z_{m+1},\ldots,z_n)$ называется регрессией $\overline\xi_1$ на $\overline\xi_2$. 
+<br><br>
+Из <a href="#Theorem8.5">теоремы 8.5</a> следует, что в случае нормального распределения регрессия линейна.
+<br><br>
+<p id="Definition8.6"><b>Определение 8.6:</b>
+В обозначиниях <a href="#Theorem8.5">теоремы 8.5</a> элементы матрицы $\Sigma_1$ называются условными ковариациями случайных величин $\xi_1$, $\xi_j$ для 
+$i,j\in\overline{1,m}$ при условии, 
+что $\overline\xi_2=\overline{z}_2$.
+<br>
+Если $i=j$ $i\in\overline{1,m}$, то элементы называются условными дисперсиями случайной величины $\xi_i$ при условии, что $\overline\xi_2=\overline{z}_2$.
+<br><br>
+<p id="Example8.2"><b>Пример 8.2:</b>
+Пусть $n=2$, $\overline\xi=(\xi_1,\xi_2)$, $\overline\xi_1=(\xi_1)$, $\overline\xi_2=(\xi_2)$, $\mu_1^{\downarrow}=\mu_1=E\xi_1$, 
+$\mu_2^{\downarrow}=\mu_2=E\xi_2$, $\sigma_1^2=D\xi_1$, $\sigma_2^2=D\xi_2$, $\rho:=\cov{(\xi_1,\xi_2)}$.
+В <a href="../probability_theory/probability_theory8.1.html#Example8.1">примере 8.1</a> было показано, что
+$$\Sigma=\begin{pmatrix}\sigma_1^2 & \sigma_1\sigma_2\rho \\ \sigma_1\sigma_2\rho & \sigma_2^2\end{pmatrix},$$
+тогда $\Sigma_{12}=\Sigma_{21}=\sigma_1\sigma_2\rho$, $\Sigma_{11}=\sigma_1^2$, $\Sigma_{22}=\sigma_2^2$.
+$$\nu_1^{\downarrow}=E(\xi_1/\xi_2=z_2)=\mu_1-\sigma_1\sigma_2\rho\frac1{\sigma_2^2}(z_2-\mu_2)=\mu_1+\frac{\sigma_1}{\sigma_2}\rho(z_2-\mu_2).$$
+$$\Sigma_1=\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}=\sigma_1^2-\sigma_1^2\sigma_2^2\rho^2\frac1{\sigma_2^2}=\sigma_1^2(1-\rho^2).$$
+
+<br><br>
+<a href="./probability_theory8.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.1.html">next</a>

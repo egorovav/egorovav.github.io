@@ -1,0 +1,168 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 9.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory9.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.5.html">next</a>
+
+$\newcommand{\rang}{\operatorname{rang}}$
+
+<h5 id="9.3">9.3 Симметричное случайное блуждание.</h5>
+
+Пусть $\{\eta_k\}$ последовательность независимых случайных величин, 
+таких что для любого $k\in\mathbb{N}_0$ $\eta_k\sim\left(\begin{smallmatrix}-1, & 1 \\ q, & p \end{smallmatrix}\right)$. 
+Положим $\xi_0:=\eta_0$ и для любого $n\in\mathbb{N}$ $\xi_n:=\xi_{n-1}+\eta_n$. 
+Тогда последовательность случайных величин $\{\xi_n\}$ является НЦМ с множеством состояний $E=\mathbb{Z}$. 
+Такая НЦМ называется случайным блужданием по целочисленной прямой, при этом если $p=q=1/2$, то случайное блуждание называется симметричным.
+<br><br>
+<p id="Theorem9.8"><b>Теорема 9.8:</b>
+Случайное блуждание по целочисленной прямой является возвратным (то есть состояние 0 возвратно), тогда и только тогда, когда оно симметрично.
+<p><b>Доказательство:</b><br>
+Из <a href="./probability_theory9.1.html#Statement9.1">утверждения 9.1</a> следует, что достаточно доказать, 
+что ряд $\sum_{n=1}^{\infty}p_{0,0}(n)$ расходится тогда и только тогда, когда $p=q=1/2$. 
+Понятно, что $p_{0,0}(n)=0$, если $n$ - нечётно и
+$$p_{0,0}(2k)=\binom{2k}{k}p^kq^k=\frac{(2k)!}{k!k!}(pq)^k.$$ 
+Применив к последнему выражению формулу Стирлинга (<a href="../math_analysis/math_analysis7.5.4.html#Theorem7.5.6">теорема 7.5.6 MA</a>) получим
+$$
+p_{0,0}(2k)\sim\frac{\sqrt{4\pi{k}}(2k)^{2k}}{e^{2k}\sqrt{2\pi{k}}k^ke^{-k}}\frac{(pq)^k}{\sqrt{2\pi{k}}k^ke^{-k}}=
+\frac1{\sqrt{\pi{k}}}2^{2k}(pq)^k=\frac{(4pq)^k}{\sqrt{\pi{k}}}.
+$$
+Если $p\neq{q}$, то $4pq<1$, тогда по <a href="../math_analysis/math_analysis7.1.html#Example7.1.1">примеру 7.1.1 MA</a> ряд $\sum_{k=1}^{\infty}(4pq)^k$ сходится. 
+Следовательно, по <a href="../math_analysis/math_analysis7.2.1.html#Theorem7.2.2">теореме 7.2.2 MA</a> сходится и ряд
+$$\sum_{k=1}^{\infty}\frac{(4pq)^k}{\sqrt{2\pi{k}}}.$$
+Тогда по п. 1 <a href="../math_analysis/math_analysis7.2.2.html#Theorem7.2.4">теоремы 7.2.4 MA</a>
+$$p_{0,0}(2k)=O\left(\frac{(4pq)^k}{\sqrt{\pi{k}}}\right)\Rightarrow\sum_{n=1}^{\infty}p_{0,0}(n)=\sum_{k=1}^np_{0,0}(2k)<\infty.$$
+То есть случайное блуждание не возвратно.
+Если $p=q=1/2$, то ряд
+$$\sum_{k=1}^{\infty}\frac{(4pq)^k}{\sqrt{\pi{k}}}=\sum_{k=1}^{\infty}\frac1{\sqrt{\pi{k}}}$$
+расходится по <a href="../math_analysis/math_analysis7.2.1.html#Example7.2.2">примеру 7.2.2 MA.</a> Тогда по п. 2 
+<a href="../math_analysis/math_analysis7.2.2.html#Theorem7.2.4">теоремы 7.2.4 MA</a> расходится и ряд $\sum_{k=1}^{\infty}p_{0,0}(2k)$, 
+то есть случайное блуждание возвратно.
+<br><br>
+Пусть для любого $k\in\overline{1,m}$ последовательность $\{\xi_n^{k}\}$ является случайным блужданием по действительной прямой, 
+тогда случайный вектор $\overline{\xi_n}:=(\xi_n^{(1)},\ldots\xi_n^{(m)})$ называется случайным блужданием по $\mathbb{Z}^m$.
+<br><br>
+<p id="Theorem9.9"><b>Теорема 9.9:</b>
+Симмеричное блуждание по $\mathbb{Z}^m$ возвратно тогда и только тогда, когда $m<3$.
+<p><b>Доказательство:</b><br>
+Так как для любого $n\in\mathbb{N}$ случайные величины $\xi_n^{(1)},\ldots,\xi_n^{(m)}$ независимы, то по доказанному в теореме 9.8
+$$p_{0,0}(2k)=P\left(\overline{\xi}_{2k}=0/\overline\xi_0=0\right)=\left(P(\xi_{2k}^{(1)}=0/\xi_0^{(1)}=0)\right)^m\sim\left(\frac1{\sqrt{\pi{k}}}\right)^m.$$
+Тогда ряд
+$$\sum_{k=1}^{\infty}\left(\frac1{\sqrt{\pi{k}}}\right)^m=\left(\frac1{\sqrt{\pi}}\right)^m\sum_{k=1}^{\infty}\frac1{k^{m/2}}$$
+расходится при $m<3$ и сходится при остальных $m\in\mathbb{N}$ по <a href="../math_analysis/math_analysis7.2.1.html#Example7.2.2">примеру 7.2.2 MA</a>. 
+Следовательно, по <a href="../math_analysis/math_analysis7.2.2.html#Theorem7.2.4">теореме 7.2.4 MA</a> ряд $\sum_{k=1}^{\infty}p_{0,0}(n)$ 
+расходится только при $m=1,2$.
+<br>
+<h5 id="9.4">9.4 Стационарное распределение цепи Маркова.</h5>
+
+<p id="Definition9.9"><b>Определение 9.9:</b>
+Пусть $\{\xi_n\}$ цепь Маркова с неболее чем счётным числом состояний и матрицей переходных вероятностей $\Pi:=(p_{i,j})$. 
+Тогда вектор $\overline{Q}:=(q_1,\ldots,p_N,\ldots)$ называется стационарным распределением $\{\xi_n\}$, если
+<ol>
+<li>$\forall{k}\in\mathbb{N}_0(q_k\geq0)$,</li>
+<li>$\sum_{k=1}^{\infty}q_k=1$,</li>
+<li>$\forall{j}\in\mathbb{N}_0\left(q_j=\sum_{k=1}^{\infty}q_kp_{i,j}\right).$</li>
+</ol>
+<br>
+Последнее условие определения означает, что $\overline{Q}=\overline{Q}\Pi$, 
+то есть $\overline{Q}$ является левым собственным вектором линейного преобразования $\Pi$ принадлежащим собственному значению 1 
+(<a href="../discrete_math/discrete_math12.1.html#Definition12.2">определение 12.2 DM</a>).
+<br><br>
+<p id="Note9.3"><b>Замечание 9.3:</b>
+Распределение $\overline{Q}$ называется предельным потому что если случайная величина $\xi_0$ имеет распределение $\overline{Q}$, 
+то распределение случайной величины $\xi_k$ равно
+$$\overline{p}^{(k)}=\overline{Q}\Pi^k=\overline{Q}\Pi^{k-1}=\cdots=\overline{Q}\Pi=\overline{Q}.$$
+То есть распределение случайной величины $\xi_k$ равно $\overline{Q}$ для любого $k\in\mathbb{N}_0$.
+<br><br>
+<p id="Task9.1"><b>Задача 9.1:</b>
+Доказать, что у конечной цепи Маркова всегда есть стационарное распределение.
+<br>
+<i>
+Матрица $\Pi=(p_{i,j})_{n\times{n}}$ переходных вероятностей цепи Маркова является стохастической. 
+Следовательно матрица $\Pi-E$ столбцово эквивалентна некоторой матрице с нулевым столбцом. Тогда $\rang(\Pi-E)&ltn$, следовательно, 
+по <a href="../discrete_math/discrete_math5.1.html#Theorem5.6">теореме 5.6 DM</a> существуют $x_2,\ldots,x_n\in\mathbb{R}$ такие, 
+что множество $\{c(1,x_2,\ldots,x_n)\mid{c}\in\mathbb{R}\}$ является подмножеством множества решений СОЛУ $\overline{x}(\Pi-E)=\overline{0}$. 
+Осталость только доказать, что $x_2,\ldots,x_n$ положительные числа, тогда можно подобрать такое $c\in\mathbb{R}^+$, что $c+\sum_{k=2}^ncx_k=1$.
+</i>
+<br><br>
+<p id="Task9.1"><b>Задача 9.1:</b>
+Доказать, что если у цепи Маркова удовлетворяющей условиям эргодической теоремы (<a href="./probability_theory9.1.html#Theorem9.4">теорема 9.4</a>) 
+существует единственное стационарное распределение.
+<br>
+<i>
+Если цепь Маркова удовлетворяет условиям <a href="./probability_theory9.1.html#Theorem9.4">теоремы 9.4</a>, то она имеет предельное распределение, 
+которое по <a href="./probability_theory9.1.html#Theorem9.5">теореме 9.5</a> является единственным стационарным распределением.
+</i>
+<br><br>
+<p id="Theorem9.10"><b>Теорема 9.10:</b>
+Пусть $\{\xi_n\}$ цепь Маркова со счетным числом состояний и матрицей переходных вероятностей $\Pi=(p_{i,j})$ такая, 
+что для любых $i,j\in\mathbb{N}$ сущетсвуте предел $p_j:=\lim_{n\to\infty}p_{i,j}(n)$, тогда
+<ol>
+<li>$\sum_{j=1}^{\infty}p_{j}\leq1$,</li>
+<li>$\forall{j}\in\mathbb{N}\left(p_j=\sum_{i=1}^{\infty}p_ip_{i,j}\right)$,</li>
+<li>либо $\sum_{i=1}^{\infty}p_i=0$ либо $\sum_{i=1}^{\infty}p_i=1$,</li>
+<li>
+если $\sum_{i=1}^{\infty}p_i=0$, то стационарного распределения не существует, если $\sum_{i=1}^{\infty}p_i=1$, 
+то вектор $\overline{p}:=(p_1,p_2,\ldots,p_N,\ldots)$ является единственным стационарным распределением.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>По определению $p_j$
+$$
+\sum_{j=1}^{\infty}p_j=\sum_{j=1}^{\infty}\lim_{n\to\infty}p_{i,j}(n)=\sum_{j=1}^{\infty}\varliminf_{n\to\infty}p_{i,j}(n)\leq\varliminf_{n\to\infty}\sum_{j=1}^{\infty}p_{i,j}(n)=1,
+$$
+где последнее неравенство доказывается аналогично доказательству леммы Фату 
+(<a href="./probability_theory4.1.html#Lemma4.1">лемма 4.1</a>).
+</li><li>
+$$
+\sum_{i=1}^{\infty}p_ip_{i,j}=\sum_{i=1}^{\infty}\lim_{n\to\infty}p_{k,i}(n)p_{i,j}\leq\varliminf_{n\to\infty}\sum_{i=1}^{\infty}p_{k,i}(n)p_{i,j}=
+\varliminf_{n\to\infty}p_{k,j}(n+1)=\lim_{n\to\infty}p_{k,j}(n+1)=p_j
+$$
+Таким образом, для любого $j\in\mathbb{N}$ $p_j\geq\sum_{i=1}^{\infty}p_ip_{i,j}$.
+Предположим, что для некоторого $j\in\mathbb{N}$ неравенство строгое, тогда
+$$
+\sum_{j=1}^{\infty}p_j>\sum_{j=1}^{\infty}\left(\sum_{i=1}^{\infty}p_ip_{i,j}\right)=\sum_{i=1}^{\infty}p_i\sum_{j=1}^{\infty}p_{i,j}=\sum_{i=1}^{\infty}p_i
+$$
+таким образом получено противоречие.
+</li><li>Обозначим $\overline{p}:=(p_1,\ldots,p_N,\ldots)$, тогда по пункту 2
+$$
+\forall{j}\in\mathbb{N}\left(p_j=\sum_{i=1}^{\infty}p_ip_{i,j}\right)\Rightarrow\overline{p}=\overline{p}\Pi\Rightarrow\forall{n}\in\mathbb{N}(\overline{p}=\overline{p}\Pi^n)\Rightarrow
+\forall{n}\in\mathbb{N}\,\forall{j}\in\mathbb{N}\left(p_j=\sum_{i=1}^{\infty}p_j=\sum_{i=1}^{\infty}p_ip_{i,j}(n)\right).
+$$
+Переходя в последнем равенстве к пределу при $n\to\infty$ для любого $j\in\mathbb{N}$ получим
+$$
+p_j=\lim_{n\to\infty}\sum_{i=1}^{\infty}p_ip_{i,j}(n)=\sum_{i=1}^{\infty}p_i\lim_{n\to\infty}p_{i,j}(n)=\sum_{i=1}^{\infty}p_ip_j=p_j\sum_{i=1}^{\infty}p_i\Rightarrow
+{p}_j\left(1-\sum_{i=1}^{\infty}p_i\right)=0\Rightarrow\left(p_j=0\vee\sum_{i=1}^{\infty}p_i=1\right)
+$$
+</li><li>Пусть вектор $\overline{q}:=(q_1,q_2,\ldots,q_N,\ldots)$ такой, что для любого $k\in\mathbb{N}$ $q_k\geq0$ и $\overline{q}=\overline{q}\Pi$ тогда
+$$
+\forall{n}\in\mathbb{N}(\overline{q}=\overline{q}\Pi^n)\Rightarrow\forall{n}\in\mathbb{N}\,\forall{j}\in\mathbb{N}\left(q_j=\sum_{i=1}^{\infty}q_ip_{i,j}(n)\right)\Rightarrow
+\forall{j}\in\mathbb{N}\left(q_j=\sum_{i=1}^{\infty}q_i\lim_{n\to\infty}p_{i,j}(n)=\sum_{i=1}^{\infty}q_ip_j=p_j\sum_{i=1}^{\infty}q_i\right)
+$$
+Если для любого $j\in\mathbb{N}$ $p_j=0$, то для любого $j\in\mathbb{N}$ $q_j=0$, следовательно, $\overline{q}$ не может быть стационарным распределением. 
+Если $\sum_{j=1}^{\infty}p_j=1$ и $\sum_{j=1}^{\infty}q_j=1$, то $\overline{q}$ является стационарным распределением и для любого $j\in\mathbb{N}$ $q_j=p_j$.
+</li>
+</ol>
+<br>
+<p id="Theorem9.11"><b>Теорема 9.11:</b>
+Цепь Маркова со счетным числом состояний имеет единственное стационарное распределение тогда и только тогда, 
+когда в множестве состояний имеется единственный положительный <i>(?)</i> возвратный класс сообщающихся состояний.
+<p><b>Доказательство:</b><br>
+Следует из теоремы 9.10.
+<br>
+
+<br><br>
+<a href="./probability_theory9.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.5.html">next</a>

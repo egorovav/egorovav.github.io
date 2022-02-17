@@ -1,0 +1,311 @@
+﻿<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 1.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./math_contents.html">contents</a> <a href="./probability_theory1.6.html">next</a>
+<br>
+
+<h3>ЧАСТЬ I. ТЕОРИЯ ВЕРОЯТНОСТЕЙ.</h3>
+
+<h4 id="1">1. Вероятность.</h4>
+
+<h5 id="1.1">1.1 Пространство элементарных событий.</h5>
+
+<p id="Definition1.1"><b>Определение 1.1:</b>
+Каждый возможный исход случайного эксперимента называется элементарным событием, а множество всех возможных исходов пространством элементарных событий (ПЭС).
+<br>
+Элементарное событие будем обозначать - $\omega$, простраство элементарных событий - $\Omega$.
+<br><br>
+<p id="Definition1.2"><b>Определение 1.2:</b>
+Пространство элементарных событий называестя дискретным, если оно не более чем счетно. 
+<br><br>
+<p id="Example1.1"><b>Пример 1.1:</b>
+<ol>
+<li>Бросание монеты. <br> 
+$\Omega=\{P,\Gamma\}$ - конечно.
+</li>
+<li>Бросание кубика. <br> 
+$\Omega=\{1,2,3,4,5,6\}$ - конечно.
+</li>
+<li>Бросание монеты до первого выпадения герба. <br> 
+$\Omega=\{\Gamma,P\Gamma,\ldots,P\ldots{P}\Gamma,\ldots\}$~- счетно.
+</li>
+<li>Измерение времени безотказной работы устройства. <br> 
+$\Omega=\mathbb{R}^+$ - не дискретно.
+</li>
+<li>Стрельба по круглой мишени радиуса $R$. <br> 
+$\Omega=\{(x,y)\in\mathbb{R}^2\mid{x}^2+y^2\leq{R}\}\cup\{\tilde{\omega}\}$ - не дискретно, где $\tilde{\omega}$ - промах по мишени.
+</li>
+</ol>
+<br>
+<p id="Definition1.3"><b>Определение 1.3:</b>
+Класс $\mathfrak{A}$ подмножеств ПЭС $\Omega$ называется алгеброй, если
+<ol>
+<li> $\Omega\in\mathfrak{A}$,
+</li>
+<li> $A\in\mathfrak{A}\Rightarrow\overline{A}:=\Omega-A:=\Omega\backslash{A}\in\mathfrak{A}$,
+</li>
+<li> $A,B\in\mathfrak{A}\Rightarrow{A}\cup{B}\in\mathfrak{A}$.
+</li>
+</ol>
+Из п. 2 определения следует замкнутость относительно разности. Действительно для любых $A,B\in\mathfrak{A}$ $A\backslash{B}=\overline{\overline{A}\cup{B}}$. <br>
+Из замкнутости относительно разности в свою очередь следует замкнутость относительно пересечения так, как $A\cap{B}=B\backslash(B\backslash{A})$.
+<p id="Definition1.4"><b>Определение 1.4:</b>
+Класс $\mathfrak{A}$ подмножеств ПЭС $\Omega$ называется $\sigma$-алгеброй, если
+<ol>
+<li>$\Omega\in\mathfrak{A}$,
+</li>
+<li>$A\in\mathfrak{A}\Rightarrow\Omega-A\in\mathfrak{A}$,
+</li>
+<li>$\forall{k}\in\mathbb{N}(A_k\in\mathfrak{A})\Rightarrow\bigcup_{k=1}^\infty{A}_k\in\mathfrak{A}$.
+</li>
+</ol>
+Из замкнутости относительно разности и счетных объединений следует замкнутость относительно счетных пересечений, так как
+$$\bigcap_{n=1}^\infty{A}_n=\Omega\backslash\left(\bigcup_{n=1}^\infty(\Omega\backslash{A}_n)\right).$$
+<p id="Example1.2"><b>Пример 1.2:</b>
+<ol>
+<li>$\mathfrak{A}=\{\varnothing, \Omega\}$ - $\sigma$-алгебра (минимальная),
+</li>
+<li>Для любого $A\in\Omega$ $\mathfrak{A}=\{\varnothing,\Omega,A,\overline{A}\}$ - $\sigma$-алгебра,
+</li>
+<li>$\mathfrak{A}=\mathcal{P}(\Omega)$ - $\sigma$-алгебра,
+</li>
+<li>Класс числовых множеств $\mathfrak{A}$ состоящих из конечных объединений попарно не пересекающихся полуинтервалов является алгеброй, но не является $\sigma$-алгеброй,
+так как, например,
+$$\bigcup_{n=1}^\infty\left[\frac1{n+1},\frac1{n}\right)=(0,1)\notin\mathfrak{A}.$$
+</ol>
+<p id="Definition1.5"><b>Определение 1.5:</b>
+Пара $\{\Omega,\mathfrak{A}\}$, где $\Omega$ - ПЭС, а $\mathfrak{A}$ - алгебра подмножеств $\Omega$ называется измеримым пространством.<br>
+Элементы алгебры $\mathfrak{A}$ в теории вероятностей называются случайными событиями.
+<p id="Example1.3"><b>Пример 1.3:</b>
+$\Omega=\{1,2,3,4,5,6\}$ <br>
+Событие $A=\{2,4,6\}$ - выпала четная грань.<br>
+Событие $B=\{3,4,5,6\}$ - номер грани больше двух.
+<br><br>
+<p id="Definition1.6"><b>Определение 1.6:</b>
+Пусть $K$ непустой класс подмножеств $\Omega$. $\sigma$-алгебра $\mathfrak{A}(K)$ называется минимальной $\sigma$-алгеброй содержащей $K$ ($\sigma$-алгеброй порожденной $K$), если 
+<ol>
+<li>$K\subset\mathfrak{A}(K)$,</li>
+<li>для любой $\sigma$-алгебры $\mathfrak{A}$ содержащей $K$ $\mathfrak{A}(K)\subset\mathfrak{A}$.</li>
+</ol>
+<p id="Theorem1.1"><b>Теорема 1.1:</b>
+Для любого непустого класса $K$ подмножеств $\Omega$ существует единственная минимальная $\sigma$-алгебра $\mathfrak{A}(K)$.
+<p><b>Доказательство:</b><br>
+Как минимум одна $\sigma$-алгебра содержащая $K$ существует - это $\mathcal{P}(\Omega)$. Так как пересечение $\sigma$-алгебр является $\sigma$-алгеброй. <br> 
+То пересечение всех $\sigma$-алгебр содержащих $K$ есть $\mathfrak{A}(K)$.
+<br><br>
+<p id="Definition1.7"><b>Определение 1.7:</b>
+Пусть $K:=\{[a,b)\mid{a},b\in\mathbb{R},a&ltb\}$, тогда $\sigma$-алгебру $\mathfrak{A}(K)$ называют $\sigma$-алгеброй борелевских множеств, а её элементы борелевскими множествами.<br>
+$\sigma$-алгебру борелевских множеств обозначают $\mathcal{B}:=\mathfrak{A}(K)$.
+<br><br>
+<p id="Example1.4"><b>Пример 1.4:</b>
+Для любых $a,b\in\mathbb{R}$, $a&ltb$ полуинтеравал $[a,b)$ является борелевским множеством. Следовательно, для любого $a\in\mathbb{R}$
+$\{a\}=\bigcap_{n=1}^\infty\left[a,a+\frac1{n}\right)$ - борелевское множество. Следовательно, $[a,b]=[a,b)\cup\{b\}$ - борелевское множество, <br>
+аналогично все виды числовых промежутков являются борелевскими множествами. Все открытые и замкнутые множества на прямой являются борелевскими множествами.<br> 
+Существуют и не борелевские множества, но строить их сложно.
+<br><br>
+<p id="Definition1.8"><b>Определение 1.8:</b>
+Пусть
+$$K:=\{[a_1,b_1),[a_2,b_2),\ldots,[a_n,b_n)|\forall{k}\in\overline{1,n}(a_k,b_k\in\mathbb{R}\wedge{a}_k&ltb_k)\},$$ 
+тогда $\sigma$-алгебру $\mathfrak{A}(K)$ называют $\sigma$-алгеброй борелевских множеств в $\mathbb{R}^n$. <br>
+$\sigma$-алгебру борелевских множеств в $\mathbb{R}^n$ обозначают $\mathcal{B}^n:=\mathfrak{A}(K)$.
+
+<h5 id="1.2">1.2 Случайные события и действия с ними.</h5>
+
+Пусть $\{\Omega,\mathfrak{A}\}$ - измеримое пространство.
+
+<p id="Definition1.9"><b>Определение 1.9:</b>
+Говорят, что в результате эксперемента произошло или наступило случайное событие $A\in\mathfrak{A}$, если эксперемент закончился элементарным событием $\omega$ таким, 
+что $\omega\in{A}$. В противном случае говорят, что событие $A$ не наступило. <br>
+Если $\omega\in{A}$ говорят, что что $\omega$ - благоприятствующий случай для события $A$.
+<br><br>
+<p id="Note1.1"><b>Замечание 1.1:</b>
+<ol>
+<li> Случайное событие $\Omega$ называется достоверным, оно осуществляется всегда.</li>
+<li> Случайное событие $\varnothing$ называется невозможным, оно не наступает ни при каком исходе эксперемента.</li>
+</ol>
+<br>
+<p id="Definition1.10"><b>Определение 1.10:</b>
+Если события $A,B\in\mathfrak{A}$ такие, что $A\subset{B}$, то говорят, что событие $A$ влечет за собой событие $B$.<br>
+Если при этом $B\subset{A}$, то события $A$ и $B$ называются эквивалентными.
+<p id="Definition1.11"><b>Определение 1.11:</b>
+Если $A\in\mathfrak{A}$, то событие $\overline{A}=\Omega\backslash{A}\in\mathfrak{A}$ называется противоположным событию $A$.
+<br><br>
+<p id="Definition1.12"><b>Определение 1.12:</b>
+Если $A,B\in\mathfrak{A}$, то <br>
+событие $A\cup{B}\in\mathfrak{A}$ называется суммой или объединением событий $A$ и $B$, <br>
+событие $AB:=A\cap{B}\in\mathfrak{A}$ пересечением или произведением событий $A$ и $B$, <br>
+событие $A\backslash{B}$ разностью событий $A$ и $B$.
+<br><br>
+<p id="Definition1.13"><b>Определение 1.13:</b>
+События $A,B\in\mathfrak{A}$ называются несовместными, если $AB=\varnothing$.
+<br>
+
+<h5 id="1.3">1.3 Случайные события и действия с ними.</h5>
+
+Пусть $\{\Omega,\mathfrak{A}\}$ - измеримое пространство.
+
+<p id="Definition1.14"><b>Определение 1.14:</b>
+Функция $P:\mathfrak{A}\to[0,1]$ называется вероятностной мерой на пространстве $\{\Omega,\mathfrak{A}\}$, если
+<ol>
+<li> $P(\Omega)=1$,</li>
+<li> для любой последовательности $\{A_k\}\in\mathfrak{A}$ попарно несовместных событий выполняется $P\left(\bigcup_{k=1}^\infty{A}_k\right)=\sum_{k=1}^\infty{P}(A_k)$.
+</li>
+</ol>
+При этом для любого $A\in\mathfrak{A}$ число $P(A)\in[0,1]$ называется вероятностью события $A$.
+<br><br>
+<p id="Note1.2"><b>Замечание 1.2:</b>
+Если $\mathfrak{A}$ является $\sigma$-алгеброй, то при задании вероятностной меры достаточно показать, 
+что для любого конечного набора $A_1,\ldots,A_n\in\mathfrak{A}$ попарно несовместных событий выполняется $P\left(\bigcup_{k=1}^n{A}_k\right)=\sum_{k=1}^n{P}(A_k)$.
+То есть если $\mathfrak{A}$ - $\sigma$-алгебра, то из конечной аддитивности функции $P(A)$ следует её счетная аддитивность.
+<br><br>
+<p id="Definition1.15"><b>Определение 1.15:</b>
+Тройка $(\Omega,\mathfrak{A},P)$, где $\{\Omega,\mathfrak{A}\}$ - измеримое пространство, а $P$ - вероятностная мера на этом пространстве, 
+называется вероятностным пространством.
+<br><br>
+Теория вероятностей изучает вероятностные пространства, которые являются математичесткими моделями случайного эксперемента.
+<br><br>
+<p id="Example1.5"><b>Пример 1.5:</b>
+На одном и том же измеримом пространстве можно задать несколько различных вероятностных мер. Например, пусть $\Omega=\{1,2,3,4,5,6\}$, $\mathfrak{A}=\mathcal{P}(\Omega)$. <br>
+Если мы хотим с помощью вероятностного пространства $(\Omega,\mathfrak{A},P)$ смоделировать бросание игрального кубика, 
+то естественно в качестве вероятностной меры выбрать функцию $P:\mathfrak{A}\to[0,1]$ такую, что 
+$$\forall{i}\in\overline{1,6}\left(P(\omega_i)=\frac1{6}\right)\wedge\forall{A}\in\mathfrak{A}\left(P(A)=\sum_{\omega\in{A}}P(\omega)=\frac{|A|}{|\Omega|}\right).$$
+
+Однако, на пространстве $\{\Omega,\mathfrak{A}\}$ можно задать и другие вероятностные меры, например функция $P:\mathfrak{A}\to[0,1]$ такая, что 
+$$\forall{i}\in\overline{1,6}\left(P(\omega_i)=\frac{i}{21}\right)\wedge\forall{A}\in\mathfrak{A}\left(P(A)=\sum_{\omega\in{A}}P(\omega)\right)$$
+так же удовлетворяет условиям <a href="#Definition1.14">определения 1.14</a>.
+<br><br>
+<p id="Example1.6"><b>Пример 1.6: Эмперическое определение вероятности.</b><br>
+Пусть некоторый случайный эксперемент повторен $n$ раз в неизменных условиях. При каждом повторении может произойти или не произойти событие $A$. 
+Пусть $m$ - число эксперементов, при которых произошло событие $A$. Тогда число $\frac{m}{n}$ называют относительной частотой события $A$. 
+Нетрудно видеть, что функция $P(A)=\frac{m}{n}$ удовлетворяет определению вероятностной меры, так как
+<ol>
+<li>$0\leq\frac{m}{n}\leq{1}$,
+</li>
+<li>$P(\Omega)=\frac{m(\Omega)}{n}=\frac{n}{n}=1$,
+</li>
+<li>$A_1\cap{A}_2=\varnothing\Rightarrow{P}(A_1\cup{A}_2)=\frac{m(A_1\cup{A}_2)}{n}=\frac{m(A_1)}{n}+\frac{m(A_2)}{n}=P(A_1)+P(A_2)$.
+</li>
+</ol>
+
+<h5 id="1.4">1.4 Простейшие свойства вероятностей.</h5>
+
+<p id="Statement1.1"><b>Утверждение 1.1:</b>
+Пусть $A,B\in\mathfrak{A}$, тогда
+<ol>
+<li>$P(\overline{A})=1-P(A)$,
+</li>
+<li>$P(\varnothing)=0$,
+</li>
+<li>$A\subset{B}\Rightarrow{P}(B\backslash{A})=P(B)-P(A))$,
+</li>
+<li>$A\subset{B}\Rightarrow{P}(A)\leq{P}(B))$,
+</li>
+<li>$P(A\cup{B})=P(A)+P(B)-P(A\cap{B})$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$(A\cup\overline{A}=\Omega\wedge{A}\cap\overline{A}=\varnothing)\Rightarrow{P}(A)+P(\overline{A})=P(A\cup\overline{A})=P(\Omega)=1.$
+</li>
+<li>Так как $\varnothing=\overline\Omega$, то по п. 1 $P(\varnothing)=1-P(\Omega)=0$.
+</li>
+<li>
+$(B=A\cup(B\backslash{A})\wedge{A}\cap(B\backslash{A})=\varnothing)\Rightarrow{P}(B)=P(A)+P(B\backslash{A})).$
+</li>
+<li>Следует из п. 3 и неотрицательности <a href="#Definition1.14">вероятностной меры</a>.
+</li>
+<li>Везде далее для краткости будем обозначать $AB:=A\cap{B}$. Тогда по п. 3
+$$
+P(A\cup{B})=P(A\backslash{B})+P(B\backslash{A})+P(AB)=P(A\backslash{A}B)+P(B\backslash{A}B)+P(AB)=P(A)-P(AB)+P(B)-P(AB)+P(AB)=P(A)+P(B)-P(AB).
+$$
+</li>
+</ol>
+<p id="Statement1.2"><b>Утверждение 1.2: Фомула включения исключения.</b>
+$$
+P\left(\bigcup_{k=1}^nA_k\right)=\sum_{k=1}^nP(A_k)-\sum_{1\leq{i}_1&lti_2\leq{n}}P(A_{i_1}A_{i_2})+
+\sum_{1\leq{i}_1&lti_2&lti_3\leq{n}}P(A_{i_1}A_{i_2}A_{i_3})-\cdots+(-1)^{n-1}P(A_1,\ldots,A_n).
+$$
+<p><b>Доказательство:</b>
+Докажем индукцией по $n$.
+<ol type="I">
+<li> База индукции при $n=2$ следует из п. 5 <a href="#Statement1.1">утверждения 1.1</a>.</li>
+<li> Пусть утверждение верно при $m=n-1$ докажем, что оно верно при $m=n$<br>
+$
+\begin{multline*}
+P\left(\bigcup_{k=1}^{n-1}A_k\cup{A}_n\right)=P\left(\bigcup_{k=1}^{n-1}A_k\right)+P(A_n)-P\left(\bigcup_{k=1}^{n-1}A_k\cap{A}_n\right)=\\
+=\sum_{k=1}^{n-1}P(A_k)-\sum_{1\leq{i}_1&lti_2\leq{n-1}}P(A_{i_1}A_{i_2})+\sum_{1\leq{i}_1&lti_2&lti_3\leq{n-1}}P(A_{i_1}A_{i_2}A_{i_3})-\cdots+(-1)^{n-2}P(A_1,\ldots,A_{n-1})+\\
++P(A_n)-\sum_{k=1}^{n-1}P(A_kA_n)+\sum_{1\leq{i}_1&lti_2\leq{n-1}}P(A_{i_1}A_{i_2}A_n)-\cdots-(-1)^{n-2}P(A_1,\ldots,A_{n-1},A_n)
+\end{multline*}
+$
+Несложно видеть, что во второй и третей строках содержаться все слагаемые (и только они) искомой суммы не зависящие $A_n$, 
+а в четвертй и пятой строках стоят все слагаемые (и только они) искомой суммы зависящие от $A_n$.
+</li>
+</ol>
+<br>
+<p id="Example1.7"><b>Пример 1.7: Задача о совпадении.</b><br>
+В корзине находятся $N$ карточек пронумерованных числами от $1$ до $N$, которые извлекаются одна за другой. Какова вероятность того, 
+что номер хотябы одной карточки совпадет с порядковым номером ее извлечения.  <br>
+Элементарным событием данного случайного эксперимента является перестановка $\omega=(i_1,\ldots,i_N)\in{S}_n$, следовательно, $|\Omega|=N!$. 
+Пусть событие $A$ наступает тогда и только тогда, когда номер хотябы одной карточки совпадает с номером ее извлечения. 
+Пусть для любого $k\in\overline{1,N}$ событие $A_k$ наступает тогда и только, когда на $k$-том шаге извлекается карточка с номером $k$, 
+тогда $A=\bigcup_{k=1}^NA_k$. Применим для подсчета $P(A)$ <a href="#Statement1.2">утверждение 1.2</a>
+$$\forall{k}\in\overline{1,N}\left(P(A_k)=\frac{|A_k|}{|\Omega|}=\frac{(N-1)!}{N!}=\frac1{N}\right)\Rightarrow\sum_{k=1}^NP(A_k)=1.$$
+$$
+\forall{i}_2,i_2\in\overline{1,N}\left(i_1\neq{i}_2\Rightarrow{P}(A_{i_1}A_{i_2})=\frac1{N(N-1)}\right)\Rightarrow 
+\sum_{1\leq{i}_1&lti_2\leq{N}}P(A_{i_1}A_{i_2})=\binom{N}{2}\frac1{N(N-1)}=\frac{N(N-1)}{2}\frac1{N(N-1)}=\frac1{2}.
+$$
+Аналогично
+$$\sum_{1\leq{i}_1&lti_2&lti_3\leq{N}}P(A_{i_1}A_{i_2}A_{i_3})=\binom{N}{3}\frac1{N(N-1)(N-2)}=\frac1{3!}$$
+и т. д. <br>
+Следовательно, по <a href="#Statement1.2">утверждению 1.2</a>
+$$P(A)=1-\frac1{2!}+\frac1{3!}-\cdots+(-1)^{N-1}\frac1{N!}=\sum_{k=1}^N\frac{(-1)^{k-1}}{k!}.$$
+Используя ассимптотическое разложение функции $e^x$ можно найти предел вероятности $P(A)$ при $N\to\infty$.
+$$e^x=\sum_{k=0}^\infty\frac{x^k}{k!}\Rightarrow{e}^{-1}=\sum_{k=0}^\infty\frac{(-1)^k}{k!}\Rightarrow\lim_{N\to\infty}P(A)=1-e^{-1}\approx0,63.$$
+
+<h5 id="1.5">1.5 Вероятностная мера в случае дискретного ПЭС.</h5>
+
+Пусть $\Omega=\{\omega_1,\ldots,\omega_n,\ldots\}$ дискретно (неболее чем счетно), $\mathfrak{A}=\mathcal{P}(\Omega)$. Определим функцию $P:\mathfrak{A}\to[0,1]$:
+<ol>
+<li>$\forall{i}\in\mathbb{N}(P(\omega_i):=p_i>0)$,
+</li>
+<li>$\sum_{i=1}^\infty{p}_i=1$,
+</li>
+<li>$\forall{A}\in\mathfrak{A}\left(P(A):=\sum_{\omega\in{A}}P(\omega)\right)$
+</li>
+</ol>
+Функция $P$ удовлетворяет условиям определения вероятностной меры так как
+<ol>
+<li>$\sum_{i=1}^\infty{p}_i=1\Rightarrow{P}(\Omega)=1$,
+</li>
+<li>если ${A_k}$ - последовательность попарно несовместных событий из $\mathfrak{A}$, то
+$$P\left(\bigcup_{k=1}^\infty{A}_k\right)=\sum_{k=1}^\infty\sum_{\omega\in{A}_k}p(\omega)=\sum_{k=1}^\infty{P}(A_k).$$
+</li>
+</ol>
+<p id="Example1.8"><b>Пример 1.8: Классическое определение вероятности в случае конечного ПЭС.</b><br>
+В классическом случае $\Omega=\{\omega_1,\ldots,\omega_n\}$, для любого $i\in\overline{1,n}$ $p_i:=\frac1{n}$. 
+Тогда для любого $A\in\mathfrak{A}$ $P(A)=\sum_{\omega\in{A}}P(\omega)=|A|\frac1{n}=\frac{|A|}{|\Omega|}$.
+<br><br>
+<p id="Example1.9"><b>Пример 1.9: Бросание монеты.</b><br>
+$\Omega=\{0,1\}$. <br>
+Если считать монету симметричной, то можно использовать классическую модель: $p(0)=p(1)=\frac1{2}$.
+Если монета не симметрична, то $p(0)\neq{p}(1)$, например, $p(0)=\frac1{3}$, $p(1)=\frac2{3}$ и классическая модель уже не применима. 
+<br><br>
+
+<a href="./math_contents.html">contents</a> <a href="./probability_theory1.6.html">next</a>
+</body>
+</html>
+

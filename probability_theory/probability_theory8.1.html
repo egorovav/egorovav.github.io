@@ -1,0 +1,244 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 8.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory7.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory8.3.html">next</a>
+
+$\newcommand{\rang}{\operatorname{rang}}$
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\diag}{\operatorname{diag}}$
+
+<h4 id="8">8 Многомерное нормальное распределение.</h4>
+
+<h5 id="8.1">8.1 Плотность многомерного нормального распределения.</h5>
+
+<p id="Definition8.1"><b>Определение 8.1:</b>
+Говорят, что случайный вектор $\overline{\xi}=(\xi_1,\ldots,\xi_n)$ имеет $n$-мерное нормальное распределение, если его плотность имеет вид
+$$p(x_1,\ldots,x_n)=k\exp\left(-\frac12(x^{\downarrow}-b^{\downarrow})^TA(x^{\downarrow}-b^{\downarrow})\right),$$
+где $k\in\mathbb{R}$, $A$ - положительно определённая квадратичная форма ранга $n$, $\overline{x}=(x_1,\ldots,x_n)$, $\overline{b}=(b_1,\ldots,b_n)\in\mathbb{R}^n$.
+<br><br>
+<p id="Statement8.1"><b>Утверждение 8.1:</b>
+Если $n$-мерный случайный вектор $\overline{\xi}=(\xi_1,\ldots,\xi_n)$ имеет нормальное распределение и его плотность равна
+$$p(x_1,\ldots,x_n)=k\exp\left(-\frac12(x^{\downarrow}-b^{\downarrow})^TA(x^{\downarrow}-b^{\downarrow})\right),$$
+то $k=\sqrt{\det{A}}/(2\pi)^{n/2}$.
+<p><b>Доказательство:</b><br>
+Так как $\rang{A}=n$, то по <a href="../discrete_math/discrete_math16.3.html#Theorem16.2">теоремам 16.2 DM</a>, 
+<a href="../discrete_math/discrete_math16.3.html#Theorem16.4">16.4 DM</a> существует невырожденая замена переменных 
+$x^{\downarrow}-b^{\downarrow}=Cy^{\downarrow}$ такая, что $C^TAC=E_{n,n}$. Тогда
+$$
+-\frac12(x^{\downarrow}-b^{\downarrow})^TA(x^{\downarrow}-b^{\downarrow})=-\frac12\overline{y}C^TACy^{\downarrow}=-\frac12\overline{y}y^{\downarrow}=
+-\frac12\sum_{i=1}^ny_i^2
+$$
+и
+$$
+\forall{i}\in\overline{1,n}\left(x_i-b_i=\sum_{j=1}^nc_{i,j}y_j\right)\Rightarrow\forall{i,j}\in\overline{1,n}\left(\frac{\partial{x_i}}{\partial{y_j}}=c_{i,j}\right)\Rightarrow
+\left|\frac{\partial{(x_1,\ldots,x_n)}}{\partial{(y_1,\ldots,y_n)}}\right|=
+\begin{vmatrix}
+\frac{\partial{x_1}}{\partial{y_1}} 	& \cdots 	& \frac{\partial{x_1}}{\partial{y_n}} 	\\
+\vdots 					& \ddots 	& \vdots 				\\
+\frac{\partial{x_n}}{\partial{y_1}}	& \cdots 	& \frac{\partial{x_n}}{\partial{y_n}}	\\
+\end{vmatrix}=\det{C}.
+$$
+Следоваельно, по <a href="../math_analysis/math_analysis14.3.4.html#Theorem14.3.5">теоремам 14.3.5 MA</a>, 
+<a href="../math_analysis/math_analysis14.3.3.html#Theorem14.3.4">14.3.4 MA</a>
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}p(x_1,\ldots,x_n)d\overline{x}=k\int\limits_{-\infty}^{\infty}\exp{\left(-\frac12(x^{\downarrow}-b^{\downarrow})^TA(x^{\downarrow}-b^{\downarrow})\right)}d\overline{x}=
+k|\det{C}|\int\limits_{-\infty}^{\infty}\exp{\left(-\frac12\sum_{i=1}^ny_i^2\right)}d\overline{y}=k|\det{C}|\prod_{i=1}^n\int\limits_{-\infty}^{\infty}e^{-y_i^2/2}dy_i=\\=
+k|\det{C}|\left(\sqrt{2\pi}\right)^n=1\Rightarrow{k}=\frac1{\left(\sqrt{2\pi}\right)^n|\det{C}|}.
+\end{multline*}
+Так как $C^TAC=E$, то по <a href="../discrete_math/discrete_math3.2.html#Theorem3.6">теореме 3.6 DM</a>, 
+<a href="../discrete_math/discrete_math3.2.html#Statement3.7">утверждению 3.7 DM</a>
+$$
+\det{(C^TAC)}=\det{C^T}\det{A}\det{C}=(\det{C})^2\det{A}=\det{E}=1,
+$$
+следовательно,
+$$|\det{C}|=\frac1{\sqrt{\det{A}}}\Rightarrow{k}=\frac{\sqrt{\det{A}}}{(2\pi)^{n/2}}.$$
+<br>
+Пусть $Z:=(\xi_{i,j})_{m\times{n}}$ - матрица элементами, которой являются случайные величины. Будем обозначать $EZ:=(E\xi_{i,j})_{m\times{n}}$ как матрицу, 
+элементами которой являются математические ожидания соответствующих случайных величин. 
+Тогда по пп. 2, 3 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>, если $B$, $C$, $D$ числовые матрицы подходящих размеров, то $E(BZC+D)=B(EZ)C+D$.
+<br><br>
+<p id="Definition8.2"><b>Определение 8.2:</b>
+Пусть $\overline{\xi}=(\xi_1,\ldots,\xi_n)$ случайный вектор, тогда матрица 
+$$\Sigma:=\cov{(\xi^{\downarrow}\overline{\xi})}:=(\cov{(\xi_i,\xi_j)})_{n\times{n}}$$
+называется ковариационной матрицей случайного вектора $\overline{\xi}$.
+<br><br>
+В рамках введённых выше обозначений $\Sigma=E\left((\xi^{\downarrow}-E\xi^{\downarrow})(\xi^{\downarrow}-E\xi^{\downarrow})^T\right)$. 
+<br>
+Так как для любого $i\in\overline{1,n}$ $\cov{(\xi_i,\xi_i)}=D\xi_i$, то на диагонали матрицы $\Sigma$ стоят дисперсии случайных величин вектора $\overline{\xi}$.
+<br><br>
+<p id="Theorem8.1"><b>Теорема 8.1:</b>
+Если $n$-мерный случайный вектор $\overline{\xi}=(\xi_1,\ldots,\xi_n)$ имеет нормальное распределение и его плотность равна 
+$$p(x_1,\ldots,x_n)=\frac{\sqrt{\det{A}}}{(2\pi)^{n/2}}\exp\left(-\frac12(x^{\downarrow}-b^{\downarrow})A(x^{\downarrow}-b^{\downarrow})^T\right),$$
+то $b^{\downarrow}=E\xi^{\downarrow}$, $A=\Sigma^{-1}$.
+<p><b>Доказательство:</b><br>
+Так как как $\rang{A}=n$, то по <a href="../discrete_math/discrete_math16.3.html#Theorem16.2">теоремам 16.2 DM</a>, 
+<a href="../discrete_math/discrete_math16.3.html#Theorem16.4">16.4 DM</a> 
+существует невырожденная замена переменных $x^{\downarrow}-b^{\downarrow}=Cy^{\downarrow}$ такая, что $C^TAC=E$. Положим 
+$\eta^{\downarrow}:=C^{-1}(\xi^{\downarrow}-b^{\downarrow})$, тогда из <a href="../math_analysis/math_analysis14.3.4.html#Theorem14.3.5">теоремы 14.3.5 MA</a> 
+и доказательства утверждения 8.1 следует
+\begin{multline*}
+p_{\overline{\eta}}(y_1,\ldots,y_n)=p_{\overline{\xi}}\left(\sum_{j=1}^nc_{1,j}y_j-b_1,\ldots,\sum_{j=1}^nc_{n,j}y_j-b_n\right)\left|\frac{\partial{(x_1,\ldots,x_n)}}{\partial{(y_1,\ldots,y_n)}}\right|=
+\frac{\sqrt{\det{A}}}{(2\pi)^{n/2}}\exp\left(-\frac12(Cy^{\downarrow})^TA(Cy^{\downarrow})\right)|\det{C}|=\\=
+\frac1{(2\pi)^{n/2}}\exp{\left(-\frac12\sum_{i=1}^ny_i^2\right)}=\prod_{k=1}^n\frac1{\sqrt{2\pi}}e^{-y_k^2/2}.
+\end{multline*}
+По п. 2 <a href="./probability_theory3.3.html#Theorem3.8">теоремы 3.8</a> для любого $k\in\overline{1,n}$
+$$
+p_k(y_k)=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p_{\overline{\eta}}(y_1,\ldots,y_n)dy_1\cdots{d}y_{k-1}dy_{k+1}\cdots{d}y_n=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\prod_{k=1}^n\frac1{\sqrt{2\pi}}e^{-y_k^2/2}dy_1\cdots{d}y_{k-1}dy_{k+1}\cdots{d}y_n=\frac1{\sqrt{2\pi}}e^{-y_k^2/2},
+$$
+следовательно, для любого $k\in\overline{1,n}$ $\eta_k\sim{N}(0,1)$ и
+$$p_{\overline{\eta}}(y_1,\ldots,y_n)=\prod_{k=1}^np_k(y_k).$$
+Тогда по <a href="./probability_theory3.5.html#Theorem3.14">теореме 3.14</a> случайные величины $\eta_1,\ldots,\eta_n$ независимы. 
+Следовательно, $E\eta^{\downarrow}=0^{\downarrow}$, $D\eta^{\downarrow}=1^{\downarrow}$ и 
+в силу попарной независимости $\eta_1,\ldots,\eta_n$ $\Sigma_{\overline{\eta}}=\cov{(\eta^{\downarrow}\overline{\eta})}=\diag{(D\eta_1,\ldots,D\eta_n)}=E_{n,n}$. 
+Тогда
+$$\xi^{\downarrow}=C\eta^{\downarrow}+b^{\downarrow}\Rightarrow{E}\xi^{\downarrow}=CE\eta^{\downarrow}+b^{\downarrow}=b^{\downarrow}$$
+и
+$$
+\Sigma=\cov{(\xi^{\downarrow}\overline{\xi})}=E\left((\xi^{\downarrow}-b^{\downarrow})(\xi^{\downarrow}-b^{\downarrow})^T\right)=E\left(C\eta^{\downarrow}(C\eta^{\downarrow})^T\right)=
+CE(\eta^{\downarrow}\overline{\eta})C^T=C\Sigma_{\overline{\eta}}C^T=CC^T.
+$$
+Тогда по <a href="../discrete_math/discrete_math2.1.html#Note2.1">замечанию 2.1 DM</a>
+$$C^TAC=E\Rightarrow{A}=\left(C^T\right)^{-1}C^{-1}=\left(CC^T\right)^{-1}=\Sigma^{-1}.$$
+<br>
+Из <a href="#Statement8.1">утверждения 8.1</a> и теоремы 8.1 следует окончательный вид нормальной плотности
+$$p(x_1,\ldots,x_n)=\frac1{(2\pi)^{n/2}\sqrt{\det{\Sigma}}}\exp\left(-\frac12(x^{\downarrow}-\mu^{\downarrow})^T\Sigma^{-1}(x^{\downarrow}-\mu^{\downarrow})\right).$$
+<br>
+<p id="Task8.1"><b>Задача 8.1:</b>
+Доказать, что для любого <i>(нормального?)</i> случайного вектора $\overline\xi$ его ковариационная матрица $\Sigma$ неотрицательно определена.
+<br><br>
+<p id="Example8.1"><b>Пример 8.1:</b>
+В частности при $n=2$: $\overline{\xi}=(\xi_1,\xi_2)$, $\overline{\mu}=E\overline{\xi}=(\mu_1,\mu_2)$, $D\overline{\xi}=(\sigma_1^2,\sigma_2^2)$. 
+Тогда по <a href="./probability_theory4.6.html#Definition4.8">определению 4.8</a> 
+$\cov{(\xi_1,\xi_2)}=\cov{(\xi_2,\xi_1)}=\rho\sigma_1\sigma_2$, где $\rho:=\rho(\xi_1,\xi_2)$ - коэффициент корреляции случайных величин $\xi_1$, $\xi_2$. Тогда
+$$
+\det{\Sigma}=\begin{vmatrix}\sigma_1^2 & \rho\sigma_1\sigma_2 \\ \rho\sigma_1\sigma_2 & \sigma_2^2 \end{vmatrix}=\sigma_1^2\sigma_2^2-\rho^2\sigma_1^2\sigma_2^2=
+\sigma_1^2\sigma_2^2(1-\rho^2).
+$$
+и из доказательства <a href="../discrete_math/discrete_math3.3.html#Theorem3.8">теоремы 3.8 DM</a> следует
+\begin{multline*}
+\Sigma^{-1}=\frac1{\sigma_1^2\sigma_2^2(1-\rho^2)}\begin{pmatrix}\sigma_2^2 & -\rho\sigma_1\sigma_2 \\ -\rho\sigma_1\sigma_2 & \sigma_1^2\end{pmatrix}=
+\frac1{1-\rho^2}\begin{pmatrix}1/\sigma_1^2 & -\rho/(\sigma_1\sigma_2) \\ -\rho/(\sigma_1\sigma_2) & 1/\sigma_2^2\end{pmatrix}\Rightarrow
+Q(x_1,x_2):=(x^{\downarrow}-\mu^{\downarrow})^T\Sigma^{-1}(x^{\downarrow}-\mu^{\downarrow})=\\=
+(x_1-\mu_1,x_2-\mu_2)\begin{pmatrix}1/\sigma_1^2 & -\rho/(\sigma_1\sigma_2) \\ -\rho/(\sigma_1\sigma_2) & 1/\sigma_2^2\end{pmatrix}\binom{x_1-\mu_1}{x_2-\mu_2}\frac1{1-\rho^2}=
+\frac1{(1-\rho^2)}\left(\left(\frac{x_1-\mu_1}{\sigma_1}\right)^2-\frac{2\rho(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1\sigma_2}+\left(\frac{x_2-\mu_2}{\sigma_2}\right)^2\right)
+\end{multline*}
+Таким образом, функция
+$$p(x_1,x_2)=\frac1{2\pi\sqrt{(1-\rho^2)}\sigma_1\sigma_2}e^{-Q(x_1,x_2)/2}$$
+задаёт поверхность "холма" элиптической формы с вершиной в точке $(\mu_1,\mu_2)$.
+Плотность $p(x_1,x_2)$ постоянна на кривых вида
+$$\left(\frac{x_1-\mu_1}{\sigma_1}\right)^2-\frac{2\rho(x_1-\mu_1)(x_2-\mu_2)}{\sigma_1\sigma_2}+\left(\frac{x_2-\mu_2}{\sigma_2}\right)^2=const,$$
+которые являются эллипсами.
+
+Если случайные величины $\xi_1$ и $\xi_2$ независимы, то $\rho=0$ и второе слагаемое квадратичной формы $Q(x_1,x_2)$ равно нулю, тогда
+$$p(x_1,x_2)=p_{\xi_1}(x_1)p_{\xi_2}(x_2)=\frac1{\sigma_1\sqrt{2\pi}}e^{-(x_1-\mu_1)^2/(2\sigma_1^2)}\frac1{\sigma_2\sqrt{2\pi}}e^{-(x_2-\mu_2)^2/(2\sigma_2^2)}.$$
+
+<h5 id="8.2">8.2 Независимость подвекторов нормального вектора.</h5>
+
+Введём некоторые обозначения.<br>
+Пусть $\overline{\xi}=(\xi_1,\ldots,\xi_n)\sim{N}(\overline{\mu},\Sigma)$ $n$-мерный нормальный вектор. 
+Обозначим $\overline\xi_1:=(\xi_1,\ldots,\xi_m)$, $\overline\xi_2:=(\xi_{m+1},\ldots,\xi_n)$, $\overline\mu_1:=E\overline\xi_1$, 
+$\overline\mu_2:=E\overline\xi_2$, ${\Sigma_{11}:=\cov{(\overline\xi_1,\xi_1^{\downarrow})}}$, 
+$\Sigma_{22}:=\cov{(\overline\xi_2,\xi_2^{\downarrow})}$, $\Sigma_{12}:=\cov{(\overline\xi_1,\xi_2^{\downarrow})}$,
+$\Sigma_{21}:=\cov{(\overline\xi_2,\xi_1^{\downarrow})}$, тогда
+$$\Sigma=\begin{pmatrix}\Sigma_{11} & \Sigma_{12} \\ \Sigma_{21} & \Sigma_{22}.\end{pmatrix}$$
+Так как для любых $i,j\in\overline{1,n}$ $\cov{(\xi_i,\xi_j)}=\cov{(\xi_j,\xi_i)}$, то $\Sigma_{12}=\Sigma_{21}^T$.
+<br><br>
+<p id="Theorem8.2"><b>Теорема 8.2:</b>
+Пусть $\overline\xi=(\overline\xi_1,\overline\xi_2)\sim{N}(\overline\mu,\Sigma)$, 
+тогда вектора $\overline\xi_1$ и $\overline\xi_2$ независимы и нормально распределены тогда и только тогда, когда $\Sigma_{12}=0$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Так как для любого $B\in\mathcal{B}$ $B\times\mathbb{R}^k\in\mathcal{B}^{k+1}$, то для любых $i\in\overline{1,m}$, 
+$j\in\overline{1,n-m}$, $B_1,B_2\in\mathcal{B}$
+$$
+P(\xi_{1i}\in{B}_1,\xi_{2j}\in{B}_2)=P(\xi_1\in{B}_1\times\mathbb{R}^{m-1},\xi_2\in{B}_2\times\mathbb{R}^{n-m-1})=
+P(\xi_1\in{B}_1\times\mathbb{R}^{m-1})P(\xi_2\in{B}_2\times\mathbb{R}^{n-m-1})=P(\xi_{1i}\in{B}_1)P(\xi_{2j}\in{B}_2).
+$$
+То есть из независимости $\overline\xi_1$ и $\overline\xi_2$ следует независимость $\xi_{1i}$ и $\xi_{2j}$ для любых $i\in\overline{1,m}$, $j\in\overline{1,n-m}$. 
+Тогда
+$$\forall{i}\in\overline{1,m},\,\forall{j}\in\overline{1,n-m}(\cov{(\xi_{1i},\xi_{2j})=0})\Rightarrow\Sigma_{12}=0.$$
+$\Leftarrow)$
+Пусть $\Sigma_{12}=\Sigma_{21}=0$, тогда
+$$
+\Sigma=\begin{pmatrix}\Sigma_{11} & 0 \\ 0 & \Sigma_{22}\end{pmatrix}\Rightarrow\left(\Sigma^{-1}=
+\begin{pmatrix}\Sigma_{11}^{-1} & 0 \\ 0 & \Sigma_{22}^{-1}\end{pmatrix}\wedge|\Sigma|=|\Sigma_{11}||\Sigma_{22}|\right).
+$$
+Так как 
+$$p_{\overline\xi}(x_1,\ldots,x_n)=\frac1{(2\pi)^{n/2}}|\Sigma|^{-1/2}e^{-Q(x_1,\ldots,x_n)/2},$$
+где $Q(x_1,\ldots,x_n):=(x^{\downarrow}-\mu^{\downarrow})^T\Sigma^{-1}(x^{\downarrow}-\mu^{\downarrow})$, 
+то обозначив $\overline{x}_1:=(x_1,\ldots,x_m)$, $\overline{x}_2:=(x_{m+1},\ldots,x_n)$, получим
+$$
+Q(x_1,\ldots,x_n)=(\overline{x}_1-\overline\mu_1,\overline{x}_2-\overline\mu_2)\begin{pmatrix}\Sigma_{11}^{-1} & 0 \\ 0 & \Sigma_{22}^{-1}\end{pmatrix}\binom{x_1^{\downarrow}-\mu_1^{\downarrow}}{x_2^{\downarrow}-\mu_2^{\downarrow}}=
+(\overline{x}_1-\overline\mu_1)\Sigma_{11}^{-1}(x_1^{\downarrow}-\mu_1^{\downarrow})+(\overline{x}_2-\overline\mu_2)\Sigma_{22}^{-1}(x_2^{\downarrow}-\mu_2^{\downarrow}).
+$$
+Обозначим 
+$$Q_1(x_1,\ldots,x_m):=(\overline{x}_1-\overline\mu_1)\Sigma_{11}^{-1}(x_1^{\downarrow}-\mu_1^{\downarrow}),$$ 
+$$Q_2(x_{m+1},\ldots,x_n):=(\overline{x}_2-\overline\mu_2)\Sigma_{22}^{-1}(x_2^{\downarrow}-\mu_2^{\downarrow}),$$ 
+тогда 
+$$
+P_{\overline\xi}(x_1,\ldots,x_n)=\left(\frac1{(2\pi)^{m/2}}|\Sigma_{11}|^{-1/2}e^{-Q_1(x_1,\ldots,x_m)/2}\right)\times
+\left(\frac1{(2\pi)^{(n-m)/2}}|\Sigma_{22}|^{-1/2}e^{Q(x_{m+1},\ldots,x_n)/2}\right).
+$$
+Обозначим множители последнего выражения как $h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11})$ и $h(x_{m+1},\ldots,x_n,\overline\mu,\Sigma_{22})$ и докажем, что 
+$p_{\overline\xi_1}(x_1,\ldots,x_m)=h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11})$ и $p_{\overline\xi_2}(x_{m+1},\ldots,x_n)=h(x_{m+1},\ldots,x_n,\overline\mu_2,\Sigma_{22})$. 
+Действительно, по п. 2 <a href="./probability_theory3.3.html#Theorem3.8">теоремы 3.8</a>
+\begin{multline*}
+p_{\overline\xi_1}(x_1,\ldots,x_m)=\int\limits_{-\infty}^{\infty}p_{\overline\xi}(x_1,\ldots,x_n)dx_{m+1}\cdots{d}x_n=
+\int\limits_{-\infty}^{\infty}h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11})h(x_{m+1},\ldots,x_n,\overline\mu_2,\Sigma_{22})dx_{m+1}\cdots{d}x_n=\\=
+h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11})\int\limits_{-\infty}^{\infty}h(x_{m+1},\ldots,x_n,\overline\mu_2,\Sigma_{22})dx_{m+1}\cdots{d}x_n=
+h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11}),
+\end{multline*}
+здесь последнее равенство в силу того, что под знаком интеграла стоит плотность нормального распределения от пременных $x_{m+1},\ldots,x_n$. Аналогично показывается, что ${p_{\overline\xi_2}(x_{m+1},\ldots,x_n)=h(x_{m+1},\ldots,x_n,\overline\mu_2,\Sigma_{22})}$. Таким образом
+$$
+p_{\overline\xi}(x_1,\ldots,x_n)=h(x_1,\ldots,x_m,\overline\mu_1,\Sigma_{11})h(x_{m+1},\ldots,x_n,\overline\mu_2,\Sigma_{22})=
+p_{\overline\xi_1}(x_1,\ldots,x_m)p_{\overline\xi_2}(x_{m+1},\ldots,x_n),
+$$
+тогда по <a href="./probability_theory3.5.html#Theorem3.14">теореме 3.14</a> случайные величины $\overline\xi_1$ и $\overline\xi_2$ независимы.
+<br><br>
+<p id="Note8.1"><b>Замечание 8.1:</b>
+При доказательстве достаточности нормальность векторов $\overline\xi_1$ и $\overline\xi_2$ не использовалась, следовательно, 
+для любых независимых случайных векторов $\xi_1$ и $\xi_2$ $\Sigma_{12}=0$
+<br><br>
+<p id="Corollary8.1"><b>Следствие 8.1:</b>
+Пусть вектор $\overline\xi=(x_1,\ldots,x_n)\sim{N}(\overline\mu,\Sigma)$ нормальный, $i_1,\ldots,i_m\in\overline{1,n}$, 
+$\overline\xi_1:=(\xi_{i_1},\ldots,\xi_{i_m})$, вектор $\overline\xi_2$ составлен из всех остальных случайных величин, тогда 
+$\cov{(\overline\xi_1,\xi_2^{\downarrow})}=0$.
+<p><b>Доказательство:</b><br>
+Доказывается аналогично <a href="#Theorem8.2">теореме 8.2</a>.
+<br><br>
+<p id="Corollary8.2"><b>Следствие 8.2:</b>
+Пусть $\overline\xi=(\xi_1,\ldots,\xi_n)\sim{N}(\overline\mu,\Sigma)$, 
+тогда случайные величины $\xi_1,\ldots,\xi_n$ независимы тогда и только тогда, когда матрица $\Sigma$ диагональна.
+<p><b>Доказательство:</b><br>
+По следствию 8.1 для любого $k\in\overline{1,n}$ $\xi_k$ независима с остальными случайными величинами из $\overline\xi$ тогда и только тогда, 
+когда ${\cov{(\xi_k,\xi_i)}=0}$ для любого $i\in\overline{1,n}$ такого, что $i\neq{k}$.
+<br><br>
+<p id="Corollary8.3"><b>Следствие 8.3:</b>
+Если подвекторы $\xi_1$, $\xi_2$ случайного вектора $\xi$ независимы, то $\Sigma_{12}=0$. 
+<p><b>Доказательство:</b><br>
+Следует из <a href="#Note8.1">замечания 8.1</a>.
+<br><br>
+<p id="Corollary8.4"><b>Следствие 8.4:</b>
+Если случайные величины $\xi_1,\ldots,\xi_n$ независимы, то матрица $\Sigma$ диагональна. 
+<p><b>Доказательство:</b><br>
+Из определения ковариационной матрицы $\Sigma$ (<a href="#Definition8.2">определение 8.2</a>) следует, 
+что если случайные величины $\xi_1,\ldots,\xi_n$ независимы, то $\Sigma=\diag{(D\xi_1,\ldots,D\xi_n)}$
+<br>
+
+
+<br><br>
+<a href="./probability_theory7.4.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory8.3.html">next</a>

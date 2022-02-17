@@ -1,0 +1,425 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 12.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.3.html">next</a>
+<br>
+
+<h4 id="12">12. Оценка параметров распределения.</h4>
+
+<h5 id="12.1">12.1 Постановка задачи.</h5>
+
+Далее в этой главе будет рассматриваться случайная величина $\xi$ с функцией распределения $F(x,\theta_1,\ldots,\theta_n)$, 
+где $\theta_1\ldots,\theta_n$ - неизвестные параметры функции распределения.
+<br><br>
+
+<p id="Definition12.1"><b>Определение 12.1:</b>
+Пусть $x_1,\ldots,x_n$ - выборка над случайной величиной $\xi$, 
+тогда любая случайная величина $\tilde\theta(x_1,\ldots,x_n)$ не зависящая от параметров $\theta_1,\ldots,\theta_n$ называется статистикой.
+<br>
+Статистика используемая для оценки параметра некорого распределения называется оценкой этого параметра.
+<br><br>
+<p id="Definition12.2"><b>Определение 12.2:</b>
+Пусть $\Theta$ - множество значений параметра $\theta$, 
+$E_{\theta}\tilde\theta$ - математическое ожидание оценки $\tilde\theta(x_1,\ldots,x_n)$ при фиксированном значении параметра распределения $F(x,\theta)$. 
+Тогда оценка $\tilde\theta$ называется несмещённой если для любого $\theta\in\Theta$ $E_{\theta}\tilde\theta=\theta$.
+<br>
+Функция $b(\theta):\Theta\mathbb\to{R}$ такая, что для любого $\theta\in\Theta$ $b(\theta)=E_{\theta}\tilde\theta-\theta$ называется смещением оценки $\tilde\theta$.
+<br><br>
+<p id="Example12.1"><b>Пример 12.1:</b>
+Пусть случайная величина $\xi$ распределена нормально, т. е. $\xi\sim{N}(a,\sigma^2)$. 
+В <a href="./probability_theory11.1.html#Task11.1">задаче 11.1</a> было показано, что
+$$E\overline{x}=E\xi=a$$
+$$E(S^2)=\frac{(n-1)}{n}D\xi=\frac{(n-1)}{n}\sigma^2.$$ 
+То есть выборочное среднее $\overline{x}$ является несмещённой оценкой для $a$, а выборочная дисперсия $S^2$ - смещённая оценка для $\sigma^2$.  
+<br><br>
+<p id="Definition12.3"><b>Определение 12.3:</b>
+Оценка $\tilde\theta$ параметра $\theta$ называется состоятельной, если для любого $\theta\in\Theta$
+$$\tilde\theta(x_1,\ldots,x_n)\xrightarrow[n\to\infty]{P}\theta,$$
+или что тоже самое
+$$\forall\varepsilon>0\left(P\{|\tilde\theta(x_1,\ldots,x_n)-\theta|>\varepsilon\}\xrightarrow[n\to\infty]{}0\right).$$
+<br>
+<p id="Example12.2"><b>Пример 12.2:</b>
+В <a href="./probability_theory11.1.html#Theorem11.3">теореме 11.3</a> было показано, что для любого $k\in\mathbb{N}$
+$$A_k\xrightarrow[n\to\infty]{P}\mu_k,\,M_k\xrightarrow[n\to\infty]{P}\nu_k.$$
+В частности так как $A_1:=\overline{x}$, $M_2:=S^2$, $\mu_1:=E\xi$, $\nu_2:=D\xi$, то $\overline{x}$ и $S^2$ - состоятельные оценки для $E\xi$ и $D\xi$ соответственно.
+
+Покажем, что выборочное среднее $\overline{x}$ не является состоятельной оценкой для параметра $\theta$ распределения Коши $K(\theta,0)$. Действительно,
+\begin{multline*}
+\frac1{2\pi}\int\limits_{-\infty}^{\infty}e^{-\theta|t|}e^{itx}dt=\frac1{2\pi}\int\limits_{-\infty}^0e^{\theta{t}}e^{-itx}dt+\frac1{2\pi}\int\limits_0^{\infty}e^{-\theta{t}}e^{-itx}dt=
+\frac1{2\pi}\lim_{u\to-\infty}\left.\frac{e^{(\theta-ix)t}}{\theta-ix}\right|_{t=u}^0-\frac1{2\pi}\lim_{v\to\infty}\left.\frac{e^{-(\theta+ix)t}}{\theta+ix}\right|_0^{t=v}=\\=
+\frac1{2\pi}\frac1{\theta-ix}+\frac1{2\pi}\frac1{\theta+ix}=\frac1{\pi}\frac{\theta}{x^2+\theta^2}\sim{K}(\theta,0)
+\end{multline*}
+Следовательно, по <a href="./probability_theory6.3.html#Theorem6.8">теореме 6.8</a> функция $e^{-\theta|t|}$ 
+является характеристической функцией для распределения $K(\theta,0)$. 
+Тогда по п. п. 4, 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> функция 
+$$\varphi_{\overline{x}}(t)=\prod_{i=1}^ne^{-\theta|t/n|}=e^{-\theta|t|}$$
+является характеристической функцией выборочного среднего $\overline{x}$ над распределением $K(\theta,0)$. 
+Тогда в силу единственности характеристической функции (<a href="./probability_theory6.3.html#Theorem6.7">теорема 6.7</a>) 
+выборочное среднее распределено по закону Коши $K(\theta,0)$ при любом колличестве элементов выборки $n$, 
+то есть $\overline{x}$ не может стремиться по вероятности к $\theta$ при $n\to\infty$.
+<br><br>
+<p id="Definition12.4"><b>Определение 12.4:</b>
+Величина математического ожидания $E(\tilde\theta-\theta)^2$ называется среднеквадратичной ошибкой оценки $\tilde\theta$ для параметра $\theta$.
+<br><br>
+<p id="Note12.1"><b>Замечание 12.1:</b>
+\begin{multline*}
+E(\tilde\theta-\theta)^2=E(\tilde\theta-E\tilde\theta+E\tilde\theta-\theta)^2=
+E(\tilde\theta-E\tilde\theta)^2+2E((\tilde\theta-E\tilde\theta)(E\tilde\theta-\theta))+E(E\tilde\theta-\theta)^2=
+D\tilde\theta+2(E\tilde\theta-\theta)E(\tilde\theta-E\tilde\theta)+(E\tilde\theta-\theta)^2=D\tilde\theta+b^2(\theta)
+\end{multline*}
+В частности для несмещённой оценки $b(\theta)\equiv0$ и $E(\tilde\theta-\theta)^2=D\tilde\theta$.
+<br>
+
+
+<h5 id="12.2">12.2 Неравенство Рао-Крамера.</h5>
+
+<p id="Theorem12.1"><b>Теорема 12.1:</b>
+Пусть $\xi$ случайная величина с плотностью распределения $p(x,\theta)$, $(x_1,\ldots,x_n)$ - выборка над $\xi$ тогда, если
+<ol>
+<li>Множество $\{x\in\mathbb{R}:p(x,\theta)>0\}$ не зависит от выбора $\theta\in\Theta$.
+</li><li>Интеграл 
+$$\int\limits_{-\infty}^{\infty}p(x,\theta)dx=1$$
+можно дифференцировать по $\theta$ под знаком интеграла.
+</li><li>Функция смещения $b(\theta):=E\tilde\theta-\theta$ дифференцируема.
+</li><li>Функцию 
+$$
+E\tilde\theta(x_1,\ldots,x_n):=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(x_1,\ldots,x_n)dF_{\tilde\theta}(x_1,\ldots,x_n)=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(x_1,\ldots,x_n)\prod_{i=1}^np(x_i,\theta)dx_1\cdots{d}x_n
+$$
+можно дифференцировать по $\theta$ под знаком интеграла.
+</li><li>Функция 
+$$I(\theta):=\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}\right)^2p(x_i,\theta)dx_i$$
+положительна для любого $i\in\overline{1,n}$ и $\theta\in\Theta$.
+</li>
+</ol>
+то
+$$E(\tilde\theta-\theta)^2\geq\frac{(1+b'(\theta))^2}{nI(\theta)}.$$
+<p><b>Доказательство:</b><br>
+Обозначим набор переменных $x_1,\ldots,x_n$ как $\overline{x}$, тогда в силу независимости случайных величин в выборке
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}dx_1\cdots{d}x_n=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\frac{\partial\prod_{i=1}^np(x_i,\theta)}{\partial\theta}dx_1\cdots{d}x_n=\\=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\sum_{i=1}^np(x_1,\theta)\cdots\frac{\partial{p}(x_i,\theta)}{\partial\theta}\cdots{p}(x_n,\theta)dx_1\cdots{d}x_n=\\=
+\sum_{i=1}^n\int\limits_{-\infty}^{\infty}p(x_1,\theta)dx_1\cdots\int\limits_{-\infty}^{\infty}\frac{\partial{p}(x_i,\theta)}{\partial\theta}dx_i\cdots\int\limits_{-\infty}^{\infty}p(x_n,\theta)dx_n=0
+\end{multline*}
+Последнее равенство в силу того что для любого $i\in\overline{1,n}$ $i$-тый множитель в $i$-том слагаемом равен нулю. 
+При этом продифференцировав по $\theta$ равенство $E\tilde\theta=\theta+b(\theta)$ получим 
+$$\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(\overline{x})\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}dx_1\cdots{d}x_n=1+b'(\theta).$$
+Вычитая из этого равенства равенство полученное выше умноженное на $\theta$ получим
+$$\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}dx_1\cdots{d}x_n=1+b'(\theta).$$
+Умножми и разделим левую часть на $p(\overline{x};\theta)$
+$$
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)\sqrt{p(\overline{x};\theta)}\frac{\partial{p}(\overline{x};\theta)}{\partial(\theta)}\frac1{p(\overline{x};\theta)}\sqrt{p(\overline{x};\theta)}dx_1\cdots{d}x_n=
+1+b'(\theta)
+$$
+Из неравенства Коши-Буняковского на пространстве непрерывных функций 
+($\int{f}^2\int{g}^2\geq\left(\int{f}g\right)^2$ - <a href="../math_analysis/math_analysis15.1.1.html#Example15.1.1">пример 15.1.1 MA</a>) следует
+$$
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)^2p(\overline{x};\theta)dx_1\cdots{d}x_n\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}\right)^2p(\overline{x};\theta)dx_1\cdots{d}x_n\geq(1+b'(\theta))^2.
+$$
+Обозначим второй множитель левой части неравенства как $I_n(\theta)$, тогда
+$$E(\tilde\theta-\theta)^2I_n(\theta)\geq(1+b'(\theta))^2.$$
+Осталость доказать, что $I_n(\theta)=nI(\theta)$. 
+$$
+E\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}=E\frac{\partial\ln\prod_{i=1}^n{p}(x_i,\theta)}{\partial\theta}=E\frac{\partial}{\partial\theta}\sum_{i=1}^n\ln{p}(x_i,\theta)=\sum_{i=1}^nE\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}
+$$
+Для любого $i\in\overline{1,n}$
+$$
+E\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}=\int\limits_{-\infty}^{\infty}\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}p(x_i,\theta)dx_i=\int\limits_{-\infty}^{\infty}\frac{\partial{p}(x_i,\theta)}{\partial\theta}dx_i=0,\quad(*)
+$$
+следовательно,
+$$E\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}=0.\quad(**)$$
+Тогда 
+\begin{multline*}
+I_n(\theta)=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}\right)^2p(\overline{x},\theta)dx_1\cdots{d}x_n=
+E\left(\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}\right)^2=
+D\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}=D\sum_{i=1}^n\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}=\\=
+\sum_{i=1}^nD\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}=\sum_{i=1}^nE\left(\frac{\partial\ln{p}(x_i,\theta)}{\partial\theta}\right)^2=
+\sum_{i=1}^n\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}\right)^2p(x_i,\theta)dx_i=nI(\theta)
+\end{multline*}
+Здесь третье равенство в силу (**), 
+пятое в силу независимости элементов выборки и п. 6 <a href="./probability_theory4.6.html#Theorem4.20">теоремы 4.20</a>, а шестое в силу (*).
+<br><br>
+<p id="Note12.2"><b>Замечание 12.2:</b>
+Условия теоремы 12.1 называются условиями регулярности.
+<br><br>
+<p id="Definition12.5"><b>Определение 12.5:</b>
+Функция $I(\theta)$ из условий регулярности называется информацией по Фишеру полученной из одного наблюдения над случайной величиной $\theta$.
+<br>
+Функция $I_n(\theta)=nI(\theta)$ назывется информацией по Фишеру полученной из $n$ наблюдений (или из выборки объёма $n$) над случайной величиной $\theta$.
+<br><br>
+<p id="Corollary12.1"><b>Следствие 12.1:</b>
+Если оценка $\tilde\theta$ несмещённая и выполняются условия <a href="#Theorem12.1">теоремы 12.1</a>, то 
+$$D\tilde\theta\geq\frac1{nI(\theta)}.$$
+<p><b>Доказательство:</b><br>
+Утверждение следует из <a href="#Theorem12.1">теоремы 12.1</a> и <a href="#Note12.1">замечания 12.1</a> 
+<br><br>
+<p id="Corollary12.2"><b>Следствие 12.2: Условия регулярности для дискретного случая.</b><br>
+Пусть $\xi$ дискретная случайная величина с множеством значений $X$, распределение которой зависит от параметра $\theta$; $\tilde\theta$ - оценка параметра $\theta$, 
+множество значений котрого равно $\Theta$; $(y_1,\ldots,y_n)$ выборка над $\xi$. Для люого $x\in{X}$, $\theta\in\Theta$ обозначим $p(x,\theta):=P\{\xi=x,\theta\}$, 
+тогда если
+<ol>
+<li>Множество $\{x\in{X}:p(x,\theta)>0\}$ не зависит от выбора $\theta\in\Theta$.
+</li><li>Ряд $\sum_{x\in{X}}p(x,\theta)=1$ можно дифференцировать почленно по $\theta$.
+</li><li>Функция $b(\theta):=E\tilde\theta(y_1,\ldots,y_n)-\theta$ дифференцируема по $\theta$.
+</li><li>Ряд
+$$E\tilde\theta(y_1,\ldots,y_n)=\sum_{y_1\in{X}}\cdots\sum_{y_n\in{X}}\tilde\theta(y_1,\ldots,y_n)\prod_{i=1}^np(y_i,\theta)$$
+можно дифференцировать почленно по $\theta$.
+</li><li>Для любого $\theta\in\Theta$ ряд 
+$$I(\theta):=\sum_{x\in{X}}\left(\frac{\partial\ln{p}(x,\theta)}{\partial\theta}\right)^2p(x,\theta)$$
+сходится к положительному числу.
+</li>
+</ol>
+то
+$$E(\tilde\theta-\theta)^2\leq\frac{(1+b'(\theta))^2}{nI(\theta)}$$
+<p><b>Доказательство:</b><br>
+Следует из <a href="#Theorem12.1">теоремы 12.1</a> и равенства 
+$$\int\limits_{-\infty}^{\infty}xdF_{\xi}(x)=\sum_{x\in{X}}xP\{\xi=x\}.$$
+<br>
+<p id="Example12.3"><b>Пример 12.3:</b>
+Пусть 
+$$\xi\sim{p}(x,\theta):=\frac1{\sqrt{2\pi}\sigma}e^{-(x-\theta)^2/2\sigma^2},$$
+значение $\theta:=E\xi$ неизвестно, значение $\sigma$ известно. Задача оценить $\theta$ по выборке объёма $n$ $(x_1,\ldots,x_n)$. 
+Рассмотрим в качестве оценки выборочное среднее $\tilde\theta:=\overline{x}=\frac1{n}\sum_{i=1}^nx_i$. Проверим условия регулярности. 
+<ol>
+<li>Так как фунция нормальной плотности положительна при любом математическом ожидании, 
+то $\{x\in\mathbb{R}:p(x,\theta)>0\}=\mathbb{R}$ для любого $\theta\in\mathbb{R}$.
+</li><li>Применим <a href="../math_analysis/math_analysis13.2.2.html#Corollary13.2.1">следствие 13.2.1 MA</a>. 
+Условия 1, 2 очевидны условие 4 выполняется так как для любого $\theta\in\mathbb{R}$ $\int_{-\infty}^{\infty}p(x,\theta)=1$, проверим условие 3.
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}\frac{\partial{p}(x,\theta)}{\partial\theta}dx=
+\int\limits_{-\infty}^{\infty}\frac1{\sqrt{2\pi}\sigma}e^{-(x-\theta)^2/2\sigma^2}\frac{x-\theta}{\sigma^2}dx=
+\frac1{\sqrt{2\pi}\sigma^3}\int\limits_{-\infty}^{\infty}(x-\theta)e^{-(x-\theta)^2/2\sigma^2}dx=\\=
+\frac1{\sigma^2}\left(\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}xe^{-(x-\theta)^2/2\sigma^2}dx-
+\theta\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}e^{-(x-\theta)^2/2\sigma^2}dx\right)=
+\frac1{\sigma^2}(E\xi-\theta)=0
+\end{multline*}
+Значение интеграла не зависит от $\theta$ значит сходимость равномерная по $\theta$, 
+т. е. условие 3 <a href="../math_analysis/math_analysis13.2.2.html#Corollary13.2.1">следствия 13.2.1 MA</a> выполнено.
+</li><li>В <a href="#Example12.1">примере 12.1</a> было показано, что $\overline{x}$ несмещённая оценка для матожидания нормального распределения, 
+то есть функция $b(\theta)\equiv0$ дифференцируема по $\theta$.
+</li><li>Аналогично п. 2 проверим п. 3 условий <a href="../math_analysis/math_analysis13.2.2.html#Corollary13.2.1">следствия 13.2.1 MA</a>. Так как
+\begin{multline*}
+E\tilde\theta=E\overline{x}=E\left(\frac1{n}\sum_{i=1}^nx_i\right)=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\frac1{n}\sum_{i=1}^nx_ip(x_1,\ldots,x_n;\theta)dx_1\cdots{d}x_n=
+\frac1{n}\sum_{i=1}^n\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}x_i\prod{p}(x_i,\theta)dx_1\dots{d}x_n=\\=
+\frac1{n}\sum_{i=1}^n\left(\int\limits_{-\infty}^{\infty}p(x_1,\theta)dx_1\cdots\int\limits_{-\infty}^{\infty}x_ip(x_i,\theta)dx_i\cdots\int\limits_{-\infty}^{\infty}p(x_n,\theta)dx_n\right)=
+\frac1{n}\sum_{i=1}^n\int\limits_{-\infty}^{\infty}x_ip(x_i,\theta)dx_i
+\end{multline*}
+и
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}x\frac{\partial{p}(x,\theta)}{\partial\theta}dx=\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}xe^{-(x-\theta)/2\sigma^2}\frac{x-\theta}{\sigma^2}dx=\\=
+\frac1{\sqrt{2\pi}\sigma^3}\left(\int\limits_{-\infty}^{\infty}(x-\theta)^2e^{-(x-\theta)^2/2\sigma^2}dx+\theta\int\limits_{-\infty}^{\infty}(x-\theta)e^{-(x-\theta)^2/2\sigma^2}dx\right)=
+\frac1{\sigma^2}(\sigma^2+\theta(E\xi-\theta))=1
+\end{multline*}
+то 
+$$\frac{\partial{E}\tilde\theta}{\partial\theta}=\frac1{n}\sum_{i=1}^n\int\limits_{-\infty}^{\infty}x_i\frac{\partial{p}(x_i,\theta)}{\partial\theta}dx_i=1.$$
+Так как полученное значение не зависит от $\theta$, то сходимость равномерна по $\theta$.
+</li><li>
+\begin{multline*}
+I(\theta)=\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(x,\theta)}{\partial\theta}\right)^2p(x,\theta)dx=
+\int\limits_{-\infty}^{\infty}\left(\frac{\partial}{\partial\theta}\frac{(x-\theta)^2}{2\sigma^2}\right)^2p(x,\theta)dx=
+\int\limits_{-\infty}^{\infty}\frac{(x-\theta)^2}{\sigma^4}e^{-(x-\theta)^2/2\sigma^2}dx=\frac{\sigma^2}{\sigma^4}=\frac1{\sigma^2}>0
+\end{multline*}
+</li>
+</ol>
+Таким обрзаом, по <a href="#Corollary12.1">следствию 12.1</a> 
+$$D\tilde\theta=D\overline{x}\geq\frac1{nI(\theta)}=\frac{\sigma^2}{n}.$$
+С другой стороны, в <a href="./probability_theory11.1.html#Task11.1">задаче 11.1</a> было показано, что $D\overline{x}=\sigma^2/n$, 
+то есть в данном случае неравенство Рао-Крамера обращается в равенство.
+<br><br>
+<p id="Definition12.6"><b>Определение 12.6:</b>
+Несмещённая оценка удовлетворяющая условиям регулярности называется эффективной, если для неё неравенство Рао-Крамера обращается в равенство.
+<br>
+Эффективная оценка для которой при $n\to\infty$ выполняется $D\tilde\theta=o(1/n)$ называется сверхэффективной.
+<br><br>
+<p id="Example12.4"><b>Пример 12.4:</b>
+Пусть 
+$$\xi\sim{p}(x,\theta)=\frac1{\sqrt{2\pi\theta}}e^{-(x-\mu)^2/2\theta},$$
+$E\xi=\mu$ известно, $\sigma^2=\theta$ - неизвестно. Задача: оценить $\theta$ по выборке объёма $n$ $(x_1,\ldots,x_n)$. 
+В <a href="#Example12.1">примере 12.1</a> показано, что $E(S^2)=((n-1)\sigma^2)/n\neq\sigma^2$, то есть оценка $S^2$ смещённая. Тогда оценка
+$$\overline{S}^2:=\frac{n}{n-1}S^2=\frac1{n-1}\sum_{i=1}^n(x_i-\overline{x})^2$$
+несмещённая. Проверим условия регулярности для оценки $\overline{S}^2$ параметра $\theta:=\sigma^2$.
+<ol>
+<li>Так как функция плотности нормального распределения положительна при любом значении дисперсии, 
+то $\{x\in\mathbb{R}:p(x,\theta)>0\}=\mathbb{R}$ при любом значении $\theta$.
+</li><li>Аналогично п. 2 <a href="#Example12.3">примера 12.3</a> проверим равномерную сходимость интеграла 
+$\int_{-\infty}^{\infty}\frac{\partial}{\partial\theta}p(x,\theta)dx$.
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}\frac{\partial}{\partial\theta}\left(\frac1{\sqrt{2\pi\theta}}e^{-(x-\mu)^2/2\theta}\right)dx=
+\int\limits_{-\infty}^{\infty}\frac1{\sqrt{2\pi}}\frac{-1}{2\theta^{3/2}}e^{-(x-\mu)^2/2\theta}dx+\int\limits_{-\infty}^{\infty}\frac1{\sqrt{2\pi\theta}}e^{-(x-\mu)^2/2\theta}\frac{(x-\mu)^2}{2\theta^2}dx=\\=
+-\frac1{2\theta}\int\limits_{-\infty}^{\infty}p(x,\theta)dx+\frac1{2\theta^2}\int\limits_{-\infty}^{\infty}(x-\mu)^2p(x,\theta)dx=-\frac1{2\theta}+\frac{\theta}{2\theta^2}=0
+\end{multline*}
+</li><li>Как было показано выше оценка $\overline{S}^2$ является несмещённой для параметра $\theta:=\sigma^2$, следовательно, 
+функция $b(\theta)\equiv0$ дифференциреума по $\theta$.
+</li><li>Аналогично п. 4 <a href="#Example12.3">примера 12.3</a> проверим равномерную сходимость по $\theta$ матожидания 
+$$E\frac{\partial\overline{S}^2}{\partial\theta}=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\frac{\partial}{\partial\theta}\frac1{n-1}\sum_{i=1}^n(x_i-\overline{x})^2p(x_1,\ldots,x_n;\theta)dx_1\cdots{d}x_n.$$
+<i>без доказательства</i>
+</li><li>Так как
+$$
+\frac{\partial}{\partial\theta}\ln\left(\frac1{\sqrt{2\pi\theta}}e^{-(x-\mu)^2/2\theta}\right)=
+\frac{\partial}{\partial\theta}\left(\ln\frac1{\sqrt{2\pi}}-\frac12\ln\theta-\frac{(x-\mu)^2}{2\theta}\right)=-\frac1{2\theta}+\frac{(x-\mu)^2}{2\theta^2}
+$$
+то
+$$
+I(\theta)=\int\limits_{-\infty}^{\infty}\left(-\frac1{2\theta}+\frac{(x-\mu)^2}{2\theta^2}\right)^2p(x,\theta)dx=
+\frac1{2\theta^2}\int\limits_{-\infty}^{\infty}p(x,\theta)dx-\frac1{2\theta^3}\int\limits_{-\infty}^{\infty}(x-\mu)^2p(x,\theta)dx+\frac1{4\theta^4}\int\limits_{-\infty}^{\infty}(x-\mu)^4p(x,\theta)dx=
+\frac1{4\theta^2}-\frac1{2\theta^2}+\frac3{4\theta^2}=\frac1{2\theta^2}
+$$
+Здесь предпоследнее равенство в силу того, что для нормального распределения $\nu_4=3\sigma^4$ (<a href="./probability_theory4.6.html#Example4.4">пример 4.4</a>).
+</li>
+</ol>
+Таким образом, условия регулярности выполняются т. е. 
+$$D\overline{S}^2\geq\frac1{nI(\theta)}=\frac{2\theta^2}{n}\neq\frac{2\theta^2}{n-1}=D\overline{S}^2,$$
+т. е. $\overline{S}^2$ не эффективная оценка для параметра $\theta$.
+<br><br>
+<p id="Task12.1"><b>Задача 12.1:</b>
+Доказать, что для случайной величины $\xi\sim{N}(\theta,\mu)$ 
+$$D\overline{S}^2=\frac{2\theta^2}{n-1}$$.<br>
+<i>
+Пусть $\xi\sim{N}(0,1)$, тогда из <a href="./probability_theory4.6.html#Example4.4">примера 4.4</a> следует 
+$$D\xi^2=E\xi^4-(E\xi^2)^2=3\sigma^4-\sigma^4=2\sigma^4=2.$$ 
+Так как $\xi_1^2+\cdots+\xi_n^2\sim\chi_n^2$, где для любого $i\in\overline{1,n}$ $\xi_i\sim{N}(0,1)$ 
+(см. например Г. Крамер "Математические методы статистики" 1975 г. стр. 258) и случайные величины $\xi_1,\ldots,\xi_n$ независимы, 
+то дисперсия распределения $\chi_n^2$ равна $2n$.
+$$\frac{n-1}{\theta}\overline{S}^2\sim\chi_{n-1}^2\Rightarrow\frac{(n-1)^2}{\theta^2}D\overline{S}^2=2(n-1)\Rightarrow{D}\overline{S}^2=\frac{2\theta^2}{n-1}$$
+Доказательство первого соотношения это <a href="./probability_theory12.6.html#Theorem12.9">теорема Фишера</a> 
+доказательство будет приведено в разделе "Доверительные интервалы".
+</i>
+<br><br>
+<p id="Task12.2"><b>Задача 12.2:</b>
+Пусть 
+$$\xi\sim{p}(x;\theta):=\begin{cases}e^{\theta-x},x\geq\theta \\ 0, x<\theta\end{cases},$$
+$\tilde\theta=\tilde\theta(x_1,\ldots,x_n)=\min(x_1,\ldots,x_n)$ - оценка для $\theta$, $\varphi(x)$ - плотность распределения $\tilde\theta$. 
+<ol>
+<li>
+Доказать, что
+$$E\tilde\theta=\int\limits_{\theta}^{\infty}x\varphi(x)dx=\theta+\frac1{n}.$$
+</li><li>Проверить условия регулярности для оценки $\tilde\theta_1:=\theta-1/n$. Убедиться, что неравенство Рао-Крамера не выполняется.
+</li>
+</ol>
+<i>
+<ol>
+<li>
+Несложно видеть, что $F(x):=1-e^{\theta-x}$ - функция распределения случайной величины $\xi$, тогда 
+$$
+1-F_{\tilde\theta}(x)=P\{\min(x_1,\ldots,x_n)>x\}=P\{x_1&gtx,\ldots,x_n&gtx\}=
+\prod_{i=1}^n(1-F(x))=e^{n(\theta-x)}\Rightarrow{F}_{\tilde\theta}(x)=1-e^{n(\theta-x)}\Rightarrow\varphi(x)=F'_{\tilde\theta}(x)=ne^{n(\theta-x)}
+$$
+\begin{multline*}
+E\tilde\theta=\int\limits_{\theta}^{\infty}nxe^{n(\theta-x)}dx=
+e^{n\theta}\int\limits_{\theta}^{\infty}nxe^{-nx}dx=e^{n\theta}\frac1{n}\int\limits_{n\theta}^{\infty}te^{-t}dt=
+-\frac{e^{n\theta}}{n}\int\limits_{n\theta}^{\infty}tde^{-t}=
+-\frac{e^{n\theta}}{n}\left(\left.te^{-t}\right|_{n\theta}^{\infty}-\int\limits_{n\theta}^{\infty}e^{-t}dt\right)=
+-\frac{e^{n\theta}}{n}\left(-n\theta{e}^{-n\theta}-e^{-n\theta}\right)=\theta+\frac1{n}
+\end{multline*}
+\begin{multline*}
+E\tilde\theta^2=\int\limits_{\theta}^{\infty}x^2\varphi(x)dx=\int\limits_{\theta}^{\infty}nx^2e^{n(\theta-x)}dx=\frac{e^{n\theta}}{n}\int\limits_{\theta}^{\infty}(nx)^2e^{-nx}dx=
+-\frac{e^{-n\theta}}{n^2}\int\limits_{n\theta}^{\infty}t^2de^{-t}=\frac{e^{n\theta}}{n^2}\left(\left.t^2e^{-t}\right|_{n\theta}^{\infty}-2\int\limits_{n\theta}^{\infty}te^{-t}dt\right)=\\=
+-\frac{e^{n\theta}}{n^2}\left(-(n\theta)^2e^{-n\theta}-2e^{-n\theta}(n\theta+1)\right)=\theta^2+\frac{2n}{\theta}+\frac2{n^2}=
+\left(\theta+\frac1{n}\right)^2+\frac1{n^2}=(E\tilde\theta)^2+\frac1{n^2}
+\end{multline*}
+Таким образом, 
+$$D\tilde\theta=E\tilde\theta^2-(E\tilde\theta)^2=\frac1{n^2}={o}\left(\frac1{n}\right),n\to\infty,$$
+оценка $\tilde\theta-1/n$ являлась бы сверхэффективной если бы она была эффективной.
+</li><li>
+Проверим условия регулярности для оценки $\tilde\theta_1:=\tilde\theta-1/n$.
+Так как $\{x\in\mathbb{R}:p(x;\theta)>0\}=\{x\in\mathbb{R}:x\geq\theta\}$ зависит от выбора $\theta$, то первое условие регулярности не выполняется.
+$$I(\theta)=\int\limits_{\theta}^{\infty}\left(\frac{\partial\ln{p}(x;\theta)}{\partial\theta}\right)^2p(x;\theta)dx=\int\limits_{\theta}^{\infty}p(x;\theta)dx=1.$$
+Следовательно, $1/nI(\theta)=1/n$ эта величина превышает $D\tilde\theta=1/n^2$ при любом $n>1$, то есть неравенство Рао-Крамера не выполняется.
+</li>
+</ol>
+</i>
+<br>
+<p id="Lemma12.1"><b>Лемма 12.1: Неравенство Коши-Буняковского.</b><br>
+Пусть $\xi_1$ и $\xi_2$ не равные тождественно нулю случайные величины.
+Неравенство $(E|\xi_1\xi_2|)^2\leq{E}\xi_1^2E\xi_2^2$ обращается в равенство тогда и только тогда, 
+когда случайные величины $|\xi_1|$ и $|\xi_2|$ линейно зависимы, то есть существуют $c_1,c_2\in\mathbb{R}/0$ такие, что 
+$c_1|\xi_1|+c_2|\xi_2|=0(P_{\text{пн.}})$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$
+Пусть $(E|\xi_1\xi_2|)^2=E\xi_1^2E\xi_2^2$, тогда для любых $u,v\in\mathbb{R}$
+$$
+E(u|\xi_1|+v|\xi_2|)^2=u^2E\xi_1^2+2uvE|\xi_1\xi_2|+v^2E\xi_2^2=
+u^2E\xi_1^2+2uv\sqrt{E\xi_1^2E\xi_2^2}+v^2E\xi_2^2=\left(u\sqrt{E\xi_1^2}+v\sqrt{E\xi_2^2}\right)^2
+$$
+Положив $u:=1$, $v:=-\sqrt{E\xi_1^2}/\sqrt{E\xi_2^2}$, получим $E(u|\xi_1|+v|\xi_2|)^2=0$, 
+тогда по п. 3 <a href="./probability_theory4.1.html#Theorem4.5">теоремы 4.5</a> $u|\xi_1|+v|\xi_2|=0(P_{\text{пн.}})$.<br>
+$\Leftarrow)$
+Обозначим $q:=-c_2/c_1$, тогда 
+$$\xi_1=-q\xi_2\Rightarrow\begin{cases}(E|\xi_1\xi_2|)^2=(E|-q\xi_2^2|)^2=q^2(E\xi_2^2)^2 \\ E\xi_1^2E\xi_2^2=E(q\xi_2)^2E\xi_2^2=q^2(E\xi_2^2)^2\end{cases}$$
+<br>
+<p id="Theorem12.2"><b>Теорема 12.2:</b>
+Несмещённая оценка $\tilde\theta$ параметра $\theta$ удовлетворяющая условиям регулярности является эффективной тогда и только тогда, 
+когда функция правдоподобия $p(\overline{x};\theta)$ представима в виде 
+$$e^{A(\theta)\tilde\theta+B(\theta)}H(\overline{x}),$$
+где функции $A(\theta)$, $B(\theta)$ не зависят от наблюдений, а функция $H(\overline{x})$ не зависит от выбора $\theta$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Обозначим 
+$$f(\overline{x};\theta):=(\tilde\theta-\theta)\sqrt{p(\overline{x};\theta)},$$
+$$g(\overline{x};\theta):=\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}\frac1{p(\overline{x};\theta)}\sqrt{p(\overline{x};\theta)}.$$
+Тогда из доказательства теоремы 12.1 следует, что при обращении неравенства Рао-Крамера в равенство справедливо
+$$
+\left(\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}f(\overline{x};\theta)g(\overline{x};\theta)dx_1\cdots{d}x_n\right)^2=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}f^2(\overline{x};\theta)dx_1,\cdots{d}x_n\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}g^2(\overline{x};\theta)dx_1\cdots{d}x_n
+$$
+или
+$$\left(Ef(\overline{x};\theta)g(\overline{x};\theta)\right)^2=Ef^2(\overline{x};\theta)Eg^2(\overline{x};\theta),$$
+тогда по лемме 12.1 (?) функции $f(\overline{x};\theta)$ и $g(\overline{x};\theta)$ <i>(или их модули?)</i> линейно связаны, 
+то есть существует функция $K(\theta)$ такая, что
+$$(\tilde\theta-\theta)\sqrt{p(\overline{x};\theta)}=K(\theta)\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}\frac1{p(\overline{x};\theta)}\sqrt{p(\overline{x};\theta)}$$
+$$\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}=\frac1{K(\theta)}(\tilde\theta-\theta).$$
+Проинтегрировав по $\theta$ получим
+$$\ln{p}(\overline{x};\theta)=\tilde\theta\int\frac1{K(\theta)}d\theta-\int\frac{\theta}{K(\theta)}d\theta,$$
+следовательно, положив
+$$A(\theta):=\int\frac1{K(\theta)}d\theta;\,B(\theta):=\int\frac{\theta}{K(\theta)}d\theta$$
+получим 
+$$p(\overline{x};\theta)=e^{A(\theta)\tilde\theta+B(\theta)}.$$
+$\Leftarrow)$ См. <a href="#Task12.3">задачу 12.3</a>.
+<br><br>
+<p id="Task12.3"><b>Задача 12.3:</b>
+Доказать достаточность для теоремы 12.2.
+<br>
+<i>
+Пусть существуют $A(\theta)$, $B(\theta)$, $H(\overline{x})$ такие, что
+$$p(\overline{x};\theta)=e^{A(\theta)\tilde\theta+B(\theta)}H(\overline{x}).$$
+Из доказательства <a href="#Theorem12.1">теоремы 12.1</a> следует, что неравество Рао-Крамера обращается в равенство при обращении в равенство неравенства
+$$
+\left(\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}dx_1\cdots{d}x_n\right)^2\leq
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)^2p(\overline{x};\theta)dx_1\cdots{d}x_n\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\left(\frac{\partial\ln{p}(\overline{x};\theta)}{\partial\theta}\right)^2p(\overline{x};\theta)dx_1\cdots{d}x_n.
+$$
+Подставляя сюда выражение для $p(\overline{x};\theta)$ получим
+\begin{multline*}
+\left(\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)(\tilde\theta{A}'(\theta)+B'(\theta))p(\overline{x};\theta)dx_1\cdots{d}x_n\right)^2\leq
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta-\theta)^2p(\overline{x};\theta)dx_1\cdots{d}x_n
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta{A}'(\theta)+B'(\theta))^2p(\overline{x};\theta)dx_1\cdots{d}x_n
+\end{multline*}
+или
+$$\left(E(\tilde\theta-\theta)(\tilde\theta{A}'(\theta)+B'(\theta))\right)^2\leq{E}(\tilde\theta-\theta)^2E(\tilde\theta{A}'(\theta)+B'(\theta))^2.\quad(*)$$
+Так как 
+\begin{multline*}
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}p(\overline{x};\theta)dx_1\cdots{d}x_n=1\Rightarrow
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\frac{\partial{p}(\overline{x};\theta)}{\partial\theta}dx_1\cdots{d}x_n=0\Rightarrow\\\Rightarrow
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}(\tilde\theta{A}'(\theta)+B'(\theta))p(\overline{x};\theta)dx_1\cdots{d}x_n={A}'(\theta)E\tilde\theta+B'(\theta)=0\Rightarrow{B}'(\theta)=-\theta{A}'(\theta),
+\end{multline*}
+следовательно, случайные величины $\tilde\theta-\theta$ и $\tilde\theta{A}'(\theta)+B'(\theta)$ линейно связаны. 
+Тогда по <a href="#Lemma12.1">лемме 12.1</a> неравенство $(*)$ обращается в равенство, то есть оценка $\tilde\theta$ эффективна.
+</i>
+<br><br>
+
+<br><br>
+<a href="./probability_theory11.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.3.html">next</a>

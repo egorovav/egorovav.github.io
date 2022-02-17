@@ -1,0 +1,307 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 4.6</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory5.1.html">next</a>
+<br>
+
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\sgn}{\operatorname{sgn}}$
+
+<h5 id="4.6">4.6 Дисперсия случайной величины.</h5>
+
+<p id="Definition4.4"><b>Определение 4.4:</b>
+Пусть случайная величина $\xi$ такая, что $E|\xi|<\infty$, тогда дисперсией случайной величины $\xi$ называется число
+$$D\xi:=E\left((\xi-E\xi)^2\right).$$
+<br>
+<p id="Theorem4.20"><b>Теорема 4.20: Свойства дисперсии.</b><br>
+Пусть $\xi$, $\eta$ случайные величины такие, что $E|\xi|<\infty$, $E|\eta|<\infty$, тогда
+<ol>
+<li>$D\xi\geq0$;
+</li>
+<li>$\forall{c}\in\mathbb{R}(D(c\xi)=c^2D\xi)$;
+</li>
+<li>если $\xi$ принимает только одно значение (то есть постоянна), то $D\xi=0$;
+</li>
+<li>$D\xi=0\Rightarrow\xi=E\xi(P_{\text{пн.}})$;
+</li>
+<li>$D\xi=E(\xi^2)-(E\xi)^2$;
+</li>
+<li>если $\xi$ и $\eta$ независимы, то $D(\xi+\eta)=D\xi+D\eta$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как случайная величина $(\xi-E\xi)^2$ неотрицательна, то утверждение следует из п. 3 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>.
+</li>
+<li>$D(c\xi)=E\left((c\xi-E(c\xi))^2\right)=E\left(c^2(\xi-E\xi)^2\right)=c^2E\left((\xi-E\xi)^2\right)=c^2D\xi$.
+</li>
+<li>Пусть $\xi\sim\binom{c}{1}$, тогда $E\xi=\sum_{k=1}^nx_kp_k=c$, тогда $D\xi=E\left((\xi-c)^2\right)$. Так как $(\xi-c)^2\sim\binom{0}{1}$, 
+то по доказанному $D\xi=0$.
+</li>
+<li>По п. 1 <a href="./probability_theory4.1.html#Theorem4.5">теоремы 4.5</a> 
+$$D\xi=0\Rightarrow(\xi-E\xi)^2=0(P_{\text{пн.}})\Rightarrow\xi-E\xi=0(P_{\text{пн.}})\Rightarrow\xi=E\xi(P_{\text{пн.}}).$$ 
+</li>
+<li>$D\xi=E\left((\xi-E\xi)^2\right)=E(\xi^2)-2E\xi{E}\xi+(E\xi)^2=E(\xi^2)-(E\xi)^2$.
+</li>
+<li>Если случайные величины $\xi$ и $\eta$ независимы, то по <a href="./probability_theory3.5.html#Theorem3.15">теореме 3.15</a> 
+независимы случайные величины $\xi-E\xi$ и $\eta-E\eta$. Тогда
+$$E((\xi-E\xi)(\eta-E\eta))=E(\xi-E\xi)E(\eta-E\eta)=0,$$
+следовательно,
+$$
+D(\xi+\eta)=E\left((\xi+\eta-E\xi-E\eta)^2\right)=E\left((\xi-E\xi)^2\right)-2E((\xi-E\xi)(\eta-E\eta))+E\left((\eta-E\eta)^2\right)=
+E\left((\xi-E\xi)^2\right)+E\left((\eta-E\eta)^2\right)=D\xi+D\eta.
+$$
+</li>
+</ol>
+<p id="Definition4.5"><b>Определение 4.5:</b>
+Пусть случайные величины $\xi$ и $\eta$ такие, что $E(\xi^2)<\infty$, $E(\eta^2)<\infty$, тогда число
+$$\cov(\xi,\eta):=E((\xi-E\xi)(\eta-E\eta))$$
+называется ковариацией случайных величин $\xi$ и $\eta$.
+<br><br>
+Из доказательства п. 6 теоремы 4.20 следует, что для произвольных случайных величин $\xi$, $\eta$ таких, что $E|\xi|<\infty$, $E|\eta|<\infty$
+$$D(\xi+\eta)=D\xi+2\cov(\xi,\eta)+D\eta.$$
+Если же случайные величины $\xi$ и $\eta$ независимы, то $\cov(\xi,\eta)=0$.
+<p id="Example4.3"><b>Пример 4.3:</b>
+<ol>
+<li>
+Пусть $\xi\sim(\mu,\sigma^2)$, то есть $\xi$ абсолютно непрерывна и
+$$p_{\xi}(x)=\frac1{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)}.$$
+Так как по теоремам <a href="./probability_theory4.3.html#Theorem4.12">4.12</a>, <a href="./probability_theory4.3.html#Theorem4.13">4.13</a> 
+для любой борелевской функции $g(x)$
+$$E(g(\xi))=\int\limits_{-\infty}^{\infty}g(x)p_{\xi}(x)dx,$$
+то положив $g(x)=x^2$ получим
+$$
+E(\xi^2)=\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}x^2e^{-(x-\mu)^2/(2\sigma^2)}dx.
+$$
+Сделаем замену $t:=\frac{x-\mu}{\sigma}$, тогда $x=\sigma{t}+\mu$, $dx=\sigma{d}t$ и
+\begin{multline*}
+E(\xi^2)=\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}(\sigma{t}+\mu)^2e^{-(x-\mu)^2/(2\sigma^2)}\sigma{d}t=
+\frac1{\sqrt{2\pi}\sigma}\left(\int\limits_{-\infty}^{\infty}\sigma^3t^2e^{-t^2/2}dt+
+\int\limits_{-\infty}^{\infty}2\sigma^2t\mu{e}^{-t^2/2}dt+\int\limits_{-\infty}^{\infty}\sigma\mu^2e^{-t^2/2}dt\right).
+\end{multline*}
+ В последнем выражении в первом слагаемом интеграл от четной функции следовательно его можно заменить удвоенным интегралом от той же функции по промежутку 
+$(0,\infty)$, во втором слагаемом подынтегральная функция нечетна, следовательно, оно равно нулю, третье слагаемое равно $\sqrt{2\pi}\sigma\mu^2$, 
+так как это интеграл Пуассона, следовательно,
+$$ E(\xi^2)=\frac{2\sigma^2}{\sqrt{2\pi}}\int\limits_0^{\infty}t^2e^{-t^2/2}dt+\mu^2$$
+Положив $u(t):=t$, $v(t):=\exp(-t^2/2)$ и применив правило интегрирования по частям 
+(<a href="../math_analysis/math_analysis8.4.html#Corollary8.4.3">следствие 8.4.3 MA</a>) получим
+$$
+E(\xi^2)=\frac{2\sigma^2}{\sqrt{2\pi}}\left(\left.te^{-t^2/2}\right|_0^{\infty}+\int\limits_0^{\infty}e^{-t^2/2}dt\right)+\mu^2=
+\frac{2\sigma^2}{\sqrt{2\pi}}\frac{\sqrt{2\pi}}{2}+\mu^2=\sigma^2+\mu^2.
+$$
+Так как из п. 2 <a href="./probability_theory4.3.html#Example4.2">примера 4.2</a> известно, что $E\xi=\mu$, то по п. 5 теоремы 4.20
+$$D\xi=E(\xi^2)-(E\xi)^2=\sigma^2+\mu^2-\mu^2=\sigma^2.$$
+</li>
+<li>Пусть $\xi\sim\Pi(\lambda)$, то есть $\xi$ дискретна и для любого $k\in\mathbb{N}_0$
+$$P(\xi=k)=\frac{\lambda^ke^{-\lambda}}{k!}.$$
+Тогда
+\begin{multline*}
+E(\xi^2)=\sum_{k=0}^{\infty}k^2\frac{\lambda^ke^{-\lambda}}{k!}=\sum_{k=1}^{\infty}k\frac{\lambda^ke^{-\lambda}}{(k-1)!}=
+\lambda{e}^{-\lambda}\left(\sum_{k=1}^{\infty}(k-1)\frac{\lambda^{k-1}}{(k-1)!}+\sum_{k=1}^{\infty}\frac{\lambda^{k-1}}{(k-1)!}\right)=\\=
+\lambda\sum_{m=0}^{\infty}m\frac{\lambda^me^{-\lambda}}{m!}+\lambda{e}^{-\lambda}\sum_{m=0}^{\infty}\frac{\lambda^m}{m!}=
+\lambda{E}\xi+\lambda{e}^{-\lambda}e^{\lambda}=\lambda{E}\xi+\lambda.
+\end{multline*}
+Так как из п. 1 <a href="./probability_theory4.3.html#Example4.2">примера 4.2</a> известно, что $E\xi=\lambda$, то по п. 5 теоремы 4.20
+$$D\xi=E(\xi^2)-(E\xi)^2=\lambda^2+\lambda-\lambda^2=\lambda.$$
+</li>
+<li>
+Пусть $\Omega:=\{0,1\}$, $\mathfrak{A}:=\mathcal{P}(\Omega)$, $P(\{0\})=p$, $P(\{1\})=q$, где неотрицательные $p,q\in\mathbb{R}$ такие, что $p+q=1$. 
+Тогда $(\Omega,\mathfrak{A},P)$ - вероятностное пространство. Пусть функция 
+$P_n(A):\mathcal{P}(\Omega^n)\to\mathbb{R}$ такая, что для любого $A\in\mathcal{P}(\Omega^n)$ 
+$$P_n(A)=\sum_{(\omega_1,\ldots,\omega_n)\in{A}}P(\omega_1)\cdots{P}(\omega_n).$$ 
+В <a href="./probability_theory5.1.html#5.1">разделе 5.1</a> будет показано, что $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ является вероятностным пространством.<br>
+Определим на $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ случайную величину $\xi$ такую, 
+что для любого $\omega\in\Omega^n$ $\xi(\omega)$ равняется количеству единиц в векторе $\omega$. Тогда для любого $k\in\overline{0,n}$
+$$P_n(\xi=k)=\binom{n}{k}p^kq^{n-k}$$
+то есть $\xi\sim{B}(n,p)$.<br>
+Для любого $i\in\overline{1,n}$ определим на $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ 
+случайную величину $\xi_i$ такую, что для любого $\omega:=(\omega_1,\ldots,\omega_n)\in\Omega^n$ $\xi_i(\omega)=1$, если $\omega_i=1$, иначе
+$\xi_i(\omega)=0$. Тогда для любого $i\in\overline{1,n}$, зафиксировав на $i$-том месте 1 и просуммировав по количеству единиц на оставшихся $n-1$ местах, получим
+$$P_n(\xi_i=1)=\sum_{k=0}^{n-1}p\binom{n-1}{k}p^kq^{n-1-k}=p(p+q)^{n-1}=p.$$
+Следовательно, для любого $i\in\overline{1,n}$ $\xi_i\sim\left(\begin{smallmatrix}1, & 0 \\ p, & 1-p\end{smallmatrix}\right)$. 
+Тогда для любого $i\in\overline{1,n}$ $E\xi_i=p$, $E(\xi_i^2)=p$, $D\xi_i=p-p^2=pq$. Следовательно, так как
+$$\xi=\sum_{i=1}^n\xi_i,$$
+то $E\xi=\sum_{i=1}^n\xi_i=np$.
+Случайные величины $\xi_1,\ldots,\xi_n$ независимы, действительно для любых неравных $i,j\in\overline{1,n}$
+$$
+P_n(\xi_i=\xi_j=1)=p^2\sum_{k=0}^{n-2}\binom{n-2}{k}p^kq^{n-2-k}=
+p^2(p+q)^{n-2}=p^2=P_n(\xi_i=1)P_n(\xi_j=1).
+$$
+Аналогично показывается что для любых $s,t\in\overline{0,1}$ 
+$$P_n(\xi_i=s,\xi_j=t)=P_n(\xi_i=s)P_n(\xi_j=t).$$
+Тогда по п. 6 теоремы 4.20 $D\xi=\sum_{i=1}^nD\xi_i=npq$.
+</li>
+</ol>
+<br>
+<p id="Definition4.6"><b>Определение 4.6:</b>
+Для любого $k\in\mathbb{N}$ моментом $k$-того порядка случайной величины $\xi$ относительно точки $a\in\mathbb{R}$ называют число $E\left((\xi-a)^k\right)$.<br>
+Если $a=0$, то момент называют начальным, если $a=E\xi$, то момент называют центральным.
+<br><br>
+<p id="Note4.1"><b>Замечание 4.1:</b>
+Начальный момент $k$-того порядка обычно обозначают $\mu_k$, а центральный $\nu_k$. Тогда для любого $k\in\mathbb{N}$ 
+$$\mu_k=E(\xi^k),\,\nu_k=E\left((\xi-E\xi)^k\right).$$
+Отсюда $\mu_0=\nu_0=1$, $\mu_1=E\xi$, $\nu_1=0$, $\nu_2=D\xi$ и для любого $k\in\mathbb{N}$
+$$
+\nu_k=E\left((\xi-E\xi)^k\right)=E\sum_{m=0}^k\binom{k}{m}\xi^m(-1)^{k-m}(E\xi)^{k-m}=
+\sum_{m=0}^k(-1)^{k-m}\binom{k}{m}E(\xi^m)\mu_1^{k-m}=\sum_{m=0}^k(-1)^{k-m}\binom{k}{m}\mu_m\mu_1^{k-m}.
+$$
+<br>
+<p id="Definition4.7"><b>Определение 4.7:</b>
+Для любого $k\in\mathbb{N}$ абсолютным моментом $k$-того порядка случайной величины $\xi$ относительно точки $a\in\mathbb{R}$ называют 
+число $E\left(|\xi-a|^k\right)$.
+<br><br>
+<p id="Example4.4"><b>Пример 4.4:</b>
+Для любого $k\in\mathbb{N}$ вычислим центральные моменты случайной величины $\xi\sim{N}(\mu,\sigma^2)$. Для любого $k\in\mathbb{N}$
+$$\nu_k=E\left((\xi-E\xi)^k\right)=E\left((\xi-\mu)^k\right).$$
+Так как по теоремам <a href="./probability_theory4.3.html#Theorem4.12">4.12</a>, <a href="./probability_theory4.3.html#Theorem4.13">4.13</a> 
+для любой борелеской функции $g(x)$
+$$E(g(\xi))=\int\limits_{-\infty}^{\infty}g(x)p_{\xi}(x)dx,$$
+то положив $g(x)=(x-\mu)^k$ и произведя стандартную замену $t:=\frac{x-\mu}{\sigma}$ получим
+$$
+\nu_k=\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}(x-\mu)^ke^{-(x-\mu)^2/(2\sigma^2)}dx=
+\frac1{\sqrt{2\pi}\sigma}\int\limits_{-\infty}^{\infty}(\sigma{t})^ke^{-t^2/2}\sigma{d}t=
+\frac{\sigma^k}{\sqrt{2\pi}}\int\limits_{-\infty}^{\infty}t^ke^{-t^2/2}dt.
+$$
+В последнем выражении, если $k$ нечетно, то подынтегральная функция нечетная и интеграл равен нулю, следовательно, для любого нечетного $k$ $\nu_k=0$. 
+Если $k=2m$, то подынтегральная функция четная, тогда произведя замену 
+$z:=t^2/2$, получим
+$$
+\nu_{2m}=\frac{2\sigma^{2m}}{\sqrt{2\pi}}\int\limits_0^{\infty}t^{2m}e^{-t^2/2}dt=
+\frac{2\sigma^{2m}}{\sqrt{2\pi}}\int\limits_0^{\infty}(2z)^me^{-z}\frac{dz}{\sqrt{2z}}=
+\frac{2^m\sigma^{2m}}{\sqrt{\pi}}\int\limits_0^{\infty}z^{m-\frac12}e^{-z}dz=\frac{2^m\sigma^{2m}}{\sqrt{\pi}}\Gamma\left(m+\frac12\right).
+$$
+Здесь $\Gamma$ - это гамма-функция
+$$\Gamma(m):=\int\limits_0^{\infty}z^{m-1}e^{-z}dz.$$
+В разделе <a href="../math_analysis/math_analysis13.3.2.html#13.3.3">13.3.3 MA</a> показано, что для любого $m>0$ $\Gamma(m+1)=m\Gamma(m)$, 
+тогда последовательно уменьшая аргумент у $\Gamma$ на 1 до тех пор пока он не станет меньше 1 получим
+$$
+\nu_{2m}=\frac{2^m\sigma^{2m}}{\sqrt{\pi}}\left(m-\frac12\right)\left(m-\frac32\right)\cdots\frac12\Gamma\left(\frac12\right)
+$$
+Сделав замену $u:=\sqrt{z}$, $dz=2udu$ в определении гамма-функции можно свести $\Gamma\left(\frac12\right)$ 
+к интегралу Пуассона (<a href="../math_analysis/math_analysis13.3.1.html#13.3.1">13.3.1 MA</a>).
+$$\Gamma\left(\frac12\right)=\int\limits_0^{\infty}z^{-\frac12}e^{-z}dz=\int\limits_0^{\infty}\frac1{u}e^{-u^2}2udu=2\int\limits_0^{\infty}e^{-u^2}du=\sqrt{\pi},$$
+тогда
+$$\nu_{2m}=2^m\sigma^{2m}\left(\frac{2m-1}{2}\right)\left(\frac{2m-3}{2}\right)\cdots\frac12=\sigma^{2m}(2m-1)!!$$
+
+<h5 id="4.7">4.7 Коэффициент корреляции.</h5>
+
+Пусть случайные величины $\xi$, $\eta$ определенные на вероятностном простаранстве $(\Omega,\mathfrak{A},P)$ такие, что $E(\xi^2)<\infty$, $E(\eta^2)<\infty$. 
+Тогда по <a href="./probability_theory4.3.html#Theorem4.19">теореме 4.19</a> при s=1, t=2 имеем 
+$E|\xi|\leq\sqrt{E(\xi^2)}<\infty$, $E|\eta|\leq\sqrt{E(\eta^2)}<\infty$, тогда
+$$
+\begin{cases}E|\xi-E\xi|<\infty \\ E|\eta-E\eta|<\infty\end{cases}\Rightarrow\begin{cases}E\left((\xi-E\xi)^2\right)<\infty \\ 
+E\left((\eta-E\eta)^2\right)<\infty\end{cases}\Rightarrow|E((\xi-E\xi)(\eta-E\eta))|\leq
+{E}|(\xi-E\xi)(\eta-E\eta)|\leq\sqrt{E\left((\xi-E\xi)^2\right)E\left((\eta-E\eta)^2\right)}<\infty.
+$$
+Здесь предпоследнее неравенство по <a href="./probability_theory4.3.html#Theorem4.15">теореме 4.15</a>. 
+Таким образом, для случайных величин $\xi$ и $\eta$ определена ковариация то есть
+$$(E(\xi^2)<\infty\wedge{E}(\eta^2)<\infty)\Rightarrow|\cov(\xi,\eta)|=|E((\xi-E\xi)(\eta-E\eta))|<\infty.$$
+
+<p id="Definition4.8"><b>Определение 4.8:</b>
+Пусть случайные величины $\xi$, $\eta$ такие, что $E(\xi^2)<\infty$, $E(\eta^2)<\infty$, $D\xi>0$, $D\eta>0$, тогда коэффициентом корреляции случайных величин $\xi$ и $\eta$ называется число
+$$\rho(\xi,\eta):=\frac{\cov(\xi,\eta)}{\sqrt{D\xi{D}\eta}}.$$
+<br>
+Так как при сделанных в определении 4.8 предпосылках
+$$
+\cov(\xi,\eta)=E((\xi-E\xi)(\eta-E\eta))=E(\xi\eta-\xi{E}\eta-\eta{E}\xi+E\xi{E}\eta)=E(\xi\eta)-E\xi{E}\eta,
+$$
+то
+$$\rho(\xi,\eta)=\frac{E(\xi\eta)-E\xi{E}\eta}{\sqrt{D\xi{D}\eta}}.$$
+<br>
+<p id="Theorem4.21"><b>Теорема 4.21: Свойства коэффициета корреляции.</b><br>
+Пусть случайные величины $\xi$ и $\eta$ такие, что $E(\xi^2)<\infty$, $E(\eta^2)<\infty$, ${D\xi>0}$, $D\eta>0$, тогда
+<ol>
+<li>если $\xi$ и $\eta$ независимы, то $\rho(\xi,\eta)=0$;
+</li>
+<li>$|\rho(\xi,\eta)|\leq1$;
+</li>
+<li>$\exists{A},B\in\mathbb{R}:A\neq0\wedge\eta=A\xi+B\Rightarrow\rho(\xi,\eta)=\sgn(A)$;
+</li>
+<li>$\forall{A},B\in\mathbb{R}(\rho(\xi+A,\eta+B)=\rho(\xi,\eta))$
+</li>
+<li>$|\rho(\xi,\eta)|=1\Rightarrow\exists{A},B\in\mathbb{R}:\eta=A\xi+B(P_{\text{пн}})$;
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Если $\xi$ и $\eta$ независимы, то $E(\xi\eta)=E\xi{E}\eta$, следовательно
+$$\rho(\xi,\eta)=\frac{E(\xi\eta)-E\xi{E}\eta}{\sqrt{D\xi{D}\eta}}=0.$$
+</li>
+<li>По <a href="./probability_theory4.3.html#Theorem4.15">теореме 4.15</a> для случайных величин $\xi-E\xi$, $\eta-E\eta$
+$$
+|\rho(\xi,\eta)|=\frac{|E((\xi-E\xi)(\eta-E\eta))|}{\sqrt{D\xi{D}\eta}}\leq\frac{E|(\xi-E\xi)(\eta-E\eta)|}{\sqrt{D\xi{D}\eta}}\leq
+\frac{\sqrt{E\left((\xi-E\xi)^2\right)E\left((\eta-E\eta)^2\right)}}{\sqrt{D\xi{D}\eta}}=1.
+$$
+</li>
+<li>Пусть $\eta=A\xi+B$, тогда $E\eta=AE\xi+B$ и
+$$E(\eta^2)=E(A^2\xi^2+2AB\xi+B^2)=A^2E(\xi^2)+2ABE\xi+B^2,$$
+$$(E\eta)^2=(AE\xi+B)^2=A^2(E\xi)^2+2ABE\xi+B^2,$$
+$$D\eta=E(\eta^2)-(E\eta)^2=A^2E(\xi^2)-A^2(E\xi)^2=A^2(E(\xi^2)-(E\xi)^2)=A^2D\xi.$$
+Так как по п. 1 <a href="./probability_theory4.6.html#Theorem4.20">теоремы 4.20</a> $D\xi\geq0$, то $D\xi=|D\xi|$, следовательно,
+$$
+\rho(\xi,\eta)=\frac{E(\xi\eta)-E\xi{E}\eta}{\sqrt{D\xi{D}\eta}}=\frac{AE(\xi^2)+BE\xi-A(E\xi)^2-BE\xi}{\sqrt{A^2D\xi{D}\xi}}=
+\frac{AD\xi}{|A||D\xi|}=\frac{A}{|A|}=\sgn(A).
+$$
+</li>
+<li>
+$$
+\rho(\xi+A,\eta+B)=\frac{E((\xi+A)(\eta+B))-E(\xi+A)E(\eta+B)}{\sqrt{D\xi{D}\eta}}=
+\frac{E(\xi\eta)+BE\xi+AE\eta+AB-E\xi{E}\eta-AE\eta-BE\xi-AB}{\sqrt{D\xi{D}\eta}}=
+\frac{E(\xi\eta)-E\xi{E}\eta}{\sqrt{D\xi{D}\eta}}=\rho(\xi,\eta).
+$$
+</li>
+<li>Пусть $E\xi=E\eta=0$, тогда $D\xi=E(\xi^2)$, $D\eta=E(\eta^2)$<br>
+Рассмотрим две случайные величины $\eta\pm\sqrt{\frac{D\eta}{D\xi}}\xi$.<br>
+Так как $E\xi{E}\eta=0$, то $E(\xi\eta)=\rho(\xi,\eta)\sqrt{D\xi{D}\eta}$, тогда
+$$
+E\left(\left(\eta\pm\sqrt{\frac{D\eta}{D\xi}}\xi\right)^2\right)=E(\eta^2)\pm2\sqrt{\frac{D\eta}{D\xi}}E(\xi\eta)+E\left(\frac{D\eta}{D\xi}\xi^2\right)=
+D\eta\pm2\sqrt\frac{D\eta}{D\xi}\rho(\xi,\eta)\sqrt{D\xi{D}\eta}+\frac{D\eta}{D\xi}D\xi=2D\eta(1\pm\rho(\xi,\eta)).
+$$
+Таким образом, если $\rho(\xi,\eta)=1$, то по п. 3 <a href="./probability_theory4.1.html#Theorem4.5">теоремы 4.5</a>
+$$
+E\left(\left(\eta-\sqrt{\frac{D\eta}{D\xi}}\xi\right)^2\right)=2D\eta(1-\rho(\xi,\eta))=0\Rightarrow
+\left(\eta-\sqrt{\frac{D\eta}{D\xi}}\xi\right)^2=0(P_{\text{пн}})\Rightarrow\eta-\sqrt{\frac{D\eta}{D\xi}}\xi=0(P_{\text{пн}}).
+$$
+Аналогично, если $\rho(\xi,\eta)=-1$, $\eta+\sqrt{\frac{D\eta}{D\xi}}\xi=0(P_{\text{пн}})$.<br>
+Если $E\xi\neq0$ или $E\eta\neq0$, то $E(\xi-E\xi)=0$, $E(\eta-E\eta)=0$, при этом по п. 4 и по доказанному в этом пункте
+$$
+|\rho(\xi,\eta)|=1\Rightarrow|\rho((\xi-E\xi),(\eta-E\eta))|=1\Rightarrow
+\exists{A}\in\mathbb{R}:\eta-E\eta=A(\xi-E\xi)(P_{\text{пн}})\Rightarrow\eta=A\xi-AE\xi+E\eta(P_{\text{пн}}).
+$$
+</li>
+</ol>
+<br>
+<p id="Definition4.9"><b>Определение 4.9:</b>
+Случайные величины $\xi$ и $\eta$ называются не коррелированными, если $\rho(\xi,\eta)=0$.
+<br><br>
+Пункт 1 теоремы 4.21 не обратим, то есть из некоррелированности случайных величин не следует их независимость. 
+<br><br>
+<p id="Example4.5"><b>Пример 4.5:</b>
+Пусть $\xi\sim\left(\begin{smallmatrix}-1, & 0, & 1 \\ 1/3, & 1/3, & 1/3\end{smallmatrix}\right)$, тогда $E\xi=-\frac13+\frac13=0$. Положим $\eta:=\xi^2$, 
+тогда случайные величины $\xi$ и $\eta$ зависимы, действительно
+$$
+(\xi(\omega)=0\Leftrightarrow\eta(\omega)=0)\Rightarrow{P}(\xi=\eta=0)=\frac13\neq{P}(\xi=0)P(\eta=0)=\frac19.
+$$
+Так как $\xi^3\sim\left(\begin{smallmatrix}-1, & 0, & 1 \\ 1/3, & 1/3, & 1/3\end{smallmatrix}\right)$, то $E\xi^3=0$ и
+$$\rho(\xi,\eta)=\frac{E(\xi\eta)-E\xi{E}\eta}{\sqrt{D\xi{D}\eta}}=\frac{E(\xi^3)-E\xi{E}(\xi^2)}{\sqrt{D\xi{D}\eta}}=0.$$
+Таким образом, случайные величины $\xi$ и $\eta$ зависимы, но не коррелированы.
+<br><br>
+<i>Коэффициент корреляции это характеристика линейной, и только линейной, зависимости. Случайные же величины $\xi$ и $\xi^2$, 
+очевидно, зависимы и, очевидно, не линейно.</i>
+
+<br><br>
+<a href="./probability_theory4.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory5.1.html">next</a>

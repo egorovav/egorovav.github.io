@@ -1,0 +1,360 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 7.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory6.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.3.html">next</a>
+
+$\newcommand{\sqmlim}{\operatorname{l.i.m}}$
+
+<h4 id="7">7 Предельные теоремы.</h4>
+
+<h5 id="7.1">7.1 Сходимость последовательности случайных величин.</h5>
+
+Везде далее в данной главе $\{\xi_n\}$ последовательность случаных величин определённых на вероятностном прострастве $(\Omega,\mathfrak{A},P)$.
+<br><br>
+<p id="Definition7.1"><b>Определение 7.1:</b>
+Будем говорить, что последовательность случайных величин $\{\xi_n\}$ сходится по вероятности к случайной величине $\xi$, 
+если для любого $\varepsilon>0$ существует предел
+$$\lim_{n\to\infty}P(\{\omega\in\Omega||\xi_n(\omega)-\xi(\omega)|\geq\varepsilon\})=0,$$
+или, что тоже самое
+$$\lim_{n\to\infty}P(\{\omega\in\Omega||\xi_n(\omega)-\xi(\omega)|<\varepsilon\})=1.$$
+При этом обозначают
+$$\xi_n\xrightarrow[n\to\infty]{P}\xi.$$
+<br>
+Из определения следует, что если $\xi_n\xrightarrow[n\to\infty]{P}\xi_1$ и $\xi_n\xrightarrow[n\to\infty]{P}\xi_2$, то 
+$$P(\{\omega\in\Omega|\xi_1(\omega)=\xi_2(\omega)\})=1.$$
+В дальнейшем для сокращения записи при обозначении подмножеств $\Omega$ будем опускать фигурные скобки, преамбулу $\omega\in\Omega$, 
+а также аргументы случайных величин, например,
+$$P(\{\omega\in\Omega|\xi_1(\omega)=\xi_2(\omega)\})=1\sim{P}(\xi_1=\xi_2)=1$$
+<br>
+<p id="Definition7.2"><b>Определение 7.2:</b>
+Будем говорить, что последовательность случайных величин $\{\xi_n\}$ сходится к случайной величине $\xi$ $P$-почти наверное, если $P(\xi_n\to\xi)=1$, 
+или что тоже самое $P(\xi_n\nrightarrow\xi)=0$. При этом обозначают
+$$\xi_n\xrightarrow[n\to\infty]{P=1}\xi,\,\xi_n\xrightarrow[n\to\infty]{}\xi(P_{\text{пн}}),\xi_n\xrightarrow[n\to\infty]{}\xi(P=1).$$
+<br>
+<p id="Theorem7.1"><b>Теорема 7.1:</b>
+$$\xi_n\xrightarrow[n\to\infty]{P=1}\xi\Leftrightarrow\forall\varepsilon>0\left(\lim_{n\to\infty}P\biggl(\bigcup_{k=n}^{\infty}\{|\xi_n-\xi|\geq\varepsilon\}\biggr)=0\right).$$
+<p><b>Доказательство:</b><br>
+Обозначим $N:=\{\omega\in\Omega\mid\xi_n(\omega)\nrightarrow\xi(\omega)\}$, тогда 
+$$
+\bigl[\omega\in\overline{N}\Leftrightarrow\xi_n(\omega)\to\xi(\omega)\Leftrightarrow\forall\varepsilon>0\,\exists{n}_0\in\mathbb{N}:\forall{n}\geq{n}_0(|\xi_n(\omega)-\xi(\omega)|<\varepsilon)\bigl]\Rightarrow
+\overline{N}=\bigcap_{\varepsilon>0}\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty}\{|\xi_k-\xi|<\varepsilon\}
+$$
+Так как для любого $n\in\mathbb{N}$
+$$\forall\varepsilon>0\,\exists{m}\in\mathbb{N}:\frac1{m}<\varepsilon\Rightarrow\forall\varepsilon>0\,\exists{m}\in\mathbb{N}:\left\{|\xi_n-\xi|<\frac1{m}\right\}\subset\{|\xi_n-\xi|<\varepsilon\}$$
+и аналогично
+$$\forall{m}\in\mathbb{N}\,\exists\varepsilon>0:\{|\xi_n-\xi|<\varepsilon\}\subset\left\{|\xi_n-\xi|<\frac1{m}\right\},$$
+то
+$$\overline{N}=\bigcap_{m=1}^{\infty}\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty}\left\{|\xi_k-\xi|<\frac1{m}\right\}.$$
+Соответственно
+$$N=\bigcup_{m=1}^{\infty}\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}\left\{|\xi_k-\xi|\geq\frac1{m}\right\},$$
+тогда, так как $\sigma$-алгебра замкнута относительно счетных объединений и пересечений, а $|\xi_k-\xi|$ является случайной величиной, 
+т. е. ${\{|\xi_n-\xi|\geq\frac1{m}\}\in\mathfrak{A}}$, то 
+\begin{multline*}
+\xi_n\xrightarrow[n\to\infty]{P=1}\xi\Leftrightarrow{P}(N)=0\Leftrightarrow
+\forall{m}\in\mathbb{N}\left({P}\biggl(\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty}\left\{|\xi_k-\xi|\geq\frac1{m}\right\}\biggr)=0\right)\Leftrightarrow\\\Leftrightarrow
+\forall{m}\in\mathbb{N}\left(P\biggl(\lim_{n\to\infty}\bigcup_{k=n}^{\infty}\left\{|\xi_k-\xi|\geq\frac1{m}\right\}\biggr)=0\right)\Leftrightarrow
+\forall{m}\in\mathbb{N}\left(\lim_{n\to\infty}P\biggl(\bigcup_{k=n}^{\infty}\left\{|\xi_k-\xi|\geq\frac1{m}\right\}\biggr)=0\right)
+\end{multline*}
+где предпоследняя эквивалентность в силу <a href="./probability_theory1.6.html#Theorem1.4">теоремы 1.4</a>, 
+а последняя в силу п. 3 <a href="./probability_theory1.6.html#Theorem1.4">теоремы 1.5</a>. 
+Так как для любого $\varepsilon>0$ существует $m\in\mathbb{N}$ такое, что ${\varepsilon<\frac1{m}}$, 
+и для любого $m\in\mathbb{N}$ существует 
+$\varepsilon>0$ такое, что $\frac1{m}<\varepsilon$, то доказанная эквивалентность равнозначна сформулированной в условии теоремы.
+<br><br>
+<p id="Corollary7.1"><b>Следствие 7.1:</b>
+Из сходимости $P$-почти наверное следует сходимость по вероятности.
+<p><b>Доказательство:</b><br>
+Пусть последовательность $\{\xi_n\}$ сходится $P$-почти наверное к $\xi$. В силу того что для любых $n\in\mathbb{N}$, $\varepsilon>0$
+$$\{|\xi_n-\xi|\geq\varepsilon\}\subset\bigcup_{k=n}^{\infty}\{|\xi_k-\xi|\geq\varepsilon\},$$
+имеем
+$$P\bigl(|\xi_n-\xi|\geq\varepsilon\bigr)\leq{P}\left(\bigcup_{k=n}^{\infty}\{|\xi_k-\xi|\geq\varepsilon\}\right).$$
+Переходя в последнем неравенстве к пределу при $n\to\infty$ по теореме 7.1 для любого $\varepsilon>0$ получим
+$$0\leq\lim_{n\to\infty}P(|\xi_n-\xi|\geq\varepsilon)\leq\lim_{n\to\infty}P\left(\bigcup_{k=n}^{\infty}\{|\xi_k-\xi|\geq\varepsilon\}\right)=0.$$
+<br>
+<p id="Corollary7.2"><b>Следствие 7.2:</b>
+$$\forall\varepsilon>0\left(\sum_{n=1}^{\infty}P(|\xi_n-\xi|\geq\varepsilon)<\infty\right)\Rightarrow\xi_n\xrightarrow[n\to\infty]{P=1}\xi.$$
+<p><b>Доказательство:</b><br>
+По п. 5 <a href="./probability_theory1.1.html#Statement1.1">утверждения 1.1</a> для любых $n\in\mathbb{N}$, $\varepsilon>0$
+$$0\leq{P}\left(\bigcup_{k=n}^{\infty}\{|\xi_n-\xi|\geq\varepsilon\}\right)\leq\sum_{k=n}^{\infty}P\bigl(|\xi_k-\xi|\geq\varepsilon\bigr).$$
+Выражение в правой части неравенства стремится к 0 при $n\to\infty$, так как это $n$-тый остаток сходящегося ряда, следовательно, 
+выражение в левой части также стремится к 0 (по п. 2 <a href="../math_analysis/math_analysis4.1.html#Theorem4.2.3">теоремы 4.2.3 MA</a>). Тогда по теореме 7.1 
+$\xi_n\xrightarrow[n\to\infty]{P=1}\xi$.
+<br><br>
+<p id="Corollary7.3"><b>Следствие 7.3:</b>
+Если $\xi_n\xrightarrow[n\to\infty]{P}\xi$, то существует последовательность $\{n_k\}$ из $\mathbb{N}$ такая, что 
+$$\xi_{n_k}\xrightarrow[k\to\infty]{P=1}\xi.$$
+<p><b>Доказательство:</b><br>
+Фиксируем $\varepsilon>0$, тогда
+\begin{multline*}
+\xi_n\xrightarrow[n\to\infty]{P}\xi\Rightarrow{P}(|\xi_n-\xi|\geq\varepsilon)\xrightarrow[n\to\infty]{}0\Rightarrow\forall{k}\in\mathbb{N}\,
+\exists{n}_k\in\mathbb{N}\left(P(|\xi_{n_k}-\xi|\geq\varepsilon)<\frac1{k^2}\right).
+\end{multline*}
+При этом числа последовательности $\{n_k\}$ можно выбрать так, чтобы она возрастала. Так как ряд $\sum_{k=1}^{\infty}1/k^2<\infty$ 
+(<a href="../math_analysis/math_analysis7.2.1.html#Example7.2.1">пример 7.2.1 MA</a>), 
+то по <a href="../math_analysis/math_analysis7.2.1.html#Theorem7.2.2">теореме 7.2.2 MA</a>
+$$\sum_{k=1}^{\infty}P\bigl(|\xi_{n_k}-\xi|\geq\varepsilon\bigr)<\infty.$$
+Тогда по следствию 7.2
+$$\xi_{n_k}\xrightarrow[k\to\infty]{P=1}\xi.$$
+<br>
+Из сходимости по вероятности не следует сходимость $P$-почти наверное.
+<br><br>
+<p id="Example7.1"><b>Пример 7.1:</b>
+Пусть $\Omega:=[0,1)$, $\mathfrak{A}=\mathcal{B}\bigl([0,1)\bigr)$, $P$ - мера Лебега. Для любого $n\in\mathbb{N}$, 
+$k\in\overline{1,n}$ определим случайную величину $\xi_n^{(k)}$ такую, что 
+$$\forall\omega\in\Omega\left(\xi_k^{(n)}(\omega):=I_{\left[\frac{k-1}{n},\frac{k}{n}\right]}(\omega)\right).$$
+Таким обрзом, получена последовательность случайных величин такая, что
+$$\forall\varepsilon\in(0,1]\,\forall{n}\in\mathbb{N}\left(P\left(|\xi_n^{(k)}|\geq\varepsilon\right)=\frac1{n}\right),$$
+$$\forall\varepsilon>1\,\forall{n}\in\mathbb{N}\left(P\left(|\xi_n^{(k)}|\geq\varepsilon\right)=0\right),$$
+то есть для любого $\varepsilon>0$
+$$\exists\lim_{n\to\infty}P\left(|\xi_n^{(k)}-0|\geq\varepsilon\right)=0\Rightarrow\xi_n^{(k)}\xrightarrow[n\to\infty]{P}0.$$
+С другой стороны для любого $\omega\in[0,1)$
+$$\forall{n}\in\mathbb{N}\,\exists{k}\in\overline{1,n}:\omega\in\left[\frac{k-1}{n},\frac{k}{n}\right]\Rightarrow\forall{n}\in\mathbb{N}\,
+\exists{k}\in\overline{1,n}:\xi_n^{(k)}(\omega)=1,$$
+то есть $P(\xi_n^{(k)}\to0)=0\neq1$, следовательно, $\{\xi_n^{(k)}\}$ не сходится к 0 $P$-почти наверное.
+<br><br>
+<p id="Definition7.3"><b>Определение 7.3:</b>
+Последовательность случайных величин $\{\xi_n\}$ сходится к случайной величине $\xi$ в среднем порядка $r>0$, если существует предел
+$$\lim_{n\to\infty}E\left(|\xi_n-\xi|^r\right)=0.$$
+При этом обозначают
+$$\xi_n\xrightarrow[n\to\infty]{r}\xi.$$
+
+Если $\xi_n\xrightarrow[n\to\infty]{2}\xi$, то говорят, что $\{\xi_n\}$ сходится к $\xi$ в среднем квадратическом, при этом обозначают 
+$$\sqmlim_{n\to\infty}{\xi_n}=\xi.$$
+<br>
+<p id="Note7.1"><b>Замечание 7.1:</b>
+Так как по теореме 4.17 для любых случайных величин $\xi,\eta$ и любого $r>0$
+$$\bigl(E(|\xi+\eta|^r)\bigr)^{\frac1{r}}\leq\bigl(E(|\xi|^r)\bigr)^{\frac1{r}}+\bigl(E|\eta|^r\bigr)^{\frac1{r}},$$
+то $E(|\xi_n-\xi|^r)$ определено, в том случае если определены $E(|\xi_n|^r)$ и $E(|\xi|^r)$.
+<br><br>
+Из определения следует, что если $0&lts&ltr$ и $\xi_n\xrightarrow[n\to\infty]{r}\xi$, то $\xi_n\xrightarrow[n\to\infty]{s}\xi$. 
+Действительно из <a href="./probability_theory4.3.html#Theorem4.18">теоремы 4.18</a> следует, что 
+$$0\leq{E}(|\xi_n-\xi|^s)\leq\bigl(E(|\xi_n-\xi|^r)\bigr)^{\frac{s}{r}}.$$
+Так что если правая часть неравенства стремится к нулю при $n\to\infty$, то левая тоже стремится к нулю.
+<br><br>
+<p id="Statement7.1"><b>Утверждение 7.1:</b>
+Пусть $r>0$ и $\xi_n\xrightarrow[n\to\infty]{r}\xi$, тогда $\xi_n\xrightarrow[n\to\infty]{P}\xi$.
+<p><b>Доказательство:</b><br>
+Утверждение следует из п. 5 <a href="./probability_theory4.3.html#Theorem4.14">теоремы 4.14</a>, так как для любых $n\in\mathbb{N}$ и $\varepsilon>0$
+$$P(|\xi_n-\xi|\geq\varepsilon)\leq\frac{E(|\xi_n-\xi|^r)}{\varepsilon^r}$$
+и последнее выражение по условию стремится к нулю $n\to\infty$
+<br><br>
+<p id="Definition7.4"><b>Определение 7.4:</b>
+Пусть для любого $n\in\mathbb{N}$ $F_n(x)$ - функция распределения случайной величины $\xi_n$, тогда говорят, 
+что последовательность $\{\xi_n\}$ сходится к случайной величине $\xi$ по распределению, если
+последовательность $\{F_n(x)\}$ сходится в основном к функции распределения случайной величины $\xi$.
+<br>
+<p>При этом обозначают $\xi_n\xrightarrow[n\to\infty]{d}\xi$.
+<br><br>
+Так как в определении используется сходимость функций распределения, то вообще говоря, случайные величины $\xi,\xi_1,\ldots,\xi_n,\ldots$, 
+в отличии от видов сходимости сформулированных в определениях <a href="#Definition7.1">7.1</a>, <a href="#Definition7.2">7.2</a>, <a href="#Definition7.3">7.3</a>, 
+могут быть определены на разных вероятностных простраствах.
+<br><br>
+<p id="Theorem7.2"><b>Теорема 7.2:</b>
+Из сходимости по вероятности следует сходимость по распределению, т. е.
+$$\xi_n\xrightarrow[n\to\infty]{P}\Rightarrow\xi_n\xrightarrow[n\to\infty]{d}\xi.$$
+<p><b>Доказательство:</b><br>
+Фиксируем $n\in\mathbb{N}$, $x_0$ точку непрерывности функции $F(x)$ и точки $x',x''\in\mathbb{R}$ такие, что $x'&ltx_0&ltx''$. Обозначим 
+$$A:=\{\xi&ltx'\},\,B:=\{\xi_n&ltx_0\},$$ 
+$$C:=\{|\xi_n-\xi|\geq{x}_0-x'\}.$$
+Тогда $A\subset{B}\cup{C}$, следовательно, $P(A)\leq{P}(B)+P(C)$, то есть
+$$F(x')\leq{F}_n(x_0)+P(|\xi_n-\xi|\geq{x}_0-x').$$
+В силу произвола выбора $n\in\mathbb{N}$ можем перейти к пределу при $n\to\infty$, тогда
+$$
+\xi_n\xrightarrow[n\to\infty]{P}\xi\Rightarrow{P}(|\xi_n-\xi|\geq{x}_0-x')\xrightarrow[n\to\infty]{}0\Rightarrow{F}(x')\leq\varliminf_{n\to\infty}F_n(x_0).
+$$
+Обозначим 
+$$A_1:=\{\xi\geq{x}''\},\,B_1:=\{\xi_n\geq{x}_0\},$$
+$$C_1:-\{|\xi_n-\xi|\geq{x}''-x_0\},$$
+тогда $A_1\subset{B}_1\cup{C}_1$, $P(A_1)\leq{P}(B_1)+P(C_1)$, то есть
+$$1-F(x'')\leq1-F_n(x_0)+P(C_1)\Rightarrow{F}(x'')\geq{F}_n(x_0)-P(C_1).$$
+Аналогично доказанному выше $P(C_1)\to0$ при $n\to\infty$ и
+$$\varlimsup_{n\to\infty}F_n(x_0)\leq{F}(x'').$$
+Так как $x_0$ точка непрерывности функции $F(x)$, то переходя к пределам при $x'\to{x}_0-0$, $x''\to{x}+0$, получим
+$$F(x_0)=F(x_0-0)\leq\varliminf_{n\to\infty}F_n(x_0)\leq\varlimsup_{n\to\infty}F_n(x_0)\leq{F}(x_0+0)=F(x_0),$$
+Следовательно, существует предел
+$$\lim_{n\to\infty}F_n(x_0)=F(x_0).$$
+<br>
+Из сходимости по распределению не следует сходимость по вероятности.
+<br><br>
+<p id="Example7.2"><b>Пример 7.2:</b>
+Пусть $\{\xi_n\}$ последовательность абсолютно непрерывных, попарно не зависимых случайных величин таких, 
+что для любого $n\in\mathbb{N}$ функция распределения $\xi_n$ равна $F(x)$, а плотность распределения $p(x)$. 
+Тогда последовательность $\{\xi_n\}$ сходится по распределению к случайной величине $\xi_1$, однако для любых $\varepsilon>0$ и $n\in\mathbb{N}$
+$$P(|\xi_n-\xi_1|<\varepsilon)=F_{\xi_n-\xi_1}(\varepsilon)-F_{\xi_n-\xi_1}(-\varepsilon).$$
+Так как случайные величины $\xi_1$ и $\xi_n$ независимы, то по <a href="./probability_theory4.3.html#Corollary4.1">следствию 4.1</a>
+последнее выражение можно переписать в виде
+$$
+\int\limits_{-\varepsilon}^{\varepsilon}p_{\xi_n-\xi_1}(t)dt=
+\int\limits_{-\varepsilon}^{\varepsilon}\left(\int\limits_{-\infty}^{\infty}p_{\xi_n}(z)p_{\xi_1}(t-z)dz\right)dt=
+\int\limits_{-\varepsilon}^{\varepsilon}\left(\int\limits_{\infty}^{\infty}p(z)p(t-z)dz\right)dt.
+$$
+Cледовательно, $P(|\xi_n-\xi_1|<\varepsilon)$ не может стремится к единице при $n\to\infty$, так как не зависит от $n$.
+<br><br>
+<p id="Theorem7.3"><b>Теорема 7.3:</b>
+Для любого $a\in\mathbb{R}$
+$$\xi_n\xrightarrow[n\to\infty]{d}a\Rightarrow\xi_n\xrightarrow[n\to\infty]{P}a.$$
+<p><b>Доказательство:</b><br>
+Пусть для любого $n\in\mathbb{N}$ функция распределения случайной величины $\xi_n$ равна $F_n(x)$, $\xi\equiv{a}$, тогда 
+$$F_{\xi}(x)=\begin{cases}0, & x\leq{a} \\ 1, & x&gta\end{cases}.$$
+Фиксируем $\varepsilon>0$, тогда для любого $n\in\mathbb{N}$
+$$P(|\xi_n-x|<\varepsilon)=P(a-\varepsilon<\xi_n&lta+\varepsilon)=F_n(a+\varepsilon)-F_n(a-\varepsilon).$$
+Так как точка $a$ единственная точка разрыва функции $F_{\xi}(x)$, то $a+\varepsilon$, $a-\varepsilon$ являются точками непрерывности $F_{\xi}(x)$, 
+следовательно, можем переходить к пределу при $n\to\infty$, тогда
+$$\lim_{n\to\infty}P(|\xi_n-\xi|<\varepsilon)=F_{\xi}(a+\varepsilon)-F_{\xi}(a-\varepsilon)=1.$$
+<br>
+Зависимости между видами сходимости последовательностей случайных величин сформулированными в определениях 7.1-7.4 можно представить в виде следующих импликаций:
+<br><br>
+<table>
+<tr>
+<td><table border="1"><tr><td>сходимость<br>в среднем<br>$r_2$</td></tr></table></td>
+<td><br>$\Rightarrow$<br><br></td>
+<td><table border="1"><tr><td>сходимость<br>в среднем<br>$r_1:r_1&ltr_2$</td></tr></table></td>
+<td><br>$\Rightarrow$<br><br></td>
+<td><table border="1"><tr><td>сходимость<br>по<br>вероятности</td></tr></table></td>
+<td><br>$\Rightarrow$<br><br></td>
+<td><table border="1"><tr><td>сходимость<br>по распре-<br>делению</td></tr></table></td>
+<tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center">$\Uparrow$</td>
+<td></td>
+<td></td>
+<tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><table border="1"><tr><td>сходимость<br>почти<br>наверное</td></tr></table></td>
+<td></td>
+<td></td>
+<tr>
+</table>
+<br><br>
+Для сходимостей в среднем, по вероятности и почти наверное можно сформулировать критерий Коши сходимости: 
+последовательность $\{\xi_n\}$ сходится тогда и только тогда, когда она фундаментальна. 
+Где фундаментальность в каждом из видов сходимости понимается в соответствующем смысле (см., например, Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 325.). 
+Доказательства соответствующий критериев можно найти, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 330-333.
+<br>
+<h5 id="7.2">7.2 Закон больших чисел.</h5>
+
+Везде далее в данной главе под $\mu_n$ понимается математической ожидание случайной величины $\xi_n$.
+
+<p id="Definition7.5"><b>Определение 7.5:</b>
+Говорят, что последовательность сучайных величин $\{\xi_n\}$ подчиняется закону больших чисел, если 
+$$\left(\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\right)\xrightarrow[n\to\infty]{P}0,$$
+или что тоже самое
+$$\forall\varepsilon>0\left(\lim_{n\to\infty}P\biggl(\biggl|\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\biggr|\geq\varepsilon\biggr)=0\right).$$
+<br>
+В частном случае для любого $n\in\mathbb{N}$ $\mu_n=\mu$ последовательность $\{\xi_n\}$ подчиняется закону больших чисел если
+$$\frac1{n}\sum_{k=1}^n\xi_k\xrightarrow[n\to\infty]{P}\mu.$$
+<br>
+<p id="Theorem7.4"><b>Теорема 7.4: Чебышев.</b><br>
+Если $\{\xi_n\}$ последовательность независимых случайных величин и существует $c\in\mathbb{R}$ такое, что для любого $n\in\mathbb{N}$ $D\xi_n\leq{c}$, 
+то последовательность $\{\xi_n\}$ подчиняется закону больших чисел.
+<p><b>Доказательство:</b><br>
+Утверждение следует из неравенства Чебышева (п. 3 <a href="./probability_theory4.3.html#Theorem4.14">теоремы 4.14</a>):
+$$P(|\xi-E\xi|\geq\varepsilon)\leq\frac{D\xi}{\varepsilon^2}.$$
+Фиксируем $n\in\mathbb{N}$ и подставим в неравенство
+$$\xi:=\frac1{n}\sum_{k=1}^n\xi_k,\,E\xi:=\frac1{n}\sum_{k=1}^n\mu_k,$$
+тогда, так как случайные величины $\{\xi_n\}$ независимы, то по п.п. 2, 6 <a href="./probability_theory4.6.html#Theorem4.20">теоремы 4.20</a>
+$$
+P\left(\left|\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\right|\geq\varepsilon\right)\leq\frac{D\left(\frac1{n}\sum_{k=1}^n\xi_k\right)}{\varepsilon^2}=\frac{\sum_{k=1}^nD\xi_n}{n^2\varepsilon^2}\leq\frac{c}{n\varepsilon^2}.
+$$
+В силу произвола выбора $n\in\mathbb{N}$ можем перейти к пределу при $n\to\infty$, тогда
+$$\lim_{n\to\infty}P\left(\left|\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\right|\geq\varepsilon\right)=0.$$
+<br>
+<p id="Theorem7.5"><b>Теорема 7.5: Марков.</b><br>
+Последовательность $\{\xi_n\}$ подчиняется закону больших чисел, если 
+$$\frac{D\left(\sum_{k=1}^n\xi_k\right)}{n^2}\xrightarrow[n\to\infty]{}0.$$
+<p><b>Доказательство:</b><br>
+Фиксирем $\varepsilon>0$, тогда по п. 3 <a href="./probability_theory4.3.html#Theorem4.14">теоремы 4.14</a>
+$$
+P\left(\left|\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\right|\geq\varepsilon\right)\leq\frac{D\left(\frac1{n}\sum_{k=1}^n\xi_k\right)}{\varepsilon^2}=
+\frac{D\left(\sum_{k=1}^n\xi_k\right)}{n^2\varepsilon^2}\xrightarrow[n\to\infty]{}0
+$$
+<br>
+<p id="Theorem7.6"><b>Теорема 7.6: Бернулли.</b><br>
+Пусть $\nu_n$ число успехов в $n$ независимых испытаниях в схеме Бернулли с вероятностью успеха $p$, тогда
+$$\frac{\nu_n}{n}\xrightarrow[n\to\infty]{P}p.$$
+<p><b>Доказательство:</b><br>
+Пусть для любого $k\in\overline{1,n}$ $\xi_k=1$, если в $k$-том испытании успех и $\xi_k=0$ в противном случае. 
+Тогда случайные величины $\xi_1,\ldots,\xi_n$ независимы и для любого $k\in\overline{1,n}$ $E\xi_k=p$, $D\xi_k=p(1-p)$ 
+(по п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a>). 
+Следовательно, по <a href="#Theorem7.4">теореме 7.4</a> случайные величины $\{\xi_n\}$ подчиняются закону больших чисел, 
+что для одинаково распределенных случайных величин с математическим ожиданием $p$ означает
+$$\frac1{n}\sum_{k=1}^n\xi_k=\frac{\nu_n}{n}\xrightarrow[n\to\infty]{P}p.$$
+<br>
+<p id="Theorem7.7"><b>Теорема 7.7: Пуассон.</b><br>
+Пусть $\nu_n$ число успехов в $n$ незваисимых испытаниях с вероятностью успеха в $k$-том испытании $p_k$, тогда
+$$\frac{\nu_n}{n}-\frac1{n}\sum_{k=1}^np_k\xrightarrow[n\to\infty]{P}0.$$
+<p><b>Доказательство:</b><br>
+Пусть $\xi_k=1$, если в $k$-том испытании успех и $\xi_k=0$ в противном случае. Тогда случайные величины $\xi_1,\ldots,\xi_n$ независимы и 
+для любого $k\in\overline{1,n}$ $E\xi_k=p_k$, $D\xi_k=p_k(1-p_k)\leq1$. Следовательно, 
+по <a href="#Theorem7.4">теореме 7.4</a> последовательность $\{\xi_n\}$ подчиняется закону больших чисел.
+<br><br>
+<p id="Theorem7.8"><b>Теорема 7.8: Хинчин.</b><br>
+Если $\{\xi_n\}$ последовательность независимых, одинаково распределённых случайных величин c конечным математическим ожиданием, 
+то она подчиняется закону больших чисел.
+<p><b>Доказательство:</b><br>
+Пусть для любого $n\in\mathbb{N}$ $\varphi(t)$ - характеристическая функция $\xi_n$, $E\xi_n=a$. 
+Тогда по п. 4, 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> $\varphi_n(t):=\varphi^n\left(\frac{t}{n}\right)$ 
+характеристическая функция случайной величины $\eta_n:=\frac1{n}\sum_{k=1}^n\xi_k$. 
+Так как по п. 1 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> $\varphi(0)=1$, то
+$$\varphi_n(t):=\varphi^n\Bigl(\frac{t}{n}\Bigr)=\exp{\left(n\ln{\varphi\Bigl(\frac{t}{n}\Bigr)}\right)}=\exp{\frac{t(\ln\varphi(t/n)-\ln\varphi(0))}{t/n}}.$$
+Так как функция $e^x$ непрерывна, то по <a href="../math_analysis/math_analysis5.5.1.html#Statement5.5.4">утверждению 5.5.4 MA</a>, 
+<a href="./probability_theory6.1.html#Theorem6.2">теореме 6.2</a>, 
+<a href="../math_analysis/math_analysis6.2.html#Theorem6.2.2">теореме 6.2.2 MA</a>
+$$
+\lim_{x\to0}\exp{\frac{t(\ln\varphi(x)-\ln\varphi(0))}{x}}=\exp{\left(t\lim_{x\to0}\frac{\ln\varphi(x)-\ln\varphi(0)}{x}\right)}=
+\exp{\bigl(t[\ln\varphi(x)]'_{x=0}\bigr)}=\exp{\left(t\frac{\varphi'(0)}{\varphi(0)}\right)}=\exp{(t\varphi'(0))}=\exp{(ita)},
+$$
+Тогда, так как для любого $t\in\mathbb{R}$ $\frac{t}{n}\to0$ при $n\to\infty$, 
+то по <a href="../math_analysis/math_analysis5.1.html#Statement5.1.2">утверждению 5.1.2 MA</a> (критерий существования предела функции по Гейне) 
+для любого $t\in\mathbb{R}$
+$$\lim_{n\to\infty}\varphi_n(t)=\lim_{n\to\infty}\exp\frac{t(\ln\varphi(t/n)-\ln\varphi(0))}{t/n}=\exp{(ita)}.$$
+Так как для любой дискретной случайной величины $\eta$
+$$\eta\sim\begin{pmatrix}p_1, & \ldots, & p_n \\ a_1, & \ldots, & a_n\end{pmatrix}\Rightarrow\varphi_{\eta}=\sum_{k=1}^ne^{ita_k}p_k,$$
+то $e^{ita}$ является характеристической функцией случайной величины $\xi\equiv{a}$. Таким образом, $\varphi_n(t)\to\varphi_{\xi}(t)$ при $n\to\infty$, 
+следовательно, по <a href="./probability_theory6.3.html#Theorem6.14">теореме 6.14</a> 
+последовательность функций распределения случайных величин $\eta_n$ сходится в основном к функции $F_{\xi}(x)$, 
+то есть $\eta_n\xrightarrow[n\to\infty]{d}\xi\equiv{a}$. Тогда по <a href="#Theorem7.3">теореме 7.3</a> 
+$\eta_n\xrightarrow[n\to\infty]{P}a$, следовательно, $$\eta_n:=\frac1{n}\sum_{k=1}^n\xi_n\xrightarrow[n\to\infty]{P}a,$$
+то есть последовательность $\{\xi_n\}$ подчиняется закону больших чисел.
+<br><br>
+<p id="Definition7.6"><b>Определение 7.6:</b>
+Говорят, что последовательность случайных величин $\{\xi_n\}$ подчиняется усиленному закону больших чисел, если 
+$$\frac1{n}\sum_{k=1}^n\xi_k-\frac1{n}\sum_{k=1}^n\mu_k\xrightarrow[n\to\infty]{P=1}0.$$
+<br>
+<p id="Theorem7.9"><b>Теорема 7.9: Колмогоров.</b><br>
+Если последовательность $\{\xi_n\}$ такая, что для любого $n\in\mathbb{N}$ $D\xi_n<\infty$ и 
+$$\sum_{n=1}^{\infty}\frac{D\xi_n}{n^2}<\infty,$$
+то последовательность $\{\xi_n\}$ подчиняется усиленному закону больших чисел.
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Колмогоров А. Н. 1974 г. "Основные понятия теории вероятностей" стр. 105.
+<br><br>
+<p id="Theorem7.10"><b>Теорема 7.10: Колмогоров.</b><br>
+Последовательность независимых, одинаково распределенных случайных величин подчиняется усиленному закону больших чисел тогда и только тогда, 
+когда для них существует конечное математическое ожидание.
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Колмогоров А. Н. 1974 г. "Основные понятия теории вероятностей" стр. 110.
+
+<br><br>
+<a href="./probability_theory6.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.3.html">next</a>

@@ -1,0 +1,307 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 7.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.4.html">next</a>
+
+$\newcommand{\UniformConv}{\substack{ \\ \longrightarrow\\ \longrightarrow \\ n\to\infty}}$
+
+<h5 id="7.3">7.3 Центральная предельная теорема (ЦПТ).</h5>
+
+<p id="Theorem7.11"><b>Теорема 7.11:</b>
+Если последовательность функций распределения $\{F_n(x)\}$ сходится в основном к непрерывной функции распределения $F(x)$, то 
+$$F_n(x)\UniformConv{F}(x).$$
+<p><b>Доказательство:</b><br>
+Фиксируем $\varepsilon>0$, тогда так как $F(-\infty)=0$, а $F(\infty)=1$, то существуют $a,b\in\mathbb{R}$ такие, что $a<b$ и для любого $x\in\mathbb{R}$
+$$x\leq{a}\Rightarrow{F}(x)<\frac{\varepsilon}{5},$$
+$$x\geq{b}\Rightarrow1-F(x)<\frac{\varepsilon}{5}.$$ 
+Так как функция $F(x)$ непрерывна, то она равномерно непрерывна на отрезке $[a,b]$ 
+(<a href="../math_analysis/math_analysis5.5.3.html#Theorem5.5.1">теорема 5.5.4 MA</a>), тогда 
+$$
+\exists{N}\in\mathbb{N}: \forall{k}\in\overline{0,N}\left(\left|F\left(a+(k+1)\frac{b-a}{N}\right)-F\left(a+k\frac{b-a}{N}\right)\right|<
+\frac{\varepsilon}{5}\right).
+$$
+Для любого $k\in\overline{0,N}$ обозначим $x_k:=a+k(b-a)/N$. Так как функция $F(x)$ непрерывная, 
+то сходимость в основном равносильна поточечной сходимости $F_n(x)\xrightarrow[n\to\infty]{}F(x)$, следовательно,
+$$\forall{k}\in\overline{0,N}\,\exists{n}_k\in\mathbb{N}:\left(F_n(x_k)-F(x_k)<\frac{\varepsilon}{5}\right).$$
+Обозначим $n^*:=\max_{k\in\overline{0,N}}n_k$ и зафиксируем $x\in\mathbb{R}$.
+<ol>
+<li>
+Пусть $a&ltx&ltb$, тогда существует $k\in\overline{0,N-1}$ такое, что ${x\in[x_k,x_{k+1}]}$, следовательно, для любого $n^gtn^*$
+\begin{multline*}
+|F(x)-F_n(x)|\leq|F(x)-F(x_k)|+|F(x_k)-F_n(x_k)|+|F_n(x_k)-F_n(x)|<
+\frac{2\varepsilon}{5}+|F_n(x_k)-F_n(x)|\leq\frac{2\varepsilon}{5}+|F_n(x_k)-F_n(x_{k+1})|\leq\\\leq
+\frac{2\varepsilon}{5}+|F_n(x_k)-F(x_k)|+|F(x_k)-F(x_{k+1})|+|F(x_{k+1})-F_n(x_{k+1})|<\varepsilon.
+\end{multline*}
+Здесь в третьем неравенстве используется неубывание функции $F_n(x)$ из него следует, что
+$$x_k&ltx_{k+1}\Rightarrow|F_n(x_k)-F_n(x)|\leq|F_n(x_k)-F_n(x_{k+1})|.$$
+</li>
+<li>
+Пусть $x&lta=x_0$, тогда, для любого $n&gtn_0$, в силу невозрастания и неотрицательности функций $F(x)$, $F_n(x)$
+$$
+|F_n(a)-F(a)|<\frac{\varepsilon}{5}\Rightarrow{F}_n(a)&ltF(a)+\frac{\varepsilon}{5}\Rightarrow|F_n(x)-F(x)|\leq
+{F}_n(x)+F(x)\leq{F}_n(a)+F(a)&ltF(a)+\frac{\varepsilon}{5}+F(a)<\frac{3\varepsilon}{5}<\varepsilon.
+$$
+</li>
+<li>
+Пусть $x&gtb=x_N$, для любого $n&gtn^*$, в силу невозрастания и неотрицательности функций $F(x)$, $F_n(x)$
+$$
+|F_n(x)-F(x)|\leq|F_n(x)-1|+|1-F(x)|\leq|F_n(b)-1|+|1-F(b)|\leq|F_n(b)-1|+\frac{\varepsilon}{5}\leq
+|F_n(b)-F(x_n)|+|F(b)-1|+\frac{\varepsilon}{5}<\frac{3\varepsilon}{5}<\varepsilon.
+$$
+</li>
+</ol>
+Таким образом, 
+$$\forall{n}&gtn^*(\forall{x}\in\mathbb{R}(|F_n(x)-F(x)|<\varepsilon)).$$
+<br>
+Введём некоторые обозначения: если случайные величины $\{\xi_n\}$ независимы, одинково распределены и имеют конечный момент второго порядка, 
+то будем обозначать $\mu:=E\xi_n$, $\sigma^2:=D\xi_n$,
+$$S_n:=\sum_{k=1}^n\xi_k,\,\tilde{S}_n:=\frac{S_n-ES_n}{\sqrt{DS_n}}=\frac{S_n-n\mu}{\sigma\sqrt{n}}.$$
+Обозначим функцию нормального распределения $N(0,1)$ как  
+$$\Phi(x):=\frac{1}{\sqrt{2\pi}}\int\limits_{-\infty}^xe^{-t^2/2}dt.$$
+<br>
+<p id="Theorem7.12"><b>Теорема 7.12: ЦПТ для независимых, одинаково распределённых случайных величин.</b><br>
+Пусть $\{\xi_n\}$ независимые, одинаково распределённые случайные величины такие, что $0<\sigma^2<\infty$, тогда
+$$P(\tilde{S}&ltx)=P\left(\frac{S_n-n\mu}{\sigma\sqrt{n}}&ltx\right)\UniformConv\Phi(x).$$
+<p><b>Доказательство:</b><br>
+Для любого $n\in\mathbb{N}$ обозначим функцию распределения случайной величины $\xi_n-\mu$ как $\varphi(t)$. 
+Так как $\{\xi_n\}$ независимы, то по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> 
+$\varphi^n(t)$ является характеристической функцией случайной величины 
+$S_n-n\mu:=\sum_{k=1}^n(\xi_k-\mu)$, тогда по п. 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> функция 
+$$\tilde\varphi_n(t):=\varphi^n\left(\frac{t}{\sigma\sqrt{n}}\right)$$
+является характеристической функцией случайной величины
+$$\tilde{S}_n:=\frac1{\sigma\sqrt{n}}(S_n-n\mu).$$
+По <a href="./probability_theory6.1.html#Theorem6.4">теореме 6.4</a>
+$$\varphi(t)=1+itE(\xi_1-\mu)+\frac{(it)^2}{2}E\bigl((\xi_1-\mu)^2\bigr)+o(t^2)=1-\frac{t^2\sigma^2}{2}+o(t^2),t\to0.$$
+тогда, так как $\ln(1+x)\sim{x},x\to0$ (пример~5.4.13~MA), то для любого $t\in\mathbb{R}$
+$$
+\ln{\tilde\varphi_n(t)}=n\ln\varphi\left(\frac{t}{\sigma\sqrt{n}}\right)=n\ln\left(1-\frac{t^2\sigma^2}{2n\sigma^2}+o\Bigl(\frac{t^2}{n}\Bigr)\right)=
+n\left(-\frac{t^2}{2n}+o\Bigl(\frac{t^2}{n}\Bigr)\right)=-\frac{t^2}{2}+o(1),n\to\infty.
+$$
+Тогда, так как по п. 5 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a> $e^{-t^2/2}$ является характеристической функцией для распределения $N(0,1)$, 
+то по <a href="./probability_theory6.3.html#Theorem6.14">теореме 6.14</a>
+$$\tilde\varphi_n(t)\xrightarrow[n\to\infty]{}e^{-t^2/2}\Rightarrow\tilde{S}_n\xrightarrow[n\to\infty]{d}N(0,1)$$
+и утверждение следует из теоремы 7.11.
+<br><br>
+<p id="Theorem7.13"><b>Теорема 7.13: Теорема Муавра-Лапласа.</b><br>
+Если $\nu_n$ число успехов в $n$ независимых испытаниях в схеме Бернулли с вероятностью успеха $p$, то
+$$P\left(\frac{\nu_n-np}{\sqrt{npq}}&ltx\right)\UniformConv\Phi(x).$$
+<p><b>Доказательство:</b><br>
+Утверждение теоремы следует из теоремы 7.12, если для любого $k\in\overline{1,n}$ положить $\xi_k=1$, 
+если в $k$-том испытании - успех и $\xi_k=0$ в противном случае. Тогда по п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a>
+$$S_n=\nu_n=\sum_{k=1}^n\xi_k,\,E\xi_1=p,\,D\xi_1=pq,\,ES_n=np.$$
+<br>
+<p id="Note7.2"><b>Замечание 7.2:</b>
+Данная теорема позволяет приближенно вычислять вероятности вида $P(A<\nu_n&ltB)$. А при $n>40$, $npq>12$, 
+$0,1&ltp&lt0,9$ в силу дискретности биномиального распределения имеет место равенство
+$$
+P\left(\frac{\nu_n-np}{\sqrt{npq}}&ltx\right)=F(x\sqrt{npq}+np)=\Phi(x)\Rightarrow{F}(x)=\Phi\left(\frac{x-np}{\sqrt{npq}}\right)\Rightarrow
+P(A<\nu_n&ltB)=F(B)-F(A)=\Phi\left(\frac{B-np}{\sqrt{npq}}\right)-\Phi\left(\frac{A-np}{\sqrt{npq}}\right),
+$$
+где $F(x):=P(\nu_n&ltx)$ - функция распределения случайной величины $\nu_n$.
+<br><br>
+Введем некоторые обозначения.
+Если $\{\xi_k\}$ последовательность независимых случайных величин, 
+то для любого $k\in\mathbb{N}$ будем обозначать $F_k(x)$ - функция распределения случайной величины $\xi_k$, $\mu_k:=E\xi_k$, $\sigma_k^2:=D\xi_k$; 
+для любого $n\in\mathbb{N}$ 
+$$S_n:=\sum_{k=1}^n\xi_k,\,\tilde{S}_n:=\frac{S_n-ES_n}{\sqrt{DS_n}},\,B_n^2:=DS_n=\sum_{k=1}^nD\xi_k.$$
+<br>
+<p id="Definition7.7"><b>Определение 7.7:</b>
+Будем говорить, что последовательность независимых случайных величин $\{\xi_k\}$ удовлетворяет условию Линденберга, если для любого $\tau>0$
+$$\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x)\xrightarrow[n\to\infty]{}0.$$
+<br>
+<p id="Note7.3"><b>Замечание 7.3: Смысл условия Линденберга.</b><br>
+Для любого $k\in\overline{1,n}$ обозначим $A_k:=\{|\xi_k-\mu_k|>\tau{B}_n\}$, тогда 
+$$
+P(A_k)=P(|\xi_k-\mu_k|>\tau{B}_n)=\int\limits_{|x-\mu_k|>\tau{B}_n}dF_k(x)=
+\int\limits_{|x-\mu_k|>\tau{B}_n}\frac{(x-\mu_k)^2}{(x-\mu_k)^2}dF_k(x)\leq\frac1{\tau^2B_n^2}\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x),
+$$
+следовательно,
+$$
+P(\max_{1\leq{k}\leq{n}}|\xi_k-\mu_k|>\tau{B}_n)=P\left(\bigcup_{k=1}^nA_k\right)\leq\sum_{k=1}^nP(A_k)\leq
+\frac1{\tau^2B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x).
+$$
+Таким обрзом, условие Линденберга означает
+$$P(\max_{1\leq{k}\leq{n}}|\xi_k-\mu_k|>\tau{B}_n)\xrightarrow[n\to\infty]{}0,$$
+то есть оно означает равномерную малость вклада каждого слагаемого в сумму <i>(?)</i>
+$$\tilde{S}_n=\frac1{B_n}\sum_{k=1}^n(\xi_k-\mu_k).$$
+<p id="Statement7.2"><b>Утверждение 7.2:</b>
+ Для любого $\alpha\in\mathbb{R}$
+<ol>
+<li>$|e^{i\alpha}-1|\leq|\alpha|$,
+</li><li>$|e^{i\alpha}-1-i\alpha|\leq\alpha^2/2$,
+</li><li>$|e-1-i\alpha+\alpha^2/2|\leq|\alpha^3/6|$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>
+$$|\alpha|=\int\limits_0^{\alpha}dt=\int\limits_0^{\alpha}|e^{it}|dt\geq\left|\int\limits_0^{\alpha}e^{it}dt\right|=
+\left|\left.\frac{e^{i\alpha}}{i}\right|_0^{\alpha}\right|=|e^{i\alpha}-1|.$$
+</li><li>
+$$
+\left|\int\limits_0^{\alpha}(e^{ix}-1)dx\right|=\left|\left.\left(\frac{e^{ix}}{i}-x\right)\right|_0^{\alpha}\right|=|e^{i\alpha}-i\alpha-1|
+$$
+$$
+\left|\int\limits_0^{\alpha}(e^{ix}-1)dx\right|\leq\int\limits_0^{\alpha}|e^{ix}-1|dx\leq\int\limits_0^{\alpha}xdx=\frac{\alpha^2}{2},
+$$
+где последнее неравенство следует из п. 1.
+</li><li>
+$$
+\left|\int\limits_0^{\alpha}(e^{ix}-1-ix)dx\right|=\left|\left.\left(\frac{e^{ix}}{i}-x-\frac{ix^2}{6}\right)\right|_0^{\alpha}\right|=\left|e^{i\alpha}-i\alpha+\frac{\alpha^2}{2}-1\right|
+$$
+$$
+\left|\int\limits_0^{\alpha}(e^{ix}-1-ix)dx\right|\leq\int\limits_0^{\alpha}|e^{ix}-1-ix|dx\leq\int\limits_0^{\alpha}\frac{x^2}{2}dx=\left|\frac{\alpha^3}{6}\right|,
+$$
+где последнее неравенство следует из п. 2.
+</li>
+</ol>
+<br>
+<p id="Theorem7.14"><b>Теорема 7.14: ЦПТ (Линденберг).</b>
+Если последовательность независимых случайных величин $\{\xi_k\}$ удовлетворяет условию Линденберга, то есть для любого $\tau>0$
+$$\lim_{n\to\infty}\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x)=0,$$
+то
+$$P(\tilde{S}_n&ltx)=P\left(\frac{S_n-ES_n}{\sqrt{DS_n}}&ltx\right)\UniformConv\Phi(x).$$
+<p><b>Доказательство:</b>
+<ol type="I">
+<li>
+Замена переменных.<br>
+Для любых $n\in\mathbb{N}$ $k\in\overline{1,n}$ обозначим $\xi_{nk}:=(\xi_k-\mu_k)/B_n$, тогда для любых $n\in\mathbb{N}$, $k\in\overline{1,n}$
+$$E\xi_{nk}=0,\,D\xi_{nk}=\frac{D\xi_k}{B_n^2},\,\sum_{k=1}^nD\xi_{nk}=\frac1{B_n^2}\sum_{k=1}^nD\xi_k=1.$$
+Тогда $\tilde{S}_n=\sum_{k=1}^n\xi_{nk}$, рассмотрим далее последовательность характеристических функций случайных величин $\{\tilde{S}_n\}$ и докажем, 
+что эта последовательность сходится к характеристической функции распределения $N(0,1)$.
+
+Для любых $n\in\mathbb{N}$, $k\in\overline{1,n}$ обозначим $F_{nk}(x)$ - функция распределения $\xi_{nk}$, $\varphi_{nk}(t)$ - характеристическая функция $\xi_{nk}$, 
+тогда для любых $n\in\mathbb{N}$, $k\in\overline{1,n}$
+$$
+F_{nk}(x)=P(\xi_{nk}&ltx)=P\left(\frac{\xi_{k}-\mu_k}{B_n}&ltx\right)=P(\xi_k&ltxB_n+\mu_k)=F_k(xB_n+\mu_k).
+$$
+Обозначим
+$$L_n(\tau):=\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x),$$
+тогда, положив $y:=(x-\mu_k)/B_n$, получим
+$$
+L_n(\tau)=\sum_{k=1}^n\int\limits_{|y|>\tau}y^2dF_k(yB_n+\mu_k)=\sum_{k=1}^n\int\limits_{|y|>\tau}y^2dF_{nk}(x)\xrightarrow[n\to\infty]{}0.
+$$
+</li><li>Докажем, что $\lim\limits_{n\to\infty}\varphi_{nk}(t)=1$.<br>
+Фиксируем $\varepsilon\in(0,1)$, $T>0$, тогда для любого $t\in[-T,T]$, так как
+$$\int\limits_{-\infty}^{\infty}dF_{nk}(x)=1,\,\int\limits_{-\infty}^{\infty}xdF_{nk}(x)=E\xi_{nk}=0,$$
+то
+\begin{multline*}
+|\varphi_{nk}(t)-1|=\left|\int\limits_{-\infty}^{\infty}e^{itx}dF_{nk}(x)-\int\limits_{-\infty}^{\infty}dF_{nk}(x)-it\int\limits_{-\infty}^{\infty}xdF_{nk}(x)\right|=
+\left|\int\limits_{-\infty}^{\infty}(e^{itx}-1-itx)dF_{nk}(x)\right|\leq\int\limits_{-\infty}^{\infty}|e^{itx}-1-itx|dF_{nk}(x)\leq\\\leq
+\frac{t^2}{2}\int\limits_{-\infty}^{\infty}x^2dF_{nk}(x)=\frac{t^2}{2}\left(\int\limits_{|x|\leq\varepsilon/T}x^2dF_{nk}(x)+\int\limits_{|x|>\varepsilon/T}x^2dF_{nk}(x)\right),
+\end{multline*}
+где последнее неравенство в силу п. 2 утверждения 7.2. Второе слагаемое в скобках стремится к нулю при $n\to\infty$, 
+так как $L_n(\varepsilon/T)\to0$ при $n\to\infty$, тогда существует $n_1\in\mathbb{N}$ такое, что для любого $n>n_1$ второе слагаемое в скобках не превосходит 
+$\varepsilon^2/T^2$. Первое слагаемое оценивается следующим образом
+$$\int\limits_{|x|\leq\varepsilon/T}x^2dF_{nk}(x)\leq\frac{\varepsilon^2}{T^2}\int\limits_{-\infty}^{\infty}dF_{nk}(x)=\frac{\varepsilon^2}{T^2},$$
+тогда для любого $n&gtn_1$
+$$|\varphi_{nk}(t)-1|\leq\frac{t^2}{2}\left(\frac{\varepsilon^2}{T^2}+\frac{\varepsilon^2}{T^2}\right)\leq\varepsilon^2<\varepsilon.$$
+Таким образом, для любого $T>0$ $|\varphi_{nk}(t)-1|$ стремится к 0 равномерно по $t\in[-T,T]$ и по $k\in\overline{1,n}$.
+
+Так как случайные величины $\{\xi_k\}$ независимы, то по п. 4 теоремы 6.1
+$$
+\ln\varphi_{\tilde{S}_n}(t)=\ln\prod_{k=1}^n\varphi_{nk}(t)=\sum_{k=1}^n\ln\varphi_{nk}(t)=\sum_{k=1}^n\ln(1+(\varphi_{nk}(t)-1)).
+$$
+Фиксируем $n_0\in\mathbb{N}$ такое, что $n_0&gtn_1$ и $|\varphi_{nk}-1|<1/2$ для любого $n&gtn_0$, тогда для любого $n&gtn_0$, 
+в силу разложения в ряд Тэйлора (<a href="../math_analysis/math_analysis7.5.4.html#7.5.4">7.5.4 MA</a>)
+$$\forall{x}\in(-1,1]\left(\ln(1+x)=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}x^n}{n}\right),$$
+имеем
+$$\ln\varphi_{\tilde{S}_n}(t)=\sum_{k=1}^n(\varphi_{nk}(t)-1)+R_n,$$
+где 
+$$R_n:=\sum_{k=1}^n\sum_{s=2}^\infty\frac{(-1)^{s-1}(\varphi_{nk}(t)-1)^s}{s}.$$
+</li><li>Докажем, что $R_n\to0$ при $n\to\infty$.<br>
+Для любого $n>n_0$ $|\varphi_{nk}-1|<1/2$, значит можем воспользоваться формулой для суммы геометрической прогрессии 
+(<a href="../math_analysis/math_analysis7.1.html#Example7.1.1">пример 7.1.1 MA</a>),
+$$\sum_{k=0}^{\infty}q^k=\frac1{1-q}\Rightarrow\sum_{k=2}^{\infty}q^k=\frac1{1-q}-1-q=\frac{q^2}{1-q}$$
+тогда положив $q:=|\varphi_{nk}(t)-1|$, получим
+$$R_n\leq\sum_{k=1}^n\sum_{s=2}^{\infty}\frac12|\varphi_{nk}(t)-1|^s\leq\sum_{k=1}^n\frac12\frac{|\varphi_{nk}(t)-1|^2}{1-|\varphi_{nk}(t)-1|}.$$
+Тогда для любого $n&gtn_0$, $t\in[-T,T]$
+$$
+|\varphi_{nk}(t)-1|<\frac12\Rightarrow1-|\varphi_{nk}(t)-1|>\frac12\Rightarrow\frac1{1-|\varphi_{nk}(t)-1|}<2\Rightarrow
+{R}_n\leq\sum_{k=1}^n|\varphi_{nk}(t)-1|^2\leq\max_{1\leq{k}\leq{n}}|\varphi_{nk}(t)-1|\sum_{k=1}^n|\varphi_{nk}(t)-1|.
+$$
+Так как $\varphi_{nk}(t)-1$ стремится к нулю при $n\to\infty$ равномерно по $k\in\overline{1,n}$, то первый множитель стремится к нулю при $n\to\infty$, докажем, что второй множитель ограничен при $n\to\infty$.
+$$
+\sum_{k=1}^n|\varphi_{nk}(t)-1|=\sum_{k=1}^n\left|\int\limits_{-\infty}^{\infty}(e^{itx}-1-itx)dF_{nk}(x)\right|\leq
+\sum_{k=1}^n\int\limits_{-\infty}^{\infty}|e^{itx}-1-itx|dF_{nk}(x)\leq\frac{t^2}{2}\sum_{k=1}^n\int\limits_{-\infty}^{\infty}x^2dF_{nk}(x)=
+\frac{t^2}{2}\sum_{k=1}^nD\xi_{nk}=\frac{t^2}{2}\leq\frac{T^2}{2},
+$$
+где второе неравенство в силу п. 2 утверждения 7.2
+Таким образом, $|R_n|\to0$ при $n\to\infty$.
+</li><li>Докажем, что $\varphi_{\tilde{S}_n}(t)\to{e}^{-t^2/2}$ при $n\to\infty$.<br>
+Необходимо доказать, что для любого $t\in[-T,T]$
+$$\ln\varphi_{\tilde{S}_n}(t)=\sum_{k=1}^n(\varphi_{nk}-1)+R_n\xrightarrow[n\to\infty]{}-\frac{t^2}{2}.$$
+Положим 
+\begin{multline*}
+\rho_n:=\frac{t^2}{2}+\sum_{k=1}^n(\varphi_{nk}(t)-1)=\frac{t^2}{2}\sum_{k=1}^nD\xi_{nk}+\sum_{k=1}^n(\varphi_{nk}(t)-1)=
+-\frac{(it)^2}{2}\sum_{k=1}^n\int\limits_{-\infty}^{\infty}x^2dF_{nk}(x)+\sum_{k=1}^n\int\limits_{-\infty}^{\infty}(e^{itx}-1-itx)dF_{nk}(x)=\\=
+\sum_{k=1}^n\int\limits_{-\infty}^{\infty}\left(e^{itx}-1-itx-\frac{(itx)^2}{2}\right)dF_{nk}(x).
+\end{multline*}
+Так как $R_n\to0$ при $n\to\infty$, то достаточно доказать, что $\rho_n\to0$ при ${n\to\infty}$. Фиксируем $\varepsilon>0$.
+По п. 3 утверждения 7.2 модуль подынтегрального выражения не превосходит $|t^3x^3/6|$, тогда
+$$
+|\rho_n|\leq\frac{|t|^3}{6}\sum_{k=1}^n\int\limits_{-\varepsilon/T^3}^{\varepsilon/T^3}|x|^3dF_{nk}(x)+\sum_{k=1}^n\int\limits_{|x|>\varepsilon/T^3}|e^{itx}-1-itx|+\left|\frac{t^2x^2}{2}\right|dF_{nk}(x)\leq
+\frac{|t|^3}{6}\frac{\varepsilon}{T^3}\sum_{k=1}^n\int\limits_{|x|\leq\varepsilon/T^3}|x|^2dF_{nk}(x)+t^2\sum_{k=1}^n\int\limits_{|x|>\varepsilon/T^3}x^2dF_{nk}(x),
+$$
+где в последнем неравенстве второе слагаемое преобразовано с использованием п. 2 утверждения 7.2. Так как по определению $\xi_{nk}$
+$$\sum_{k=1}^n\int\limits_{-\infty}^{\infty}x^2dF_{nk}(x)=\sum_{k=1}^nD\xi_{nk}=1,$$
+то
+$$
+|\rho_n|\leq\frac{\varepsilon}{6}\left(1-\sum_{k=1}^n\int\limits_{|x|>\varepsilon/T^3}x^2dF_{nk}(x)\right)+t^2\sum_{k=1}^n\int\limits_{|x|>\varepsilon/T^3}x^2dF_{nk}(x)=
+\frac{\varepsilon}{6}+\left(t^2-\frac{\varepsilon}{6}\right)L_n\left(\frac{\varepsilon}{T^3}\right).
+$$
+Так как $L_n(\varepsilon/T^3)\to0$ при $n\to\infty$, то существует $n_2\in\mathbb{N}$ такое, 
+что $n_2&gtn_0$ и для любого $t\in[-T,T]$ второе слагаемое не превосходит $\varepsilon/2$, тогда для любого $n&gtn_2$ $|\rho_n|<\varepsilon$, 
+то есть  $\rho_n\to0$ при $n\to\infty$. Следовательно, по <a href="./probability_theory6.3.html#Theorem6.14">теоремам 6.14</a>, <a href="#Theorem7.11">7.11</a>
+$$\ln\varphi_{\tilde{S}_n}(t)\xrightarrow[n\to\infty]{}-\frac{t^2}{2}\Rightarrow{P}(\tilde{S}_n&ltx)\xrightarrow[n\to\infty]{}\Phi(x)\Rightarrow
+{P}(\tilde{S}_n&ltx)\UniformConv\Phi(x).$$
+</li>
+</ol>
+<br>
+<p id="Statement7.3"><b>Утверждение 7.3:</b>
+Если $\{\xi_k\}$ последовательность независимых, одинаково распределённых случайных величин таких, что $0<\sigma^2<\infty$, 
+то для $\{\xi_k\}$ выполняется условия Линденберга.
+<p><b>Доказательство:</b><br>
+Так как в случае одинаково распределённых случайных величин для любого $k\in\mathbb{N}$ $E\xi_k=\mu_k=\mu$, $D\xi_k=\sigma^2$, $F_k(x)=F(x)$, для любого $n\in\mathbb{N}$ 
+$$B_n^2:=\sum_{k=1}^nD\xi_k=n\sigma^2,$$ 
+то
+\begin{multline*}
+L_n(\tau):=\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|<\tau{B}_n}(x-\mu_k)^2dF_k(x)=\frac1{n\sigma^2}n\int\limits_{|x-\mu|>\tau\sigma\sqrt{n}}(x-\mu)^2dF(x).
+\end{multline*}
+Так как $\tau\sigma\sqrt{n}\to\infty$ при $n\to\infty$ и
+$$\int\limits_{-\infty}^{\infty}(x-\mu)^2dF(x)=\sigma^2<\infty,$$
+то
+$$L_n(\tau)\xrightarrow[n\to\infty]{}0.$$
+<br>
+Таким образом, теорема <a href="#Theorem7.12">7.12</a> следует из теоремы 7.14.
+<p id="Theorem7.15"><b>Теорема 7.15: Теорема Ляпунова.</b><br>
+Пусть $\{\xi_k\}$ последовательность независимых случайных величин таких, что 
+$$\exists\delta>0:\left(E(|\xi_k-\mu_k|^{2+\delta})<\infty\,\wedge\,\frac{\sum_{k=1}^nE(|\xi_k-\mu_k|^{2+\delta})}{B_n^{2+\delta}}\xrightarrow[n\to\infty]{}0\right),$$
+то
+$$P(\tilde{S}_n&ltx)\UniformConv\Phi(x).$$
+<p><b>Доказательство:</b><br>
+Проверим выполнимость условия Линденберга для последовательности $\{\xi_k\}$.
+\begin{multline*}
+L_n(\tau):=\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}(x-\mu_k)^2dF_k(x)=
+\frac1{B_n^2}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}\frac{|x-\mu^k|^{2+\delta}}{|x-\mu_k|^{\delta}}dF_k(x)\leq
+\frac1{B_n^2(\tau{B}_n)^{\delta}}\sum_{k=1}^n\int\limits_{|x-\mu_k|>\tau{B}_n}|x-\mu_k|^{2+\delta}dF_k(x)\leq\\\leq
+\frac1{\tau^{\delta}B_n^{2+\delta}}\sum_{k=1}^n\int\limits_{-\infty}^{\infty}|x-\mu_k|^{2+\delta}dF_k(x)=
+\frac1{\tau^{\delta}}\frac{\sum_{k=1}^nE(|\xi_k-\mu_k|^{2+\delta})}{B_n^{2+\delta}}\xrightarrow[n\to\infty]{}0.
+\end{multline*}
+
+<br><br>
+<a href="./probability_theory7.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.4.html">next</a>

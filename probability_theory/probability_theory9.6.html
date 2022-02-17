@@ -1,0 +1,214 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 9.6</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory9.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.7.html">next</a>
+
+<h5 id="9.6">9.6 Система дифференциальных уравнений Колмогорова.</h5>
+
+<p id="Theorem9.17"><b>Теорема 9.17:</b>
+Пусть $\Pi(t):=\|p_{i,j}(t)\|$ матрица переходных вероятностей стохостически непрерывной конечной цепи Маркова с непрерывным временем, 
+$\Lambda:=\|\lambda_{i,j}\|$ - матрица интенсивностей переходов этой цепи Маркова, $N:=|E|$ - множество состояний, 
+тогда для любого $t\in[0,\infty)$ выполняются прямая и обратная системы дифференциальных уравнений Колмогорова (ДУК)
+$$\begin{cases}\Pi'(t)=\Pi(t)\Lambda \\ \Pi(0)=E\end{cases}\begin{cases}\Pi'(t)=\Lambda\Pi(t) \\ \Pi(0)=E\end{cases}.$$
+<p><b>Доказательство:</b><br>
+Для любых $i,j\in\overline{1,N}$, $t\in[0,\infty)$
+$$
+p_{i,j}(t+\Delta{t})-p_{i,j}(t)=\sum_{k=1}^Np_{i,k}(t)p_{k,j}(\Delta{t})-p_{i,j}(t)=
+\sum_{k\neq{j}}p_{i,k}(t)p_{k,j}(\Delta{t})-p_{i,j}(t)p_{j,j}(\Delta{t})-p_{i,j}(t),
+$$
+тогда
+$$\frac{p_{i,j}(t+\Delta{t})-p_{i,j}(t)}{\Delta{t}}=\sum_{i\neq{j}}p_{i,k}(t)\frac{p_{k,j}(\Delta{t})}{\Delta{t}}+p_{i,j}(t)\frac{p_{j,j}(\Delta{t})-1}{\Delta{t}}.$$
+Переходя к пределу при $t\to0+$ получим
+$${p'}_{i,j}^+(t)=\sum_{k\neq{j}}p_{i,k}(t)\lambda_{k,j}+p_{i,j}(t)\lambda_{j,j}=\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j}.$$
+Аналогично для левой производной
+$$
+p_{i,j}(t-\Delta{t})-p_{i,j}(t)=p_{i,j}(t-\Delta{t})-\sum_{k=1}^Np_{i,k}(t-\Delta{t})p_{k,j}(\Delta{t})=
+p_{i,j}(t-\Delta{t})-p_{i,j}(t-\Delta{t})p_{j,j}(\Delta{t})-\sum_{k\neq{j}}p_{i,k}(t-\Delta{t})p_{k,j}(\Delta{t}),
+$$
+тогда
+$$
+\frac{p_{i,j}(t-\Delta{t})-p_{i,j}(t)}{-\Delta{t}}=
+p_{i,j}(t-\Delta{t})\frac{1-p_{j,j}(\Delta{t})}{-\Delta{t}}-\sum_{k\neq{j}}p_{i,k}(t-\Delta{t})\frac{p_{k,j}(\Delta{t})}{-\Delta{t}}.
+$$
+Переходя к пределу при $\Delta{t}\to0+$  получим
+$${p'}_{i,j}^-(t)=\sum_{k\neq{j}}p_{i,k}(t)\lambda_{k,j}+p_{i,j}(t)\lambda_{j,j}=\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j}.$$
+Таким образом для любых $i,j\in\overline{1,N}$
+$${p'}_{i,j}^+(t)=\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j}={p'}_{i,j}^-(t)\Rightarrow\exists{p}'_{i,j}(t)=\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j},$$
+то есть $\Pi'(t)=\Pi(t)\Lambda$.
+
+Выполнение обратной ситемы ДУК доказывается аналогично. Для любых $i,j\in\overline{1,N}$
+$$
+p_{i,j}(t)-p_{i,j}(t-\Delta{t})=\sum_{k=1}^Np_{i,j}(\Delta{t})p_{k,j}(t-\Delta{t})-p_{i,j}(t-\Delta{t})=
+\sum_{k\neq{i}}p_{i,k}(\Delta{t})p_{k,j}(t-\Delta{t})+p_{i,i}(\Delta{t})p_{i,j}(t-\Delta{t})-p_{i,j}(t-\Delta{t})
+$$
+Поделив равенство на $-\Delta{t}$ и перейдя к пределу при $\Delta{t}\to0+$ получим
+$${p'}_{i,j}^-(t)=\sum_{k\neq{i}}\lambda_{i,k}p_{k,j}(t)+p_{i,j}(t)\lambda_{i,i}=\sum_{k=1}^N\lambda_{i,k}p_{k,j}(t).$$
+Аналогично для любых $i,j\in\overline{1,N}$
+$${p'}_{i,j}^+(t)=\sum_{k=1}^N\lambda_{i,k}p_{k,j}(t),$$
+откуда следует существование производной $\Pi'(t)=\Lambda\Pi(t).$
+<br><br>
+Пусть цепь Маркова не задана, но имеется матрица $\Lambda=\|\lambda_{i,j}\|_{N\times{N}}$ такая, 
+что для любых различных $i,j\in\overline{1,N}$ $\lambda_{i,j}\geq0$ и для любого $i\in\overline{1,N}$ $\sum_{j=1}^N\lambda_{i,j}=0$. 
+Можно ли построить цепь Маркова такую, чтобы матрица $\Lambda$ являлась для неё матрицей интенсивностей переходов. 
+Следующая теорема даёт ответ на этот вопрос. 
+<br><br>
+<p id="Theorem9.18"><b>Теорема 9.18:</b>
+Прямая и обратная системы ДУК имеют единственное решение 
+$$\|p_{i,j}(t)\|_{N\times{N}}=\Pi(t)=e^{\Lambda{t}}:=\sum_{n=0}^{\infty}\frac{(\Lambda{t})^n}{n!}.$$
+удовлетворяющие условиям
+<ol>
+<li>$\Pi(t)$ - стохастическая;</li>
+<li>$\forall{t},s\geq0\left(\Pi(t+s)=\Pi(t)\Pi(s)\right)$;</li>
+<li>$\forall{i,j}\in\overline{1,N}\left(p_{i,j}(t)\geq0\right)$.</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Для любого $n\in\mathbb{N}$ обозначим $\|\lambda_{i,j}^{(n)}\|:=\Lambda^n$. 
+Для доказательства существования матрицы $e^{\Lambda{t}}$ необходимо доказать сходимость рядов 
+$$\sum_{n=0}^{\infty}\frac{\lambda_{i,j}^{(n)}t^n}{n!}$$
+для любых $i,j\in\overline{1,N}$, $t\in[0,\infty)$.
+
+Так как $\Lambda^n=\Lambda\Lambda^{n-1}$, то
+$$
+|\lambda_{i,j}^{(n)}|=\left|\sum_{k=1}^N\lambda_{i,k}\lambda_{k,j}^{(n-1)}\right|\leq\max_{k,j}|\lambda_{k,j}^{(n-1)}|\sum_{k=1}^N|\lambda_{i,k}|.
+$$
+Так как по определению $\Lambda$ $\lambda_{i,j}\geq0$ для различных $i,j\in\overline{1,N}$ и $\sum_{k=1}^N\lambda_{i,k}=0$, то для любого $i\in\overline{1,N}$
+$$\sum_{k\neq{i}}\lambda_{i,k}=-\lambda_{i,i}\Rightarrow\sum_{k\neq{i}}|\lambda_{i,k}|=|\lambda_{i,i}|\Rightarrow\sum_{k=1}^N|\lambda_{i,k}|=2|\lambda_{i,i}|.$$
+Обозначим $C:=\max_{i\in\overline{1,N}}|\lambda_{i,i}|$, тогда повторив $n$ раз проделанные рассуждения получим
+$$
+\max_{i,j}|\lambda_{i,j}^{(n)}|\leq2C\max_{i,j}|\lambda_{i,j}^{(n-1)}|\leq(2C)^2\max_{i,j}|\lambda_{i,j}^{(n-2)}|\leq\cdots
+\leq(2C)^{n-1}\max|\lambda_{i,j}|\leq(2C)^n.
+$$
+Таким образом, для любых $i,j\in\overline{1,N}$, $n\in\mathbb{N}$, $t\in[0,\infty)$
+$$\left|\frac{\lambda_{i,j}^{(n)}t^n}{n!}\right|\leq\frac{(2C)^nt^n}{n!}.$$
+Так как существует, сумма
+$$\sum_{n=0}^{\infty}\frac{(2Ct)^n}{n!}=e^{2Ct},$$
+то по <a href="../math_analysis/math_analysis7.2.1.html#Theorem7.2.2">теореме 7.2.2 MA</a>, существует сумма
+$$p_{i,j}(t):=\sum_{n=0}^{\infty}\frac{\lambda_{i,j}^{(n)}t^n}{n!}.$$
+Почленно продифференцировав ряд по ${t}$ <i>(для этого надо доказать равномерную сходимость ряда)</i> получим
+$$\Pi'(t)=(e^{\Lambda{t}})'=\Lambda{e}^{\Lambda{t}}=e^{\Lambda{t}}\Lambda.$$
+Таким образом, матрица $\Pi(t):=e^{\Lambda{t}}$ существует и является решением прямой и обратной системы ДУК.
+<br>
+Докажем свойства 1-3.
+<ol>
+<li>
+Так как $\Pi'(t)=\Pi(t)\Lambda$, то
+$$
+p_{i,j}'(t)=\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j}\Rightarrow\sum_{j=1}^Np'_{i,j}(t)=\sum_{j=1}^N\sum_{k=1}^Np_{i,k}(t)\lambda_{k,j}=
+\sum_{k=1}^Np_{i,k}(t)\sum_{j=1}^N\lambda_{i,j}=0
+$$
+то есть
+$$\left(\sum_{j=1}^Np_{i,j}(t)\right)'=0,$$
+следовательно, существует константа $c\in\mathbb{R}$ такая, что
+$$\forall{t}\in[0,\infty)\left(\sum_{j=1}^Np_{i,j}(t)=c\right),$$
+при этом из равенства $\Pi(0)=E$ следует, что $\sum_{j=1}^Np_{i,j}(0)=1$, то есть $c=1$.
+</li><li>
+Равенство Колмогорова-Чепмена $\Pi(t+s)=\Pi(t)\Pi(s)$ следует из свойства матричной экспоненты
+$$AB=BA\Rightarrow{e}^{A+B}=e^Ae^B.$$
+<i>(Доказательство?)</i>
+</li><li>
+<ol type="a">
+<li>
+Пусть для любых различных $i,j\in\overline{1,N}$ $\lambda_{i,j}>0$.
+Фиксируем различные $i,j\in\overline{1,n}$, тогда $p_{i,j}(0)=\lambda_{i,j}>0$, то есть функция $p_{i,j}(t)$ возрастает в нуле, 
+при этом $p_{i,j}(0)=0$. Следовательно существует $h_{i,j}>0$ такое, что $p_{i,j}(t)\geq0$ для любого 
+$t\in[0,h_{i,j}]$. При этом $p_{i,i}(0)=1$ и так как функция $p_{i,i}(t)$ непрерывна в нуле, 
+то по п. 2 <a href="../math_analysis/math_analysis5.5.3.html#Theorem5.5.1">теоремы 5.5.1 MA</a> существует $h_{i,i}>0$ такое, 
+что $p_{i,i}(t)\geq0$ для любого $t\in[0,h_{i,i}]$. Обозначим $h:=\max_{i,j}h_{i,j}>0$, тогда
+$$\forall{i,j}\in\overline{1,N}\,\forall{t}\in[0,h](p_{i,j}(t)\geq0).$$
+Фиксируем $t\in[0,\infty)$. Существуют $m\in\mathbb{N}$ и $\delta\in[0,h)$ такие, что $t=mh+\delta$, тогда
+$$\Pi(t)=\Pi(mh+\delta)=\Pi(mh)\Pi(\delta)=\Pi^m(h)\Pi(\delta)\geq0.$$
+</li><li>
+Пусть $\lambda_{i,j}\geq0$. Для любых различных $i,j\in\overline{1,N}$ $n\in\mathbb{N}$ обозначим $\lambda_{i,j}(n):=\lambda_{i,j}+\frac1{n}$, 
+$\lambda_{i,i}(n):=\lambda_{i,i}-\frac{N-1}{n}$, $\Lambda(n):=\|\lambda_{i,j}(n)\|$. 
+Тогда для всех различных $i,j\in\overline{1,N}$ и любого $n\in\mathbb{N}$ $\lambda_{i,j}(n)>0$ и $\sum_{j=1}^N\lambda_{i,j}(n)=0$. 
+Следовательно по доказанному в пункте (a) для любых $n\in\mathbb{N}$, $t\in[0,\infty)$ $\Pi_n(t):=e^{\Lambda(n)t}\geq0$. Далее без доказательства
+$$\lim_{n\to\infty}\Pi_n(t)=exp(\lim_{n\to\infty}\Lambda(n)t)=e^{\Lambda{t}}=\Pi(t)\geq0.$$ 
+</li>
+</ol>
+</li>
+</ol>
+<i>Не доказана единственность?</i>
+<br><br>
+<p id="Theorem9.19"><b>Теорема 9.19:</b>
+Если цепь Маркова консервативна, то её переходные функции $\Pi(t)$ удовлетворяют обратной системе ДУК:
+$$\begin{cases}\Pi'(t)=\Lambda\Pi(t) \\ \Pi(0)=E \end{cases}$$
+<p><b>Доказательство:</b><br>
+Для любых $i,j\in\mathbb{N}$, $t,s\in[0,\infty)$
+\begin{multline*}
+p_{i,j}(s+t)-p_{i,j}(t)=\sum_{k=1}^{\infty}p_{i,k}(s)p_{k,j}(t)-p_{i,j}(t)=
+\sum_{k\neq{i}}p_{i,k}(s)p_{k,j}(t)+p_{i,i}(s)p_{i,j}(t)-p_{i,j}(t)\Rightarrow\\\Rightarrow
+\frac{p_{i,j}(s+t)-p_{i,j}(t)}{s}=\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)+p_{i,j}(t)\frac{p_{i,i}(s)-1}{s}.
+\end{multline*}
+Предел второго слагаемого при $s\to0+$ существует и равен $\lambda_{i,i}p_{i,j}(t)$, следовательно, 
+для доказательства равенства $\Pi'(t)=\Lambda\Pi(t)$ необходимо доказать, 
+что предел суммы стоящей в первом слагаемом при $s\to0+$ существует и равен $\sum_{k\neq{i}}\lambda_{i,k}p_{k,j}(t)$.
+
+Для любого $N&gti$ 
+$$
+\varliminf_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)\geq\varliminf_{s\to0+}\sum_{k\neq{i}}^{N}\frac{p_{i,k}(s)}{s}p_{k,j}(t)=
+\sum_{k\neq{i}}^{N}\lambda_{i,k}p_{k,j}(t)
+$$
+Так как 
+$$\left|\sum_{k=1}^{\infty}\lambda_{i,k}p_{k,j}(t)\right|\leq\sum_{k=1}^{\infty}|\lambda_{i,k}|<\infty,$$
+то существует предел в правой части равенства при $N\to\infty$, следовательно, преходя к пределу при $N\to\infty$ получим
+$$\varliminf_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)\geq\sum_{k\neq{i}}\lambda_{i,k}p_{k,j}(t).$$
+С другой стороны, 
+$$\sum_{k=1}^{\infty}p_{i,k}(s)p_{k,j}(t)\leq\sum_{k=1}^{\infty}p_{i,k}(s)=1,$$
+следовательно, для любого $N>i$
+\begin{multline*}
+\sum_{k\neq{i}}p_{i,k}(s)p_{k,j}(t)=\sum_{k\neq{i}}^Np_{i,k}(s)p_{k,j}(t)+\sum_{k=N+1}^{\infty}p_{i,k}(s)p_{k,j}(t)\leq
+\sum_{k\neq{i}}^Np_{i,k}(s)p_{k,j}(t)+\sum_{k=N+1}^{\infty}p_{i,k}(s)=\sum_{k\neq{i}}^Np_{i,k}(s)p_{k,j}(t)+1-p_{i,i}(s)-\sum_{k\neq{i}}^Np_{i,k}(s)\Rightarrow\\\Rightarrow
+\varlimsup_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)\leq\sum_{k\neq{i}}^N\lambda_{i,k}p_{k,j}(t)-\lambda_{i,i}-\sum_{k\neq{i}}^N\lambda_{i,k}=
+\sum_{k\neq{i}}^N\lambda_{i,k}p_{k,j}(t)-\sum_{k=1}^N\lambda_{i,k}.
+\end{multline*}
+Выше было показано, что предел первого слагаемого при $N\to\infty$ существует. Предел второго слагаемого при $N\to\infty$ существует и равен нулю, 
+так как цепь Маркова по условию консервативна. Переходя к пределу при $N\to\infty$ и учитывая доказанное выше неравенство получим
+$$
+\varlimsup_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)\leq\sum_{k\neq{i}}\lambda_{i,k}p_{k,j}(t)\leq
+\varliminf_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t).
+$$
+Таким образом, существует предел
+$$\lim_{s\to0+}\sum_{k\neq{i}}\frac{p_{i,k}(s)}{s}p_{k,j}(t)=\sum_{k\neq{i}}\lambda_{i,k}p_{k,j}(t).$$
+<br>
+<p id="Theorem9.20"><b>Теорема 9.20: О минимальном решении системы ДУК.</b><br>
+Пусть $\Lambda:=\|\lambda_{i,j}\|$ такая, что для любых различных $i,j\in\mathbb{N}$ $\lambda_{i,j}\geq0$. Для любого $i\in\mathbb{N}$ $\sum_{j=1}^{\infty}\lambda_{i,j}=0$, тогда система
+$$
+\begin{cases}\Pi'(t)=\Lambda\Pi(t) \\  \Pi(0)=E\end{cases}\quad(*)
+$$
+имеет решение $\tilde\Pi(t):=\|\tilde{p}_{i,j}\|$ такое, что
+<ol>
+<li>для любых $i,j\in\mathbb{N}$ функция $\tilde{p}_{i,j}(t)$ неотрицательна;</li>
+<li>$\forall{i}\in\mathbb{N}\left(\sum_{j=1}^N\tilde{p}_{i,j}(t)\leq1\right)$;</li>
+<li>$\forall{i},j\in\mathbb{N}\,\forall{t},s\in[0,\infty)\left(\tilde{p}_{i,j}(t+s)=\sum_{k=1}^{\infty}\tilde{p}_{i,k}(s)\tilde{p}_{k,j}(t)\right)$;</li>
+<li>если $\Pi(t):=\|p_{i,j}(t)\|$ решение системы (*), то для любых $i,j\in\mathbb{N}$, $t\in[0,\infty)$ $p_{i,j}(t)\geq\tilde{p}_{i,j}(t)$</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Без доказательства.
+<br><br>
+<p id="Theorem9.21"><b>Теорема 9.21:</b>
+Пусть $\Pi(t):=\|p_{i,j}(t)\|$ - матрица переходных вероятностей цепи Маркова, $\Lambda:=\|\lambda_{i,j}\|$ - матрица интенсивностей переходов. 
+Для любого $i\in\mathbb{N}$ $\sum_{k=1}^{\infty}p_{i,k}(t)\lambda_{k,k}>-\infty$. Тогда выполняется прямая система ДУК
+$$
+\begin{cases}\Pi'(t)=\Pi(t)\Lambda \\ \Pi(0)=E\end{cases}
+$$
+<p><b>Доказательство:</b><br>
+Без доказательства.
+
+
+
+<br><br>
+<a href="./probability_theory9.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.7.html">next</a>

@@ -1,0 +1,480 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 2.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory1.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.1.html">next</a>
+<br>
+
+<h4 id="2">2. Функция распределения вероятностной меры заданной на измеримом пространстве $(\mathbb{R},\mathcal{B})$.</h4>
+
+<h5 id="2.1">2.1 Свойства функции распределения.</h5>
+
+Пусть $P$ - $\sigma$-аддитивная вероятностная мера определенная на пространстве $(\mathbb{R},\mathcal{B})$. 
+Так как для любого $x\in\mathbb{R}$ $(-\infty,x)\in\mathcal{B}$, то корректно следующее определение.
+<br><br>
+<p id="Definition2.1"><b>Определение 2.1:</b>
+Функция $F(x):\mathbb{R}\to\mathbb{R}$ такая, что для любого ${x\in\mathbb{R}}$ $F(x)=P((-\infty,x))$ называется функцией распределения вероятностной меры 
+на пространстве $(\mathbb{R},\mathcal{B},P)$.
+<br><br>
+<p id="Statement2.1"><b>Утверждение 2.1: Свойства функции распределения.</b><br>
+Пусть $x_0,x_1\in\mathbb{R}$, $x_0&ltx_1$, тогда
+<ol>
+<li>$0\leq{F}(x_0)\leq1$,
+</li>
+<li>функция $F(x)$ неубывающая,
+</li>
+<li>функция $F(x)$ непрерывна слева,
+</li>
+<li>$\lim\limits_{x\to-\infty}{F(x)}=0$, $\lim\limits_{x\to+\infty}=1$,
+</li>
+<li>$P((-\infty,x_0])=\lim\limits_{x\to{x}_0+0}{F(x)}=F(x_0+0)$,
+</li>
+<li>$P(x_0)=F(x_0+0)-F(x_0)$,
+</li>
+<li>$P([x_0,x_1))=F(x_1)-F(x_0)$,
+</li>
+<li>$P([x_0,x_1])=F(x_1)-F(x_0+0)$,
+</li>
+<li>функция $F(x)$ может иметь только точки разрыва первого рода и только не более чем счетное число. 
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как $P$ - неотрицательна, и $P(\mathbb{R})=1$.
+</li>
+<li>Следует из п. 4 <a href="./probability_theory1.1.html#Statement1.1">утверждения 1.1</a>.
+</li>
+<li>Фиксируем последовательность действительных чисел $\{x_k\}$ из $(-\infty,x_0)$ такую, что $\lim_{k\to\infty}{x_k}=x_0$. 
+Выберем из последовательности $\{x_k\}$ возрастающую подпоследовательность $\{x_n\}$, тогда $\lim_{x\to\infty}{x_n}=x_0$. 
+Рассмотрим последовательность множеств ${A_n}$, где для любого $n\in\mathbb{N}$ $A_n:=(-\infty,x_n)$. 
+Тогда по теореме 1.4 и по опеределению предела числовой последовательности  
+$$\exists\lim_{n\to\infty}{A_n}=\bigcup_{n=1}^{\infty}A_n=(-\infty,x_0).$$
+Тогда по п. 2 теоремы 1.5
+$$\lim_{n\to\infty}{F(x_n)}=\lim_{n\to\infty}{A_n}=P(\lim_{n\to\infty}{A}_n)=P(-\infty,x_0)=F(x_0).$$
+Так как функция $F(x)$ ограничена и монотонна, то существует предел $\lim_{x\to{x}_0}{F(x)}$ 
+(<a href="../math_analysis/math_analysis5.3.html#Theorem5.3.3">теорема 5.3.3 MA</a>), 
+следовательно по критерию существования предела функции по Гейне 
+(<a href="../math_analysis/math_analysis5.1.html#Statement5.1.2">утверждение 5.1.2 MA</a>) существует предел 
+$\lim_{k\to\infty}{F(x_k)}$. Так как в случае существования предела последовательности предел любой ее подпоследовательности равен пределу последовательности, 
+то 
+$$\lim_{k\to\infty}{F(x_k)}=\lim_{n\to\infty}{F(x_n)}=F(x_0).$$
+Таким образом, для функции $F(x)$ реализован критерий существования предела функции по Гейне при $x\to{x}_0$.
+</li>
+<li>Фиксируем убывающую последовательность действительных чисел $\{x_n\}$ такую, что $\lim_{n\to\infty}x_n=-\infty$. 
+Положим для любого натурального $n$ $A_n:=(-\infty,x_n)$. Тогда 
+$$\exists\lim_{n\to\infty}{A_n}=\bigcap_{n=1}^{\infty}A_n=\varnothing.$$
+Тогда по п. 2 <a href="./probability_theory1.6.html#Theorem1.5">теоремы 1.5</a>
+$$\lim_{x\to\infty}{F(x_n)}=\lim_{n\to\infty}{P(A_n)}=P(\lim_{n\to\infty}{A_n})=P(\varnothing)=0.$$
+Фиксируем $\varepsilon>0$, тогда по доказанному и неубыванию функции $F(x)$
+$$\exists{n}\in\mathbb{N}:F(x_n)<\varepsilon\Rightarrow\forall{x}&ltx_n(F(x)<\varepsilon)\Rightarrow\lim_{x\to-\infty}{F(x)}=0.$$
+Аналогично доказывается, что $\lim_{x\to\infty}{F(x)}=1$.
+</li>
+<li>Фиксируем убыавющую последовательность $\{x_n\}$ из $(x_0,\infty)$ такую, что $\lim_{n\to\infty}{x_n}=x_0$. 
+Положим для любого $n\in\mathbb{N}$ $A_n:=(-\infty,x_n)$, тогда
+$$\exists\lim_{n\to\infty}{A_n}=\bigcap_{n=1}^{\infty}A_n=(-\infty,x_0].$$
+Далее доказательство проводится аналогично п. 3.
+</li>
+<li>Обозначим $A:=(-\infty,x_0)$, $B:=(-\infty,x_0]$, тогда в силу аддитивности $P$, п.п. 3, 5
+$${x_0}=B\backslash{A}\Rightarrow{P}(x_0)=P(B\backslash{A})=P(B)-P(A)=F(x_0+0)-F(x_0).$$
+</li>
+<li> В силу аддитивности $P$
+$$
+P([x_0,x_1))=P((-\infty,x_1)\backslash(-\infty,x_0))=P(-\infty,x_1)-P(-\infty,x_0)=F(x_1)-F(x_0).
+$$
+</li>
+<li>По п.п. 6, 7
+$$
+P([x_0,x_1])=P([x_0,x_1))+P(x_0)=F(x_1)-F(x_0)+F(x_1+0)-F(x_1)=F(x_1+0)-F(x_0).
+$$
+Аналогично $P(x_0,x_1)=F(x_1)-F(x_0+0)$.
+</li>
+<li>Из п. п.3, 5 следует, что функция $F(x)$ имеет односторонние пределы в любой точке $\mathbb{R}$, 
+следовательно она может иметь только точки разрыва первого рода.<br>
+Число точек разрыва не более чем счетно, так как множество непересекающихся числовых промежутков всегда не более чем счетно, 
+потому что каждый из них содержит рациональное число (п.п. 1, 2 <a href="../math_analysis/math_analysis5.5.5.html#Task5.5.6">задачи 5.5.6 MA</a>).
+</ol>
+Из п. 6 следует, что если $F(x)$ непрерывна в точке $x_0$, $P(x_0)=0$.<br>
+Из п. п. 6, 7, 8 следует, что если $F(x)$ непрерывна в точках $x_0$, $x_1$, $x_0&ltx_1$, то мера любого промежутка с концами $x_0$, $x_1$ равна $F(x_1)-F(x_0)$.
+<br>
+<h5 id="2.2">2.2 Взаимнооднозначное соответствие между $F(x)$ и $P$.</h5>
+
+<p id="Theorem2.1"><b>Теорема 2.1:</b>
+Пусть функция $F(x):\mathbb{R}\to[0,1]$ такая, что
+<ol>
+<li>$F(x)$ - неубывает,
+</li>
+<li>$F(x)$ - непрерывана слева,
+</li>
+<li>$\lim\limits_{x\to-\infty}{F(x)}=0$, $\lim\limits_{x\to\infty}{F(x)}=1$,
+</li>
+</ol>
+тогда существует единственная счетноаддитивная вероятностная мера на $\mathcal{B}$ такая, что $F(x)$ является функцией распределения $P$,
+то есть такакя, что для любого $x\in\mathbb{R}$ $P(-\infty,x)=F(x)$.
+<p><b>Доказательство:</b><br>
+Обозначим
+<ul>
+</li>
+<li>$\mathcal{B}_I:=\{[a,b)\mid{a,b}\in\mathbb{R},a\leq{b}\}$,
+</li>
+<li>$\mathcal{B}_0$ - минимальная алгебра порожденная $\mathcal{B}_I$,
+</li>
+<li>$\mathcal{B}$ - минимальная $\sigma$-алгебра порожденная $\mathcal{B}_0$. 
+</li>
+</ul>
+Согласно <a href="./probability_theory1.1.html#Definition1.7">опредлению 1.7</a> $\mathcal{B}$ - $\sigma$-алгебра борелевских множеств.<br>
+Рассмотрим функцию $\mu:\mathcal{B}_I\to\mathbb{R}$ такую, что для любого полуинтервала $[a,b)\in\mathcal{B}_I$ $\mu([a,b)):=F(b)-F(a)$.<br>
+Так как функция $F(x)$ неубывает, то функция $\mu$ неотрицательна. Докажем, что функция $\mu$ счетноаддитивна.<br>
+Обозначим $I:=[a,b)$, для любого $n\in\mathbb{N}$ $I_n:=[a_n,b_n)\in\mathcal{B}_I$ такие, 
+что для любых различных $k,s\in\mathbb{N}$ $I_kI_s=\varnothing$ и $I=\bigcup_{n=1}^{\infty}I_n$. 
+Покажем, что $\mu(I)=\sum_{n=1}^{\infty}\mu(I_n)$.
+<ol>
+<li>
+Фиксируем $n\in\mathbb{N}$ и перенумеруем промежутки так чтобы они следовали друг за другом
+$$a\leq{a}_1\leq{b}_1\leq{a}_2\leq{b}_2\leq\cdots\leq{a}_n\leq{b}_n\leq{b}.$$
+Для краткости в рамках данного доказательства везде далее будем считать, что $F(a,b)\sim{F}(b)-F(a)$.
+$$
+\sum_{k=1}^n\mu(I_k)=\sum_{k=1}^nF(a_k,b_k)\leq\sum_{k=1}^nF(a_k,b_k)+\sum_{k=1}^{n-1}F(b_1,a_{k+1})\leq{F}(a,b)
+$$
+Так как неравенство верно для любого $n$ можно перейти к пределу при $n\to\infty$, тогда
+$$\sum_{k=1}^{\infty}\mu(I_k)\leq{F}(a,b)=\mu([a,b)).$$
+</li>
+<li>
+Фиксируем $0<\varepsilon&ltb-a$, обозначим $I^{\varepsilon}:=[a,b-\varepsilon)$.
+Так как фукнция $F(x)$ непрерывна слева, то 
+$$\forall{n}\in\mathbb{N}\,\exists\varepsilon_n&gt0:F(a_n-\varepsilon_n,a_n)<\frac{\varepsilon}{2^n}.$$
+Для любого $n\in\mathbb{N}$ обозначим $I_n^{\varepsilon}:=[a_n-\varepsilon_n,b_n)$. Тогда
+$$I^{\varepsilon}\subset{I}=[a,b)=\bigcup_{n=1}^{\infty}{I_n}\subset\bigcup_{n=1}^{\infty}{I_n^{\varepsilon}}.$$
+По лемме Бореля - Лебега (лемма 3.6.2 MA) можно выделить конечное подпокрытие 
+$$I^{\varepsilon}\subset\bigcup_{k=1}^{n_0}{I_k^{\varepsilon}}.$$
+Выкинем из покрытия все лишнее применив к нему следующую процедуру
+<ul>
+<li>$$a\in{I}^{\varepsilon}\Rightarrow\exists{k}_1\in\overline{1,n_0}:a\in{I}_{k_1}^{\varepsilon}$$
+Если $b_{k_1}\geq{b}-\varepsilon$, то процесс закончен, если нет, то
+</li>
+<li>$$b_{k_1}\in{I}^{\varepsilon}\Rightarrow\exists{k}_2\in\overline{1,n_0}:b_{k_1}\in{I}_{k_2}^{\varepsilon}$$
+Если $b_{k_2}\geq{b}-\varepsilon$, то процесс закончен, если нет, то
+</li>
+<li>и т. д.
+</li>
+<li>$$b_{k_{m-1}}\in{I}^{\varepsilon}\Rightarrow\exists{k}_m\in\overline{1,n_0}:(b_{k_{m-1}}\in{I}_{k_m}^{\varepsilon}\wedge{b}_{k_m}\geq{b}-\varepsilon).$$
+</li>
+</ul>
+В результате будет получено покрытие 
+$$I^{\varepsilon}\subset\bigcup_{k=1}^m{I_k^{\varepsilon}}$$
+такое, что ни один полуинтервал не содержит другого. Тогда
+\begin{multline*}
+\mu([a,b-\varepsilon))\leq\mu([a_1-\varepsilon_1,b_m))=F(a_1-\varepsilon_1,b_m)=F(a_1-\varepsilon_1,b_1)+\sum_{k=1}^{m-1}F(b_k,b_{k+1})\leq\sum_{k=1}^mF(a_k-\varepsilon_k,b_k)\leq\\
+\leq\sum_{k=1}^mF(a_k,b_k)+\sum_{k=1}^m\frac{\varepsilon}{2^k}\leq\sum_{k=1}^{\infty}F(a_k,b_k)+\sum_{k=1}^{\infty}\frac{\varepsilon}{2^k}=\sum_{k=1}^{\infty}F(a_k,b_k)+\varepsilon.
+\end{multline*}
+Переходя к пределу при $\varepsilon\to0$, получим
+$$\mu([a,b))\leq\sum_{k=1}^{\infty}F(a_k,b_k).$$
+</ol>
+Из пунктов 1 и 2 следует 
+$$\mu([a,b))=\sum_{k=1}^{\infty}F(a_k,b_k).$$
+Для любого $A\in\mathcal{B}_0$, существует совокупность $\{A_n\}$ такая, что $A=\bigsqcup_{n=1}^{\infty}A_n$, где для любого $n\in\mathbb{N}$ 
+$A_n\in\mathcal{B}_I\cup\{(-\infty,x)\mid{x}\in\mathbb{R}\}\cup\{[x,\infty)\mid{x}\in\mathbb{R}\}$. 
+Положим для любого $A\in\mathcal{B}_0$ $P(A)=\sum_{n=1}^{\infty}\mu([a_n,b_n))$. 
+Данный ряд сходится по <a href="../math_analysis/math_analysis7.2.1.html#Theorem7.2.1">теореме 7.2.1 MA</a>, 
+так как он знакопостоянный и последовательность его частичных сумм ограничена. 
+Таким образом, на $\mathcal{B}_0$ задана счетноаддитивная вероятностная мера удовлетворяющая условию $P(-\infty,x)=F(x)$. 
+Из способа задания следует, что эта мера единственная счетноаддитивная мера удовлетворяющая данному условию. 
+По <a href="./probability_theory1.6.html#Theorem1.6">теореме Каратеодори</a> существует единственное продолжение меры $P$ с $\mathcal{B}_0$ на $\mathcal{B}$.  
+<br><br>
+Таким образом, вероятностные меры на пространстве $(\mathbb{R},\mathcal{B})$ можно задавать с помощью функций распределения $F(x)$.
+По суммарной высоте "скачков" функции распредления делятся на непрерывные, кусочнонепрерывные и кусочно постоянные. 
+Пусть $x_1,x_2,...,x_n,...$ - точки разрыва $F(x)$, обозначим для любого $k\in\mathbb{N}$ 
+$p_k=F(x_k+0)-F(x_k)$, тогда
+<ol>
+<li>если $\sum_{k=1}^{\infty}p_k=0$, то $F(x)$ - непрерывна;</li>
+<li>если $0<\sum_{k=1}^{\infty}p_k<1$, то $F(x)$ - кусочнонепрерывна;</li>
+<li>если $\sum_{k=1}^{\infty}p_k=1$, то $F(x)$ - кусочнопостоянна</li>
+</ol>
+<h5 id="2.3">2.3 Основные абсолютно непрерывные распределения.</h5>
+
+<p id="Definition2.2"><b>Определение 2.2:</b>
+Функция распределения $F(x)$ называется абсолютно непрерывной, если существует неотрицательная функция $p(x)$ такая, что для любого $x\in\mathbb{R}$
+$$F(x)=\int\limits_{-\infty}^xp(u)du.$$
+При этом функция $p(x)$ называется плотностью распределения вероятности.
+<br><br>
+Если $p(u)$ непрерывна в точке $x$, то $p(x)=F'(x)$. 
+Таким образом, вероятностную меру на простраснтве $(\mathbb{R},\mathcal{B})$ можно задавать с помощью плотности распределения вероятностей $p(u)$.
+<br>
+<ol>
+<li>Равномерное распределение на отрезке $[a,b]$.
+$$
+p(x):=
+\begin{cases}
+\frac1{b-a},	&x\in[a,b]\\
+0,		&x\notin[a,b]
+\end{cases}
+$$
+$$
+F(x)=\int\limits_{-\infty}^{x}p(u)du=
+\begin{cases}
+0,			&x\leq{a}\\
+\frac{x-a}{b-a},	&x\in[a,b]\\
+1,			&x&gtb
+\end{cases}
+$$
+Числа $a,b\in\mathbb{R}$, $a&ltb$ - параметры распределения.
+</li>
+<li>Экспоненциальное распределение.
+$$
+p(x):=
+\begin{cases}
+0,					&x\leq0\\
+\lambda{e}^{-\lambda{x}},	&x>0
+\end{cases}
+$$
+$$
+F(x)=
+\begin{cases}
+0,				&x\leq0\\
+1-e^{-\lambda{x}},	&x>0
+\end{cases}
+$$
+Число $\lambda>0$ - параметр распределения.
+</li>
+<li>Нормальное распределение.
+$$N(\mu,{\sigma}^2)=p(x):=\frac1{\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2{\sigma}^2}}.$$
+$$F(x)=\frac1{\sigma\sqrt{2\pi}}\int\limits_{-\infty}^xe^{\frac{(x-u)^2}{2{\sigma}^2}}du.$$
+Параметр $\mu\in\mathbb{R}$ равен максимуму функции $p(x)$. Параметр $\sigma>0$ "пропорционален" ширине графика $p(x)$.<br>
+При $\mu=0$, $\sigma=1$ нормальное распределение называется стандартным.
+$$N(0,1)=\frac1{\sqrt{2\pi}}e^{-\frac{x^2}{2}}.$$
+</li>
+<li>Распределение Коши.
+$$K(\theta,\mu):=p(x):=\frac1{\pi}\frac{\theta}{(x-\mu)^2+{\theta}^2},$$
+где $\theta>0$. Параметр $\mu\in\mathbb{R}$ равен максимуму функции $p(x)$.
+Распределение Коши называется стандартным при $\theta=1$, $\mu=0$.
+$$K(1,0)=\frac1{\pi}\frac1{x^2+1}.$$
+</li>
+<li>Двусторонне показательное распределение.
+$$p(x):=\frac{\lambda}{2}e^{-\lambda|x|}.$$
+$$
+F(x)=
+\begin{cases}
+\frac12e^{\lambda{x}},		&x\leq0\\
+\frac12(1-e^{-\lambda{x}}),	&x>0
+\end{cases}
+$$
+</li>
+<li>Гамма-распределение, $\Gamma(\alpha,\beta)$.
+$$p(x):=
+\begin{cases}
+\frac{x^{\alpha-1}e^{-x/\beta}}{\Gamma(\alpha){\beta}^{\alpha}},	&x>0\\
+0,											&x\leq0
+\end{cases}
+$$
+Числа $\alpha,\beta\in\mathbb{R}^+$ параметры распределения.<br>
+При $\alpha=1$, $\beta=1/\lambda$ гамма-распределение вырождается в показательное
+$$
+\Gamma\left(1,\frac1{\lambda}\right)=
+\begin{cases}
+0,					&x\leq0\\
+\lambda{e}^{-\lambda{x}},	&x>0
+\end{cases}
+$$
+</li>
+<li>Хи-квадрат-распределение с $n$ степенями свободы, $\chi_n^2$.
+$$
+{p}(x):=
+\begin{cases}
+\frac{x^{n/2-1}e^{-x/2}}{\Gamma\left(\frac{n}{2}\right)2^{n/2}},	&x>0\\
+0,											&x\leq0
+\end{cases}
+$$
+Таким образом, для любого $n\in\mathbb{N}$ $\chi_n^2=\Gamma(n/2,2)$. Если $n=2$, то $\chi_2^2$ - это показательное распределение при $\lambda=\frac12$.
+</li>
+<li>Распределение Стьюдента с $n$ степенями свободы.
+$$
+p(x):=\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}\frac1{\sqrt{\pi{n}}}\frac1{\left(1+\frac{x^2}{n}\right)^{(n+1)/2}}.
+$$
+При $n=1$ распределение Стьюдента вырождается в стандартное распределени Коши.
+</li>
+</ol>
+<h5 id="2.4">2.4 Основные дискретные распределения.</h5>
+
+Распределение называется дискретным, если функция распределения $F(x)$ кусочнопостоянна (ступенчатая). 
+Ступенчатую функцию распределения можно задать последовательностью "скачков" $\{p_k\}$, для которой выполняется равенство $\sum_{k=1}^{\infty}p_k=1$. 
+Последовательность $\{p_k\}$ может быть нулевой за исключением конечного числа членов.
+
+<ol>
+<li>Вырожденное распределение.
+$$
+F(x)=
+\begin{cases}
+1,&x>a\\
+0,&x\leq0
+\end{cases}
+$$
+</li>
+<li>Распределение Бернулли.
+$$
+F(x)=
+\begin{cases}
+0,&x\leq0\\
+p,&x\in(0,1]\\
+1,&x>1
+\end{cases}
+$$
+</li>
+<li>Гипергеометрическое распределение.<br>
+Пусть $M,N,n\in\mathbb{N}$, $M\leq{N}$, ${n&ltN}$, тогда для любого $k\in\overline{1,M}$
+$$
+p_k=\frac{\binom{n}{k}\binom{N-n}{M-k}}{\binom{N}{M}}
+$$
+Определение корректно, так как
+$$\sum_{k=1}^M\binom{n}{k}\binom{N-n}{M-k}=\binom{N}{M}.$$
+Для доказательства можно рассмотреть коэффициенты при $x^M$ в левой и правой частях в равенства $(1+x)^n(1+x)^{N-n}=(1+x)^N$.<br>
+Гипергеометрическое распределение используется, например, при решении такой задачи. 
+Есть $N$ изделий, из которых $n$ - брак, делается случайная выборка из $M$ изделий. Какова вероятность, что выборка будет содержать $k$ бракованых изделий?
+</li>
+<li>Геометрическое распределение.<br>
+Пусть $p\in(0,1)$, тогда для любого $k\in\mathbb{N}$
+$$p_k=p(1-p)^{k-1}.$$
+$$\sum_{k=1}^{\infty}p_k=\sum_{k=1}^{\infty}p(1-p)^{k-1}=\frac{p}{1-(1-p)}=1.$$
+Сходимость ряда доказана в <a href="../math_analysis/math_analysis7.1.html#Example7.1.1">примере 7.1.1 MA</a>.
+</li>
+<li>Распределение Пуассона $\Pi(\lambda)$.<br>
+Пусть $\lambda>0$, тогда для любого $k\in\mathbb{N}_0$
+$$p_k=\frac{\lambda^ke^{-\lambda}}{k!}.$$
+Исходя из разложения функции $e^x$ в ряд Тэйлора (<a href="../math_analysis/math_analysis7.5.4.html#Theorem7.5.5">теорема 7.7.5 MA</a>)
+$$\sum_{k=0}^{\infty}p_k=e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}=e^{-\lambda}e^{\lambda}=1.$$
+</li>
+<li>Биномиальное распределение $B(n,p)$.<br>
+Пусть $p\in[0,1]$, $n\in\mathbb{N}$, тогда для любого $k\in\overline{0,n}$
+$$p_k=\binom{n}{k}p^k(1-p)^{n-k}.$$
+$$\sum_{k=0}^np_k=(p+(1-p))^n=1.$$
+</li>
+<li>Равномерное дискретное распределение.<br>
+Пусть $n\in\mathbb{N}$, тогда для любого $k\in\overline{1,n}$
+$$p_k=\frac1{n}$$
+</li>
+</ol>
+
+<h5 id="2.5">2.5 Понятие о сингулярных распределениях.</h5>
+
+<p id="Definition2.3"><b>Определение 2.3:</b>
+Будем говрить, что $x_0$ - точка роста функции $F(x)$, если 
+$$\forall\varepsilon>0(F(x_0+\varepsilon)-F(x_0-\varepsilon)>0).$$
+<br><br>
+Таким образом, всякая точка разрыва функции распределения является точкой роста.
+<br><br>
+<p id="Definition2.4"><b>Определение 2.4:</b>
+Не дискретная функция распределения $F(x)$ называется сингулярной относительно меры Лебега, если мера Лебега множества точек роста функции $F(x)$ равна нулю.
+<br><br>
+<p id="Example2.1"><b>Пример 2.1: Кривая Кантора.</b><br>
+Чтобы получить заначение функции Кантора $c(x):[0,1]\to[0,1]$ в точке $x_0$ надо записать число $x_0$ в троичной системе счисления. 
+Отбросить все числа начиная с первой единицы, а в оставшейся части заменить все двойки на единицы. 
+Получившаяся последовательность будет записью $c(x_0)$ в двоичной системе счисления. 
+Нетрудно видеть (Боровков А. А. 1999 г. "Теория вероятностей." стр. 45), что сумма длин промежутков постоянства функции $c(x)$ равна
+$$
+\frac13+2\cdot\frac19+4\cdot\frac1{27}+\cdots+2^n\frac1{3^{n+1}}+\cdots=
+\frac13\left(1+\frac23+\left(\frac23\right)^2+\cdots+\left(\frac23\right)^n+\cdots\right)=\frac13\frac1{1-2/3}=1.
+$$
+То есть мера Лебега множества точек роста равна 0. Таким образом, функция распределения
+$$
+F(x):=
+\begin{cases}
+0,	&x\leq0\\
+c(x),	&x\in(0,1]\\
+1,	&x>1
+\end{cases}
+$$
+является сингулярной относительно меры Лебега.
+<br><br>
+<p id="Theorem2.2"><b>Теорема 2.2: Теорема Лебега.</b><br>
+Любая функция распределения $F(x)$ может быть представлена в виде суммы $p_1F_1(x)+p_2F_2(x)+p_3F_3(x)$, где $p_1,p_2,p_3\geq0$, $p_1+p_2+p_3=1$, 
+<ul>
+<li>$F_1(x)$ - абсолютно непрерывная,</li>
+<li>$F_2(x)$ - дискретна,</li>
+<li>$F_3(x)$ - сингулярная.</li>
+</ul>
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Боровков А. А. 1999 г. "Теория вероятностей." стр. 438.
+<br>
+<h5 id="2.6">2.6 Вероятностные меры на $(\mathbb{R}^n,\mathcal{B}^n)$.</h5>
+
+<p id="Definition2.5"><b>Определение 2.5:</b>
+Функцией распределения вероятностной меры $P$ заданной на пространстве $(\mathbb{R}^n,\mathcal{B}^n)$ называется функция $F(x):\mathbb{R}^n\to[0,1]$ такая, 
+что для любого $x=(x_1,\ldots,x_n)\in\mathbb{R}^n$
+$$F(x):=P\{(-\infty,x_1)\times\cdots\times(-\infty,x_n)\}.$$
+<br>
+Свойства функции распределения $F(x)$ вероятностной меры заданной на простаранстве $(\mathbb{R}^n,\mathcal{B}^n)$.
+<ol>
+<li>$0\leq{F}(x)\leq1$
+</li>
+<li>Для любого $k\in\overline{1,n}$ функция $F(x)$ непрерывна по пременной $x_k$.
+</li>
+<li>$\lim\limits_{x_1\to\infty,\ldots,{x}_n\to\infty}F(x)=1$.
+</li>
+<li>Для любого $k\in\overline{1,n}$ $\lim\limits_{x_k\to-\infty}F(x)=0$.
+</li>
+<li>Обозначим 
+$$
+\Delta_{[a,b]}^{(k)}F(x):=F(x_1,\ldots,x_{k-1},b,x_{k+1},\ldots,x_n)-F(x_1,\ldots,x_{k-1},a,x_k,\ldots,x_n),
+$$
+</li>
+<li>
+тогда
+$$\Delta_{[a_1,b_1]}^{(1)},\ldots,\Delta_{[a_n,b_n]}^{(n)}F(x_1,\ldots,x_n)\geq0.$$
+</ol>
+Свойство 5 справедливо в силу равенства
+$$P\{[a_1,b_1)\times\cdots\times[a_n,b_n)\}=\Delta_{[a_1,b_1]}^{(1)}\ldots\Delta_{[a_n,b_n]}^{(n)}F(x_1,\ldots,x_n).$$
+Из свойства 5 следует, что $F(x)$ возрастает по каждой переменной. Если положить для всех $i\neq{k}$ $a_i=b_i$, то 
+$$
+\Delta_{[a_k,b_k]}^{(k)}F(x)=F(a_1,\ldots,a_{k-1},b_k,a_{k+1},\ldots,a_n)-F(a_1,\ldots,a_{k-1},a_k,a_{k+1},\ldots,a_n)\geq0.
+$$
+Однако, из возрастания по каждой из переменных свойство 5 не следует
+<br><br>
+<p id="Example2.2"><b>Пример 2.2:</b>
+$$
+F(x_1,x_2):=
+\begin{cases}
+0,	&x\leq0\vee{y}\leq0\vee{x}_1+x_2\leq1\\
+1,	&x>0\wedge{y}>0\wedge{x}_1+x_2>1
+\end{cases}
+$$
+$$
+\Delta_{[1/2,1]}^{(1)}\Delta_{[1/2,1]}^{(2)}F(x_1,x_2)=\Delta_{[1/2,1]}^{(1)}\left[F(x_1,1)-F\left(x_1,\frac12\right)\right]=
+F(1,1)-F\left(1,\frac12\right)-F\left(\frac12,1\right)+F\left(\frac12,\frac12\right)=-1<0.
+$$
+<br>
+<p id="Theorem2.3"><b>Теорема 2.3:</b>
+Если функция $F(x)$ заданная на $\mathbb{R}^n$ обладает свойствами 1 - 5, то на $(\mathbb{R}^n,\mathcal{B}^n)$ существует единственная вероятностная мера $P$ такая, 
+что $F(x)$ является функцией распределения $P$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 201.
+<br><br>
+<p id="Definition2.6"><b>Определение 2.6:</b>
+Функция распределения $F(x_1,\ldots,x_n)$ называестя абсолютно непрерывной, если существует неотрицательная функция $p(u_1,\ldots,u_n)$ на $\mathbb{R}^n$ такая, 
+что для любого $(x_1,\ldots,x_n)\in\mathbb{R}^n$
+$$F(x_1,\ldots,x_n)=\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_n}p(u_1,\ldots,u_n)du_1\cdots{d}u_n.$$
+<br>
+<p id="Example2.3"><b>Пример 2.3:</b>
+Пусть $G\subset\mathbb{R}^n$, $\lambda$ - функция $n$-мерного объема, тогда функция
+$$
+p(u_1,\ldots,u_n):=
+\begin{cases}
+\frac1{\lambda(G)},	&(u_1,\ldots,u_n)\in{G}\\
+0,				&(u_1,\ldots,u_n)\notin{G}
+\end{cases}
+$$
+называется плотностью равномерного распределения.
+
+<br><br>
+<a href="./probability_theory1.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.1.html">next</a>
+</body>
+</html>

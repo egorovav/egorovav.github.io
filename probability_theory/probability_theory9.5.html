@@ -1,0 +1,295 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 9.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory9.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.6.html">next</a>
+
+<h5 id="9.5">9.5 Основные понятия теории случайных процессов.</h5>
+
+<p id="Definition9.10"><b>Определение 9.10:</b>
+Пусть $T$ - произвольное множество и для любого $t\in\mathbb{T}$ на вероятностном пространстве $(\Omega,\mathfrak{A},P)$ задана случайная величина $\xi_t$. 
+Тогда семейство случайных величин $\{t\in{T}\mid\xi_t\}$ называется случайной функцией заданной на множестве T. При этом случайная функция называется
+<ol>
+<li>случайным вектором, если множество $T$ конечно;</li>
+<li>последовательностью случайных величин, если множество $T$ счётно;</li>
+<li>случайным процессом, если $T=[0,\infty)$;</li>
+<li>случайным полем, если $T=\mathbb{R}^n$.</li>
+</ol>
+Аргумент $t\in{T}$ случайного процесса называется временем.<br>
+Для любого $t_0\in{T}$ случайная величина $\xi_{t_0}$ называется сечением случайной функции $\xi_t$ в точке $t_0$.<br>
+Для любого $\omega_0\in\Omega$ функция $\xi_t(\omega_0):T\to\mathbb{R}$ называется траекторией (реализацией) случайной функции $\xi_t$ на исходе $\omega_0$.
+<br><br>
+<p id="Definition9.11"><b>Определение 9.11:</b>
+Пусть $\xi_t$ - случайная функция на множестве $T$, ${n\in\mathbb{N}}$, $t_1,\ldots,t_n$ различные элементы $T$. 
+Обозначим функцию распределения случайного вектора $(\xi_{t_1},\ldots,\xi_{t_n})$ как $F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)$. Тогда семейство функций распределения
+$$\{F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)\mid\forall{n}\in\mathbb{N};t_1,\ldots,t_n\in{T}\}$$
+называется семейством конечномерных распределений случайной функции $\xi_t$.
+<br><br>
+<p id="Theorem9.12"><b>Теорема 9.12:</b>
+Семейство конечномерных распределений случайной функции $\xi_t$ удовлетворяет условиям согласованности, то есть для любого ${n\in\mathbb{N}}$, 
+любых различных $t_1,\ldots,t_n\in{T}$
+<ol>
+<li>для любой перестановки $(i_1,\ldots,i_n)\in\mathcal{P}(\overline{1,n})$ выполняется 
+$$F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)=F_{t_{i_1},\ldots,t_{i_n}}(x_{i_1},\ldots,x_{i_n}).$$
+</li><li>для любого $k\in\overline{1,n}$
+$$\lim_{x_k\to\infty}F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)\equiv{F}_{t_1,\ldots,t_{k-1},t_{k+1},\ldots,t_n}(x_1,\ldots,x_{k-1},x_{k+1},\ldots,x_n).$$
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+Так как 
+$$F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)=P\{\xi_{t_1}&ltx_1,\ldots,\xi_{t_n}&ltx_n\},$$ 
+то п. 1 следует из коммутативности операции пересечения событий, а п. 2 из п. 2 <a href="./probability_theory1.6.html#Theorem1.5">теоремы 1.5</a>.
+<br><br>
+<p id="Theorem9.13"><b>Теорема 9.13: Колмогоров.</b><br>
+Пусть $T=[0,\infty)$, тогда семейство функций распределения 
+$$\{F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)\mid\forall{n}\in\mathbb{N};t_1\ldots,t_n\in{T}\}$$
+является семейством конечномерных распределений некоторой случайной функции $\xi_t$ на некотором вероятностном пространстве $(\Omega,\mathfrak{A},P)$, 
+тогда и только тогда, когда это семейство удовлетворяет условиям согласованности (см. условие теоремы 9.12).
+<p><b>Доказательство:</b><br>
+Без доказательства.
+<br><br>
+Таким образом, семейство конечномерных распределений определяет случайную функцию неоднозначно. 
+Может быть несколько случайных функций (например, определенных на разных вероятностных простраствах) с одним и тем же семейством конечномерных распределений.
+<br>
+<p>
+Далее в данном разделе будем считать, 
+что $T:=[0,\infty)$ и для любого ${t\in{T}}$ $\xi_t$ - дискретная случайная величина на $(\Omega,\mathfrak{A},P)$ с множеством значений $E$, 
+под цепью Маркова понимается цепь Маркова с непрерывным временем. Если множество состояний $E$ бесконечно, то б. о. о. будем считать, что $E=\mathbb{N}$.
+<br><br>
+<p id="Definition9.12"><b>Определение 9.12:</b>
+Случайную функцию $\xi_t$ называют дискретной цепью Маркова с непрерывным временем, 
+если для любой возрастающей последовательности $\{t_n\}$ из $T:=[0,\infty)$ последовательность случайных величин $\xi_{t_n}$ является цепью Маркова.
+<br><br>
+<p id="Definition9.13"><b>Определение 9.13:</b>
+Если для любых $i,j\in{E}$ переходная вероятность $p_{i,j}(s,s+t)$ не зависит от $s$, то говорят, 
+что цепь Маркова однородна во времени и функция $p_{i,j}(t):T\to\mathbb{R}$, такая что для любого $t\in{T}$
+$$p_{i,j}(t)=P\{\xi_t=j/\xi_0=i\}$$
+называется переходной функцией из $i$-того состояния в $j$-тое.
+<br><br>
+Везде далее рассматриваются только однородные цепи Маркова.
+<br><br>
+Свойства переходной функции однородной цепи Маркова:
+<ol>
+<li>$\forall{i,j}\in{E}$, $\forall{t}\in{T}$ $p_{i,j}(t)\geq0$;
+</li><li>$\forall{i\in{E}}$, $\forall{t}\in{T}$ $\sum_{j\in{E}}p_{i,j}(t)=1$;
+</li><li>для любы $s,t>0$ выполняется уравнение Колмогорова-Чэпмена: 
+$$p_{i,j}(s+t)=\sum_{k\in{E}}p_{i,k}(s)p_{k,j}(t)$$
+или в матричной форме $\Pi(s+t)=\Pi(s)\cdot\Pi(t)$
+</li><li>если доопределить функции переходных вероятностей в нуле
+$$p_{i,j}(0):=\begin{cases}1, i=j \\ 0, i\neq{j}\end{cases},$$ 
+то уравнение Колмогорова-Чэпмена будет верно для всех $s,t\geq0$
+</li>
+</ol>
+<br>
+<p id="Definition9.14"><b>Определение 9.14:</b>
+Цепь Маркова называется стохастически непрерывной в точке $t_0\in{T}$, если
+$$\xi_t\xrightarrow[t\to{t}_0]{P}\xi_{t_0},$$
+то есть
+$$\forall\varepsilon>0\left(P\{|\xi_t-\xi_{t_0}|>\varepsilon\}\xrightarrow[t\to{t}_0]{}0\right),$$
+<br>
+<p>
+Цепь Маркова стохостически непрерывна на множестве $A\subset{T}$, если она стохостически непрерывна в любой точке множества $A$.
+<br><br>
+<p id="Theorem9.14"><b>Теорема 9.14:</b>
+Цепь Маркова стохастически непрерывна в точке ${t_0\in{T}}$ тогда и только тогда, 
+когда функции переходных вероятностей $p_{i,j}(t)$ непрерывны в точке $t_0$ для любых $i,j\in{E}$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$
+Пусть цепь Маркова $\xi_t$ стохастически непрерывна в точке $t_0\in{T}$, тогда
+$$\forall{n}\in\mathbb{N}\left(P\{|\xi_t-\xi_{t_0}|<\frac1{n}\}\xrightarrow[t\to{t}_0]{}0\right),$$
+тогда из равенства
+$$\{\xi_t\neq\xi_{t_0}\}=\bigcup_{n=1}^{\infty}\left\{|\xi_t-\xi_{t_0}|>\frac1{n}\right\}=\lim_{n\to\infty}\left\{|\xi_t-\xi_{t_0}|>\frac1{n}\right\}$$
+и п. 2 <a href="./probability_theory1.6.html#Theorem1.5">теоремы 1.5</a> следует, что 
+$$
+\lim_{t\to{t}_0}P\{\xi_t\neq\xi_{t_0}\}=\lim_{t\to{t}_0}\lim_{n\to\infty}P\left\{|\xi_t-\xi_{t_0}|>\frac1{n}\right\}=
+\lim_{n\to\infty}\lim_{t\to{t}_0}P\left\{|\xi_t-\xi_{t_0}|>\frac1{n}\right\}=0
+$$
+С другой стороны
+$$
+P\{\xi_t\neq\xi_{t_0}\}=\sum_{i\in{E}}P\{\xi_{t_0}=i\}(1-p_{i,i}(t-t_0))\Rightarrow
+\Rightarrow\lim_{t\to{t}_0}\sum_{i\in{E}}P\{\xi_{t_0}=i\}(1-p_{i,i}(t-t_0))=\sum_{i\in{E}}\left(P\{\xi_{t_0}=i\}\lim_{t\to{t}_0}(1-p_{i,i}(t-t_0))\right)=0
+$$
+Так как все слагаемые суммы неотрицательны, то все они равны 0 и для всех $i\in{E}$ таких, что $P\{\xi_{t_0}=i\}\neq0$
+$$\lim_{t\to{t}_0}(1-p_{i,i})=0\Rightarrow\lim_{t\to{t}_0}p_{i,i}(t-t_0)=\lim_{h\to0}p_{i,i}(h)=1=p_{i,i}(0),$$
+где второе равенство в силу однородности цепи Маркова.<br>
+
+Из непрерывности функций $p_{i,i}(h)$ в точке 0, в свою очередь следует равномерная непрерывность функций $p_{i,j}(t)$ на $[0,\infty)$ для любых $i,j\in{E}$. 
+Действительно,
+$$
+|p_{i,j}(t+h)-p_{i,j}(t)|=\left|\sum_{k\in{E}}p_{i,k}(h)p_{k,j}(t)-p_{i,j}(t)\right|=\left|\sum_{k\neq{i}}p_{i,k}(h)p_{k,j}(t)-p_{i,j}(t)(1-p_{i,i}(h))\right|\leq
+\sum_{k\neq{i}}p_{i,k}(h)+(1-p_{i,i}(h))=2(1-p_{i,i}(h))\xrightarrow[h\to0]{}0.
+$$
+$\Leftarrow)$
+Пусть для любых $i,j\in{E}$
+$$p_{i,j}(t)\xrightarrow[t\to0]{}p_{i,j}(0).$$
+Рассмотрим вероятность
+$$P\{\xi_t\neq\xi_{t_0}\}=\sum_{i\in{E}}P\{\xi_{t_0}\}(1-p_{i,i}(t-t_0)).$$
+<br><br>
+Если множество $E$ конечно, то переходя к пределу при $t\to{t}_0$ получим
+$$
+\lim_{t\to{t}_0}P\{\xi_{t_0}-\xi_t\}=\lim_{t\to{t}_0}\sum_{i\in{E}}P\{\xi_{t_0}=i\}(1-p_{i,i}(t-t_0))=
+\sum_{i\in{E}}P\{\xi_{t_0}=i\}\lim_{t\to{t}_0}(1-p_{i,i}(t-t_0))=0
+$$
+Фиксируем $\varepsilon>0$, тогда
+$$
+\{|\xi_t-\xi_{t_0}|>\varepsilon\}\subset\{\xi_t\neq\xi_{t_0}\}\Rightarrow
+{P}\{|\xi_t-\xi_{t_0}|>\varepsilon\}\leq{P}\{\xi_t\neq\xi_{t_0}\}\xrightarrow[t\to{t}_0]{}0\Rightarrow\xi_t\xrightarrow[t\to{t}_0]{P}\xi_{t_0}
+$$
+
+Если множество $E$ счетно, то фиксируем $\varepsilon>0$, тогда по п. 4 <a href="../math_analysis/math_analysis7.1.html#Theorem7.1.1">теоремы 7.1.1 MA</a>
+$$
+\sum_{i\in{E}}P\{\xi_{t_0}=i\}=1\Rightarrow\lim_{k\to\infty}\sum_{i=k+1}^{\infty}P\{\xi_{t_0}=i\}=
+1-\lim_{k\to\infty}\sum_{i=0}^kP\{\xi_{t_0}=i\}=0\Rightarrow\exists{i}_0\in\mathbb{N}:\sum_{i=i_0+1}^{\infty}P\{\xi_{t_0}=i\}<\frac{\varepsilon}{3}
+$$
+Тогда
+$$
+P\{\xi_t\neq\xi_{t_0}\}=\sum_{i=1}^{i_0}P\{\xi_{t_0}=i\}(1-p_{i,i}(t-t_0))+\sum_{i=i_0+1}^{\infty}P\{\xi_{t_0}=i\}(1-p_{i,i}(t-t_0))\leq
+\sum_{i=1}^{i_0}(1-p_{i,i}(t-t_0))+\sum_{i=i_0+1}^{\infty}P\{\xi_{t_0}=i\},
+$$
+где первое слагаемое не превосходит $\varepsilon/3$, а второе стремится к нулю при ${t\to{t}_0}$. Следовательно, существует $\delta>0$ такое, 
+что вся сумма не превосходит $2\varepsilon/3$ при $|t-t_0|<\delta$, то есть
+$$\lim_{t\to{t}_0}P\{\xi_t\neq\xi_{t_0}\}=0.$$
+Далее доказательство проводится также как в случае конечного $E$.
+<br><br>
+<i>В прямом доказательстве требуется обоснование перестановок знаков пределов и сумм.</i>
+<br><br>
+<p id="Theorem9.15"><b>Теорема 9.15:</b>
+Если переходные функции непрерывны в нуле, то
+<ol>
+<li>$\forall{i}\in{E},\forall{t}\in[0,\infty)(p_{i,i}(t)>0)$;</li>
+<li>$\forall{i,j}\in{E}(i\neq{j}\Rightarrow(\forall{t}\in[0,\infty)(p_{i,j}(t)>0)\vee{p}_{i,j}\equiv0))$.</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как по определению $p_{i,i}(0)=1$ и по условию $p_{i,i}(t)$ непрерывна в нуле, то существует предел $\lim_{t\to0}p_{i,i}(t)=1$. 
+Тогда по п. 2 <a href="../math_analysis/math_analysis5.2.html#Theorem5.2.2">теоремы 5.2.2 MA</a> существует $\delta>0$, такое, что для любого $t\in[0,\delta]$ 
+$p_{i,i}(t)>0$. Тогда из уравнения Колмогорова-Чэпмена следует, что для любого $t\in[\delta,2\delta]$
+$$p_{i,i}(t)\geq{p}_{i,i}(\delta)p_{i,i}(t-\delta)>0.$$
+Так как по принципу Архимеда (<a href="../math_analysis/math_analysis3.3.html#Statement3.3.2">утверждение 3.3.2 MA</a>) 
+для любого $t\in[0,\infty)$ существует $k\in\mathbb{N}$ такое, 
+что $(k-1)\delta\leq{t}&ltk\delta$, то применяя данное неравенство $k$ раз получим требуемое.
+</li><li>Без доказательства.
+</li>
+</ol>
+<br>
+<p id="Definition9.15"><b>Определение 9.15:</b>
+Верхний предел функции $f(x)$ при $x\to{x}_0$ есть
+$$\varlimsup_{x\to{x}_0}f(x):=\lim_{\delta\to0}\sup_{0<|x-x_0|<\delta}f(x).$$
+Нижний предел функции $f(x)$ при $x\to{x}_0$ есть
+$$\varliminf_{x\to{x}_0}f(x):=\lim_{\delta\to0}\inf_{0<|x-x_0|<\delta}f(x).$$
+<br>
+<p id="Statement9.2"><b>Утверждение 9.2:</b>
+$$\exists\lim_{x\to{x}_0}f(x)\Leftrightarrow\varliminf_{x\to{x}_0}f(x)=\varlimsup_{x\to{x}_0}f(x).$$
+<p><b>Доказательство:</b><br>
+Без доказательства.
+<br><br>
+<p id="Theorem9.16"><b>Теорема 9.16:</b>
+Для любого $i\in{E}$ если переходная функция $p_{i,i}(t)$ непрерывна в нуле, то она дифференцируема справа в нуле, то есть существует предел 
+$$-p_{i,i}'(0):=\lim_{t\to0}\frac{1-p_{i,i}(t)}{t}.$$
+<p><b>Доказательство:</b><br>
+По <a href="#Theorem9.15">теореме 9.15</a> для любого $t\in[0,\infty)$ $p_{i,i}(t)>0$, следовательно, 
+можем рассмотреть на $[0,t)$ функцию $\varphi(t):=-\ln{p_{i,i}(t)}$. 
+Так как для любого $t\in[0,\infty)$ $p_{i,i}(t)\leq1$, то $\varphi(t)$ неотрицательна, при этом для любых $s,t>0$
+$$
+p_{i,i}(s+t)\geq{p}_{i,i}(s)p_{i,i}(t)\Rightarrow\ln{p_{i,i}(s+t)}\geq\ln{{p}_{i,i}(s)}+\ln{p_{i,i}(t)}\Rightarrow
+\varphi(s+t)\leq\varphi(s)+\varphi(t).
+$$
+Используя введенное обозначение имеем
+$$\lim_{t\to0}\frac{1-p_{i,i}(t)}{t}=\lim_{t\to0}\frac{1-e^{\varphi(t)}}{\varphi(t)}\frac{\varphi(t)}{t}.$$
+Так как $\varphi(t)\to0$ при $t\to0$, то по <a href="../math_analysis/math_analysis5.4.2.html#Example5.4.15">примеру 5.4.15 MA</a> предел первого множителя существует, 
+следовательно, достаточно доказать, 
+что существует предел $\varphi(t)/t$ при $t\to0$.
+Обозначим 
+$$\lambda_i:=\sup_{t>0}\frac{\varphi(t)}{t}.$$
+
+Пусть $\lambda_i<+\infty$. Фиксируем $\varepsilon>0$, тогда существует $t_0>0$ такое, что $\lambda_i-\varepsilon<\varphi(t_0)/t_0$. По принципу Архимеда
+$$\forall{t}\in[0,t_0]\exists{n}\in{N},\delta\in[0,t):t_0=nt+\delta,$$
+тогда
+$$
+\lambda_i-\varepsilon\leq\frac{\varphi(nt+\delta)}{t_0}\leq\frac{\varphi(nt)+\varphi(\delta)}{t_0}\leq\frac{n\varphi(t)+\varphi(\delta)}{t_0}=
+\frac{nt}{t_0}\frac{\varphi(t)}{t}+\frac{\varphi(\delta)}{t_0}.
+$$
+Переходя к пределу при $t\to0$
+$$
+\lambda_i-\varepsilon\leq\varliminf_{t\to0}\left(\frac{nt}{t_0}\frac{\varphi(t)}{t}+\frac{\varphi(\delta)}{t_0}\right)\leq
+\varlimsup_{t\to0}\frac{tn}{t_0}\varliminf_{t\to0}\frac{\varphi(t)}{t}+\varlimsup_{t\to0}\frac{\varphi(\delta)}{t_0}.
+$$
+Так как $\delta\in[0,t)$, то при $t\to0$ $\delta\to0$, следовательно, $\varphi(\delta)\to0$ при $t\to0$. И так как
+$$t_0=nt+\delta\Rightarrow\lim_{t\to0}\frac{nt}{t_0}=1-\lim_{t\to0}\frac{\delta}{t_0}=1,$$
+то имеем
+$$\lambda_i-\varepsilon\leq\varliminf_{t\to0}\frac{\varphi(t)}{t}.$$
+С другой стороны
+$$\lambda_i:=\sup_{t>0}\frac{\varphi(t)}{t}\Rightarrow\varlimsup_{t\to0}\frac{\varphi(t)}{t}\leq\lambda_i,$$
+таким образом
+$$\lambda_i-\varepsilon\leq\varliminf_{t\to0}\frac{\varphi(t)}{t}\leq\varlimsup_{t\to0}\frac{\varphi(t)}{t}\leq\lambda_i.$$
+В силу произвола выбора $\varepsilon>0$ можем перейти к пределу при $\varepsilon\to0$, тогда по утверждению 9.2 получим
+$$\lim_{t\to0}\frac{\varphi(t)}{t}=\lambda_i.$$
+
+Если $\lambda_i=+\infty$, то аналогично показывается, что для любого $M>0$, $\varepsilon>0$, 
+$$M-\varepsilon\leq\varliminf_{t\to0}\frac{\varphi(t)}{t},$$
+то есть существует предел
+$$\lim_{t\to0}\frac{\varphi(t)}{t}=+\infty.$$
+<br>
+<p id="Statement9.3"><b>Утверждение 9.3:</b>
+Для любых различных $i,j\in{E}$, если переходная функция $p_{i,j}(t)$ непрерывна в нуле, то она дифференцируема справа в нуле, то есть существует предел
+$$p'_{i,j}(0)=\lim_{t\to0}\frac{p_{i,j}(t)}{t}.$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Боровков А. А. 1999 г. "Теория вероятностей" стр. 389.
+<br><br>
+<p id="Definition9.16"><b>Определение 9.16:</b>
+Для любых $i,j\in{E}$ число $\lambda_{i,j}:=p'_{i,j}(0)$ называется интенсивностью перехода из состояния $i$ в состояние $j$.<br>
+Матрица $\Lambda:=\|\lambda_{i,j}\|$ называется матрицей интенсивностей переходов (инфинитезимальной матрицей) цепи Маркова.
+<br><br>
+Элементы стоящие на главной диагонали матрицы $\Lambda$ неположительны, все остальные неорицательны.
+<br><br>
+Если множество состояний $E$ бесконечно, то матрица $\Lambda$ имеет бесконечные размеры.
+<br><br>
+Из доказательства теоремы 9.16 следует, что матрица $\Lambda$ может содержать на главной диагонали $-\infty$;
+<br><br>
+<p id="Statement9.4"><b>Утверждение 9.4:</b>
+Если $\|\lambda_{i,j}\|$ матрица интенсивностей переходов цепи Маркова, то для любого $i\in{E}$
+$$\sum_{j\in{E}}\lambda_{i,j}\leq0.$$
+<p><b>Доказательство:</b><br>
+$$
+\sum_{j\in{E}}p_{i,j}(t)=1\Rightarrow\sum_{j\neq{i}}p_{i,j}(t)=1-p_{i,j}(t)\Rightarrow\sum_{j\neq{i}}\frac{p_{i,i}(t)}{t}=\frac{1-p_{i,i}(t)}{t}
+$$
+Если цепь Маркова конечна, то можно перейти к пределу при $t\to0$, тогда
+$$\sum_{j\neq{i}}\lambda_{i,j}=-\lambda_{i,i}\Rightarrow\sum_{j\in{E}}\lambda_{i,j}=0.$$
+Если цепь Маркова счетна, то для любого натурального $N>i$
+$$
+\sum_{j\in\overline{1,N}/i}\frac{p_{i,j}(t)}{t}\leq\frac{1-p_{i,i}(t)}{t}\Rightarrow
+\sum_{j\in\overline{1,N}/i}\lambda_{i,j}\leq-\lambda_{i,i}\Rightarrow\sum_{j=1}^N\lambda_{i,j}\leq0
+$$
+Переходя к пределу при $N\to\infty$ получаем
+$$\sum_{j=1}^{\infty}\lambda_{i,j}\leq0.$$
+<br>
+<p id="Definition9.17"><b>Определение 9.17:</b>
+Пусть $\|\lambda_{i,j}\|$ матрица интенсивностей переходов цепи Маркова, тогда
+<ol>
+<li>если $\lambda_{i,i}=-\infty$, то состояние $i$ называется мгновенным;</li>
+<li>если $\lambda_{i,i}=0$, то состояние $i$ называется поглощающим;</li>
+<li>если $-\infty<\lambda_{i,i}<0$, то состояние $i$ называется задерживающим.</li>
+</ol>
+<br>
+Состояние $i$ называется регулярным, если $\sum_{j\in{E}}\lambda_{i,j}=0$.
+<br>
+Цепь Маркова называется консервативной, если все её состояния регулярны.
+<br><br>
+Из <a href="#Statement9.4">утверждения 9.4</a> следует, что конечная цепь Маркова всегда консервативна.
+<br>
+
+<br><br>
+<a href="./probability_theory9.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory9.6.html">next</a>

@@ -1,0 +1,182 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 5.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory4.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory6.1.html">next</a>
+<br>
+$\newcommand{\cov}{\operatorname{cov}}$
+$\newcommand{\diag}{\operatorname{diag}}$
+
+<h4 id="5">5 Независимые испытания.</h4>
+
+<h5 id="5.1">5.1 Схема независимых испытаний Бернулли.</h5>
+
+Пусть $\Omega=\{\omega_1,\omega_2\}$, $\mathfrak{A}=\mathcal{P}(\Omega)=\{\varnothing,\Omega,\{\omega_1\},\{\omega_2\}\}$, 
+$P(\{\omega_1\}):=p\in[0,1]$, $P(\{\omega_2\}):=q:=1-p$, $P(\varnothing)=0$, $P(\Omega)=1$, тогда 
+$(\Omega,\mathfrak{A},P)$ вероятностное пространство.<br>
+Определим на множестве функцию $P_n:\mathcal{P}(\Omega^n)\to\mathbb{R}$ такую, 
+что для любого $\overline{\omega}:=(\omega_{i_1},\ldots,\omega_{i_n})\in\Omega^n$, где для любого $k\in\overline{1,n}$ $i_k\in\overline{1,2}$, положим
+$$P_n(\{\overline{\omega}\}):=P(\{\omega_{i_1}\})\cdots{P}(\{\omega_{i_n}\}).$$
+Следовательно, для любого вектора $\overline{\omega}=(\omega_{i_1},\ldots,\omega_{i_n})$ содержащего $m$ 
+значений $\omega_1$ $P_n(\{\overline{\omega}\})=p^mq^{n-m}$.<br>
+Для любого $A\in\mathcal{P}(\Omega^n)$ положим
+$$P_n(A)=\sum_{\overline{\omega}\in{A}}P_n(\{\overline{\omega}\}).$$
+<br>
+<p id="Statement5.1"><b>Утверждение 5.1:</b>
+Тройка $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ является вероятностным пространством.
+<p><b>Доказательство:</b><br>
+Достаточно проверить, что функция $P_n$ является вероятностной мерой на измеримом пространстве $(\Omega^n,\mathcal{P}(\Omega^n))$.
+<ol>
+<li>Так как функция $P$ неотрицательна, то неотрицательна и функция $P_n$.
+</li>
+<li>Обозначим 
+$$\mathcal{E}(m):=\{(\omega_{i_1},\ldots,\omega_{i_n})\in\Omega^n\mid|\{k\in\overline{1,n}\mid{i}_k=1\}|=m\}.$$
+Тогда (см. <a href="../discrete_math/discrete_math1.html#1.3">1.3 DM</a>) для любого $m\in\overline{0,n}$ $|\mathcal{E}(m)|=\binom{n}{m}$ и
+$$
+P_n(\Omega)=\sum_{\overline{\omega}\in\Omega}P_n(\overline{\omega})=\sum_{m=0}^n\sum_{\overline{\omega}\in\mathcal{E}(m)}P_n(\overline{\omega})=
+\sum_{m=0}^n|\mathcal{E}(m)|p^mq^{n-m}=\sum_{m=0}^n\binom{n}{m}p^mq^{n-m}=(p+q)^n=1.
+$$
+</li>
+<li>Аддитивность функции $P_n$ очевидным образом следует из ее определения.
+</li>
+</ol>
+<p id="Definition5.1"><b>Определение 5.1:</b>
+Вероятностное пространство $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ называется схемой Бернулли $n$ независимых испытаний или биномиальной схемой $n$ 
+независимых испытаний.
+<br><br>
+Определим функцию $\xi:\Omega^n\to\mathbb{R}$ такую, что для любого 
+$\overline{\omega}:=(\omega_{i_1},\ldots,\omega_{i_n})$ $\xi(\overline{\omega})=|\{k\in\overline{1,n}\mid{i}_k=1\}|$, то есть число $\omega_1$ в векторе 
+$\overline{\omega}$ или, как говорят число "успехов" в последовательности испытаний $(\omega_{i_1},\ldots,\omega_{i_n})$.
+<br><br>
+<p id="Statement5.2"><b>Утверждение 5.2:</b>
+Функция $\xi$ является случайной величиной.
+<p><b>Доказательство:</b><br>
+Поскольку $\mathcal{P}(\Omega^n)$ есть множество всех подмножеств $\Omega^n$, то для любого $B\in\mathcal{B}$ $\xi^{-1}(B)\in\mathcal{P}(\Omega^n)$.
+<br><br>
+Исследуем распределение случайной величины $\xi$ числа успехов в $n$ независимых испытаниях схемы Бернулли.
+$$P_n(\xi=k)=P_n(\mathcal{E}(k))=\binom{n}{k}p^kq^{n-k}.$$
+$$P_n(k_1\leq\xi\leq{k}_2)=\sum_{k=k_1}^{k_2}\binom{n}{k}p^kq^{n-k}.$$
+Определим максимум функции $P_n(\xi=k)$ по $k$, то есть наиболее вероятное число успехов. Для любого $k\in\overline{0,n-1}$
+$$
+\frac{P_n(\xi=k+1)}{P_n(\xi=k)}=\frac{\binom{n}{k+1}p^{k+1}q^{n-k-1}}{\binom{n}{k}p^kq^{n-k}}=
+\frac{n!}{(k+1)!(n-k-1)!}\frac{k!(n-k)!}{n!}\frac{p}{q}=\frac{n-k}{k+1}\frac{p}{q}.
+$$
+Таким обрзом, 
+$$
+P_n(k+1)>P_n(k)\Leftrightarrow{n}p-kp>kq+q\Leftrightarrow{n}p-q>k(p+q)=k
+$$
+То есть функция $P_n(\xi=k)$ возрастает при $k&ltnp-q$, убывает при $k&gtnp-q$ и достигает максимума в точке $np-q$ если $np-q\in\mathbb{Z}$. 
+Если $np-q\not\in\mathbb{Z}$, то функция $P_n(\xi=k)$ достигает максимума в при $k=[np-q]+1$.
+<br><br>
+<p id="Example5.1"><b>Пример 5.1:</b>
+Найдем наиболее вероятное число выпадений шести очков при стадвадцати бросаниях игральной кости.<br>
+Вероятность успеха $p=P(\{\omega_1\})=\frac16$, тогда $q=P(\{\omega_2\})=\frac56$, следовательно $k_0=[np-q]+1=20$.
+<br>
+
+<h5 id="5.2">5.2 Полиномиальная схема независимых испытаний.</h5>
+
+Пусть $\Omega:=\{E_1,\ldots,E_m\}$, $\mathfrak{A}:=\mathcal{P}(\Omega)$, для любого $k\in\overline{1,m}$ $P(\{E_k\})=p_k\geq0$ и 
+$\sum_{k=1}^mp_k=1$, для любого $A\in\mathfrak{A}$ $P(A)=\sum_{E\in{A}}P(\{E\})$, тогда 
+$(\Omega,\mathfrak{A},P)$ вероятностное пространство.<br>
+Определим функцию $P_n:\mathcal{P}(\Omega^n)\to\mathbb{R}$ такую, что
+$$\forall\overline{E}:=(E_{i_1},\ldots,E_{i_n})\in\Omega^n\left(P_n(\{\overline{E}\}):=P(E_{i_1})\cdots{P}(E_{i_n})\right).$$
+Тогда $P_n(\overline{E})=p_1^{k_1}\cdots{p}_m^{k_m}$, где для любого $s\in\overline{1,n}$ $k_s$ - это число вхождений элемента $E_s$ в вектор $\overline{E}$. 
+Для любого $A\in\mathcal{P}(\Omega^n)$
+$$P_n(A):=\sum_{\overline{E}\in{A}}P_n(\{\overline{E}\}).$$
+
+<p id="Statement5.3"><b>Утверждение 5.3:</b>
+Тройка $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ является вероятностным пространством.
+<p><b>Доказательство:</b><br>
+Достаточно доказать, что функция $P_n$ является вероятностной мерой на измеримом пространстве $(\Omega^n,\mathcal{P}(\Omega^n))$.
+<ol>
+<li>Так как функция $P$ неотрицательна, то неотрицательна и функция $P_n$.
+</li>
+<li>Обозначим
+$$
+\mathcal{E}(k_1,\ldots,k_m):=
+\{(E_{i_1},\ldots,E_{i_n})\in\Omega^n\mid\forall{s}\in\overline{1,m}(|\{j\in\overline{1,n}\mid{i_j=s}\}|=k_s)\},
+$$
+то есть $\mathcal{E}(k_1,\ldots,k_m)$ - это множество векторов из $\Omega^n$, которые содержат ровно $k_s$ элементов $E_s$ для любого $s\in\overline{1,m}$. 
+Тогда для любых $k_1,\ldots,k_m\in\mathbb{N}_0$ таких, что 
+$k_1+\cdots+k_m=n$
+$$
+|\mathcal{E}(k_1,\ldots,k_m)|=\binom{n}{k_1}\binom{n-k_1}{k_2}\cdots\binom{n-k_1-\cdots-k_{m-1}}{k_m}=
+\frac{n!}{k_1!k_2!\cdots{k}_m!}.
+$$
+Тогда 
+$$
+P_n(\Omega)=\sum_{\overline{E}\in\Omega^n}P_n(\{\overline{E}\})=\sum_{k_1+\cdots+k_m=n}|\mathcal{E}(k_1,\ldots,k_m)|p_1^{k_1}\cdots{p}_m^{k_m}=
+\sum_{k_1+\cdots+k_m=n}\frac{n!}{k_1!\cdots{k}_m!}p_1^{k_1}\cdots{p}_m^{k_m}=(p_1+\cdots+p_m)^n=1.
+$$
+Здесь предпоследнее неравенство доказывается индукцией по $n$ с применением формулы бинома Ньютона.
+</li>
+<li>Аддитивность функции $P_n$ очевидным образом следует из ее определения.
+</li>
+</ol>
+<br>
+<p id="Definition5.2"><b>Определение 5.2:</b>
+Вероятностное пространство $(\Omega^n,\mathcal{P}(\Omega^n),P_n)$ называется полиномиальной схемой $n$ независимых испытаний.
+<br><br>
+Для любого $k\in\overline{1,m}$ определим функцию $\xi_k:\Omega^n\to\mathbb{R}$ такую, что для любого $\overline{E}:=(E_{i_1},\ldots,E_{i_n})\in\Omega^n$
+$$\xi_k(E_{i_1},\ldots,E_{i_n}):=|\{s\in\overline{1,n}\mid{i}_s=k\}|.$$
+То есть $\xi_k(\overline{E})$ равно числу появлений элемента $E_k$ в векторе $\overline{E}$.<br>
+Вектор $\overline\xi:=(\xi_1,\ldots,\xi_m)$ называют полиномиальным вектором.
+<br><br>
+<p id="Definition5.3"><b>Определение 5.3:</b>
+Пусть $\xi_1,\ldots,\xi_n$ случайные величины, тогда матрица $\Sigma:=(\sigma_{i,j})_{n\times{n}}$ такая, 
+что для любых $i,j\in\overline{1,n}$ $\sigma_{i,j}:=\cov(\xi_i,\xi_j)$ называется ковариационной матрицей вектора 
+$\overline{\xi}:=(\xi_1,\ldots,\xi_n)$.
+<br><br>
+Если случайные величины независимы, то 
+$$\cov(\xi_i,\xi_j)=\begin{cases}0,&i\neq{j} \\ D\xi_i,&i=j\end{cases}\Rightarrow\Sigma=\diag(D\xi_1,\ldots,D\xi_n).$$
+Согласно <a href="./probability_theory4.6.html#Example4.5">примеру 4.5</a> обратное неверно.<br>
+Однако, случайные величины полиномиального вектора $(\xi_1,\ldots,\xi_m)$ зависимы, так как имеет место равенство $\sum_{k=1}^m\xi_k=n$. 
+То есть ковариационная матрица не обязательно является диагональной, найдем ее.<br>
+Для любого $k\in\overline{1,n}$ определим вектор случайных величин
+$$\overline{\mathcal{E}^{(k)}}:=(\mathcal{E}_1^{(k)},\ldots,\mathcal{E}_m^{(k)}).$$
+Где для любoго $i\in\overline{1,n}$ $\mathcal{E}_i^{(k)}=1$, если в $k$-том испытании появляется $E_i$, в противном случае $\mathcal{E}_i^{(k)}=0$. То есть 
+$$(\mathcal{E}_i^{(k)})^{-1}(\{1\})=\{(E_{j_1},\ldots,E_{j_n})\in\Omega^n\mid{j}_k=i\}$$
+и $\mathcal{E}_i^{(k)}\sim\left(\begin{smallmatrix}1, & 0 \\ p_i, & 1-p_i\end{smallmatrix}\right)$. Тогда 
+$$\forall{i}\in\overline{1,m}\left(\xi_i=\sum_{k=1}^n\mathcal{E}_i^{(k)}\right)$$
+и из <a href="#5.1">раздела 5.1</a> следует, что для любого $i\in\overline{1,m}$ $\xi_i\sim{B}(n,p_i)$, 
+тогда из п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a> имеем $E\xi_i=np_i$, $D\xi_i=np_i(1-p_i)$. 
+Вычислим значения $E(\xi_i\xi_j)$ для любых неравных $i,j\in\overline{1,m}$.<br>
+Пусть $i\neq{j}$, тогда
+$$
+E(\xi_i\xi_j)=E\left(\sum_{k=1}^n\mathcal{E}_i^{(k)}\sum_{s=1}^n\mathcal{E}_j^{(s)}\right)=\sum_{k,s=1}^nE(\mathcal{E}_i^{(k)}\mathcal{E}_j^{(s)})=
+\sum_{\substack{k,s=1\\k\neq{s}}}^nE\mathcal{E}_i^{(k)}E\mathcal{E}_j^{(s)},
+$$
+где последнее равенство в силу того, что при $k\neq{s}$ случайные величины $\mathcal{E}_i^{(k)}$, $\mathcal{E}_j^{(s)}$ независимы 
+(см. п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a>), а при $k=s$ $\mathcal{E}_i^{(k)}\mathcal{E}_j^{(s)}\equiv0$, 
+так как на одном и том же $k$-том месте не могут стоять одновременно два различных значения $E_i$ и $E_j$. Таким образом, для любых различных $i,j\in\overline{1,n}$
+$$E(\xi_i\xi_j)=\sum_{k,s=1}^np_ip_j-\sum_{k=1}^np_ip_j=(n^2-n)p_ip_j$$
+и
+$$\cov(\xi_i,\xi_j)=E(\xi_i\xi_j)-E\xi_iE\xi_j=(n^2-n)p_ip_j-np_inp_j=-np_ip_j$$
+$$
+\Sigma=
+\begin{pmatrix}
+np_1(1-p_1) 		&-np_1p_2 		&\cdots 	&-np_1p_n 		\\
+-np_2p_1 		&np_2(1-p_2) 	&\cdots 	&-np_2p_n 		\\
+\vdots 		&			&\ddots 	&\vdots 		\\
+-np_np_1		&-np_np_2		&\cdots 	&np_n(1-p_n)	\\
+\end{pmatrix}
+$$ 
+Так как $\xi_1+\cdots+\xi_m=n$ и по п. 3 <a href="./probability_theory4.6.html#Theorem4.21">теоремы 4.21</a> 
+знак ковариации определяется знаком коэффициента пропорциональности линейного соотношения, 
+то знак ковариации $\cov(\xi_i,\xi_j)$ можно было определить не вычисляя ее значения.
+
+<br><br>
+<a href="./probability_theory4.6.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory6.1.html">next</a>

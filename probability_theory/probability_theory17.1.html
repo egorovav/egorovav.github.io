@@ -1,0 +1,244 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 17.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory16.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory18.1.html">next</a>
+<br>
+
+$\newcommand{\sqmlim}{\operatorname{l.i.m}}$
+
+<h4 id="17">17. Среднее квадратичное.</h4>
+
+<h5 id="17.1">17.1 Сходимость в среденем квадратичном.</h5>
+
+Согласно <a href="./probability_theory7.1.html#Definition7.3">определению 7.3</a>
+<p id="Definition17.1"><b>Определение 17.1:</b>
+Пусть последовательность случайных величин $\{\xi_n\}$ такая, что для любого $n\in\mathbb{N}$ $E|\xi_n|^2<\infty$. 
+Говорят, что последовательность $\{\xi_n\}$ сходится к случайной величине $\xi$ в среднем квадратичном, если
+$$\lim_{n\to\infty}E|\xi_n-\xi|^2=0.$$
+Сходимость последовательности случайных величин $\{\xi_n\}$ к случайной величине $\xi$ в среднем квадратичном будем обозначать 
+$$\sqmlim_{n\to\infty}{\xi_n}=\xi.$$
+<br>
+<p id="Definition17.2"><b>Определение 17.2:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ случайный процесс такой, что для любого $t\in{T}$ $E|\xi_t|^2<\infty$, $t_0$ - предельная точка $T$. 
+Говорят, что случайный процесс $\xi_t$ сходится к случайной величине $\xi$ в среднем квадратичном при $t$ стремящимся к $t_0$, если
+$$\lim_{t\to{t}_0}E|\xi_t-\xi|^2=0.$$
+Сходимость случайного процесса в среднем квадратичном к случайной величине $\xi$ при $t\to{t}_0$ будем обозначать
+$$\sqmlim_{t\to{t}_0}{\xi_t}=\xi.$$
+<br><br>
+<p id="Theorem17.1"><b>Теорема 17.1:</b>
+$$\begin{cases}\sqmlim_{t\to{t}_0}{\xi_t}=\xi \\ \sqmlim_{s\to{s}_0}{\eta_s}=\eta\end{cases}\Rightarrow
+\exists\lim_{\substack{t\to{t}_0 \\ s\to{s}_0}}E\xi_t\overline{\eta}_s=E\xi\overline{\eta}.$$
+<p><b>Доказательство:</b><br>
+По п. 3 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>
+\begin{multline*}
+|E\xi_t\overline{\eta}_s-E\xi\overline{\eta}|=|E(\xi_t\overline{\eta}_s-\xi\overline{\eta})|=
+|E(\xi_t\overline{\eta}_s-\xi\overline{\eta}+\xi\overline{\eta}_s-\xi\overline{\eta}_s+\xi_t\overline{\eta}-\xi_t\overline{\eta}+\xi\overline{\eta}-\xi\overline{\eta})|=\\=
+|E(\xi_t-\xi)(\overline{\eta}_s-\overline{\eta})+E\xi(\overline{\eta}_s-\overline{\eta})+E\overline{\eta}(\xi_t-\xi)|\leq
+{E}(|\xi_t-\xi||\overline{\eta}_s-\overline{\eta}|)+E(|\xi||\overline{\eta}_s-\overline{\eta}|)+E(|\overline{\eta}||\xi_t-\xi|).
+\end{multline*}
+Применим к каждому слагаемому последнего выражения неравенство Коши-Буняковского (<a href="./probability_theory4.3.html#Theorem4.15">теорема 4.15</a>), тогда
+$$
+|E\xi_t\overline{\eta}_s-E\xi\overline{\eta}_s|\leq\sqrt{E|\xi_t-\xi|^2E|\overline{\eta}_s-\overline{\eta}|^2}+\sqrt{E|\xi|^2E|\overline{\eta}_s-\overline{\eta}|^2}+\sqrt{E|\overline{\eta}_s|^2E|\xi_t-\xi|^2},
+$$
+где по условию каждое слагаемое стремиться к нулю при $t\to{t}_0$, $s\to{s}_0$.
+<br><br>
+<p id="Theorem17.2"><b>Теорема 17.2: Критерий сходимости в среднем квадратичном.</b><br>
+$$\exists\sqmlim_{t\to{t}_0}{\xi_t}\Leftrightarrow\exists\lim_{\substack{t\to{t}_0 \\ s\to{t}_0}}E\xi_t\overline{\xi}_s.$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ 
+Пусть существует предел $\sqmlim_{t\to{t}_0}{\xi_t}:=\xi$. Это в частности означает, что $E|\xi|^2<\infty$, тогда по теореме 17.1
+$$\lim_{\substack{t\to{t}_0 \\ s\to{t}_0E\xi_t\overline{\xi}_s}}=E\xi\overline{\xi}=E|\xi|^2<\infty.$$
+$\Leftarrow)$ Пусть существует предел
+$$\lim_{\substack{t\to{t}_0 \\ s\to{t}_0}}E\xi_t\overline{\xi}_s:=c,$$
+тогда
+$$
+E|\xi_t-\xi_s|^2=E(\xi_t-\xi_s)\overline{(\xi_t-\xi_s)}=
+E(\xi_t\overline{\xi}_s-\xi_s\overline{\xi}_t-\xi_t\overline{\xi}_s+\xi_s\overline{\xi}_s)\xrightarrow[\substack{t\to{t}_0 \\ s\to{t}_0}]{}c-c-c+c=0.
+$$
+Следовательно, по критерию Коши (<a href="../math_analysis/math_analysis5.3.html#Theorem5.3.1">теорема 5.3.1 MA</a>) существует предел $\sqmlim_{t\to{t}_0}{\xi_t}$. 
+<i>(?)</i>.
+<br><br>
+<p id="Corollary16.1"><b>Следствие 16.1:</b>
+Пусть $K(t,s)$ - ковариационная функция случайного процесса $\{\xi_t\mid{t}\in{T}\}$ такого, что $E\xi_t\equiv0$, тогда
+$$\exists\sqmlim_{t\to{t}_0}{\xi_t}\Leftrightarrow\exists\lim_{\substack{t\to{t}_0 \\ s\to{t}_0}}K(t,s),$$
+<p><b>Доказательство:</b><br>
+Согласно <a href="./probability_theory16.1.html#Definition16.9">определению 16.9</a> $E|\xi_t|^2<\infty$ для любого $t\in{T}$ и, 
+если $E\xi_t\equiv0$, то $K(t,s)\equiv{E}\xi_t\overline{\xi}_s$. 
+Таким образом, утверждение следует из теоремы 17.2.
+<br><br>
+<p id="Note17.1"><b>Замечание 17.1:</b>
+Далее везде будем считать, что $E\xi_t\equiv0$. Если $E\xi_t\not\equiv0$, то можно сделать замену $\xi'_t:=\xi_t-E\xi_t$.
+<br>
+
+<h5 id="17.2">17.2 Непрерывность в среденем квадратичном.</h5>
+
+<p id="Definition17.3"><b>Определение 17.3:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ случайный процесс такой, что для любого $t\in{T}$ $E|\xi_t|^2<\infty$, $t_0$ - предельная точка $T$. 
+Говорят, что случайный процесс $\{\xi_t\}$ непрерывен в точке $t_0$ в среднем квадратичном, если 
+$$\sqmlim_{t\to{t}_0}{\xi_t}=\xi_{t_0}.$$
+<br>
+<p id="Theorem17.3"><b>Теорема 17.3:</b>
+Пусть $\{\xi_t\}$ случайный процесс такой, что $E\xi_t\equiv0$, тогда $\{\xi_t\}$ непрерывен в среднем квадратичном в точке $t_0$ тогда и только тогда, 
+когда ковариационная функция $K(s,t)$ непрерывна в точке $(t_0,t_0)$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Если $\sqmlim_{t\to{t}_0}{\xi_t}=\xi_{t_0}$, то $\sqmlim_{s\to{t}_0}{\overline{\xi}_s}=\overline{\xi}_{t_0}$, 
+тогда по <a href="#Theorem17.1">теореме 17.1</a>
+$$\lim_{\substack{t\to{t_0} \\  s\to{t}_0}}K(t,s)=\lim_{\substack{t\to{t}_0 \\ s\to{t}_0}}E\xi_t\overline{\xi}_s=E\xi_{t_0}\overline{\xi}_{t_0}=K(t_0,t_0).$$
+$\Leftarrow)$ Пусть $K(s,t)$ непрерывна в $(t_0,t_0)$, тогда
+$$
+E|\xi_t-\xi_{t_0}|^2=E((\xi_t-\xi_{t_0})(\overline{\xi_t}-\overline{\xi}_{t_0}))=
+E\xi_t\xi_{t_0}-E\xi_{t_0}\overline{\xi}_t-E\xi_t\overline{\xi}_{t_0}+E\xi_{t_0}\overline{\xi}_{t_0}=
+K(t,t)-K(t_0,t)-K(t,t_0)+K(t_0,t_0)\xrightarrow[t\to{t}_0]{}2K(t_0,t_0)-2K(t_0,t_0)=0
+$$
+<br>
+<p id="Note17.2"><b>Замечание 17.2:</b>
+Если отказаться от условия $E\xi_t\equiv0$, то необходимо потребовать непрерывность функции $E\xi_t$ в точке $t_0$, 
+так как в этом случае $K(t,s)=E\xi_t\overline{\xi}_s-E\xi_tE\overline{\xi}_s$.
+<br>
+<p id="Corollary16.2"><b>Следствие 16.2:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ случайный процесс, $E\xi_t\equiv0$ и для любого $t_0\in{T}$ ковариационная функция $K(t,s)$ непрерывна в точке $(t_0,t_0)$. 
+Тогда $K(t,s)$ непрерывна на $T\times{T}$.
+<p><b>Доказательство:</b><br>
+Пусть $t_0,s_0\in{T}$ тогда $K(t,s)$ непрерывна в точках $(t_0,t_0)$, $(s_0,s_0)$ и 
+по <a href="#Theorem17.3">теореме 17.3</a> случайный процесс $\{\xi_t\}$ непрерывен в среднем квадратичном в точках $t_0$, $s_0$. 
+Тогда по <a href="#Theorem17.1">теореме 17.1</a>
+$$\lim_{\substack{t\to{t}_0 \\ s\to{s}_0}}K(t,s)=\lim_{\substack{t\to{t}_0 \\ s\to{s}_0}}E\xi_t\overline{\xi}_s=E\xi_{t_0}\overline{\xi}_{s_0}=K(t_0,s_0).$$
+<br>
+<p id="Example17.1"><b>Пример 17.1: Винеровский и пуассоновский процессы непрерывны в среднем квадратичном.</b><br>
+<ol>
+<li>Пусть $W(t)$ - винеровский процесс, тогда из <a href="./probability_theory16.1.html#Task16.3">задачи 16.3</a> следует, что $EW(t)\equiv0$. 
+Из п. 3 <a href="./probability_theory16.1.html#Definition16.2">определения 16.2</a> следует, что для любых $0\leq{t}&lts$ $D(W(t)-W(s))=t-s$. Тогда
+$$
+E|W(t)-W(t_0)|^2=D(W(t)-DW(t_0))+\left(E(W(t)-W(t_0))\right)^2=D(W(t)-W(t_0))=t-t_0\xrightarrow[t\to{t}_0]{}0
+$$
+</li><li>Пусть $\{\xi_t\}$ - пуассоновский процесс, тогда согласно <a href="./probability_theory9.7.html#Definition9.18">определению 9.18</a>, 
+п.1 <a href="./probability_theory4.3.html#Example4.2">примера 4.2</a>, 
+п. 3 <a href="./probability_theory4.6.html#Example4.3">примера 4.3</a> для любых $0\leq{t}&lts$
+$$D(\xi_t-\xi_s)=E(\xi_t-\xi_s)=\lambda(t-s).$$
+Следовательно, 
+$$E|\xi_t-\xi_{t_0}|^2=D(\xi_t-\xi_{t_0})+(E(\xi_t-\xi_{t_0}))^2=\lambda(t-t_0)(1+\lambda(t-t_{t_0}))\xrightarrow[t\to{t}_0]{}0.$$
+</li>
+</ol>
+<br>
+<p id="Example17.2"><b>Пример 17.2:</b><br>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ такой, что случайные величины независимы и одинаково распределены. Тогда $E|\xi_t-\xi_{t_0}|^2$ не зависит от $t$ и, следовательно, 
+не может стремится к нулю при $t\to{t}_0$. Таким образом, случайный процесс $\{\xi_t\}$ не является непрерывным в среднем квадратичном.
+<br><br>
+<p id="Definition17.4"><b>Определение 17.4:</b>
+Случайный процесс $\{\xi_t\mid{t}\in{T}\}$ стохастически непрерывен в точке $t_0\in{T}$, если $\{\xi_t\}$ сходится по вероятности к $\xi_{t_0}$ при $t\to{t}_0$.
+<br><br>
+<p id="Note17.3"><b>Замечание 17.3:</b>
+Из <a href="./probability_theory7.1.html#Statement7.1">утверждения 7.1</a> следует, 
+что из непрерывности случайного процесса в среденем квадратичном в точке $t_0$ следует его стохастическая непрерывность с точке $t_0$.
+<br>
+
+<h5 id="17.3">17.3 Дифференцируемость в среденем квадратичном.</h5>
+
+<p id="Definition17.5"><b>Определение 17.5:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\subset\mathbb{R}\}$ - случайный процесс такой, что $E|\xi_t|^2<\infty$ для любого $t\in{T}$. 
+Говорят, что случайный процесс $\{\xi_t\}$ дифференцируем в среднем квадратичном в точке $t_0\in{T}$ если существует предел
+$$\sqmlim_{h\to0}{\frac{\xi_{t_0+h}-\xi_{t_0}}{h}}.$$
+<br>
+<p id="Theorem17.4"><b>Теорема 17.4:</b>
+Случайный процесс $\{\xi_t\}$ дифференцируем в точке $t_0$ тогда и только тогда, 
+когда его ковариционная функция дважды <i>(?)</i> непрерывно дифференцируема в точке $(t_0,t_0)$.
+<p><b>Доказательство:</b><br>
+Случайный процесс $\{\xi_t\}$ дифференцируем в точке $t_0$ тогда и только тогда, 
+когда его ковариционная функция дважды <i>(?)</i> непрерывно дифференцируема в точке $(t_0,t_0)$.
+<p><b>Доказательство:</b><br>
+Обозначим $\zeta_h:=(\xi_{t_0+h}-\xi_{t_0})/h$, 
+тогда дифференцируемость в среднем квадратичном случайного процесса $\{\xi_t\}$ в точке $(t_0,t_0)$ равносильно существованию предела 
+$$\lim_{\substack{h\to0 \\ u\to0}}E\zeta_h\overline{\zeta}_u,$$
+где
+\begin{multline*}
+E\zeta_h\overline{\zeta}_u=\frac1{hu}E((\xi_{t_0+h}-\xi_{t_0})(\overline{\xi}_{t_0+h}-\overline{\xi}_{t_0}))=
+\frac1{hu}\left(E\xi_{t_0+h}\overline{\xi}_{t_0+u}-E\xi_{t_0}\overline{\xi}_{t_0+u}-E\xi_{t_0+h}\overline{\xi}_{t_0}+E\xi_{t_0}\overline{\xi}_{t_0}\right)=\\=
+\frac1{hu}(K(t_0+h,t_0+u)-K(t_0,t_0+u)-K(t_0+h,t_0)+K(t_0,t_0))\xrightarrow[h,u\to0]{}\frac{\tilde\partial{K}^2(t,s)}{\partial{t}\partial{s}}
+\end{multline*}
+Далее доказательство прерывается.
+<br>
+Согласно А. В. Булинский, А. Н. Ширяев "Теория случайных процессов." стр. 223 последнее выражение есть обобщенная вторая производная функции $K(t,s)$ в 
+точке $(t_0,t_0)$. Из существования производной следует существование обобщенной производной, обратное неверно. 
+Таким образом, из дифференцируемости процесса $\{\xi_t\}$ в среднем квадратичном не может следовать $K(t,s)\in{C}^2(T\times{T})$. Возможно ошибка в условии.
+<br><br>
+<p id="Example17.3"><b>Пример 17.3: Винеровский и пуассоновский процессы не являются дифференцируемыми в среднем квадратичном.</b><br>
+<ol>
+<li>Согласно <a href="./probability_theory16.1.html#Definition16.2">определению 16.2</a> $W(t+h)-W(t)\sim{N}(0,h)$, 
+тогда из п. 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> и 
+п. 8 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a> следует, что
+$$\frac1{h}(W(t+h)-W(t))\sim{N}\left(\frac1{h}0,\frac1{h^2}h\right)\sim{N}\left(0,\frac1{h}\right).$$
+Так как 
+$$
+P\left\{\left|\frac1{h}(W(t+h)-W(t))\right|<\varepsilon\right\}=\frac{\sqrt{h}}{\sqrt{2\pi}}\int\limits_{-\varepsilon}^{\varepsilon}e^{-t^2h/2}dt=
+\frac1{\sqrt{2\pi}}\int\limits_{-\varepsilon\sqrt{h}}^{\varepsilon\sqrt{h}}e^{-u^2/2}du\xrightarrow[h\to0]{}0,
+$$
+то, случайная величина $\frac1{h}(W(t+h)-W(t))$ не сходится к своему матожиданию (равному 0) по вероятности, следовательно, 
+не сходится и в среднем квадратичном <i>(<a href="./probability_theory7.1.html#Statement7.1">утверждение 7.1</a> ?)</i>
+</li><li>Пусть $\{\xi_t\}$ пуассоновский процесс, тогда согласно определению 9.18 $\xi_{t+h}-\xi_t\sim\Pi(\lambda{h})$. Следовательно, 
+$$\frac1{h}(\xi_{t+h}-\xi_t)=0(P=1)\Rightarrow{E}\left(\frac1{h}(\xi_{t+h}-\xi_t)\right)=0.$$
+Так как выражение
+$$E\left|\frac1{h}(\xi_{t+h}-\xi_t)\right|^2=\frac1{h^2}E(\xi_{t+h}-\xi_t)^2=\frac1{h^2}(\lambda{h}+(\lambda{h})^2),$$
+не имеет предела при $h\to0$, то сходимости в среднем квадратичном нет.
+</li>
+</ol>
+
+<h5 id="17.4">17.4 Интегрируемость в среденем квадратичном.</h5>
+
+<p id="Definition17.6"><b>Определение 17.6:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ - случайный процесс такой, что $[a,b]\subset{T}\subset\mathbb{R}$ и для любого $t\in{T}$ $E|\xi_t|^2<\infty$, 
+точки $t_0,t_1,\ldots,t_n\in{T}$ такие, что $a=t_0&ltt_1&lt\cdots&ltt_{n-1}&ltt_n=b$. Для любого $k\in\overline{0,n-1}$ зафиксируем $s_k\in[t_k,t_{k+1})$. 
+Величину 
+$$S_n:=\sum_{k=0}^{n-1}\xi_{s_k}(t_{k+1}-t_k)$$
+будем называть n-той интегральной суммой процесса $\{\xi_t\}$ соотетствующей разбиению $P:=(t_0,t_1,\ldots,t_n)$. Диаметром разбиения $P$ будем называть величину 
+$$\lambda(P):=\max_{k\in\overline{0,n-1}}(t_{k+1}-t_k).$$
+Говорят, что случайный процесс $\{\xi_t\}$ интегрируем в среднем квадратичном на отрезке $[a,b]$, если существует независимый от выбора точек разбиения предел
+$$\int\limits_a^b\xi_tdt:=\sqmlim_{\lambda(P)\to0}{S_n}.$$
+Случайная величина $\int_a^b\xi_tdt$ называется интегралом в среднем квадратичном случайного процесса $\{\xi_t\}$.
+<br><br>
+<p id="Theorem17.5"><b>Теорема 17.5:</b>
+Если случайный процесс $\{\xi_t\}$ непрерывен в среднем квадратичном на $[a,b]$, то он интегрируем в среднем квадратичном на $[a,b]$.
+<p><b>Доказательство:</b><br>
+Без доказательства. 
+<i>
+В "Курс лекций по случайным процессам" Гуревич Б. М. Москва 2005 г. с. 9 сказано: 
+"Гильбертово пространство $H:=L_2(\Omega, P)$ - это в частности полное метрическое пространство, 
+в каком-то смысле мало отличающееся от $\mathbb{R}^n$. В нём тоже есть понятие непрерывной кривой. 
+Так вот, непрерывный в среденем квадратическом случайный процесс - это непрерывная кривая в этом пространстве, или, что тоже самое, 
+непрерывная функция $\xi:[a,b]\to{H}$." Поэтому нечего не стоит дословно перенести на такие функции утверждение теоремы. 
+Доказательство происходит дословно доказательству <a href="../math_analysis/math_analysis14.3.1.html#Theorem14.3.2">теоремы 14.3.2 MA</a>, 
+если заменить модуль на норму в $H$.
+</i>
+<br><br>
+<p id="Theorem17.6"><b>Теорема 17.6:</b>
+Пусть $K(t,s)$ - ковариационная функция случайного процесса $\{\xi_t\}$, тогда из существования интеграла
+$$\iint_a^bK(t,s)dtds$$
+следует интегрируемость случайного процесса $\{\xi_t\}$ в среденем квадратичном. 
+<p><b>Доказательство:</b><br>
+В обозначениях <a href="#Definition17.6">определения 17.6</a> 
+\begin{multline*}
+E|S_n-S_m|^2=E\left((S_n-S_m)(\overline{S}_n-\overline{S}_m)\right)=ES_n\overline{S}_n-ES_m\overline{S}_n-ES_n\overline{S}_m+ES_m\overline{S}_m=\\=
+\sum_{i,j=1}^nE\xi_{t_i}\overline{\xi}_{t_j}(t_{i+1}-t_i)(t_{j+1}-t_j)-\sum_{i=1}^m\sum_{j=1}^nE\xi_{s_i}\overline{\xi}_{t_j}(s_{i+1}-s_i)(t_{j+1}-t_j)-
+\sum_{i=1}^n\sum_{j=1}^mE\xi_{t_i}\overline{\xi}_{s_j}(t_{i+1}-t_i)(s_{j+1}-s_j)+\sum_{i,j=1}^mE\xi_{s_i}\overline{\xi}_{s_j}(s_{i+1}-s_i)(s_{j+1}-s_j).
+\end{multline*}
+Так как каждое из слагаемых - это интегральная сумма для интеграла от фукнции $K(t,s)$, а он по условию сходится, то
+$$\lim_{\lambda(P)\to0}E|S_n-S_m|^2=0.$$
+Следовательно, по критерию Коши (<a href="../math_analysis/math_analysis5.3.html#Theorem5.3.1">теорема 5.3.1 MA</a>) 
+существует предел $\sqmlim_{\lambda(P)\to0}{S_n}$ <i>(?)</i>.
+<br>
+
+
+<br><br>
+<a href="./probability_theory16.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory18.1.html">next</a>

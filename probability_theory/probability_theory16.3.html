@@ -1,0 +1,181 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 16.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory16.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory17.1.html">next</a>
+<br>
+
+
+<h5 id="16.3">16.3 Теорема Бохнера-Хинчина.</h5>
+
+<p id="Definition16.11"><b>Определение 16.11:</b>
+Пусть $T\subset\mathbb{R}$, тогда комплекснозначная функция $K(t,s):T^2\to\mathbb{C}$ называется неотрицательно определенной, 
+если для любого $n\in\mathbb{N}$ для любых последовательных $t_1,\ldots,t_n\in{T}$, для любых $z_1,\ldots,x_n\in\mathbb{C}$ сумма
+$$\sum_{i,j=1}^nK(t_i,t_j)z_i\overline{z}_j$$
+является вещественным неотрицательным числом.
+<br><br>
+<p id="Theorem16.4"><b>Теорема 16.4:</b>
+Функция  $K(t,s)$ является ковариационной функцией некоторого случайного процесса тогда и только тогда, когда она неотрицательно определена.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть $K(t,s)$ ковариационная функция некоторого случайного процесса $\{\xi_t\mid{t}\in{T}\subset\mathbb{R}\}$, тогда для любых $t,s\in{T}$
+$$K(t,s):=E((\xi_t-E\xi_t)\overline{(\xi_s-E\xi_s)}).$$
+Следовательно,
+\begin{multline*}
+\sum_{i,j=1}^nK(t_i,t_j)z_i\overline{z}_j=\sum_{i,j=1}^nE((\xi_{t_i}-E\xi_{t_i})\overline{(\xi_{t_j}-E\xi_{t_j})})=
+E\left(\sum_{i,j=1}^n(\xi_{t_i}-E\xi_{t_i})z_i\overline{(\xi_{t_j}-E\xi_{t_j})z_j}\right)=\\=
+E\left(\sum_{i=1}^n(\xi_{t_i}-E\xi_{t_i})z_i\sum_{j=1}^n\overline{(\xi_{t_j}-E\xi_{t_j})z_j}\right)=E\left|\sum_{i=1}^n(\xi_{t_i}-E\xi_{t_i})z_i\right|^2\geq0
+\end{multline*}
+$\Leftarrow)$ Пусть $K(t,s):=K_1(t,s)+iK_2(t,s)$ неотрицательно определена. 
+Тогда для любого $t\in{T}$ при $n=1$, $z_1=1$ имеем $K(t,t)\geq0$. При $n=2$, $z_1=z_2=1$ для любых $t_1,t_2\in{T}$ таких, что $t_1\neq{t}_2$
+$$
+\sum_{i,j=1}^n=K(t_i,t_j)z_i\overline{z}_j=K(t_1,t_1)+K(t_1,t_2)+K(t_2,t_1)+K(t_2,t_2)=K(t_1,t_1)+K_1(t_1,t_2)+iK(t_1,t_2)+K_1(t_2,t_1)+iK(t_2,t_1)+K(t_2,t_2)
+$$
+вещественное число, следовательно, $K_2(t_1,t_2)=-K_2(t_2,t_1)$. При $n=2$, $z_1=1$, $z_2=i$ для любых $t_1,t_2\in{T}$ таких, что $t_1\neq{t}_2$
+$$
+\sum_{i,j=1}^nK(t_i,t_j)z_i\overline{z}_j=K(t_1,t_1)+K(t_1,t_2)\overline{i}+K(t_2,t_1)i+K(t_2,t_2)i\overline{i}=
+K(t_1,t_1)-iK_1(t_1,t_2)+K_2(t_1,t_2)+iK_1(t_2,t_1)-K_2(t_2,t_1)+K(t_2,t_2)
+$$
+вещественное число, следовательно, $K_2(t_1,t_2)=K_2(t_2,t_1)$. Таким образом, при перестановке переменных действительная часть $K(t,s)$ не меняется, 
+а мнимая меняет знак, то есть для любых $t,s\in{T}$ $K(t,s)=\overline{K(s,t)}$. Если $K(t,s)$ вещественнозначная функция, то $K(t,s)=K(s,t)$, то есть 
+$$Q(z_1,\ldots,z_n):=\sum_{i,j=1}^nK(t_i,t_j)z_1z_2$$
+неотрицательно определенная квадратичная форма, тогда
+$$\varphi(z_1,\ldots,z_n):=\exp\left(-\frac12{Q}(z_1,\ldots,z_n)\right)$$
+характерестическая функция нормального распределения $N(\overline{0},\|K(t_i,t_j)\|)$. Таким образом, построено семейство распределений 
+$$
+\{F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)\mid{n}\in\mathbb{N};t_1,\ldots,t_n\in{T}\}:=\{N(\overline{0},\|K(t_i,t_j)\|)\mid{n}\in\mathbb{N};t_1,\ldots,t_n\in{T}\}.
+$$
+Докажем, что данное семейство удовлетворяет условиям согласованности (Булинский А. В., Ширяев А. Н. "Теория случайных процессов". 2003 г. стр 26)
+<ol>
+<li>Пусть вектор $(\xi_1,\ldots,\xi_n)$ имеет распределение $F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)$, 
+тогда для любой перестановки $(i_1,\ldots,i_n)$, вектор $(\xi_{t_1},\ldots,\xi_{t_n})$ имеет распределение $F_{t_{i_1},\ldots,t_{i_n}}(x_{i_1},\ldots,x_{i_n})$, то есть 
+$$F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)=F_{t_{i_1},\ldots,t_{i_n}}(x_{i_1},\ldots,x_{i_n}).$$
+</li><li>Второе условие согласованности 
+$$F_{t_1,\ldots,t_{n-1}}(x_1,\ldots,x_{n-1})=F_{t_1,\ldots,t_n}(x_1,\ldots,x_{n-1},\infty)$$ 
+следует из <a href="./probability_theory8.3.html#Theorem8.4">теоремы 8.4</a> <i>(?)</i>.
+</li>
+</ol>
+Так как семейство распределений $\{F_{t_1,\ldots,t_n}(x_1,\ldots,x_n)\}$ удовлетворяет условиям согласованности, 
+то по теореме Колмогорова (Булинский А. В., Ширяев А. Н.Теория случайных процессов. 2003 г. стр 29) существует случайный процесс $\{\xi_t\}$ такой, 
+что для любого $t\in{T}$ $\xi_t\sim{F}_t(x)\sim{N}(0,K(t,t))$. При этом в силу построения семейства $K(t,s)$ являтеся ковариационной функцией процесса $\{\xi_t\}$.
+<br><br>
+<p id="Corollary16.2"><b>Следствие 16.2:</b>
+Класс ковариационных функций замкнут относительно сложения, умножения на положительную константу и предельного перехода.
+<p><b>Доказательство:</b>
+<ol>
+<li>Пусть $K_1(t,s)$, $K_2(t,s)$ ковариационные функции, тогда 
+$$\sum_{i,j}^n(K_1(t,s)+K_2(t,s))z_1\overline{z}_2=\sum_{i,j=1}^nK_1(t,s)z_1\overline{z}_2+\sum_{i,j=1}^nK_2(t,s)z_1\overline{z}_2\geq0.$$
+Следовательно, $K_1(t,s)+K_2(t,s)$ так же является ковариционной функцией.
+</li><li>Если $K(t,s)$ ковариционная функция и $c>0$, то
+$$\sum_{i,j=1}^ncK(t,s)z_1\overline{z}_2=c\sum_{i,j=1}^nK(t,s)z_1\overline{z}_2\geq0.$$
+Следовательно, $cK(t,s)$ так же является ковариационной функцией.
+</li><li>Пусть $\{K_n(t,s)\}$ последовательность ковариационных функций, тогда
+$$\sum_{i,j=1}^n\lim_{n\to\infty}K_n(t,s)z_1\overline{z}_2=\lim_{n\to\infty}\sum_{i,j=1}^nK_n(t,s)z_1\overline{z}_2\geq0.$$
+Следовательно, $\lim_{n\to\infty}K_n(t,s)$ так же является ковариационной функцией.
+</li>
+</ol>
+<br>
+<p id="Lemma16.1"><b>Лемма 16.1:</b>
+Пусть функция $\varphi(x)$ интегрируема на $[-A,A]$ и
+$$f(x):=\int\limits_{-A}^Ae^{-i\tau{x}}\varphi(\tau)d\tau,$$
+тогда функция $f(x)$ интегрируема на $\mathbb{R}$.
+<p><b>Доказательство:</b><br>
+См. доказательство <a href="./probability_theory6.3.html#Theorem6.8">теоремы 6.8</a>.
+<br><br>
+<p id="Theorem16.5"><b>Теорема 16.5: Теорема Бохнера-Хинчина.</b>
+Непрерывная функция $K(\tau)$ неотрицательно определена тогда и только тогда, когда существует вещественнозначная, ограниченная, 
+неубывющая функция $F(\lambda)$ такая, что 
+$$K(\tau)=\int\limits_{-\infty}^{\infty}e^{i\lambda\tau}dF(\lambda).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Для любого $m\in\mathbb{N}$, для любых, $u_1,\ldots,u_m\in{T}$; $z_1,\ldots,z_m\in\mathbb{C}$ 
+$$\sum_{i,l=1}^mK(u_j-u_l)z_j\overline{z}_l\geq0,$$
+тогда для любого $A>0$
+$$\tilde{p}_A(x):=\iint_0^AK(u-v)e^{-iux}e^{-ivx}dudv\geq0.$$
+Сделаем замену $\theta:=u$, $\tau:=u-v$, тогда
+\begin{multline*}
+\tilde{p}_A=\int_{-A}^0d\tau\int_0^{\tau+A}K(\tau)e^{-i\theta{x}}e^{i(\theta-\tau)x}d\theta+\int\limits_0^Ad\tau\int\limits_{\tau}^AK(\tau)e^{-i\theta{x}}e^{i(\theta-\tau)x}d\theta=
+\int\limits_{-A}^0K(\tau)e^{-i\tau{x}}(A+\tau)d\tau+\int\limits_0^AK(\tau)e^{-i\tau{x}}(A-\tau)d\tau=\\=
+A\left(\int\limits_{-A}^0K(\tau)e^{-i\tau{x}}d\tau+\int\limits_0^AK(\tau)e^{-i\tau{x}}d\tau\right)+\int\limits_{-A}^0K(\tau)e^{-i\tau{x}}\tau{d}\tau-\int\limits_0^AK(\tau)e^{-i\tau{x}}\tau{d}\tau=
+A\int\limits_{-A}^Ae^{-i\tau{x}}d\tau-\int\limits_{-A}^Ae^{-i\tau{x}}|\tau|d\tau.
+\end{multline*}
+Положим 
+\begin{multline*}
+p_A(x):=\frac1{2\pi{A}}\tilde{p}_A(x)=\frac1{2\pi}\left(\int\limits_{-A}^Ae^{-i\tau{x}}K(\tau)d\tau-\int\limits_{-A}^Ae^{-i\tau{x}}K(\tau)\frac{|\tau|}{A}d\tau\right)=
+\frac1{2\pi}\int\limits_{-A}^Ae^{-i\tau{x}}K(\tau)\left(1-\frac{|\tau|}{A}d\tau\right),
+\end{multline*}
+положим 
+$$\mu(t):=\begin{cases}1-|t|, & |t|<1 \\ 0, & |t|\geq1\end{cases},$$
+тогда
+$$p_A(x)=\frac1{2\pi}\int\limits_{-A}^Ae^{-i\tau{x}}K(\tau)\mu\left(\frac{\tau}{A}\right)d\tau=\int\limits_{-\infty}^{\infty}e^{-i\tau{x}}K(\tau)\mu\left(\frac{\tau}{A}\right)d\tau,$$
+где последнее равенство в силу того, что 
+$$|\tau|\geq{A}\Rightarrow\left|\frac{\tau}{A}\right|\geq1\Rightarrow\mu\left(\frac{\tau}{A}\right)=0.$$
+Таким образом, функция $p_A(x)$ является преобразованием Фурье для функции $K(\tau)\mu(\tau/A)$, тогда по лемме 16.1
+$$K(\tau)\mu\left(\frac{\tau}{A}\right)=\int\limits_{-\infty}^{\infty}e^{i\tau{x}}p_{A}(x)dx,$$
+так как по <a href="#Theorem16.4">теореме 16.4</a> 
+$K(\tau)$ является ковариационной функцией некоторого стохастического в широком смысле случайного процесса $\{\xi_t\mid{t}\in{T}\}$ и $K(0)=D\xi_t>0$, то
+$$\frac{K(\tau)}{K(0)}\mu\left(\frac{\tau}{A}\right)=\int\limits_{-\infty}^{\infty}e^{itx}\frac{p_A(x)}{K(0)}dx.$$
+При $\tau=0$ имеем $\int\limits_{-\infty}^{\infty}(p_A(x)/K(0))dx=1$ и $p_A(x)/K(0)\geq0$, следовательно, 
+по <a href="./probability_theory3.1.html#Theorem3.7">теореме 3.7</a> для любого $A>0$ функция $p_A(x)/K(0)$ 
+является плотностью распределения некоторой случайной величины, 
+а функция $\mu(\tau/A)K(\tau)/K(0)$ характеристической функцией этой случайной величины. 
+Так как по определению функции $\mu(t)$ $\mu(\tau/A)\to1$ при $A\to\infty$, то
+$$\frac{K(\tau)}{K(0)}\mu\left(\frac{\tau}{A}\right)\xrightarrow[A\to\infty]{}\frac{K(\tau)}{K(0)},$$
+и $K(\tau)/K(0)$ непрерывна, следовательно, 
+по <a href="./probability_theory6.3.html#Theorem6.14">теореме 6.14</a> 
+функция $K(\tau)/K(0)$ является характеристической функцией некоторого распределения $\tilde{F}(x)$ и
+$$\frac{K(\tau)}{K(0)}=\int\limits_{-\infty}^{\infty}e^{i\tau{x}}d\tilde{F}(x).$$
+Положим $F(x):=K(0)\tilde{F}(x)$, тогда
+$$K(\tau)=\int\limits_{-\infty}^{\infty}e^{i\tau{x}}dF(x).$$
+где $F(x)$ неубывает и принимает значения на отрезке $[0,K(0)]$.
+<br>
+$\Leftarrow)$ Для любого $m\in\mathbb{N}$
+\begin{multline*}
+\sum_{j,l=1}^mK(u_j-u_l)z_j\overline{z}_l=\sum_{j,l=1}^m\left(\int\limits_{-\infty}^{\infty}e^{i(u_j-u_l)\lambda}dF(\lambda)\right)z_j\overline{z}_l=
+\int\limits_{-\infty}^{\infty}\left(\sum_{j,l=1}^me^{iu_j\lambda}z_j\overline{e^{iu_l\lambda}z_l}\right)dF(\lambda)=\\=
+\int\limits_{-\infty}^{\infty}\left(\sum_{j=1}^me^{iu_j\lambda}z_j\overline{\sum_{l=1}^me^{iu_l\lambda}z_l}\right)dF(\lambda)=
+\int\limits_{-\infty}^{\infty}\left|\sum_{j=1}^me^{iu_j\lambda}z_j\right|^2dF(\lambda)\geq0
+\end{multline*}
+<br>
+<p id="Definition16.12"><b>Определение 16.12:</b>
+Пусть $K(\tau)$ ковариационная функция случайного процесса $\{\xi_t\mid{t}\in{T}\}$, тогда 
+<ol>
+<li>Функция $F(\lambda)$ такая, что 
+$$K(\tau)=\int\limits_{-\infty}^{\infty}e^{i\tau\lambda}dF(\lambda)$$
+называется спектральной функцией процесса $\xi_t$.
+</li><li>Функция 
+$$\frac{K(\tau)}{K(0)}=\frac1{K(0)}\int\limits_{-\infty}^{\infty}e^{i\tau\lambda}dF(\lambda)$$
+называется характеристической функцией процесса $\xi_t$.
+</li><li>Если спектральная плотность процесса $F(\lambda)$ абсолютно непрерывна, то есть существует функция $f(\lambda)$ такая, что
+$$F(\lambda)=\int\limits_{-\infty}^{\lambda}f(u)du,$$
+то функция $f(\lambda)$ называется спектральной плотностью процесса $\xi_t$.
+
+В радиотехнике функцию $f(\lambda)$ называют так же плотностью распределения мощности по частотам, а значение $D\xi_t=K(0)$ мощностью сигнала.
+</li>
+</ol>
+<br>
+<p id="Note16.9"><b>Замечание 16.9:</b>
+Из <a href="#Theorem16.4">теорем 16.4</a>, <a href="#Theorem16.5">16.5</a> следует, 
+что функция $K(\tau)$ является характеристической для некоторого случайного процесса тогда и только тогда, 
+когда она положительно <i>(неотрицательно ?)</i> определена.
+<br><br>
+<p id="Note16.10"><b>Замечание 16.10:</b>
+Если функция $f(\lambda)$ спектральная плотность процесса $\xi_t$, то
+$$K(\tau)=\int\limits_{-\infty}^{\infty}e^{i\tau\lambda}f(\lambda)d\lambda,$$
+откуда мощность сигнала
+$$D\xi_t=K(0)=\int\limits_{-\infty}^{\infty}f(\lambda)d\lambda.$$
+Если $K(\tau)$ интегрируема на прямой, то
+$$f(\lambda)=\frac1{2\pi}\int\limits_{-\infty}^{\infty}e^{-i\tau\lambda}K(\tau)d\tau$$
+
+<br><br>
+<a href="./probability_theory16.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory17.1.html">next</a>

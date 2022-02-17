@@ -1,0 +1,161 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 14.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory13.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory15.1.html">next</a>
+<br>
+
+<h4 id="14">14. Достаточные статистики.</h4>
+
+<h5 id="14.1">14.1 Критерий факторизации.</h5>
+
+<p id="Definition14.1"><b>Определение 14.1:</b>
+Пусть $\xi\sim{F}(x;\theta)$, $(X_1,\ldots,X_n)$ выборка над $\xi$, тогда статистика $T=T(x_1,\ldots,x_n)$ достаточная для параметра $\theta$, 
+если значение $p(x_1,\ldots,x_n;\theta/T=t)$ не зависит от $\theta$, где
+$$p(x_1,\ldots,x_n;\theta):=\prod_{i=1}^np(x_i;\theta),$$
+если плотности $p(x_i;\theta)$ сущетсвуют, и
+$$p(x_1,\ldots,x_n;\theta):=\prod_{i=1}^nP\{\xi=x_i;\theta\},$$
+если $\xi$ дискретана.
+<br><br>
+<p id="Theorem14.1"><b>Теорема 14.1:</b>
+Пусть $\xi\sim{F}(x;\theta)$, тогда статистика $T=T(x_1,\ldots,x_n)$ достаточна для $\theta$ тогда и только тогда, 
+когда существуют функции $g(t;\theta)$, $h(x_1,\ldots,x_n)$ такие, что
+$$p(x_1,\ldots,x_n;\theta)=g(T(x_1,\ldots,x_n);\theta)h(x_1,\ldots,x_n).$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow$) Пусть $T=T(x_1,\ldots,x_n)$ достаточная статистика для $\theta$. Для любого значения выборки $(x_1,\ldots,x_n)$ такого, что $T(x_1,\ldots,x_n)=t$
+$$p(x_1,\ldots,x_n;\theta)=p(x_1,\ldots,x_n;\theta;T=t)=P(T=t)p(x_1,\ldots,x_n;\theta/T=t),$$
+где второй множитель не зависит от $\theta$, так как $T$ достаточная статистика. <br>
+$\Leftarrow$) Пусть существуют $g(t;\theta)$, $h(x_1,\ldots,x_n)$ такие, что 
+$$p(x_1,\ldots,x_n;\theta)=g(T(x_1,\ldots,x_n);\theta)h(x_1,\ldots,x_n).$$
+Для любого значения выборки $(x_1,\ldots,x_n)$ такого, что $T(x_1,\ldots,x_n)=t$
+$$
+p(x_1,\dots,x_n;\theta/T=t)=\frac{p(x_1,\ldots,x_n;\theta;T=t)}{P(T=t)}=\frac{p(\overline{x};\theta)}{\sum_{\overline{x}:T(\overline{x})=t}p(\overline{x};\theta)}=
+\frac{g(T(\overline{x});\theta)h(\overline{x})}{\sum_{\overline{x}:T(\overline{x}=t)}g(T(\overline{x});\theta)h(\overline{x})}=
+\frac{g(t;\theta)h(\overline{x})}{g(t;\theta)\sum_{\overline{x}:T(\overline{x}=t)}h(\overline{x})},
+$$
+где последнее выражение не зависит от $\theta$.
+<br><br>
+<p id="Example14.1"><b>Пример 14.1:</b>
+Пусть $\xi\sim{N}(\mu,\sigma^2)$, то есть плотность распределения $\xi$
+$$p(x;\theta)=\frac1{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right).$$
+Покажем, что статистика $T:=(\overline{x},S^2)$ является достаточной для параметра $\theta:=(\mu,\sigma^2)$. 
+Пусть $(X_1,\ldots,X_n)$ выборка над $\xi$. Так как все случайные величины в выборке распределены так же как $\xi$, то
+\begin{multline*}
+p(x_1,\ldots,x_n;\theta)=\prod_{i=1}^np(x_i;\theta)=\left(\frac1{\sqrt{2\pi}\sigma}\right)^n\exp\left(-\frac1{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2\right)=
+\left(\frac1{\sqrt{2\pi}\sigma}\right)^n\exp\left(-\frac1{2\sigma^2}\sum_{i=1}^n(x_i-\overline{x}+\overline{x}+\mu)^2\right)=\\=
+\left(\frac1{\sqrt{2\pi}\sigma}\right)^n\exp\left(-\frac1{2\sigma^2}\left(\sum_{i=1}^n(x_i-\overline{x})^2-2(\overline{x}-\mu)\sum_{i=1}^n(x_i-\overline{x})-n(\overline{x}-\mu)^2\right)\right).
+\end{multline*}
+Так как
+$$\sum_{i=1}^n(x_i-\overline{x})=\sum_{i=1}^nx_i-n\overline{x}=n\overline{x}-n\overline{x}=0$$
+и
+$$S^2:=\frac1{n}\sum_{i=1}^n(x_i-\overline{x})^2,$$
+то
+$$p(x_1,\ldots,x_n;\theta)=\left(\frac1{\sqrt{2\pi}\sigma}\right)^n\exp\left(-\frac{n}{2\sigma^2}(S^2-(\overline{x}-\mu)^2)\right),$$
+где последнее выражение зависит от значения выборки только через статистику $T(\overline{x},S^2)$. 
+В качестве функции $h(x_1,\ldots,x_n)$ подставим функцию тождественно равную 1.
+<br><br>
+<p id="Corollary14.1"><b>Следствие 14.1:</b>
+Если для параметра $\theta$ функции распределения $F(x;\theta)$ имеется эффективная оценка, то она является достаточной статистикой для $\theta$.
+<p><b>Доказательство:</b><br>
+Следует из <a href="./probability_theory12.1.html#Theorem12.2">теоремы 12.2</a>.
+<br><br>
+<p id="Corollary14.2"><b>Следствие 14.2:</b>
+ Если $T$ достаточная статистика для параметра $\theta$ и $\varphi(t)$ биективная функция, то $T_1:=\varphi(T)$ также достаточная статистика для $\theta$.
+<p><b>Доказательство:</b><br>
+ Так как $T$ достаточная статистика, то существуют функции $g(t;\theta)$ и $h(x_1,\ldots,x_n)$ такие, что
+$$
+p(x_1,\ldots,x_n;\theta)=g(T;\theta)h(x_1,\ldots,x_n)=g(\varphi^{-1}(T_1);\theta)h(x_1,\ldots,x_n).
+$$
+ Следовательно, существуют функции $\tilde{g}(t;\theta):=g(\varphi^{-1}(t);\theta)$ и $h(x_1,\ldots,x_n)$ такие, что
+ $$ p(x_1,\ldots,x_n;\theta)=\tilde{g}(T_1;\theta)h(x_1,\ldots,x_n),$$
+ то есть $T_1$ достаточная статистика.
+<br>
+
+<h5 id="14.2">14.2 Полные достаточные статистики.</h5>
+
+<p id="Theorem14.2"><b>Теорема 14.2: Теорема Рао-Блэкуэлла.</b><br>
+Пусть $\xi\sim{F}(x;\theta)$ и $T$ достаточная статистика для параметра $\theta$, тогда, 
+если оптимальная оценка параметра $\theta$ существует, то она является функцией статистики $T$.
+<p><b>Доказательство:</b><br>
+Оптимальная оценка по <a href="./probability_theory12.3.html#Definition12.7">определению 12.7</a> является несмещенной. 
+Пусть $\tilde\theta$ некоторая несмещенная оценка параметрической функции $\tau(\theta)$, то есть $E\tilde\theta=\tau(\theta)$. Обозначим 
+$$H(t):=E(\tilde\theta/T=t)=\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(x_1,\ldots,x_n)p(x_1,\ldots,x_n;\theta/T=t)dt.$$
+Покажем, что $H(T)=H(T(x_1,\ldots,x_n))$ является несмещенной оценкой для $\tau(\theta)$. 
+Действительно, пусть $p_T(x_1,\ldots,x_n)$ - плотность распределения для $T(x_1,\ldots,x_n)$, тогда
+\begin{multline*}
+EH(T)=\int\limits_{-\infty}^{\infty}H(t)p_T(t)dt=\int\limits_{-\infty}^{\infty}\left(\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(\overline{x}){p}(\overline{x};\theta/T=t)d\overline{x}\right)p_T(t)dt=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\left(\tilde\theta(\overline{x})\int\limits_{-\infty}^{\infty}p(\overline{x};\theta/T=t)p_T(t)dt\right)d\overline{x}=\\=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\left(\tilde\theta(\overline{x})\int\limits_{-\infty}^{\infty}p(\overline{x},t;\theta)dt\right)d\overline{x}=
+\int\limits_{-\infty}^{\infty}\cdots\int\limits_{-\infty}^{\infty}\tilde\theta(\overline{x})p(\overline{x};\theta)d\overline{x}=E\tilde\theta=\tau(\theta)
+\end{multline*}
+<i>(обоснование изменения порядка интегрирования ?)</i>
+<br>
+При этом
+$$
+D\tilde\theta=E(\theta-\tau(\theta))^2=E(\tilde\theta-H(T)+H(T)-\tau(\theta))^2=E(\tilde\theta-H(T))^2+2E[(\tilde\theta-H(T))(H(T)-\tau(\theta))]+E(H(T)-\tau(\theta))^2
+$$
+в последнем выражении первое слагаемое неотрицательно, второе равно нулю (без доказательства), а третье есть $DH(T)$, 
+то есть $D\tilde\theta\geq{D}H(T)$. Таким образом, для любой несмещенной оценки $\tilde\theta$ существует функция $H(t)$ такая, 
+что оценка $H(T)$ более оптимальна в смысле критерия максимальности дисперсии чем $\tilde\theta$. 
+Следовательно, оценка не может быть оптимальной, если она не является функцией от статистики $T$.
+<br><br>
+<p id="Definition14.2"><b>Определение 14.2:</b>
+Достаточная статистика $T=T(x_1,\ldots,x_n)$ называется полной, 
+если для любой функции $\varphi(t)$ определенной на множестве значений $T$ и не равной тождественно нулю $E\varphi(T)\neq0$.
+<br><br>
+<p id="Theorem14.3"><b>Теорема 14.3:</b>
+Пусть $T$ полная достаточная статистика, 
+тогда для любой функции $H(t)$ определнной на множестве значений $T$ статистика $H(T)$ является оптимальной оценкой своего матожидания.
+<p><b>Доказательство:</b><br>
+Пусть $\tau(\theta):=EH(T)$ и $H_1(T)$ несмещённая оценка для $\tau(\theta)$, 
+то есть $EH_1(T)=\tau(\theta)$. Тогда по определению 14.2
+$$E(H(T)-H_1(T))=0\Rightarrow{H}(T)-H_1(T)=0\Rightarrow{H}_1(T)=H(T).$$
+Следовательно, не существует функции $H_1(t)$ отличной от $H(t)$ такой, 
+что $H_1(T)$ является несмещенной оценкой для $\tau(\theta)$ и так как оптимальная оценка по 
+<a href="./probability_theory12.3.html#Definition12.7">определению 12.7</a> должна быть несмещенной, то $H(T)$ оптимальна.
+<br><br>
+<p id="Example14.2"><b>Пример 14.2:</b>
+Пусть 
+$$\xi\sim\begin{pmatrix}1 & 0 \\ \theta & 1-\theta\end{pmatrix},$$
+где $\theta\in(0,1)$ неизвестный параметр. Найдем оптимальную оценку для параметра $\theta^k$.
+
+Покажем, что статистика $T:=n\overline{x}$ является полной и достаточной. Действительно
+$$p(x_1,\ldots,x_n;\theta)=\prod_{i=1}^nP\{\xi=x_i;\theta\}=\theta^{n\overline{x}}(1-\theta)^{n-n\overline{x}}=\theta^T(1-\theta)^{n-T},$$
+следовательно, по <a href="#Theorem14.1">теореме 14.1</a> статистика $T$ достаточная. Пусть теперь функция $\varphi(t):\overline{0,n}\to\mathbb{R}$ такая, 
+что $E\varphi(T)=0$, тогда, так как $T$ - это число единиц в выборке, то для любого $\theta\in(0,1)$
+$$
+E\varphi(T)=\sum_{t=0}^n\varphi(t)P\{T=t\}=\sum_{t=0}^n\varphi(t)\binom{n}{t}\theta^t(1-\theta)^{n-t}=(1-\theta)^n\sum_{t=0}^n\varphi(t)\binom{n}{t}x^t=0,
+$$
+где $x:=\theta/(1-\theta)$.
+Так как для любого $\theta\in(0,1)$ и $t\in\overline{0,n}$ коэффициент при $\varphi(t)$ положителен, то $\varphi(t)\equiv0$. 
+Таким образом, $T$ - полная достаточная статистика, следовательно, если удастся найти функцию $H(t)$ такую, что $EH(T)=\theta^k$, 
+то по <a href="#Theorem14.2">теореме 14.2</a> $H(T)$ будет оптимальной оценкой для $\theta^k$.
+
+Для произвольной случайной величины $\eta$ обозначим $q_{\eta}(z):=Ez^{\eta}$, тогда
+$$q_{\xi}(z)=Ez^{\xi}=z\theta+(1-\theta),$$
+$$q_T(z)=Ez^T=Ez^{n\xi}=(Ez^{\xi})^n=(z\theta+1-\theta)^n.$$
+Продифференцируем (?) последнее равенство $k$ раз по переменной $z$ получим
+$$E[T(T-1)\cdots(T-k+1)z^{T-k}]=\theta^kn(n-1)\cdots(n-k+1)(z\theta+1-\theta)^{n-k}.$$
+Подставив в это равенство $z=1$ получим
+$$
+E[T(T-1)\cdots(T-k+1)]=\theta^kn(n-1)\cdots(n-k+1)\Rightarrow{E}\frac{T(T-1)\cdots(T-k+1)}{n(n-1)\cdots(n-k+1)}=\theta^k.
+$$
+Таким образом, при $k>n$ оптимальной оценки для $\theta^k$ не сущетсвует, 
+при $k\in\overline{1,n}$ существует единственная оптимальная оценка для $\theta^k$ равная $H(T)$, где
+$$H(t):=\frac{t(t-1)\cdots(t-k+1)}{n(n-1)\cdots(n-k+1)}.$$ 
+<br>
+
+<br><br>
+<a href="./probability_theory13.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory15.1.html">next</a>

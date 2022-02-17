@@ -1,0 +1,178 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 11.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.1.html">next</a>
+<br>
+
+<h3>ЧАСТЬ II. МАТЕМАТИЧЕСКАЯ СТАТИСТИКА.</h3>
+
+<h4 id="11">11. Выборка.</h4>
+
+<h5 id="11.1">11.1 Выборочные моменты.</h5>
+
+<p id="Definition11.1"><b>Определение 11.1:</b>
+Выборкой объёма $n\in\mathbb{N}$ будем называть $n$ одинаково распределённых независимых случайных величин заданных на одном и том же вероятностном пространстве.
+<br><br>
+<p id="Definition11.2"><b>Определение 11.2:</b>
+Упорядоченная выборка объёма $n$ $(x_{(1)},\ldots,x_{(n)})$ называется вариационным рядом.
+<br>
+Для любого $k\in\overline{1,n}$ $k$-тая по порядку случайная величина в вариационном ряде называется $k$-той ранговой статистикой.
+<br><br>
+<p id="Definition11.3"><b>Определение 11.3:</b>
+Пусть $(x_1,\ldots,x_n)$ выборка объёма $n$, 
+$F(x)$ - функция распределения случайной величины $x_k$ для любого $k\in\overline{1,n}$, 
+$\mu_n(x)$ - случайная величина равная числу элементов выборки меньших $x\in\mathbb{R}$. 
+Тогда для любой случайной величины $\xi$ с функцией распределения $F(x)$ семейство случайных величин  
+$$F_n(x):=\left\{x\in\mathbb{R}\mid\frac{\mu_n(x)}{n}\right\}$$
+называется эмпирической функций распределения над случайной величиной $\xi$
+<br><br>
+<p id="Note11.1"><b>Замечание 11.1:</b>
+<ol>
+<li>При фиксированном $x\in\mathbb{R}$ эмпирическая функция распределения $F_n(x)$ - это дискретная случайная величина с распределением
+$$P\left\{F_n(x)=\frac{k}{n}\right\}=P\{\mu_n(x)=k\}=\binom{n}{k}F^k(x)(1-F(x))^{n-k}.$$
+</li><li>При фиксированном исходе $\omega\in\Omega$ $F_n(x)$ - ступенчатая функция распределения с точкми роста в $x_{(1)}(\omega),\ldots,x_{(n)}(\omega)$.
+</li><li>Если $e(x)$ индикаторная функция 
+$$e(x):=\begin{cases}0,x\leq0 \\ 1,x>0\end{cases},$$
+то 
+$$F_n(x)=\frac1{n}\sum_{k=1}^ne(x-x_k).$$ 
+</li>
+</ol>
+<br>
+<p id="Theorem11.1"><b>Теорема 11.1:</b>
+Если $F_n(x)$ - эмпирическая функция распределения над случайной величиной $\xi$ с функцией распределения $F(x)$, то для любого $x\in\mathbb{R}$
+$$F_n(x)\xrightarrow[n\to\infty]{P}F(x),$$
+или
+$$\forall\varepsilon>0\left(P\{|F_n(x)-{F}(x)|>\varepsilon\}\xrightarrow[n\to\infty]{}0\right)$$
+<p><b>Доказательство:</b><br>
+Следует из <a href="./probability_theory7.1.html#Theorem7.6">теоремы 7.6</a>.
+<br><br>
+<p id="Theorem11.2"><b>Теорема 11.2: Гливенко.</b><br>
+Если $F_n(x)$ - эмпирическая функция распределения над случайной величиной $\xi$ с функцией распределения $F(x)$, то 
+$$P\left\{\lim_{n\to\infty}\sup_{x}|F_n(x)-F(x)|=0\right\}=1.$$
+<p><b>Доказательство:</b><br>
+Доказательство, например, в Ширяев А. Н. 2004 г. "Вероятность - 1" стр. 482.
+<br><br>
+<p id="Definition11.4"><b>Определение 11.4:</b>
+Если $(x_1,\ldots,x_n)$ выборка, то для любого $k\in\mathbb{N}$ случайная величина
+$$A_k:=\frac1{n}\sum_{i=1}^nx_i^k$$
+называется выборочным моментом $k$-того порядка.
+<br>
+Выборочный момент первого порядка
+$$\overline{x}:=A_1=\frac1{n}\sum_{i=1}^nx_i$$
+называется выборочным средним.
+<br><br>
+<p id="Definition11.5"><b>Определение 11.5:</b>
+Если $(x_1,\ldots,x_n)$ выборка, то для любого $k\in\mathbb{N}$ случайная величина 
+$$M_k:=\frac1{n}\sum_{i=1}^n(x_i-\overline{x})^k$$
+назвается центральным выборочным моментом $k$-того порядка.
+<br>
+Центральный выборочный момент второго порядка
+$$S^2:=M_2=\frac1{n}\sum_{i=1}^n(x_i-\overline{x})^2$$
+называется выборочной дисперсией. 
+<br><br>
+<p id="Note11.2"><b>Замечание 11.2:</b>
+Из определения следует, 
+$$
+M_k=\frac1{n}\sum_{i=1}^n(x_i-\overline{x})^k=\frac1{n}\sum_{i=1}^n\sum_{r=0}^k\binom{k}{r}x_i^r(-1)^{k-r}\overline{x}^{k-r}=
+\frac1{n}\sum_{r=0}^k\binom{k}{r}(-1)^{k-r}A_1^{k-r}\sum_{i=1}^nx_i^r=\sum_{r-0}^k\binom{k}{r}(-1)^{k-r}A_1^{k-r}A_r.
+$$
+Следовательно $M_0=A_0=1$, $M_1=-A_1A_0+A_1=0$,
+$$S^2=M_2=\frac1{n}\sum_{i=1}^nx_i^2-\frac2{n}A_1\sum_{i=1}^nx_i+A_1^2=A_2-2A_1^2+A_1^2=A_2-A_1^2.$$
+<br>
+<p id="Task11.1"><b>Задача 11.1:</b>
+Найти дисперсию случайной величины $S^2$.<br>
+<i>
+Пусть $(x_1,\ldots,x_n)$ выбока объёма $n$ над случайной величиной $\xi$. Обозначим $\mu:=E\xi$, $\mu_2:=E\xi^2$, $\sigma^2:=D\xi$, 
+тогда по п. п. 2, 3 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>, по п. п. 2, 6 <a href="./probability_theory4.6.html#Theorem4.20">теоремы 4.20</a>
+и <a href="./probability_theory4.1.html#Theorem4.8">теореме 4.8</a>
+$$EA_1=E\left(\frac1{n}\sum_{i=1}^nx_i\right)=\frac1{n}\sum_{i=1}^nEx_i=\mu$$
+$$DA_1=D\left(\frac1{n}\sum_{i=1}^nx_i\right)=\frac1{n^2}\sum_{i=1}^nDx_i=\frac{\sigma^2}{n},$$
+$$
+ES^2=E(A_2-A_1^2)=\frac1{n}\sum_{i=1}^nEx_i^2-E\left(\frac1{n}\sum_{i=1}^nx_i\right)^2=\mu_2-\frac1{n^2}E\left(\sum_{i=1}^nx_i^2+\sum_{i\neq{j}}x_ix_j\right)=
+\mu_2-\frac{\mu_2}{n}-\frac{n(n-1)}{n^2}\mu^2=\frac{n-1}{n}(\mu_2-\mu^2).
+$$
+Для любого $i\in\overline{1,n}$ положим $y_i:=x_i-\mu$, тогда
+\begin{multline*}
+E(S^2)^2=E\left(\frac1{n}\sum_{i=1}^ny_i^2-\left(\frac1{n}\sum_{i=1}^ny_i\right)^2\right)^2=E\left(\frac1{n}\sum_{i=1}^ny_i^2-\frac1{n^2}\sum_{i=1}^ny_i^2-\frac1{n^2}\sum_{i\neq{j}}y_iy_j\right)^2=
+E\left(\frac{n-1}{n^2}\sum_{i=1}^ny_i^2-\frac1{n^2}\sum_{i\neq{j}}y_iy_j\right)^2=\\=
+E\left(\frac{(n-1)^2}{n^4}\left(\sum_{i=1}^ny_i^2\right)^2-\frac{2(n-1)}{n^4}\sum_{\substack{k=1\\i\neq{j}}}^ny_k^2y_iy_j+\frac1{n^4}\left(\sum_{i\neq{j}}y_iy_j\right)^2\right).
+\end{multline*}
+Матожидание от второго слагаемого равно 0 в силу того, что $Ey_i=0$, тогда
+$$
+E(S^2)^2=\frac{(n-1)^2}{n^4}\left(\sum_{i=1}^nEy_i^4+\sum_{i\neq{j}}E\left(y_i^2y_j^2\right)\right)+\frac1{n^4}\left(2\sum_{i\neq{j}}E\left(y_i^2y_j^2\right)+\sum_{\substack{k,l=1\\i\neq{j}}}^nE(y_iy_jy_ky_l)\right).
+$$
+Здесь четвертое слагаемое равно 0 в силу того, что $Ey_i=0$, следовательно,
+$$
+E(S^2)^2=\frac{(n-1)^2}{n^4}n\nu_4+\frac{(n-1)^2}{n^4}(n^2-n)\nu_2^2+\frac2{n^4}(n^2-n)\nu_2^2=\frac{(n-1)^2}{n^3}\nu_4+\frac{n^3-3n^2+5n-3}{n^3}\nu_2^2.
+$$
+Тогда
+$$
+DS^2=E(S^2)^2-(ES^2)^2=\frac{(n-1)^2}{n^3}\nu_4+\frac{n^3-3n^2+5n-3}{n^3}\nu_2^2-\frac{(n-1)^2}{n^2}\nu_2^2=
+\frac{(n-1)^2}{n^3}\nu_4+\frac{-n^2+4n-3}{n^3}\nu_2^2=\frac{(n-1)^2(\nu_4-\nu_2^2)+2(n-1)\nu_2^2}{n^3}
+$$
+</i>
+<br>
+
+<h5 id="11.2">11.2 Ассимптотическое поведение выборочных моментов.</h5>
+
+<p id="Theorem11.3"><b>Теорема 11.3:</b>
+Пусть $(x_1,\ldots,x_n)$ выборка объема $n$ над случайной величиной $\xi$, для любого $k\in\mathbb{N}$ $\mu_k:=E\xi^k$, $\nu_k:=E(\xi-E\xi)^k$, тогда
+<ol>
+<li>$A_k\xrightarrow[n\to\infty]{P}\mu_k$,</li>
+<li>$M_k\xrightarrow[n\to\infty]{P}\nu_k$</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как для любого $k\in\mathbb{N}$ случайные величины $x_1^k,\ldots,x_n^k$ независимы, 
+то по <a href="./probability_theory7.1.html#Theorem7.8">теореме 7.8</a> (теорема Хинчина)
+$$A_k:=\frac1{n}\sum_{i=1}^nx_i^k\xrightarrow[n\to\infty]{P}\frac1{n}\sum_{i=1}^nEx_i^k=\frac1{n}n\mu_k=\mu_k.$$
+</li><li>По замечаниям 4.1 и 11.2 для любого $k\in\mathbb{N}$ 
+$$\nu_k=\sum_{r=0}^k\binom{k}{r}(-1)^{k-r}\mu_1^{k-r}\mu_r.$$
+$$M_k=\sum_{r=0}^k\binom{k}{r}(-1)^{k-r}A_1^{k-r}A_r.$$
+Таким образом, $\nu_k=g(\mu_1,\ldots,\mu_k)$, $M_k=g(A_1,\ldots,A_k)$, где функция $g(y_1,\ldots,y_k)$ непрерывна по всем пременным. 
+Тогда утверждение следует из п. 1 и Continuous mapping theorem (доказательство, например, в Van der Vaart, A. W. 1998 г. "Asymptotic Statistics", стр. 7).
+</li>
+</ol>
+<br>
+<p id="Definition11.6"><b>Определение 11.6:</b>
+Пусть $\{\xi_n\}$ последовательность случайный величин, для любого $n\in\mathbb{N}$ $\mu_n:=E\xi_n$, $\sigma_n^2:=D\xi_n$. 
+Тогда последовательность $\{\xi_n\}$ называется ассимптотически нормальной, если 
+$$\frac{\xi_n-\mu_n}{\sigma_n}\xrightarrow[n\to\infty]{d}N(0,1)$$
+<br>
+<p id="Theorem11.4"><b>Теорема 11.4:</b>
+Пусть $(x_1,\ldots,x_n)$ - выборка объёма $n$ над случайной величиной $\xi$, 
+тогда для любого $k\in\mathbb{N}$ последовательность выборочных моментов $\{A_k\mid{k}\in\mathbb{N}\}$ является ассимптотически нормальной.
+<p><b>Доказательство:</b><br>
+Для любого $k\in\mathbb{N}$ обозначим $\mu_k:=E\xi^k$, $\sigma_k^2:=D\xi^k$, 
+тогда в силу независимости случайных величин $(x_1,\ldots,x_n)$ по п. п. 2, 3 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>, 
+п. п. 2, 6 <a href="./probability_theory4.3.html#Theorem4.10">теоремы 4.10</a>
+$$EA_k=E\left(\frac1{n}\sum_{i=1}^nx_i^k\right)=\frac1{n}E\sum_{i=1}^nx_i^k=\frac1{n}\sum_{i=1}^nEx_i^k=\frac1{n}n\mu_k=\mu_k,$$
+$$DA_k=D\left(\frac1{n}\sum_{i=1}^nx_i^k\right)=\frac1{n^2}D\sum_{i=1}^nx_i^k=\frac1{n^2}\sum_{i=1}^nDx_i^k=\frac1{n^2}n\sigma_k^2=\frac{\sigma_k^2}{n}.$$
+Тогда по <a href="./probability_theory7.3.html#Theorem7.12">теореме 7.12</a> (ЦПТ)
+$$
+\frac{A_k-EA_k}{\sqrt{DA_k}}=\sqrt{n}\frac{A_k-\mu_k}{\sigma_k}=\frac{\sum_{i=1}^nx_i^k-n\mu_k}{\sigma_k\sqrt{n}}\xrightarrow[n\to\infty]{d}N(0,1)
+$$
+<br>
+<p id="Note11.3"><b>Замечание 11.3:</b>
+Из теоремы следует важное для практики приближённое равенство
+$$P\left\{\frac{\sqrt{n}}{\sigma_k}|A_k-\mu_k|&ltt\right\}\approx\frac1{2\pi}\int\limits_{-t}^te^{u^2/t}du.$$ 
+Где $\sigma_k$ можно выразить как
+$$\sigma_k=\sqrt{D\xi^k}=\sqrt{E(\xi^k)^2-(E\xi^k)^2}=\sqrt{\mu_{2k}-\mu_k^2}.$$
+<br>
+
+
+<br><br>
+<a href="./probability_theory10.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory12.1.html">next</a>

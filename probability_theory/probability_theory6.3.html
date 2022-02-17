@@ -1,0 +1,399 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 6.3</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory6.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.1.html">next</a>
+
+<h5 id="6.3">6.3 Формула обращения для характеристической функции.</h5>
+
+<p id="Theorem6.6"><b>Теорема 6.6:</b>
+Пусть $\xi$ случайная величина с функцией распределения $F(x)$ и характеристической функцией $\varphi(t)$. Точки $a,b\in\mathbb{R}$ такие, 
+что $a&ltb$ и функция $F(x)$ непрерывна в $a$ и $b$. Тогда 
+$$F(b)-F(a)=\frac1{2\pi}\lim_{c\to\infty}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt.$$
+<p><b>Доказательство:</b><br>
+Так как 
+$$
+\left|\frac{e^{-ita}-e^{-itb}}{it}e^{itx}\right|=\left|\frac{e^{-ita}-e^{-itb}}{it}\right|=\left|\int\limits_a^be^{-itx}dx\right|\leq
+\int\limits_a^b|e^{-itx}|dx=\left|\int\limits_a^bdx\right|=|b-a|
+$$
+то по <a href="../math_analysis/math_analysis14.3.1.html#Theorem14.3.2">теореме 14.3.2 MA</a> двойной интеграл
+$$
+\frac{1}{2\pi}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt=
+\frac1{2\pi}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\int\limits_{-\infty}^{\infty}e^{itx}dF(x)dt
+$$
+сходится, тогда по теореме Фубини (<a href="../math_analysis/math_analysis14.3.3.html#Theorem14.3.4">теорема 14.3.4 MA</a>) можно поменять порядок интегрирования, 
+тогда последнее выражение равно
+$$
+\frac1{2\pi}\int\limits_{-\infty}^{\infty}\left(\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}e^{itx}dt\right)dF(x)=
+\frac1{2\pi}\int\limits_{-\infty}^{\infty}I_c(x)dF(x),
+$$
+где
+$$
+I_c(x):=\int\limits_{-c}^c\frac{e^{-it(a-x)}-e^{-it(b-x)}}{it}dt=
+\int\limits_{-c}^c\frac{\cos{(t(a-x))}-i\sin{(t(a-x))}-\cos{(t(b-x))}+i\sin{(t(b-x))}}{it}.
+$$
+Так как функция $\cos{(t(a-x))}/t$ от $t$ четная, то интегралы от первого и третьего слагаемого равны 0, следовательно,
+$$
+I_c(x)=\int\limits_{-c}^c\frac{\sin{(t(x-a))}}{t}dt-\int\limits_{-c}^c\frac{\sin{(t(x-b))}}{t}dt=
+\int\limits_{-c(x-a)}^{c(x-a)}\frac{\sin{u}}{u}du-\int\limits_{-c(x-b)}^{c(x-b)}\frac{\sin{v}}{v}dv.
+$$
+Так как интеграл Дирихле $\int_{-\infty}^{\infty}\frac{\sin{x}}{x}dx$ сходится и 
+равен $\pi$ (<a href="../math_analysis/math_analysis13.2.2.html#Example13.2.8">пример 13.2.8 MA</a>), 
+то можем перейти к пределу при $c\to\infty$, тогда
+$$
+\lim_{c\to\infty}\int\limits_{-c(x-a)}^{c(x-a)}\frac{\sin{u}}{u}du=\begin{cases}-\pi, & x&lta \\ 0, & x=a \\ \pi, & x&gta\end{cases},
+$$
+следовательно, 
+$$
+\lim_{c\to\infty}I_c(x)=\begin{cases}0, & (x&lta\vee{x}&gtb) \\ \pi, & (x=a\vee{x}=b) \\ 2\pi, & a&ltx&ltb\end{cases}.
+$$
+Пусть $g(s,t):=\int_s^t\frac{\sin{u}}{u}du$, тогда $g(s,t)$ равномерно непрерывна <i>(?)</i> и сходится к $\pi$ при $s\to\infty$, $t\to\infty$, 
+следовательно, существует $M>0$ такое, что $|g(s,t)|&ltM$ для любого $(s,t)\in\mathbb{R}^2$. 
+Тогда по теореме Лебега о мажорируемой сходимости (<a href="./probability_theory4.1.html#Theorem4.7">теорема 4.7</a>), 
+можно перейти к пределу при $c\to\infty$ под знаком интеграла $\int\limits_{-\infty}^{\infty}I_c(x)dF(x)$, то есть
+\begin{multline*}
+\lim_{c\to\infty}\frac1{2\pi}\int\limits_{-\infty}^{\infty}I_c(x)dF(x)=\frac1{2\pi}\int\limits_{-\infty}^{\infty}\lim_{c\to\infty}I_c(x)dF(x)
+\frac1{2\pi}\left(\int\limits_{\{a\}}\pi{d}F(x)+\int\limits_{a+0}^{b-0}2\pi{d}F(x)+\int\limits_{\{b\}}\pi{d}F(x)\right)=\\=
+\frac{F(a)-F(a-0)}{2}+F(b-0)-F(a+0)+\frac{F(b)-F(b-0)}{2}=F(b)-F(a),
+\end{multline*}
+где последнее равенство в силу непрерывности функции $F(x)$ в точках $a$ и $b$.
+<br><br>
+<p id="Theorem6.7"><b>Теорема 6.7: Теорема об единственности характеристической функции.</b><br>
+Если функция $\varphi(t)$ является характеристической функцией для некоторых случайных величин, то у всех этих случайных величин одна и таже функция распределения.
+<p><b>Доказательство:</b><br>
+Пусть $F(x)$ функция распределения случайной величины, характеристической функцией для которой является функция $\varphi(t)$.
+Обозначим $G$ множество точек непрерывности функции $F(x)$, $a,b\in{G}$, $a&ltb$. Тогда по теореме 6.6
+$$F(b)-F(a)=\frac1{2\pi}\lim_{c\to\infty}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt.$$
+По определению функции распределения случайной величины существует предел $\lim_{a\to-\infty}F(a)=0$, следовательно, 
+существует предел выражения стоящего в левой части равенства при $a\to-\infty$, следовательно, 
+существует аналогичный предел выражения стоящего в правой части равенства. То есть для любого $b\in{G}$
+$$F(b)=\frac1{2\pi}\lim_{a\to-\infty}\lim_{c\to\infty}\int\limits_{-\infty}^{\infty}\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt.$$
+Так как по определению функции распределения она непрерывна слева в любой точке, то для любого $x\in\mathbb{R}$
+$$F(x)=\frac1{2\pi}\lim_{G\ni{b}\to{x}-0}\lim_{a\to-\infty}\lim_{c\to\infty}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt.$$
+Таким образом, значение функции $F(x)$ однозначно определяется функцией $\varphi(t)$ и не зависит от вида случайной велечины.
+<br><br>
+<p id="Example6.4"><b>Пример 6.4: Применение теоремы единственности х. ф.</b>
+<ol>
+<li>
+Пусть независимые случайные величины $\xi$ и $\eta$ имеют пуассоновское распределение $\xi\sim\Pi(\lambda_1)$, $\eta\sim\Pi(\lambda_2)$. 
+Тогда по п. 4 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a>
+$$\varphi_{\xi}(t)=e^{\lambda_1(e^{it}-1)},\,\varphi_{\eta}(t)=e^{\lambda_2(e^{it}-1)},$$
+следовательно, по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>
+$$\varphi_{\xi+\eta}(t)=\varphi_{\xi}(t)\varphi_{\eta}(t)=e^{(\lambda_1+\lambda_2)(e^{it}-1)}.$$
+Так как последнее выражение есть характеристическая функция для функции распределения $\Pi(\lambda_1+\lambda_2)$, 
+то по теореме 6.7 все случайные величины, имеющие характеристическую функцию 
+$\exp{\left((\lambda_1+\lambda_2)(e^{it}-1)\right)}$ в том числе и $\xi+\eta$, имеют функцию распределения $\Pi(\lambda_1+\lambda_2)$. 
+Таким образом, с помощью аппарата характеристических функций получен результат <a href="./probability_theory4.3.html#Theorem4.10">теоремы 4.10</a>.
+</li>
+<li>
+Пусть независимые случайные величины $\xi$ и $\eta$ имеют нормальное распределение $\xi\sim{N}(\mu_1,\sigma^2_1)$, $\eta\sim{N}(\mu_2,\sigma^2_2)$. 
+Тогда по п. 8 <a href="./probability_theory6.1.html#Example6.3">примера 6.3</a>
+$$\varphi_{\xi}(t)=\exp{\left(it\mu_1-\frac{\sigma^2_1t^2}{2}\right)},\,\varphi_{\eta}(t)=\exp{\left(it\mu_2-\frac{\sigma^2_2t^2}{2}\right)},$$
+следовательно, по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>
+$$\varphi_{\xi+\eta}(t)=\varphi_{\xi}(t)\varphi_{\eta}(t)=\exp{\left(it(\mu_1+\mu_2)-\frac{t^2}{2}(\sigma^2_1+\sigma^2_2)\right)}.$$
+Таким образом, аналогично п. 1 $\xi+\eta\sim{N}(\mu_1+\mu_2,\sigma^2_1+\sigma^2_2)$, 
+что уже было показано в <a href="./probability_theory4.3.html#Theorem4.11">теореме 4.11</a>.
+</li>
+</ol>
+<br>
+<p id="Theorem6.8"><b>Теорема 6.8:</b>
+Пусть $\varphi(t)$ характеристическая функция случайной величины $\xi$, $\varphi(t)$ абсолютно интегрируема, 
+то есть $\int_{-\infty}^{\infty}|\varphi(t)|dt<\infty$. Тогда случайная величина $\xi$ абсолютно непрерывна и ее плотность распределения равна
+$$p(x)=\frac1{2\pi}\int\limits_{-\infty}^{\infty}e^{-itx}\varphi(t)dt.$$
+<p><b>Доказательство:</b><br>
+Так как $\int_{-\infty}^{\infty}|\varphi(t)|dt<\infty$ и для любого $x\in\mathbb{R}$ $|e^{-itx}|=1$, 
+то для любого $x\in\mathbb{R}$ $\int_{-\infty}^{\infty}e^{-itx}\varphi(t)dt<\infty$. Для любого $x\in\mathbb{R}$ обозначим
+$$p(x):=\frac1{2\pi}\int\limits_{-\infty}^{\infty}e^{-itx}\varphi(t)dt.$$
+Докажем, что функция $p(x)$ является плотностью распределения случайной величины $\xi$. 
+<br>
+Для любого $h\in\mathbb{R}$
+$$|p(x+h)-p(x)|=\frac1{2\pi}\left|\int\limits_{-\infty}^{\infty}(e^{-it(x+h)}-e^{-itx})\varphi(t)dt\right|\leq
+\frac1{2\pi}\int\limits_{-\infty}^{\infty}|e^{-ith}-1|\varphi(t)dt.$$
+Переходим к пределу при $h\to0$ <i>(это возможно по <a href="../math_analysis/math_analysis13.2.2.html#Theorem13.2.1">теореме 13.2.1 MA</a> 
+так как $e^{-ith}$ сходится к 1 равномерно при $h\to0$)</i>
+$$\lim_{h\to0}|p(x+h)-p(x)|\leq\int\limits_{-\infty}^{\infty}\lim_{h\to0}|e^{-ith}-1|\varphi(t)dt=0.$$
+Тогда по <a href="../math_analysis/math_analysis5.5.1.html#Statement5.5.3">утверждению 5.5.3 MA</a> функция $p(x)$ непрерывна на $\mathbb{R}$, следовательно, 
+по <a href="../math_analysis/math_analysis8.2.html#Statement8.2.4">утверждению 8.2.4 MA</a> она интегрируема на $\mathbb{R}$. 
+То есть для любых $a,b\in\mathbb{R}$ существует интеграл
+$$
+\int\limits_a^bp(x)dx=\frac1{2\pi}\int\limits_a^b\left(\int\limits_{-\infty}^{\infty}e^{-itx}\varphi(t)dt\right)dx.
+$$
+Так как функция $|e^{-itx}\varphi(t)|=|e^{-itx}||\varphi(t)|=|\varphi(t)|$ ограничена и непрерывна почти всюду на $\mathbb{R}$ в силу сходимости интеграла 
+$\int_{-\infty}^{\infty}|\varphi(t)|dt$, то двойной интеграл по $[a,b]\times(-\infty,\infty)$ существует, следовательно, 
+по теореме Фубини  (<a href="../math_analysis/math_analysis14.3.3.html#Theorem14.3.4">теорема 14.3.4 MA</a>) можно поменять порядок интегрирования
+$$
+\int\limits_a^bp(x)dx=\frac1{2\pi}\int\limits_{-\infty}^{\infty}\varphi(t)\left(\int\limits_a^be^{-itx}dx\right)dt=
+\frac1{2\ pi}\int\limits_{-\infty}^{\infty}\varphi(t)\frac{e^{-itb}-e^{-ita}}{-it}dt=
+\frac1{2\pi}\lim_{c\to\infty}\int\limits_{-c}^c\frac{e^{-ita}-e^{-itb}}{it}\varphi(t)dt=F_{\xi}(b)-F_{\xi}(a),
+$$
+где последнее равенство по <a href="#Theorem6.6">теореме 6.6</a>. Таким образом, получено $$\int_a^bp(x)dx=F_{\xi}(b)-F_{\xi}(a).$$ 
+Переходя к пределу при $b\to-\infty$, получим для любого $b\in\mathbb{R}$
+$$F_{\xi}(b)=\int\limits_{-\infty}^bp(x)dx.$$
+<br>
+Докажем от противного, что функция $p(x)$ неотрицательна. Предположим, что существует точка $x_0\in\mathbb{R}$ такая, что $p(x_0)<0$, 
+тогда по п. 2  <a href="../math_analysis/math_analysis5.5.3.html#Theorem5.5.1">теоремы 5.5.1 MA</a> существует окрестность $U(x_0)$ такая, 
+что для любого $x\in{U}(x_0)$ $p(x)<0$. Выберем из этой окрестности точки 
+$a,b\in{U}(x_0)$, $a&ltb$, тогда для любого $x\in[a,b]$ $p(x)<0$ и $F_{\xi}(b)-F_{\xi}(a)=\int_a^bp(x)dx<0$. 
+Последнее неравенство противоречит неубыванию функции распределения $F_{\xi}(x)$.
+<br>
+Таким образом, функция $p(x)$ удовлетворяет определению плотности распределения случайной величины $\xi$.
+
+<h5 id="6.4">6.4 Теорема непрерывности для характеристических функций.</h5>
+
+<p id="Definition6.2"><b>Определение 6.2:</b>
+Будем говорить, что последовательность неубывающих ограниченных в совокупности функций $\{F_n(x)\}$ сходится в основном к неубывающей <i>(?)</i> функции $F(x)$, 
+если для любой точки непрерывности функции $F(x)$
+$$\lim_{n\to\infty}F_n(x)=F(x).$$
+<br>
+<p id="Theorem6.9"><b>Теорема 6.9:</b>
+Пусть $M$ всюду плотное множество в $\mathbb{R}$ (<a href="../math_analysis/math_analysis15.1.1.html#Definition15.1.1.1">определение 15.1.1.1 MA</a>). 
+Последовательность неубывающих функций $\{F_n(x)\}$ ограничена в совокупности. Для любого $x\in{M}$ существует предел
+$\lim_{n\to\infty}F_n(x)=F(x)$. Тогда последовательность $\{F_n(x)\}$ сходится в основном к функции $F(x)$.
+<p><b>Доказательство:</b><br>
+Фиксируем $x\in\mathbb{R}$ точку непрерывности функции $F(x)$. Так как $\overline{M}=\mathbb{R}$, то существуют точки $x',x''\in{M}$ такие, что $x'&ltx&ltx''$. 
+Тогда для любого $n\in\mathbb{N}$ $F_n(x')\leq{F}_n(x)\leq{F}_n(x'')$, переходя к пределу при $n\to\infty$ получим
+$$F(x')\leq\varliminf_{n\to\infty}F_n(x)\leq\varlimsup_{n\to\infty}F_n(x)\leq{F}(x'').$$
+Так как множество $M$ всюду плотное, то любая точка из $\mathbb{R}$ является предельной для него. 
+Следовательно, можем переходить к пределу по множеству $M$ при $x'\to{x}-0$, $x''\to{x}+0$, 
+причем по п. 3 <a href="../math_analysis/math_analysis5.1.html#Statement5.1.3">утверждения 5.1.3 MA</a> 
+значения этих пределов будут равны значениям аналогичных пределов по $\mathbb{R}$. Таким образом, 
+$$F(x-0)\leq\varliminf_{n\to\infty}F_n(x)\leq\varlimsup_{n\to\infty}F_n(x)\leq{F}(x+0).$$
+Так как $x$ - точка непрерывности функции $F(x)$, то 
+$$F(x-0)=F(x+0)=F(x),$$ 
+что означает равенство верхнего и нижнего пределов последовательности $F_n(x)$ при $n\to\infty$, то есть
+$$\lim_{n\to\infty}F_n(x)=F(x).$$
+<br>
+<p id="Theorem6.10"><b>Теорема 6.10: Первая теорема Хелли.</b><br>
+Всякая последовательность неубвающих, ограниченных в совокупности функций допускает выделение подпоследовательности 
+сходящейся в основном к некоторой непрерывной слева функции.
+<p><b>Доказательство:</b><br>
+Пусть $\{F_n(x)\}$ последовательность неубывающих ограниченных в совокупности функций. 
+Пусть $M:=\{r_1,\ldots,r_n,\ldots\}$ некоторое счетное всюду плотное в $\mathbb{R}$ множество (как минимум одно такое существует, например, 
+множество $\mathbb{Q}$). Тогда числовая последовательность $\{F_n(r_1)\}$ ограничена, следовательно, 
+по лемме Больцано-Вейерштрасса (<a href="../math_analysis/math_analysis4.4.html#Lemma4.4.1">лемма 4.4.1 MA</a>) 
+она допускает выделение сходящейся подпоследовательности 
+$$F_{1,1}(r_1),\ldots,F_{1,n}(r_1),\ldots$$
+Далее рассмотрим последовательность 
+$$F_{1,1}(r_2),\ldots,F_{1,n}(r_2),\ldots$$ 
+она ограничена, следовательно, допускает выделение сходящейся подпоследовательности 
+$$F_{2,1}(r_2),\ldots,F_{2,n}(r_2),\ldots.$$
+Таким же образом индуктивно для любого $k\in\mathbb{N}$  построим последовательность $\{F_{k,n}(x)\}$. 
+Определим функцию $F(x):\mathbb{R}\to\mathbb{R}$ такую, что для любого $k\in\mathbb{N}$ 
+$$F(r_k):=\lim_{n\to\infty}F_{k,n}(r_k).$$
+Так как $\overline{M}=\mathbb{R}$, то для любого $x\in\mathbb{R}\backslash{M}$ найдется убывающая последовательность $\{r'_k\}$ из $M$ такая, 
+что $\lim_{k\to\infty}r'_k=x$. Тогда определим функцию $F(x)$ в точке $x$ как
+$$F(x):=\lim_{k\to\infty}F(r'_k),$$
+тогда функция $F(x)$ будет непрерывна слева на $\mathbb{R}$ и, очевидно, неубывающей.
+Так как по <a href="../math_analysis/math_analysis4.4.html#Statement4.4.3">утверждению 4.4.3 MA</a> 
+подпоследовательность сходящейся последовательности сходится к тому же пределу, то 
+$$\forall{k}\in\mathbb{N}(\forall{s}\in\overline{1,k}(\lim_{n\to\infty}F_{s,n}(r_s)=F(r_s))).$$
+Тогда для любого $k\in\mathbb{N}$
+$$\lim_{n\to\infty}F_{n,n}(r_k)=F(r_k).$$
+<i>Это верно просто потому, что для любого $k\in\mathbb{N}$ начиная с $k$-того элемента последовательность $\{F_{n,n}(r_k)\}$ 
+является подпоследовательностью последовательности $\{F_{k,n}(r_k)\}$}.</i>
+Таким образом, для любого $x\in{M}$
+$$\lim_{n\to\infty}F_{n,n}(x)=F(x),$$
+следовательно, по теореме 6.9 последовательность функций $\{F_{n,n}(x)\}$ сходится в основном к функции $F(x)$.
+<br><br>
+<p id="Theorem6.11"><b>Теорема 6.11: Вторая теорема Хелли.</b><br>
+Пусть функция $f(x)$ непрерывна на отрезке $[a,b]$. 
+Последовательность неубывающих ограниченных в совокупности функций $\{F_n(x)\}$ сходится в основном к функции $F(x)$ на отрезке $[a,b]$. 
+Функция $F(x)$ непрерывна в точках $a$ и $b$. Тогда 
+$$\lim_{n\to\infty}\int\limits_a^bf(x)dF_n(x)=\int\limits_a^bf(x)dF(x).$$
+<p><b>Доказательство:</b><br>
+Так как функции последовательности $\{F_n(x)\}$ ограничены в совокупности, то существует $C\in\mathbb{R}$ такое, 
+что для любых $x\in\mathbb{R}$, $n\in\mathbb{N}$ $|F_n(x)|\leq{C}$.
+Фиксируем $\varepsilon>0$. Так как $f(x)\in{C}[a,b]$, то существует разбиение
+$$x_0:=a&ltx_1&lt\ldots&ltx_{N-1},x_N:=b$$
+такое, что 
+$$\forall{k}\in\overline{1,N-1}\left(\forall{x}\in[x_k,x_{k+1}]\left(|f(x)-f(x_k)|<\frac{\varepsilon}{8C}\right)\right).$$
+Введем функцию 
+$$f_{\varepsilon}(x):=\begin{cases}f(x_k), & x\in[x_k,x_{k+1}) \\ f(x_N), & x=x_N\end{cases},$$
+тогда для любого $x\in[a,b]$ $|f(x)-f_{\varepsilon}(x)|<\varepsilon/8C$.
+Тогда для любого $n\in\mathbb{N}$
+\begin{multline*}
+\left|\int\limits_a^bf(x)dF(x)-\int\limits_a^bf(x)dF_n(x)\right|\leq\left|\int\limits_a^bf(x)dF(x)-\int\limits_a^bf_{\varepsilon}(x)dF(x)\right|+
+\left|\int\limits_a^bf_{\varepsilon}(x)dF(x)-\int\limits_a^bf_{\varepsilon}(x)dF_n(x)\right|+\left|\int\limits_a^bf(x)dF_n(x)-\int\limits_a^bf_{\varepsilon}(x)dF_n(x)\right|\leq\\\leq
+\int\limits_a^b|f(x)-f_{\varepsilon}(x)|dF(x)+\left|\int\limits_a^bf_{\varepsilon}(x)dF(x)-\int\limits_a^bf_{\varepsilon}(x)dF_n(x)\right|+
+\int\limits_a^b|f(x)-f_{\varepsilon}(x)|dF_n(x)\leq\\\leq
+\frac{\varepsilon}{8C}(F(b)-F(a))+\left|\int\limits_a^bf_{\varepsilon}(x)dF(x)-\int\limits_a^bf_{\varepsilon}(x)dF_n(x)\right|+\frac{\varepsilon}{8C}(F_n(b)-F_n(a)).
+\end{multline*}
+Обозначим второе слагаемое через $I$.Так как функция $F(x)$ непрерывна в точках $a$ и $b$, то $F(a)=\lim_{n\to\infty}F_n(a)\leq{C}$, 
+$F(b)=\lim_{n\to\infty}F_n(b)\leq{C}$, следовательно, $F(b)-F(a)\leq2C$ и 
+$$\left|\int\limits_a^bf(x)dF(x)-\int\limits_a^bf(x)dF_n(x)\right|\leq\frac{\varepsilon}{2}+I.$$
+Так как $f(x)\in{C}[a,b]$, то по п.1 <a href="../math_analysis/math_analysis5.5.3.html#Theorem5.5.3">теоремы 5.5.3 MA</a> существует $M\in\mathbb{R}$ такое, 
+что для любого $x\in[a,b]$ $|f(x)|\leq{M}$, тогда
+$$
+I=\left|\sum_{k=0}^{N-1}f(x_k)(F(x_k)-F(x_{k+1}))-\sum_{k=0}^{N-1}f(x_k)(F_n(x_k)-F_n(x_{k+1}))\right|\leq
+|M(F(a)-F(b))-M(F_n(b)-F_n(b))|\leq{M}|F(a)-F_n(a)|+M|F(b)-F_n(b)|
+$$
+Так как функция $F(x)$ непрерывна в точках $a$ и $b$ и $\{F_n(x)\}$ сходится в основном к $F(x)$, 
+то $F_n(a)\to{F}(a)$, $F_n(b)\to{F}(b)$ при $n\to\infty$, следовательно, 
+$$\exists{n_0}\in\mathbb{N}:\forall{n}>n_0\left(|F(a)-F_n(a)|<\frac{\varepsilon}{4M}\,\wedge|F(b)-F_n(b)|<\frac{\varepsilon}{4M}\right).$$
+Тогда для любого $n>n_0$ $I<\varepsilon/2$ и 
+$$\left|\int\limits_a^bf(x)dF(x)-\int\limits_a^bf(x)dF_n(x)\right|<\varepsilon.$$
+<i>В лекциях приведено неточное доказательство, в котором требуется непрерывность функции $F(x)$ в точках $x_0,\ldots,x_N$.</i>
+<br><br>
+<p id="Theorem6.12"><b>Теорема 6.12: Вторая обобщенная теорема Хелли.</b><br>
+Пусть функция $f(x)$ непрерывна и ограничена на $\mathbb{R}$. 
+Последовательность функций распределения $\{F_n(x)\}$ сходится в основном к функции распределения $F(x)$, тогда
+$$\lim_{n\to\infty}\int\limits_{-\infty}^{\infty}f(x)dF_n(x)=\int\limits_{-\infty}^{\infty}f(x)dF(x).$$
+<p><b>Доказательство:</b><br>
+Так как по п. 9 <a href="./probability_theory2.1.html#Statement2.1">утверждения 2.1</a> число точек разрыва функции $F(x)$ не более чем счетно, 
+то множетсво $C(F)$ точек непрерывности функции $F(x)$ всюду плотно, 
+так что можно перходить к пределу по множеству $C(F)$ при $x\to{a}$ для любого $a\in\mathbb{R}$.
+
+Для любого $n\in\mathbb{N}$ и любых $A,B\in{C}(F)$
+$$
+\left|\int\limits_{-\infty}^{\infty}f(x)dF(x)-\int\limits_{-\infty}^{\infty}f(x)dF_n(x)\right|\leq
+\left|\int\limits_{-\infty}^Af(x)dF(x)-\int\limits_{-\infty}^Af(x)dF_n(x)\right|+
+\left|\int\limits_A^Bf(x)dF(x)-\int\limits_A^Bf(x)dF_n(x)\right|+\left|\int\limits_B^{\infty}f(x)dF(x)-\int\limits_B^{\infty}f(x)dF_n(x)\right|
+$$
+Обозначим слагаемые в последнем выражении как $I_1(A,n)$, $I_2(A,B,n)$ и $I_3(B,n)$ соответственно. Фиксируем $\varepsilon>0$.
+Обозначим $M:=\sup_{x\in\mathbb{R}}|f(x)|$, тогда
+$$
+I_1(A,n)\leq\int\limits_{-\infty}^A|f(x)|dF(x)-\int\limits_{-\infty}^A|f(x)|dF_n(x)\leq
+{M}(F(A)-F(-\infty)+F_n(A)-F_n(-\infty))=M(F(A)+F_n(A))
+$$
+Так как $F(-\infty)=0$, 
+$$\exists{A'}\in{C}(F):F(A')<\frac{\varepsilon}{9M}.$$
+так как $F_n(A')\to{F}(A')$ при $n\to\infty$, то
+$$\exists{n}_1\in\mathbb{N}:\forall{n}&gtn_1\left(|F_n(A')-F(A')|<\frac{\varepsilon}{9M}\right)\Rightarrow\forall{n}&gtn_2\left(F_n(A')<\frac{2\varepsilon}{9M}\right).$$
+Таким образом,  
+$$\forall{n}&gtn_1\left(I_1(A',n)&ltM\left(\frac{\varepsilon}{9M}+\frac{2\varepsilon}{9M}\right)=\frac{\varepsilon}{3}\right).$$
+Аналогично имеем
+$$I_3(B,n)\leq{M}(F(\infty)-F(B)+F_n(\infty)-F_n(B)).$$
+Так как $F(B)\to{F}(\infty)$ при $B\to\infty$ то 
+$$\exists{B'}\in{C}(F):|F(\infty)-F(B)|<\frac{\varepsilon}{9M}$$
+Так как $F_n(B')\to{F}(B')$ при $n\to\infty$ и для любого $n\in\mathbb{N}$ $F(\infty)=F_n(\infty)=1$, то
+$$
+\exists{n}_2\in\mathbb{N}:\forall{n}&gtn_2\left(|F(B')-F_n(B')|\leq\frac{\varepsilon}{9M}\right)\Rightarrow
+\forall{n}&gtn_2\left(|F_n(\infty)-F_n(B')|\leq|1-F(B')|+|F(B')-F_n(B')|<\frac{2\varepsilon}{9M}\right).
+$$
+Таким образом,
+$$\forall{n}&gtn_2\left(I_3(B',n)&ltM\left(\frac{\varepsilon}{9M}+\frac{2\varepsilon}{9M}\right)=\frac{\varepsilon}{3}\right).$$
+По теореме 6.11
+$$\exists{n}_3\in\mathbb{N}:\forall{n}\geq{n_1}\left(I_2(A',B',n)<\frac{\varepsilon}{3}\right).$$
+Таким образом, для любого $n>\max{(n_1,n_2,n_3)}$
+$$\left|\int\limits_{-\infty}^{\infty}f(x)dF(x)-\int\limits_{-\infty}^{\infty}f(x)dF_n(x)\right|\leq{I}_1(A',n)+I(A',B',n)+I(B',n)<\varepsilon.$$
+<br>
+<p id="Theorem6.13"><b>Теорема 6.13: Прямая теорема непрерывности для х. ф.</b><br>
+Пусть последовательность функций распределения $\{F_n(x)\}$ сходится в основном к функции распределения $F(x)$. 
+Тогда последовательность характерестических функций $\{\varphi_n(t)\}$ соответствующих распределениям последовательности $\{F_n(x)\}$ 
+сходится равномерно на любом отрезке к характеристической функции $\varphi(t)$ соответствующей распределению $F(x)$.
+<p><b>Доказательство:</b><br>
+Для любого $n\in\mathbb{N}$
+$$\varphi_n(t):=\int\limits_{-\infty}^{\infty}e^{itx}dF_n(x).$$
+Так как функция $e^{itx}$ непрерывна и ограничена на $\mathbb{R}$, то поточечная сходимость $\varphi_n(t)\to\varphi(t)$ при $n\to\infty$ следует из теоремы 6.12. 
+Равномерная сходимость следует из доказательства теорем 6.11, 6.12 так как оценки интегралов не зависят от $t$.
+<br><br>
+<p id="Theorem6.14"><b>Теорема 6.14: Обратная теорема непрерывности для х. ф.</b><br>
+Пусть последовательность характеристических функций $\{\varphi_n(t)\}$ сходится к характеристической функции $\varphi(t)$. 
+Тогда соответствующая последовательность функций распределения $\{F_n(x)\}$ сходится в основном к функции распределения $F(x)$ такой, 
+что $\varphi(t)$ является характеристической функцией для $F(x)$.
+<p><b>Доказательство:</b><br>
+Так как $\{F_n(x)\}$ последовательность неубывающих, ограниченных в совокупности функций, 
+то по первой теореме Хелли (<a href="#Theorem6.10">теорема 6.10</a>) существует последовательность $\{n_k\}$ из $\mathbb{N}$ такая, 
+что $\{F_{n_k}\}$ сходится в основном к $F(x)$ при $k\to\infty$. Для того чтобы доказать, 
+что $F(x)$ является функцией распределения (по <a href="./probability_theory2.1.html#Statement2.1">теореме 2.1</a>) достаточно доказать, 
+что $F(-\infty)=0$ и $F(\infty)=1$. Так как для любого $n\in\mathbb{N}$ $F_n(-\infty)=0$, 
+$F_n(\infty)=1$ и $F(x)$ неубывает (то есть непрерывна почти всюду, см. п.п. 1,2 <a href="../math_analysis/math_analysis5.5.5.html#Task5.5.6">задачи 5.5.6 MA</a>), 
+то можно утверждать, что $0\leq{F}(-\infty)\leq{F}(\infty)\leq1$. Таким образом, $0\leq{F}(\infty)-F(-\infty)\leq1$ и
+$$F(\infty)-F(-\infty)=1\Leftrightarrow(F(-\infty)=0\,\wedge{F}(\infty)=1).$$
+Докажем от противного, что $\delta:=F(\infty)-F(-\infty)=1$. Предположим, что $0\leq\delta<1$ и зафиксируем $\varepsilon<1-\delta$.
+
+Так как по п. 3 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> $\varphi(t)$ непрерывна, 
+то по п. 1 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> 
+$\varphi(t)\to\varphi(0)=1$ при $t\to0$. Следовательно,
+$$\exists\tau>0:\forall{t}\in[-\tau,\tau]\left(|\varphi(t)-1|<\frac{\varepsilon}{2}\right)\Rightarrow
+\forall{t}\in[-\tau,\tau]\left(1-\frac{\varepsilon}{2}<\varphi(t)<1+\frac{\varepsilon}{2}\right).$$
+По <a href="../math_analysis/math_analysis8.3.html#Corollary8.3.2">следствию 8.3.2 MA</a>
+$$\exists{t}_0\in[-\tau,\tau]:\int\limits_{-\tau}^{\tau}\varphi(t)dt=\varphi(t_0)2\tau>2\tau\left(1-\frac{\varepsilon}{2}\right).$$
+То есть
+$$\left|\frac1{2\tau}\int\limits_{-\tau}^{\tau}\varphi(t)dt\right|>1-\frac{\varepsilon}{2}>\delta+\frac{\varepsilon}{2}.\quad(*)$$
+Так как множество точек разрыва функции $F(x)$ не более чем счетно, то существует точка непрерывности $A$ функции $F(x)$ такая, 
+что $A>4/(\varepsilon\tau)$ и $-A$ тоже точка непрерывности функции $F(x)$.
+Так как для любого $k\in\mathbb{N}$ $\varphi_{n_k}(t)$ является характерестической функцией для $F_{n_k}$, то для любого $k\in\mathbb{N}$
+$$
+\int\limits_{-\tau}^{\tau}\varphi_{n_k}(t)dt=\int\limits_{-\tau}^{\tau}\left(\int\limits_{-\infty}^{\infty}e^{itx}dF_{n_k}(x)\right)dt=
+\int\limits_{-\infty}^{\infty}\left(\int\limits_{-\tau}^{\tau}e^{itx}dt\right)dF_{n_k}(x)=
+\int\limits_{|x|\leq{A}}\left(\int\limits_{-\tau}^{\tau}e^{itx}dt\right)dF_{n_k}(x)+\int\limits_{|x|>A}\left(\int\limits_{-\tau}^{\tau}e^{itx}dt\right)dF_{n_k}(x).
+$$
+Обозначим слагаемые в последнем выважении $I_1(k)$ и $I_2(k)$ соответственно. Тогда
+\begin{multline*}
+|I_1(k)|\leq\int\limits_{|x|\leq{A}}\left|\int\limits_{-\tau}^{\tau}e^{itx}dt\right|dF_{n_k}(x)\leq
+\int\limits_{|x|\leq{A}}\left(\int\limits_{-\tau}^{\tau}|e^{itx}|dt\right)dF_{n_k}(x)=
+2\tau\int\limits_{|x|\leq{A}}dF_{n_k}(x)=2\tau|F_{n_k}(A)-F_{n_k}(-A)|\leq\\\leq
+2\tau\bigl(|F_{n_k}(A)-F(A)|+|F(A)-F(-A)|+|F(-A)-F_{n_k}(-A)|\bigr)
+\end{multline*}
+Здесь по неубыванию $F(x)$ $|F(A)-F(-A)|\leq|F(\infty)-F(-\infty)|=\delta$. Так как $A$ и $-A$ точки непрерывности $F(x)$, 
+то $F_{n_k}(\pm{A})\to{F}(\pm{A})$ при $k\to\infty$, то есть
+$$\exists{k}_1\in\mathbb{N}:\forall{k}&gtk_1\left(|F_{n_k}(A)-F(A)|<\frac{\varepsilon}{8}\right),$$
+$$\exists{k}_2\in\mathbb{N}:\forall{k}&gtk_2\left(|F_{n_k}(-A)-F(-A)|<\frac{\varepsilon}{8}\right).$$
+Тогда для любого $k&gtk_3:=\max{(k_1,k_2)}$
+$$
+|I_1(k)|\leq2\tau\left(\delta+\frac{\varepsilon}{4}\right).
+$$
+Так как
+$$\left|\int\limits_{-\tau}^{\tau}e^{itx}dt\right|=\left|\frac{e^{i\tau{x}}-e^{-i\tau{x}}}{ix}\right|=\left|\frac{2i\sin{(\tau{x})}}{ix}\right|\leq\frac2{|x|},$$
+то по выбору $A$
+$$
+|I_2(k)|\leq\int\limits_{|x|&gtA}\frac2{|x|}dF_{n_k}(x)\leq\frac2{A}\int\limits_{|x|>A}dF_{n_k}(x)\leq\frac2{A}<\frac{2\varepsilon\tau}{4}=\frac{\varepsilon\tau}{2}.
+$$
+Таким образом, для любого $k&gtk_3$
+$$
+\left|\frac1{2\tau}\int\limits_{-\tau}^{\tau}\varphi_{n_k}(t)dt\right|=\frac1{2\tau}|I_1(k)+I_2(k)|<
+\frac1{2\tau}\left(2\tau\left(\delta+\frac{\varepsilon}{4}\right)+2\tau\frac{\varepsilon}{4}\right)=\delta+\frac{\varepsilon}{2},
+$$
+тогда переходя к пределу при $k\to\infty$ имеем
+$$
+\left|\frac1{2\tau}\int\limits_{-\tau}^{\tau}\varphi(t)dt\right|\leq\delta+\frac{\varepsilon}{2},
+$$
+что противоречит неравенству $(*)$. Следовательно, $\delta=1$, то есть $F(\infty)=1$, $F(-\infty)=0$ и $F(x)$ является функцией распределения.
+
+Пусть $\{n'_k\}$ последовательность из $\mathbb{N}$ такая, что $F_{n'_k}(x)$ сходится в основном к $F_1(x)$ при $k\to\infty$. 
+Тогда по доказанному $F_1(x)$ - функция распределения. Так как у сходящейся последовательности все подпоследовательности сходятся к тому же пределу, то 
+$$\varphi_{n'_k}(t)\xrightarrow[k\to\infty]{}\varphi(t),\,\varphi_{n_k}(t)\xrightarrow[k\to\infty]{}\varphi(t).$$
+Тогда по теореме 6.13 $\varphi(t)$ является характеристической функцией для распределений $F(x)$, $F_1(x)$, следовательно, 
+по <a href="#Theorem6.7">теореме 6.7</a> $F(x)=F_1(x)$. 
+Таким образом, любая подпоследовательность последовательности $\{F_n(x)\}$ сходится в основном к одной и той же функции, 
+которую мы обозначили $F(x)$. Предположим, что $\{F_n(x)\}$ не сходится к $F(x)$. 
+Тогда существуют $\varepsilon>0$, $x_0\in\mathbb{R}$ точка непрерывности функции $F(x)$ и последовательность $\{m_k\}$ из $\mathbb{N}$ такие, что
+$$\forall{k}\in\mathbb{N}(|F_{m_k}(x_0)-F(x_0)|\geq\varepsilon).$$
+Однако, по <a href="#Theorem6.10">теореме 6.10</a> из последовательности $\{m_k\}$ можно выделить подпоследовательность $\{m'_k\}$ такую, 
+что последовательность $\{F_{m'_k}(x)\}$ сходится в основном к $F(x)$. То есть 
+$$\exists{k_0}\in\mathbb{N}:\forall{k}>k_0(|F_{m'_k}(x_0)-F(x)|<\varepsilon).$$
+И так как $\{m'_k\}$ подпоследовательность из $\{m_k\}$, то получено противоречие, то есть $F_n(x)$ сходится в основном к $F(x)$.
+<br><br>
+<p id="Task6.1"><b>Задача 6.1: </b>
+Пусть для любого $n\in\mathbb{N}$ случайная величина $\xi_n$ распределена равномерно, на $[-n,n]$, доказать, 
+что для последовательности функций распределения $\{F_{\xi_n}(x)\}$ <a href="#Theorem6.13">теорема 6.13</a> не выполняется.
+<br>
+Действительно, для любого $n\in\mathbb{N}$ $F_{\xi_n}(x)=\frac1{2}+\frac{x}{2n}$, 
+$p_{\xi_n}(x)=\frac1{2n}$ для $x\in[-n,n]$ и $p_{\xi_n}=0$ для $x\not\in[-n,n]$, тогда 
+$$
+\varphi_{\xi_n}(t)=\int\limits_{-\infty}^{\infty}e^{itx}p_{\xi_n}(x)dx=\frac1{2n}\int\limits_{-n}^ne^{itx}dt=
+\frac{e^{itn}-e^{-itn}}{2itn}=\frac{\sin{(tn)}}{tn}\xrightarrow[n\to\infty]{}0.
+$$
+Функция $\varphi(t)\equiv0$ не является характеристической по п. 1 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> ($\varphi(0)\neq1$).
+
+<a href="#Theorem6.13">Теорема 6.13</a> не работает так как не выполнены её условия, 
+а именно последовательность $\{F_n(x)\}$ сходится к функции $F(x)\equiv\frac12$, которая, 
+очевидно, не является функцией распределения.
+
+
+<br><br>
+<a href="./probability_theory6.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory7.1.html">next</a>

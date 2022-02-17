@@ -1,0 +1,174 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 10.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory9.7.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory11.1.html">next</a>
+
+$\newcommand{\UniformConv}{\substack{ \\ \longrightarrow\\ \longrightarrow \\ n\to\infty}}$
+
+<h4 id="10">10 Бесконечно делимые распределения.</h4>
+
+<h5 id="10.1">10.1 Основные свойства бесконечно делимых распределений.</h5>
+
+<p id="Definition10.1"><b>Определение 10.1:</b>
+Распределение случайной величины $\xi$ называется бесконечно делимым, 
+если для любого $n\in\mathbb{N}$ существуют независимые одинаково распределенные случайные величины $\xi_1,\ldots,\xi_n$ такие, что 
+$$\xi=\xi_1+\cdots+\xi_n.$$
+<br>
+<p id="Example10.1"><b>Пример 10.1:</b>
+Пусть $\xi\sim{N}(\mu,\sigma)$, тогда по п. 8 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a> характеристическая функция $\xi$
+$$\varphi(t)=\exp\left(it\mu-\frac{\sigma^2t^2}{2}\right).$$
+Тогда для любого $n\in\mathbb{N}$ $\varphi(t)=\varphi_n(t)^n$, где 
+$$\varphi_n(t):=\exp\left(it\frac{\mu}{n}-\frac{\sigma^2t^2}{2n}\right).$$
+В силу единственности характеристической функции $\varphi_n(t)$ является характеристической функцией распределения $N(\mu/n,\sigma^2/n)$. 
+Тогда по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>
+$$\xi=\xi_1+\cdots+\xi_n,$$
+где $\xi_1,\ldots,\xi_n$ независимы и для любого $k\in\overline{1,n}$ $\xi_k\sim{N}(\mu/n,\sigma^2/n)$
+<br><br>
+<p id="Definition10.2"><b>Определение 10.2:</b>
+Говорят, что случайная величина $\xi$ имеет обобщенное пуассоновское распределение с параметрами $a,b,\lambda\in\mathbb{R}$ если для любого $k\in\mathbb{N}_0$
+$$P\{\xi=ak+b\}=\frac{\lambda^ke^{-\lambda}}{k!}.$$
+<br>
+<p id="Example10.2"><b>Пример 10.2:</b>
+Пусть случайная величина $\xi$ имеет обобщенное пуассоновское распределение с параметрами $a$, $b$, $\lambda$, 
+тогда существует случайная величина $\eta\sim\Pi(\lambda)$ такая, что $\xi=a\eta+b$. По п. 4 <a href="./probability_theory6.1.html#Example6.2">примера 6.2</a>
+$$\varphi_{\eta}(t)=\exp\left(\lambda(e^{it}-1)\right),$$
+тогда по п. 5 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> для любого $n\in\mathbb{N}$
+$$\varphi_{\xi}(t)=e^{itb}\varphi_{\eta}(at)=\exp\left(itb+\lambda(e^{ita}-1)\right)=\varphi_n(t)^n,$$
+где 
+$$\varphi_n(t):=\exp\left(it\frac{b}{n}+\frac{\lambda}{n}(e^{ita}-1)\right)$$
+характерестическая функция обобщенного распределения пуассона с параметрами $a$, $b/n$, $\lambda/n$. Следовательно, 
+по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a> существуют независимые одинаково распределенные случайные величины $\xi_1,\ldots,\xi_n$ такие, 
+что
+$$\xi=\xi_1+\cdots+\xi_n.$$
+<br>
+<p id="Theorem10.1"><b>Теорема 10.1:</b>
+Вещественнозначная характеристическая функция случайной величины не обращается в ноль.
+<p><b>Доказательство:</b><br>
+Пусть $f(t)$ характеристическая функция распределения $F(x)$, тогда
+$$f(t)=\int\limits_{-\infty}^{\infty}e^{itx}dF(x)=\int\limits_{-\infty}^{\infty}(\cos{(tx)}+i\sin{(tx)})dF(x)=\int\limits_{-\infty}^{\infty}\cos{(tx)}dF(x)$$
+$$
+1-f(2t)=\int\limits_{-\infty}^{\infty}(1-\cos{(2tx)})dF(x)=2\int\limits_{-\infty}^{\infty}(1-\cos^2{(tx)})dF(x)=
+2\int\limits_{-\infty}^{\infty}(1-\cos{(tx)})(1+\cos{(tx)})dF(x)\leq4\int\limits_{-\infty}^{\infty}(1-\cos{(tx)})dF(x)=4(1-f(t))
+$$
+Пусть $\varphi(t)$ характеристическая функция случайной величины $\xi$, а $\overline{\varphi(t)}$ характерестическая функция случайной величины $\eta$, 
+тогда $|\varphi(t)|^2=\varphi(t)\overline{\varphi(t)}$ также является характерестической функцией (для случайной величины $\xi+\eta$). Фиксируем $\varepsilon>0$, 
+тогда, в силу непрерывности $\varphi(t)$ в нуле (п. п. 1, 3 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>), 
+существует $a\in\mathbb{R}$ такое, что 
+$$|t|\leq{a}\Rightarrow|\varphi(0)-\varphi(t)|=|1-\varphi(t)|<\varepsilon.$$
+Тогда по доказанному и в силу неравенства $|\varphi(t)|\leq1$ (п. 1 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>) для любого $t\in[-a,a]$
+$$
+1-|\varphi(2t)|\leq1-|\varphi(t)|^2\leq4(1-|\varphi(t)|^2)=4(1-|\varphi(t)|)(1+|\varphi(t)|)\leq8(1-|\varphi(t)|)<8\varepsilon.
+$$
+Следовательно,
+$$\forall{t}\in[-2a,2a](1-|\varphi(t)|<8\varepsilon).$$
+Повторив эти рассуждения $n$ раз получим, что
+$$\forall{t}\in[-2^na,2^na](1-|\varphi(t)|<8^n\varepsilon).$$
+<i>
+Из этого делается вывод, что $\varphi(t)>0$ для любого $t\in\mathbb{R}$. Однако, расширять отрезок, в котором лежит точка $t$ до бесконечности не получится, 
+так как при некотором $n\in\mathbb{N}$ $8^n\varepsilon>1$ и так как $\varepsilon$ фиксированно, а $a=a(\varepsilon)$ зависит от $\varepsilon$, 
+то доказательство видится незаконченным.
+</i>
+<p id="Theorem10.2"><b>Теорема 10.2:</b>
+Распределение суммы случайных величин с бесконечно делимыми распределениями являтется бесконечно делимым.
+<p><b>Доказательство:</b><br>
+Пусть $\xi$, $\eta$ независимые случайные величины с бесконечно делимыми распределениями. Фиксируем $n\in\mathbb{N}$, 
+тогда существуют независимые одинаково распределенные случайные величины $\xi_1,\ldots,\xi_n$;
+$\eta_1,\ldots,\eta_n$ такие, что
+$$\xi=\xi_1+\cdots+\xi_n;\,\eta=\eta_1+\cdots+\eta_n.$$
+Следовательно, по п. 4 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>
+$$\varphi_{\xi+\eta}(t)=\varphi_{\xi}(t)\varphi_{\eta}(t)=\left(\varphi_{\xi_1}(t)\right)^n\left(\varphi_{\eta_1}(t)\right)^n=
+(\varphi_{\xi_1}(t)\varphi_{\eta_1}(t))^n,$$
+где последнее выражение есть характеристическая функция случайной величины 
+$$\xi+\eta=\xi_1\eta_1+\cdots+\xi_n\eta_n.$$
+Таким образом, распределение случайной величины $\xi+\eta$ бесконечно делимо.
+<br><br>
+<p id="Theorem10.3"><b>Теорема 10.3:</b>
+Пусть $\{F^{(k)}(x)\}$ последовательность функций распределения бесконечно делимых распределений, 
+такая что существует предел в основном $F(x):=\lim_{k\to\infty}F^{(k)}(x)$, 
+тогда функция $F(x)$ является функцией распределения бесконечно делимого распределения.
+<p><b>Доказательство:</b><br>
+Пусть $\varphi(t)$ - характеристическая функция для $F(x)$, для любого $k\in\mathbb{N}$ $\varphi^{(k)}(t)$ - характеристическая функция для $F^{(k)}(x)$. 
+По теореме о непрерывности характеристической функции (<a href="./probability_theory6.3.html#Theorem6.13">теорема 6.13</a>)
+$$\varphi^{(k)}(t)\UniformConv\varphi(t).$$
+Фиксируем $n\in\mathbb{N}$, тогда для любого $k\in\mathbb{N}$ существует характеристическая функция $\sqrt[n]{\varphi^{(k)}(t)}$ такая, что
+$$\varphi^{(k)}(t)=\left(\sqrt[n]{\varphi^{(k)}(t)}\right)^n.$$
+Так как функция извлечения корня непрерывна, то для любого $k\in\overline{N}$ существует функция $\sqrt[n]{\varphi(t)}$ такая, что
+$$\sqrt[n]{\varphi^{(k)}(t)}\UniformConv\sqrt[n]{\varphi(t)}.$$
+Так как фукнция $\sqrt[n]{\varphi^{(k)}(t)}$ непрерывна в нуле (п. 3 <a href="./probability_theory6.1.html#Theorem6.1">теоремы 6.1</a>) и сходимость равномерна, 
+то по <a href="../math_analysis/math_analysis10.2.2.html#Statement10.2.6">утверждению 10.2.6 MA</a> фукнция $\sqrt[n]{\varphi(t)}$ непрерывна в нуле. 
+Тогда функция $\sqrt[n]{\varphi(t)}$ является характеристической функцией (доказательство см. например Боровков А. А. 1999 г. "Теория вероятностей" стр. 137) такая, 
+что
+$$\varphi(t)=\left(\sqrt[n]{\varphi( t)}\right)^n.$$
+То есть предельное распределение является бесконечно делилмым.
+<br>
+
+<h5 id="10.2">10.2 Характеристическая функция бесконечно делимого распределения.</h5>
+
+<p id="Theorem10.4"><b>Теорема 10.4:</b>
+Распределение с характеристической функцией $\varphi(t)$ <i>(и конечной дисперсией ?)</i> является бесконечно делимым тогда и только тогда, 
+когда существуют $\gamma,c\in\mathbb{R}$ и непрерывная функция $G(x)$ такие, что $G(\infty)=c$ и
+$$\ln{\varphi(t)}=i\gamma{t}+\int\limits_{-\infty}^{\infty}\frac{e^{itx}-1-itx}{x^2}dG(x)$$
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть $\varphi(t)$ характеристическая функция бесконечно делимого распределения, тогда для любого $n\in\mathbb{N}$ существует характеристическая функция $\varphi_n(t):=\sqrt[n]{\varphi(t)}$ такая, что $\varphi(t)=\varphi_n(t)^n$. Обозначим $F(x)$ и $F_n(x)$ функции распределения соответствующие характеристическим функциям $\varphi(x)$ и $\varphi_n(x)$ соответственно. 
+Для любого $a\in\mathbb{R}$
+$$\sqrt[n]{\varphi(t)}\UniformConv1,\,|t|\leq{a}.$$
+Следовательно, 
+$$\ln{\varphi(t)}=n\ln{\varphi_n(t)}=n\ln(1+(\varphi_n(t)-1))=n(\varphi_n(t)-1)(1+o(1)),\,n\to\infty$$
+или
+$$\ln{\varphi(t)}=\lim_{n\to\infty}(n(\varphi_n(t)-1))=\lim_{n\to\infty}\left(n\int\limits_{-\infty}^{\infty}(e^{itx}-1)dF_n(x)\right).$$
+Обозначим 
+$$\gamma:=\int\limits_{-\infty}^{\infty}xdF(x).$$
+Пусть $\xi\sim{F}(x)$, тогда для любого $n\in\mathbb{N}$ существуют независимые $\xi_1,\ldots,\xi_n$ такие, 
+что для любого $k\in\overline{1,n}$ $\xi_k\sim{F}_n(x)$ и $\xi=\xi_1+\cdots+\xi_n$. Следовательно,
+$$\gamma=E\xi=E\xi_1+\cdots+E\xi_n=n\int\limits_{-\infty}^{\infty}xdF_n(x),$$
+тогда 
+$$\ln{\varphi(t)}=i\gamma{t}+\lim_{n\to\infty}\left(n\int\limits_{-\infty}^{\infty}(e^{itx}-1-itx)dF_n(x)\right).$$
+Для любого $n\in\mathbb{N}$ положим
+$$G_n(x):=n\int\limits_{-\infty}^xu^2dF_n(u).$$
+По первой теореме Хелли (<a href="./probability_theory6.3.html#Theorem6.10">теорема 6.10</a>) 
+существует непрерывная слева функция $G(x)$ и возрастающая последовательность $\{n_k\}$ из $\mathbb{N}$ такие, что имеет место сходимость в основном
+$$G_{n_k}(x)\to{G(x)},\,k\to\infty.$$
+Тогда 
+$$
+G(\infty)=\lim_{k\to\infty}\left(n_k\int\limits_{-\infty}^{\infty}u^2dG_{n_k}(u)\right)=\lim_{k\to\infty}\left(n_kE\xi_{n_k}^2\right)=
+\lim_{k\to\infty}\left(n_kD\xi_{n_k}+n_k(E\xi_{n_k})^2\right)=\lim_{k\to\infty}\left(D\xi+\frac{(E\xi)^2}{n_k}\right)=c:=D\xi
+$$
+и, так как $dG_n(x)=nx^2dF_n(x)$, то
+$$
+\ln{\varphi(t)}=i\gamma{t}+\lim_{k\to\infty}\left(n\int\limits_{-\infty}^{\infty}\frac{e^{itx}-1-itx}{nx^2}dG_{n_k}(x)\right)=
+i\gamma{t}+\lim_{k\to\infty}\left(\int\limits_{-\infty}^{\infty}\frac{e^{itx}-1-itx}{x^2}dG_{n_k}(x)\right).
+$$
+Фиксируем $A,B\in\mathbb{R}$ и обозначим $H(x):=(e^{itx}-1-itx)/x^2$, тогда
+$$
+\ln{\varphi(t)}=i\gamma{t}+\lim_{k\to\infty}\left[\int\limits_A^BH(x)dG_{n_k}(x)+\int\limits_{-\infty}^AH(x)dG_{n_k}(x)+\int\limits_B^{\infty}H(x)dG_{n_k}(x)\right].
+$$
+По второй теореме Хелли (<a href="./probability_theory6.3.html#Theorem6.11">теорема 6.11</a>) первое слагаемое под знаком предела равно $\int_A^BH(x)dG(x)$. 
+Докажем, что второе и третье слагаемые стремятся к нулю при $A\to-\infty$ и $B\to\infty$ соответственно.  Действительно
+$$|e^{itx}-1-itx|\leq|e^{itx}-1|+|tx|\leq|tx|+|tx|=2|tx|,$$
+тогда, положив $M:=\min(|A|,B)$ получим
+\begin{multline*}
+\int\limits_{-\infty}^A|H(x)|dG_{n_k}(x)+\int\limits_B^{\infty}|H(x)|dG_{n_k}(x)\leq
+2|t|\int\limits_{-\infty}^A\frac1{|x|}dG_{n_k}(x)+2|t|\int\limits_B^{\infty}\frac1{|x|}dG_{n_k}(x)\leq
+\frac{2|t|}{M}\int\limits_{-\infty}^AdG_{n_k}(x)+\frac{2|t|}{M}\int\limits_B^{\infty}dG_{n_k}(x)\leq\\\leq
+\frac{2|t|}{M}\int\limits_{-\infty}^{\infty}dG_{n_k}(x)=\frac{2|t|}{M}(G(\infty)-G(-\infty))\leq\frac{2|T|c}{M}\leq\frac{2Tc}{M},\,|t|\leq{T}.
+\end{multline*}
+Последнее выражение может быть сколько угодно мало при достаточно больших $|A|$ и $B$.<br>
+$\Leftarrow)$ см. например Боровков А. А. 1999 г. "Теория вероятностей" стр. 368. 
+
+
+<br><br>
+<a href="./probability_theory9.7.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory11.1.html">next</a>

@@ -1,0 +1,267 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 18.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"--></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory17.1.html">previous</a> <a href="./math_contents.html">contents</a>
+<br>
+
+$\newcommand{\sqmlim}{\operatorname{l.i.m}}$
+
+<h4 id="18">18. Теорема о спектральном представлении.</h4>
+
+<h5 id="18.1">18.1 Структурная функция дисперсии.</h5>
+
+<p id="Definition18.1"><b>Определение 18.1:</b>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ - случайный процесс, тогда функция $F(t):T\to\mathbb{R}$ такая, 
+что для любых $s,t\in{T}$, $s\leq{t}$ $D(\xi_t-\xi_s)=F(t)-F(s)$ назывется структурной функцией дисперсии случайного процесса $\{\xi_t\}$.
+<br><br>
+<p id="Theorem18.1"><b>Теорема 18.1:</b>
+Для любого процесса с ортогональными приращениями $\{\xi_t\}$ 
+(<a href="./probability_theory16.1.html#Definition16.7">определение 16.7</a>) существует структурная функция дисперсии.
+<p><b>Доказательство:</b><br>
+Фиксируем $t_0\in{T}$ и положим для любого $t\in{T}$
+$$ 
+F(t):=
+\begin{cases}
+-E|\xi_t-\xi_{t_0}|^2,	& t&ltt_0 	\\
+0,			& t=t_0 	\\
+E|\xi_t-\xi_{t_0}|^2,	& t&gtt_0.
+\end{cases}
+$$
+Фиксируем точки $s,t\in{T}$ такие, что $s&ltt$ и рассмотрим все возможные положения точки $t_0$ относительно концов отрезка $[s,t]$.
+<ol>
+<li>Пусть $t_0&lts&ltt$, тогда
+\begin{multline*}
+F(t)=E|\xi_t-\xi_{t_0}|^2=E|\xi_t-\xi_s+\xi_s-\xi_{t_0}|^2=E\bigl([(\xi_t-\xi_s)+(\xi_s-\xi_{t_0})][\overline{(\xi_t-\xi_s)}+\overline{(\xi_s-\xi_{t_0})}]\bigr)=\\=
+E|\xi_t-\xi_s|^2+E\left((\xi_t-\xi_s)(\overline{\xi}_s-\overline{\xi}_{t_0})\right)+E\left((\xi_s-\xi_{t_0})(\overline{\xi}_t-\overline{\xi}_s)\right)+E|\xi_s-\xi_{t_0}|^2.
+\end{multline*} 
+Так как приращения ортогональны, а, следовательно, некоррелированы, то второе и третье слагаемые равны нулю, тогда
+$$
+F(t)=E|\xi_t-\xi_s|^2+E|\xi_s-\xi_{t_0}|^2=E|\xi_t-\xi_s|^2+F(s)\Rightarrow{D}(\xi_t-\xi_s)=E|\xi_t-\xi_s|^2=F(t)-F(s)
+$$
+</li><li>Пусть $s&ltt&ltt_0$, тогда аналогично п. 1 получим
+$$
+-F(s)=E|\xi_s-\xi_{t_0}|^2=E|\xi_s-\xi_t+\xi_t-\xi_{t_0}|^2=E|\xi_s-\xi_t|^2+E|\xi_t-\xi_{t_0}|^2=E|\xi_t-\xi_s|^2-F(t)\Rightarrow{D}(\xi_t-\xi_s)=F(t)-F(s)
+$$
+</li><li>Пусть $s&ltt_0&ltt$ тогда
+$$
+D(\xi_t-\xi_s)=E|\xi_t-\xi_s|^2=E|\xi_t-\xi_{t_0}+\xi_{t_0}+\xi_s|^2=E|\xi_s-\xi_{t_0}|+E|\xi_s-\xi_{t_0}|^2=F(t)-F(s)
+$$
+</li>
+</ol>
+<br>
+<p id="Example18.1"><b>Пример 18.1:</b>
+Согласно п. 1 <a href="./probability_theory16.1.html#Note16.6">замечания 16.6</a> 
+винеровский и пуасоновский процесс являются процессами с некоррелированными приращениями.
+<ol>
+<li>
+Пусть $W(t)$ - винеровский процесс. Так как согласно определению $EW(t)\equiv0$, 
+то винеровский процесс является процессом с ортогональными приращениями. Найдем структурную функцию дисперсии для этого процесса. 
+Так как приращения винеровского процесса распределены как $N(0,t-s)$, то $D(W(t)-W(s))=t-s$, следовательно, 
+в качестве структурной функции процесса можно взять функцию $F(t)=t$.
+</li><li>
+Пусть $\{\xi_t\mid{t}\in{T}\}$ - пуассоновский процесс, тогда для любого $t\in{T}$ $E\xi_t=\lambda{t}\neq0$. 
+То есть пуассоновский процесс не является процессом с ортогональными приращениями, однако, он имеет структурную функцию дисперсии. 
+Действительно, для любых $s&ltt$ $D(\xi_t-\xi_s)=\lambda(t-s)$, следовательно, в качестве структурной функции дисперсии можно взять функцию $F(t)=\lambda{t}$.
+</li>
+</ol>
+<br>
+<p id="Corollary18.1"><b>Следствие 18.1:</b>
+<ol>
+<li>Структурная функция дисперсии случайного процесса неубывает.
+</li><li>Если структурная функция дисперсии  случайного процесса $\{\xi_t\}$ непрерывна в точке $t_0$, 
+то случайный процесс $\{\xi_t\}$ непрерывен в среденем квадратичном в точке $t_0$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Для любых $s&ltt$
+$$F(t)-F(s)=D(\xi_t-\xi_s)=E|\xi_t-\xi_s|^2\geq0.$$
+</li><li>Пусть структурная функция дисперсии $F(t)$ случайного процесса $\{\xi_t\}$ непрерывна в точке $t_0$, тогда  
+$$
+\lim_{t\to{t}_0}E|\xi_t-\xi_{t_0}|^2=\lim_{t\to{t}_0}(F(t)-F(t_0))=\lim_{t\to{t}_0}F(t)-F(t_0)=0\Rightarrow\sqmlim_{t\to{t}_0}\xi_t=\xi_{t_0}.
+$$
+</li>
+</ol>
+<br>
+
+<h5 id="18.2">18.2 Стохастический интеграл.</h5>
+
+<p id="Definition18.2"><b>Определение 18.2:</b>
+Пусть $\{\xi_t\mid{t}\in{T}=[a,b]\}$ - случайный процесс с ортогональными приращениями непрерывный в среднем квадратичном слева на $[a,b]$, 
+$F(t)$ - структурная функция дисперсии процесса $\{\xi_t\}$. 
+Для любого $t\in[a,b]$ случайная величина $\xi_t$ определена на вероятностном пространстве $(\Omega,\mathfrak{A},P)$. 
+Обозначим $L_2(dF)$ - множество функций $f(t)$ таких, что 
+$$\int\limits_a^b|f(t)|^2dF(t)<\infty,$$
+где интеграл берется по мере $F(d)-F(c)$, для любого $[c,d)\subset[a,b]$.
+Для любой ступенчатой функции $f(t)\in{L}_2(dF)$ такой, что
+$$
+f(t):=
+\begin{cases}
+f_0,		&	a\leq{t}&ltt_1 		\\
+f_k,		&	t_k\leq{t}&ltt_{k+1} 	\\
+f_{n-1}	&	t_{n-1}&ltt\leq{b},
+\end{cases}
+$$
+где $a\leq{t}_0&ltt_1<\cdots&ltt_{n-1}&ltt_n=b$, положим
+$$I(f):=\int\limits_a^bf(t)d\xi_t:=\sum_{k=0}^{n-1}f_k(\xi_{t_{k+1}}-\xi_{t_k}).$$
+Обозначим $L_2(dP)$ множество случайных величин $\xi$ определенных на $(\Omega,\mathfrak{A},P)$ таких, что $E|\xi|^2<\infty$, 
+тогда $L_2(dP)$ - это гильбертово пространство со скалярным произведением $(\xi,\eta):=E\xi\overline{\eta}$.
+Для любой функции $f(t)\in{L}_2(dF)$ положим
+$$I(f):=\int\limits_a^bf(t)d\xi_t:=\sqmlim_{n\to\infty}I(f_n),$$
+где $\{f_n(t)\}$ - последовательность ступенчантых функций из $L_2(dF)$ таких, что
+$$\lim_{n\to\infty}f_n(t)=f(t),$$
+а сходимость последовательности случайных величин $\{I(f_n)\}$ рассматривается в гильбертовом пространстве $L_2(dP)$ по норме $\|\xi\|:=(\xi,\xi)=\sqrt{E|\xi|^2}$.
+Тогда отображение 
+$$I(f):=\int\limits_a^bf(t)d\xi_t$$
+называется стохастическим интегралом от функции $f(t)$.
+<br><br> 
+<p id="Theorem18.2"><b>Теорема 18.2:</b>
+Определение 18.2 корректно.
+<p><b>Доказательство:</b><br>
+Так как случайный процесс $\{\xi_t\}$ непрерывен в среднем квадратичном слева на $[a,b]$, то функция $F(t)$ непрерывна слева на $[a,b]$ 
+<i>(<a href="#Corollary18.1">следствие 18.1</a> ?)</i>, 
+функция $F(t)$ неубывает, $F(-\infty)>-\infty$, $F(\infty)<\infty$, то по мере $F(d)-F(c)$ можно интегрировать <i>(?)</i>.
+ Скалярным произведением на $L_2(dF)$ является отображение
+$$(f(t),g(t)):=\int\limits_a^bf(t)\overline{g}(t)dF(t).$$
+Пусть $f,g\in{L}_2(dF)$ ступенчатые функции, тогда 
+\begin{multline*}
+(I(f),I(g))=EI(f)\overline{I(g)}=E\sum_{k=1}^{n-1}f_k(\xi_{t_{k+1}}-\xi_{t_k})\sum_{l=0}^{n-1}\overline{g}_l\left(\overline{\xi}_{t_{l+1}}-\overline{\xi}_{l_k}\right)=
+\sum_{k=0}^{n-1}\sum_{l=0}^{n-1}f_k\overline{g}_lE\left((\xi_{t_{l+1}}-\xi_{t_l})(\overline{\xi}_{t_{l+1}}-\overline{\xi}_{t_l})\right)=\\=
+\sum_{k=0}^{n-1}f_k\overline{g}_kE|\xi_{t_{k+1}}-\xi_{t_k}|^2=\sum_{k=0}^{n-1}f_k\overline{g}_k(F(t_{k+1})-F(t_k))=\int\limits_a^bf(t)\overline{g}(t)dF(t)=(f(t),g(t)),
+\end{multline*}
+где четвертое равенство в силу ортогональности приращений процесса $\{\xi_t\}$. Следовательно, для любой ступенчатой функции $f(t)$
+$$E|I(f)|^2=EI(f)\overline{I(f)}=(I(f),I(f))=(f,f)=\int\limits_a^b|f(t)|^2dF(t),$$
+то есть $f(t)\in{L}_2(dF)$ тогда и только тогда, когда $I(f)\in{L}_2(dP)$.
+
+Фиксируем функцию $f(t)\in{L}_2(dF)$. Так как гильбертово простраство $L_2(dF)$ полное, то существует последовательность ступенчатых функций $\{f_n(t)\}$ такая, что 
+$$\lim_{n\to\infty}f_n(t)=f(t).$$
+Тогда для любого $n\in\mathbb{N}$ $I(f_n)\in{L}_2(dP)$ и для любых $n,m\in\mathbb{N}$
+$$
+\|I(f_n)-I(f_{n+m})\|^2=(I(f_n)-I(f_{n+m}),I(f_n)-I(f_{n+m}))=(f_n-f_{n+m},f_n-f_{n+m})=\|f_n-f_{n+m}\|^2.
+$$
+Так как последовательность функций $\{f_n(t)\}$ фундаментальна по критерию Коши (<a href="../math_analysis/math_analysis4.3.html#Theorem4.3.1">теорема 4.3.1 MA</a>), 
+то последнее выражение стремится к нулю при $n\to\infty$, следовательно последовательность $\{I(f_n)\}$ так же фундаментальна и по критерию Коши существует предел
+$$I(f):=\int\limits_a^bf(t)d\xi_t:=\sqmlim_{n\to\infty}I(f_n).$$
+Покажем, что такой предел единственен и не зависит от выбора последовательности $\{f_n(t)\}$. 
+Пусть существуют две последовательности $\{f_n(t)\}$ и $f'_n(t)$ такие, что 
+$$\lim_{n\to\infty}f_n(t)=\lim_{n\to\infty}f'_n(t)=f(t).$$
+Рассмотрим последовательность 
+$$g_n(t):=\{f_1(t),f'_1(t),f_2(t),f'_2(t),\ldots,f_k(t),f'_k(t),\ldots\}.$$
+Последовательность $\{g_n(t)\}$, очевидно, фундаментальна, и, следовательно, сходящаяся. 
+Тогда по доказанному сходится и последовательность $\{I(g_n)\}$. 
+Тогда по <a href="../math_analysis/math_analysis4.4.html#Statement4.4.3">утверждению 4.4.3 MA</a> 
+любая подпоследовательность последовательности $\{I(g_n)\}$ сходится к тому же пределу, 
+то есть 
+$$\sqmlim_{n\to\infty}I(f'_n)=\sqmlim_{n\to\infty}I(g_n)=\sqmlim_{n\to\infty}I(f_n).$$
+<br>
+<p id="Note18.1"><b>Замечание 18.1:</b>
+Более точное и общее доказательство дано в Булинский А. В, Ширяев А. Н "Теория случайных процессов" стр. 182.
+<br>
+
+<h5 id="18.3">18.3 Теорема о спектральном представлении.</h5>
+
+<p id="Theorem18.3"><b>Теорема 18.3:</b>
+Пусть $\{\xi_t\mid{t}\in\mathbb{R}\}$ стационарный в широком смысле процесс такой, что $E\xi_t\equiv0$, 
+ковариационная функция $K(\tau)$ непрерывна в нуле, $F(\lambda)$ - спектральная функция процесса $\{\xi_t\}$. 
+Тогда существует случайный процесс $\{\zeta_{\lambda}\mid\lambda\in\mathbb{R}\}$ с ортогональными приращениями такой, что 
+$$\xi_t=\int\limits_{-\infty}^{\infty}e^{it\lambda}d\zeta_{\lambda}.$$
+При этом для любых $\lambda_1,\lambda_2\in\mathbb{R}$ таких, что $\lambda_1\leq\lambda_2$
+$$E|\zeta_{\lambda_2}-\zeta_{\lambda_1}|^2=F(\lambda_2)-F(\lambda_1).$$
+<p><b>Доказательство:</b><br>
+Так как спектральная функция процесса определена с точностью до константы, то б. о. о. можно считать, что $F(-\infty)=0$.
+<br>
+Фиксируем $n\in\mathbb{N}$, $t_1,\ldots,t_n\in\mathbb{R}$, обозначим 
+$$M:=\{\alpha_1\xi_{t_1}+\alpha_2\xi_{t_2}+\cdots+\alpha_n\xi_{t_n}\mid\alpha_k\in\mathbb{C},k\in\overline{1,n}\}.$$ 
+Обозначим $H_2(\xi_t)$ замыкание множества $M$ относительно операции предела. 
+Тогда $H_2(\xi_t)$ - это гильбертово пространство со скалярным произведением $(\eta_1,\eta_2):=E\eta_1\overline{\eta}_2$. 
+Обозначиим $L_2(dF)$ множество функций $f(\lambda)$ таких, что
+$$\int\limits_{-\infty}^{\infty}|f(\lambda)|^2dF(\lambda)<\infty.$$
+Тогда $L_2(dF)$ - это гильбертово пространство со скалярным произведением 
+$$(f,g):=\int\limits_{-\infty}^{\infty}f(\lambda)\overline{g}(\lambda)dF(\lambda).$$
+Так как по теореме Бохнера-Хинчина (<a href="./probability_theory16.3.html#Theorem16.5">теорема 16.5</a>) 
+спектральная функция ограничена и для любого $x\in\mathbb{R}$ $|e^{ix\lambda}|=1$, то
+$$\int\limits_{-\infty}^{\infty}|e^{ix\lambda}|^2dF(\lambda)=\int\limits_{-\infty}^{\infty}dF(\lambda)=F(\infty)<\infty.$$
+Следовательно, для любого $x\in\mathbb{R}$ $e^{ix\lambda}\in{L}_2(dF)$. 
+Тогда каждому элементу множества $M$ $\eta=\alpha_1\xi_{t_1}+\cdots+\alpha_n\xi_{t_n}$ можно поставить в соответствие элемент множества $L_2(dF)$ 
+$\alpha_1e^{it_1\lambda}+\cdots+\alpha_ne^{it_n\lambda}$. 
+Покажем что такое преобразование сохраняет значение скалярного произведения
+\begin{multline*}
+(\eta_1,\eta_2)=E\eta_1\overline{\eta}_2=E\left(\sum_{k=1}^{n_1}\alpha_k\xi_{t_k}\overline{\sum_{m=1}^{n_2}\beta_m\xi_{s_m}}\right)=
+\sum_{k=1}^{n_1}\sum_{m=1}^{n_2}\alpha_k\overline{\beta}_m\xi_{t_k}\xi_{s_m}=
+\sum_{k=1}^{n_1}\sum_{m=1}^{n_2}\alpha_k\overline{\beta}_mK(t_k-s_m)=\\=
+\sum_{k=1}^{n_1}\sum_{m=1}^{n_2}\alpha_k\overline{\beta}_m\int\limits_{-\infty}^{\infty}e^{i\lambda(t_k-s_m)}dF(\lambda)=
+\int\limits_{-\infty}^{\infty}\sum_{k=1}^{n_1}\alpha_ke^{it_k\lambda}\sum_{m=1}^{n_2}\overline{\beta}_me^{is_m\lambda}dF(\lambda)=
+\left(\sum_{k=1}^{n_1}\alpha_ke^{it_k\lambda},\sum_{m=1}^{n_2}\beta_me^{is_m\lambda}\right),
+\end{multline*}
+где пятое равенство в силу <a href="./probability_theory16.3.html#Theorem16.5">теоремы 16.5</a>.
+Таким образом, построено взаимнооднозначное соответствие между элементами множеств $M$ и $L_2(dF)$
+$$\sum_{k=1}^n\alpha_k\xi_{t_k}\sim{g}(\lambda):=\sum_{k=1}^n\alpha_ke^{it_k\lambda}$$
+сохраняющее скалярное произведение, а, следовательно, и норму. 
+
+Фиксируем $\eta\in{H}_2(\xi_t)$. Так как пространство $H_2(\xi_t)$ полное, 
+то существует последовательность $\{\eta_n\}$ {\it (из $M$?)} такая, что $\sqmlim_{n\to\infty}\eta_n=\eta$. 
+Так как последовательность $\{\eta_n\}$ из $M$ фундаментальна, то соответствующая ей последовательность $\{g_n(\lambda)\}$ из $L_2(dF)$ 
+тоже фундаментальна в силу доказанно сохранения значения нормы. 
+Тогда можно поставить в соответствие элементу $\eta\in{H}_2(\xi_t)$ элемент $g(\lambda):=\lim_{n\to\infty}g_n(\lambda)$. 
+При этом значение скалярного произведения сохраняется
+$$
+(\eta_1,\eta_2)=(\sqmlim_{n\to\infty}\eta_n^{(1)},\sqmlim_{n\to\infty}\eta_n^{(2)})=\lim_{n\to\infty}(\eta_n^{(1)},\eta_n^{(2)})=
+\lim_{n\to\infty}(g_n^{(1)},g_n^{(2)})=(\lim_{n\to\infty}g_n^{(1)},\lim_{n\to\infty}g_n^{(2)})=(g_1(\lambda),g_2(\lambda)).
+$$
+
+Положим 
+$$g(\lambda):=\begin{cases}1, & \lambda\leq0 \\ 0, & \lambda>0\end{cases},$$
+тогда для любого $\lambda_0\in\mathbb{R}$
+$$g(\lambda-\lambda_0)=\begin{cases}1, & \lambda\leq\lambda_0 \\ 0, & \lambda>\lambda_0\end{cases}.$$
+Так как спектральная функция $F(-\infty)=0$, то
+$$\int\limits_{-\infty}^{\infty}|g(\lambda-\lambda_0)|^2dF(\lambda)=\int\limits_{-\infty}^{\lambda_0}dF(\lambda)=F(\lambda_0)<\infty,$$
+следовательно, $g(\lambda-\lambda_0)\in{L}_2(dF)$. 
+Тогда существует случайная величина $\zeta_{\lambda_0}\in{H}_2(\xi_t)$ соответствующая функции $g(\lambda-\lambda_0)\in{L}_2(dF)$ (в смысле построеной выше изометрии). Таким образом, построен случайный процесс $\{\zeta_{\lambda}\mid\lambda\in\mathbb{R}\}$. Докажем, что этот процесс удовлетворяет условию теоремы.
+<br>
+Фиксируем $\lambda_1,\lambda_2,\lambda_3,\lambda_4\in\mathbb{R}$ такие, что $\lambda_1<\lambda_2<\lambda_3<\lambda_4$, тогда
+\begin{multline*}
+(\zeta_{\lambda_2}-\zeta_{\lambda_1},\zeta_{\lambda_4}-\zeta_{\lambda_3})=E\left((\zeta_{\lambda_2}-\zeta_{\lambda_1})(\overline{\zeta}_{\lambda_4}-\overline{\zeta}_{\lambda_3})\right)=
+(g(\lambda-\lambda_2)-g(\lambda-\lambda_1),\overline{g(\lambda-\lambda_4)-g(\lambda-\lambda_3)})=\\=
+\int\limits_{-\infty}^{\infty}(g(\lambda-\lambda_2)-g(\lambda-\lambda_1))(g(\lambda-\lambda_4)-g(\lambda-\lambda_3))dF(\lambda).
+\end{multline*}
+Так как интервалы $(\lambda_1,\lambda_2)$ и $(\lambda_3,\lambda_4)$ не пересекаются, то подинтегральное выражение тождественно равно нулю. 
+Следовательно, $\{\zeta_{\lambda}\}$ - процесс с некоррелированными приращениями. 
+Так как по условию $E\xi_t\equiv0$, то $E\zeta_{\lambda}\equiv0$, следовательно, $\{\zeta_{\lambda}\}$ процесс с ортогональными приращениями. 
+При этом для любых $\lambda_1,\lambda_2\in\mathbb{R}$ таких, что $\lambda_1<\lambda_2$
+$$
+E|\zeta_{\lambda_2}-\zeta_{\lambda_1}|^2=\|\zeta_{\lambda_2}-\zeta_{\lambda_1}\|^2=\|g(\lambda-\lambda_2)-g(\lambda-\lambda_1)\|^2=
+\int\limits_{-\infty}^{\infty}g(\lambda-\lambda_2)-g(\lambda-\lambda_1)dF(\lambda)=\int\limits_{\lambda_1}^{\lambda_2}dF(\lambda)=F(\lambda_2)-F(\lambda_1)
+$$
+
+Фиксируем полуинтервал $[-T,T)$ и точки $\lambda_0<\lambda_1<\cdots<\lambda_n\in\mathbb{R}$ такие, 
+что $-T=\lambda_0<\lambda_1<\cdots<\lambda_{n-1}<\lambda_n=T$. Определим функцию $\varphi(\lambda)$ так, что для каждого 
+$k\in\overline{0,n-1}$ 
+$$\lambda\in[\lambda_k,\lambda_{k+1})\Rightarrow\varphi(\lambda)=e^{it\lambda_k}.$$
+Так как $|e^{it\lambda_k}|=1$, то $\varphi(\lambda)\in{L}_2(dF)$. При этом, если $P$ - это диаметр разбиения $(\lambda_0,\ldots,\lambda_n)$, 
+то $\varphi(\lambda)\to{e}^{it\lambda}$ при $P\to0$, $T\to\infty$. 
+Следовательно, образ функции $\varphi(\lambda)$ в $H_2(\xi_t)$ стремиться к образу функции $e^{it\lambda}$ в $H_2(\xi_t)$ при $P\to0$, $T\to\infty$. 
+Образ $e^{it\lambda}$ в $H_2(\xi_t)$ - это случайная величина $\xi_t$, а образ $\varphi(\lambda)$ можно получить, представив функцию $\varphi(\lambda)$ в виде
+$$\varphi(\lambda)=\sum_{k=0}^{n-1}e^{it\lambda_k}(g(\lambda-\lambda_{k+1})-g(\lambda-\lambda_k)).$$
+Тогда искомый образ есть случайная величина
+$$
+\sum_{k=0}^{n-1}e^{it\lambda_k}(\zeta_{\lambda_{k+1}}-\zeta_{\lambda_k})=
+\int\limits_{-T}^T\varphi(\lambda)d\zeta_{\lambda}\to\int\limits_{-\infty}^{\infty}e^{it\lambda}d\zeta_{\lambda},P\to0,T\to\infty.
+$$
+Тогда в силу взаимнооднозначности изометрии $H_2(\xi_t)$ и $L_2(dF)$
+$$\xi_t=\int\limits_{-\infty}^{\infty}e^{it\lambda}d\zeta_{\lambda}.$$
+
+<br><br>
+<a href="./probability_theory17.1.html">previous</a> <a href="./math_contents.html">contents</a>

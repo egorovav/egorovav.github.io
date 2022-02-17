@@ -1,0 +1,413 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 4.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory3.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.3.html">next</a>
+<br>
+
+<h4 id="4">4. Числовые характеристики случайной величины.</h4>
+
+<h5 id="4.1">4.1 Математическое ожидание случайной величины.</h5>
+
+<p id="Definition4.1"><b>Определение 4.1:</b>
+Пусть $\xi$ простая случайная величина принимающая значения $x_1,\ldots,x_n$ на множествах $A_1,\ldots,A_n$ соответственно. 
+Тогда математическим ожиданием случайной величины $\xi$ называется число
+$$E\xi:=\sum_{k=1}^nx_kP(A_k).$$
+<br>
+<p id="Theorem4.1"><b>Теорема 4.1:</b>
+Определение 4.1 корректно.
+<p><b>Доказательство:</b><br>
+Пусть простая случайная величина $\xi$ принимает значения $x_1,\ldots,x_n$. 
+Для любого $k\in\overline{1,n}$ обозначим $A_k:=\xi^{-1}(\{x_k\})$. Пусть $B_1,\ldots,B_m$ какое-то разбиение $\Omega$ такое, 
+что для любого 
+$k\in\overline{1,m}$ $|\xi(B_k)|=1$, тогда для любого $\omega\in\Omega$
+$$\xi(\omega)=\sum_{i=1}^nx_iI_{A_i}(\omega)=\sum_{k=1}^mx_j'I_{B_j}(\omega).$$
+При этом
+$$
+\sum_{j=1}^mx_jP(B_j)=\sum_{i=1}^n\sum_{j:x_j'=x_i}x_j'P(B_j)=\sum_{i=1}^nx_i\sum_{j:x_j'=x_i}P(B_j)=\sum_{i=1}^nx_iP(A_i).
+$$
+<br>
+Таким образом, математическое ожидание простой случайной величины - это интеграл Лебега от случайной величины по вероятностной мере.
+$$
+E\xi=\sum_{k=1}^nx_kP(\xi=x_k)=\int\limits_{\Omega}\xi(\omega)dP
+$$
+Так как для любого $k\in\overline{1,n}$ $P(\xi=x_k)=F_{\xi}(x_k+0)-F_{\xi}(x_k)=\Delta{F}_{\xi}(x_k)$, то в случае простой случайной величины верно так же
+$$
+E\xi=\sum_{k=1}^nx_k\Delta{F}_{\xi}(x_k)=\int\limits_{-\infty}^{\infty}xdF_{\xi}(x).
+$$
+Где интеграл понимается в смысле Стилтьеса (<a href="../math_analysis/math_analysis8.2.html#8.2.1">8.2.1 MA</a>).
+Если простая случайная величина $\xi$ принимает значения $x_1,\ldots,x_n$  с вероятностями $p_1:=P(\xi=x_1),\ldots,p_n:=P(\xi=x_n)$, то будем обозначать 
+$\xi\sim\left(\begin{smallmatrix}x_1, & \ldots, & x_n \\ p_1, & \ldots, & p_n\end{smallmatrix}\right)$.
+<br><br>
+<p id="Example4.1"><b>Пример 4.1:</b>
+<ol>
+<li>Пусть $\xi\sim\left(\begin{smallmatrix}1, & -1 \\ 1/2, & 1/2\end{smallmatrix}\right)$, тогда $E\xi=1\frac12+1(-\frac12)=0$.
+</li>
+<li>Пусть $\xi\sim\left(\begin{smallmatrix}100, & -100 \\ 1/2, & 1/2\end{smallmatrix}\right)$, тогда аналогично $E\xi=0$.
+</li>
+<li>Пусть $\xi\sim\left(\begin{smallmatrix}1, & -1 \\ 0,9, & 0,1\end{smallmatrix}\right)$, тогда $E\xi=0,9-0,1=0,8$.
+</li>
+<li>Пусть $\xi\sim\left(\begin{smallmatrix}x_1, & \ldots, & x_n \\ p_1, & \ldots, & p_n\end{smallmatrix}\right)$, тогда $E\xi=\sum_{k=1}^nx_kp_k$.
+</li>
+</ol>
+<br>
+<p id="Theorem4.2"><b>Теорема 4.2: Свойства математического ожидания простой случайной величины.</b><br>
+Пусть $\xi:=\sum_{k=1}^nx_kI_{A_k}$, $\eta:=\sum_{j=1}^my_jI_{B_j}$ простые случайные величины на $(\Omega,\mathfrak{A},P)$, тогда
+<ol>
+<li>если $\xi$ неотрицательна, то $E\xi\geq0$;
+</li>
+<li>для любых $a,b\in\mathbb{R}$ $E(a\xi+b\eta)=aE\xi+bE\eta$;
+</li>
+<li>если для любого $\omega\in\Omega$ $\xi(\omega)\geq\eta(\omega)$, то $E\xi\geq{E}\eta$.
+</li>
+</ol>
+<p><b>Доказательство:</b><br>
+<ol>
+<li>Следует из неотрицательности вероятностной меры.
+</li>
+<li>Так как
+$$\xi=\sum_{k,j}x_kI_{A_k\cap{B}_j},\,\eta=\sum_{k,j}y_jI_{A_k\cap{B}_j},$$
+то 
+$$a\xi+b\eta=\sum_{k,j}(ax_k+by_j)I_{A_k\cap{B}_j},$$
+следовательно
+\begin{multline*}
+E(a\xi+b\eta)=\sum_{k,j}(ax_k+by_j)P(A_k\cap{B}_j)=a\sum_{k,j}x_kP(A_k\cap{B}_j)+b\sum_{k,j}y_jP(A_k\cap{B}_j)=\\=
+a\sum_{k=1}^nx_k\sum_{j=1}^mP(A_k\cap{B}_j)+b\sum_{j=1}^my_j\sum_{k=1}^nP(A_k\cap{B}_j)=a\sum_{k=1}^nx_kP(A_k)+b\sum_{j=1}^my_jP(B_j).
+\end{multline*}
+</li>
+<li>Если $\xi(\omega)\geq\eta(\omega)$ для любого $\omega\in\Omega$, то случайная величина $\xi-\eta$ неотрицательна, тогда по п. 1 и по п. 2
+$$E(\xi-\eta)\geq0\Rightarrow{E}\xi-E\eta\geq0\Rightarrow{E}\xi\geq{E}\eta.$$
+</li>
+</ol>
+<br>
+<p id="Definition4.2"><b>Определение 4.2:</b>
+Пусть $\xi$ неотрицательная случайная величина на пространстве $(\Omega,\mathfrak{A},P)$, $\{\xi_n\}$ неубывающая последовательность 
+простых случайных величин на $(\Omega,\mathfrak{A},P)$ такая, что для любого 
+$\omega\in\Omega$ $\lim\limits_{n\to\infty}\xi_n(\omega)=\xi(\omega)$. Тогда математическим ожиданием случайной величины $\xi$ называют число
+$$E\xi:=\lim_{n\to\infty}E\xi_n.$$
+<br>
+<p id="Theorem4.3"><b>Теорема 4.3:</b>
+Определение 4.2 корректно.
+<p><b>Доказательство:</b><br>
+Пусть $\xi$ неотрицательная случайная величина на $(\Omega,\mathfrak{A},P)$, $\{\xi_n\}$, $\{\eta_n\}$ неубывающиее последовательности простых случайных величин такие, 
+что для любого $\omega\in\Omega$
+$$\lim_{n\to\infty}\xi_n(\omega)=\lim_{n\to\infty}\eta_n(\omega)=\xi(\omega).$$
+Фиксируем $\varepsilon>0$ и $m\in\mathbb{N}$. Для любого $n\in\mathbb{N}$ обозначим 
+$$A_n:=\{\omega\in\Omega\mid\xi_n(\omega)\geq\eta_m-\varepsilon\}.$$ 
+Так как последовательность $\{\xi_n\}$ неубывает, то последовательность $\{A_n\}$ тоже неубывает.
+Так как последовательность $\{\eta_n\}$ неубывает, то для любого $\omega\in\Omega$ $\xi(\omega)\geq\eta_m(\omega)$. Фиксируем $\omega\in\Omega$, тогда
+$$
+\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega)\Rightarrow\exists{n}_0\in\mathbb{N}:\forall{n}\geq{n}_0(|\xi_n(\omega)-\xi(\omega)|<\varepsilon)\Rightarrow
+\forall{n}\geq{n}_0(\xi_n(\omega)>\xi(\omega)-\varepsilon\geq\eta_m(\omega)-\varepsilon)\Rightarrow\forall{n}\geq{n}_0(\omega\in{A}_n).
+$$
+Таким образом, для любого $\omega\in\Omega$ найдется $n\in\mathbb{N}$ такое, что $\omega\in{A}_n$, то есть $\bigcup_{n=1}^{\infty}=\Omega$.<br>
+Для любого $n\in\mathbb{N}$ для любого $\omega\in\Omega$
+$$\xi_n(\omega)=(\xi_nI_{A_n})(\omega)+(\xi_nI_{\overline{A}_n})(\omega)\geq(\xi_nI_{A_n})(\omega)\geq((\eta_m(\omega)-\varepsilon)I_{A_n}(\omega)),$$
+следовательно по п. п. 3, 2 <a href="#Theorem4.1">теоремы 4.1</a> для любого $n\in\mathbb{N}$
+$$
+E\xi_n\geq{E}((\eta_m-\varepsilon)I_{A_n})=E(\eta_mI_{A_n})-\varepsilon{E}I_{A_n}=
+E(\eta_mI_{A_n}+\eta_mI_{\overline{A}_n}-\eta_mI_{\overline{A}_n})-\varepsilon{P}(A_n)=E\eta_m-E(\eta_mI_{\overline{A}_n})-\varepsilon{P}(A_n).
+$$
+Так как случайная величина $\eta_m$ простая, то она принимает конечной число значений, то есть существует $c:=\max_{\omega\in\Omega}\eta_m(\omega)$. 
+Тогда, так как $P(A_n)\leq1$, то
+$$E\xi_n\geq{E}\eta_n-cEI_{\overline{A}_n}-\varepsilon{P}(A_n)\geq{E}\eta_m-cP(\overline{A}_n)-\varepsilon.$$
+Так как последовательность $\{A_n\}$ неубывает и $\bigcup_{n=1}^{\infty}A_n=\Omega$, то последовательность $\{\overline{A}_n\}$ невозрастает и по 
+<a href="#Theorem4.1">теореме 4.1</a>
+$$\lim_{n\to\infty}\overline{A}_n=\bigcap_{n=1}^{\infty}\overline{A}_n=\overline{\bigcup_{n=1}^{\infty}A_n}=\varnothing.$$
+Тогда по <a href="./probability_theory1.6.html#Theorem1.5">теореме 1.5</a> переходя к пределу при $n\to\infty$ имеем
+$$\lim_{n\to\infty}E\xi_n\geq{E}\eta_m-\varepsilon.$$
+Так как $\varepsilon$ произвольное положительное число, то можем перейти к пределу при $\varepsilon\to0$, тогда
+$$\lim_{n\to\infty}E\xi_n\geq{E}\eta_m.$$
+Переходя к пределу при $m\to\infty$ имеем
+$$\lim_{n\to\infty}E\xi_n\geq\lim_{m\to\infty}E\eta_m.$$
+Так как последовательности $\{\xi_n\}$ и $\{\eta_n\}$ равноправны, то аналогично
+$$\lim_{n\to\infty}E\xi_n\leq\lim_{m\to\infty}E\eta_m,$$
+то есть 
+$$\lim_{n\to\infty}E\xi_n=\lim_{m\to\infty}E\eta_m.$$
+Таким образом, значение $E\xi:=\lim_{n\to\infty}E\xi_n$ математического ожидания неотрицательной случайной величины не зависит от выбора последовательности $\{\xi_n\}$.
+<br><br>
+Свойства математического ожидания простой случайной величины доказанные в <a href="#Theorem4.2">теореме 4.2</a> справедливы так же и 
+для неотрицательной случайной величины. 
+Это следует из <a href="#Theorem4.2">теоремы 4.2</a> и свойств предела числовой последовательности.
+<br><br>
+<p id="Definition4.3"><b>Определение 4.3:</b>
+Пусть $\xi$ случайная величина, обозначим $\xi^+:=\max(\xi,0)$, $\xi^-:=-\min(\xi,0)$, тогда, если $\min(E\xi^+,E\xi^-)<\infty$, 
+то математическим ожиданием случайной величины $\xi$ называют число $E\xi:=E\xi^+-E\xi^-$, если 
+$\min(E\xi^+,E\xi^-)=\infty$, то математическое ожидание случайной величины $\xi$ не определено.
+<br><br>
+В определении 4.3 вместо случайных величин $\xi^+$, $\xi^-$ можно использовать любые другие неотрицательные случайные величины $\xi_1$, $\xi_2$, 
+для которых выполняется равенство $\xi=\xi_2-\xi_1$. Действительно, если 
+$\xi_1$, $\xi_2$ неотрицательны, то случайные величины $\xi^++\xi_1$ и $\xi^-+\xi_2$ тоже неотрицательны, тогда
+$$
+\xi^+-\xi^-=\xi_2-\xi_1\Rightarrow\xi^++\xi_1=\xi^-+\xi_2\Rightarrow{E}(\xi^++\xi_1)=E(\xi^-+\xi_2)\Rightarrow
+{E}\xi^++E\xi_1=E\xi^-+E\xi_2\Rightarrow{E}\xi^+-E\xi^-=E\xi_2-E\xi_1
+$$
+Таким обрзом, определение математического ожидания совпадает с определением интеграла Лебега от случайной величины $\xi(\omega)$ 
+по вероятностной мере $P$ по множеству $\Omega$.
+$$E\xi:=\int\limits_{\Omega}\xi(\omega)dP.$$
+<br>
+<p id="Theorem4.4"><b>Теорема 4.4: Свойства математического ожидания.</b><br>
+Пусть $\eta,\xi$ случайные величины на $(\Omega,\mathfrak{A},P)$, тогда
+<ol>
+<li>$E|\xi|<\infty\Leftrightarrow|E\xi|<\infty$;
+</li>
+<li>для любого $c\in\mathbb{R}$ $E(c\xi)=cE\xi$;
+</li>
+<li>если $min(E|\xi|,E|\eta|)<\infty$, то $E(\xi+\eta)=E\xi+E\eta$;
+</li>
+<li>если для любого $\omega\in\Omega$ $\xi(\omega)\geq\eta(\omega)$, то $E\xi\geq{E}\eta$;
+</li>
+<li>$|E\xi|\leq{E}|\xi|$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Так как $\xi=\xi^+-\xi^-$, $|\xi|=\xi^++\xi^-$, то
+$$|E\xi|<\infty\Leftrightarrow(E\xi^+<\infty\wedge{E}\xi^-<\infty)\Leftrightarrow{E}\xi^++E\xi^-<\infty\Leftrightarrow{E}|\xi|<\infty.$$
+</li>
+<li>Следует из линейности математического ожидания для неотрицательной случайной величины.
+</li>
+<li>Следует из линейности математического ожидания для неотрицательной случайной величины.
+</li>
+<li>$E(\xi-\eta)\geq0\Rightarrow{E}\xi-E\eta\geq0\Rightarrow{E}\xi\geq{E}\eta$.
+</li>
+<li>Так как случайные величины $\xi^+$, $\xi^-$ положительны, то $E\xi^+\geq0$, $E\xi^-\geq0$, следовательно
+$$|E\xi|=|E\xi^+-E\xi^-|\leq{E}\xi^++E\xi^-=E(\xi^++\xi^-)=E|\xi|$$
+</li>
+</ol>
+<br>
+<p id="Theorem4.5"><b>Теорема 4.5: Свойства математического ожидания связанные с понятием 
+<a href="./probability_theory3.1.html#Definition3.9">почти наверное</a>.</b><br>
+Пусть $\xi$, $\eta$ случайные величины на $(\Omega,\mathfrak{A},P)$, тогда
+<ol>
+<li>$\xi=0(P_{\text{пн}})\Rightarrow{E}\xi=0$;
+</li>
+<li>$(\xi=\eta(P_{\text{пн}})\wedge{E}|\xi|<\infty\wedge{E}|\eta|<\infty)\Rightarrow{E}\xi=E\eta$;
+</li>
+<li>если $\xi$ неотрицательна и $E\xi=0$, то $\xi=0(P_{\text{пн}})$.
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li> 
+<ol type="a">
+<li> Пусть $\xi$ простая случайная величина со значениями $x_1,\ldots,x_k$. Тогда 
+$$
+\xi=0(P_{\text{пн}})\Rightarrow{P}(\xi\neq0)=0\Rightarrow\forall{k}\in\overline{1,n}(x_k=0\vee{P}(\xi=x_k)=0)\Rightarrow{E}\xi=\sum_{k=1}^nx_kP(\xi=x_k)=0.
+$$
+</li>
+<li>Пусть $\xi$ неотрицательная случайная величина, $\{\xi_n\}$ неубывающая последовательность простых случайных величин такая, 
+что для любого $\omega\in\Omega$ $\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega)$. Так как последовательность $\{\xi_n\}$ неубывает, то по доказанному в п. (a)
+$$
+(\forall\omega\in\Omega\,\forall{n}\in\mathbb{N}(\xi_n(\omega)\leq\xi(\omega)\wedge\xi=0(P_{\text{пн}}))\Rightarrow
+\forall{n}\in\mathbb{N}(\xi_n=0(P_{\text{пн}}))\Rightarrow\forall{n}\in\mathbb{N}(E\xi_n=0)\Rightarrow{E}\xi=\lim_{n\to\infty}E\xi_n=0.
+$$
+</li>
+<li>Пусть $\xi$ произвольная случайная величина. Обозначим $N:=\{\omega\in\Omega\mid\xi(\omega)\neq0\}$, тогда $P(N)=0$ и
+$\xi=\xi{I}_N+\xi{I}_{\overline{N}}=\xi^+I_N-\xi^-I_N$.
+Так как $P(N)=0$, то $I_N=0(P_{\text{пн}})$, следовательно $\xi^+I_N=0(P_{\text{пн}})$ и $\xi^-I_N=0(P_{\text{пн}})$. 
+Так как случайные величины $\xi^+I_N$, $\xi^-I_N$ неотрицательны, то по доказанному в п. (b)
+$$E\xi^+I_N=E\xi^-I_N=0\Rightarrow{E}\xi=E\xi^+I_N-E\xi^-I_N=0.$$
+</ol>
+</li>
+<li>По п. 1 и по п. 3 <a href="./probability_theory4.1.html#Theorem4.3">теоремы 4.3</a>
+$$\xi=\eta(P_{\text{пн}})\Rightarrow\xi-\eta=0(P_{\text{пн}})\Rightarrow{E}(\xi-\eta)=0\Rightarrow{E}\xi=E\eta.$$
+</li>
+<li>Обозначим $A:=\{\omega\in\Omega\mid\xi(\omega)>0\}$ и для любого $n\in\mathbb{N}$ 
+$$A_n:=\left\{\omega\in\Omega\mid\xi(\omega)\geq\frac1{n}\right\}.$$
+Последовательность $\{A_n\}$ неубывает, следовательно по теоремам <a href="./probability_theory1.6.html#Theorem1.4">1.4</a> и 
+<a href="./probability_theory1.6.html#Theorem1.5">1.5</a>
+$$\lim_{n\to\infty}A_n=\bigcup_{n=1}^{\infty}A_n=A\Rightarrow\lim_{n\to\infty}P(A_n)=P(A).$$
+Так как $\xi$ неотрицательна то для любого $n\in\mathbb{N}$ и для любого $\omega\in\Omega$
+$$A_n\subset{A}\Rightarrow0\leq{I}_{A_n}\leq{I}_A\Rightarrow0\leq\xi{I}_{A_n}\leq\xi{I}_A.$$
+Тогда, так как $\xi{I}_{\overline{A}}\equiv0$, то для любого $n\in\mathbb{N}$
+$$
+E(\xi{I}_{A_n})\leq{E}(\xi{I_A})=E(\xi{I}_A+\xi{I}_{\overline{A}})=E\xi=0\Rightarrow{E}(\xi{I}_{A_n})=0
+$$
+Так как для любого $\omega\in{A}_n$ $\xi(\omega)\geq\frac1{n}$, то
+$$
+\forall{n}\in\mathbb{N}\left(0=E(\xi{I}_{A_n})\geq\frac1{n}EI_{A_n}=\frac1{n}P(A_n)\right)\Rightarrow
+\forall{n}\in\mathbb{N}(P(A_n)=0)\Rightarrow{P}(A)=\lim_{n\to\infty}P(A_n)=0\Rightarrow\xi=0(P_{\text{пн}}).
+$$
+</li>
+</ol>
+
+<h5 id="4.2">4.2 Математическое ожидание произведения случайных величин.</h5>
+
+<p id="Theorem4.6"><b>Теорема 4.6:</b>
+Пусть случайные величины $\xi$, $\eta$ и последовательность случайных величин $\{\xi_n\}$ такие, что 
+<ol>
+<li>$\forall\omega\in\Omega\,\forall{n}\in\mathbb{N}(\xi_n(\omega)\geq\eta(\omega))$;
+</li>
+<li>$E\eta>-\infty$;
+</li>
+<li>последовательность $\{\xi_n\}$ не убывает;
+</li>
+
+<li>$\forall\omega\in\Omega(\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega))$;
+</li>
+</ol>
+тогда $E\xi=\lim_{n\to\infty}E\xi_n$.
+<p><b>Доказательство:</b><br>
+Пусть случайная величина $\eta$ неотрицательна, тогда для любого $n\in\mathbb{N}$ случайная величина $\xi_n$ неотрицательна. 
+Тогда по <a href="./probability_theory3.1.html#Theorem3.3">теореме 3.3</a> для любого $k\in\mathbb{N}$ существует последовательность случайных величин
+$\{\xi_k^{(n)}\}$ такая, что 
+$$\lim_{n\to\infty}\xi_k^{(n)}=\xi_k.$$
+Для любого $n\in\mathbb{N}$ обозначим
+$$\zeta^{(n)}:=\max_{1\leq{k}\leq{n}}\xi_k^{(n)}.$$
+Тогда $\{\zeta^{n}\}$ неубывающая последовательность простых случайных величин. 
+Так как последовательность $\{\zeta^{(n)}\}$ ограничена сверху случайной величиной $\xi$, то существует предел $\zeta:=\lim_{n\to\infty}\zeta^{(n)}$, 
+при этом для любого $k\in\mathbb{N}$ $\xi_k\leq\zeta\leq\xi$. Переходя к пределу при $k\to\infty$ получим, что $\zeta=\xi$. 
+Так $\{\zeta^{(n)}\}$ неубывающая последовательность простых случайных величин такая, что $\lim_{n\to\infty}\zeta^{(n)}=\xi$, 
+то по определению математического ожидания неотрицательной случайной величины 
+$\lim_{n\to\infty}E\zeta^{(n)}=E\xi$. По п. 4 <a href="#Theorem4.4">теоремы 4.4</a>
+$$\forall{n}\in\mathbb{N}\,\omega\in\Omega(\zeta^{(n)}(\omega)\leq\xi_n(\omega)\leq\xi(\omega))\Rightarrow\forall{n}\in\mathbb{N}(E\zeta^{(n)}\leq{E}\xi_n\leq{E}\xi).$$
+Переходя в последнем неравенстве к пределу при $n\to\infty$ по теореме "<a href="../math_analysis/math_analysis4.1.html#Theorem4.2.3">о двух милиционерах</a>" 
+получим $\lim_{n\to\infty}E\xi_n=E\xi$.<br>
+Пусть случайная величина $\eta$ произвольна и $E\eta&gt-\infty$.<br>
+Если $E\eta=\infty$, то в силу условия 1 и п. 4 <a href="#Theorem4.4">теоремы 4.4</a> для любого $n\in\mathbb{N}$ $E\xi_n=E\eta=\infty$.<br>
+Если $E\eta<\infty$, то $E|\eta|<\infty$ и рассмотрев вместо последовательности $\{\xi_n\}$ последовательность неотрицательных случайных величин $\{\xi_n-\eta\}$ 
+можно аналогично случаю неотрицательной $\eta$ показать, что 
+$$\lim_{n\to\infty}(E(\xi_n-\eta))=E(\xi-\eta).$$
+Тогда доказываемое утверждение следует из п. 3 <a href="#Theorem4.4">теоремы 4.4</a>.
+<br><br>
+<p id="Lemma4.1"><b>Лемма 4.1: Лемма Фату.</b><br>
+Пусть $\eta$ случайная величина, $\{\xi_n\}$ последовательность случайных величин, тогда
+<ol>
+<li>Если для любых $n\in\mathbb{N}$, $\omega\in\Omega$ $\xi_n(\omega)\geq\eta(\omega)$ и $E\eta>-\infty$, то 
+$${E}\varliminf_{n\to\infty}\xi_n\leq\varliminf_{n\to\infty}E\xi_n.$$
+</li>
+<li>Если для любых $n\in\mathbb{N}$, $\omega\in\Omega$ $\xi_n(\omega)\leq\eta(\omega)$ и $E\eta<\infty$, то
+$${E}\varlimsup_{n\to\infty}\xi_n\geq\varlimsup_{n\to\infty}E\xi_n.$$
+</li>
+<li>Если для любых $n\in\mathbb{N}$, $\omega\in\Omega$ $|\xi_n(\omega)|\leq\eta(\omega)$ и $E\eta<\infty$, то
+$${E}\varliminf_{n\to\infty}\xi_n\leq\varliminf_{n\to\infty}E\xi_n\leq\varlimsup_{n\to\infty}E\xi_n\leq{E}\varlimsup_{n\to\infty}\xi_n.$$
+</li>
+</ol>
+<p><b>Доказательство:</b>
+<ol>
+<li>Для любого $n\in\mathbb{N}$, $\omega\in\Omega$ положим 
+$$\zeta_n(\omega):=\inf_{m\geq{n}}\xi_m(\omega)\leq\xi_n(\omega),$$ 
+тогда
+$$\varliminf_{n\to\infty}\xi_n=\lim_{n\to\infty}\inf_{m\geq{n}}\xi_n=\lim_{n\to\infty}\zeta_n$$
+и последовательность ${\zeta_n}$ неубывает. Тогда по <a href="#Theorem4.4">теореме 4.6</a>
+$$E\varliminf_{n\to\infty}\xi_n=\lim_{n\to\infty}E\zeta_n=\varliminf_{n\to\infty}E\zeta_n\leq\varliminf_{n\to\infty}E\xi_n,$$
+где последнее неравенство в силу того, что по п. 4 <a href="#Theorem4.4">теоремы 4.4</a> для любого $n\in\mathbb{N}$ $E\zeta_n\leq{E}\xi_n$.
+</li>
+<li>Доказывается аналогично п. 1 при $\zeta_n(\omega):=\sup_{m\leq{n}}\xi_m(\omega)$.
+</li>
+<li>Следует из п. п. 1, 2.
+</li>
+</ol>
+<br>
+<p id="Theorem4.7"><b>Теорема 4.7: Теорема Лебега о мажорируемой сходимости.</b><br>
+Пусть случайные величины $\xi$, $\eta$ и последовательность случайных величин $\{\xi_n\}$ такие, что 
+<ol>
+<li>$\forall{n}\in\mathbb{N}\,\forall\omega\in\Omega(\xi_n(\omega)\leq\eta(\omega))$, 
+</li>
+<li>$E|\eta|<\infty$, 
+</li>
+<li>${\lim\limits_{n\to\infty}\xi_n=\xi}$, 
+</li>
+</ol>
+тогда $\lim\limits_{n\to\infty}E\xi_n=E\xi$.
+<p><b>Доказательство:</b>
+По лемме Фату
+$${E}\varliminf_{n\to\infty}\xi_n\leq\varliminf_{n\to\infty}E\xi_n\leq\varlimsup_{n\to\infty}E\xi_n\leq{E}\varlimsup_{n\to\infty}\xi_n.$$
+По п. 2 <a href="#Theorem4.5">теоремы 4.5</a>
+$$\xi=\varliminf_{n\to\infty}\xi_n=\varlimsup_{n\to\infty}\xi_n(P_{\text{пн}})\Rightarrow{E}\varliminf_{n\to\infty}\xi_n=E\varlimsup_{n\to\infty}\xi_n.$$
+Следовательно
+$$\varliminf_{n\to\infty}E\xi_n=\varlimsup_{n\to\infty}E\xi_n=E\xi.$$
+<br>
+<p id="Theorem4.8"><b>Теорема 4.8:</b>
+Пусть $\xi$, $\eta$ независимые случайные величины такие, что $E|\xi|<\infty$, $E|\eta|<\infty$, тогда $E|\xi\eta|<\infty$ и $E(\xi\eta)=E\xi{E}\eta$.
+<p><b>Доказательство:</b><br>
+Пусть случайные величины $\xi$, $\eta$ неотрицательны.<br>
+Для любого $n\in\mathbb{N}$ положим
+$$\xi_n:=\sum_{k=1}^{\infty}\frac{k}{n}I_{A_k},\,A_k:=\left\{\omega\in\Omega\mid\frac{k}{n}\leq\xi(\omega)<\frac{k+1}{n}\right\};$$
+$$\eta_n:=\sum_{k=1}^{\infty}\frac{k}{n}I_{B_k},\,B_k:=\left\{\omega\in\Omega\mid\frac{k}{n}\leq\eta(\omega)<\frac{k+1}{n}\right\}.$$
+Тогда множества $A_k$, $B_k$ образуют разбиение $\Omega$ и для любого $k$
+$$\xi(\omega)\in{A}_k\Leftrightarrow\frac{k}{n}\leq\xi(\omega)<\frac{k+1}{n}\Leftrightarrow\xi_n(\omega)=\frac{k}{n},$$
+$$\eta(\omega)\in{B}_k\Leftrightarrow\frac{k}{n}\leq\eta(\omega)<\frac{k+1}{n}\Leftrightarrow\eta_n(\omega)=\frac{k}{n}.$$
+Таким образом, для любого $\omega\in\Omega$
+$$\begin{cases}
+\forall{n}\in\mathbb{N}\left(|\xi_n(\omega)-\xi(\omega)|<\frac1{n}\right) \\
+\forall{n}\in\mathbb{N}\left(|\eta_n(\omega)-\eta(\omega)|<\frac1{n}\right)
+\end{cases}
+\Rightarrow
+\begin{cases}
+\lim_{n\to\infty}\xi_n=\xi \\
+\lim_{n\to\infty}\eta_n=\eta.
+\end{cases}
+$$
+и так как для любого $n\in\mathbb{N}$, $\omega\in\Omega$ $|\xi_n(\omega)|\leq\xi(\omega)$ и $E\xi<\infty$, то по теореме 4.7
+$$
+\begin{cases}
+\lim_{n\to\infty}E\xi_n=E\xi\ \\ 
+\lim_{n\to\infty}E\eta_n=E\eta
+\end{cases}\quad(1)
+$$
+Для любого $n\in\mathbb{N}$
+$$
+\xi_n\eta_n=\sum_{n=1}^{\infty}\frac{k}{n}I_{A_k}\sum_{s=1}^{\infty}\frac{k}{n}I_{B_k}=\sum_{k,s}\frac{ks}{n^2}I_{A_k}I_{B_k}\Rightarrow{E}\xi_n\eta_n=\sum_{k,s}\frac{ks}{n^2}E(I_{A_k}I_{B_k}).
+$$
+Так как случайные величины $\xi$ и $\eta$ независимы, то для любых $k,s\in\mathbb{N}$
+\begin{multline*}
+E(I_{A_k}I_{B_s})=EI_{A_kB_s}=P(A_k)P(B_s)=
+P\left\{\omega\in\Omega\mid\xi(\omega)\in\left[\frac{k}{n},\frac{k+1}{n}\right),\eta(\omega)\in\left[\frac{s}{n},\frac{s+1}{n}\right)\right\}=\\=
+P\left\{\omega\in\Omega\mid\xi(\omega)\in\left[\frac{k}{n},\frac{k+1}{n}\right)\right\}P\left\{\eta(\omega)\in\left[\frac{s}{n},\frac{s+1}{n}\right)\right\}=
+P(A_k)P(B_s)=EI_{A_k}EI_{B_s}
+\end{multline*}
+Тогда
+$$E(\xi_n\eta_n)=\sum_{k,s}\frac{ks}{n^2}E(I_{A_k}I_{B_k})=\sum_{k=1}^{\infty}\frac{k}{n}E_{I_k}\sum_{s=1}^{\infty}\frac{s}{n}EI_{B_s}=E\xi_nE\eta_n.\quad(2)$$
+Покажем, что $\lim_{n\to\infty}E(\xi_n\eta_n)=E(\xi\eta)$, действительно для любого $n\in\mathbb{N}$
+\begin{multline*}
+|E(\xi_n\eta_n)-E(\xi\eta)|=|E(\xi_n\eta_n-\xi\eta)|\leq{E}|\xi_n\eta_n-E(\xi\eta)|=E|\xi_n\eta_n-\xi_n\eta+\xi_n\eta-\xi\eta|=\\=
+E|\xi_n(\eta_n-\eta)+\eta(\xi_n-\xi)|\leq{E}(|\xi_n||\eta_n-\eta|)+E(|\eta||\xi_n-\xi|)\leq\frac1{n}E|\xi_n|+\frac1{n}E|\eta|\quad(3)
+\end{multline*}
+Так как слуайные величины $\xi_n$ неотрицательны для любого $n\in\mathbb{N}$,то 
+$$\lim_{n\to\infty}E|\xi_n|=\lim_{n\to\infty}E\xi_n=E\xi,$$ 
+следовательно последнее выражение в соотношении (3) стремиться к нулю при $n\to\infty$, то есть 
+$$\lim_{n\to\infty}E(\xi_n\eta_n)=E(\xi\eta).$$
+Тогда из соотношений (1), (2) и свойств предела числовой последовательности имеем
+$$
+\lim_{n\to\infty}E(\xi_n\eta_n)=\lim_{n\to\infty}(E\xi_nE\eta_n)=\lim_{n\to\infty}E\xi_n\lim_{n\to\infty}E\eta_n=E\xi{E}\eta.
+$$
+Пусть $\xi$, $\eta$ произвольные случайные величины удовлетворяющие условию теоремы, тогда $\xi=\xi^+-\xi^-$, $\eta=\eta^+-\eta^-$ где 
+$\xi^+$, $\xi^-$, $\eta^+$, $\eta^-$ неотрицательные, $\xi^+$ и $\eta^+$ незвисимы, $\xi^-$ и $\eta^-$ независимы. Тогда
+\begin{multline*}
+\xi\eta=(\xi^+-\xi^-)(\eta^+-\eta^-)=\xi^+\eta^++\xi^-\eta^--\xi^-\eta^++\xi^+\eta^-\Rightarrow\\\Rightarrow
+{E}(\xi\eta)=E(\xi^+\eta^+)+E(\xi^-\eta^-)-E(\xi^-\eta^+)-E(\xi^+\eta^-)=\\=
+E\xi^+E\eta^++E\xi^-E\eta^--E\xi^-E\eta^+-E\xi^+E\eta^-=E(\xi^+-\xi^-)E(\eta^+-\eta^-)=E\xi{E}\eta.
+\end{multline*}
+<br>
+<p id="Task4.1"><b>Задача 4.1:</b>
+Доказать, что если случайные величины $\xi$ и $\eta$ независимы, то случайные величины $\xi^+:=\max(\xi,0)$ и $\eta:=\max(\eta,0)$ тоже независимы.
+<br><br>
+Фиксируем $B\in\mathcal{B}$.<br>
+Если $0\in{B}$, то
+$$
+P(\xi^+\in{B},\eta^+\in{B})=P(\xi\in(-\infty,0)\cup{B},\eta\in(-\infty,0)\cup{B})=
+P(\xi\in(-\infty,0)\cup{B})P(\eta\in(-\infty,0)\cup{B})=P(\xi^+\in{B})P(\eta^+\in{B}).
+$$
+Если $0\notin{B}$, то
+$$
+P(\xi^+\in{B},\eta^+\in{B})=P(\xi\in{B}\cap(0,\infty),\eta\in{B}\cap(0,\infty))=
+P(\xi\in{B}\cap(0,\infty))P(\eta\in{B}\cap(0,\infty))=P(\xi^+\in{B})P(\eta^+\in{B}).
+$$
+
+<br><br>
+<a href="./probability_theory3.5.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.3.html">next</a>

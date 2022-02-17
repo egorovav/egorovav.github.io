@@ -42,7 +42,7 @@ $$\sum_{n=1}^{\infty}|x_n|^2\leq\|x\|^2\Rightarrow\frac{a_0^2}{2}+\sum_{n=1}^{\i
 <br><br>
 <p id=Definition15.2.2><b>Определение 15.2.2:</b> Просто тригонометрическим рядом (ТР) называют ряд вида 
 $$\frac{\alpha_0}{2}+\sum_{n=1}^{\infty}(\alpha_n\cos{nx}+\beta_n\sin{nx}),$$
-где для любого $n\in\mathbb{N}$ $\alpha_n,\beta_n\in\mathbb{P}$ суть произвольные элементы поля $\mathbb{P}$.<br>
+где для любого $n\in\mathbb{N}$ $\alpha_n,\beta_n,\alpha_0\in\mathbb{P}$ суть произвольные элементы поля $\mathbb{P}$.<br>
 Частичная сумма тригонометрического ряда называется тригонометрическим многочленом
 $$T_n(x):=\frac{\alpha_0}{2}+\sum_{k=1}^n(\alpha_k\cos{kx}+\beta_k\sin{kx}).$$
 Таким образом, очевидно, что всякий ТРФ является ТР, но не всякий ТР является ТРФ даже если он сходится.<br>
@@ -71,7 +71,7 @@ $S(x_0)=f(x_0)$.
 Тригонометрическая система функций $S:=\{\cos{nx},\sin{kx}\mid{n}\in\mathbb{N}_0,k\in\mathbb{N}\}$ 
 <a href="./math_analysis15.1.2.html#Definition15.1.7">полна</a> в евклидовом пространстве 
 $H:=\mathcal{R}_2[-\pi,\pi]$.<br>
-То есть
+То есть существуют последовательности $\{\alpha_n\}$, $\{\beta_n\}$ из $\mathbb{P}$ такие, что
 $$\forall{f}(x)\in{H}\,\forall\varepsilon>0\,\exists
 {T}_{\varepsilon}(x):=\frac{\alpha_0}{2}+\sum_{k=1}^{n(\varepsilon)}(\alpha_k\cos{kx}+\beta_k\sin{kx})\in\mathcal{Lin}\{S\}\colon
 \|f-T_{\varepsilon}\|=\left|\int_{-\pi}^{\pi}|f(x)-T_{\varepsilon}(x)|^2\,dx\right|^{1/2}<\varepsilon.$$
@@ -79,12 +79,13 @@ $$\forall{f}(x)\in{H}\,\forall\varepsilon>0\,\exists
 
 <br><br>
 <p id=Corollary15.2.1><b>Следствие 15.2.1: Теорема Ляпунова.</b><br> 
-Тригонометрическая система функций является базисом в $\mathcal{R}_2[-\pi,\pi]$. То есть для любой функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$
+Тригонометрическая система функций является базисом $H:=\mathcal{R}_2[-\pi,\pi]$ и для любой функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$
 $$S_n(x)=\frac{a_0}{2}+\sum_{k=1}^n(a_k\cos{kx}+b_k\sin{kx})\to{f}(x),n\to\infty$$
 в метрике $H$, или
 $$\lim_{n\to\infty}\|f-S_n\|=\lim_{n\to\infty}\left(\int_{-\pi}^{\pi}(f(x)-S_n(x))^2\,dx\right)^{1/2}=0,$$
 или
-$$f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx}).$$
+$$f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx}),$$
+где $\{a_n\}$, $\{b_n\}$ - коэффициенты Фурье для функции $f(x)$, а сходимость понимается в метрике $H$, то есть в среднем квадратичном.
 <p><b>Доказательство:</b><i>Кудрявцев т.2, стр. 354.</i>
 
 <br><br>
@@ -109,8 +110,8 @@ $$c_n:=\frac{a_n-ib_n}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)(\cos{nx}-i\sin{nx})\
 $$c_{-n}:=\frac{a_n+ib_n}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)(\cos{nx}+i\sin{nx})\,dx=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{inx}\,dx.$$
 Положим $\displaystyle{c}_0:=\frac{a_0}{2}=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)\,dx=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{i0x}\,dx$, тогда для любого 
 $n\in\mathbb{Z}$ $\displaystyle{c}_n=\frac1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx$, следовательно ТРФ можно записать в виде
-$$\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})=c_0+\sum_{n=1}^{\infty}c_n+\sum_{n=-1}^{-\infty}c_n=\sum_{n\in\mathbb{Z}}c_n=
-\frac1{2\pi}\sum_{n\in\mathbb{Z}}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx$$ 
+$$\frac{a_0}{2}+\sum_{n=1}^{\infty}(a_n\cos{nx}+b_n\sin{nx})=c_0+\sum_{n=1}^{\infty}(e^{inx}c_n)+\sum_{n=-1}^{-\infty}(e^{inx}c_n)=\sum_{n\in\mathbb{Z}}(e^{inx}c_n)=
+\frac1{2\pi}\sum_{n\in\mathbb{Z}}\left(e^{inx}\int_{-\pi}^{\pi}f(x)e^{-inx}\,dx\right)$$ 
 
 <br>
 <h5 id=15.2.2>15.2.2 Принцип локализации.</h5>
@@ -214,7 +215,7 @@ $\displaystyle\sin{x}=\frac{e^{ix}-e^{-ix}}{2i}.$
 </li>
 </ol>
 <br><br>
-<p>Использую понятие ядер Дирихле можно записать частичную сумму ТРФ функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ в интегральном виде
+<p>Используя понятие ядер Дирихле можно записать частичную сумму ТРФ функции $f(x)\in\mathcal{R}_2[-\pi,\pi]$ в интегральном виде
 $$S_n(x)=\sum_{k=-n}^n(c_ke^{ikx})=\sum_{k=-n}^n\left(e^{ikx}\frac1{2\pi}\int_{-\pi}^{\pi}f(t)e^{-ikt}\,dt\right)=
 \frac1{2\pi}\int_{-\pi}^{\pi}f(t)\sum_{k=-n}^ne^{ik(x-t)}\,dt=\frac1{2\pi}\int_{-\pi}^{\pi}f(t)D_n(x-t)\,dt.$$
 <br><br>

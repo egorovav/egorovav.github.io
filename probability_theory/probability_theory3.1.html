@@ -1,0 +1,335 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 3.1</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.3.html">next</a>
+<br>
+
+<h4 id="3">3. Случайные величины.</h4>
+
+<h5 id="3.1">3.1 Основные свойства случайной величины.</h5>
+
+<p id="Definition3.1"><b>Определение 3.1:</b>
+Пусть $(\Omega,\mathfrak{A})$ - измеримое пространство, тогда функция $\xi(\omega):\Omega\to\mathbb{R}$ называется $\mathfrak{A}$-измеримой, 
+если для любого $B\in\mathcal{B}$ $\xi^{-1}(B)\in\mathfrak{A}$.
+<br><br>
+<p id="Definition3.2"><b>Определение 3.2:</b>
+Пусть $(\Omega,\mathfrak{A},P)$ - вероятностное пространство, 
+тогда $\mathfrak{A}$-измеримая функция $\xi(\omega):\Omega\to\mathbb{R}$ называется случайной величиной заданной на $(\Omega,\mathfrak{A},P)$.
+<br><br>
+<p id="Example3.1"><b>Пример 3.1: Индикаторная случайная величина.</b><br>
+Для любого $A\in\mathfrak{A}$ можно определить случайную величину
+$$
+\xi(\omega):=
+\begin{cases}
+1,&\omega\in{A}\\
+0,&\omega\notin{A}.
+\end{cases}
+$$
+Действительно, так как для любого $B\in\mathcal{B}$
+$$
+\xi^{-1}(B)=
+\begin{cases}
+A,		&1\in{B}\wedge0\notin{B}		\\
+\overline{A},	&1\notin{B}\wedge0\in{B}		\\
+\varnothing,	&1\notin{B}\wedge0\notin{B}	\\
+\Omega,	&1\in{B}\wedge0\in{B}	
+\end{cases}
+$$
+и $A,\overline{A},\varnothing,\Omega\in\mathfrak{A}$, то $\xi$ - случайная величина.
+<br><br>
+<p id="Definition3.3"><b>Определение 3.3:</b>
+Случайная величина $\xi$ называется простой, если существует $n\in\mathbb{N}$, $x_1,\ldots,x_n\in\mathbb{R}$, $A_1,\ldots,A_n\in\mathfrak{A}$ такие, 
+что для любого $\omega\in\Omega$
+$$\xi(\omega)=\sum_{k=1}^nx_kI_{A_k}(\omega).$$
+<br>
+<p id="Definition3.4"><b>Определение 3.4:</b>
+Случайная величина $\xi$ называется дискретной, если она принимает не более чем счетное число значений.
+<br><br>
+Простая величина является дискретной, она не может принимать более чем $2^n$ значений.<br>
+Если $\xi$ - дискретная случайная величина, то существуют последовательности $\{x_k\}$ из $\mathbb{R}$, $\{A_k\}$ из $\mathfrak{A}$ такие, 
+что для любых неравных $i,j\in\mathbb{N}$ $A_iA_j=\varnothing$, 
+$\bigcup_{k=1}^{\infty}A_k=\Omega$ и для любого 
+$\omega\in\Omega$ 
+$$\xi(\omega)=\sum_{k=1}^{\infty}x_kI_{A_k}(\omega).$$
+Понятно, что для любого $k\in\mathbb{N}$ $A_k=\{\omega\in\Omega\mid\xi(\omega)=x_k\}$.
+<br><br>
+<p id="Theorem3.1"><b>Теорема 3.1:</b>
+Пусть $\mathcal{E}$ класс множеств порождающий $\mathcal{B}$ (т. е. $\sigma(\mathcal{E})=\mathcal{B}$), 
+тогда функция $\xi(\omega):\Omega\to\mathbb{R}$ $\mathfrak{A}$-измерима тогда и только тогда, когда для любого $E\in\mathcal{E}$ 
+$\xi^{-1}(E)\in\mathfrak{A}$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$
+Следует из <a href="#Definition3.1">определения 3.1</a>, так как $\mathcal{E}\subset\mathcal{B}$.<br>
+$\Leftarrow)$ Обозначим $\tilde{\mathcal{B}}:=\{B\in\mathcal{B}\mid\xi^{-1}(B)\in\mathfrak{A}\}$ и докажем, что $\tilde{\mathcal{B}}$ - $\sigma$-алгебра. 
+Для этого реализуем <a href="./probability_theory1.1.html#Definition1.4">определение 1.4</a>.
+<ol>
+<li>Так как $\xi^{-1}(\mathbb{R})=\Omega\in\mathfrak{A}$, то $\mathbb{R}\in\tilde{\mathcal{B}}$.
+</li>
+<li>Пусть $\{B_k\}$ последовательность из $\tilde{\mathcal{B}}$, тогда 
+$$
+\omega\in\xi^{-1}\left(\bigcup_{k=1}^{\infty}B_k\right)\Leftrightarrow\exists{n}\in\mathbb{N}:\xi(\omega)\in{B}_n\Leftrightarrow
+\exists{n}\in\mathbb{N}:\omega\in\xi^{-1}(B_n)\Leftrightarrow\omega\in\bigcup_{k=1}^{\infty}\xi^{-1}(B_k),
+$$
+Таким образом,
+$$\xi^{-1}\left(\bigcup_{k=1}^{\infty}B_k\right)=\bigcup_{k=1}^{\infty}\xi^{-1}(B_k)\in\mathfrak{A}.$$
+</li>
+<li>
+Пусть $B\in\tilde{\mathcal{B}}$, тогда
+$$
+\omega\in\xi^{-1}(\overline{B})\Rightarrow\xi(\omega)\in\overline{B}\Rightarrow\xi(\omega)\notin{B}\Rightarrow\omega\notin\xi^{-1}(B)\Rightarrow\omega\in\overline{\xi^{-1}(B)},
+$$ 
+$$
+\omega\in\overline{\xi^{-1}(B)}\Rightarrow\omega\notin\xi^{-1}(B)\Rightarrow\omega\in\xi^{-1}(\overline{B}).
+$$
+Таким образом,
+$$\xi^{-1}(\overline{B})=\overline{\xi^{-1}(B)}\in\mathfrak{A}.$$
+</li>
+</ol>
+Следовательно, $\tilde{\mathcal{B}}$ - $\sigma$-алгебра, то есть $\mathcal{B}=\sigma(\mathcal{E})\subset\tilde{\mathcal{B}}\subset\mathcal{B}$.
+<br><br>
+<p id="Corollary3.1"><b>Следствие 3.1:</b>
+Функция $\xi(\omega):\Omega\to\mathbb{R}$ является случайной величиной на пространстве $(\Omega,\mathfrak{A},P)$ тогда и только тогда, 
+когда для любого $x\in\mathbb{R}$ $\{\omega\in\Omega\mid\xi(\omega)&ltx\}\in\mathfrak{A}$.
+<p><b>Доказательство:</b>
+Так как для любых $a,b\in\mathbb{R}$ $[a,b)=(-\infty,b)\backslash(-\infty,a)$, то утверждение следует из теоремы 3.1 при $E:=\{(-\infty,x)\mid{x}\in\mathbb{R}\}$.
+<br><br>
+<p id="Definition3.5"><b>Определение 3.5:</b>
+Пусть $(\Omega,\mathfrak{A},P)$ - вероятностное пространство, функция $\xi(\omega):\Omega\to\overline{\mathbb{R}}$ такая, 
+что для любого $B\in\mathcal{B}$ $\xi^{-1}(B)\in\mathfrak{A}$. 
+Тогда функция $\xi(\omega)$ называется расширенной случайной величиной заданной на вероятностном пространстве $(\Omega,\mathfrak{A},P)$.
+<br><br>
+<p id="Definition3.6"><b>Определение 3.6:</b>
+Функция $\varphi(x):\mathbb{R}\to\mathbb{R}$ называется борелевской, если для любого $B\in\mathcal{B}$ $\varphi^{-1}(B)\in\mathcal{B}$.
+<br><br>
+<p id="Theorem3.2"><b>Теорема 3.2:</b>
+Пусть $\varphi(x)$ - борелевская функция, $\xi(\omega):\Omega\to\mathbb{R}$ - случайная величина на $(\Omega,\mathfrak{A},P)$, 
+тогда $\eta(\omega):=\varphi(\xi(\omega))$ тоже случайная величина на $(\Omega,\mathfrak{A},P)$.
+<p><b>Доказательство:</b>
+Пусть $B\in\mathcal{B}$, тогда 
+$$\varphi^{-1}(B)\in\mathcal{B}\Rightarrow\eta^{-1}(B)=\xi^{-1}(\varphi^{-1}(B))\in\mathcal{B}.$$
+<br>
+<p id="Theorem3.3"><b>Теорема 3.3:</b>
+Пусть $\xi(\omega):\Omega\to\mathbb{R}$ неотрицательная случайная величина, тогда существует неубывающая последовательность простых случайных величин $\{\xi_n\}$ такая, что 
+$$\forall\omega\in\Omega(\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega)).$$
+<p><b>Доказательство:</b>
+Для любого $n\in\mathbb{N}$ определим случайную величину $\xi_n$. Обозначим для любого $k\in\overline{0,n2^n}$ $x_k:=k/2^n$, 
+а для любого $k\in\overline{1,n2^n}$ $A_k:=\{\omega\in\Omega\mid{x}_{i-1}\leq\xi(\omega)&ltx_i\}$. Положим для любых $n\in\mathbb{N}$ и $\omega\in\Omega$
+$$\xi_n(\omega):=\sum_{k=1}^{n2^n}x_{k-1}I_{A_k}(\omega)+nI_{\{\omega\mid\xi(\omega)\geq{n}\}}(\omega).$$
+Так как $\xi$ неотрицательна и $\bigsqcup_{k=1}^{n2^n}A_k=[0,n)$, то для любого $\omega\in\Omega$
+$$
+\xi(\omega)&ltn\Rightarrow\exists{s}\in\overline{1,n2^n}:\omega\in{A}_s\Rightarrow
+\left(\xi_n(\omega)=x_{s-1}=\frac{s-1}{2^n}\wedge\xi_{n+1}(\omega)\in\left\{\frac{s-1}{2^n},\frac{2s-1}{2^{n+1}}\right\}\right)\Rightarrow
+\xi_n(\omega)\leq\xi_{n+1}(\omega).
+$$
+$$\xi(\omega)\geq{n}\Rightarrow(\xi_n(\omega)=n\wedge\xi_{n+1}(\omega)\geq{n}).$$
+Таким образом, для любого $\omega\in\Omega$ $\xi_n(\omega)\leq\xi_{n+1}(\omega)$.<br>
+Фиксируем $\omega\in\Omega$ и $\varepsilon>0$, тогда существуют $s,t\in\mathbb{N}$ такие, что $\varepsilon>1/2^s$ и $\xi(\omega)&ltt$. Обозначим $N:=\max(s,t)$, тогда 
+$$
+\forall{n}\geq{N}:(\xi(\omega)&ltn)\Rightarrow\exists{k}\in\overline{1,n}:\omega\in{A}_k\Rightarrow
+\left(\xi_n(\omega)=\frac{k-1}{2^n}\wedge\frac{k-1}{2^n}\leq\xi(\omega)<\frac{k}{2^n}\right)\Rightarrow
+\xi(\omega)-\xi_n(\omega)|\leq\frac1{2^n}<\varepsilon\Rightarrow\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega).
+$$
+<br>
+<p id="Corollary3.2"><b>Следствие 3.2:</b>
+Для любой случайной величины $\xi(\omega):\Omega\to\mathbb{R}$, существует последовательность простых случайных величин $\{\xi_n\}$ такая, что
+$$\forall\omega\in\Omega(\forall{n}\in\mathbb{N}(|\xi_n(\omega)|\leq|\xi(\omega)|)\wedge\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega)).$$
+<p><b>Доказательство:</b>
+Введем случайные величины $\xi^+,\xi^-$ такие, что
+$$
+\xi^+(\omega):=\max(\xi(\omega,0))=
+\begin{cases}
+\xi(\omega),	&\xi(\omega)\geq0\\
+0,		&\xi(\omega)<0
+\end{cases}
+$$
+$$
+\xi^-(\omega)=:-\min(\xi(\omega),0)=
+\begin{cases}
+-\xi(\omega),	&\xi(\omega)<0\\
+0,			&\xi(\omega)\geq0
+\end{cases}
+$$
+тогда для любого $\omega\in\Omega$ $\xi(\omega)=\xi^+(\omega)-\xi^-(\omega)$. Так как случайные величины $\xi^+,\xi^-$ неубывают, 
+то по теореме 3.3 существуют неубывающие последовательности $\{\xi_n^+\},\{\xi_n^-\}$ такие, что для любого $\omega\in\Omega$
+$$\lim_{n\to\infty}\xi_n^+(\omega)=\xi^+(\omega),\lim_{n\to\infty}\xi^-(\omega)=\xi^-(\omega).$$
+Следовательно для любого $\omega\in\Omega$
+$$\lim_{n\to\infty}(\xi_n^+(\omega)-\xi_n^-(\omega))=\xi_n(\omega).$$
+<br>
+<p id="Theorem3.4"><b>Теорема 3.4:</b>
+Если $\{\xi_n\}$ - последовательность случайных величин на пространстве $(\Omega,\mathfrak{A},P)$, 
+то $\sup\limits_n\xi_n(\omega)$, $\inf\limits_n\xi_n(\omega)$, $\varlimsup\limits_{n\to\infty}\xi_n(\omega)$, 
+$\varliminf\limits_{n\to\infty}\xi_n(\omega)$, $\lim\limits_{n\to\infty}\xi_n(\omega)$ тоже случайные величины на $(\Omega,\mathfrak{A},P)$
+<p><b>Доказательство:</b>
+Так как для любого $\omega\in\Omega$ и для любого $k\in\mathbb{N}$ выполняется $\sup\limits_n\xi_n(\omega)\geq\xi_k(\omega)$, то для любого $x\in\mathbb{R}$
+$$\bigcup_{n=1}^{\infty}\{\omega\in\Omega\mid\xi_n(\omega)&gtx\}\subset\{\omega\in\Omega\mid\sup\limits_n\xi_n(\omega)&gtx\}.$$
+С другой стороны, по определению верхней грани (<a href="../math_analysis/math_analysis3.1.html#Definition3.1.7">определение 3.1.7 MA</a>)
+$$
+\omega\in\{\omega\in\Omega\mid\sup\limits_n\xi_n(\omega)&gtx\}\Rightarrow\exists{s}\in\mathbb{N}:(\xi_s(\omega)&gtx)\Rightarrow
+\omega\in\bigcup_{n=1}^{\infty}\{\omega\in\Omega\mid\xi_n(\omega)&gtx\}.
+$$
+Таким обрзаом, 
+$$\{\omega\in\Omega\mid\sup\limits_n\xi_n(\omega)&gtx\}=\bigcup_{n=1}^{\infty}\{\omega\in\Omega\mid\xi_n(\omega)&gtx\}\in\mathfrak{A},$$
+то есть $\sup\limits_n\xi_n(\omega)$ - случайная величина. 
+Это следует из <a href="#Theorem3.1">теоремы 3.1</a> если взять в качестве системы образующих $\mathcal{E}:=\{(x,\infty)\mid{x}\in\mathbb{R}\}$.<br>
+Аналогично при $\mathcal{E}:=\{(-\infty,x)\mid{x}\in\mathbb{R}\}$ из <a href="#Theorem3.1">теоремы 3.1</a> следует, 
+что $\inf\limits_n\xi_n(\omega)$ - случайная величина.<br>
+Верхний и нижний пределы являются случайными величинами так как
+$$\varlimsup_{n\to\infty}\xi_n(\omega)=\inf_n\sup_{n\geq{m}}\xi_m(\omega)$$
+$$\varliminf_{n\to\infty}\xi_n(\omega)=\sup_n\inf_{n\geq{m}}\xi_m(\omega)$$
+Если предел последовательности существует, то он равен нижниму и верхнему пределу, следовательно $\lim_{n\to\infty}\xi_n(\omega)$ - случайная величина.
+<br><br>
+<p id="Theorem3.5"><b>Теорема 3.5:</b>
+Если $\xi,\eta$ случайные величины на $(\Omega,\mathfrak{A},P)$, то $\xi\eta$, $\xi+\eta$, $\xi-\eta$ тоже случайные величина на $(\Omega,\mathfrak{A},P)$. 
+Если для любого $\omega\in\Omega$ $\eta(\omega)\neq0$, то 
+$\frac{\xi}{\eta}$ - случайная величина на $(\Omega,\mathfrak{A},P)$.
+<p><b>Доказательство:</b>
+Так как $\xi,\eta$ - случайные величины, то по <a href="#Corollary3.1">следствию 3.2</a> существуют последовательности простых случайных величин 
+$\{\xi_n\}$, $\{\eta_n\}$ такие, 
+что $\lim_{n\to\infty}\xi_n(\omega)=\xi(\omega)$,
+$\lim_{n\to\infty}\eta_n(\omega)=\eta(\omega)$. Так как произведение, сумма, разность и частное простых случайных величин тоже случайная величина и 
+по свойствам предела последовательности
+$$\lim_{n\to\infty}(\xi_n\eta_n)(\omega)=(\xi\eta)(\omega).$$
+$$\lim_{n\to\infty}(\xi_n+\eta_n)(\omega)=(\xi+\eta)(\omega).$$
+$$\lim_{n\to\infty}(\xi_n-\eta_n)(\omega)=(\xi-\eta)(\omega).$$
+$$\lim_{n\to\infty}\frac{\xi_n}{\eta_n}(\omega)=\frac{\xi}{\eta}(\omega),$$
+то по теореме 3.4 $\xi\eta$, $\xi+\eta$, $\xi-\eta$, $\frac{\xi}{\eta}$ - случайные величины.
+<br>
+
+
+<h5 id="3.2">3.2 Функция распределения случайной величины.</h5>
+
+Пусть $(\Omega,\mathfrak{A},P)$ - вероятностное пространство, $\xi(\omega):\Omega\to\mathbb{R}$ - случайная величина на $(\Omega,\mathfrak{A},P)$. 
+Определим функцию $P_{\xi}(B):\mathcal{B}\to\mathbb{R}$ такую, что для любого
+$B\in\mathcal{B}$
+$$P_{\xi}(B):=P(\{\omega\in\Omega\mid\xi(\omega)\in{B}\})=P(\xi^{-1}(B)).$$
+Так как 
+$$P_{\xi}(\mathbb{R})=P(\xi^{-1}(\mathbb{R}))=P(\Omega)=1$$
+и для любой последовательности непересекающихся множеств $\{B_n\}$ из $\mathcal{B}$
+$$
+P_{\xi}\left(\bigcup_{n=1}^{\infty}B_n\right)=P\left(\xi^{-1}\left(\bigcup_{n=1}^{\infty}B_n\right)\right)=P\left(\bigcup_{n=1}^{\infty}\xi^{-1}(B_n)\right)=
+\sum_{n=1}^{\infty}P(\xi^{-1}(B_n))=\sum_{n=1}^{\infty}P_{\xi}(B_n),
+$$
+то $P_{\xi}$ - вероятностная мера на $(\mathbb{R},\mathcal{B},P)$.
+<br><br>
+<p id="Definition3.7"><b>Определение 3.7:</b>
+Пусть $\xi(\omega)$ - случайная величина на пространстве $(\Omega,\mathfrak{A},P)$, 
+тогда функция распределения $F_{\xi}(x)$ вероятностной меры $P_{\xi}$ называется функцией распределения случайной величины $\xi(\omega)$.
+<br><br>
+Из определения следует, что для любого $x\in\mathbb{R}$ 
+$$F_{\xi}(x):=P_{\xi}(-\infty,x):=P(\xi^{-1}(-\infty,x))=P(\{\omega\in\Omega\mid\xi(\omega)&ltx\}).$$
+<br>
+<p id="Definition3.8"><b>Определение 3.8:</b>
+Случайная величина называется абсолютно непрерывной, если существует неотрицательная функция $p_{\xi}(u):\mathbb{R}\to\mathbb{R}$ такая, 
+что для любого $x\in\mathbb{R}$
+$$F_{\xi}(x)=\int\limits_{-\infty}^{x}p_{\xi}(u)du.$$
+При этом функция $p_{\xi}(u)$ называется плотностью распределения случайной величины $\xi$. 
+<br><br>
+Из определения функции распределения случайной величины следует<br>
+$P_{\xi}([a,b))=P(\{\omega\in\Omega\mid{a}\leq\xi(\omega)&ltb\})=F_{\xi}(b)-F_{\xi}(a),$<br>
+$P_{\xi}((a,b))=P(\{\omega\in\Omega\mid{a}&lt\xi(\omega)&ltb\})=F_{\xi}(b)-F_{\xi}(a+0),$<br>
+$P_{\xi}([a,b])=P(\{\omega\in\Omega\mid{a}\leq\xi(\omega)\leq{b}\})=F_{\xi}(b+0)-F_{\xi}(a),$<br>
+$P_{\xi}((a,b])=P(\{\omega\in\Omega\mid{a}&lt\xi(\omega)\leq{b}\})=F_{\xi}(b+0)-F_{\xi}(a+0),$<br>
+$P_{\xi}(a)=P(\{\omega\in\Omega\mid\xi(\omega)=a\})=F_{\xi}(a+0)-F_{\xi}(a).$<br>
+Если функция $F_{\xi}(x)$ непрерывана в $a$ и $b$, то первые четыре вероятности равны между собой
+$$P_{\xi}(\langle{a},b\rangle)=P\{\omega\in\Omega\mid\xi(\omega)\in\langle{a},b\rangle\}=F_{\xi}(b)-F_{\xi}(a)=\int\limits_{a}^{b}p_{\xi}(u)du,$$
+а $P_{\xi}(a)=0$
+<br><br>
+<p id="Theorem3.6"><b>Теорема 3.6:</b>
+Пусть $\xi$ - случаяная величина на $(\Omega,\mathfrak{A},P)$ с плотностью распределения $p_{\xi}(x)$, тогда для любого $B\in\mathcal{B}$
+$$P(\{\omega\in\Omega\mid\xi(\omega)\in{B}\})=\int\limits_Bp_{\xi}(u)du.$$
+<p><b>Доказательство:</b>
+Обозначим
+$$\tilde{\mathcal{B}}:=\{B\in\mathcal{B}\mid{P}(\{\omega\in\Omega\mid\xi(\omega)\in{B})\}=\int\limits_Bp_{\xi}(u)du\}.$$
+Любой полуинтервал содержится в $\tilde{\mathcal{B}}$. Докажем, что $\tilde{\mathcal{B}}$ - $\sigma$-алгебра.
+<ol>
+<li>Так как
+$$P(\{\omega\in\Omega\mid\xi(\omega)\in\mathbb{R}\})=1=\int\limits_{-\infty}^{\infty}p_{\xi}(u)du,$$
+то $\mathbb{R}\in\tilde{\mathcal{B}}$.
+</li>
+<li>Для любого $B\in\tilde{\mathcal{B}}$
+$$
+P(\{\omega\in\Omega\mid\xi(\omega)\in{\overline{B}}\})=1-P(\{\omega\in\Omega\mid\xi(\omega)\in{B}\})=
+1-\int\limits_Bp_{\xi}(u)du=\int\limits_{\overline{B}}p_{\xi}(u)du
+$$
+</li>
+<li>Пусть $\{B_k\}$ последовательность множеств из $\tilde{\mathcal{B}}$.
+$$
+\bigcup_{k=1}^{\infty}B_k=B_1\cup{B}_2\overline{B}_1\cup{B}_3\overline{B}_2\overline{B}_1\cup\ldots=\bigcup_{k=1}^{\infty}B_k\overline{B}_{k-1}\cdots\overline{B}_1
+$$
+В последнем объединении множества попарно не пересекаются и принадлежат $\tilde{\mathcal{B}}$, 
+так как из п. 2 следует замкнутость $\tilde{\mathcal{B}}$ относительно разности, а следовательно и пересечения 
+($AB=A\backslash(A\backslash{B})$). Следовательно,
+$$
+P_{\xi}\left(\bigcup_{k=1}^{\infty}B_k\right)=P_{\xi}\left(\bigcup_{k=1}^{\infty}B_k\overline{B}_{k-1}\cdots\overline{B}_1\right)=
+\sum_{k=1}^{\infty}P_{\xi}(B_k\overline{B}_{k-1}\cdots\overline{B}_1)=
+\sum_{k=1}^{\infty}\int\limits_{B_k\overline{B}_{k-1}\cdots\overline{B}_1}p_{\xi}(u)du=\int\limits_{\bigcup_{k=1}^{\infty}B_k}p_{\xi}(u)du
+$$
+Таким образом, $\bigcup_{k=1}^{\infty}B_k\in\tilde{\mathcal{B}}$ и $\tilde{\mathcal{B}}$ - $\sigma$-алгебра. 
+</li>
+</ol>
+Так как $\mathcal{B}$ минимальная $\sigma$-алгебра порожденная множеством всех полуинтервалов, то $\tilde{\mathcal{B}}=\mathcal{B}$.
+<br><br>
+<p id="Theorem3.7"><b>Теорема 3.7:</b>
+Пусть функция $F(x):\mathbb{R}\to\mathbb{R}$ такая, что
+<ol>
+<li>$\forall{x}\in\mathbb{R}(0\leq{F}(x)\leq0)$,
+</li>
+<li>$F(x)$ - непрерывана слева,
+</li>
+<li>$F(x)$ - неубывает,
+</li>
+<li>$\lim\limits_{x\to\infty}F(x)=1$, $\lim\limits_{x\to-\infty}F(x)=0$,
+</li>
+</ol>
+тогда существует вероятностное пространство $(\Omega,\mathfrak{A},P)$ и случайная величина $\xi$ на нем такая, 
+что функция $F(x)$ является функцией распределения случайной величины $\xi$.
+<p><b>Доказательство:</b>
+Положим $\Omega:=\mathbb{R}$, $\mathfrak{A}:=\mathcal{B}$, тогда по <a href="./probability_theory2.1.html#Theorem2.1">теореме 2.1</a> 
+на пространстве $(\Omega,\mathfrak{A})$ существует вероятностная мера $P$ такая, что для любого $x\in\mathbb{R}$ $P(-\infty,x)=F(x)$. 
+Положим для любого 
+$\omega\in\mathbb{R}$ $\xi(\omega)=\omega$, тогда для любого $x\in\mathbb{R}$
+$$
+F_{\xi}(x)=P(\{\omega\in\Omega\mid\xi(\omega)&ltx\})=P(\{\omega\in\mathbb{R}\mid\omega&ltx\})=P(-\infty,x)=F(x).
+$$
+<br>
+Из доказательства теоремы следует, что по заданной функции распределени случайная величина определяется не однозначно.
+<br><br>
+<p id="Example3.2"><b>Пример 3.2:</b>
+Пусть $\Omega:=\{0,1\}$, $\mathfrak{A}:=\mathcal{P}(\Omega)$, для любого $A\in\mathfrak{A}$ $P(A):=\frac{|A|}{|\Omega|}$. 
+Случайная величина $\xi$ на $(\Omega,\mathfrak{A},P)$ такая, что
+$$
+\xi(\omega)=
+\begin{cases}
+-1,	&\omega=0\\
+1,	&\omega=1
+\end{cases}
+$$
+и положим $\eta(\omega):\equiv-\xi(\omega)$. Тогда<br>
+Для любого $x<-1$ $F_{\xi}(x)=F_{\eta}(x)=P(\{\omega\in\Omega\mid\xi(\omega)<-1\})=P(\varnothing)=0$.<br>
+Для любого $x\in[-1,1)$ $F_{\xi}(x)=F_{\eta}(x)=P(\{\omega\in\Omega\mid\xi(\omega)\in[-1,1)\})=\frac12$.<br>
+Для любого $x\geq1$ $F_{\xi}(x)=F_{\eta}(x)=P(\{\omega\in\Omega\mid\xi(\omega)\leq1\})=P(\Omega)=1$.<br>
+Таким образом, $F_{\xi}(x)\equiv{F}_{\eta}(x)$.
+<br><br>
+<p id="Definition3.9"><b>Определение 3.9:</b>
+Случайные величины $\xi_1,\xi_2$ заданные на вероятностном пространстве $(\Omega,\mathfrak{A},P)$ называются эквивалентными, если 
+$$P(\{\omega\in\Omega\mid\xi_1(\omega)\neq\xi_2(\omega)\})=0.$$
+При этом говорят, что $\xi_1$ равна $\xi_2$ почти наверное и обозначают $\xi_1=\xi_2(P_{\text{пн}})$.
+
+<br><br>
+<a href="./probability_theory2.1.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory3.3.html">next</a>
+</body>
+</html>

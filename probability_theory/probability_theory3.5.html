@@ -1,0 +1,273 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Probability theory 3.5</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki-texvc.js", "autobold.js"], unicode: {
+	fonts: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML">
+<!--script type="text/javascript" async src="../../../MathJax/MathJax.js?config=TeX-AMS_HTML"-->
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="./probability_theory3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.1.html">next</a>
+<br>
+
+<h5 id="3.5">3.5 Независимость классов событий.</h5>
+
+<p id="Definition3.15"><b>Определение 3.15:</b>
+Пусть $(\Omega,\mathfrak{A},P)$ вероятностное пространство, $\mathcal{E}_1,\ldots,\mathcal{E}_n$  подмножества из $\mathfrak{A}$. 
+Будем говорить, что $\mathcal{E}_1,\ldots,\mathcal{E}_n$ независимые классы событий, если для любого 
+$m\in\overline{2,n}$
+$$\forall{i}_1,\ldots,i_m\in\overline{1,n}\,\forall{A}_{i_1}\in\mathcal{E}_{i_1},\ldots,\forall{A}_{i_m}\in\mathcal{E}_{i_m}\left(P(A_{i_1}\cdots{A}_{i_m})=\prod_{k=1}^mP(A_{i_k})\right).$$
+<br><br>
+<p id="Theorem3.10"><b>Теорема 3.10: Теорема о пополнении независимых классов.</b><br>
+Пусть $(\Omega,\mathfrak{A},P)$ вероятностное пространство, $\mathcal{E}_1,\ldots,\mathcal{E}_n$ классы независимых событий из $\mathfrak{A}$. 
+Если каждый из классов пополнить
+<ol>
+<li>$\varnothing$, $\Omega$;
+</li>
+<li>собственными разностями событий содержащихся в классе;
+</li>
+<li>событиями противоположными событиям содержащимся в классе;
+</li>
+<li>конечными и счетными объединениями попарно не совместных событий содержащихся в классе;
+</li>
+<li>пределами монотонных последовательностей событий содержащихся в классе;
+</li>
+</ol>
+то получившиеся классы событий так же будут независимыми.
+<p><b>Доказательство:</b><br>
+Фиксируем множества $A_{i_1},\ldots,A_{i_m}$ из $\mathcal{E}_{i_1},\ldots,\mathcal{E}_{i_m}$ соответственно.
+<ol>
+<li>Если ни одно из множеств не равно $\varnothing$ или $\Omega$ то равенство
+$$P(A_{i_1}\cdots{A}_{i_m})=\prod_{k=1}^mP(A_{i_k})$$
+следует из условия теоремы. Пусть какие-то из множеств равны $\varnothing$, б. о. о. будем считать, что только множество $A_{i_1}$ равно $\varnothing$, тогда
+$$
+P(A_{i_1}A_{i_2},\ldots,A_{i_m})=P(\varnothing{A}_{i_2}\cdots{A}_{i_m})=P(\varnothing)=0=P(\varnothing)\prod_{k=2}^mP(A_{i_k})=\prod_{k=1}^mP(A_{i_k}).
+$$
+Пусть теперь $A_{i_1}=\Omega$, и для любого $k\in\overline{2,m}$ $A_{i_k}\neq\Omega$, тогда
+$$
+P(A_{i_1}A_{i_2}\cdots{A}_{i_m})=P(\Omega{A}_{i_2}\cdots{A}_{i_m})=P(A_{i_2}\cdots{A}_{i_m})=
+\prod_{k=2}^mP(A_{i_k})=P(\Omega)\prod_{k=2}^mP(A_{i_k})=\prod_{k=1}^mP(A_{i_k}),
+$$
+где третье равенство в силу независимости классов $\mathcal{E}_1,\ldots,\mathcal{E}_n$.
+Таким образом, классы $\mathcal{E}_1,\ldots,\mathcal{E}_n$ дополненные $\varnothing$, $\Omega$ так же независимы.
+</li>
+<li>Пусть б. о. о. $A,B\in\mathcal{E}_1$ такие, что $B\subset{A}$, то есть разность $A\backslash{B}$ является собственной. 
+Обозначим $C:=A_{i_2}\cdots{A}_{i_m}$, где для любого $k\in\overline{2,m}$ $i_k>1$, тогда $BC\subset{A}C$, 
+следовательно по п. 3 <a href="./probability_theory1.1.html#Statement1.1">утверждения 1.1</a>
+$P(A\backslash{B})=P(A)-P(B)$, $P(AC\backslash{BC})=P(AC)-P(BC)$. Так как классы $\mathcal{E}_1,\ldots,\mathcal{E}_n$ независимы, 
+то $P(AC)=P(A)P(C)$, $P(BC)=P(B)P(C)$, следовательно
+$$
+P((A\backslash{B})C)=P(AC\backslash{B}C)=P(AC)-P(BC)=P(C)(P(A)-P(B))=P(A\backslash{B})P(C)=P(A\backslash{B})\prod_{k=2}^mP(A_{i_k}).
+$$
+То есть класс $\mathcal{E}_1$ расширенный разностью $A\backslash{B}$ независим в совокупности с классами $\mathcal{E}_2,\ldots,\mathcal{E}_n$.
+</li>
+<li>Так как для любого $A\subset\Omega$ $\overline{A}=\Omega\backslash{A}$, то утверждение следует из п. п. 1, 2.
+</li>
+<li>Пусть для любого $k\in\mathbb{N}$ б. о. о. $B_k\in\mathcal{E}_1$ такие, что для любых различных $k,s\in\mathbb{N}$ $B_kB_s=\varnothing$. 
+Обозначим $C:=A_{i_2}\cdots{A}_{i_m}$, где для любого $k\in\overline{2,m}$ $i_k>1$, 
+тогда в силу независимости классов $\mathcal{E}_1,\ldots,\mathcal{E}_n$ для любого $k\in\mathbb{N}$ $P(B_kC)=P(B_k)P(C)$. Следовательно,
+$$
+P\left(\bigcup_{k=1}^{\infty}(B_kA_{i_2}\cdots{A}_{i_m})\right)=P\left(\bigcup_{k=1}^{\infty}(B_kC)\right)=\sum_{k=1}^{\infty}P(B_kC)=
+P(C)\sum_{k=1}^{\infty}P(B_k)=P(C)P\left(\bigcup_{k=1}^{\infty}B_k\right)=P\left(\bigcup_{k=1}^{\infty}B_k\right)P(A_{i_2})\cdots{P}(A_{i_m})
+$$
+</li>
+<li>Пусть $\{B_k\}$ возрастающая последовательность из $\mathcal{E}_1$. 
+Будем считать, что $B_0:=\varnothing$ тогда по п. 2 <a href="./probability_theory1.6.html#Theorem1.5">теоремы 1.5</a>
+$$
+\lim_{k\to\infty}B_k=\bigcup_{k=1}^{\infty}B_k=\bigsqcup_{k=1}^{\infty}(B_k\backslash{B}_{k-1}).
+$$
+Следовательно, по п. п. 2, 4 пополнение класса пределом возрастающей последовательности оставляет классы независимыми.<br>
+Пусть $\{B_k\}$ убывающая последовательность из $\mathcal{E}_1$. 
+Тогда последовательность $\{\overline{B}_k\}$ возрастающая и так как по п. 3 <a href="./probability_theory1.6.html#Theorem1.5">теоремы 1.5</a>
+$$
+\lim_{k\to\infty}B_k=\bigcap_{k=1}^{\infty}B_k=\Omega\backslash\lim_{k\to\infty}(\overline{B}_k),
+$$
+то утверждение следует из доказанного в данном пункте и п. 3.
+</ol>
+<br>
+<p id="Theorem3.11"><b>Теорема 3.11: Теорема о независимости $\sigma$-алгебр порожденных независимыми классами событий.</b><br>
+Пусть $\mathcal{E}_1$, $\mathcal{E}_2$ независимые классы событий замкнутые относительно конечных пересечений. 
+Тогда классы $\sigma(\mathcal{E}_1)$, $\sigma(\mathcal{E}_2)$ также независимы.
+<p><b>Доказательство:</b><br>
+Докажем, что классы $\sigma(\mathcal{E}_1)$ и $\mathcal{E}_2$ независимы. 
+Обозначим $\Phi$ класс всех событий из $\sigma(\mathcal{E}_1)$ независимых с $\mathcal{E}_2$. Тогда по теореме 3.10 
+<ol>
+<li> $\varnothing\in\Phi$,
+</li>
+<li>$\Omega\in\Phi$,
+</li>
+<li>$\mathcal{E}_1\subset\Phi$,
+</li>
+<li>класс $\Phi$ замкнут относительно собственных разностей,
+</li>
+<li>класс $\Phi$ замкнут относительно счетных объединений попарно несовместных собыитй.
+</li>
+</ol>
+Обозначим $\mathcal{L}$ минимальный класс событий из $\sigma(\mathcal{E}_1)$ удовлетворяющий свойствам 1 - 5. Докажем, что $\mathcal{L}$ $\sigma$-алгебра.
+По свойству 2 $\Omega\in\mathcal{L}$, по свойствам 2, 4 для любого $A\in\mathcal{L}$ $\overline{A}\in\Omega\backslash{A}\in\mathcal{L}$. 
+Докажем, что $\mathcal{L}$ замкнут относительно счетных объединений. Пусть для любого $k\in\mathbb{N}$ $A_k\in\mathcal{L}$, тогда
+$$
+\bigcup_{k=1}^{\infty}A_k=A_1\sqcup{A}_1\overline{A}_1\sqcup{A}_3\overline{A}_2\overline{A}_1\sqcup\ldots=\bigsqcup_{k=1}^{\infty}A_k\overline{A}_{k-1}\cdots\overline{A}_1.
+$$
+Следовательно, если будет доказано, что класс $\mathcal{L}$ замкнут относительно конечных пересечений, то, по свойству 5, будет доказано, 
+что он замкнут относительно счетных объединений.<br>
+Фиксируем $A\in\mathcal{E}_1$, обозначим $\mathcal{L}_A:=\{B\in\mathcal{L}\mid{A}B\in\mathcal{L}\}$. 
+Докажем, что класс $\mathcal{L}_A$ удовлетворяет свойствам 1 - 5.
+<ol>
+<li>$(\varnothing\in\mathcal{L}\wedge{A}\varnothing=\varnothing)\Rightarrow\varnothing\in\mathcal{L}_A$.
+</li>
+<li>$(\Omega\in\mathcal{L}\wedge{A}\Omega=A\in\mathcal{E}_1\subset\mathcal{L})\Rightarrow\Omega\in\mathcal{L}_A$.
+</li>
+<li>Так как по условию класс $\mathcal{E}_1$ замкнут относительно счетных пересечений, то 
+$$\forall{B}\in\mathcal{E}_1(AB\in\mathcal{E}_1\subset\mathcal{L})\Rightarrow\mathcal{E}_1\subset\mathcal{L}_A.$$
+</li>
+<li>Фиксируем $B,C\in\mathcal{L}_A$ такие, что $B\subset{C}$, тогда по свойству 4 и по определению $\mathcal{L}_A$
+$$
+(C\backslash{B}\in\mathcal{L}\wedge{A}B,AC\in\mathcal{L})\Rightarrow{A}(C\backslash{B})=AC\backslash{A}B\in\mathcal{L}\Rightarrow{C}\backslash{B}\in\mathcal{L}_A
+$$
+</li>
+<li>Пусть $\{B_n\}$ последовательность попарно несовместных событий из $\mathcal{L}_A$, тогда для любых различных $k,s\in\mathbb{N}$ $(AB_k)(AB_s)=\varnothing$. 
+Следовательно, по свойству 5 и определению $\mathcal{L}_A$
+$$
+A\left(\bigsqcup_{n=1}^{\infty}B_n\right)=\bigsqcup_{n=1}^{\infty}(AB_n)\in\mathcal{L}\Rightarrow\bigsqcup_{n=1}^{\infty}B_n\in\mathcal{L}_A.
+$$
+</li>
+</ol>
+Таким образом, класс $\mathcal{L}_A$ обладает свойствами 1 - 5 и так как класс $\mathcal{L}$ (по выбору) минимальный из всех классов обладающих свойствами 1 - 5, 
+то $\mathcal{L}=\mathcal{L}_A$.<br>
+В силу произвола выбора $A\in\mathcal{E}_1$, доказано, что для любого $A\in\mathcal{E}_1$ и для любого $B\in\mathcal{L}$ $AB\in\mathcal{L}$.<br>
+Фиксируем $B\in\mathcal{L}$, обозначим $\mathcal{L}_B:=\{C\in\mathcal{L}\mid{B}C\in\mathcal{L}\}$. 
+Класс $\mathcal{L}_B$ обладает свойствами 1, 2, 4, 5, это доказывается также как для класса $\mathcal{L}_A$. Докажем, что класс 
+$\mathcal{L}_B$ обладает свойством 3. Действительно
+$$(A\in\mathcal{E}_1\Rightarrow{A}B\in\mathcal{L}\Rightarrow{A}\in\mathcal{L}_B)\Rightarrow\mathcal{E}_1\subset\mathcal{L}_B.$$
+Таким образом, класс $\mathcal{L}_{B}$ удовлетворяет свойствам 1 - 5, следовательно $\mathcal{L}_B=\mathcal{L}$, 
+то есть для любых $A,B\in\mathcal{L}$ $AB\in\mathcal{L}$. Следовательно, класс $\mathcal{L}$ является 
+$\sigma$-алгеброй, тогда
+$$\mathcal{L}\subset\Phi\subset\sigma(\mathcal{E}_1)\subset\mathcal{L}\Rightarrow\Phi=\sigma(\mathcal{E}_1).$$
+Таким образом, доказано, что классы $\sigma(\mathcal{E}_1)$ и $\mathcal{E}_2$ независимы.
+Исходя из этого, заменяя в проведенном доказательстве $\sigma(\mathcal{E}_1)$ на $\sigma(\mathcal{E}_2)$, а $\mathcal{E}_2$ на $\sigma(\mathcal{E}_1)$, 
+можно аналогичным образом доказать, что классы $\sigma(\mathcal{E}_2)$ и 
+$\sigma(\mathcal{E}_1)$ независимы. 
+<br><br>
+<p id="Corollary3.3"><b>Следствие 3.3:</b><br>
+Если алгебры $\mathfrak{A}_1$ и $\mathfrak{A}_2$ независимы, то $\sigma$-алгебры $\sigma(\mathfrak{A}_1)$, $\sigma(\mathfrak{A}_2)$ так же независимы.
+<p><b>Доказательство:</b><br>
+Так как алгебра множеств замкнута относительно конечных пересечений, то утверждение следует из теоремы 3.11.
+<br>
+
+<h5 id="3.6">3.6 Независимые случайные величины.</h5>
+
+Пусть $\xi_1,\ldots,\xi_n$ случайные величины определенные на $(\Omega,\mathfrak{A},P)$. Для любых $B,B_1,\ldots,B_n\in\mathcal{B}$ будем обозначать
+$$P(\{\omega\in\Omega\mid\xi(\omega)\in{B}\}):=P(\xi\in{B}),$$
+$$P(\{\omega\in\Omega\mid\xi_1(\omega)\in{B}_1\wedge\cdots\wedge\xi_n(\omega)\in{B}_n\}):=P(\xi_1\in{B}_1,\ldots,\xi_n\in{B}_n)$$ 
+
+<p id="Definition3.16"><b>Определение 3.16:</b>
+Случайные величины $\xi_1,\ldots,\xi_n,\ldots$ определенные на вероятностном пространстве $(\Omega,\mathfrak{A},P)$ называются независимыми, 
+если для любого $m\in\mathbb{N}$ любых $B_1,\ldots,B_m\in\mathcal{B}$, 
+$k_1,\ldots,k_m\in\mathbb{N}$
+$$P(\xi_{k_1}\in{B}_1,\ldots,\xi_{k_m}\in{B}_n)=\prod_{i=1}^mP(\xi_{k_i}\in{B}_i).$$
+<br>
+<p id="Theorem3.12"><b>Теорема 3.12:</b>
+Случайные величины $\xi_1,\ldots,\xi_n$ независимы тогда и только тогда, 
+когда независимы порожденные ими $\sigma$-алгебры $\mathfrak{A}_{\xi_1},\ldots,\mathfrak{A}_{\xi_n}$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть случайные величины $\xi_1,\ldots,\xi_n$ независимы. 
+Фиксируем $A_1,\ldots,A_n$ из $\mathfrak{A}_{\xi_1},\ldots,\mathfrak{A}_{\xi_n}$ соответственно. Тогда для любого $k\in\overline{1,n}$ существует 
+$B_k\in\mathcal{B}$ такое, что $A_k=\xi_k^{-1}(B_k)$. Тогда
+$$
+P(A_1\cdots{A}_n)=P(\xi_1^{-1}(B_1)\cdots\xi_n^{-1}(B_n))=P(\xi_1\in{B}_1,\ldots,\xi_n\in{B}_n)=
+\prod_{k=1}^nP(\xi_k\in{B}_k)=\prod_{k=1}^n(\xi_k^{-1}(B_k))=\prod_{k=1}^nP(A_k).
+$$
+$\Leftarrow)$ Пусть алгебры $\mathfrak{A}_{\xi_1},\ldots,\mathfrak{A}_{\xi_n}$ независимы. Фиксируем $B_1,\ldots,B_n\in\mathcal{B}$. 
+Для любого $k\in\overline{1,n}$ $\xi_k^{-1}(B_k)\in\mathfrak{A}_{\xi_k}$, следовательно
+$$
+P(\xi_1\in{B}_1,\ldots,\xi_n\in{B}_n)=P(\xi_1^{-1}(B_1)\cdots\xi_n^{-1}(B_n))=\prod_{k=1}^nP(\xi_k^{-1}(B_k))=\prod_{k=1}^nP(\xi_k\in{B}_k).
+$$
+<br>
+<p id="Theorem3.13"><b>Теорема 3.13:</b>
+Случайные величины $\xi_1,\ldots,\xi_n$ независимы тогда и только тогда, когда
+$$F_{(\xi_1,\ldots,\xi_n)}(x_1,\ldots,x_n)\equiv\prod_{k=1}^nF_{\xi_k}(x_k)$$
+<p><b>Доказательство:</b><br>
+Обозначим $\overline\xi:=(\xi_1,\ldots,\xi_n)$<br>
+$\Rightarrow)$ Пусть случайные величины $\xi_1,\ldots,\xi_n$ независимы. 
+Фиксируем действительные числа $x_1,\ldots,x_n$, для любого $k\in\overline{1,n}$ положим $B_k:=(-\infty,x_k)\in\mathcal{B}$. Тогда по теореме 3.12 
+$$
+F_{\overline\xi}(x_1,\ldots,x_n)=P(\xi_1&ltx_1,\ldots,\xi_n&ltx_n)=P(\xi_1\in{B}_1,\ldots,\xi_n\in{B}_n)=\prod_{k=1}^nP(\xi_k&ltx_k)=\prod_{k=1}^nF_k(x_k)
+$$
+$\Leftarrow)$ Докажем для случая $n=2$, для случая произвольного $n\in\mathbb{N}$ доказывается аналогично. 
+Пусть $F_{\overline\xi}(x,y)\equiv{F}_{\xi_1}(x)F_{\xi_2}(y)$, фиксируем полуинтервалы $\Delta_1:=[x_1,x_2)$ и 
+$\Delta_1':=[y_1,y_2)$. Тогда
+\begin{multline*}
+P(\xi_1\in\Delta_1,\xi_2\in\Delta_1')=P(\xi_1\leq\xi_1&ltx_2,y_1\leq\xi_2&lty_2)=\Delta_{[x_1,x_2]}^{(1)}\Delta_{[y_1,y_2]}^{(2)}F_{\overline\xi}(x,y)=\\=
+F_{\overline\xi}(x_2,y_2)-F_{\overline\xi}(x_1,y_2)-F_{\overline\xi}(x_2,y_1)+F_{\overline\xi}(x_1,y_1)=(F_{\xi_1}(x_2)-F_{\xi_1}(x_1))(F_{\xi_2}(y_2)-F_{\xi_2}(y_1))=P(\xi_1\in\Delta_1)P(\xi_2\in\Delta_1').
+\end{multline*}
+Пусть $m,n\in\mathbb{N}$ $\Delta_1,\ldots,\Delta_n$ попарно не пересекающиеся полуинтервалы, 
+$\Delta_1',\ldots,\Delta_m'$ также попарно не пересекающиеся полуинтервалы, тогда 
+\begin{multline*}
+P\left(\xi_1\in\bigcup_{i=1}^n\Delta_i,\xi_2\in\bigcup_{j=1}^m\Delta_j'\right)=\sum_{(i,j)=(1,1)}^{(n,m)}P(\xi_1\in\Delta_i,\xi_2\in\Delta_j')=
+\sum_{(i,j)=(1,1)}^{(n,m)}(P(\xi_1\in\Delta_i)P(\xi_2\in\Delta_j'))=\\=
+\sum_{i=1}^nP(\xi_1\in\Delta_i)\sum_{j=1}^mP(\xi_2\in\Delta_j')=P\left(\xi_1\in\bigcup_{i=1}^n\Delta_i\right)P\left(\xi_2\in\bigcup_{j=1}^m\Delta_j'\right).
+\end{multline*}
+Множество всех объединений попарно не пересекающихся полуинтервалов из $\overline{\mathbb{R}}$ является алгеброй множеств обозначим её $\mathcal{A}$, 
+причем $\sigma(\mathcal{A})=\mathcal{B}$. Таким образом, было показано, что
+для любых $B_1,B_2\in\mathcal{A}$
+$$
+P(\xi_1^{-1}(B_1)\xi_2^{-1}(B_2))=P(\xi_1\in{B}_1,\xi_2\in{B}_2)=P(\xi_1\in{B}_1)P(\xi_2\in{B}_2)=P(\xi_1^{-1}(B_1))P(\xi_2^{-1}(B_2)),
+$$
+Так как для любых $A_1\in\xi_1^{-1}(\mathcal{A})$, $A_2\in\xi_2^{-1}(\mathcal{A})$ найдутся такие $B_1,B_2\in\mathcal{A}$, 
+что $A_1=\xi_1^{-1}(B_1)$, $A_2=\xi_2^{-1}(B_2)$, то алгебры $\xi_1^{-1}(\mathcal{A})$ и 
+$\xi_2^{-1}(\mathcal{A})$ независимы.
+Так как 
+$$
+\mathfrak{A}_{\xi_1}=\xi_1^{-1}(\mathcal{B})=\xi_1^{-1}(\sigma(\mathcal{A}))=\sigma(\xi_1^{-1}(\mathcal{A})),
+$$
+$$
+\mathfrak{A}_{\xi_2}=\xi_2^{-1}(\mathcal{B})=\xi_2^{-1}(\sigma(\mathcal{A}))=\sigma(\xi_2^{-1}(\mathcal{A})),
+$$
+то $\sigma$-алгебры $\mathfrak{A}_{\xi_1}$ и $\mathfrak{A}_{\xi_2}$ независимы по <a href="./probability_theory3.5.html#Corollary3.3">следствию 3.3</a>. 
+Тогда случайные величины $\xi_1$ и $\xi_2$ независимы по теореме 3.12.
+<br><br>
+<p id="Theorem3.14"><b>Теорема 3.14:</b>
+Пусть $\overline\xi:=(\xi_1,\ldots,\xi_n)$ - многомерная случайная величина с плотностью распределения $p_{\overline\xi}(x_1,\ldots,x_n)$, 
+для любого $k\in\overline{1,n}$ $p_{\xi_k}(x)$ - плотность распределения $\xi_k$. Тогда
+случайные величины $\xi_1,\ldots,\xi_n$ независимы тогда и только тогда, 
+когда $p_{\overline\xi}(x_1,\ldots,x_n)=\prod_{k=1}^np_{\xi_k}(x_k)$ для всех точек непрерывности функций $p_{\xi_1}(x_1),\ldots,p_{\xi_n}(x_n)$.
+<p><b>Доказательство:</b><br>
+$\Rightarrow)$ Пусть случайные величины $\xi_1,\ldots,\xi_n$ независимы, 
+$x_1,\ldots,x_n$ точки непрерывности функций $p_{\xi_1}(x),\ldots,p_{\xi_n}(x)$ соответственно, тогда
+$$
+F_{\overline\xi}(x_1,\ldots,x_n)=\prod_{k=1}^nF_{\xi_k}(x_k)=\prod_{k=1}^n\int\limits_{-\infty}^{x_k}p_{x_k}(u_k)du_k=
+\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_n}\prod_{k=1}^np_{\xi_k}(u_k)du_1\cdots{d}u_n.
+$$
+Так как функция $\prod_{k=1}^np_{\xi_k}(u_k)$ неотрицательна, то она удовлетворяет определению для плотности распределения многомерной 
+случайной величины $\overline\xi$.<br>
+$\Leftarrow)$ Пусть $p_{\overline\xi}(x_1,\ldots,x_n)=\prod_{k=1}^np_{\xi_k}(x_k)$ для всех точек непрерывности функций 
+$p_{\xi_1}(x),\ldots,p_{\xi_n}(x)$, тогда
+$$
+F_{\overline\xi}(x_1,\ldots,x_n)=\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_n}p_{\overline\xi}(u_1,\ldots,u_n)du_1\cdots{d}u_n=
+\int\limits_{-\infty}^{x_1}\cdots\int\limits_{-\infty}^{x_n}\prod_{k=1}^np_{\xi_k}(u_k)du_1\cdots{d}u_n=
+\prod_{k=1}^n\int\limits_{-\infty}^{x_k}p_{\xi_k}(u_k)du_k=\prod_{k=1}^nF_{\xi_k}(x_k).
+$$
+Следовательно, случайные величины $\xi_1,\ldots,\xi_n$ независимы по теореме 3.13.
+<br><br>
+<p id="Theorem3.15"><b>Теорема 3.15:</b>
+Если $\xi_1,\ldots,\xi_n$ независимые случайные величины, то для любых борелевских функции 
+$g_1(x),\ldots,g_n(x):\mathbb{R}\to\mathbb{R}$ случайные величины $\eta_1:=g(\xi_1),\ldots,\eta_n:=g(\xi_n)$ также являются независимыми.
+<p><b>Доказательство:</b><br>
+Для любых $B_1,\ldots,B_n\in\mathcal{B}$
+$$
+P(\eta_1\in{B}_1,\ldots,\eta_n\in{B}_n)=P(\xi_1\in{g}^{-1}(B_1),\ldots,\xi_n\in{g}^{-1}(B_n))=
+P(\xi_1\in{g}^{-1}(B_1))\cdots{P}(\xi_n\in{g}^{-1}(B_n))=P(\eta_1\in{B}_1)\cdots{P}(\eta_n\in{B}_n).
+$$
+
+
+<br><br>
+<a href="./probability_theory3.3.html">previous</a> <a href="./math_contents.html">contents</a> <a href="./probability_theory4.1.html">next</a>
