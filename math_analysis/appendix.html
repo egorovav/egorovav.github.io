@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Mathematical analysis appendix</title>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}, TeX: {extensions: ["mediawiki.js", "autobold.js"], unicode: {
+	font: "STIXGeneral, 'Arial Unicode MS'"}}
+});
+</script>
+<script type="text/javascript" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
+   
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="./math_analysis15.2.2.html">previous</a> <a href="./math_contents.html">contents</a>
+<h5 id=appendix 1>Appendix 1</h5>
+<p><b>Основная теорема алгебры.</b><br>
+Каждый полином 
+$$P(z)=c_0+c_1z+\cdots+c_nz^n$$
+степени $n\geq1$ с комплексными коэффициентами имеет в $\mathbb{C}$ корень
+<p><b>Доказательство:</b> Б. о. о. утверждения теоремы, очевидно, можно считать, что $c_n=1$.
+<p>Пусть $\mu:=\inf_{z\in\mathbb{C}}|P(z)|$. Поскольку 
+$$P(z)=n^z\left(1+\frac{c_{n-1}}{z}+\cdots+\frac{c_0}{z^n}\right),$$
+то
+$$|P(z)|\geq|z|^n\left(1-\frac{|c_{n-1}|}{|z|}-\cdots-\frac{c_0}{|z|^n}\right),$$
+и, очевидно, $|P(z)|&gt\max{\{1,2\mu\}}$ при $|z|&gtR$, если $R$ достаочно великою Следовательно, точки последовательности $\{z_k\}$,
+в которых $0&lt|P(z_k)|-\mu&lt1/k$, лежат в круге $|z|\leq{R}$.
+<p>Проверим, что в $\mathbb{C}$ (и даже в этом круге) есть точка $z_0$, в которой $|P(z_0)|=\mu$. Для этого заметим, что если $z_k=x_k+iy_k$,
+то $\max{\{|x_k|,|y_k|\}}\leq|z_k|\leq{R}$ и, таким образом, последовательность действительных чисел $\{x_k\}$, $\{y_k\}$ оказываются ограниченными.
+<a href="./math_analysis4.4.html#Lemma4.4.1">Извлекая сначала сходящуюся подпоследовательность</a> $\{x_{k_l}\}$ из $\{x_k\}$, 
+а затем сходящуюся подпоследовательность $\{y_{k_{l_m}}\}$ из $\{y_{k_l}\}$ (для любого $l\in\mathbb{N}$), получим подпоследовательность
+$$z_{k_{l_m}}=x_{k_{l_m}}+iy_{k_{l_m}}$$
+последовательности $\{z_k\}$, которая имеет предел
+$$\lim_{m\to\infty}z_{k_{l_m}}=\lim_{m\to\infty}x_{k_{l_m}}+i\lim_{m\to\infty}y_{k_{l_m}}=x_0+iy_0=z_0,$$
+и поскольку $|z_k|\to|z_0|$ при $k\to\infty$, то $z_0\leq{R}$. Чтобы избежать громоздких обозначений и не переходить к подпоследовательностям, будем считать,
+что уже сам последовательность $\{z_k\}$ сходится. Из непрерываности $P(z)$ в $z_0\in\mathbb{C}$ следует, что $\lim_{k\to\infty}P(z_k)=P(z_0)$.
+Но тогда $|P(z_0)|=\lim_{k\to\infty}|P(z_k)|=\mu$.
+<p>Теперь предположим, что $\mu&gt0$, и приведем это предположение к противоречию. Если $P(z_0)\neq0$, то рассмотрим полином 
+$$Q(z)=\frac{P(z+z_0)}{P(z_0)}.$$
+По построению $Q(0)=1$ и
+$$|Q(z)|=\frac{|P(z+z_0)|}{|P(z_0)|}\geq1.$$
+<p>Поскольку $Q(0)=1$, полином $Q(z)$ имеет вид
+$$Q(z)=1+q_kz^k+q_{k+1}z^{k+1}+\cdots+q_nz^n,$$
+где $|q_k|\neq0$ и $1\leq{k}\leq{n}$. Если $q_k=\rho{e}^{i\psi}$, то при $\phi=(\pi-\psi)/k$ будем иметь 
+$$q_k(e^{i\phi})^k=\rho{e}^{i\psi}e^{i(\pi-\psi)}=\rho{e}^{i\pi}=i\rho=-|q_k|.$$
+Таким образом, при $z=re^{i\phi}$ получим
+$$
+|Q(re^{i\phi})|\leq|1+q_kz^k|+(|q_{k+1}z^{z+1}|+\cdots+|q_nz^n|)=|1-r^k|q_k||+r^{k+1}(|q_{k+1}|+\cdots+|q_n|r^{n-k-1})=
+1-r^k(|q_k|-r|q_{k+1}|-\cdots-r^{n-k}|q_n|)&lt1
+$$
+если $r$ достаточно близко к нулю. Но $Q(z)\geq1$ при $z\in\mathbb{C}$. Полученное противоречие показывает, что $P(z_0)=0$ 
+<br><br>
+<a href="./math_analysis15.2.2.html">previous</a> <a href="./math_contents.html">contents</a>
+</body>
+</html>
