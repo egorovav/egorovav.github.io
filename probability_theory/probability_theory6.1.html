@@ -36,7 +36,7 @@ $$Ee^{it\xi}=E\cos(t\xi)+iE\sin(t\xi).$$
 <br><br>
 <p id="Definition6.1"><b>Определение 6.1:</b>
 Характеристической функцией случайной величины $\xi$ (или распределения случайной величины) называется комплекснозначная функция вещественного переменного 
-$$\varphi_{\xi}(t):=Ee^{it\xi}:=\cos(t\xi)+i\sin(t\xi)$$
+$$\varphi_{\xi}(t):=Ee^{it\xi}:=E\cos(t\xi)+iE\sin(t\xi)$$
 <br>
 Из определения 6.1 следует, что для любого $t\in\mathbb{R}$
 $$\varphi_{\xi}(t)=\int\limits_{-\infty}^{\infty}e^{itx}dF_{\xi}(x)=\int\limits_{-\infty}^{\infty}\cos(tx)dF_{\xi}(x)+i\int\limits_{-\infty}^{\infty}\sin(tx)dF_{\xi}.$$
@@ -291,7 +291,7 @@ $$e^{iy}=\sum_{k=0}^{n-1}\frac{(iy)^k}{k!}+\frac{(iy)^n}{n!}(\cos{(\theta_1y)}+i
 \begin{multline*}
 e^{it\xi}=\sum_{k=0}^{n-1}\frac{(it)^k}{k!}\xi^k+\frac{(it)^n}{n!}\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi})]+\xi^n-\xi^n\bigr)=
 \sum_{k=0}^n\frac{(it)^k}{k!}\xi^{k}+\frac{(it)^n}{n!}\xi^n(\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1)\Rightarrow\\
-\Rightarrow{E}(e^{it\xi})=\varphi_{\xi}(t)=\sum_{k=0}^n\frac{(it)^k}{k!}\xi^k+\frac{(it)^n}{n!}E\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1]\bigr).
+\Rightarrow{E}(e^{it\xi})=\varphi_{\xi}(t)=\sum_{k=0}^n\frac{(it)^k}{k!}E(\xi^k)+\frac{(it)^n}{n!}E\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1]\bigr).
 \end{multline*}
 Обозначим
 $$\varepsilon_n(t)=E\bigl(\xi^n[\cos{(\theta_1t\xi)}+i\sin{(\theta_2t\xi)}-1]\bigr),$$

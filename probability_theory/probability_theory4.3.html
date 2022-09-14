@@ -268,8 +268,8 @@ $$P(|\xi-E\xi|\geq\varepsilon)\leq\frac{E(|\xi-E\xi|^r)}{\varepsilon^r}.$$
 <p><b>Доказательство:</b>
 <ol>
 <li>Обозначим $A:=\{\omega\in\Omega\mid\xi(\omega)\geq\varepsilon\}$, тогда
-$$\begin{cases}\xi(\omega)I_A(\omega)=\xi(\omega)=\varepsilon,&\omega\in{A} \\ \xi(\omega)I_A(\omega)=0,&\omega\notin{A}\end{cases}\Rightarrow
-\xi(\omega)\geq\xi(\omega)I_A(\omega)\geq\varepsilon{I}_A(\omega).$$
+$$\begin{cases}\xi(\omega)I_A(\omega)=\xi(\omega)\geq\varepsilon,&\omega\in{A} \\ \xi(\omega)I_A(\omega)=0,&\omega\notin{A}\end{cases}\Rightarrow
+\forall\omega\in\Omega\bigl(\xi(\omega)\geq\xi(\omega)I_A(\omega)\geq\varepsilon{I}_A(\omega)\bigr).$$
 Тогда по п. 4 <a href="./probability_theory4.1.html#Theorem4.4">теоремы 4.4</a>
 $$E\xi\geq{E}(\varepsilon{I}_A)=\varepsilon{E}I_A=\varepsilon{P}(A).$$
 </li>
